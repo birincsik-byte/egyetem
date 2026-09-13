@@ -1,52 +1,32 @@
-# CLAUDE.md
+# Egyetem · Online marketing 2026 ősz · szabályok Claude Code-nak
 
-Ez a repó a Pannon Egyetem Online marketing kurzus 2026 őszi nappali félévének weboldala és ügynökségi appja.
-Élesben: https://egyetem.bemind.dev/om2026nappali/
+Ez a mappa a kurzus weboldalának forrása. Élesben: https://egyetem.bemind.dev/om2026nappali/
+A szerver egy cPanel Git-klónból és cronból frissül ötpercenként; a deploy a `.cpanel.yml`-ben felsorolt fájlokat másolja a `public_html/om2026nappali/` mappába, semmi mást.
 
-## Hogyan kerül fel, amit készítünk
+## Hogyan érkezik ide változás
 
-A tulajdonos teljes fájlt ad, mindig ugyanazzal a névvel, mint ami a repóban van. A fájl a régi helyére kerül, a gyökérbe, felülírva a korábbit. Utána commit és push a `main` ágra. A deployt a szerveren cPanel Git és cron végzi, tehát a push után nagyjából öt percen belül élesben van.
+A tartalmi munka a claude.ai chatben készül. Onnan mindig teljes fájl jön, ugyanazzal a fájlnévvel, amit a tulajdonos bemásol ebbe a mappába a régi helyére. A fájlnevek rögzítettek:
 
-A munkamegosztás: a tartalom a claude.ai chatben készül, a fájlokat a tulajdonos teszi a mappába, a commit és a push a local Claude Code session dolga.
+- `index.html` – gyűjtőoldal, a hét alkalom
+- `online-marketing-2026-evad-1-epizod.html` – 1. alkalom deck (a többi alkalom hasonló néven, saját fájlban)
+- `app.html` – ügynökségi app (csapat, leadás, szavazás, eredmény)
+- `api.php` – az app háttere
+- `.cpanel.yml` – deploy lista
 
-Webes sessionből is érkezhet commit a GitHubra, ezért push előtt mindig `git pull`.
+## Mit csinálj, ha a tulajdonos azt mondja, „commitold és pushold"
 
-Ellenőrzés: a `main` legutóbbi commitjának tartalma öt perc múlva a fenti URL-en látszik.
+1. `git status`: nézd meg, mi változott, és mondd el egy mondatban.
+2. Ha új fájl jelent meg (például egy új alkalom deckje), ellenőrizd, hogy a `.cpanel.yml`-ben van rá `cp` sor és az `index.html` hivatkozik rá. Ha bármelyik hiányzik, mondd meg, és ne pusholj addig, amíg a tulajdonos nem dönt; ne találd ki magad a sort.
+3. Commit rövid magyar üzenettel (mi változott, melyik alkalom), push a `main` ágra.
+4. Írd ki, hogy öt percen belül élesben lesz.
 
-## Mi van a repóban
+## Amit soha
 
-- `index.html` gyűjtőoldal, a hét alkalom
-- `online-marketing-2026-evad-N-epizod.html` az N. alkalom prezentációja, alkalmanként külön fájl
-- `app.html` ügynökségi app: csapat, leadás, szavazás, eredmény (`?ep=ep1&v=csapat`)
-- `api.php` az app háttere, JSON-tár a `data/` mappában
-- `.cpanel.yml` ez mondja meg a cPanelnek, mit másoljon ki a deploy mappába
-- `key.php.example` az oktatói kulcs mintája
-- `README.md` a projekt leírása
-- `CLAUDE.md` ez a fájl
+- Ne kerüljön a repóba `data/` mappa vagy `key.php` (a `.gitignore` kizárja; ne módosítsd).
+- Ne írd át a fájlok tartalmát saját kezdeményezésre; a tartalom a chatben készül, itt csak verziózás és feltöltés van.
+- Ne hozz létre GitHub Actions workflow-t vagy más deploy mechanizmust; a deploy a szerveren fut.
+- Ne nevezd át a fájlokat; a nevek a deploy listával és a szerverrel vannak összekötve.
 
-## Új alkalom hozzáadása
+## Verziószám
 
-Új deck fájl esetén három fájl megy együtt, egyetlen commitban:
-
-1. az új deck, `online-marketing-2026-evad-N-epizod.html` néven
-2. `index.html`, az adott alkalom sora élesítve
-3. `.cpanel.yml`, benne egy új sor az új deck fájlra:
-   `- /bin/cp online-marketing-2026-evad-N-epizod.html $DEPLOYPATH`
-
-Ha az `app.html` leadandó mezői is változnak, az is mehet ugyanebbe a commitba.
-
-Commit üzenet formája: `N. alkalom: mi változott`, például `2. alkalom: deck, index, cpanel`.
-
-## Szabályok
-
-Soha ne kerüljön a repóba a `data/` mappa és a `key.php` fájl. A `.gitignore` ezeket kizárja, ne módosítsd.
-
-Ne hozz létre GitHub Actions workflow-t. A deploy cPanel Git és cron dolga.
-
-Ne írd át a kapott fájlok tartalmát. Ami érkezik, az kész, azt kell a helyére tenni.
-
-Ne nevezd át a fájlokat. A nevek a `.cpanel.yml` deploy listájával és a szerverrel vannak összekötve.
-
-Ha új fájl kerül a repóba, aminek nincs `cp` sora a `.cpanel.yml`-ben, kérdezz rá, hogy kimásolandó-e a szerverre. Ne találgass. Kivétel a `README.md` és ez a `CLAUDE.md`, ezek szándékosan nem kerülnek ki a weboldalra.
-
-Az `api.php` a `data/` mappába ír a szerveren. A deploy ehhez a mappához nem nyúl, tehát a beküldések és a szavazatok megmaradnak.
+Minden fájl alján (a deckben a bal alsó segédsorban, az appban és az indexben a lábjegyzetben) egy verziószám áll, például `v1.0 · 2026. szeptember 13.`. Ezt a chat emeli minden átadott fájlnál. Amikor a tulajdonos megnézi a weboldalt, ebből látja, hogy a friss verzió van-e fent; ha a repóban lévő fájl verziója újabb, mint a weben látott, a deploy még nem futott le vagy elakadt.
