@@ -32,3 +32,7 @@ A tartalmi munka a claude.ai chatben készül. Onnan mindig teljes fájl jön, u
 ## Verziószám
 
 Minden fájl alján (a deckben a bal alsó segédsorban, az appban és az indexben a lábjegyzetben) egy verziószám áll, például `v1.0 · 2026. szeptember 13.`. Ezt a chat emeli minden átadott fájlnál. Amikor a tulajdonos megnézi a weboldalt, ebből látja, hogy a friss verzió van-e fent; ha a repóban lévő fájl verziója újabb, mint a weben látott, a deploy még nem futott le vagy elakadt.
+
+## Új alkalom készítése
+
+A következő alkalmak anyagának készítési szabályai az `ALKALOM-SZABALYOK.md` fájlban vannak, az 1. alkalom mintájára. Ha a tulajdonos új alkalmat kér tőled (deck, forrásfeldolgozás, app-mezők), előbb azt olvasd el, és az ott leírt sorrendet tartsd: forrásdoksi először, deck utána, a tulajdonos mondatai változatlanul.
