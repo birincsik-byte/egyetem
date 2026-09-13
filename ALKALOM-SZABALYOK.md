@@ -4,7 +4,7 @@ Ez a doksi annak szól, aki a következő alkalom (epizód) anyagát készíti, 
 
 ## Összefoglaló
 
-A félév hét alkalom, hét kérdés, egy döntési lánc. Minden alkalom kérdése, kulcsgondolata és tanulsága a tulajdonos szövege (a gondolati ív doksiban), és változatlanul kerül a deckbe. A szakirodalom a mondatai mögé kerül forrásként, nem helyettük. A hallgatók ügynökségként dolgoznak egy valós márkán, minden alkalom végén egy leadandóval, amire a többiek csillaggal és indoklással szavaznak.
+A félév hét alkalom, hét kérdés, egy döntési lánc. Minden alkalom kérdése, kulcsgondolata és tanulsága a tulajdonos szövege (a gondolati ív doksiban), és változatlanul kerül a deckbe. A szakirodalom a mondatai mögé kerül forrásként, nem helyettük. A hallgatók ügynökségként dolgoznak egy valós márkán, minden alkalom végén egy beadandóval, amire a többiek csillaggal és indoklással szavaznak.
 
 ## Kiindulás, minden alkalomnál
 
@@ -19,7 +19,7 @@ Először a könyvek feldolgozása: egy forrásdoksi, amiben minden könyvnél o
 
 ## A deck szerkezete
 
-Visszamutatás a láncra és az előző alkalom leadandójára. Az alkalom címlapja (a hivatalos tematikai pont idézve). A nap ritmusa, négy blokk. Az epizód hármas diája: miről szól, kulcsgondolat, tanulság. Elméleti diák a forrásokkal, kettő és hat között, minden dián a forrás könyvcímmel és fejezettel. Summázás. A leadandó feladata, majd a „mi keletkezik" dia a hat blokkal (fejléc, amit néztünk, a lényeg egy mondatban, bizonyíték, ítélet, ami hiányzik), terjedelem legfeljebb egy A4 oldal, a beküldés az app Leadás gombjával. Csapatmunka-szavazás dia a három szemponttal és az eredmény linkjével. Zárás: a tanulság, és a következő alkalom kérdése cliffhangerként.
+Visszamutatás a láncra és az előző alkalom beadandójára. Az alkalom címlapja (a hivatalos tematikai pont idézve). A nap ritmusa, négy blokk. Az epizód hármas diája: miről szól, kulcsgondolat, tanulság. Elméleti diák a forrásokkal, kettő és hat között, minden dián a forrás könyvcímmel és fejezettel. Summázás. A beadandó feladata, majd a „mi keletkezik" dia a nyolc blokkal (fejléc; amit néztünk; a márka; a célcsoport; a lényeg egy mondatban; bizonyíték; ítélet; ami hiányzik), terjedelem legfeljebb egy A4 oldal, a beküldés az app Leadás gombjával. A bizonyíték mindig külön blokk, mert az az érv: miből gondolják. A blokkok tartalma alkalmanként a beadandó témájához igazodik, de a szerkezet (források, tartalom, mondat, bizonyíték, ítélet, ami hiányzik) marad. Csapatmunka-szavazás dia a három szemponttal és az eredmény linkjével. Zárás: a tanulság, és a következő alkalom kérdése cliffhangerként.
 
 ## Jegyzetek
 
@@ -35,8 +35,8 @@ A fejléc-csík sárgája az aktuális szakaszt követi: a keretező diákon „
 
 ## Ami egy új alkalommal együtt jár
 
-Egy commitban: az új deck fájl (`online-marketing-2026-evad-N-epizod.html`), az `app.html` `EPISODES` listájában az `epN` bejegyzés a leadandó mezőivel (az `f3` mindig kötelező, ez a leadás egymondatos lényege, ezt mutatja a szavazólista), az `index.html`-ben az alkalom sorának élesítése (az `off` osztály törlése, linkek), és a `.cpanel.yml`-ben egy új `cp` sor. Ha bármelyik hiányzik, a deploy vagy nem viszi fel, vagy a hallgató nem találja.
+Egy commitban: az új deck fájl (`online-marketing-2026-evad-N-epizod.html`), az `app.html` `EPISODES` listájában az `epN` bejegyzés a beadandó mezőivel (az `f3` mindig kötelező, ez a beadandó egymondatos lényege, ezt mutatja a szavazólista; a többi mező kulcsa `f1`, `f2`, `f4`–`f8`, a sorrendet a `fields` lista adja), az `index.html`-ben az alkalom sorának élesítése (az `off` osztály törlése, linkek), és a `.cpanel.yml`-ben egy új `cp` sor. Ha bármelyik hiányzik, a deploy vagy nem viszi fel, vagy a hallgató nem találja.
 
-## A leadandók sorrendje
+## A beadandók sorrendje
 
 1. Pozicionálási mondat visszafejtve. 2. Journey-térkép. 3. Landing page-audit és e-mail-folyamat. 4. Csatornaterv üzenetenként. 5. POEM-terv és keretfelosztás. 6. Mérési terv és hibakeresés. 7. Brief és pitch. Hat alkalom dekonstrukció a valós márkán, a hetedik konstrukció.
