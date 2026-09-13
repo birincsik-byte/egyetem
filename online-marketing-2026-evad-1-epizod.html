@@ -164,8 +164,8 @@ body.rev .revbar{display:flex}
 <body>
 
 <nav class="strip" aria-label="Évad">
-  <a href="#" data-go="0"><b>Évad</b><span>a keret</span></a>
-  <a href="#" data-go="12" class="on"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
+  <a href="#" data-go="0" data-sec="keret"><b>Évad</b><span>a keret</span></a>
+  <a href="#" data-go="12" data-sec="ep1"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
   <a href="#" data-go="6" class="dim"><b>2</b><span>Hogyan dönt az ember · 09. 28.</span></a>
   <a href="#" data-go="6" class="dim"><b>3</b><span>A saját terep · 10. 12.</span></a>
   <a href="#" data-go="6" class="dim"><b>4</b><span>A csatornák nyelve · 11. 02.</span></a>
@@ -626,7 +626,7 @@ body.rev .revbar{display:flex}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.0 · 2026. szeptember 13.</span></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.1 · 2026. szeptember 13.</span></div>
 <div class="pager"><button data-open="notes">Jegyzet</button><span id="pos">1 / 13</span><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -737,10 +737,12 @@ body.rev .revbar{display:flex}
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,notes=document.getElementById('notes'),pos=document.getElementById('pos');
+  var EP1_START=slides.indexOf(document.querySelector('.slide[data-notes="n8"]'));
   function show(n){
     n=Math.max(0,Math.min(slides.length-1,n));
     slides[i].classList.remove('cur');i=n;slides[i].classList.add('cur');
     pos.textContent=(i+1)+' / '+slides.length;
+    var sec=i>=EP1_START?'ep1':'keret'; [].forEach.call(document.querySelectorAll('.strip a[data-sec]'),function(a){a.classList.toggle('on',a.getAttribute('data-sec')===sec)});
     var key=slides[i].getAttribute('data-notes');
     [].forEach.call(notes.children,function(d){d.style.display=d.getAttribute('data-n')===key?'block':'none'});
     location.hash='d'+(i+1);
