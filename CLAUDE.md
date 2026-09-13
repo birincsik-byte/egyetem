@@ -7,6 +7,10 @@ Ez a repó a Pannon Egyetem Online marketing kurzus 2026 őszi nappali félévé
 
 A tulajdonos teljes fájlt ad, mindig ugyanazzal a névvel, mint ami a repóban van. A fájl a régi helyére kerül, a gyökérbe, felülírva a korábbit. Utána commit és push a `main` ágra. A deployt a szerveren cPanel Git és cron végzi, tehát a push után nagyjából öt percen belül élesben van.
 
+A munkamegosztás: a tartalom a claude.ai chatben készül, a fájlokat a tulajdonos teszi a mappába, a commit és a push a local Claude Code session dolga.
+
+Webes sessionből is érkezhet commit a GitHubra, ezért push előtt mindig `git pull`.
+
 Ellenőrzés: a `main` legutóbbi commitjának tartalma öt perc múlva a fenti URL-en látszik.
 
 ## Mi van a repóban
@@ -40,6 +44,8 @@ Soha ne kerüljön a repóba a `data/` mappa és a `key.php` fájl. A `.gitignor
 Ne hozz létre GitHub Actions workflow-t. A deploy cPanel Git és cron dolga.
 
 Ne írd át a kapott fájlok tartalmát. Ami érkezik, az kész, azt kell a helyére tenni.
+
+Ne nevezd át a fájlokat. A nevek a `.cpanel.yml` deploy listájával és a szerverrel vannak összekötve.
 
 Ha új fájl kerül a repóba, aminek nincs `cp` sora a `.cpanel.yml`-ben, kérdezz rá, hogy kimásolandó-e a szerverre. Ne találgass. Kivétel a `README.md` és ez a `CLAUDE.md`, ezek szándékosan nem kerülnek ki a weboldalra.
 
