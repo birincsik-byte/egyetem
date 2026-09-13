@@ -1,0 +1,3 @@
+<?php
+// Másold key.php néven ugyanebbe a mappába a szerveren, és írd át a kulcsot. A key.php nincs a gitben.
+$KEY = 'sajat-kulcs-ide';

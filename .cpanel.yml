@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/egyetembemind/public_html/om2026nappali/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp app.html $DEPLOYPATH
+    - /bin/cp api.php $DEPLOYPATH
+    - /bin/cp online-marketing-2026-evad-1-epizod.html $DEPLOYPATH

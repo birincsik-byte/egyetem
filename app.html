@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online marketing · ügynökségek</title>
+<style>
+:root{--paper:#F7F6F1;--ink:#1B1F3A;--soft:#5A5E78;--line:#D9D7CE;--cobalt:#1E4BD8;--marker:#F2C94C}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.45;padding:1.2em}
+.wrap{max-width:46em;margin:0 auto}
+h1{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:1.7em;line-height:1.1;margin:.4em 0 .5em}
+h2{font-family:Georgia,serif;font-weight:500;font-size:1.25em;margin:1.2em 0 .5em}
+p{margin:.5em 0}
+.muted{color:var(--soft)}.small{font-size:.85em}
+nav a{display:inline-block;padding:.3em .8em;border:1px solid var(--line);border-radius:4px;color:var(--ink);text-decoration:none;margin:0 .3em .3em 0;font-size:.9em}
+nav a.on{background:var(--marker);border-color:var(--marker)}
+label{display:block;font-size:.85em;color:var(--soft);margin:.8em 0 .2em}
+input,select,textarea{font:inherit;width:100%;padding:.5em .7em;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink)}
+textarea{min-height:4.5em}
+button{font:inherit;padding:.5em 1em;border:1px solid var(--cobalt);color:var(--cobalt);background:none;border-radius:4px;cursor:pointer;margin-top:.8em}
+button:disabled{opacity:.5;cursor:default}
+.card{border:1px solid var(--line);border-radius:6px;padding:.7em 1em;margin:.5em 0;background:#fff}
+.card b{font-family:Georgia,serif;font-weight:500}
+.vcard{display:flex;gap:.8em;align-items:flex-start;cursor:pointer}
+.vcard input{width:auto;margin-top:.3em}
+details{margin:.5em 0 0 2em}
+summary{cursor:pointer;color:var(--cobalt)}
+.fld{margin:.6em 0;padding-left:.8em;border-left:2px solid var(--line)}
+.bar{height:1.4em;background:var(--cobalt);border-radius:3px;min-width:2px}
+.row{display:grid;grid-template-columns:11em 1fr 2.5em;gap:.6em;align-items:center;margin:.4em 0}
+.row .n{text-align:right;font-family:Georgia,serif}
+.status{margin-top:.6em;min-height:1.4em}
+.big{font-size:1.4em}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="small muted" id="eplabel"></p>
+  <p class="small"><a href="./" style="color:var(--cobalt)">← Alkalmak</a></p>
+  <h1 id="title">Ügynökségek</h1>
+  <nav id="nav"></nav>
+
+  <!-- csapat -->
+  <section id="v_csapat" class="hide">
+    <h2>Csapat bejegyzése</h2>
+    <p class="small muted">Egyszer, az első alkalmon. A név a félév végéig marad.</p>
+    <label>Csapatnév</label><input id="c_name" autocomplete="off">
+    <label>Ügyfél</label><select id="c_client"><option value="">válassz</option></select>
+    <label>Tagok és szerepek (mérés, ügyfél szeme)</label><input id="c_members" autocomplete="off">
+    <button id="c_send">Bejegyez</button>
+    <p class="status" id="c_status"></p>
+    <h2>Bejegyzett csapatok</h2>
+    <div id="c_list"></div>
+  </section>
+
+  <!-- leadás -->
+  <section id="v_leadas" class="hide">
+    <h2 id="l_title">Leadandó</h2>
+    <p class="small muted">Egy csapat egy beküldés; az újraküldés felülírja az előzőt. A következő alkalom kezdetéig módosítható.</p>
+    <label>Csapat</label><select id="l_team"><option value="">válassz</option></select>
+    <div id="l_fields"></div>
+    <p class="small muted"><span id="l_words">0</span> szó · <span id="l_limit"></span></p>
+    <button id="l_send">Beküld</button>
+    <p class="status" id="l_status"></p>
+  </section>
+
+  <!-- szavazás -->
+  <section id="v_szavazas" class="hide">
+    <h2>Csapatmunka-szavazás</h2>
+    <p>Itt olvashatod a többi csapat leadandóját, és itt szavazol. Legfeljebb három szavazatod van, a saját csapatodra nem. Arra szavazz, amelyik meg tudja mondani, kit zárt ki a márka, bizonyítékkal áll, és kimondja, ami hiányzik.</p>
+    <label>Melyik csapatban vagy</label><select id="s_own"><option value="">válassz</option></select>
+    <div id="s_list"></div>
+    <button id="s_send">Leadom a szavazatot</button>
+    <p class="status" id="s_status"></p>
+  </section>
+
+  <!-- eredmény -->
+  <section id="v_eredmeny" class="hide">
+    <h2>Eredmény</h2>
+    <p class="small muted" id="e_meta"></p>
+    <div id="e_list" class="big"></div>
+    <p><button id="e_reset">Szavazatok nullázása (oktatói kulcs)</button></p>
+    <p class="status" id="e_status"></p>
+  </section>
+</div>
+
+<script>
+(function(){
+  /* ===== beállítások epizódonként: itt írod át a leadandó mezőit ===== */
+  var EPISODES={
+    ep1:{name:'1. alkalom · Kinek és mit', title:'1. leadandó: a pozicionálás visszafejtve', limit:'a keret 250–350 szó', fields:[
+      ['f1','Ki mit csinált ma'],
+      ['f2','Amit néztünk (weboldal, közösségi felület, hirdetés)'],
+      ['f3','A mondat: kinek szól, mi helyett választják, mi az értékajánlata'],
+      ['f4','Bizonyíték a mondat három helyéhez'],
+      ['f5','Ítélet: kit zár ki, kizár-e, szándékosnak látszik-e'],
+      ['f6','Ami hiányzik']]},
+    ep2:{name:'2. alkalom · Hogyan dönt az ember', title:'2. leadandó: journey-térkép', limit:'a keret 250–350 szó', fields:[
+      ['f1','Ki mit csinált ma'],['f2','Amit néztünk'],['f3','A journey egy mondatban'],['f4','Fázisok és kontaktpontok'],['f5','Hol szakad meg az út'],['f6','Ami hiányzik']]}
+  };
+  var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
+  var API='api.php';
+
+  var q={}; location.search.replace(/^\?/,'').split('&').forEach(function(kv){var p=kv.split('='); if(p[0])q[decodeURIComponent(p[0])]=decodeURIComponent(p[1]||'')});
+  var EP=(q.ep||'ep1').replace(/[^a-z0-9]/g,''), VIEW=q.v||'csapat', CFG=EPISODES[EP]||EPISODES.ep1;
+  var S={teams:[],subs:{},tally:{},votes:0};
+  function $(id){return document.getElementById(id)}
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function api(a,body,extra){var o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};return fetch(API+'?a='+a+'&ep='+EP+(extra||''),o).then(function(r){return r.json()})}
+
+  $('eplabel').textContent=CFG.name;
+  var views=['csapat','leadas','szavazas','eredmeny'], labels={csapat:'Csapat',leadas:'Leadás',szavazas:'Szavazás',eredmeny:'Eredmény'};
+  views.forEach(function(v){var a=document.createElement('a');a.href='?ep='+EP+'&v='+v;a.textContent=labels[v];if(v===VIEW)a.className='on';$('nav').appendChild(a)});
+  if(views.indexOf(VIEW)<0)VIEW='csapat';
+  $('v_'+VIEW).classList.remove('hide');
+  $('title').textContent=VIEW==='leadas'?CFG.title:(VIEW==='eredmeny'?'Csapatmunka-szavazás':'Ügynökségek');
+
+  CLIENTS.forEach(function(c){var o=document.createElement('option');o.textContent=c;$('c_client').appendChild(o)});
+
+  function refresh(){
+    return api('state').then(function(d){ if(!d.ok)throw 0; S=d; render(); }).catch(function(){ ['c_status','l_status','s_status','e_status'].forEach(function(id){$(id).textContent='A szerver nem elérhető.'}); });
+  }
+  function fillSelect(id){var sel=$(id),cur=sel.value;sel.innerHTML='<option value="">válassz</option>';S.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name+' · '+t.client;sel.appendChild(o)});sel.value=cur}
+  function render(){
+    /* csapat */
+    var l=$('c_list'); l.innerHTML=''; S.teams.forEach(function(t){var d=document.createElement('div');d.className='card';d.innerHTML='<b>'+esc(t.name)+'</b> · '+esc(t.client)+(t.members?'<br><span class="small muted">'+esc(t.members)+'</span>':'');l.appendChild(d)});
+    if(VIEW==='csapat')$('c_status').textContent=S.teams.length+' csapat bejegyezve';
+    fillSelect('l_team'); fillSelect('s_own');
+    /* szavazás lista */
+    var sl=$('s_list'); var openIds={}; [].forEach.call(sl.querySelectorAll('details[open]'),function(d){openIds[d.getAttribute('data-t')]=1});
+    var checked={}; [].forEach.call(sl.querySelectorAll('input:checked'),function(i){checked[i.value]=1});
+    sl.innerHTML=''; S.teams.forEach(function(t){var sub=S.subs[t.id];var card=document.createElement('div');card.className='card';
+      var head='<label class="vcard"><input type="checkbox" value="'+t.id+'"'+(checked[t.id]?' checked':'')+'><span><b>'+esc(t.name)+'</b> · '+esc(t.client)+'<br>'+(sub?esc(sub.sentence):'<span class="muted">még nincs beküldve</span>')+'</span></label>';
+      var body='';
+      if(sub){ body='<details data-t="'+t.id+'"'+(openIds[t.id]?' open':'')+'><summary class="small">A teljes leadandó</summary>';
+        CFG.fields.forEach(function(f){ if(f[0]==='f3')return; var v=sub[f[0]]; if(!v)return; body+='<p class="fld"><span class="small muted">'+esc(f[1])+'</span><br>'+esc(v).replace(/\n/g,'<br>')+'</p>'; });
+        body+='</details>'; }
+      card.innerHTML=head+body; sl.appendChild(card)});
+    /* eredmény */
+    var el=$('e_list'); el.innerHTML=''; var max=1; S.teams.forEach(function(t){max=Math.max(max,S.tally[t.id]||0)});
+    S.teams.slice().sort(function(a,b){return (S.tally[b.id]||0)-(S.tally[a.id]||0)}).forEach(function(t){var n=S.tally[t.id]||0;var r=document.createElement('div');r.className='row';r.innerHTML='<span>'+esc(t.name)+'</span><div class="bar" style="width:'+(100*n/max)+'%"></div><span class="n">'+n+'</span>';el.appendChild(r)});
+    $('e_meta').textContent=S.votes+' szavazólap érkezett · '+Object.keys(S.subs).length+' leadás a '+S.teams.length+' csapatból';
+  }
+
+  /* csapat */
+  $('c_send').addEventListener('click',function(){
+    var b={name:$('c_name').value.trim(),client:$('c_client').value,members:$('c_members').value.trim()};
+    if(!b.name||!b.client){$('c_status').textContent='Csapatnév és ügyfél kell.';return}
+    api('team',b).then(function(d){$('c_status').textContent=d.ok?'Bejegyezve.':d.error;if(d.ok){$('c_name').value='';$('c_members').value='';$('c_client').value='';refresh()}}).catch(function(){$('c_status').textContent='Nem sikerült, a szerver nem válaszol.'});
+  });
+
+  /* leadás */
+  $('l_title').textContent=CFG.title; $('l_limit').textContent=CFG.limit;
+  CFG.fields.forEach(function(f){var lab=document.createElement('label');lab.textContent=f[1];var ta=document.createElement('textarea');ta.id='l_'+f[0];$('l_fields').appendChild(lab);$('l_fields').appendChild(ta);ta.addEventListener('input',words)});
+  function words(){var n=0;CFG.fields.forEach(function(f){var v=$('l_'+f[0]).value.trim();if(v)n+=v.split(/\s+/).length});$('l_words').textContent=n}
+  $('l_team').addEventListener('change',function(){var tid=this.value;if(!tid)return;api('getsub',null,'&team='+tid).then(function(d){var sub=d.sub;if(!sub)return;CFG.fields.forEach(function(f){$('l_'+f[0]).value=sub[f[0]]||''});words();$('l_status').textContent='Korábbi beküldés betöltve, szerkeszthető.'})});
+  $('l_send').addEventListener('click',function(){
+    var b={team:$('l_team').value}; CFG.fields.forEach(function(f){b[f[0]]=$('l_'+f[0]).value.trim()});
+    if(!b.team){$('l_status').textContent='Válaszd ki a csapatot.';return}
+    if(!b.f3){$('l_status').textContent='A harmadik mező (a mondat) nélkül nincs leadás.';return}
+    $('l_status').textContent='Küldés…';
+    api('submit',b).then(function(d){$('l_status').textContent=d.ok?'Beküldve. Köszönjük.':d.error}).catch(function(){$('l_status').textContent='Nem sikerült, a szerver nem válaszol.'});
+  });
+
+  /* szavazás */
+  $('s_send').addEventListener('click',function(){
+    var own=$('s_own').value, ch=[].slice.call(document.querySelectorAll('#s_list input:checked')).map(function(i){return i.value}).filter(function(v){return v!==own});
+    if(!own){$('s_status').textContent='Add meg, melyik csapatban vagy.';return}
+    if(ch.length<1||ch.length>3){$('s_status').textContent='Egy, kettő vagy három csapatra szavazhatsz, a sajátodra nem.';return}
+    var tok; try{tok=localStorage.getItem('omtok')||Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('omtok',tok)}catch(e){tok=''}
+    api('vote',{voter:own,choices:ch,token:tok}).then(function(d){$('s_status').textContent=d.ok?'Szavazat leadva. Köszönjük.':d.error;if(d.ok)$('s_send').disabled=true}).catch(function(){$('s_status').textContent='Nem sikerült, a szerver nem válaszol.'});
+  });
+
+  /* eredmény */
+  $('e_reset').addEventListener('click',function(){var k=prompt('Oktatói kulcs:');if(!k)return;api('reset',{key:k,what:'votes'}).then(function(d){$('e_status').textContent=d.ok?'Nullázva.':d.error;refresh()})});
+
+  refresh(); if(VIEW==='eredmeny'||VIEW==='csapat'||VIEW==='szavazas') setInterval(refresh,8000);
+})();
+</script>
+</body>
+</html>
