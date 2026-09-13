@@ -105,12 +105,15 @@ summary{cursor:pointer;color:var(--cobalt)}
       <div id="a_teams"></div>
       <h2>Szavazás</h2>
       <p><button id="a_resetvotes">Az alkalom szavazatainak nullázása</button></p>
+      <h2>Teljes törlés</h2>
+      <p class="small muted">Minden csapat, minden alkalom minden leadandója és szavazata. Óra elején, tiszta laphoz.</p>
+      <p><button id="a_resetall" class="del" style="font-size:1em;padding:.5em 1em;margin:0">Minden csapat és szavazat törlése</button></p>
       <h2>Export</h2>
       <p><a id="a_export" href="#" download>CSV letöltése (csapatok, leadandók, csillagok, indoklások)</a></p>
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v1.0 · 2026. szeptember 13.</p>
+  <p class="small muted" style="margin-top:3em">app v1.1 · 2026. szeptember 13.</p>
 </div>
 
 <script>
@@ -215,6 +218,7 @@ summary{cursor:pointer;color:var(--cobalt)}
   var KEY='';
   $('a_check').addEventListener('click',function(){ var k=$('a_key').value; api('check',{key:k}).then(function(d){ if(d.ok){KEY=k;$('a_panel').classList.remove('hide');$('a_status').textContent='';$('a_export').href=API+'?a=export&ep='+EP+'&key='+encodeURIComponent(KEY)} else {$('a_status').textContent=d.error} }) });
   $('a_teams').addEventListener('click',function(e){ var b=e.target.closest('button.del'); if(!b)return; if(!confirm('Törlöd a csapatot a leadandóival és szavazataival együtt?'))return; api('deleteteam',{key:KEY,id:b.getAttribute('data-id')}).then(function(d){$('a_status').textContent=d.ok?'Törölve.':d.error;refresh()}) });
+  $('a_resetall').addEventListener('click',function(){ if(!confirm('Biztos? Minden csapat, leadandó és szavazat törlődik, minden alkalomról.'))return; if(!confirm('Még egyszer: ez nem visszavonható. Töröljem?'))return; api('reset',{key:KEY,what:'teams'}).then(function(d){$('a_status').textContent=d.ok?'Minden törölve.':d.error;refresh()}) });
   $('a_resetvotes').addEventListener('click',function(){ if(!confirm('Nullázod az alkalom szavazatait?'))return; api('reset',{key:KEY,what:'votes'}).then(function(d){$('a_status').textContent=d.ok?'Nullázva.':d.error;refresh()}) });
 
   refresh(); if(VIEW==='eredmeny'||VIEW==='csapat'||VIEW==='szavazas') setInterval(refresh,8000);
