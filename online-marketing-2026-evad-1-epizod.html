@@ -117,6 +117,21 @@ tr.now td{background:var(--marker)}
 .cloudform{display:flex;gap:.6em;margin-top:.8em;align-items:center}
 .cloudform input{font:inherit;padding:.4em .7em;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);min-width:16em}
 .cloudform input:focus-visible{outline:3px solid var(--cobalt)}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,.blocks>div,.ep,.task),body.rev .notes .hj p,body.rev .notes h4{outline:1px dashed rgba(30,75,216,.35);outline-offset:2px;cursor:text}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,.blocks>div,.ep,.task):hover,body.rev .notes .hj p:hover{background:rgba(242,201,76,.35)}
+.rev-marked{box-shadow:inset 4px 0 0 var(--cobalt)}
+.revbar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#F7F6F1;padding:.6em 8vw;font-size:.8em;display:none;z-index:40;align-items:center;gap:1em}
+body.rev .revbar{display:flex}
+.revbar button{border:1px solid rgba(255,255,255,.4);color:#F7F6F1;padding:.2em .7em;border-radius:4px}
+.revbox{position:fixed;z-index:41;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.8em;width:min(34em,90vw);box-shadow:0 8px 30px rgba(0,0,0,.2);display:none}
+.revbox.open{display:block}
+.revbox .orig{font-size:.8em;color:var(--ink-soft);max-height:6em;overflow:auto;margin-bottom:.5em;border-left:3px solid var(--marker);padding-left:.6em}
+.revbox textarea{width:100%;min-height:5em;font:inherit;font-size:.9em;padding:.4em;border:1px solid var(--line);border-radius:4px}
+.revbox .row{display:flex;gap:.5em;margin-top:.5em}
+.revbox .row button{border:1px solid var(--cobalt);color:var(--cobalt);padding:.3em .8em;border-radius:4px}
+.revout{position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:42;padding:4vh 8vw;display:none;overflow:auto}
+.revout.open{display:block}
+.revout textarea{width:100%;height:60vh;font:inherit;font-size:.85em;padding:.8em;border:1px solid var(--line);border-radius:6px}
 .notes .hj .src{font-size:.85em;color:#B9BCD6}
 .notes .src.top{font-size:.85em;color:var(--marker);margin-bottom:.4em}
 .notes .hj{margin-top:.6em;border-top:0;padding-top:0}
@@ -150,7 +165,7 @@ tr.now td{background:var(--marker)}
 
 <nav class="strip" aria-label="Évad">
   <a href="#" data-go="0"><b>Évad</b><span>a keret</span></a>
-  <a href="#" data-go="8" class="on"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
+  <a href="#" data-go="12" class="on"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
   <a href="#" data-go="6" class="dim"><b>2</b><span>Hogyan dönt az ember · 09. 28.</span></a>
   <a href="#" data-go="6" class="dim"><b>3</b><span>A saját terep · 10. 12.</span></a>
   <a href="#" data-go="6" class="dim"><b>4</b><span>A csatornák nyelve · 11. 02.</span></a>
@@ -164,25 +179,25 @@ tr.now td{background:var(--marker)}
 <!-- 0 -->
 <section class="slide cur" data-notes="n0">
   <p class="kicker">Pannon Egyetem · Online marketing · 2026 őszi félév</p>
-  <h1>A félév mint sorozat.</h1>
+  <h1>A félév felépítése.</h1>
   <p class="lead">Hét alkalom, hét epizód, egyetlen gondolati ív. Jelenleg az első epizódnál járunk.</p>
   <p class="muted small" style="margin-top:2em">2026. szeptember 14.</p>
 </section>
 
 <!-- 1 -->
 <section class="slide" data-notes="n1">
-  <p class="kicker">A tárgy hivatalos célja</p>
+  <p class="kicker">A tárgy célja</p>
   <h2>Mit várunk el a félév végére</h2>
-  <p>Hogy a hallgatók megértsék az online marketing szerepét a vállalatok tevékenységében, helyét a marketingstratégiában és a márkaépítésben.</p>
-  <p>A tárgy elvégzése után a hallgatók ismerik az online marketing fejlődési szakaszait, eszközeit, alkalmazásának elméleti alapvetéseit; képesek internetmarketing stratégia összeállítására, eszközöket és forrásokat rendelni annak operatív megvalósításához; képesek alkalmazni a tanult online marketing eszközöket; komplex megközelítést kívánó, illetve váratlan döntési helyzetekben is törekednek a jogszabályok és etikai normák teljes körű figyelembevételével meghozni döntésüket.</p>
+  <p>Megértsd az online marketing szerepét a vállalatok tevékenységében, helyét a marketingstratégiában és a márkaépítésben.</p>
+  <p>A félév végére ismered az online marketing fejlődési szakaszait, eszközeit és alkalmazásának elméleti alapjait; össze tudsz állítani egy internetmarketing-stratégiát, és eszközöket, forrásokat tudsz rendelni a megvalósításához; alkalmazni tudod a tanult online marketing eszközöket; és összetett vagy váratlan döntési helyzetben is a jogszabályok és az etikai normák teljes körű figyelembevételével döntesz.</p>
 </section>
 
 <!-- 2 -->
 <section class="slide" data-notes="n2">
-  <p class="kicker">A küldetés</p>
-  <h2>Miért ebben a formában</h2>
-  <p class="quote">Célunk, hogy úgy értsük meg az összefüggéseket az online marketing területén, amelyeket már nehezen lehet megérteni a későbbi önfejlesztés során.</p>
-  <p>Például oktató jellegű közösségi média tartalmakon keresztül. Fontos, hogy össze tudjuk kapcsolni <span class="hl">az embert</span> (fogyasztó), <span class="hl">a marketing eszközöket</span> (csatornák) és <span class="hl">a terméket</span> (márka).</p>
+  <p class="kicker">Dekonstrukció</p>
+  <h2>Miért ebben a formában?</h2>
+  <p class="quote">Jó lenne, hogy értsük meg az összefüggéseket az online marketing területén, mert halászni tudni jobb hosszú távon.</p>
+  <p>Fontos, hogy össze tudjuk kapcsolni <span class="hl">az embert</span> (fogyasztó), <span class="hl">a marketing eszközöket</span> (csatornák) és <span class="hl">a terméket</span> (márka).</p>
 </section>
 
 <!-- 3 -->
@@ -190,15 +205,15 @@ tr.now td{background:var(--marker)}
   <p class="kicker">A gondolati ív</p>
   <div class="cols">
     <div>
-      <h2>Hét kérdés, egy döntési lánc</h2>
-      <p>Minden epizód egy kérdésre válaszol. A hét kérdés együtt pontosan az, amit egy stratégia vagy egy brief tartalmaz. A félév nem témákat vesz sorra, hanem ezt a láncot építi fel, és a hetedik alkalomra a hallgató kezében az egész ott van, csak addigra ő tölti ki.</p>
+      <h2>Hét témakörre lebontva</h2>
+      <p>Minden témakör, alkalom egy kérdés körül forog. A hét témakör együtt elvezet ahhoz, hogy mit jelent a stratégiai gondolkozásmód, és hogyan alkalmazható a gyakorlatban.</p>
     </div>
     <ol class="chain">
       <li class="step"><div>Kinek és mit mondunk<span>1. Kinek és mit</span></div></li>
-      <li class="step"><div>Mikor mondjuk, mert nem akkor vásárol, amikor mi beszélünk<span>2. Hogyan dönt az ember</span></div></li>
-      <li class="step"><div>Hol fogadjuk, amikor megérkezik hozzánk<span>3. A saját terep</span></div></li>
+      <li class="step"><div>Hogyan jut el, amit mondani akarunk<span>2. Hogyan dönt az ember</span></div></li>
+      <li class="step"><div>Hogyan fogadjuk, ha megérkezik a vevő<span>3. A saját terep</span></div></li>
       <li class="step"><div>Milyen lehetőségeink vannak elérni a vevőt<span>4. A csatornák nyelve</span></div></li>
-      <li class="step"><div>Mennyiért, és mit bérlünk, mit építünk<span>5. Mennyiért</span></div></li>
+      <li class="step"><div>Hogyan, mennyiért, milyen csatornákon<span>5. Mennyiért</span></div></li>
       <li class="step"><div>Miből tudjuk meg, hogy működött<span>6. Mit mutat a valóság</span></div></li>
       <li class="step"><div>Kikkel csináljuk<span>7. Hogyan dolgozik egy marketinges</span></div></li>
     </ol>
@@ -210,12 +225,12 @@ tr.now td{background:var(--marker)}
   <p class="kicker">Honnan hova</p>
   <div class="cols">
     <div class="step">
-      <h3 class="muted">Így érkezel</h3>
-      <p class="quote">A marketing az, ami velem történik. Reklám, kreatív, platform. Az a jó, ami nekem tetszik.</p>
+      <h3 class="muted">Így érkezel: fogyasztó</h3>
+      <p class="quote">A marketing az, amit látok, fogyasztó, befogadó vagyok. Az a jó, ami nekem tetszik.</p>
     </div>
     <div class="step">
-      <h3 style="color:var(--cobalt)">Így mész el</h3>
-      <p class="quote">A marketing az a döntéssor, amit én hozok meg, és amit meg tudok védeni anélkül, hogy ízlésre hivatkoznék.</p>
+      <h3 style="color:var(--cobalt)">Így mész el: összefüggéseket értő lény</h3>
+      <p class="quote">A marketing az a döntéssor, amit én hozok meg, és amit meg tudok védeni anélkül, hogy ízlésre hivatkoznék. Értem, mi van mögötte.</p>
     </div>
   </div>
 </section>
@@ -250,7 +265,7 @@ tr.now td{background:var(--marker)}
     <div class="ep"><span class="d">2026. december 7.</span><b>7. Hogyan dolgozik egy marketinges</b><span class="q">Kikkel csináljuk</span><span class="p">Leadandó: brief és pitch</span></div>
   </div>
   <hr class="rule">
-  <p class="small muted">Hétfőnként, négyórás blokkokban. Az alkalmak sorozatepizódok: mindegyiknek saját fő témája, mondanivalója és tanulsága van, és mindegyik építőkocka a nagy egészhez. Minden epizód végén az ügynökség egy leadandóval válaszol az aznapi kérdésre a saját ügyfelére; a hét leadandó együtt a brief.</p>
+  <p class="small muted">Hétfőnként, négyórás blokkokban. Az alkalmak sorozatepizódok: mindegyiknek saját fő témája, mondanivalója és tanulsága van, és mindegyik építőkocka a nagy egészhez. Minden epizód végén az ügynökség egy leadandóval válaszol az aznapi kérdésre a saját ügyfelére; a hét leadandó együtt egyfajta brief lesz.</p>
 </section>
 
 <!-- 6b -->
@@ -259,9 +274,9 @@ tr.now td{background:var(--marker)}
   <h2>Minden epizód ugyanúgy jár</h2>
   <div class="blocks">
     <div><b>Visszamutatás</b>Hol tartunk a láncon, és a múlt heti kilépőkártyák leggyakoribb kérdése.</div>
-    <div><b>Elmélet</b>Az epizód kérdése a szakirodalomból, forrással, és a feszültség a szerzők között.</div>
-    <div><b>Summázás és feladat</b>Az epizód tanulsága, és a feladat, ami mindig az aznapi kérdés a ti ügyfeletekre.</div>
-    <div><b>Csapatmunka és zárás</b>Az utolsó 45 perc: ügynökségi munka, csapatmunka-szavazás, kilépőkártya.</div>
+    <div><b>Elmélet</b>Elméleti háttér az adott témakörhöz, ami segítséget ad az adott alkalom csapatmunkájához.</div>
+    <div><b>Csapatmunka</b>Ügynökségi munka az adott témakör alapján.</div>
+    <div><b>Zárás</b>Csapatmunka-szavazás a többi ügynökség munkájáról.</div>
   </div>
   <p style="margin-top:1.2em" class="lead">Minden alkalom végén egy részeredmény marad utánatok. Hét részeredmény, és a hetedik alkalmon ezekből lesz a brief és a pitch. Ez adja a jegy 70%-át.</p>
 </section>
@@ -284,16 +299,79 @@ tr.now td{background:var(--marker)}
         <tr><td>77–89%</td><td>jó (4)</td></tr>
         <tr><td>90% felett</td><td>jeles (5)</td></tr>
       </table>
-      <p class="small muted" style="margin-top:1em">A zárthelyi nem információt kérdez vissza, hanem életszagú problémát ad, és a gondolkodásmódot nézi. Ezeket a problémákat órán előre gyakoroljuk.</p>
+      <p class="small muted" style="margin-top:1em">A zárthelyi igyekszik életszagú problémát adni. A gondolkodásmódot nézi. Ezeket a problémákat órán előre gyakoroljuk.</p>
     </div>
   </div>
+</section>
+
+<!-- 9a -->
+<section class="slide" data-notes="n9a1">
+  <p class="kicker">Honnan indul a marketinges gondolkodása</p>
+  <div class="cols">
+    <div>
+      <p class="quote step">De miért?</p>
+      <p class="quote step">De miért?</p>
+      <p class="quote step">De miért?</p>
+      <p class="quote step" style="color:var(--cobalt)">De miért?</p>
+    </div>
+    <div class="step">
+      <p class="lead">Így hangzik egy kihallgatás, és így hangzik egy marketinges gondolkodása.</p>
+      <p>A megrendelő szinte mindig a saját megoldását mondja el, nem a problémáját. A marketinges addig kérdez, amíg a probléma elő nem jön. Legalább négyszer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9b -->
+<section class="slide" data-notes="n9a2">
+  <p class="kicker">Honnan indul a marketinges gondolkodása</p>
+  <h2>Aki a problémát képes jól megfogalmazni, félig „meg is oldotta" azt.</h2>
+  <div class="cols">
+    <div class="step">
+      <h3 class="muted">Amit a megrendelő hoz</h3>
+      <ol class="chain">
+        <li><div>Probléma</div></li>
+        <li><div>Ambíció</div></li>
+        <li><div>Megfigyelés</div></li>
+        <li><div>Célok</div></li>
+        <li><div>Marketingstratégia</div></li>
+      </ol>
+    </div>
+    <div class="step">
+      <h3 style="color:var(--cobalt)">Amit az ügynökség ad vissza</h3>
+      <ol class="chain">
+        <li><div>Megoldás</div></li>
+        <li><div>Ambíció</div></li>
+        <li><div>Insight</div></li>
+        <li><div>Kommunikációs stratégia</div></li>
+        <li><div>Feszültség</div></li>
+      </ol>
+    </div>
+  </div>
+  <p class="small muted step" style="margin-top:1em">A marketinges gondolkodás egy problémából indul, és egy feszültségig jut. A hét alkalom ezen a két oszlopon megy végig.</p>
+</section>
+
+<!-- 9c -->
+<section class="slide" data-notes="n9a3">
+  <p class="kicker">Honnan indul a marketinges gondolkodása</p>
+  <h2>A gondolkodás eszköze</h2>
+  <div class="cols">
+    <div class="step">
+      <h3>Márkagyémánt</h3>
+      <p>Kinek. Mire. Mi ellen. De miért.</p>
+    </div>
+    <div class="step">
+      <h3>Márkapiramis</h3>
+      <p>Cél. Ígéret. Előny. Tulajdonság. Alulról fölfelé „azért, hogy", fölülről lefelé „azért, mert".</p>
+    </div>
+  </div>
+  <p class="step" style="margin-top:1.2em">Ma a „kinek" és a „mire" kérdésével kezdünk. A félév végén ezzel az eszközzel írjátok a briefet.</p>
 </section>
 
 <!-- 8 -->
 <section class="slide" data-notes="n8">
   <p class="kicker">1. epizód · 2026. szeptember 14.</p>
-  <h1>Kinek és mit</h1>
-  <p class="lead">Márka, üzenet, célcsoport összefüggése, és hogy honnan indul egy marketingdöntés.</p>
+  <h1>Kinek és mit?</h1>
+  <p class="lead">Márka, üzenet, célcsoport összefüggése. Honnan indul a marketinges gondolkozása?</p>
   <hr class="rule">
   <p class="small muted">A tematikából: bevezető, fogalmi keretbe helyezés, tudásfelmérés (márka, üzenet, célcsoport összefüggése).</p>
 </section>
@@ -327,8 +405,8 @@ tr.now td{background:var(--marker)}
   <p class="kicker">1. epizód</p>
   <div class="triad">
     <div class="step"><h3>Miről szól</h3><p>Márka, üzenet, célcsoport összefüggése, és hogy honnan indul egy marketingdöntés.</p></div>
-    <div class="step"><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.2em">Nem a terméket adod el, hanem egy konkrét ember konkrét helyzetére adott választ.</p></div>
-    <div class="step"><h3>Tanulság</h3><p>A célcsoport nem demográfia, hanem szituáció. Aki mindenkihez beszél, az senkinek nem mond semmit.</p></div>
+    <div class="step"><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.2em">Nem terméket adsz el. Egy konkrét ember konkrét helyzetére adsz választ.</p></div>
+    <div class="step"><h3>Tanulság</h3><p>A célcsoport nem demográfia, hanem szituáció, élethelyzet, lét-helyzet. Aki mindenkihez beszél, az senkinek nem mond semmit.</p></div>
   </div>
 </section>
 
@@ -392,7 +470,7 @@ tr.now td{background:var(--marker)}
 <!-- 9e -->
 <section class="slide" data-notes="n9e">
   <p class="kicker">1. epizód · üzenet</p>
-  <h2>Egy mondat, három hely</h2>
+  <h2>Egy mondatban három fontos szempont.</h2>
   <p class="quote step"><span class="hl">Kinek</span> szól, <span class="hl">mi helyett</span> választják, <span class="hl">mi az értékajánlata</span>.</p>
   <table class="step vp" style="margin-top:1em">
     <colgroup><col style="width:24%"><col style="width:20%"><col style="width:12%"><col style="width:44%"></colgroup>
@@ -404,7 +482,7 @@ tr.now td{background:var(--marker)}
 
 <!-- 9f -->
 <section class="slide" data-notes="n9f">
-  <p class="kicker">1. epizód · fókusz</p>
+  <p class="kicker">1. epizód · a márka fókusza</p>
   <div class="cols">
     <div>
       <h2>Három kérdés</h2>
@@ -416,11 +494,10 @@ tr.now td{background:var(--marker)}
       <p class="small muted" style="margin-top:.8em">Az elsőre könnyű válaszolni, a harmadikra nagyon nehéz. Amíg a harmadikra nincs olyan válasz, amit a vevő ellenállhatatlannak talál, nincs márka. <span>Neumeier, Discipline 1</span></p>
     </div>
     <div class="step">
-      <p class="quote">Fókusz, fókusz, fókusz. A veszély ritkán a túl sok fókusz, szinte mindig a túl kevés.</p>
+      <p class="quote">Fókusz, fókusz, fókusz. A veszély ritkán a túl sok fókusz, szinte mindig a túl kevés, vagy nem is fókusz, csak azt hiszed.</p>
       <p class="small muted">Neumeier, Discipline 1</p>
       <hr class="rule">
       <p class="quote">From something to everyone, to everything to someone.</p>
-      <p class="small muted">Birincsik Albert, Brand deck, 2025</p>
     </div>
   </div>
 </section>
@@ -429,11 +506,11 @@ tr.now td{background:var(--marker)}
 <section class="slide" data-notes="n11a">
   <p class="kicker">1. epizód · ügynökségalapítás</p>
   <h1>Mától ügynökség vagytok.</h1>
-  <p class="lead">Egy valós ügyfél, hét epizód, a végén pitch.</p>
+  <p class="lead">Kiválasztott márkán fogtok végig dolgozni. Ennek a márkának vagytok az ügynöksége. Minden alkalommal más szempontból.</p>
   <div class="cols3" style="margin-top:1em">
-    <div class="step"><h3>Csapat</h3><p>Kis csapatok, ti álltok össze. A csapat a félév végéig ugyanez marad, és nevet kap.</p></div>
-    <div class="step"><h3>Ügyfél</h3><p>Valós magyar márka a kiadott listáról: van weboldala, közösségi jelenléte és látható hirdetése.</p></div>
-    <div class="step"><h3>Két szerep</h3><p>Valaki a mérésre figyel, valaki az ügyfél szemével néz. Minden leadandón szerepel, ki mit csinált.</p></div>
+    <div class="step"><h3>Csapat</h3><p>Alkossatok kis csapatokat. A csapat összetétele a félév végéig változatlan, és válasszatok nevet az ügynökségnek.</p></div>
+    <div class="step"><h3>Ügyfél</h3><p>Valós márka közül válasszatok a megadott listáról: van weboldala, közösségi jelenléte és látható hirdetése.</p></div>
+    <div class="step"><h3>Dokumentálás és szerepek</h3><p>Érdemes megtartani a munkaanyagokat, háttérinfókat, közös mappába szervezni és tartani. Érdemes felosztani a munkát. Legyetek CSAPAT.</p></div>
   </div>
 </section>
 
@@ -452,7 +529,7 @@ tr.now td{background:var(--marker)}
 <!-- 11b -->
 <section class="slide" data-notes="n11b">
   <p class="kicker">1. epizód · ügyféllista</p>
-  <h2>Tizenkét ügyfél, csapatonként egy</h2>
+  <h2>Egy csapat egy márkát, ügyfelet válasszon.</h2>
   <table style="font-size:.72em">
     <tr><th>Márka</th><th>Mi</th><th>Miért jó szétszedni</th></tr>
     <tr><td>Szamos</td><td>cukrászda, marcipán</td><td>örökségmárka, bolt és webshop egyszerre</td></tr>
@@ -481,29 +558,30 @@ tr.now td{background:var(--marker)}
       <li>mi helyett választják (melyik márka vagy termék helyett),</li>
       <li>mi az értékajánlata.</li>
     </ul>
-    <p style="margin-top:.6em">Mind a háromhoz egy sor bizonyíték: hol látszik. És egy ítélet: kit zár ki ezzel, és kizár-e egyáltalán valakit.</p>
+    <p style="margin-top:.6em">Mind a háromhoz egy sor bizonyíték: hol látszik, honnan tudjátok (a weboldal melyik mondata, melyik poszt, melyik hirdetés). Bizonyíték nélkül a mondat vélemény.</p>
+    <p style="margin-top:.6em">És egy ítélet: ez a pozicionálás kit zár ki? Ha senkit, az is válasz, akkor a márka mindenkihez beszél, tehát senkihez. Ha kizár valakit, nevezzétek meg, kit, és látszik-e, hogy ez szándékos.</p>
   </div>
-  <p class="small muted" style="margin-top:1.5em">Csapatmunka-szavazás: a válaszotokat mindenki elolvassa, és nem az nyer, amelyik szép, hanem amelyik meg tudja mondani, kit zárt ki.</p>
+  <p class="small muted" style="margin-top:1.5em">Csapatmunka-szavazás: a mai megoldást mindenki elolvassa, és egymás munkájára is fogtok szavazni. Mennyire érthető, releváns, használható az anyag.</p>
 </section>
 
 <!-- 11c -->
 <section class="slide" data-notes="n11c">
-  <p class="kicker">1. epizód · mi keletkezik</p>
+  <p class="kicker">A mai leadandó anyag: mi keletkezik?</p>
   <h2>Egy oldal. Ez a doksi.</h2>
   <div class="cols">
     <ol class="chain">
       <li><div>Fejléc<span>ügynökség, ügyfél, tagok és szerepek, ki mit csinált</span></div></li>
-      <li><div>Amit néztünk<span>három forrás: weboldal, egy közösségi felület utolsó tíz posztja, egy hirdetés (ha nincs látható, azt írjátok le)</span></div></li>
+      <li><div>Amit néztünk<span>legalább három forrás: weboldal, közösségi felületek legalább utolsó két hete, egy hirdetés (ha nincs látható, azt írjátok le)</span></div></li>
       <li><div>A mondat<span>kinek, mi helyett, mi az értékajánlat, egyetlen mondatban</span></div></li>
       <li><div>Bizonyíték<span>a mondat három helyéhez egy-egy sor: hol látszik, szó szerint vagy hivatkozva</span></div></li>
       <li><div>Ítélet<span>kit zár ki, kizár-e, és szándékosnak látszik-e</span></div></li>
       <li><div>Ami hiányzik<span>a három döntés közül melyik nincs kimondva, egy mondat</span></div></li>
     </ol>
     <div>
-      <p><b>Terjedelem</b> legfeljebb egy A4 oldal, 250–350 szó. Aki két oldalt ad le, az nem döntött.</p>
-      <p><b>Formátum</b> itt, a deckben, a Leadás gombbal. A csapat nevét választjátok, a hat blokkot kitöltitek, és a beküldés a következő alkalom kezdetéig felülírható.</p>
-      <p><b>Határidő</b> a szavazásra ma. A véglegesített változat a következő alkalom kezdetéig.</p>
-      <p><b>Mire nézünk</b> a mondat három helye bizonyítékkal áll-e; az ítélet megvédhető-e; a forrás meg van-e nevezve. Nem arra, hogy tetszik-e.</p>
+      <p><b>Terjedelem</b> legfeljebb egy A4 oldal. Aki több oldalt ad le, az nem döntött. De ha van háttéranyag, azt tartsd meg.</p>
+      <p><b>Formátum</b> itt, a deckben, a Leadás gombbal. A csapat nevét választjátok, a hat blokkot kitöltitek. De legyen meg neked is saját doksiban, mert később dolgozni fogsz még vele.</p>
+      <p><b>Határidő</b> óra vége, utána szavazunk, megnézzük közösen.</p>
+      <p><b>Hogyan értékeljük</b> a mondat három helye bizonyítékkal áll-e; az ítélet megvédhető-e; a forrás meg van-e nevezve. Értelmezted a márkát, az ügyfeledet?</p>
       <p style="margin-top:.6em"><a class="btn" href="app.html?ep=ep1&amp;v=leadas" target="_blank">Leadás megnyitása</a> <button class="btn" data-open="minta">Sablon és kitöltött minta</button></p>
     </div>
   </div>
@@ -512,16 +590,16 @@ tr.now td{background:var(--marker)}
 <!-- 11d -->
 <section class="slide" data-notes="n11d">
   <p class="kicker">1. epizód · csapatmunka-szavazás · 15 perc</p>
-  <h2>Ki a falra, és szavazzunk</h2>
+  <h2>Ki a falra. Szavazzunk!</h2>
   <div class="cols">
     <div>
-      <p>Nem arra szavazunk, melyik szép. Arra, amelyik</p>
+      <p>Az alatta lévő pontokat gondoljuk át a sablon doksi alapján.</p>
       <ol class="chain">
         <li><div>meg tudja mondani, kit zárt ki a márka,</div></li>
         <li><div>bizonyítékkal áll, nem véleménnyel,</div></li>
         <li><div>kimondja, ami hiányzik.</div></li>
       </ol>
-      <p class="small muted" style="margin-top:.8em">Mindenkinek három szavazata van, saját csapatra nem. A két legtöbbet kapott csapat indokol, két-két percben.</p>
+      <p class="small muted" style="margin-top:.8em">Mindenki egy csapatra szavaz, a sajátjára nem: egytől öt csillagig, és egy mondat indoklással. Indoklás nélkül nincs szavazat. A két legjobb átlagot kapott csapat indokol, két-két percben.</p>
     </div>
     <div class="votes">
       <p>Szavazni telefonról: <b id="voteurl"></b></p>
@@ -543,14 +621,14 @@ tr.now td{background:var(--marker)}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő</div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód</div>
 <div class="pager"><button data-open="notes">Jegyzet</button><span id="pos">1 / 13</span><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
   <div data-n="n0"><h4>Nyitó</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ezt a félévet sorozatként nézzük. Hét alkalom, hét epizód, és mindegyiknek van egy saját kérdése, egy kulcsgondolata, amit évek múlva is fel lehet idézni, és egy tanulsága, ami megváltoztatja, hogyan gondolkodsz. Az epizódok egymásra épülnek: amit az elsőn eldöntesz, azt a másodikon időzíted, a harmadikon fogadod, a negyediken csatornákra fordítod, az ötödiken beárazod, a hatodikon ellenőrzöd, a hetediken pedig átadod másnak. A fejlécben végig ott a hét epizód, a sárga mutatja, hol tartunk.</p>
 <p>Minden diához tartozik egy ilyen jegyzet, az N billentyűvel nyílik. Ide kerül az, ami a diára nem fér: a háttér, a forrás, a példa. A dián a gondolat van, itt a magyarázat. Ha a félév végén csak ezeket a jegyzeteket olvasod végig, a teljes gondolatmenetet visszakapod.</p></div></div>
-  <div data-n="n1"><h4>A tárgy célja</h4><p class="src top">Forrás: a hivatalos tárgyleírás, szó szerint</p><div class="hj"><h5>Jegyzet</h5><p>Ez a hivatalos tárgyleírás, és érdemes lefordítani arra, mit jelent a gyakorlatban. Négy dolgot vár el a félév végére. Az első, hogy ismerd az online marketing fejlődési szakaszait és eszközeit: ez a tudás rétege, és főleg a 4., 5. és 6. epizódban gyűlik. A második, hogy össze tudj állítani egy internetmarketing-stratégiát, és eszközöket, forrásokat tudj rendelni hozzá: ez a döntés rétege, és pontosan ez a hét epizód láncolata. A harmadik, hogy alkalmazni tudd az eszközöket: ez a gyakorlati blokkok dolga, ahol hirdetési fiókba nézünk be és számokat olvasunk. A negyedik, hogy váratlan helyzetben is jogszabály és etika szerint dönts: ez a 3. epizódban (adatkezelés) és a 7.-ben (hogyan bánunk egymással a munkában) jön elő.</p>
+  <div data-n="n1"><h4>A tárgy célja</h4><p class="src top">Forrás: a hivatalos tárgyleírás alapján</p><div class="hj"><h5>Jegyzet</h5><p>Ez a hivatalos tárgyleírás, és érdemes lefordítani arra, mit jelent a gyakorlatban. Négy dolgot vár el a félév végére. Az első, hogy ismerd az online marketing fejlődési szakaszait és eszközeit: ez a tudás rétege, és főleg a 4., 5. és 6. epizódban gyűlik. A második, hogy össze tudj állítani egy internetmarketing-stratégiát, és eszközöket, forrásokat tudj rendelni hozzá: ez a döntés rétege, és pontosan ez a hét epizód láncolata. A harmadik, hogy alkalmazni tudd az eszközöket: ez a gyakorlati blokkok dolga, ahol hirdetési fiókba nézünk be és számokat olvasunk. A negyedik, hogy váratlan helyzetben is jogszabály és etika szerint dönts: ez a 3. epizódban (adatkezelés) és a 7.-ben (hogyan bánunk egymással a munkában) jön elő.</p>
 <p class="src">Az epizódokhoz rendelés az oktató saját olvasata, a tárgyleírás nem epizódokban fogalmaz.</p></div></div>
   <div data-n="n2"><h4>Küldetés</h4><p class="src top">Forrás: a hivatalos tárgyleírás; Guld Ádám: A Z generáció médiahasználata, 1. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A küldetés mondata azért fontos, mert megmondja, mit nem tanulunk. Nem azt, hogy hol van a gomb a Meta hirdetéskezelőben, mert azt egy oktatóvideó megtanítja, és jövőre máshol lesz a gomb. Guld Ádám kutatása szerint a legnépszerűbb felületek divathullámai egy-két év alatt teljesen lecserélődnek. Amit viszont nehéz később önállóan megérteni, az az összefüggés: miért pont annak, miért pont azt, miért pont ott.</p>
 <p>A három kiemelt szó a félév három szereplője. Az ember, aki fogyaszt: ez a célcsoport. A marketing eszközei, a csatornák: ez az, ahol találkozunk vele. A termék, ami márkává lesz: ez az, amit mondunk róla. Az 1. epizód az elsőről és a harmadikról szól, és arról, hogy a kettő egyetlen mondatban összeér.</p></div></div>
@@ -566,7 +644,10 @@ tr.now td{background:var(--marker)}
   <div data-n="n7"><h4>Értékelés</h4><p class="src top">Forrás: a tárgy 2026-os követelményrendszere</p><div class="hj"><h5>Jegyzet</h5><p>A jegy két részből áll. A 70% az órai és beadandó munka: egyéni és csoportos feladatok, és az, hogy részt veszel a beszélgetésben. A 30% az elméleti teszt, zárthelyi formában. Mindkét részből külön el kell érni az 51%-ot, tehát az egyik nem váltja ki a másikat.</p>
 <p>A tesztnek két forrása van. Egyrészt minden hallgató beküld három vizsgakérdést a hozzá tartozó válasszal, és a zárthelyi részben ezekből áll össze. Másrészt olyan kérdések lesznek, amilyeneket órán végig gyakorolunk: nem azt kérdezik vissza, mit mondtunk, hanem egy életszagú problémát adnak, és a gondolkodásmódot nézik, vegyesen feleletválasztós és kifejtős formában. Egy példa a típusra: az ügyfél elérési számai csökkentek, mit nézel meg, hogy megtaláld a hibát, és mit javasolsz. Ha a saját három kérdésedet is ilyennek írod, jobb kérdést adsz be, és jobban felkészülsz.</p>
 <p>A hirdetési fiók berendezése nem követelmény, de pluszpontot ér.</p></div></div>
-  <div data-n="n8"><h4>1. epizód címlap</h4><p class="src top">Forrás: oktató és a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>Az első epizód kérdése: kinek és mit mondunk. A tematika hivatalos neve ugyanerre: bevezető, fogalmi keretbe helyezés, tudásfelmérés, márka, üzenet, célcsoport összefüggése. Három fogalom, és a mai nap tétje az, hogy a végére ne három témának lásd őket, hanem egyetlen mondat három helyének: kinek szól, mi helyett választják, mi az értékajánlata. Ha ezt a mondatot meg tudod írni egy termékre, akkor a márkát, az üzenetet és a célcsoportot egyszerre döntötted el.</p>
+  <div data-n="n9a1"><h4>De miért?</h4><p class="src top">Forrás: az oktató 2025-ös Briefing workshop deckje</p><div class="hj"><h5>Jegyzet</h5><p>Ez a félév legrövidebb és legfontosabb kérdése. A megrendelő, a főnök, a barátod, aki webshopot nyit, szinte soha nem a problémáját mondja el, hanem azt, amit szerinte csinálni kellene: „kell egy TikTok-csatorna", „csináljunk kuponkampányt", „legyen új logó". Ez mind megoldás, és a marketinges első dolga, hogy nem fogadja el megoldásként. Megkérdezi: de miért? És a válaszra újra: de miért? Négy kérdés alatt a legtöbb kérésből előjön a valódi probléma, ami általában egészen más, mint amit az első mondat sugallt. A TikTok-csatorna mögött például az van, hogy a fiatal vevők nem jönnek vissza másodszor, és az már nem csatornakérdés.</p><p>Ezért mondjuk, hogy így hangzik egy kihallgatás. Kellemetlen, és pont ezért működik: aki nem mer négyszer visszakérdezni, az a más megoldását fogja végrehajtani, a saját gondolkodása nélkül. Ezt a kérdést a félév minden alkalmán használni fogjuk, a csapatmunkában egymásra is.</p></div></div>
+<div data-n="n9a2"><h4>Probléma és feszültség</h4><p class="src top">Forrás: az oktató 2025-ös Briefing workshop deckje</p><div class="hj"><h5>Jegyzet</h5><p>A két oszlop két brief. A bal oldali az, amit a megrendelő hoz: van egy problémája, egy ambíciója (hova akar eljutni), egy megfigyelése a piacról vagy a vevőiről, céljai, és egy marketingstratégiája, amibe az egész illeszkedik. A jobb oldali az, amit az ügynökség ad vissza: egy megoldást, ugyanazt az ambíciót, egy insightot (egy igazságot a vevőről, amit eddig senki nem mondott ki), egy kommunikációs stratégiát, és a végén egy feszültséget, ami az egész kommunikáció motorja lesz.</p><p>Ami a két oszlopból számít az 1. alkalmon: a marketinges gondolkodás mindig a bal felső sarokból indul, a problémából, és a jobb alsó sarokba érkezik, a feszültséghez. Aki a problémát rosszul fogalmazza meg, annak a feszültsége is hamis lesz, és akkor a legszebb kampány is a semmiről szól. Ezért a dia címe: aki a problémát jól fogalmazza meg, félig megoldotta. A hét alkalom ezen a két oszlopon megy végig, a hetediken pedig ti írjátok meg mindkettőt a saját ügyfeletekre.</p></div></div>
+<div data-n="n9a3"><h4>Márkagyémánt és márkapiramis</h4><p class="src top">Forrás: az oktató 2025-ös Briefing workshop deckje és Brand deckje</p><div class="hj"><h5>Jegyzet</h5><p>Két egyszerű eszköz, amivel a gondolkodást el lehet indítani, mielőtt bármi kreatív történne. A márkagyémánt négy kérdés: kinek szól a márka, mire való, mi ellen áll (mi helyett választják), és de miért, vagyis mi az az ok, ami mögötte van. A márkapiramis négy szint: a tulajdonság (mit tud), az előny (mit ad ezzel), az ígéret (mit ígér ezzel), és a cél (miért létezik egyáltalán). Alulról fölfelé az „azért, hogy" köti össze a szinteket, fölülről lefelé az „azért, mert". Ha a lánc bármelyik pontján elakadsz, ott hiányzik egy döntés.</p><p>Ma ebből a „kinek" és a „mire" kérdésével dolgozunk, ez az 1. alkalom leadandója. A többi szint a következő alkalmakon jön, és a 7. alkalmon ugyanezzel a két eszközzel írjátok meg a briefet a saját ügyfeletekre. Ezt a diát tehát most csak megjegyezni kell, nem megtanulni.</p></div></div>
+<div data-n="n8"><h4>1. epizód címlap</h4><p class="src top">Forrás: oktató és a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>Az első epizód kérdése: kinek és mit mondunk. A tematika hivatalos neve ugyanerre: bevezető, fogalmi keretbe helyezés, tudásfelmérés, márka, üzenet, célcsoport összefüggése. Három fogalom, és a mai nap tétje az, hogy a végére ne három témának lásd őket, hanem egyetlen mondat három helyének: kinek szól, mi helyett választják, mi az értékajánlata. Ha ezt a mondatot meg tudod írni egy termékre, akkor a márkát, az üzenetet és a célcsoportot egyszerre döntötted el.</p>
 <p>Ma először azt nézzük meg, honnan indulsz (tudásfelmérés), aztán a fogalmakat építjük fel a szakirodalomból, aztán csapatban megoldunk egy vizsgakérdés-típusú feladatot, és a végén kimondjuk az epizód tanulságát.</p></div></div>
   <div data-n="n10b"><h4>Tudásfelmérés</h4><p class="src top">Forrás: az oktató 2025-ös Bevezetés deckje, ugyanez a feladat</p><div class="hj"><h5>Jegyzet</h5><p>Ez nem vizsga, hanem mérés. Mindenki mond három szót, ami a marketingről először eszébe jut, a szavak felkerülnek a kivetítőre, és amit többen mondanak, az nagyobb lesz. Amit a felhőben látni fogtok, az a félév kiindulópontja: valószínűleg reklám, Instagram, eladás, logó. Amit valószínűleg nem: döntés, célcsoport, mérés. A kérdés a dia alján ezért van: melyik szó hiányzik, aminek itt kellene lennie? A félév végén ugyanezt a három szót kérem tőletek, és a két felhőt egymás mellé tesszük. Az a különbség lesz a bizonyíték arra, hogy mi történt hét epizód alatt.</p></div></div>
 <div data-n="n9"><h4>Miről szól, kulcsgondolat, tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Miről szól: arról, hogy honnan indul egy marketingdöntés. Nem a terméktől és nem a csatornától, hanem attól, hogy ki és milyen helyzetben van az, akinek beszélünk.</p>
@@ -593,14 +674,14 @@ tr.now td{background:var(--marker)}
 <p>A tavalyi Brand deck mondata ugyanezt mondja: from something to everyone, to everything to someone. Valami mindenkinek helyett minden valakinek. Ez az „aki mindenkihez beszél" tanulság pozitív megfogalmazása.</p></div></div>
   <div data-n="n10"><h4>A nap ritmusa</h4><div class="hj"><h5>Jegyzet</h5><p>Az első blokk a keretezés és a tudásfelmérés: mi ez a tárgy, mi az évad, mi a hét kérdés, hogyan lesz jegy, és mit gondoltok jelenleg a marketingről. A második és a harmadik blokk az elmélet: márka, célcsoport, üzenet a szakirodalomból, mindig azzal, hogy melyik szerző mit mond. A harmadik blokk végén summázunk, megalakulnak az ügynökségek, és kiadom az első feladatot. A negyedik blokk teljes egészében a tiétek: harminc perc csapatmunka az ügyfeletekre, aztán csapatmunka-szavazás, ahol a többiek munkáját olvassátok és szavaztok, és zárás.</p>
 <p>Ez a ritmus minden epizódon ugyanez marad. Az elmélet mindig arra készít fel, amit a negyedik blokkban csináltok, ezért nem lehet a második felére bejönni.</p></div></div>
-  <div data-n="n11a"><h4>Ügynökségalapítás</h4><div class="hj"><h5>Jegyzet</h5><p>Ettől a naptól nem hallgatóként, hanem ügynökségként dolgoztok. Egy csapat, egy valós ügyfél, hét epizód, és minden epizód végén egy leadandó, ami az aznapi kérdésre válaszol az ügyfeletekre. A hét leadandó együtt adja a jegy 70%-át, és a 7. epizódon ezekből lesz a brief és a pitch.</p><p>Kis csapatokban dolgoztok, ti álltok össze, és nevet adtok a csapatnak; hogy hány csapat és hány fő, az órán dől el. A név nem játék: a névtől lesz felelősség. Az ügyfelet a kiadott listáról választjátok; a lista azért van, hogy olyan márkátok legyen, aminek van weboldala, közösségi jelenléte és hirdetése, mert a 3. és a 6. epizódon ezeket fogjátok szétszedni. Két szerepet osszatok ki: valaki végig a mérésre figyel, valaki végig az ügyfél szemével néz. Így nem négy ember dolgozik ugyanazon, és minden leadandón szerepel, ki mit csinált.</p></div></div>
+  <div data-n="n11a"><h4>Ügynökségalapítás</h4><div class="hj"><h5>Jegyzet</h5><p>Ettől a naptól nem hallgatóként, hanem ügynökségként dolgoztok. Egy csapat, egy valós ügyfél, hét epizód, és minden epizód végén egy leadandó, ami az aznapi kérdésre válaszol az ügyfeletekre. A hét leadandó együtt adja a jegy 70%-át, és a 7. epizódon ezekből lesz a brief és a pitch.</p><p>Kis csapatokban dolgoztok, ti álltok össze, és nevet adtok a csapatnak; hogy hány csapat és hány fő, az órán dől el. A név nem játék: a névtől lesz felelősség. Az ügyfelet a kiadott listáról választjátok; a lista azért van, hogy olyan márkátok legyen, aminek van weboldala, közösségi jelenléte és hirdetése, mert a 3. és a 6. epizódon ezeket fogjátok szétszedni. Tartsátok meg a munkaanyagokat és a háttérinfókat egy közös mappában, mert a következő alkalmakon ugyanerre a márkára építetek tovább, és osszátok fel a munkát, hogy ne mindenki ugyanazon dolgozzon.</p></div></div>
 <div data-n="n11e"><h4>Csapatnév</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A név nem díszítés. Attól lesz felelősség, hogy hét héten át ugyanazzal a névvel adtok le munkát, azzal szavaznak rátok a többiek, és azzal álltok ki a pitchen. Ezért nem lehet „Csapat 3", és ezért nem lehet az ügyfél neve sem: az ügynökség nem az ügyfél. Öt percetek van rá, és az egyetlen próba az, hogy egy mondatban meg tudjátok-e mondani, miért ez a név. Ha igen, jó név. Ha nem, akkor pont azt csináljátok, amit ma tanultunk elkerülni: valamit, ami mindenkinek szólhat, tehát senkinek sem.</p><p>A név, az ügyfél és a tagok a kivetített listára kerülnek, és ez a lista kíséri végig a félévet: ebből lesz a leadandók fejléce és a szavazások névsora.</p></div></div>
 <div data-n="n11b"><h4>Ügyféllista</h4><div class="hj"><h5>Jegyzet</h5><p>A lista azért van, hogy olyan ügyfeletek legyen, akit tényleg szét lehet szedni: mindegyiknek van weboldala, közösségi jelenléte és látható hirdetése, mert a 3. epizódon a weboldalát, a 6.-on a hirdetéseit fogjátok vizsgálni. Nincs köztük globális óriás, mert azon nincs mit diagnosztizálni, és nincs olyan, aminek nem látszik a kommunikációja. A harmadik oszlop csak támpont: az egyetlen jó ok a választásra az, hogy a csapat érdeklődik a márka iránt, mert hét hétig vele fog dolgozni. Egy márkát egy csapat visz. Ha két csapat ugyanazt akarja, pénzfeldobás, nem vita.</p></div></div>
 <div data-n="n11"><h4>Az első leadandó</h4><p class="src top">Forrás: a mondat szerkezete Walker, Mullins: Marketing Strategy, 7. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Ez az első ügynökségi munka, és dekonstrukció: nem kitaláltok valamit, hanem megfejtitek, mit csinál jelenleg az ügyfeletek. Nézzétek meg a weboldalát, a közösségi oldalait és a hirdetéseit, és abból írjátok meg az egy mondatot: kinek szól, mi helyett választják, mi az értékajánlata. Ha a három közül valamelyikre nem találtok választ, az is eredmény: azt jelenti, hogy a márka azt a döntést nem hozta meg, vagy nem mondja ki.</p>
 <p>Az ítélet a nehezebb fele. Kit zár ki ez a pozicionálás? Ha a válasz az, hogy senkit, akkor a mai epizód tanulsága szerint senkinek nem mond semmit, és ezt ki kell mondanotok. Ha kizár valakit, nevezzétek meg, kit, és hogy ez szándékosnak látszik-e.</p>
 <p>A csapatmunka-szavazásnál nem az nyer, amelyik szépen van megírva, hanem amelyik meg tudja mondani, kit zárt ki a márka, és mire alapozza. Ez a mondat és ez az ítélet lesz a kiindulópont a 2. epizódon, amikor ugyanennek a márkának a vásárlói útját rajzoljátok fel.</p></div></div>
-  <div data-n="n11c"><h4>Mi keletkezik</h4><div class="hj"><h5>Jegyzet</h5><p>A leadandó nem esszé, hanem egy oldal, hat blokkban, és a hat blokk sorrendje nem véletlen: a forrásoktól a mondaton át az ítéletig ugyanazt az utat járja be, amit a mai órán az elmélet. A fejléc azért van, mert a jegy 70%-a a leadandókból lesz, és látni akarom, ki mit csinált. Az „amit néztünk" azért, mert bizonyíték nélkül a mondat vélemény, és vélemény alapján nem lehet marketingdöntést megvédeni. A mondat a lényeg: ha a három helyből valamelyikre nem találtok választ, nem ti hibáztatok, hanem a márka nem mondta ki, és pontosan ezt kell leírnotok az „ami hiányzik" blokkban. Az ítélet a legnehezebb: legtöbb kis márka senkit nem zár ki, és a mai tanulság szerint ez baj. Merjétek leírni.</p><p>A terjedelem korlát szándékos. Egy oldalon nem lehet mindent elmondani, tehát dönteni kell, mit hagytok ki, és ez a marketinges munka fele. Aki két oldalt ad le, az nem döntött. A szavazáshoz papíron kerül a falra, utána Google Docban vagy PDF-ben töltitek fel a közös mappába, a következő alkalom kezdetéig. A 2. epizódon ebből a mondatból indul a journey-térkép, tehát a saját munkátokat fogjátok folytatni, nem nulláról kezdeni.</p></div></div>
-<div data-n="n11d"><h4>Csapatmunka-szavazás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A leadandók kikerülnek a falra vagy a telefonotokra, és tíz percig olvastok és szavaztok. Három szavazatotok van fejenként, a saját csapatotokra nem adhatjátok, és a szavazatok a kivetítőn gyűlnek csapatonként. A három szempont a szavazáshoz ugyanaz, amire a jegyben is nézünk: meg tudja-e mondani a csapat, kit zárt ki a márka; bizonyítékkal áll-e, nem véleménnyel; kimondja-e, ami hiányzik. A szépség, a nyelvezet és a tördelés nem szempont. A két legtöbb szavazatot kapott csapat két-két percben indokol, és a többiek kérdezhetnek. Az oktató itt nem értékel, a szavazatok értékelnek; az ő kérdése a győztesnek mindig ugyanaz: és mi van azokkal, akik kimaradtak?</p><p>A szavazás a telefonotokon megy: a kivetítőn látható címet nyitjátok meg, kiválasztjátok a saját csapatotokat, és a többiek beküldött mondatát olvasva legfeljebb három csapatot jelöltök meg. Egy eszközről egy szavazólap megy el, és az eredmény a kivetítőn nő.</p></div></div>
+  <div data-n="n11c"><h4>Mi keletkezik</h4><div class="hj"><h5>Jegyzet</h5><p>A leadandó nem esszé, hanem egy oldal, hat blokkban, és a hat blokk sorrendje nem véletlen: a forrásoktól a mondaton át az ítéletig ugyanazt az utat járja be, amit a mai órán az elmélet. A fejléc azért van, mert a jegy 70%-a a leadandókból lesz, és látni akarom, ki mit csinált. Az „amit néztünk" azért, mert bizonyíték nélkül a mondat vélemény, és vélemény alapján nem lehet marketingdöntést megvédeni. A mondat a lényeg: ha a három helyből valamelyikre nem találtok választ, nem ti hibáztatok, hanem a márka nem mondta ki, és pontosan ezt kell leírnotok az „ami hiányzik" blokkban. Az ítélet a legnehezebb: legtöbb kis márka senkit nem zár ki, és a mai tanulság szerint ez baj. Merjétek leírni.</p><p>A terjedelem korlát szándékos. Egy oldalon nem lehet mindent elmondani, tehát dönteni kell, mit hagytok ki, és ez a marketinges munka fele. Aki több oldalt ad le, az nem döntött. A háttéranyagot viszont tartsátok meg a saját mappátokban, mert a következő alkalmakon kell. A leadás a Leadás gombbal megy, és a következő alkalom kezdetéig felülírható. A 2. epizódon ebből a mondatból indul a journey-térkép, tehát a saját munkátokat fogjátok folytatni, nem nulláról kezdeni.</p></div></div>
+<div data-n="n11d"><h4>Csapatmunka-szavazás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A leadandók kikerülnek a falra vagy a telefonotokra, és tíz percig olvastok és szavaztok. Egy csapatra szavaztok fejenként, a sajátotokra nem: egytől öt csillagig, mint egy Google-értékelésnél, és kötelező egy mondat indoklás, mert az indoklás a visszajelzés, a csillag csak a szám. Az átlagok és az indoklások a kivetítőn látszanak csapatonként. A három szempont a szavazáshoz ugyanaz, amire a jegyben is nézünk: meg tudja-e mondani a csapat, kit zárt ki a márka; bizonyítékkal áll-e, nem véleménnyel; kimondja-e, ami hiányzik. A szépség, a nyelvezet és a tördelés nem szempont. A két legjobb átlagot kapott csapat két-két percben indokol, és a többiek kérdezhetnek. Az oktató itt nem értékel, a szavazatok értékelnek; az ő kérdése a győztesnek mindig ugyanaz: és mi van azokkal, akik kimaradtak?</p><p>A szavazás a telefonotokon megy: a kivetítőn látható címet nyitjátok meg, kiválasztjátok a saját csapatotokat, és a többiek beküldött leadandóját olvasva egy csapatot választotok, csillagot adtok és indokoltok. Egy eszközről egy szavazat megy el, és az eredmény a kivetítőn frissül.</p></div></div>
 <div data-n="n12"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ma három fogalmat vettünk, és a végén egy mondat lett belőlük. A márka az, amit ők mondanak, nem az, amit te. A célcsoport egy szituáció, nem egy demográfiai tömeg. Az üzenet egy mondat: kinek, mi helyett, milyen értékajánlattal. Aki ezt a mondatot meg tudja írni egy termékre, az eldöntötte a márkát, a célcsoportot és az üzenetet egyszerre, és ki tudja mondani, kit zárt ki. Ez a döntés első eleme: a kiválasztás, ami egyben kizárás.</p>
 <p>Amit hazaviszel: a célcsoport nem demográfia, hanem szituáció, és aki mindenkihez beszél, az senkinek nem mond semmit. A három beküldendő vizsgakérdés közül egyet nyugodtan írhatsz erről az epizódról, olyat, ami egy helyzetet ad, és azt kéri, hogy dönts és indokolj.</p>
 <p>A következő kérdés: megvan, kinek és mit, de nem akkor vásárol, amikor mi beszélünk. Mikor mondjuk? Ez a 2. epizód, szeptember 28.</p></div></div>
@@ -642,6 +723,11 @@ tr.now td{background:var(--marker)}
 
 
 
+
+<div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
+<div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
+<div class="revout" id="revout"><h2>Megjegyzések</h2><p class="small muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár (Esc)</button></p></div>
+
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,notes=document.getElementById('notes'),pos=document.getElementById('pos');
@@ -665,12 +751,13 @@ tr.now td{background:var(--marker)}
     else if(e.key===' '){next();e.preventDefault()}
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){prev();e.preventDefault()}
     else if(e.key==='n'||e.key==='N'){notes.classList.toggle('open')}
+    else if(e.key==='j'||e.key==='J'){document.body.classList.toggle('rev')}
     else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
-    else if(e.key==='Escape'){notes.classList.remove('open');document.getElementById('minta').classList.remove('open')}
+    else if(e.key==='Escape'){notes.classList.remove('open');document.getElementById('minta').classList.remove('open');document.getElementById('revbox').classList.remove('open');document.getElementById('revout').classList.remove('open')}
   });
   document.querySelectorAll('[data-nav]').forEach(function(b){b.addEventListener('click',function(){b.getAttribute('data-nav')==='1'?next():prev()})});
   document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(+a.getAttribute('data-go'))})});
-  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,.cloudform,.votes'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
+  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,.cloudform,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
 
   document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var t=b.getAttribute('data-open');var el=document.getElementById(t);if(t==='notes'){notes.classList.toggle('open')}else{el.classList.add('open')}})});
   document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();document.getElementById(b.getAttribute('data-close')).classList.remove('open')})});
@@ -700,7 +787,29 @@ tr.now td{background:var(--marker)}
 
   /* csapatmunka-szavazás-szavazás: csapatonként számláló, csak a memóriában */
 
-  var u=location.href.replace(/[#?].*$/,'').replace(/[^\/]*$/,'')+'app.html?ep=ep1&v=szavazas'; var vu=document.getElementById('voteurl'); if(vu)vu.textContent=u;
+  var u=(location.protocol==='file:'?'https://egyetem.bemind.dev/om2026nappali/':location.href.replace(/[#?].*$/,'').replace(/[^\/]*$/,''))+'app.html?ep=ep1&v=szavazas'; var vu=document.getElementById('voteurl'); if(vu)vu.textContent=u;
+
+  /* ===== javító mód: J billentyű; a megjegyzések a böngészőben maradnak, a Lista kimentése adja ki őket ===== */
+  var REVSEL='.slide h1,.slide h2,.slide h3,.slide p,.slide li,.slide td,.slide th,.slide .blocks>div,.slide .ep,.slide .triad>div,.slide .cols3>div,.slide .task,.notes .hj p,.notes h4';
+  var REVQ='h1,h2,h3,h4,p,li,td,th,.blocks>div,.ep,.triad>div,.cols3>div,.task';
+  var REVKEY='om2026-rev-ep1', rev={}, revTarget=null;
+  try{rev=JSON.parse(localStorage.getItem(REVKEY)||'{}')}catch(e){rev={}}
+  function revSave(){try{localStorage.setItem(REVKEY,JSON.stringify(rev))}catch(e){} document.getElementById('revcount').textContent=Object.keys(rev).length; revMark()}
+  function slideNo(el){var sl=el.closest('.slide'); if(sl)return slides.indexOf(sl)+1; return i+1}
+  function revId(el){ var sl=el.closest('.slide'), inNotes=!!el.closest('.notes'); var root=sl||document.getElementById('notes'); var all=[].slice.call(root.querySelectorAll(REVQ)); return (inNotes?'j':'d')+slideNo(el)+'-'+all.indexOf(el)}
+  function revText(el){ var parts=[]; el.childNodes.forEach(function(n){ var t=(n.textContent||'').trim(); if(t)parts.push(t) }); return parts.join(' · ') }
+  function revMark(){ [].forEach.call(document.querySelectorAll('.rev-marked'),function(e){e.classList.remove('rev-marked')}); Object.keys(rev).forEach(function(k){var e=rev[k].el; if(e)e.classList.add('rev-marked')}) }
+  function revOpen(el,x,y){ revTarget=el; var id=revId(el); var box=document.getElementById('revbox'); document.getElementById('revorig').textContent=revText(el); document.getElementById('revtext').value=rev[id]?rev[id].note:''; box.style.left=Math.min(x,window.innerWidth-560)+'px'; box.style.top=Math.min(y,window.innerHeight-260)+'px'; box.classList.add('open'); document.getElementById('revtext').focus() }
+  document.addEventListener('click',function(e){ if(!document.body.classList.contains('rev'))return; if(e.target.closest('#revbox,#revbar,#revout,button,input,select,textarea,a'))return; var el=e.target.closest(REVSEL); if(!el)return; e.preventDefault(); e.stopPropagation(); revOpen(el,e.clientX,e.clientY) },true);
+  document.getElementById('revsave').addEventListener('click',function(){ var t=document.getElementById('revtext').value.trim(); var id=revId(revTarget); if(t){rev[id]={slide:slideNo(revTarget),where:revTarget.closest('.notes')?'jegyzet':'dia',orig:revText(revTarget),note:t,el:revTarget}}else{delete rev[id]} revSave(); document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revdel').addEventListener('click',function(){ delete rev[revId(revTarget)]; revSave(); document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revcancel').addEventListener('click',function(){ document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revexport').addEventListener('click',function(){ var keys=Object.keys(rev).sort(function(a,b){return rev[a].slide-rev[b].slide}); var out=keys.map(function(k){var r=rev[k]; return r.slide+'. dia'+(r.where==='jegyzet'?' (jegyzet)':'')+'\nEredeti: '+r.orig+'\nJavítás: '+r.note}).join('\n\n'); if(!out)out='Nincs megjegyzés.'; document.getElementById('revouttext').value=out; document.getElementById('revout').classList.add('open'); try{navigator.clipboard.writeText(out)}catch(e){} });
+  document.getElementById('revoutclose').addEventListener('click',function(){document.getElementById('revout').classList.remove('open')});
+  document.getElementById('revclear').addEventListener('click',function(){ if(confirm('Minden megjegyzés törlése?')){rev={};revSave()} });
+  document.getElementById('revoff').addEventListener('click',function(){document.body.classList.remove('rev')});
+  /* a tárolt megjegyzések elemhez kötése betöltéskor */
+  (function(){ var pending=Object.keys(rev); if(!pending.length)return; var map={}; slides.forEach(function(sl,idx){ [].slice.call(sl.querySelectorAll(REVQ)).forEach(function(el,j){map['d'+(idx+1)+'-'+j]=el}) }); var nAll=[].slice.call(document.getElementById('notes').querySelectorAll('h1,h2,h3,h4,p,li,td,th')); pending.forEach(function(k){ if(k[0]==='d'){rev[k].el=map[k]} else { var m=nAll.filter(function(el){return el.textContent.trim()===rev[k].orig})[0]; rev[k].el=m } }); revSave() })();
   var m=location.hash.match(/^#d(\d+)$/);show(m?+m[1]-1:0);
 })();
 </script>

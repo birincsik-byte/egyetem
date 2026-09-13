@@ -37,8 +37,14 @@ function fail($msg, $code = 400) { http_response_code($code); echo json_encode(a
 function clean($s, $max = 4000) { $s = trim((string)$s); $s = mb_substr($s, 0, $max); return $s; }
 function tally($d, $ep) {
   $t = array();
-  foreach ($d['teams'] as $tm) $t[$tm['id']] = 0;
-  if (isset($d['votes'][$ep])) foreach ($d['votes'][$ep] as $v) foreach ($v['choices'] as $c) if (isset($t[$c])) $t[$c]++;
+  foreach ($d['teams'] as $tm) $t[$tm['id']] = array('n' => 0, 'sum' => 0, 'avg' => 0, 'reasons' => array());
+  if (isset($d['votes'][$ep])) foreach ($d['votes'][$ep] as $v) {
+    $c = isset($v['team']) ? $v['team'] : '';
+    if (!isset($t[$c])) continue;
+    $t[$c]['n']++; $t[$c]['sum'] += (int)$v['stars'];
+    $t[$c]['reasons'][] = array('stars' => (int)$v['stars'], 'reason' => $v['reason']);
+  }
+  foreach ($t as $k => $r) $t[$k]['avg'] = $r['n'] ? round($r['sum'] / $r['n'], 2) : 0;
   return $t;
 }
 function state($d, $ep) {
@@ -100,20 +106,36 @@ if ($a === 'submit') {
 if ($a === 'vote') {
   $voter = clean(isset($body['voter']) ? $body['voter'] : '', 16);
   $token = clean(isset($body['token']) ? $body['token'] : '', 64);
-  $choices = isset($body['choices']) && is_array($body['choices']) ? array_values(array_unique(array_map('strval', $body['choices']))) : array();
+  $team = clean(isset($body['team']) ? $body['team'] : '', 16);
+  $stars = isset($body['stars']) ? (int)$body['stars'] : 0;
+  $reason = clean(isset($body['reason']) ? $body['reason'] : '', 1000);
   $ids = array(); foreach ($d['teams'] as $tm) $ids[] = $tm['id'];
-  $choices = array_values(array_filter($choices, function ($c) use ($ids, $voter) { return in_array($c, $ids) && $c !== $voter; }));
-  if (count($choices) < 1 || count($choices) > 3) fail('egy és három közötti szavazat kell, saját csapatra nem');
+  if (!in_array($voter, $ids)) fail('add meg, melyik csapatban vagy');
+  if (!in_array($team, $ids)) fail('nincs ilyen csapat');
+  if ($team === $voter) fail('a saját csapatodra nem szavazhatsz');
+  if ($stars < 1 || $stars > 5) fail('egy és öt csillag között értékelhetsz');
+  if (mb_strlen($reason) < 15) fail('indoklás nélkül nincs szavazat, legalább egy mondat');
   if (!isset($d['votes'][$ep])) $d['votes'][$ep] = array();
   if ($token !== '') foreach ($d['votes'][$ep] as $v) if (isset($v['token']) && $v['token'] === $token) fail('erről az eszközről már érkezett szavazat');
-  $d['votes'][$ep][] = array('voter' => $voter, 'token' => $token, 'choices' => $choices, 'ts' => date('c'));
+  $d['votes'][$ep][] = array('voter' => $voter, 'token' => $token, 'team' => $team, 'stars' => $stars, 'reason' => $reason, 'ts' => date('c'));
   save($d);
-  echo json_encode(array('ok' => true, 'tally' => tally($d, $ep))); exit;
+  echo json_encode(array('ok' => true, 'tally' => tally($d, $ep)), JSON_UNESCAPED_UNICODE); exit;
 }
 
 // oktatói műveletek
 $key = isset($_REQUEST['key']) ? $_REQUEST['key'] : (isset($body['key']) ? $body['key'] : '');
 if ($key !== $KEY) fail('oktatói kulcs kell', 403);
+
+if ($a === 'check') { echo json_encode(array('ok' => true)); exit; }
+
+if ($a === 'deleteteam') {
+  $id = clean(isset($body['id']) ? $body['id'] : '', 16);
+  $d['teams'] = array_values(array_filter($d['teams'], function ($t) use ($id) { return $t['id'] !== $id; }));
+  foreach ($d['subs'] as $e => $subs) unset($d['subs'][$e][$id]);
+  foreach ($d['votes'] as $e => $votes) $d['votes'][$e] = array_values(array_filter($votes, function ($v) use ($id) { return $v['voter'] !== $id && $v['team'] !== $id; }));
+  save($d);
+  echo json_encode(array('ok' => true)); exit;
+}
 
 if ($a === 'reset') {
   $what = isset($body['what']) ? $body['what'] : '';
@@ -130,13 +152,13 @@ if ($a === 'export') {
   header('Content-Disposition: attachment; filename="leadandok-' . $ep . '.csv"');
   echo "\xEF\xBB\xBF";
   $out = fopen('php://output', 'w');
-  fputcsv($out, array('csapat', 'ugyfel', 'tagok', 'bekuldve', 'amit_neztunk', 'mondat', 'bizonyitek', 'itelet', 'ami_hianyzik', 'szavazat'), ';');
+  fputcsv($out, array('csapat', 'ugyfel', 'tagok', 'bekuldve', 'amit_neztunk', 'mondat', 'bizonyitek', 'itelet', 'ami_hianyzik', 'atlag_csillag', 'szavazatok_szama', 'indoklasok'), ';');
   $t = tally($d, $ep);
   foreach ($d['teams'] as $tm) {
     $s = isset($d['subs'][$ep][$tm['id']]) ? $d['subs'][$ep][$tm['id']] : array();
     fputcsv($out, array($tm['name'], $tm['client'], $tm['members'], isset($s['ts']) ? $s['ts'] : '',
       isset($s['f2']) ? $s['f2'] : '', isset($s['f3']) ? $s['f3'] : '', isset($s['f4']) ? $s['f4'] : '',
-      isset($s['f5']) ? $s['f5'] : '', isset($s['f6']) ? $s['f6'] : '', $t[$tm['id']]), ';');
+      isset($s['f5']) ? $s['f5'] : '', isset($s['f6']) ? $s['f6'] : '', $t[$tm['id']]['avg'], $t[$tm['id']]['n'], implode(' | ', array_map(function ($r) { return $r['stars'] . '★ ' . $r['reason']; }, $t[$tm['id']]['reasons']))), ';');
   }
   fclose($out); exit;
 }
