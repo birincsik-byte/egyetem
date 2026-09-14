@@ -27,8 +27,15 @@ h1{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:2em;lin
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap" id="gate">
   <p class="d" style="color:var(--soft)">Pannon Egyetem · Online marketing · 2026 őszi félév · nappali</p>
+  <h1>Belépés</h1>
+  <p class="lead">Add meg a Neptun-kódodat. A kód csak arra kell, hogy a kurzus hallgatói lássák az anyagot; a félév végén a lista törlődik.</p>
+  <p><input id="g_code" type="text" autocomplete="off" placeholder="Neptun-kód" style="font:inherit;padding:.5em .8em;border:1px solid var(--line);border-radius:4px;width:14em;text-transform:uppercase"> <button id="g_send" style="font:inherit;padding:.5em 1em;border:1px solid var(--cobalt);color:var(--cobalt);background:none;border-radius:4px;cursor:pointer">Belépek</button></p>
+  <p class="small" id="g_status" style="color:var(--soft)"></p>
+</div>
+<div class="wrap" id="site" style="display:none">
+  <p class="d" style="color:var(--soft)">Pannon Egyetem · Online marketing · 2026 őszi félév · nappali <span id="who"></span></p>
   <h1>A félév mint sorozat</h1>
   <p class="lead">Hét alkalom, hét kérdés, egyetlen döntési lánc. Minden alkalomhoz itt a prezentáció, és az ügynökségek felülete: csapat, leadás, szavazás, eredmény.</p>
 
@@ -48,7 +55,20 @@ h1{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:2em;lin
   <div class="alk off"><div class="n">6</div><div><b>Mit mutat a valóság</b><span class="d">2026. november 23.</span><p class="q">Miből tudjuk meg, hogy működött. Beadandó: mérési terv és hibakeresés.</p><p class="soon">Az anyag az alkalom előtt kerül ide.</p></div></div>
   <div class="alk off"><div class="n">7</div><div><b>Hogyan dolgozik egy marketinges</b><span class="d">2026. december 7.</span><p class="q">Kikkel csináljuk. Beadandó: brief és pitch.</p><p class="soon">Az anyag az alkalom előtt kerül ide.</p></div></div>
 
-  <p class="foot">A csapatok a félév elején jegyzik be magukat, és minden alkalom végén ugyanazon a néven adnak le. Oktató: Birincsik Albert. · v1.2 · 2026. szeptember 13.</p>
+  <p class="links" id="oktlink" style="display:none"><a href="app.html?ep=ep1&amp;v=admin">Oktató</a></p>
+  <p class="foot">A csapatok a félév elején jegyzik be magukat, és minden alkalom végén ugyanazon a néven adnak le. Oktató: Birincsik Albert. · <a href="#" id="logout" style="color:var(--soft)">Kilépés</a> · v1.3 · 2026. szeptember 14.</p>
 </div>
+<script>
+(function(){
+  var gate=document.getElementById('gate'),site=document.getElementById('site');
+  function api(a,body){return fetch('api.php?a='+a,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),credentials:'same-origin'}:{credentials:'same-origin'}).then(function(r){return r.json()})}
+  function show(role,code){gate.style.display='none';site.style.display='';document.getElementById('who').textContent=role==='oktato'?'· oktató':(code?'· '+code:'');document.getElementById('oktlink').style.display=role==='oktato'?'':'none'}
+  api('me').then(function(d){ if(d.role)show(d.role,d.code); }).catch(function(){});
+  function go(){var c=document.getElementById('g_code').value.trim();if(!c){document.getElementById('g_status').textContent='Írd be a kódot.';return}api('auth',{code:c}).then(function(d){if(d.ok)show(d.role,c.toUpperCase());else document.getElementById('g_status').textContent=d.error}).catch(function(){document.getElementById('g_status').textContent='A szerver nem elérhető.'})}
+  document.getElementById('g_send').addEventListener('click',go);
+  document.getElementById('g_code').addEventListener('keydown',function(e){if(e.key==='Enter')go()});
+  document.getElementById('logout').addEventListener('click',function(e){e.preventDefault();api('logout').then(function(){location.reload()})});
+})();
+</script>
 </body>
 </html>

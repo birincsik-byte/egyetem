@@ -5,6 +5,9 @@
 $KEY = 'valtoztasd-meg';
 // Ha van key.php a mappában (nincs a gitben), az felülírja: <?php $KEY = 'sajat-kulcs';
 if (file_exists(__DIR__ . '/key.php')) { include __DIR__ . '/key.php'; }
+// Hallgatói Neptun-kódok listája (neptun.php, nincs a gitben): <?php $NEPTUN = array('ABC123', ...);
+$NEPTUN = array();
+if (file_exists(__DIR__ . '/neptun.php')) { include __DIR__ . '/neptun.php'; }
 
 $DIR = __DIR__ . '/data';
 $FILE = $DIR . '/store.json';
@@ -16,10 +19,10 @@ header('Cache-Control: no-store');
 
 function load() {
   global $FILE;
-  if (!file_exists($FILE)) return array('teams' => array(), 'subs' => array(), 'votes' => array());
+  if (!file_exists($FILE)) return array('teams' => array(), 'subs' => array(), 'votes' => array(), 'locks' => array());
   $d = json_decode(file_get_contents($FILE), true);
   if (!is_array($d)) $d = array();
-  foreach (array('teams', 'subs', 'votes') as $k) if (!isset($d[$k])) $d[$k] = array();
+  foreach (array('teams', 'subs', 'votes', 'locks') as $k) if (!isset($d[$k])) $d[$k] = array();
   return $d;
 }
 function save($d) {
@@ -39,10 +42,13 @@ function tally($d, $ep) {
   $t = array();
   foreach ($d['teams'] as $tm) $t[$tm['id']] = array('n' => 0, 'sum' => 0, 'avg' => 0, 'reasons' => array());
   if (isset($d['votes'][$ep])) foreach ($d['votes'][$ep] as $v) {
-    $c = isset($v['team']) ? $v['team'] : '';
-    if (!isset($t[$c])) continue;
-    $t[$c]['n']++; $t[$c]['sum'] += (int)$v['stars'];
-    $t[$c]['reasons'][] = array('stars' => (int)$v['stars'], 'reason' => $v['reason']);
+    $ratings = isset($v['ratings']) ? $v['ratings'] : (isset($v['team']) ? array(array('team' => $v['team'], 'stars' => $v['stars'], 'reason' => $v['reason'])) : array());
+    foreach ($ratings as $r) {
+      $c = isset($r['team']) ? $r['team'] : '';
+      if (!isset($t[$c])) continue;
+      $t[$c]['n']++; $t[$c]['sum'] += (int)$r['stars'];
+      $t[$c]['reasons'][] = array('stars' => (int)$r['stars'], 'reason' => $r['reason']);
+    }
   }
   foreach ($t as $k => $r) $t[$k]['avg'] = $r['n'] ? round($r['sum'] / $r['n'], 2) : 0;
   return $t;
@@ -60,8 +66,20 @@ function state($d, $ep) {
     'teams' => array_values($d['teams']),
     'subs' => $public,
     'tally' => tally($d, $ep),
-    'votes' => isset($d['votes'][$ep]) ? count($d['votes'][$ep]) : 0
+    'votes' => isset($d['votes'][$ep]) ? count($d['votes'][$ep]) : 0,
+    'locked' => !empty($d['locks'][$ep])
   );
+}
+
+// belépés a nyitólaphoz: Neptun-kód (hallgató) vagy oktatói kulcs (oktató); aláírt süti
+function auth_token($role, $code) { global $KEY; return $role . '.' . $code . '.' . hash_hmac('sha256', $role . '.' . $code, $KEY); }
+function auth_read() {
+  global $KEY;
+  if (empty($_COOKIE['omauth'])) return null;
+  $p = explode('.', $_COOKIE['omauth']);
+  if (count($p) !== 3) return null;
+  if (!hash_equals(hash_hmac('sha256', $p[0] . '.' . $p[1], $KEY), $p[2])) return null;
+  return array('role' => $p[0], 'code' => $p[1]);
 }
 
 $a = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'state';
@@ -69,6 +87,19 @@ $ep = isset($_REQUEST['ep']) ? preg_replace('/[^a-z0-9]/', '', $_REQUEST['ep']) 
 $body = json_decode(file_get_contents('php://input'), true);
 if (!is_array($body)) $body = $_POST;
 $d = load();
+
+if ($a === 'auth') {
+  $code = strtoupper(clean(isset($body['code']) ? $body['code'] : '', 40));
+  $role = '';
+  if ($code !== '' && hash_equals($KEY, $code)) $role = 'oktato';
+  elseif ($code !== '' && in_array($code, array_map('strtoupper', $NEPTUN))) $role = 'hallgato';
+  if ($role === '') fail('nincs ilyen kód');
+  $secure = !empty($_SERVER['HTTPS']);
+  setcookie('omauth', auth_token($role, $role === 'oktato' ? 'oktato' : $code), array('expires' => time() + 180 * 86400, 'path' => '/', 'secure' => $secure, 'httponly' => true, 'samesite' => 'Lax'));
+  echo json_encode(array('ok' => true, 'role' => $role)); exit;
+}
+if ($a === 'me') { $u = auth_read(); echo json_encode(array('ok' => true, 'role' => $u ? $u['role'] : '', 'code' => ($u && $u['role'] === 'hallgato') ? $u['code'] : '')); exit; }
+if ($a === 'logout') { setcookie('omauth', '', array('expires' => time() - 3600, 'path' => '/')); echo json_encode(array('ok' => true)); exit; }
 
 if ($a === 'state') { echo json_encode(state($d, $ep), JSON_UNESCAPED_UNICODE); exit; }
 
@@ -94,6 +125,7 @@ if ($a === 'submit') {
   $tid = clean(isset($body['team']) ? $body['team'] : '', 16);
   $found = false; foreach ($d['teams'] as $tm) if ($tm['id'] === $tid) $found = true;
   if (!$found) fail('nincs ilyen csapat');
+  if (!empty($d['locks'][$ep])) fail('a leadás le van zárva; ha javítani szeretnétek, kérjétek az oktatót, hogy oldja fel');
   $s = array('ts' => date('c'));
   foreach (array('f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8') as $f) $s[$f] = clean(isset($body[$f]) ? $body[$f] : '');
   if ($s['f3'] === '') fail('a mondat hiányzik');
@@ -106,18 +138,25 @@ if ($a === 'submit') {
 if ($a === 'vote') {
   $voter = clean(isset($body['voter']) ? $body['voter'] : '', 16);
   $token = clean(isset($body['token']) ? $body['token'] : '', 64);
-  $team = clean(isset($body['team']) ? $body['team'] : '', 16);
-  $stars = isset($body['stars']) ? (int)$body['stars'] : 0;
-  $reason = clean(isset($body['reason']) ? $body['reason'] : '', 1000);
   $ids = array(); foreach ($d['teams'] as $tm) $ids[] = $tm['id'];
   if (!in_array($voter, $ids)) fail('add meg, melyik csapatban vagy');
-  if (!in_array($team, $ids)) fail('nincs ilyen csapat');
-  if ($team === $voter) fail('a saját csapatodra nem szavazhatsz');
-  if ($stars < 1 || $stars > 5) fail('egy és öt csillag között értékelhetsz');
-  if (mb_strlen($reason) < 15) fail('indoklás nélkül nincs szavazat, legalább egy mondat');
+  $in = isset($body['ratings']) && is_array($body['ratings']) ? $body['ratings'] : array();
+  $ratings = array(); $seen = array();
+  foreach ($in as $r) {
+    $team = clean(isset($r['team']) ? $r['team'] : '', 16);
+    $stars = isset($r['stars']) ? (int)$r['stars'] : 0;
+    $reason = clean(isset($r['reason']) ? $r['reason'] : '', 1000);
+    if (!in_array($team, $ids) || isset($seen[$team])) continue;
+    if ($team === $voter) fail('a saját csapatodra nem szavazhatsz');
+    if ($stars < 1 || $stars > 5) fail('egy és öt csillag között értékelhetsz');
+    if (mb_strlen($reason) < 15) fail('indoklás nélkül nincs szavazat, minden értékelt csapathoz legalább egy mondat');
+    $seen[$team] = 1;
+    $ratings[] = array('team' => $team, 'stars' => $stars, 'reason' => $reason);
+  }
+  if (!count($ratings)) fail('legalább egy csapatot értékelj');
   if (!isset($d['votes'][$ep])) $d['votes'][$ep] = array();
   if ($token !== '') foreach ($d['votes'][$ep] as $v) if (isset($v['token']) && $v['token'] === $token) fail('erről az eszközről már érkezett szavazat');
-  $d['votes'][$ep][] = array('voter' => $voter, 'token' => $token, 'team' => $team, 'stars' => $stars, 'reason' => $reason, 'ts' => date('c'));
+  $d['votes'][$ep][] = array('voter' => $voter, 'token' => $token, 'ratings' => $ratings, 'ts' => date('c'));
   save($d);
   echo json_encode(array('ok' => true, 'tally' => tally($d, $ep)), JSON_UNESCAPED_UNICODE); exit;
 }
@@ -132,16 +171,32 @@ if ($a === 'deleteteam') {
   $id = clean(isset($body['id']) ? $body['id'] : '', 16);
   $d['teams'] = array_values(array_filter($d['teams'], function ($t) use ($id) { return $t['id'] !== $id; }));
   foreach ($d['subs'] as $e => $subs) unset($d['subs'][$e][$id]);
-  foreach ($d['votes'] as $e => $votes) $d['votes'][$e] = array_values(array_filter($votes, function ($v) use ($id) { return $v['voter'] !== $id && $v['team'] !== $id; }));
+  foreach ($d['votes'] as $e => $votes) {
+    $keep = array();
+    foreach ($votes as $v) {
+      if ($v['voter'] === $id) continue;
+      if (isset($v['ratings'])) $v['ratings'] = array_values(array_filter($v['ratings'], function ($r) use ($id) { return $r['team'] !== $id; }));
+      elseif (isset($v['team']) && $v['team'] === $id) continue;
+      $keep[] = $v;
+    }
+    $d['votes'][$e] = $keep;
+  }
   save($d);
   echo json_encode(array('ok' => true)); exit;
+}
+
+if ($a === 'lock') {
+  $on = !empty($body['on']);
+  $d['locks'][$ep] = $on;
+  save($d);
+  echo json_encode(array('ok' => true, 'locked' => $on)); exit;
 }
 
 if ($a === 'reset') {
   $what = isset($body['what']) ? $body['what'] : '';
   if ($what === 'votes') $d['votes'][$ep] = array();
   elseif ($what === 'subs') $d['subs'][$ep] = array();
-  elseif ($what === 'teams') $d = array('teams' => array(), 'subs' => array(), 'votes' => array());
+  elseif ($what === 'teams') $d = array('teams' => array(), 'subs' => array(), 'votes' => array(), 'locks' => array());
   else fail('what: votes | subs | teams');
   save($d);
   echo json_encode(array('ok' => true)); exit;

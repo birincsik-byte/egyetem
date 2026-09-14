@@ -13,7 +13,7 @@ A félév weboldala és az ügynökségi app. Élesben: https://egyetem.bemind.d
 - `.cpanel.yml` – ez mondja meg a cPanelnek, mit másoljon a mappába deploykor
 - `key.php.example` – az oktatói kulcs mintája; a szerveren `key.php` néven, a gitben nincs
 
-Nincs a gitben, szándékosan: `data/` (a beküldések és szavazatok) és `key.php` (a kulcs). Deploykor ezekhez nem nyúl.
+Nincs a gitben, szándékosan: `data/` (a beküldések és szavazatok), `key.php` (a kulcs) és `neptun.php` (a hallgatók Neptun-kódjai, a nyitólap belépéséhez). Deploykor ezekhez nem nyúl.
 
 ## Új alkalom hozzáadása
 

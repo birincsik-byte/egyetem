@@ -24,7 +24,7 @@ A tartalmi munka a claude.ai chatben készül. Onnan mindig teljes fájl jön, u
 
 ## Amit soha
 
-- Ne kerüljön a repóba `data/` mappa vagy `key.php` (a `.gitignore` kizárja; ne módosítsd).
+- Ne kerüljön a repóba `data/` mappa, `key.php` vagy `neptun.php` (a `.gitignore` kizárja; ne módosítsd). A `neptun.php` a hallgatók Neptun-kódjait tartalmazza, személyes adat: csak a szerveren élhet.
 - Ne írd át a fájlok tartalmát saját kezdeményezésre; a tartalom a chatben készül, itt csak verziózás és feltöltés van.
 - Ne hozz létre GitHub Actions workflow-t vagy más deploy mechanizmust; a deploy a szerveren fut.
 - Ne nevezd át a fájlokat; a nevek a deploy listával és a szerverrel vannak összekötve.
