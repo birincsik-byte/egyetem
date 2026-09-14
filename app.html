@@ -23,7 +23,7 @@ button{font:inherit;padding:.5em 1em;border:1px solid var(--cobalt);color:var(--
 button:disabled{opacity:.5;cursor:default}
 .card{border:1px solid var(--line);border-radius:6px;padding:.7em 1em;margin:.5em 0;background:#fff}
 .card b{font-family:Georgia,serif;font-weight:500}
-.vcard{display:flex;gap:.8em;align-items:flex-start;cursor:pointer}
+.vcard{display:block}
 .vcard input{width:auto;margin-top:.3em}
 details{margin:.5em 0 0 2em}
 summary{cursor:pointer;color:var(--cobalt)}
@@ -42,7 +42,8 @@ summary{cursor:pointer;color:var(--cobalt)}
 .mintabox .fill{border:1px solid var(--line);border-radius:6px;padding:1em 1.2em;margin-top:.8em;background:var(--paper)}
 .mintabox .mark{background:linear-gradient(transparent 55%,var(--marker) 55%)}
 .mintabox p{margin:.5em 0}
-.stars{font-size:2em;letter-spacing:.1em;cursor:pointer;color:var(--line)}
+.stars{font-size:1.8em;letter-spacing:.1em;cursor:pointer;color:var(--line);margin-top:.4em}
+.vcard textarea{margin-top:.3em;min-height:3em}
 .stars span.on{color:var(--marker)}
 .stars.show{cursor:default;font-size:1.2em;display:inline-block}
 .vcard input[type=radio]{width:auto;margin-top:.3em}
@@ -118,13 +119,11 @@ summary{cursor:pointer;color:var(--cobalt)}
   <!-- szavazás -->
   <section id="v_szavazas" class="hide">
     <h2>Csapatmunka-szavazás</h2>
-    <p>Itt olvashatod a többi csapat beadandóját, és itt szavazol. Egy csapatot választasz, a sajátodat nem. Csillagot adsz egytől ötig, és egy mondatban megindokolod: az indoklás nélkül a szavazat nem megy el.</p>
-    <p class="small muted">Amire nézz: meg tudja-e mondani, kit zárt ki a márka; bizonyítékkal áll-e, nem véleménnyel; kimondja-e, ami hiányzik.</p>
+    <p>Itt olvashatod a többi csapat beadandóját, és itt értékeled őket. Minden csapatnak adhatsz csillagot egytől ötig, a sajátodnak nem, és minden értékeléshez egy mondat indoklás kell: indoklás nélkül a szavazat nem megy el. Amelyik csapatot nem értékeled, az kimarad.</p>
+    <p class="small muted">Amire nézz: a márka, a célcsoport és a mondat bizonyítékkal áll-e; az ítélet megvédhető-e; kimondja-e, ami hiányzik.</p>
     <label>Melyik csapatban vagy</label><select id="s_own"><option value="">válassz</option></select>
     <div id="s_list"></div>
-    <label>Csillag</label><div class="stars" id="s_stars"><span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span></div>
-    <label>Indoklás (legalább egy mondat)</label><textarea id="s_reason" placeholder="Miért ennyi? Mit csinált jól, mi hiányzik?"></textarea>
-    <button id="s_send">Leadom a szavazatot</button>
+    <button id="s_send">Leadom az értékeléseket</button>
     <p class="status" id="s_status"></p>
   </section>
 
@@ -143,6 +142,10 @@ summary{cursor:pointer;color:var(--cobalt)}
     <div id="a_panel" class="hide">
       <h2>Csapatok</h2>
       <div id="a_teams"></div>
+      <h2>Leadás zárása</h2>
+      <p class="small muted" id="a_lockstate"></p>
+      <p><button id="a_lock">Leadás lezárása</button> <button id="a_unlock">Feloldás</button></p>
+      <p class="small muted">Lezárva senki nem tud beküldeni vagy felülírni, olvasni és szavazni lehet. Ha egy csapat javítani szeretne, oldd fel, és zárd vissza, amikor kész.</p>
       <h2>Szavazás</h2>
       <p><button id="a_resetvotes">Az alkalom szavazatainak nullázása</button></p>
       <h2>Teljes törlés</h2>
@@ -153,7 +156,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v1.5 · 2026. szeptember 13.</p>
+  <p class="small muted" style="margin-top:3em">app v1.8 · 2026. szeptember 14.</p>
 </div>
 
 <script>
@@ -184,7 +187,8 @@ summary{cursor:pointer;color:var(--cobalt)}
 
   $('eplabel').textContent=CFG.name;
   var views=['csapat','leadas','szavazas','eredmeny','admin'], labels={csapat:'Csapat',leadas:'Leadás',szavazas:'Szavazás',eredmeny:'Eredmény',admin:'Oktató'};
-  views.forEach(function(v){var a=document.createElement('a');a.href='?ep='+EP+'&v='+v;a.textContent=labels[v];if(v===VIEW)a.className='on';$('nav').appendChild(a)});
+  views.forEach(function(v){var a=document.createElement('a');a.href='?ep='+EP+'&v='+v;a.textContent=labels[v];if(v===VIEW)a.className='on';if(v==='admin'){a.id='navadmin';a.style.display='none'}$('nav').appendChild(a)});
+  fetch(API+'?a=me',{credentials:'same-origin'}).then(function(r){return r.json()}).then(function(d){ if(d.role==='oktato'||VIEW==='admin'){var n=$('navadmin'); if(n)n.style.display=''} }).catch(function(){});
   if(views.indexOf(VIEW)<0)VIEW='csapat';
   $('v_'+VIEW).classList.remove('hide');
   $('title').textContent=VIEW==='leadas'?CFG.title:(VIEW==='eredmeny'?'Csapatmunka-szavazás':'Ügynökségek');
@@ -202,21 +206,25 @@ summary{cursor:pointer;color:var(--cobalt)}
     fillSelect('l_team'); fillSelect('s_own');
     /* szavazás lista */
     var sl=$('s_list'); var openIds={}; [].forEach.call(sl.querySelectorAll('details[open]'),function(d){openIds[d.getAttribute('data-t')]=1});
-    var chosen=(sl.querySelector('input:checked')||{}).value;
-    sl.innerHTML=''; S.teams.forEach(function(t){var sub=S.subs[t.id];var card=document.createElement('div');card.className='card';
-      var head='<label class="vcard"><input type="radio" name="vteam" value="'+t.id+'"'+(chosen===t.id?' checked':'')+'><span><b>'+esc(t.name)+'</b> · '+esc(t.client)+'<br>'+(sub?esc(sub.sentence):'<span class="muted">még nincs beküldve</span>')+'</span></label>';
+    var saved={}; [].forEach.call(sl.querySelectorAll('.vcard'),function(c){var t=c.getAttribute('data-t');saved[t]={stars:+c.getAttribute('data-stars')||0,reason:(c.querySelector('textarea')||{}).value||''}});
+    var own=$('s_own').value;
+    sl.innerHTML=''; S.teams.forEach(function(t){var sub=S.subs[t.id];var card=document.createElement('div');card.className='card vcard';card.setAttribute('data-t',t.id);var sv=saved[t.id]||{stars:0,reason:''};card.setAttribute('data-stars',sv.stars);
+      var head='<div><b>'+esc(t.name)+'</b> · '+esc(t.client)+(t.id===own?' <span class="small muted">(a tiétek, nem értékelhető)</span>':'')+'<br>'+(sub?esc(sub.sentence):'<span class="muted">még nincs beküldve</span>')+'</div>';
       var body='';
       if(sub){ body='<details data-t="'+t.id+'"'+(openIds[t.id]?' open':'')+'><summary class="small">A teljes beadandó</summary>';
         CFG.fields.forEach(function(f){ if(f[0]==='f3')return; var v=sub[f[0]]; if(!v)return; body+='<p class="fld"><span class="small muted">'+esc(f[1])+'</span><br>'+esc(v).replace(/\n/g,'<br>')+'</p>'; });
         body+='</details>'; }
-      card.innerHTML=head+body; sl.appendChild(card)});
+      var rate=''; if(t.id!==own){ rate='<div class="stars" data-t="'+t.id+'">'; for(var k=1;k<=5;k++)rate+='<span data-v="'+k+'" class="'+(k<=sv.stars?'on':'')+'">★</span>'; rate+='</div><textarea placeholder="Indoklás, legalább egy mondat">'+esc(sv.reason)+'</textarea>'; }
+      card.innerHTML=head+body+rate; sl.appendChild(card)});
     /* eredmény */
     var el=$('e_list'); el.innerHTML='';
     S.teams.slice().sort(function(a,b){var ta=S.tally[a.id]||{},tb=S.tally[b.id]||{};return (tb.avg||0)-(ta.avg||0)||(tb.n||0)-(ta.n||0)}).forEach(function(t){var r=S.tally[t.id]||{n:0,avg:0,reasons:[]};var d=document.createElement('div');d.className='erow';
       var st='<span class="stars show">'; for(var k=1;k<=5;k++)st+='<span class="'+(k<=Math.round(r.avg)?'on':'')+'">★</span>'; st+='</span>';
       d.innerHTML='<div class="name">'+esc(t.name)+' <span class="small muted">· '+esc(t.client)+'</span></div>'+st+' <b>'+(r.n?Number(r.avg).toFixed(1):'–')+'</b> <span class="small muted">('+r.n+' szavazat)</span>'+(r.reasons&&r.reasons.length?'<details><summary class="small">Indoklások</summary>'+r.reasons.map(function(x){return '<p class="reason">'+x.stars+'★ '+esc(x.reason)+'</p>'}).join('')+'</details>':'');
       el.appendChild(d)});
-    $('e_meta').textContent=S.votes+' szavazat érkezett · '+Object.keys(S.subs).length+' leadás a '+S.teams.length+' csapatból';
+    if(S.locked){$('l_send').disabled=true;$('l_status').textContent='A leadás le van zárva. Ha javítani szeretnétek, kérjétek az oktatót, hogy oldja fel.'} else {$('l_send').disabled=false}
+    $('e_meta').textContent=S.votes+' szavazólap érkezett · '+Object.keys(S.subs).length+' leadás a '+S.teams.length+' csapatból';
+    if(typeof lockState==='function')lockState();
     /* oktató lista */
     var at=$('a_teams'); at.innerHTML=''; S.teams.forEach(function(t){var d=document.createElement('div');d.className='card';d.innerHTML='<b>'+esc(t.name)+'</b> · '+esc(t.client)+(t.members?' · <span class="small muted">'+esc(t.members)+'</span>':'')+'<button class="del" data-id="'+t.id+'">Törlés</button>';at.appendChild(d)});
   }
@@ -242,18 +250,17 @@ summary{cursor:pointer;color:var(--cobalt)}
   });
 
   /* szavazás */
-  var starsVal=0; var starEls=[].slice.call(document.querySelectorAll('#s_stars span'));
-  function drawStars(){starEls.forEach(function(e){e.classList.toggle('on',+e.getAttribute('data-v')<=starsVal)})}
-  starEls.forEach(function(e){e.addEventListener('click',function(){starsVal=+e.getAttribute('data-v');drawStars()})});
+  $('s_own').addEventListener('change',function(){render()});
+  $('s_list').addEventListener('click',function(e){ var st=e.target.closest('.stars span'); if(!st)return; var card=st.closest('.vcard'); var v=+st.getAttribute('data-v'); card.setAttribute('data-stars',v); [].forEach.call(card.querySelectorAll('.stars span'),function(x){x.classList.toggle('on',+x.getAttribute('data-v')<=v)}) });
   $('s_send').addEventListener('click',function(){
-    var own=$('s_own').value, sel=document.querySelector('#s_list input:checked'), team=sel?sel.value:'', reason=$('s_reason').value.trim();
-    if(!own){$('s_status').textContent='Add meg, melyik csapatban vagy.';return}
-    if(!team){$('s_status').textContent='Válassz egy csapatot.';return}
-    if(team===own){$('s_status').textContent='A saját csapatodra nem szavazhatsz.';return}
-    if(!starsVal){$('s_status').textContent='Adj csillagot egytől ötig.';return}
-    if(reason.length<15){$('s_status').textContent='Indoklás nélkül nincs szavazat: legalább egy mondat.';return}
+    var own=$('s_own').value, st=$('s_status');
+    if(!own){st.textContent='Add meg, melyik csapatban vagy.';return}
+    var ratings=[], bad=null;
+    [].forEach.call(document.querySelectorAll('#s_list .vcard'),function(c){ var t=c.getAttribute('data-t'); if(t===own)return; var stars=+c.getAttribute('data-stars')||0; var ta=c.querySelector('textarea'); var reason=ta?ta.value.trim():''; if(!stars&&!reason)return; if(!stars){bad='Adj csillagot is annak a csapatnak, amelyikhez indoklást írtál.';return} if(reason.length<15){bad='Indoklás nélkül nincs szavazat: minden értékelt csapathoz legalább egy mondat.';return} ratings.push({team:t,stars:stars,reason:reason}) });
+    if(bad){st.textContent=bad;return}
+    if(!ratings.length){st.textContent='Értékelj legalább egy csapatot.';return}
     var tok; try{tok=localStorage.getItem('omtok')||Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('omtok',tok)}catch(e){tok=''}
-    api('vote',{voter:own,team:team,stars:starsVal,reason:reason,token:tok}).then(function(d){$('s_status').textContent=d.ok?'Szavazat leadva. Köszönjük.':d.error;if(d.ok)$('s_send').disabled=true}).catch(function(){$('s_status').textContent='Nem sikerült, a szerver nem válaszol.'});
+    api('vote',{voter:own,ratings:ratings,token:tok}).then(function(d){st.textContent=d.ok?('Értékelés leadva '+ratings.length+' csapatra. Köszönjük.'):d.error;if(d.ok)$('s_send').disabled=true}).catch(function(){st.textContent='Nem sikerült, a szerver nem válaszol.'});
   });
 
   /* oktató */
@@ -261,9 +268,12 @@ summary{cursor:pointer;color:var(--cobalt)}
   $('a_check').addEventListener('click',function(){ var k=$('a_key').value; api('check',{key:k}).then(function(d){ if(d.ok){KEY=k;$('a_panel').classList.remove('hide');$('a_status').textContent='';$('a_export').href=API+'?a=export&ep='+EP+'&key='+encodeURIComponent(KEY)} else {$('a_status').textContent=d.error} }) });
   $('a_teams').addEventListener('click',function(e){ var b=e.target.closest('button.del'); if(!b)return; if(!confirm('Törlöd a csapatot a beadandóival és szavazataival együtt?'))return; api('deleteteam',{key:KEY,id:b.getAttribute('data-id')}).then(function(d){$('a_status').textContent=d.ok?'Törölve.':d.error;refresh()}) });
   $('a_resetall').addEventListener('click',function(){ if(!confirm('Biztos? Minden csapat, beadandó és szavazat törlődik, minden alkalomról.'))return; if(!confirm('Még egyszer: ez nem visszavonható. Töröljem?'))return; api('reset',{key:KEY,what:'teams'}).then(function(d){$('a_status').textContent=d.ok?'Minden törölve.':d.error;refresh()}) });
+  function lockState(){ $('a_lockstate').textContent=S.locked?'A leadás jelenleg LEZÁRVA.':'A leadás jelenleg nyitva.' }
+  $('a_lock').addEventListener('click',function(){ api('lock',{key:KEY,on:true}).then(function(d){$('a_status').textContent=d.ok?'Lezárva.':d.error;refresh()}) });
+  $('a_unlock').addEventListener('click',function(){ api('lock',{key:KEY,on:false}).then(function(d){$('a_status').textContent=d.ok?'Feloldva.':d.error;refresh()}) });
   $('a_resetvotes').addEventListener('click',function(){ if(!confirm('Nullázod az alkalom szavazatait?'))return; api('reset',{key:KEY,what:'votes'}).then(function(d){$('a_status').textContent=d.ok?'Nullázva.':d.error;refresh()}) });
 
-  refresh(); if(VIEW==='eredmeny'||VIEW==='csapat'||VIEW==='szavazas') setInterval(refresh,8000);
+  refresh(); if(VIEW==='eredmeny'||VIEW==='csapat'||VIEW==='szavazas'||VIEW==='admin'||VIEW==='leadas') setInterval(refresh,8000);
 })();
 </script>
 </body>

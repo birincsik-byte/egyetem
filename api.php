@@ -89,9 +89,10 @@ if (!is_array($body)) $body = $_POST;
 $d = load();
 
 if ($a === 'auth') {
-  $code = strtoupper(clean(isset($body['code']) ? $body['code'] : '', 40));
+  $raw = clean(isset($body['code']) ? $body['code'] : '', 40);
+  $code = strtoupper($raw);
   $role = '';
-  if ($code !== '' && hash_equals($KEY, $code)) $role = 'oktato';
+  if ($raw !== '' && hash_equals($KEY, $raw)) $role = 'oktato';
   elseif ($code !== '' && in_array($code, array_map('strtoupper', $NEPTUN))) $role = 'hallgato';
   if ($role === '') fail('nincs ilyen kód');
   $secure = !empty($_SERVER['HTTPS']);
