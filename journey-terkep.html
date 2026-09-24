@@ -43,6 +43,8 @@ thead th{font-family:var(--display);font-weight:500;font-size:1.2em;color:var(--
 thead th small{display:block;font-family:var(--body);font-size:.62em;color:var(--ink-soft);font-weight:400}
 th.rowh{width:13em;font-weight:600;font-size:.85em;color:var(--ink-soft)}
 th.rowh span{display:block;font-weight:400;font-size:.9em}
+.delch{border:1px solid var(--line);background:transparent;color:var(--ink-soft);border-radius:50%;width:1.5em;height:1.5em;line-height:1;cursor:pointer;margin-left:.3em;font-size:.9em}
+.delch:hover{color:var(--cobalt);border-color:var(--cobalt)}
 td textarea{min-height:5em;font-size:.9em}
 tr.sub th.rowh{font-weight:400;color:var(--ink);padding-left:1.4em}
 tr.sub td{padding:.25em .5em}
@@ -83,12 +85,11 @@ td.holed{background:rgba(242,201,76,.25)}
 
 <main>
   <h1>Az ügyfeletek vásárlójának útja</h1>
-  <p class="lead">Sorok: amit a befogadó átél, amit a márka mond, és a csatornák. Oszlopok: a döntési fázisok a választott modell szerint. A csatornasorokban kattints egy cellára: egyszer másodlagos, kétszer fő csatorna, háromszor üres. A munka ebben a böngészőben mentődik; a végén a <span class="hl">Beküldés</span> gomb viszi a Leadásba.</p>
+  <p class="lead">Sorok: amit a befogadó átél, amit a márka mond, és a csatornák. Oszlopok: a döntési fázisok a választott modell szerint. A csatornasorokban kattints egy cellára: egyszer másodlagos, kétszer fő csatorna, háromszor üres. Az 1. alkalmon választott márkát bontjátok tovább: nem kitaláljátok az útját, hanem leírjátok, amit megfigyeltek, a választott modell szerkezetében. Ez a térkép a 2. alkalom leadása. A munka ebben a böngészőben mentődik, a végén a <span class="hl">Beküldés</span> gombbal adjátok le.</p>
 
   <div class="row">
-    <div><label for="agency">Ügynökség</label><input id="agency"></div>
-    <div><label for="client">Ügyfél</label><input id="client" list="clients"><datalist id="clients"></datalist></div>
-    <div><label for="role">Kinek az útja</label><select id="role"><option>a vevőé</option><option>a használóé</option><option>a vevőé, aki egyben a használó</option></select></div>
+    <div><label for="team">Ügynökség (csapat)</label><select id="team"><option value="">válaszd ki a csapatotokat</option></select></div>
+    <div><label for="brand">Márka, amit az 1. alkalmon választottatok</label><select id="brand"><option value="">válaszd ki a márkát</option></select></div>
   </div>
 
   <h2>1. A modell és miért</h2>
@@ -100,7 +101,7 @@ td.holed{background:rgba(242,201,76,.25)}
   <div style="margin-top:.8em"><label for="why">Egy mondat indoklás: miért ez a modell illik a márkához</label><textarea id="why"></textarea></div>
 
   <h2>2. A journey egy mondatban</h2>
-  <textarea id="sentence" placeholder="Kinek az útja, honnan hova jut, és hol dől el."></textarea>
+  <textarea id="sentence" placeholder="Honnan hova jut, és hol dől el."></textarea>
 
   <h2>3. A térkép</h2>
   <div class="legend"><span><i></i>üres</span><span><i class="l1"></i>másodlagos csatorna</span><span><i class="l2"></i>fő csatorna</span><span>A sárga oszlop: ott szakad meg az út.</span></div>
@@ -108,7 +109,7 @@ td.holed{background:rgba(242,201,76,.25)}
   <div class="addch noprint"><input id="newch" placeholder="saját csatorna, pl. Google Térkép-értékelések"><button class="btn" id="addch">Hozzáad</button></div>
 
   <h2>4. Bizonyíték, lyuk, hiány</h2>
-  <div class="row">
+  <div class="row" style="align-items:end">
     <div><label for="evidence">Bizonyíték: melyik poszt, oldal, hirdetés, vélemény mutatja, amit a fázisokról állítottatok</label><textarea id="evidence"></textarea></div>
     <div><label for="gap">Hol szakad meg az út: egy pont, amire rá lehet bökni, és miért</label><textarea id="gap"></textarea></div>
     <div><label for="missing">Ami hiányzik: melyik fázisban nem mond semmit a márka, egy mondat</label><textarea id="missing"></textarea></div>
@@ -118,18 +119,17 @@ td.holed{background:rgba(242,201,76,.25)}
     <div style="grid-column:span 2"><label for="looked">Amit néztünk: weboldal, közösségi felületek legalább utolsó két hete, egy hirdetés, vélemények vagy összehasonlító oldal</label><textarea id="looked"></textarea></div>
   </div>
 
-  <h2 class="noprint">5. Beküldés a Leadásba</h2>
+  <h2 class="noprint">5. Leadás</h2>
   <div class="noprint">
     <div class="row">
-      <div><label for="team">Csapat</label><select id="team"><option value="">válassz</option></select></div>
       <div style="display:flex;align-items:end;gap:.6em"><button class="btn solid" id="send">Beküldés</button><button class="btn" id="preview">Előnézet</button></div>
     </div>
     <p class="status" id="status"></p>
-    <p class="small muted">A beküldés ugyanaz, mint a Leadás oldalon: a nyolc blokk a térképből áll össze. Újraküldéskor az előző felülíródik, amíg az oktató le nem zárja a leadást.</p>
+    <p class="small muted">A nyolc blokk a térképből áll össze, a fenti csapat nevében megy be. Újraküldéskor az előző felülíródik, amíg az oktató le nem zárja a leadást.</p>
     <div class="out" id="out" style="margin-top:1em"></div>
   </div>
 
-  <p class="foot">A csatornasorok kiinduló listája: Misquith (Essentialize Marketing, 2022) STDC-csatornatáblázata, Baptista (Medium, 2020) STDC-sablonja és Kaushik bejegyzései alapján, az oktató összeállításában. · journey-térkép v1.0 · 2026. szeptember 24.</p>
+  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.5 · 2026. szeptember 24.</p>
 </main>
 
 <script>
@@ -142,28 +142,32 @@ td.holed{background:rgba(242,201,76,.25)}
   };
   var SEQ=['tanul · érez · tesz','tesz · érez · tanul','tanul · tesz · érez'];
   var ROWS=[['aud','Ki van itt','kit és milyen helyzetben ér el ez a fázis'],['feel','Mit érez, mitől fél','mi akasztja meg'],['says','Mit mond itt jelenleg a márka','szó szerint, ha lehet'],['kpi','Mit mérnénk','egy mérőszám fázisonként']];
-  var CH=['SEO, blog, saját tartalom','Videó (YouTube, TikTok, Reels)','Organikus social','Fizetett social','Display','Keresőhirdetés','Remarketing','E-mail, hírlevél','Affiliate, összehasonlító oldal','Vélemények, ajánlás, ajánlóprogram','Ügyfélszolgálat, chat, személyes'];
-  var HOLES=['','üres fázis','csak mások beszélnek','jó üzenet rossz fázisban'];
+  var CH=['Blog, saját tartalom','Facebook','Reddit','Instagram','TikTok','YouTube rövid videó','YouTube hosszú videó','Pinterest','Facebook hirdetés','Instagram hirdetés','YouTube hirdetés','TikTok hirdetés','Display','Keresőhirdetés','Remarketing','E-mail, hírlevél','Affiliate','Árösszehasonlító oldal','Ajánlás, ajánlóprogram','Ügyfélszolgálat, chat','Személyes'];
+  var OLDCH=['SEO, blog, saját tartalom','Videó (YouTube, TikTok, Reels)','Organikus social','Fizetett social','Display','Keresőhirdetés','Remarketing','E-mail, hírlevél','Affiliate, összehasonlító oldal','Vélemények, ajánlás, ajánlóprogram','Ügyfélszolgálat, chat, személyes'];
+  var HOLES=[['','nem itt'],['üres fázis','itt: a márka nem mond semmit'],['csak mások beszélnek','itt: csak mások beszélnek (vélemény, ismerős)'],['jó üzenet rossz fázisban','itt: jó üzenet, de rossz fázisban']];
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
+  var TEAMS={};
   var KEY='om2026-journey-ep2';
-  function blank(){return {agency:'',client:'',role:'a vevőé',model:'stdc',seq:'',why:'',sentence:'',evidence:'',gap:'',missing:'',who:'',looked:'',channels:CH.slice(),cells:{},mx:{},holes:{}}}
+  function blank(){return {team:'',brand:'',model:'stdc',seq:'',why:'',sentence:'',evidence:'',gap:'',missing:'',who:'',looked:'',channels:CH.slice(),cells:{},mx:{},holes:{}}}
   var S=blank();
   try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in o)S[k]=o[k]}}catch(e){}
+  if(S.channels.indexOf(OLDCH[1])>=0){S.channels=CH.concat(S.channels.filter(function(c){return OLDCH.indexOf(c)<0&&CH.indexOf(c)<0}))}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   function $(id){return document.getElementById(id)}
   function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
-  CLIENTS.forEach(function(c){var o=document.createElement('option');o.value=c;$('clients').appendChild(o)});
+  CLIENTS.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;$('brand').appendChild(o)});
   Object.keys(MODELS).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=MODELS[k].name;$('model').appendChild(o)});
   SEQ.forEach(function(s){var l=document.createElement('label');l.innerHTML='<input type="radio" name="seq" value="'+s+'"> '+s;$('seq').appendChild(l)});
 
-  var FIELDS=['agency','client','role','model','why','sentence','evidence','gap','missing','who','looked'];
+  var FIELDS=['team','brand','model','why','sentence','evidence','gap','missing','who','looked'];
   function fill(){
     FIELDS.forEach(function(f){$(f).value=S[f]||''});
     [].forEach.call(document.querySelectorAll('input[name=seq]'),function(r){r.checked=r.value===S.seq});
     draw();
   }
-  FIELDS.forEach(function(f){$(f).addEventListener('input',function(){S[f]=this.value;save()})});
+  FIELDS.forEach(function(f){$(f).addEventListener(/^(team|brand)$/.test(f)?'change':'input',function(){S[f]=this.value;save()})});
+  $('team').addEventListener('change',function(){var t=TEAMS[this.value]; if(t&&t.client){ if(CLIENTS.indexOf(t.client)<0){var o=document.createElement('option');o.value=o.textContent=t.client;$('brand').appendChild(o)} $('brand').value=t.client; S.brand=t.client; save(); }});
   $('model').addEventListener('change',function(){S.model=this.value;save();draw()});
   $('seq').addEventListener('change',function(e){S.seq=e.target.value;save()});
 
@@ -174,15 +178,15 @@ td.holed{background:rgba(242,201,76,.25)}
     ROWS.forEach(function(r){ h+='<tr><th class="rowh">'+r[1]+'<span>'+r[2]+'</span></th>';
       M.ph.forEach(function(p,c){var v=S.cells[ck(r[0],c)]||''; h+='<td data-c="'+c+'"><textarea data-k="'+ck(r[0],c)+'" aria-label="'+esc(r[1]+', '+p[0])+'">'+esc(v)+'</textarea></td>'}); h+='</tr>'});
     h+='<tr><th class="rowh" colspan="'+(M.ph.length+1)+'" style="padding-top:1em;color:var(--cobalt)">Csatornák: hol találkozik itt a márkával</th></tr>';
-    S.channels.forEach(function(ch,ci){ h+='<tr class="sub"><th class="rowh">'+esc(ch)+'</th>';
+    S.channels.forEach(function(ch,ci){ h+='<tr class="sub"><th class="rowh">'+esc(ch)+(CH.indexOf(ch)<0?' <button type="button" class="delch noprint" data-del="'+esc(ch)+'" title="Saját csatorna törlése" aria-label="'+esc(ch)+' törlése">×</button>':'')+'</th>';
       M.ph.forEach(function(p,c){var lv=S.mx[S.model+'|'+ch+'|'+c]||0; h+='<td data-c="'+c+'"><button type="button" class="cell l'+lv+'" data-ch="'+esc(ch)+'" data-c="'+c+'" aria-label="'+esc(ch+', '+p[0])+'">'+(lv===2?'fő':lv===1?'másodlagos':'')+'</button></td>'}); h+='</tr>'});
-    h+='<tr><th class="rowh">Itt szakad meg?</th>';
-    M.ph.forEach(function(p,c){var hv=S.holes[S.model+'|'+c]||''; h+='<td data-c="'+c+'"><select class="hole" data-c="'+c+'">'+HOLES.map(function(x){return '<option'+(x===hv?' selected':'')+' value="'+x+'">'+(x||'nem')+'</option>'}).join('')+'</select></td>'});
+    h+='<tr><th class="rowh">Hol szakad meg az út?<span>jelöljétek azt a fázist, ahol a vevő elakad vagy elvész</span></th>';
+    M.ph.forEach(function(p,c){var hv=S.holes[S.model+'|'+c]||''; h+='<td data-c="'+c+'"><select class="hole" data-c="'+c+'">'+HOLES.map(function(x){return '<option'+(x[0]===hv?' selected':'')+' value="'+x[0]+'">'+x[1]+'</option>'}).join('')+'</select></td>'});
     h+='</tr></tbody>'; t.innerHTML=h; paintHoles();
   }
   function paintHoles(){var M=MODELS[S.model]; M.ph.forEach(function(p,c){var on=!!S.holes[S.model+'|'+c]; [].forEach.call($('map').querySelectorAll('td[data-c="'+c+'"]'),function(td){td.classList.toggle('holed',on)})})}
   $('map').addEventListener('input',function(e){var k=e.target.getAttribute('data-k'); if(k){S.cells[k]=e.target.value;save()}});
-  $('map').addEventListener('click',function(e){var b=e.target.closest('.cell'); if(!b)return; var k=S.model+'|'+b.getAttribute('data-ch')+'|'+b.getAttribute('data-c'); var lv=((S.mx[k]||0)+1)%3; if(lv)S.mx[k]=lv; else delete S.mx[k]; b.className='cell l'+lv; b.textContent=lv===2?'fő':lv===1?'másodlagos':''; save()});
+  $('map').addEventListener('click',function(e){var d=e.target.closest('.delch'); if(d){var ch=d.getAttribute('data-del'); if(!confirm('Törlöd ezt a saját csatornát: '+ch+'? A jelölései is törlődnek.'))return; S.channels=S.channels.filter(function(c){return c!==ch}); Object.keys(S.mx).forEach(function(k){if(k.split('|')[1]===ch)delete S.mx[k]}); save(); draw(); return} var b=e.target.closest('.cell'); if(!b)return; var k=S.model+'|'+b.getAttribute('data-ch')+'|'+b.getAttribute('data-c'); var lv=((S.mx[k]||0)+1)%3; if(lv)S.mx[k]=lv; else delete S.mx[k]; b.className='cell l'+lv; b.textContent=lv===2?'fő':lv===1?'másodlagos':''; save()});
   $('map').addEventListener('change',function(e){if(!e.target.classList.contains('hole'))return; var k=S.model+'|'+e.target.getAttribute('data-c'); if(e.target.value)S.holes[k]=e.target.value; else delete S.holes[k]; save(); paintHoles()});
   $('addch').addEventListener('click',function(){var v=$('newch').value.trim(); if(!v||S.channels.indexOf(v)>=0)return; S.channels.push(v); $('newch').value=''; save(); draw()});
 
@@ -203,7 +207,7 @@ td.holed{background:rgba(242,201,76,.25)}
     var holes=ph.map(function(name,c){var h=S.holes[S.model+'|'+c]; return h?name+': '+h:''}).filter(Boolean).join('; ');
     return {
       f1:(S.who||'').trim(),
-      f2:(S.looked||'').trim(),
+      f2:(S.brand?'Márka: '+S.brand+'. ':'')+(S.looked||'').trim(),
       f7:'Modell: '+M.name+'. Sorrend: '+(S.seq||'nincs megadva')+'. '+(S.why||'').trim(),
       f3:(S.sentence||'').trim(),
       f4:f4,
@@ -217,21 +221,21 @@ td.holed{background:rgba(242,201,76,.25)}
 
   var API='api.php';
   function api(a,body){var o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}; return fetch(API+'?a='+a+'&ep=ep2',o).then(function(r){return r.json()})}
-  api('state').then(function(d){ if(!d.ok)return; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name+' · '+t.client;$('team').appendChild(o)}); }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A térkép így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
+  api('state').then(function(d){ if(!d.ok)return; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A térkép így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
   $('send').addEventListener('click',function(){
-    var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return}
+    var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return} if(!S.brand){$('status').textContent='Válaszd ki a márkát.';return}
     var b=blocks(); if(!b.f3){$('status').textContent='A journey egy mondatban hiányzik, enélkül nem lehet beküldeni.';return}
     b.team=tid; $('status').textContent='Küldés…';
     api('submit',b).then(function(d){$('status').textContent=d.ok?'Beküldve. A szavazólistán a journey mondata látszik.':d.error}).catch(function(){$('status').textContent='Nem sikerült, a szerver nem válaszol.'});
   });
 
   $('print').addEventListener('click',function(){window.print()});
-  $('clear').addEventListener('click',function(){ if(!confirm('Új, üres térkép? A mostani tartalom törlődik ebből a böngészőből.'))return; S=blank(); save(); fill(); $('out').innerHTML=''});
+  $('clear').addEventListener('click',function(){ if(!confirm('Új, üres térkép? A mostani tartalom törlődik ebből a böngészőből.'))return; var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; save(); fill(); $('out').innerHTML=''});
 
   /* minta: a deck demójának nyelviskolája, kitalált */
   $('demo').addEventListener('click',function(){
     if((S.sentence||Object.keys(S.cells).length)&&!confirm('A minta felülírja a mostani térképet. Folytatod?'))return;
-    S=blank(); S.agency='Minta'; S.client='kitalált nyelviskola'; S.model='stdc'; S.seq='tanul · érez · tesz';
+    var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; S.model='stdc'; S.seq='tanul · érez · tesz';
     S.why='A nyelvtanulás drága és hosszú vállalás, a vevő előbb tájékozódik, aztán kialakul benne a bizalom, és csak utána iratkozik be; a See-Think-Do-Care a szándékot követi, ezért ide jobban illik, mint egy lineáris modell.';
     S.sentence='Anna, aki egy év múlva külföldre költözik, egy hasznos videótól a próbaóráig jut; az út a próbaóra és a beiratkozás között dől el.';
     var c=S.cells, m='stdc|';
@@ -240,10 +244,10 @@ td.holed{background:rgba(242,201,76,.25)}
     c[m+'says|0']='„5 mondat, amivel az első héten elboldogulsz”'; c[m+'says|1']='útmutató és ingyenes szintfelmérő'; c[m+'says|2']='„Ingyenes próbaóra, októberi kezdés, esti csoport”'; c[m+'says|3']='havi e-mail a haladásról, „hozd el a kollégádat”';
     c[m+'kpi|0']='megtekintés, mentés'; c[m+'kpi|1']='kitöltött szintfelmérő'; c[m+'kpi|2']='próbaóra-foglalás'; c[m+'kpi|3']='továbbiratkozás, ajánlás';
     function set(ch,col,lv){S.mx['stdc|'+ch+'|'+col]=lv}
-    set('Videó (YouTube, TikTok, Reels)',0,2); set('Organikus social',0,2); set('Fizetett social',0,1);
-    set('SEO, blog, saját tartalom',1,2); set('E-mail, hírlevél',1,1); set('Keresőhirdetés',1,1);
-    set('Keresőhirdetés',2,2); set('Remarketing',2,2); set('Vélemények, ajánlás, ajánlóprogram',2,1);
-    set('E-mail, hírlevél',3,2); set('Vélemények, ajánlás, ajánlóprogram',3,1); set('Ügyfélszolgálat, chat, személyes',3,1);
+    set('YouTube rövid videó',0,2); set('Instagram',0,2); set('Instagram hirdetés',0,1);
+    set('Blog, saját tartalom',1,2); set('E-mail, hírlevél',1,1); set('Keresőhirdetés',1,1);
+    set('Keresőhirdetés',2,2); set('Remarketing',2,2); set('Ajánlás, ajánlóprogram',2,1);
+    set('E-mail, hírlevél',3,2); set('Ajánlás, ajánlóprogram',3,1); set('Ügyfélszolgálat, chat',3,1);
     S.holes['stdc|2']='csak mások beszélnek';
     S.gap='A Do fázisban a próbaóra után a márka nem mond semmit: a döntést a véleményoldalak és az ismerősök hozzák meg helyette.';
     S.missing='A próbaóra és a beiratkozás között nincs egyetlen üzenet sem.';
