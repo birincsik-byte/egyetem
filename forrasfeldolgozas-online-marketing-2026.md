@@ -94,7 +94,7 @@ Chaffey 2. fejezet (customer journey, buying process, personas, 79. oldal körny
 
 # 3. epizód: A saját terep
 
-Chaffey 7. fejezet (Delivering the online customer experience), 6. fejezet (Relationship marketing, e-CRM, e-mail). Kotler, Keller 5. fejezet (hosszú távú lojalitás). GDPR-hoz Chaffey 3. fejezet (macroenvironment, jogi rész). Chaffey OVP-fogalma (online value proposition, 4. fejezet): a saját felület értékajánlata.
+Chaffey 7. fejezet (Delivering the online customer experience), 6. fejezet (Relationship marketing, e-CRM, e-mail). Kotler, Keller 5. fejezet (hosszú távú lojalitás). GDPR-hoz Chaffey 3. fejezet (macroenvironment, jogi rész); a 6. kiadásban a GDPR szó nem szerepel, a Data Protection Act és az EU Data Protection Directive igen (ellenőrizve 2026. szeptember 24-én a fejezet szövegében). Chaffey OVP-fogalma (online value proposition, 4. fejezet): a saját felület értékajánlata.
 
 # 4. epizód: A csatornák nyelve
 
