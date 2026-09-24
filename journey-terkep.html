@@ -129,7 +129,7 @@ td.holed{background:rgba(242,201,76,.25)}
     <div class="out" id="out" style="margin-top:1em"></div>
   </div>
 
-  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.5 · 2026. szeptember 24.</p>
+  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.6 · 2026. szeptember 24.</p>
 </main>
 
 <script>
@@ -156,7 +156,8 @@ td.holed{background:rgba(242,201,76,.25)}
   function $(id){return document.getElementById(id)}
   function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
-  CLIENTS.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;$('brand').appendChild(o)});
+  function brands(list){ $('brand').innerHTML='<option value="">válaszd ki a márkát</option>'; list.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;$('brand').appendChild(o)}); if(S.brand&&list.indexOf(S.brand)<0){var o=document.createElement('option');o.value=o.textContent=S.brand;$('brand').appendChild(o)} $('brand').value=S.brand||''; }
+  brands(CLIENTS);
   Object.keys(MODELS).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=MODELS[k].name;$('model').appendChild(o)});
   SEQ.forEach(function(s){var l=document.createElement('label');l.innerHTML='<input type="radio" name="seq" value="'+s+'"> '+s;$('seq').appendChild(l)});
 
@@ -167,7 +168,7 @@ td.holed{background:rgba(242,201,76,.25)}
     draw();
   }
   FIELDS.forEach(function(f){$(f).addEventListener(/^(team|brand)$/.test(f)?'change':'input',function(){S[f]=this.value;save()})});
-  $('team').addEventListener('change',function(){var t=TEAMS[this.value]; if(t&&t.client){ if(CLIENTS.indexOf(t.client)<0){var o=document.createElement('option');o.value=o.textContent=t.client;$('brand').appendChild(o)} $('brand').value=t.client; S.brand=t.client; save(); }});
+  $('team').addEventListener('change',function(){var t=TEAMS[this.value]; if(t&&t.client){ $('brand').value=t.client; S.brand=t.client; save(); }});
   $('model').addEventListener('change',function(){S.model=this.value;save();draw()});
   $('seq').addEventListener('change',function(e){S.seq=e.target.value;save()});
 
@@ -221,7 +222,7 @@ td.holed{background:rgba(242,201,76,.25)}
 
   var API='api.php';
   function api(a,body){var o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}; return fetch(API+'?a='+a+'&ep=ep2',o).then(function(r){return r.json()})}
-  api('state').then(function(d){ if(!d.ok)return; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A térkép így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
+  api('state').then(function(d){ if(!d.ok)return; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; var bl=[]; d.teams.forEach(function(t){if(t.client&&bl.indexOf(t.client)<0)bl.push(t.client)}); if(bl.length)brands(bl.sort(function(a,b){return a.localeCompare(b,'hu')})); else $('status').textContent='Még nincs bejegyzett csapat. Előbb a Csapat oldalon jegyezzétek be magatokat.'; }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A térkép így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
   $('send').addEventListener('click',function(){
     var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return} if(!S.brand){$('status').textContent='Válaszd ki a márkát.';return}
     var b=blocks(); if(!b.f3){$('status').textContent='A journey egy mondatban hiányzik, enélkül nem lehet beküldeni.';return}
