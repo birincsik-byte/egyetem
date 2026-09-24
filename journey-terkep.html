@@ -63,6 +63,10 @@ td.holed{background:rgba(242,201,76,.25)}
 .out b{display:block;font-family:var(--display);font-weight:500;margin-bottom:.3em}
 .out pre{white-space:pre-wrap;font-family:var(--body);font-size:.88em}
 .status{font-size:.9em;margin-top:.5em}
+.onebox{background:#fff;border-left:4px solid var(--cobalt);padding:.6em 1em;max-width:70ch;margin:-.2em 0 1.2em;font-size:.95em}
+.demobar{position:sticky;top:3.2em;z-index:9;background:var(--marker);padding:.6em 1em;border-radius:6px;margin-bottom:1em;display:flex;gap:1em;align-items:center;flex-wrap:wrap}
+.demobar[hidden]{display:none}
+@media print{.demobar{display:none!important}}
 .foot{margin-top:3em;font-size:.8em;color:var(--ink-soft)}
 @media (max-width:900px){.row,.out{grid-template-columns:1fr}}
 @media print{
@@ -86,8 +90,10 @@ td.holed{background:rgba(242,201,76,.25)}
 </div>
 
 <main>
+  <div class="demobar" id="demobar" hidden><b>Ez a minta, nem a ti térképetek.</b> Nézzétek meg, aztán vegyétek ki: a saját munkátok visszajön. <button class="btn solid" id="undemo">Minta kivétele</button></div>
   <h1>Az ügyfeletek vásárlójának útja</h1>
   <p class="lead">Sorok: amit a befogadó átél, amit a márka mond, és a csatornák. Oszlopok: a döntési fázisok a választott modell szerint. A csatornasorokban kattints egy cellára: egyszer másodlagos, kétszer fő csatorna, háromszor üres. Az 1. alkalmon választott márkát bontjátok tovább: nem kitaláljátok az útját, hanem leírjátok, amit megfigyeltek, a választott modell szerkezetében. Ez a térkép a 2. alkalom leadása. Hol és hogyan nézzétek meg: <a href="journey-tippek.html" target="_blank">megfigyelési útmutató</a>. A munka ebben a böngészőben mentődik, a végén a <span class="hl">Beküldés</span> gombbal adjátok le.</p>
+  <p class="onebox"><b>Egy csapat egy böngészőben javasolt dolgozni.</b> A térkép abban a böngészőben mentődik, ahol kitöltitek. Két gépen két külön térkép lesz, és a leadásba az kerül, amelyiket utoljára küldték be. Egy ember gépel, a többiek keresnek és diktálnak.</p>
 
   <div class="row">
     <div><label for="team">Ügynökség (csapat)</label><select id="team"><option value="">válaszd ki a csapatotokat</option></select></div>
@@ -132,7 +138,7 @@ td.holed{background:rgba(242,201,76,.25)}
     <div class="out" id="out" style="margin-top:1em"></div>
   </div>
 
-  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.7 · 2026. szeptember 24.</p>
+  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.9 · 2026. szeptember 24.</p>
 </main>
 
 <script>
@@ -225,21 +231,25 @@ td.holed{background:rgba(242,201,76,.25)}
 
   var API='api.php';
   function api(a,body){var o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}; return fetch(API+'?a='+a+'&ep=ep2',o).then(function(r){return r.json()})}
-  api('state').then(function(d){ if(!d.ok)return; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; var bl=[]; d.teams.forEach(function(t){if(t.client&&bl.indexOf(t.client)<0)bl.push(t.client)}); if(bl.length)brands(bl.sort(function(a,b){return a.localeCompare(b,'hu')})); else $('status').textContent='Még nincs bejegyzett csapat. Előbb a Csapat oldalon jegyezzétek be magatokat.'; }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A térkép így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
+  var SUBS={};
+  api('state').then(function(d){ if(!d.ok)return; SUBS=d.subs||{}; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; var bl=[]; d.teams.forEach(function(t){if(t.client&&bl.indexOf(t.client)<0)bl.push(t.client)}); if(bl.length)brands(bl.sort(function(a,b){return a.localeCompare(b,'hu')})); else $('status').textContent='Még nincs bejegyzett csapat. Előbb a Csapat oldalon jegyezzétek be magatokat.'; }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A térkép így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
   $('send').addEventListener('click',function(){
+    if(S.demo){$('status').textContent='Ez a minta. Előbb vegyétek ki, és a saját térképeteket küldjétek be.';return}
     var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return} if(!S.brand){$('status').textContent='Válaszd ki a márkát.';return}
     var b=blocks(); if(!b.f3){$('status').textContent='A journey egy mondatban hiányzik, enélkül nem lehet beküldeni.';return}
+    if(SUBS&&SUBS[tid]&&!confirm('Ennek a csapatnak már van beküldött térképe. Ez felülírja. Folytatod?'))return;
     b.team=tid; $('status').textContent='Küldés…';
-    api('submit',b).then(function(d){$('status').textContent=d.ok?'Beküldve. A szavazólistán a journey mondata látszik.':d.error}).catch(function(){$('status').textContent='Nem sikerült, a szerver nem válaszol.'});
+    api('submit',b).then(function(d){if(d.ok)SUBS[tid]=true; $('status').textContent=d.ok?'Beküldve. A szavazólistán a journey mondata látszik.':d.error}).catch(function(){$('status').textContent='Nem sikerült, a szerver nem válaszol.'});
   });
 
   $('print').addEventListener('click',function(){window.print()});
-  $('clear').addEventListener('click',function(){ if(!confirm('Új, üres térkép? A mostani tartalom törlődik ebből a böngészőből.'))return; var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; save(); fill(); $('out').innerHTML=''});
+  $('clear').addEventListener('click',function(){ if(!confirm('Új, üres térkép? A mostani tartalom törlődik ebből a böngészőből.'))return; var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; try{localStorage.removeItem(KEY+'-prev')}catch(e){} save(); fill(); demoUI(); $('out').innerHTML=''});
 
   /* minta: a deck demójának nyelviskolája, kitalált */
   $('demo').addEventListener('click',function(){
-    if((S.sentence||Object.keys(S.cells).length)&&!confirm('A minta felülírja a mostani térképet. Folytatod?'))return;
-    var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; S.model='stdc'; S.seq='tanul · érez · tesz';
+    if(S.demo)return;
+    try{localStorage.setItem(KEY+'-prev',JSON.stringify(S))}catch(e){}
+    var tm=S.team,br=S.brand; S=blank(); S.demo=true; S.team=tm; S.brand=br; S.model='stdc'; S.seq='tanul · érez · tesz';
     S.why='A nyelvtanulás drága és hosszú vállalás, a vevő előbb tájékozódik, aztán kialakul benne a bizalom, és csak utána iratkozik be; a See-Think-Do-Care a szándékot követi, ezért ide jobban illik, mint egy lineáris modell.';
     S.sentence='Anna, aki egy év múlva külföldre költözik, egy hasznos videótól a próbaóráig jut; az út a próbaóra és a beiratkozás között dől el.';
     var c=S.cells, m='stdc|';
@@ -256,8 +266,17 @@ td.holed{background:rgba(242,201,76,.25)}
     S.gap='A Do fázisban a próbaóra után a márka nem mond semmit: a döntést a véleményoldalak és az ismerősök hozzák meg helyette.';
     S.missing='A próbaóra és a beiratkozás között nincs egyetlen üzenet sem.';
     S.evidence='A minta kitalált, bizonyíték nincs mögötte. A valódi térképnél ide jön a poszt, az oldal, a hirdetés vagy a vélemény.';
-    save(); fill();
+    save(); fill(); demoUI();
   });
+  function demoUI(){$('demobar').hidden=!S.demo; $('demo').disabled=!!S.demo;}
+  $('undemo').addEventListener('click',function(){
+    var prev=null; try{prev=JSON.parse(localStorage.getItem(KEY+'-prev')||'null')}catch(e){}
+    var tm=S.team,br=S.brand; S=blank(); if(prev){for(var k in prev)S[k]=prev[k]} S.demo=false; S.team=tm; S.brand=br;
+    try{localStorage.removeItem(KEY+'-prev')}catch(e){}
+    save(); fill(); demoUI(); $('out').innerHTML='';
+  });
+  demoUI();
+  window.addEventListener('storage',function(e){ if(e.key!==KEY||!e.newValue)return; try{var o=JSON.parse(e.newValue); S=blank(); for(var k in o)S[k]=o[k]; fill(); demoUI(); $('status').textContent='A térkép egy másik fülön módosult, betöltöttem a friss állapotot.'}catch(x){} });
 
   fill();
 })();
