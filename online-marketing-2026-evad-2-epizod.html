@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Online marketing · Hogyan dönt az ember · 2. alkalom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F6F1;
+  --ink:#1B1F3A;
+  --ink-soft:#5A5E78;
+  --line:#D9D7CE;
+  --cobalt:#1E4BD8;
+  --marker:#F2C94C;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:clamp(17px,1.35vw,24px);line-height:1.45;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* season strip: the one persistent element */
+.strip{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:stretch;border-bottom:1px solid var(--line);background:var(--paper);z-index:20}
+.strip a{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 14px;text-decoration:none;color:var(--ink-soft);border-right:1px solid var(--line);font-size:.62em;line-height:1.2;transition:background .2s}
+.strip a:last-child{border-right:0}
+.strip a b{font-family:var(--display);font-weight:500;font-size:1.25em;color:var(--ink)}
+.strip a.on{background:var(--marker);color:var(--ink)}
+.strip a.dim b{color:var(--ink-soft)}
+.strip a:focus-visible{outline:3px solid var(--cobalt);outline-offset:-3px}
+
+/* slides */
+.deck{position:absolute;top:64px;bottom:0;left:0;right:0}
+.slide{position:absolute;inset:0;padding:6vh 8vw 10vh;display:none;overflow-y:auto;flex-direction:column;justify-content:center;max-width:1400px;margin:0 auto}
+.slide.cur{display:flex}
+.kicker{font-size:.8em;color:var(--ink-soft);margin-bottom:.9em}
+h1{font-family:var(--display);font-weight:300;font-size:3.6em;line-height:1.02;letter-spacing:-.01em;margin-bottom:.35em}
+h2{font-family:var(--display);font-weight:500;font-size:2.2em;line-height:1.1;margin-bottom:.6em;max-width:20ch}
+h3{font-family:var(--display);font-weight:500;font-size:1.35em;margin-bottom:.35em}
+p{max-width:62ch}
+p+p{margin-top:.8em}
+.lead{font-size:1.25em;max-width:48ch}
+.quote{font-family:var(--display);font-weight:300;font-size:1.5em;line-height:1.3;max-width:34ch;margin:.4em 0}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55%);padding:0 .1em}
+.muted{color:var(--ink-soft)}
+.small{font-size:.8em}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:3vw}
+.rule{border:0;border-top:1px solid var(--line);margin:1.2em 0}
+
+/* build steps */
+.step{opacity:.18;transition:opacity .25s}
+.step.in{opacity:1}
+.hint{position:fixed;left:8vw;bottom:3.4vh;font-size:.65em;color:var(--ink-soft)}
+.pager{position:fixed;right:8vw;bottom:3.4vh;font-size:.65em;color:var(--ink-soft);display:flex;gap:1.5em;align-items:center}
+.pager button{padding:.2em .6em;border:1px solid var(--line);border-radius:4px}
+.pager button:focus-visible{outline:3px solid var(--cobalt)}
+
+/* chain of questions */
+.chain{list-style:none;counter-reset:q;max-width:56ch}
+.chain li{display:grid;grid-template-columns:2.2em 1fr;gap:.6em;padding:.45em 0;border-bottom:1px solid var(--line);align-items:baseline}
+.chain li::before{counter-increment:q;content:counter(q) ".";font-family:var(--display);font-weight:500;color:var(--cobalt)}
+.chain li>div{min-width:0}
+.chain li span{font-size:.75em;color:var(--ink-soft);display:block;margin-top:.15em}
+
+/* episode cards */
+.season{display:grid;grid-template-columns:repeat(7,1fr);gap:.8vw;align-items:start}
+.ep{border-top:3px solid var(--line);padding-top:.6em;font-size:.72em;line-height:1.3}
+.ep b{display:block;font-family:var(--display);font-weight:500;font-size:1.45em;line-height:1.1;margin:.15em 0 .3em}
+.ep .d{color:var(--ink-soft)}
+.ep.now{border-top-color:var(--cobalt)}
+.ep.now b{color:var(--cobalt)}
+.ep .q{margin-top:.5em;display:block}
+.ep .p{display:block;margin-top:.5em;color:var(--cobalt);font-size:.9em}
+
+/* arc table */
+table{border-collapse:collapse;width:100%;font-size:.78em;table-layout:auto}
+table.vp td:first-child{white-space:normal;font-family:var(--body);font-weight:400}
+table.vp{font-size:.85em}
+th,td{text-align:left;vertical-align:top;padding:.45em .7em .45em 0;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--ink-soft);font-size:.9em}
+td:first-child{font-family:var(--display);font-weight:500;white-space:nowrap}
+tr.now td{background:var(--marker)}
+
+/* triad */
+.triad{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3vw;margin-top:1em}
+.triad div{border-top:3px solid var(--cobalt);padding-top:.8em}
+.triad h3{color:var(--cobalt)}
+
+/* day rhythm */
+.blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;margin-top:.8em;font-size:.8em}
+.blocks div{border:1px solid var(--line);padding:.9em;border-radius:6px;min-height:9em}
+.blocks b{display:block;font-family:var(--display);font-weight:500;font-size:1.25em;margin-bottom:.35em}
+.slot{display:inline-block;margin-top:.7em;padding:.15em .55em;border:1px dashed var(--cobalt);color:var(--cobalt);border-radius:4px;font-size:.85em}
+
+/* task box */
+.task{border-left:4px solid var(--marker);padding:.6em 1.2em;max-width:60ch;font-size:1.05em}
+.task ul{margin:.4em 0 0 1.2em}
+
+/* presenter notes overlay */
+.notes{position:fixed;inset:64px 0 0 0;background:rgba(27,31,58,.96);color:#F7F6F1;padding:5vh 8vw;overflow:auto;display:none;z-index:30;font-size:.9em}
+.notes.open{display:block}
+.notes h4{font-family:var(--display);font-weight:500;font-size:1.4em;margin-bottom:.6em}
+.notes p{max-width:70ch}
+.notes .tag{display:inline-block;font-size:.75em;padding:.1em .5em;border:1px solid rgba(255,255,255,.4);border-radius:4px;margin-bottom:1em}
+.notes .tag.fact{border-color:var(--marker);color:var(--marker)}
+.notes .tag.mine{border-color:#8FA9FF;color:#8FA9FF}
+.notes .hj{margin-top:1.4em;padding-top:1em;border-top:1px solid rgba(255,255,255,.25);max-width:70ch}
+.notes .hj h5{font-family:var(--display);font-weight:500;font-size:1.05em;color:var(--marker);margin-bottom:.6em}
+.notes .hj p{margin-bottom:.7em;line-height:1.5}
+.cloudwrap{margin-top:.5em}
+.cloud{min-height:34vh;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.25em .7em;padding:1em;border:1px dashed var(--line);border-radius:8px;font-family:var(--display);line-height:1.05}
+.cloud span{display:inline-block;padding:.05em .15em;transition:font-size .25s}
+.cloud span.big{color:var(--cobalt)}
+.cloud .empty{font-family:var(--body);color:var(--ink-soft);font-size:.8em}
+.cloudform{display:flex;gap:.6em;margin-top:.8em;align-items:center}
+.cloudform input{font:inherit;padding:.4em .7em;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);min-width:16em}
+.cloudform input:focus-visible{outline:3px solid var(--cobalt)}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,.blocks>div,.ep,.task),body.rev .notes .hj p,body.rev .notes h4{outline:1px dashed rgba(30,75,216,.35);outline-offset:2px;cursor:text}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,.blocks>div,.ep,.task):hover,body.rev .notes .hj p:hover{background:rgba(242,201,76,.35)}
+body.rev .rev-marked{border-left:4px solid var(--cobalt);padding-left:.5em;margin-left:-.5em}
+.revbar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#F7F6F1;padding:.6em 8vw;font-size:.8em;display:none;z-index:40;align-items:center;gap:1em}
+body.rev .revbar{display:flex}
+.revbar button{border:1px solid rgba(255,255,255,.4);color:#F7F6F1;padding:.2em .7em;border-radius:4px}
+.revbox{position:fixed;z-index:41;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.8em;width:min(34em,90vw);box-shadow:0 8px 30px rgba(0,0,0,.2);display:none}
+.revbox.open{display:block}
+.revbox .orig{font-size:.8em;color:var(--ink-soft);max-height:6em;overflow:auto;margin-bottom:.5em;border-left:3px solid var(--marker);padding-left:.6em}
+.revbox textarea{width:100%;min-height:5em;font:inherit;font-size:.9em;padding:.4em;border:1px solid var(--line);border-radius:4px}
+.revbox .row{display:flex;gap:.5em;margin-top:.5em}
+.revbox .row button{border:1px solid var(--cobalt);color:var(--cobalt);padding:.3em .8em;border-radius:4px}
+.revout{position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:42;padding:4vh 8vw;display:none;overflow:auto}
+.revout.open{display:block}
+.revout textarea{width:100%;height:60vh;font:inherit;font-size:.85em;padding:.8em;border:1px solid var(--line);border-radius:6px}
+.notes .hj .src{font-size:.85em;color:#B9BCD6}
+.notes .src.top{font-size:.85em;color:var(--marker);margin-bottom:.4em}
+.notes .hj{margin-top:.6em;border-top:0;padding-top:0}
+.btn{padding:.35em .9em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;font-size:.85em}
+.btn:focus-visible{outline:3px solid var(--cobalt);outline-offset:2px}
+.sheet{position:fixed;inset:64px 0 0 0;background:var(--paper);color:var(--ink);overflow:auto;display:none;z-index:31;padding:5vh 8vw 8vh}
+.sheet.open{display:block}
+.sheet .inner{max-width:72ch;font-size:.9em}
+.sheet h2{font-size:1.9em}
+.sheet h3{margin-top:1.4em;color:var(--cobalt)}
+.sheet p{margin-bottom:.7em;line-height:1.5}
+.sheet .blk{border-left:3px solid var(--line);padding:.2em 1em;margin:.8em 0}
+.sheet .blk b{display:block;margin-bottom:.2em}
+.sheet .close{position:fixed;top:80px;right:8vw;z-index:32}
+.sheet .fill{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1.2em 1.6em;margin-top:1em}
+.sheet .mark{background:linear-gradient(transparent 55%,var(--marker) 55%)}
+
+
+/* 2. alkalom: a szemlélet-váltások és a lánc aktuális eleme */
+.shift{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw;font-size:.78em;margin-top:.6em}
+.shift div{display:grid;grid-template-columns:1fr 1.4em 1fr;gap:.3em;padding:.4em 0;border-bottom:1px solid var(--line);align-items:baseline}
+.shift .f{color:var(--ink-soft)}
+.shift .a{color:var(--cobalt);text-align:center}
+.shift .t{font-family:var(--display);font-weight:500}
+.shift div.key .t{background:linear-gradient(transparent 55%,var(--marker) 55%)}
+.chain li.done div{color:var(--ink-soft)}
+.chain li.now div{font-weight:600;color:var(--cobalt)}
+.imper{font-family:var(--display);font-weight:500;font-size:1.6em;line-height:1.2;margin:.1em 0}
+.imper span{color:var(--ink-soft);font-weight:300}
+@media (max-width:900px){.shift{grid-template-columns:1fr}}
+.shift2{display:grid;grid-template-columns:1fr;gap:0;font-size:.82em;margin-top:.4em;max-width:64em}
+.shift2 .srow{display:grid;grid-template-columns:13em 1.4em 13em 1fr;gap:.5em;padding:.5em 0;border-bottom:1px solid var(--line);align-items:baseline}
+.shift2 .f{color:var(--ink-soft)}
+.shift2 .a{color:var(--cobalt);text-align:center}
+.shift2 .t{font-family:var(--display);font-weight:500}
+.shift2 .hu{font-size:.92em}
+@media (max-width:900px){.shift2 .srow{grid-template-columns:1fr 1.4em 1fr}.shift2 .hu{grid-column:1/-1}}
+table.mx{font-size:.7em;max-width:52em}
+table.mx td,table.mx th{padding:.28em .6em .28em 0}
+table.mx th small{display:block;font-weight:400;color:var(--ink-soft);font-size:.85em}
+table.mx .c{text-align:center;width:7em}
+.dot2{color:var(--cobalt)}.dot1{color:var(--cobalt);opacity:.7}
+
+
+@media (max-width:900px){
+  .strip a span{display:none}
+  .slide{padding:4vh 6vw 12vh}
+  h1{font-size:2.4em}h2{font-size:1.6em}
+  .cols,.cols3,.triad,.blocks{grid-template-columns:1fr}
+  .season{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="strip" aria-label="Évad">
+  <a href="#" data-go="0" data-sec="keret"><b>Évad</b><span>a keret</span></a>
+  <a href="#" data-go="1"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
+  <a href="#" data-go="4" data-sec="ep2"><b>2</b><span>Hogyan dönt az ember · 09. 28.</span></a>
+  <a href="#" data-go="1" class="dim"><b>3</b><span>A saját terep · 10. 12.</span></a>
+  <a href="#" data-go="1" class="dim"><b>4</b><span>A csatornák nyelve · 11. 02.</span></a>
+  <a href="#" data-go="1" class="dim"><b>5</b><span>Mennyiért · 11. 09.</span></a>
+  <a href="#" data-go="1" class="dim"><b>6</b><span>Mit mutat a valóság · 11. 23.</span></a>
+  <a href="#" data-go="1" class="dim"><b>7</b><span>Hogyan dolgozik egy marketinges · 12. 07.</span></a>
+</nav>
+
+<main class="deck">
+
+<!-- k1 -->
+<section class="slide cur" data-notes="k1">
+  <p class="kicker">Pannon Egyetem · Online marketing · 2026 őszi félév</p>
+  <h1>Hol tartunk.</h1>
+  <p class="lead">Hét alkalom, egyetlen döntési lánc. Az első kérdésre már van válaszotok. Ma a második jön.</p>
+  <p class="muted small" style="margin-top:2em">2026. szeptember 28.</p>
+</section>
+
+<!-- k2 -->
+<section class="slide" data-notes="k2" data-sec="keret">
+  <p class="kicker">A gondolati ív</p>
+  <div class="cols">
+    <div>
+      <h2>A lánc, és hol tartunk rajta</h2>
+      <p>Minden alkalom egy kérdésre válaszol, és a válasz egy döntéselem, amit a következő alkalom felhasznál.</p>
+    </div>
+    <ol class="chain">
+      <li class="done"><div>Kinek és mit mondunk<span>1. Kinek és mit · leadva</span></div></li>
+      <li class="now"><div>Mikor mondjuk<span>2. Hogyan dönt az ember · ma</span></div></li>
+      <li><div>Hol fogadjuk, amikor megérkezik hozzánk<span>3. A saját terep</span></div></li>
+      <li><div>Milyen lehetőségeink vannak elérni a vevőt<span>4. A csatornák nyelve</span></div></li>
+      <li><div>Mennyiért, mit bérlünk és mit építünk<span>5. Mennyiért</span></div></li>
+      <li><div>Miből tudjuk meg, hogy működött<span>6. Mit mutat a valóság</span></div></li>
+      <li><div>Kikkel csináljuk<span>7. Hogyan dolgozik egy marketinges</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- k3 -->
+<section class="slide" data-notes="k3" data-sec="keret">
+  <p class="kicker">Mit tesz hozzá minden alkalom a végcélhoz</p>
+  <table>
+    <thead><tr><th>Alkalom</th><th>Mit hoz magával</th><th>Mire vált</th><th>Mit tesz hozzá</th></tr></thead>
+    <tbody>
+      <tr><td>1. Kinek és mit</td><td>Az a jó, ami nekem tetszik.</td><td>Az a jó, ami valakinek pont megoldás.</td><td>A döntés első eleme: a kiválasztás, ami egyben kizárás.</td></tr>
+      <tr class="now"><td>2. Hogyan dönt az ember</td><td>Mondd el, amit akarsz.</td><td>Mondd el akkor, amikor számít.</td><td>Az időzítés bekerül a döntésbe, mert a folyamat nem egyetlen pillanat.</td></tr>
+      <tr><td>3. A saját terep</td><td>Bizalom és meggyőzés.</td><td>Akadályok megszűntetése, percepció kialakítás a márkáról.</td><td>A felelősség átkerül a másik emberről a saját felületünkre.</td></tr>
+      <tr><td>4. Elérés</td><td>Ott legyünk, ahol a vevő.</td><td>Ott legyünk, ahol a szándék van, és úgy beszéljünk, ahogy ott beszélnek.</td><td>A platformválasztás megszűnik ízlés lenni, és döntési szemponttá válik.</td></tr>
+      <tr><td>5. Mennyiért</td><td>Mennyibe kerül.</td><td>Mi hogyan éri meg?</td><td>A pénz felosztása maga is állásfoglalás, tehát indokolni kell.</td></tr>
+      <tr><td>6. Mit mutat a valóság</td><td>Működött vagy nem működött.</td><td>Hol szakad a lánc.</td><td>A hallgató megtanulja ellenőrizni, és a saját döntését is megcáfolni.</td></tr>
+      <tr><td>7. Hogyan dolgozik egy marketinges</td><td>Jó ötletem van.</td><td>El tudom mondani, meg tudom védeni, és el tudom engedni.</td><td>A döntés kikerül a fejéből, és mások előtt is megáll.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- k4 -->
+<section class="slide" data-notes="k4">
+  <p class="kicker">Visszamutatás · az 1. beadandó</p>
+  <h2>Múlt héten egy mondatot írtatok.</h2>
+  <p class="quote">A(z) [ügyfél] [kinek] szól, [mi helyett] választják, és az értékajánlata: [értékajánlat].</p>
+  <p class="step" style="margin-top:1em">Ez a mondat megmondja, kinek és mit. Azt nem mondja meg, mikor. Ma ebből a mondatból indultok, nem nulláról.</p>
+  <p class="step" style="margin-top:1em"><a class="btn" href="app.html?ep=ep1&amp;v=eredmeny" target="_blank">Az 1. alkalom eredménye</a></p>
+</section>
+
+<!-- e1 -->
+<section class="slide" data-notes="e1">
+  <p class="kicker">2026. szeptember 28.</p>
+  <h1>Hogyan dönt az ember?</h1>
+  <p class="lead">Mikor mondjuk. Mert nem biztos, hogy éppen akkor vásárol, amikor mi megszólítjuk.</p>
+  <hr class="rule">
+  <p class="small muted">A tematikából: Elméleti keretrendszerek: user/decision journey, tölcsérmodell (See-Think-Do-Care, Kotler 5A).</p>
+</section>
+
+<!-- e2 -->
+<section class="slide" data-notes="e2">
+  <p class="kicker">A nap ritmusa · 4 × 45 perc</p>
+  <h2>Így épül fel a mai alkalom</h2>
+  <div class="blocks">
+    <div><b>1. blokk</b>Visszamutatás a láncra. A saját legutóbbi vásárlásod, papíron. Szemlélet: miben változott meg a szakma.</div>
+    <div><b>2. blokk</b>Elmélet. A döntés mint folyamat, a sorrend, és miért nem a vásárló útja a tölcsér. Három journey.</div>
+    <div><b>3. blokk</b>Elmélet folytatás: a modellek, See-Think-Do-Care, Kotler 5A, ROPO, egy tölcsér számokban. Summázás és a feladat kiadása.</div>
+    <div><b>4. blokk</b>Csapatmunka az ügyfélre, 30 perc: journey-térkép. Csapatmunka-szavazás és zárás, 15 perc.</div>
+  </div>
+  <p class="small muted" style="margin-top:1em">Ugyanaz a ritmus, mint múlt héten: visszamutatás, elmélet, summázás és feladat, csapatmunka, zárás.</p>
+</section>
+
+<!-- e3 -->
+<section class="slide" data-notes="e3">
+  <p class="kicker">Hogyan dönt az ember?</p>
+  <div class="triad">
+    <div class="step"><h3>Miről szól</h3><p>User journey, See-Think-Do-Care, Kotler 5A.</p></div>
+    <div class="step"><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.2em">Az ember nem akkor vásárol, amikor te hirdetsz.</p></div>
+    <div class="step"><h3>Tanulság</h3><p>A tölcsér nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor. A rossz üzenet legtöbbször jó üzenet rossz időben.</p></div>
+  </div>
+</section>
+
+<!-- e4 -->
+<section class="slide" data-notes="e4">
+  <p class="kicker">Egyéni feladat · 5 perc · írásban, magadnak</p>
+  <h2>Hogyan vetted meg az utolsó, tízezer forint feletti dolgot?</h2>
+  <ol class="chain">
+    <li class="step"><div>Hol láttad először?</div></li>
+    <li class="step"><div>Hány eszközön nézted meg?</div></li>
+    <li class="step"><div>Hány nap telt el az elsőtől a vásárlásig?</div></li>
+    <li class="step"><div>Kit kérdeztél meg?</div></li>
+  </ol>
+</section>
+
+<!-- e5 -->
+<section class="slide" data-notes="e5">
+  <p class="kicker">Szemlélet · mielőtt modellekről beszélünk</p>
+  <h1>We are in a big shift.</h1>
+  <p class="small muted">trend: general direction in which something is developing or changing</p>
+  <hr class="rule">
+  <p class="small muted" style="margin-bottom:.4em">But before anything:</p>
+  <p class="imper step">Think <span>and not just</span> do</p>
+  <p class="imper step">Collaborate <span>not just</span> create</p>
+  <p class="imper step">Reframe <span>not just</span> review</p>
+  <p class="small muted step" style="margin-top:.6em">design thinking</p>
+</section>
+
+<!-- e6 -->
+<section class="slide" data-notes="e6">
+  <p class="kicker">Szemlélet · a big shift lényege</p>
+  <h2>Megfordítjuk a nézőpontot.</h2>
+  <div class="cols" style="margin-top:.6em">
+    <div class="step"><h3 class="muted">Honnan</h3><p class="quote">Mi beszélünk. Azt nézzük, mit mondunk, mit mutatunk, mit ajánlunk.</p></div>
+    <div class="step"><h3 style="color:var(--cobalt)">Hova</h3><p class="quote">Ő érzékel. Azt nézzük, hogyan érzékeli, hogyan érzi a befogadó.</p></div>
+  </div>
+  <p class="small muted step" style="margin-top:1.2em">Tizennégy elmozdulás, három csoportban: kivel beszélünk, mit adunk, mit érzékel. Mindegyiknél a jobb oldal a befogadó oldala.</p>
+</section>
+
+<!-- e6a -->
+<section class="slide" data-notes="e6a">
+  <p class="kicker">Szemlélet · 1. kivel beszélünk</p>
+  <h2>Embereket látunk, nem közönséget.</h2>
+  <div class="shift2">
+    <div class="srow step"><span class="f">just portraying consumers</span><span class="a">→</span><span class="t"><span class="hl">building dialogues with people</span></span><span class="hu">Nem bemutatod őt, hanem beszélgetsz vele. Nem szereplő a hirdetésedben, hanem a beszélgetés másik fele.</span></div>
+    <div class="srow step"><span class="f">“talk about” them</span><span class="a">→</span><span class="t"><span class="hl">“talk to” them</span></span><span class="hu">Nem róla beszélsz, hanem hozzá. Azt érzi, hogy megszólították, nem azt, hogy leírták.</span></div>
+    <div class="srow step"><span class="f">general public</span><span class="a">→</span><span class="t"><span class="hl">diverse group of people</span></span><span class="hu">Nincs nagyközönség. Különböző emberek vannak, különböző helyzetben.</span></div>
+    <div class="srow step"><span class="f">“cliches”</span><span class="a">→</span><span class="t"><span class="hl">“representation”</span></span><span class="hu">Ha kliséket lát, nem ismer magára. Ha magát látja, igen.</span></div>
+    <div class="srow step"><span class="f">something to everyone</span><span class="a">→</span><span class="t"><span class="hl">everything to someone</span></span><span class="hu">Valami mindenkinek helyett minden valakinek. Ezt már az 1. alkalmon kimondtuk.</span></div>
+  </div>
+</section>
+
+<!-- e6b -->
+<section class="slide" data-notes="e6b">
+  <p class="kicker">Szemlélet · 2. mit adunk</p>
+  <h2>Nem ajánlatot adunk, hanem helyet.</h2>
+  <div class="shift2">
+    <div class="srow step"><span class="f">“offers”</span><span class="a">→</span><span class="t"><span class="hl">“promise”</span></span><span class="hu">Az ajánlat egy tranzakció. Az ígéret az, amit ő úgy érez, hogy a márka vállal neki.</span></div>
+    <div class="srow step"><span class="f">prize</span><span class="a">→</span><span class="t"><span class="hl">participation</span></span><span class="hu">Nem nyereményt vár, hanem hogy részese lehessen.</span></div>
+    <div class="srow step"><span class="f">“reward”</span><span class="a">→</span><span class="t"><span class="hl">“access”</span></span><span class="hu">Nem jutalmat akar, hanem hozzáférést: hogy bent legyen.</span></div>
+    <div class="srow step"><span class="f">just what is in it for me</span><span class="a">→</span><span class="t"><span class="hl">where am I in it</span></span><span class="hu">Nem az a kérdése, mit kap, hanem hogy hol van ő ebben a történetben.</span></div>
+    <div class="srow step"><span class="f">“wants”</span><span class="a">→</span><span class="t"><span class="hl">“needs”</span></span><span class="hu">Amit kimond, az a kívánság. Ami mögötte van, az a szükséglet.</span></div>
+  </div>
+</section>
+
+<!-- e6c -->
+<section class="slide" data-notes="e6c">
+  <p class="kicker">Szemlélet · 3. mit érzékel</p>
+  <h2>Nem az számít, amit mondunk, hanem amit átél.</h2>
+  <div class="shift2">
+    <div class="srow step"><span class="f">what they say</span><span class="a">→</span><span class="t"><span class="hl">how they feel</span></span><span class="hu">Nem az számít, mit mond, hanem hogy mit érez. Ezt írjátok a térkép minden fázisához.</span></div>
+    <div class="srow step"><span class="f">what</span><span class="a">→</span><span class="t"><span class="hl">why</span></span><span class="hu">Nem az, hogy mit csinálsz, hanem hogy miért számít neki.</span></div>
+    <div class="srow step"><span class="f">“what you see”</span><span class="a">→</span><span class="t"><span class="hl">“what you don't see”</span></span><span class="hu">A lényeg a felszín alatt van: a félelem, a vágy, a kimondatlan.</span></div>
+    <div class="srow step"><span class="f">“relevance”</span><span class="a">→</span><span class="t"><span class="hl">“remarkable”</span></span><span class="hu">Relevánsnak lenni belépő. Emlékezetesnek lenni az, amiért beszélni fog rólad.</span></div>
+  </div>
+</section>
+
+<!-- e7 -->
+<section class="slide" data-notes="e7">
+  <p class="kicker">A döntés mint folyamat</p>
+  <h2>A vásárlás jóval a vásárlás előtt kezdődik.</h2>
+  <ol class="chain">
+    <li class="step"><div>Problémafelismerés<span>belső vagy külső inger: éhség, egy barát új autója, egy hirdetés</span></div></li>
+    <li class="step"><div>Információkeresés<span>előbb csak fogékonyabb leszel, aztán aktívan keresel</span></div></li>
+    <li class="step"><div>Alternatívák értékelése<span>a márkák körei: amit ismersz, amit mérlegelsz, amiből választasz</span></div></li>
+    <li class="step"><div>Vásárlási döntés<span>öt al-döntés: márka, kereskedő, mennyiség, időzítés, fizetési mód</span></div></li>
+    <li class="step"><div>Vásárlás utáni viselkedés<span>megerősítést keresel, elégedett vagy csalódott, ajánlasz vagy lebeszélsz</span></div></li>
+  </ol>
+  <p class="small muted step" style="margin-top:1em">Nem mindenki megy végig mind az ötön: a megszokott fogkrémnél a szükségletből egyenesen a vásárlásba lépsz. És azt veszed észre, ami egy épp aktuális szükséglethez kapcsolódik. <span>Kotler, Keller: Marketing Management, 6. fejezet</span></p>
+</section>
+
+<!-- e8 -->
+<section class="slide" data-notes="e8">
+  <p class="kicker">A sorrend</p>
+  <h2>Nem egy sorrend van.</h2>
+  <table class="step">
+    <tr><th>Sorrend</th><th>Mikor</th><th>Példa</th></tr>
+    <tr><td>tanul · érez · tesz</td><td>erős bevonódás, a márkák láthatóan különböznek</td><td>autó, ház</td></tr>
+    <tr><td>tesz · érez · tanul</td><td>erős bevonódás, a márkák egyformának tűnnek</td><td>repülőjegy, számítógép</td></tr>
+    <tr><td>tanul · tesz · érez</td><td>alacsony bevonódás, nincs érzékelt különbség</td><td>só, elem</td></tr>
+  </table>
+  <p class="quote step" style="margin-top:.8em">„By choosing the right sequence, the marketer can do a better job of planning communications.”</p>
+  <p class="small muted">Kotler, Keller: Marketing Management, 17. fejezet (The Communications Process Models). Learn-feel-do, do-feel-learn, learn-do-feel.</p>
+</section>
+
+<!-- e9 -->
+<section class="slide" data-notes="e9">
+  <p class="kicker">A tölcsér</p>
+  <h2>A tölcsér nem a vásárló útja.</h2>
+  <p class="lead step">A tölcsér szűkül. A valóság nem: a mérlegelt márkák száma a folyamat közben nő.</p>
+  <table class="step" style="margin-top:.8em;max-width:36em">
+    <tr><th></th><th>Induláskor</th><th>Döntés előtt</th></tr>
+    <tr><td>Számítógép</td><td>1,7 márka</td><td>2,7 márka</td></tr>
+    <tr><td>Autó</td><td>3,8 márka</td><td>6,0 márka</td></tr>
+  </table>
+  <p class="small muted step" style="margin-top:1em">Aki az elején nincs a listán, még bekerülhet. Aki rajta van, még kieshet. <span>Court et al.: The Consumer Decision Journey, McKinsey Quarterly, 2009; idézi Chaffey, Ellis-Chadwick: Digital Marketing, 2. fejezet</span></p>
+</section>
+
+<!-- e10 -->
+<section class="slide" data-notes="e10">
+  <p class="kicker">User és decision journey</p>
+  <h2>Három szó, amit rendszerint összekevernek</h2>
+  <div class="cols3">
+    <div class="step"><h3>Customer journey</h3><p>A teljes út a márkával, az első találkozástól az ajánlásig. Online és offline kontaktpontok sora.</p></div>
+    <div class="step"><h3>Decision journey</h3><p>Csak a döntés: hogyan szűkül és tágul a mérlegelt márkák köre. Márkaválasztásról szól.</p></div>
+    <div class="step"><h3>User journey</h3><p>Útvonal egy felületen belül, feladatonként. Nem márkáról szól, hanem használatról.</p></div>
+  </div>
+  <hr class="rule">
+  <p class="step"><b>Vevő ≠ használó.</b> A gyerekjátékot a szülő veszi. A könyvelőprogramot a tulaj fizeti, a könyvelő használja. Ahány szerep, annyi térkép.</p>
+  <p class="small muted">Chaffey, Ellis-Chadwick: Digital Marketing, 1. és 2. fejezet (customer journey, customer journey map, personas, customer scenarios)</p>
+</section>
+
+<!-- e11 -->
+<section class="slide" data-notes="e11">
+  <p class="kicker">A modellek</p>
+  <h2>Ugyanazt akarják leírni. Mindegyik azért változott, mert a valóság nem fért bele.</h2>
+  <table style="font-size:.72em">
+    <tr><th>Modell</th><th>Honnan</th><th>Szakaszok</th></tr>
+    <tr class="step"><td>AIDA</td><td>Strong, 1925</td><td>Attention · Interest · Desire · Action</td></tr>
+    <tr class="step"><td>Hierarchy of Effects</td><td>Lavidge, Steiner, 1961</td><td>Awareness · Knowledge · Liking · Preference · Conviction · Purchase</td></tr>
+    <tr class="step"><td>4A</td><td>Derek Rucker, Kellogg School of Management</td><td>Aware · Attitude · Act · Act again</td></tr>
+    <tr class="step"><td>5A</td><td>Kotler, Kartajaya, Setiawan, 2017</td><td>Aware · Appeal · Ask · Act · Advocate</td></tr>
+    <tr class="step"><td>See-Think-Do-Care</td><td>Avinash Kaushik</td><td>See · Think · Do · Care</td></tr>
+    <tr class="step"><td>RACE</td><td>Smart Insights, 2010</td><td>Reach · Act · Convert · Engage</td></tr>
+  </table>
+  <p class="small muted" style="margin-top:.8em">Kotler, Keller: Marketing Management, 17. fejezet (17.2 ábra); Kotler, Kartajaya, Setiawan: Marketing 4.0, 5. fejezet; Kaushik: Occam's Razor blog; Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet</p>
+</section>
+
+<!-- e12 -->
+<section class="slide" data-notes="e12">
+  <p class="kicker">See-Think-Do-Care</p>
+  <h2>Nem szakaszok. Szándékok.</h2>
+  <table style="font-size:.74em">
+    <tr><th>Kör</th><th>Kik ők</th><th>Mit mondasz nekik</th><th>Mit mérsz</th></tr>
+    <tr class="step"><td>See</td><td>„all people who wear clothes”<br><span class="muted">vásárlási szándék nincs</span></td><td>széles, márkaépítő, hasznos vagy szórakoztató</td><td>interakció, ismertség, új látogató</td></tr>
+    <tr class="step"><td>Think</td><td>„… who think they might need some”<br><span class="muted">gyenge szándék</span></td><td>a márka értéke, összehasonlítás, első bevonás</td><td>átkattintás, oldalmélység, segített konverzió</td></tr>
+    <tr class="step"><td>Do</td><td>„… and are currently looking to buy them”<br><span class="muted">erős szándék, közel a vásárláshoz</span></td><td>fókuszált ajánlat, vásárlás</td><td>konverziós arány, költség per szerzés</td></tr>
+    <tr class="step"><td>Care</td><td>„Not just people who've purchased once, but multiple times.”</td><td>hasznos tartalom a vevőnek, közösség</td><td>ismételt vásárlás, élettartam-érték</td></tr>
+  </table>
+  <p class="quote step" style="margin-top:.6em;font-size:1.25em">„It is horrible marketing to do a BUY FROM ME NOW campaign to See stage customers. It is also rude.”</p>
+  <p class="small muted">Avinash Kaushik: See-Think-Do, és See, Think, Do, Care Winning Combo, Occam's Razor blog</p>
+</section>
+
+<!-- e12b -->
+<section class="slide" data-notes="e12b">
+  <p class="kicker">See-Think-Do-Care a gyakorlatban</p>
+  <h2>Melyik körrel hol találkozol</h2>
+  <table style="font-size:.74em">
+    <tr><th>Kör</th><th>Hol éred el</th><th>Milyen hirdetés, tartalom</th><th>Hova visz</th></tr>
+    <tr class="step"><td>See</td><td>YouTube, Facebook, Instagram, TikTok, display a tartalmi oldalakon</td><td>széles kreatív, érdeklődés és demográfia szerinti célzás, nincs ajánlat</td><td>a márka saját tartalmához, követéshez</td></tr>
+    <tr class="step"><td>Think</td><td>keresés általános kérdésekre, display, YouTube, hírlevél-feliratkozás</td><td>szűkebb kreatív, összehasonlítás, útmutató, a márka értéke</td><td>blogcikkhez, útmutatóhoz, feliratkozáshoz</td></tr>
+    <tr class="step"><td>Do</td><td>keresés márkára vagy termékre, remarketing, e-mail, összehasonlító oldal</td><td>fókuszált ajánlat, ár, határidő, egyértelmű cselekvés</td><td>termékoldalhoz, foglaláshoz, kosárhoz</td></tr>
+    <tr class="step"><td>Care</td><td>e-mail, saját app, saját közösség, ügyfélszolgálat</td><td>hasznos tartalom a vevőnek, nem újabb eladás</td><td>ismételt vásárláshoz, ajánláshoz</td></tr>
+  </table>
+  <p class="small muted" style="margin-top:.8em">Összeállítás Kaushik bejegyzéseiben említett csatornákból és célzási elvekből (Occam's Razor blog). A táblázat formája az oktatóé, Kaushik ilyen táblázatot nem közöl.</p>
+</section>
+
+<!-- e12c -->
+<section class="slide" data-notes="e12c">
+  <p class="kicker">Demó · egy nyelviskola, egy ember, négy pillanat</p>
+  <h2>Anna, 34, egy év múlva Lisszabonba költözik a munkája miatt.</h2>
+  <table style="font-size:.72em">
+    <tr><th>Kör</th><th>Hol tart Anna</th><th>Hol találkozik a márkával</th><th>Mit mond a márka</th><th>Mit mérünk</th></tr>
+    <tr class="step"><td>See</td><td>még eszébe sem jutott nyelvet tanulni</td><td>Instagram-reel a feedjében</td><td>„5 mondat, amivel az első héten elboldogulsz Lisszabonban”</td><td>megtekintés, mentés, követés</td></tr>
+    <tr class="step"><td>Think</td><td>tudja, hogy kellene, de nem tudja, hogyan</td><td>Google: „hogyan tanuljak portugálul felnőttként”, egy blogcikk</td><td>útmutató és ingyenes szintfelmérő, hírlevél</td><td>feliratkozás, kitöltött szintfelmérő</td></tr>
+    <tr class="step"><td>Do</td><td>két iskola között választ</td><td>Google: „portugál nyelviskola Budapest”, remarketing a szintfelmérő után</td><td>„Ingyenes próbaóra, októberi kezdés, esti csoport”</td><td>próbaóra-foglalás, költség per jelentkező</td></tr>
+    <tr class="step"><td>Care</td><td>fizető tanuló, fél év múlva utazik</td><td>havi e-mail, csoportos chat</td><td>„Ennyit haladtál. Hozd el a kollégádat a következő szintre.”</td><td>továbbiratkozás, ajánlás</td></tr>
+  </table>
+  <p class="quote step" style="margin-top:.6em;font-size:1.15em">És a rossz időzítés: ugyanez a „próbaóra, októberi kezdés” hirdetés a See-körben Annának zaj. Jó üzenet, rossz időben.</p>
+  <p class="small muted">A példa kitalált, a lépések logikája Kaushik See-Think-Do-Care keretéből. A nyelviskola ugyanaz, mint a tölcsér számainál.</p>
+</section>
+
+<!-- e13 -->
+<section class="slide" data-notes="e13">
+  <p class="kicker">Kotler 5A</p>
+  <h2>Amit a korábbi modellek nem tudtak: az ajánlás</h2>
+  <ol class="chain">
+    <li class="step"><div>Aware<span>hosszú márkalistának van kitéve: saját tapasztalatból, kommunikációból, mások ajánlásából</span></div></li>
+    <li class="step"><div>Appeal<span>néhány márka megragad, rövid lista lesz belőle</span></div></li>
+    <li class="step"><div>Ask<span>aktívan kérdez: barátot, médiát, magát a márkát</span></div></li>
+    <li class="step"><div>Act<span>nem csak a vásárlás: a használat és a vásárlás utáni kiszolgálás is</span></div></li>
+    <li class="step"><div>Advocate<span>a hűség mérőszáma a visszatérésből az ajánlás lesz</span></div></li>
+  </ol>
+  <p class="small muted" style="margin-top:1em">Rucker négy A-ja (aware, attitude, act, act again) még tölcsérszerű. Az 5A-ban az ajánlás bekerül magába a folyamatba. <span>Kotler, Kartajaya, Setiawan: Marketing 4.0, 5. fejezet (The New Customer Path)</span></p>
+</section>
+
+<!-- e13b -->
+<section class="slide" data-notes="e13b">
+  <p class="kicker">A csatornamix mint térkép</p>
+  <h2>Két tengely: a csatorna és a döntési fázis</h2>
+  <table class="mx">
+    <tr><th>Csatorna</th><th class="c">See<small>Aware</small></th><th class="c">Think<small>Appeal · Ask</small></th><th class="c">Do<small>Act</small></th><th class="c">Care<small>Advocate</small></th></tr>
+    <tr><td>SEO, blog, saját tartalom</td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot1">○</span></td><td class="c"><span class="dot1">○</span></td></tr><tr><td>Videó (YouTube, TikTok, Reels)</td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot1">○</span></td><td class="c"></td></tr><tr><td>Organikus social</td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot1">○</span></td><td class="c"><span class="dot2">●</span></td></tr><tr><td>Fizetett social</td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot1">○</span></td><td class="c"><span class="dot1">○</span></td><td class="c"></td></tr><tr><td>Display</td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot1">○</span></td><td class="c"></td><td class="c"></td></tr><tr><td>Keresőhirdetés</td><td class="c"><span class="dot1">○</span></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td><td class="c"></td></tr><tr><td>Remarketing</td><td class="c"></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td><td class="c"></td></tr><tr><td>E-mail, hírlevél</td><td class="c"></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td></tr><tr><td>Affiliate, összehasonlító oldal</td><td class="c"></td><td class="c"><span class="dot2">●</span></td><td class="c"><span class="dot2">●</span></td><td class="c"></td></tr><tr><td>Vélemények, ajánlóprogram</td><td class="c"></td><td class="c"><span class="dot1">○</span></td><td class="c"><span class="dot1">○</span></td><td class="c"><span class="dot2">●</span></td></tr><tr><td>Ügyfélszolgálat, chat, személyes</td><td class="c"></td><td class="c"></td><td class="c"><span class="dot1">○</span></td><td class="c"><span class="dot2">●</span></td></tr>
+  </table>
+  <p class="small muted" style="margin-top:.6em"><span class="dot2">●</span> fő szerep &nbsp; <span class="dot1">○</span> másodlagos. Egy csatorna több fázisban is dolgozhat; a kérdés mindig az, hogy ott épp ki nézi. Összeállítás: Misquith, Essentialize Marketing (2022); Baptista, Medium (2020); Kaushik, Occam's Razor. Az 5A-párosítás és a jelölések az oktatóé.</p>
+</section>
+
+<!-- e13c -->
+<section class="slide" data-notes="e13c">
+  <p class="kicker">Az STDC-sablon · Baptista nyomán</p>
+  <h2>Egy táblázat, négy sor</h2>
+  <ol class="chain" style="max-width:62ch">
+    <li class="step"><div>Közönség<span>fázisonként: ki van itt, milyen helyzetben, mekkora szándékkal</span></div></li>
+    <li class="step"><div>Tartalom<span>fázisonként: mit mondasz neki, ami ott segít, és továbbviszi</span></div></li>
+    <li class="step"><div>Csatorna<span>fázisonként: hol találkozik veled, fő és másodlagos csatornák</span></div></li>
+    <li class="step"><div>Mérőszám<span>fázisonként más: a halat az úszásán mérd</span></div></li>
+  </ol>
+  <p class="step" style="margin-top:1em">A mai térkép pontosan ez, a befogadó érzéseivel kiegészítve, a ti ügyfeletekre. <a class="btn" href="journey-terkep.html" target="_blank">A térkép megnyitása</a></p>
+  <p class="small muted">Allan Baptista: See, Think, Do, Care. A Content Focused Business Framework, Medium, 2020. március 5.</p>
+</section>
+
+<!-- e14 -->
+<section class="slide" data-notes="e14">
+  <p class="kicker">ROPO</p>
+  <h2>Kutat online, vásárol offline</h2>
+  <table class="step" style="max-width:34em">
+    <tr><th></th><th>Online kutat</th><th>Offline kutat</th></tr>
+    <tr><td>Online vesz</td><td>22%</td><td>9%</td></tr>
+    <tr class="now"><td>Offline vesz</td><td>37%</td><td>32%</td></tr>
+  </table>
+  <p class="step" style="margin-top:1em">A legnagyobb csoport nem a tiszta online. A hirdetés ideje és a vásárlás ideje mellett a helye is szétesik.</p>
+  <p class="small muted">Research Online Purchase Offline. Google (2010), mobil- és internet-előfizetések, Vodafone Németország, 16 000 fős panel; idézi Chaffey, Ellis-Chadwick: Digital Marketing, 2. fejezet. A fordítottja a showrooming: boltban néz, online vesz.</p>
+</section>
+
+<!-- e15 -->
+<section class="slide" data-notes="e15">
+  <p class="kicker">Egy tölcsér számokban · csapatban, 5 perc</p>
+  <h2>Egy nyelviskola számai. Hova tennél pénzt?</h2>
+  <table style="max-width:40em">
+    <tr><th>Szakasz</th><th>Ember</th><th>Átmenet</th></tr>
+    <tr><td>Célcsoport</td><td>1000</td><td></td></tr>
+    <tr><td>Ismeri a márkát</td><td>400</td><td>40%</td></tr>
+    <tr><td>Érdeklődött már</td><td>120</td><td>30%</td></tr>
+    <tr><td>Próbaórára jött</td><td>60</td><td>50%</td></tr>
+    <tr><td>Fizető tanuló lett</td><td>12</td><td>20%</td></tr>
+  </table>
+  <p class="step" style="margin-top:1em">Ha a próbaóra utáni beiratkozás 20%-ról 30%-ra nő, 12 helyett 18 tanuló lesz, plusz médiaköltés nélkül. Ha az ismertséget duplázod, a médiaköltést is duplázod.</p>
+  <p class="quote step" style="font-size:1.25em">Mitől lesz valaki a próbaóra után tanuló? Erre a számokban nincs válasz.</p>
+  <p class="small muted">A példa kitalált. A konverziós modell logikája: Chaffey, Ellis-Chadwick: Digital Marketing, 2. fejezet</p>
+</section>
+
+<!-- e16 -->
+<section class="slide" data-notes="e16">
+  <p class="kicker">Summázás</p>
+  <ol class="chain" style="max-width:62ch">
+    <li class="step"><div>A tölcsér nem a vásárló útja.<span>A mérlegelt lista bővül, a sorrend termékfüggő, és a vásárlás után is folytatódik.</span></div></li>
+    <li class="step"><div>A számok megmutatják, hol esnek ki.<span>Azt nem, mit mondj annak, aki ott áll.</span></div></li>
+  </ol>
+  <hr class="rule">
+  <p class="lead step">A tölcsér nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor. A rossz üzenet legtöbbször jó üzenet rossz időben.</p>
+</section>
+
+<!-- e17 -->
+<section class="slide" data-notes="e17">
+  <p class="kicker">A második beadandó · 30 perc</p>
+  <div class="task">
+    <p>Rajzoljátok meg az ügyfeletek vásárlójának útját. Nem nulláról: a múlt heti mondatotok célcsoportjából indultok.</p>
+    <ul>
+      <li><b>Modellt választotok</b>, és illesztitek: AIDA, Kotler öt lépcsője, 5A vagy See-Think-Do-Care. Egy mondatban indokoljátok, miért ez illik a termékhez, a sorrend alapján: tanul · érez · tesz, tesz · érez · tanul, vagy tanul · tesz · érez.</li>
+      <li><b>Egy szerep</b> útját rajzoljátok: a vevőét vagy a használóét, ha nem ugyanaz.</li>
+      <li><b>A modell fázisai</b> az idővonalon, minden fázisba kontaktpontok, azok is, amik nem a márkáé: vélemény, ismerős, összehasonlító oldal.</li>
+      <li><b>Fázisonként két mondat</b>: mit érez, mitől fél, mi akasztja meg a vevőt; és mit mond ott jelenleg a márka, bizonyítékkal.</li>
+      <li><b>Hol szakad meg az út</b>: üres fázis, olyan fázis, ahol csak mások beszélnek helyettetek, vagy jó üzenet rossz fázisban.</li>
+    </ul>
+  </div>
+  <p class="small muted" style="margin-top:1.2em">Ha a választott modell nem illik a márkához, azt is írjátok le: az is eredmény. A munkához: <a class="btn" href="journey-terkep.html" target="_blank">Journey-térkép</a></p>
+</section>
+
+<!-- e18 -->
+<section class="slide" data-notes="e18">
+  <p class="kicker">A mai beadandó anyag: mi keletkezik?</p>
+  <h2>Egy oldal. Egy térkép.</h2>
+  <div class="cols">
+    <ol class="chain" style="font-size:.85em">
+      <li><div>Fejléc<span>ügynökség, ügyfél, tagok, ki mit csinált</span></div></li>
+      <li><div>Amit néztünk<span>weboldal, közösségi felületek legalább utolsó két hete, egy hirdetés, vélemények vagy összehasonlító oldal</span></div></li>
+      <li><div>A modell és miért<span>melyik modell, milyen sorrend illik a termékhez, egy mondat indoklás</span></div></li>
+      <li><div>A journey egy mondatban<span>kinek az útja, honnan hova jut, és hol dől el</span></div></li>
+      <li><div>Fázisok és kontaktpontok<span>fázisonként: kontaktpont, mit érez és mitől fél a vevő, mit mond ott a márka</span></div></li>
+      <li><div>Bizonyíték<span>melyik poszt, oldal, hirdetés, vélemény mutatja, amit a fázisokról állítottatok</span></div></li>
+      <li><div>Hol szakad meg az út<span>üres fázis, csak mások beszélnek, vagy jó üzenet rossz fázisban</span></div></li>
+      <li><div>Ami hiányzik<span>melyik fázisban nincs kimondva semmi, egy mondat</span></div></li>
+    </ol>
+    <div>
+      <p><b>Terjedelem</b> legfeljebb egy A4 oldal. A térképet a Journey-térkép felületen töltitek ki, onnan nyomtatható a falra, és onnan küldhető be.</p>
+      <p><b>Formátum</b> itt, a deckben, a Leadás gombbal, és legyen meg saját doksiban is. A 3. alkalmon a térkép Act fázisából indultok.</p>
+      <p><b>Határidő</b> óra vége, utána szavazunk.</p>
+      <p><b>Hogyan értékeljük</b> a modellválasztás indokolt-e, nem ízlés; a fázisok bizonyítékkal állnak-e; megmutat-e a térkép egy konkrét pontot, ahol az út megszakad.</p>
+      <p style="margin-top:.6em"><a class="btn" href="journey-terkep.html" target="_blank">Journey-térkép</a> <a class="btn" href="app.html?ep=ep2&amp;v=leadas" target="_blank">Leadás megnyitása</a> <button class="btn" data-open="minta">Sablon</button></p>
+    </div>
+  </div>
+</section>
+
+<!-- e19 -->
+<section class="slide" data-notes="e19">
+  <p class="kicker">Csapatmunka-szavazás · 15 perc</p>
+  <h2>Ki a falra. Szavazzunk!</h2>
+  <div class="cols">
+    <div>
+      <p>A három szempont:</p>
+      <ol class="chain">
+        <li><div>a modellválasztás indokolt, nem ízlés kérdése,</div></li>
+        <li><div>a fázisok bizonyítékkal állnak, nem véleménnyel,</div></li>
+        <li><div>a térkép rábök egy pontra, ahol az út megszakad.</div></li>
+      </ol>
+      <p class="small muted" style="margin-top:.8em">Mindenki egy csapatra szavaz, a sajátjára nem: egytől öt csillagig, és egy mondat indoklással. Indoklás nélkül nincs szavazat. A két legjobb átlagot kapott csapat indokol, két-két percben.</p>
+    </div>
+    <div class="votes">
+      <p>Szavazni telefonról: <b id="voteurl"></b></p>
+      <p><a class="btn" href="app.html?ep=ep2&amp;v=eredmeny" target="_blank">Eredmény a kivetítőre</a></p>
+      <p class="small muted">Az eredmény-oldal ötmásodpercenként frissül; nyisd meg a kivetítőn külön ablakban, és a szavazás végén ott látszik a sorrend.</p>
+    </div>
+  </div>
+</section>
+
+<!-- e20 -->
+<section class="slide" data-notes="e20">
+  <p class="kicker">Zárás</p>
+  <h2>A tölcsér nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor.</h2>
+  <p class="lead">A rossz üzenet legtöbbször jó üzenet rossz időben.</p>
+  <hr class="rule">
+  <p class="muted">Megvan, kinek és mit, és most már azt is tudjuk, mikor. A következő kérdés: <span class="hl">hol fogadjuk, amikor megérkezik hozzánk</span>, mert a térkép Act fázisában ő már a mi felületünkön áll.</p>
+  <p class="small muted" style="margin-top:1em">3. alkalom · A saját terep · 2026. október 12.</p>
+</section>
+
+</main>
+
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.3 · 2026. szeptember 24.</span></div>
+<div class="pager"><button data-open="notes">Jegyzet</button><span id="pos">1 / 31</span><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
+
+<!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
+<aside class="notes" id="notes" aria-label="Jegyzet">
+<div data-n="k1"><h4>Nyitó</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A második alkalom. A félév egy döntési lánc, és minden alkalom egy újabb elemét teszi hozzá. Múlt héten eldöntötted, kinek és mit mondasz. Ma azt nézzük meg, hogy ez a mondat mikor ér valamit, mert ugyanaz a mondat az egyik pillanatban telitalálat, a másikban zaj.</p><p>A fejlécben most a 2-es sárga, amikor az alkalom diáin vagyunk, és az Évad, amikor a keretről beszélünk. Így mindig látod, hol tartunk a láncon.</p></div></div>
+
+<div data-n="k2"><h4>A lánc</h4><p class="src top">Forrás: oktató, a gondolati ív</p><div class="hj"><h5>Jegyzet</h5><p>A hét kérdés együtt egy döntési lánc, pontosan az, ami egy marketingstratégiában és egy briefben is benne van. Az első kérdésre (kinek és mit mondunk) múlt héten választ adtatok a saját ügyfeletekre, ez a leadott pozicionálási mondat. A második kérdés: mikor mondjuk. Az ember nem akkor vásárol, amikor mi beszélünk, tehát az ő folyamatát kell érteni, nem a mi kampánynaptárunkat.</p><p>A sorrend nem véletlen: nem tudod időzíteni, amíg nem tudod, kinek beszélsz. Ezért építünk a múlt heti munkára, és ezért nem szerencsés, ha valaki kihagyta az 1. alkalmat. Aki hiányzott, a csapata mondatából indul.</p></div></div>
+
+<div data-n="k3"><h4>Mit tesz hozzá a mai alkalom</h4><p class="src top">Forrás: oktató, a gondolati ív</p><div class="hj"><h5>Jegyzet</h5><p>A sárga sor a mai. Úgy érkezel, hogy „mondd el, amit akarsz”: van egy jó üzeneted, és azt gondolod, a munka annyi, hogy minél többen lássák. Úgy mész el, hogy „mondd el akkor, amikor számít”. Ettől kerül be az időzítés a döntésbe, mert a vásárlás nem egyetlen pillanat, hanem egy folyamat, és a folyamat különböző pontjain más kell az embernek.</p><p>Ha a félév végén ezt a táblázatot elővesszük, ennél a sornál azt kérdezem: tudod-e egy konkrét márkánál megmutatni, melyik üzenet melyik pillanatra szól?</p></div></div>
+
+<div data-n="k4"><h4>Visszamutatás: az 1. beadandó</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A múlt heti beadandó egy mondat volt: kinek szól a márka, mi helyett választják, mi az értékajánlata. Ez a mondat a kinek és a mit kérdésére válaszol. Az időről semmit nem mond. Egy parti szálloda értékajánlata ugyanaz januárban és júliusban, csak januárban senki nem keresi.</p><p>Nyisd meg az 1. alkalom eredményét, és olvass fel két mondatot a legtöbb csillagot kapott csapatoktól. A kérdés mindkettőnél ugyanaz: ez a mondat melyik pillanatban igaz a vevőnek? Amikor még nem is tudja, hogy szüksége van rá, vagy amikor már a pénztárcáját keresi? A mai munka ebből a mondatból és a benne lévő célcsoportból indul.</p></div></div>
+
+<div data-n="e1"><h4>Címlap</h4><p class="src top">Forrás: oktató és a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>A második alkalom kérdése: mikor mondjuk. A tematika hivatalos neve ugyanerre: elméleti keretrendszerek, user és decision journey, tölcsérmodell, See-Think-Do-Care és Kotler 5A. Ez sok név, és a mai nap tétje nem az, hogy mindet felmondd, hanem hogy lásd: ugyanazt a jelenséget írják le, más-más problémára. A jelenség az, hogy a döntés időben szétterül, és a marketingesnek el kell döntenie, melyik pontján mit mond.</p></div></div>
+
+<div data-n="e2"><h4>A nap ritmusa</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ugyanaz a négy blokk, mint múlt héten. Az első a visszamutatás, egy saját vásárlás papíron, és egy szemléleti blokk arról, merre mozdult el a szakma. A második és a harmadik az elmélet: a döntés mint folyamat, a sorrend, a tölcsér, a három journey, a modellek, és egy tölcsér számokban. A harmadik végén summázunk, és kiadom a feladatot. A negyedik a tiétek: harminc perc journey-térkép a saját ügyfeletekre, aztán csapatmunka-szavazás és zárás.</p><p>Az elmélet arra készít fel, amit a negyedik blokkban csináltok. Aki a modellekről szóló részt kihagyja, a feladatnál nem fog tudni modellt választani és indokolni.</p></div></div>
+
+<div data-n="e3"><h4>Miről szól, kulcsgondolat, tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Miről szól: a user journeyről és a két modellről, amit a tematika név szerint kér, a See-Think-Do-Care-ről és a Kotler-féle 5A-ról.</p><p>A kulcsgondolat: az ember nem akkor vásárol, amikor te hirdetsz. Kotlernél ugyanez így hangzik: a vásárlási folyamat jóval a tényleges vásárlás előtt kezdődik, és jóval utána is vannak következményei (Marketing Management, 6. fejezet). A hirdetésed pillanata csak egy pont egy hosszabb úton, és jó eséllyel nem az a pont, ahol ő éppen tart.</p><p>A tanulság két mondat. Az első a tölcsérről szól: a tölcsért sokan riportnak használják, hány ember esett ki melyik lépcsőn. Ma azt fogjuk látni, hogy a lépcsők valójában arról szólnak, mit mondasz annak, aki ott áll. A második a hétköznapi következmény: ha egy üzenet nem működik, a hiba legtöbbször nem az üzenetben van, hanem abban, hogy rossz pillanatban érte az embert.</p></div></div>
+
+<div data-n="e4"><h4>Egyéni feladat</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ezt mindenki papíron, magának írja. Ne beszéljétek meg közben, mert akkor egymás emlékeit mondjátok el. Öt perc.</p><p>Utána kérdezz be három embert, és a táblára rajzold fel az útjukat idővonalként, ahogy mondják. Nem hallgatni kell, hanem rajzolni. Szinte mindig ugyanaz jön ki: nem egyenes vonal, hanem hurok, visszalépésekkel, több eszközzel, napokkal vagy hetekkel az első találkozás és a vásárlás között. És szinte mindig szerepel benne egy másik ember: egy ismerős, egy vélemény, egy komment. Jegyezzük meg mindkettőt. A „hány nap telt el” a mai kulcsgondolat a saját életetekből. A „kit kérdeztél meg” pedig tíz perc múlva külön szakasz lesz az egyik modellben.</p></div></div>
+
+<div data-n="e5"><h4>We are in a big shift</h4><p class="src top">Forrás: oktató (we are in a big shift, 2020)</p><div class="hj"><h5>Jegyzet</h5><p>Mielőtt modellekről beszélünk, egy szemléleti blokk. A modellek eszközök, és az eszközt mindig egy gondolkodásmód használja. Ez a néhány dia arról szól, merre mozdult el a márkákról és a kommunikációról való gondolkodás. Nem tananyag a szó szoros értelmében, hanem szempontrendszer: ezeken a szemüvegeken keresztül nézd a mai journey-térképet, és a félév minden további munkáját.</p><p>A trend szó definíciója azért van ott, mert nem divatról beszélünk, hanem irányról: arról, merre fejlődik és változik valami. Az előtte álló három mondat a munkamódra vonatkozik. Gondolkodj, ne csak csinálj. Dolgozz együtt, ne csak alkoss. Keretezd újra, ne csak nézd át. Ez a design thinking alapállása: mielőtt megoldást gyártasz, újra megfogalmazod a kérdést. A 7. alkalmon, a briefnél ugyanide érünk vissza.</p></div></div>
+
+<div data-n="e6"><h4>Megfordítjuk a nézőpontot</h4><p class="src top">Forrás: oktató (we are in a big shift, 2020)</p><div class="hj"><h5>Jegyzet</h5><p>Ez a big shift lényege, és ezért van a journey előtt. Az egész anyag egyetlen mozgást ír le: a gondolkodásunk perspektívája megfordul. Onnan indulunk, hogy mi beszélünk, és azt nézzük, mit mondunk, mit mutatunk, mit ajánlunk. Oda jutunk, hogy azt nézzük, hogyan érzékeli, hogyan érzi a befogadó.</p><p>Ez nem udvariassági szabály, hanem munkamódszer. A journey-térkép is csak akkor ér valamit, ha a befogadó oldaláról rajzolod: nem azt, hogy a márka hol kommunikál, hanem hogy az ember hol találkozik vele, és mit él át közben. A következő három dián mind a tizennégy elmozdulás ott van, három csoportban. A bal oszlop az angol eredeti, a jobb oszlop egy mondat arról, hogyan éli meg ezt a befogadó. A csoportosítás és a magyar mondatok az oktató következtetései az anyaghoz.</p></div></div>
+
+<div data-n="e6a"><h4>Kivel beszélünk</h4><p class="src top">Forrás: oktató (we are in a big shift, 2020)</p><div class="hj"><h5>Jegyzet</h5><p>Az első csoport arról szól, kit látunk magunk előtt. A régi nézőpontban fogyasztót ábrázolunk, róla beszélünk, a nagyközönséghez szólunk, és a képeink kliséket mutatnak. Az új nézőpontban párbeszéd van, hozzá beszélünk, különböző embereket látunk különböző helyzetben, és úgy mutatjuk őket, hogy magukra ismerjenek.</p><p>Az utolsó sor ismerős: valami mindenkinek helyett minden valakinek. Ez az 1. alkalom tanulsága volt, hogy aki mindenkihez beszél, az senkinek nem mond semmit. Itt azt látod, hogy nem egyedül áll, hanem egy nagyobb szemléletváltás része.</p><p>Kérdés a teremnek: a saját ügyfeletek melyik oldalon áll a „talk about” és a „talk to” között? Nézzétek meg az utolsó öt posztját.</p></div></div>
+
+<div data-n="e6b"><h4>Mit adunk</h4><p class="src top">Forrás: oktató (we are in a big shift, 2020)</p><div class="hj"><h5>Jegyzet</h5><p>A második csoport arról szól, mit kínál a márka. Az ajánlat, a nyeremény, a jutalom mind tranzakció: te adsz valamit, ő vesz valamit. Az ígéret, a részvétel és a hozzáférés viszont kapcsolat: a befogadó azt érzi, hogy a márka vállal érte valamit, és hogy ő bent lehet. A „what is in it for me” helyett a kérdése az, hogy hol van ő ebben a történetben.</p><p>A „wants” és a „needs” az 1. alkalom ötféle szükségletére mutat vissza: amit kimond, az a kívánság, ami mögötte van, az a szükséglet. Aki csak a kimondottra válaszol, rövidre zárja a vevőt.</p><p>Ez a csoport a Kotler-féle 5A Advocate szakaszát is előkészíti: aki részt vesz, és hozzáférést kap, az ajánlani is fog.</p></div></div>
+
+<div data-n="e6c"><h4>Mit érzékel</h4><p class="src top">Forrás: oktató (we are in a big shift, 2020)</p><div class="hj"><h5>Jegyzet</h5><p>A harmadik csoport a legfontosabb a mai naphoz. Nem az számít, mit mond a vevő, hanem hogy mit érez. Nem az, hogy mit csinál a márka, hanem hogy miért számít neki. Nem az, ami látszik, hanem ami a felszín alatt van: a félelem, a vágy, a kimondatlan. És relevánsnak lenni csak belépő, emlékezetesnek lenni az, amiért beszélni fog rólad.</p><p>A „what they say to how they feel” a journey-térkép sora lesz: minden fázishoz oda kell írni, mit érez az ember, mitől fél, mi akasztja meg. A „what you don't see” pedig a térkép lyuka: amit a márka nem lát, mert csak a saját felületeit nézi.</p><p>Innen megyünk tovább a döntés folyamatára: ha a befogadó oldaláról nézzük, a vásárlás nem egy pillanat, hanem egy út.</p></div></div>
+
+<div data-n="e7"><h4>A döntés mint folyamat</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 6. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Kotler és Keller öt lépcsőt ír le: problémafelismerés, információkeresés, az alternatívák értékelése, a vásárlási döntés és a vásárlás utáni viselkedés. A lényeg a mondat a dián: a folyamat jóval a vásárlás előtt kezdődik, és utána is tart. A hirdetés csak egy pillanat benne.</p><p>A keresésnek két szintje van. Az elsőnél az ember csak fogékonyabb lesz: ha autót akar venni, hirtelen mindenhol autókat lát. A másodiknál aktívan keres: kérdez, olvas, boltba megy. A figyelem szelektív: azt veszed észre, ami egy épp aktuális szükséglethez kapcsolódik. Aki számítógépet akar venni, a számítógép-hirdetést észreveszi, a DVD-hirdetést nem.</p><p>Az értékelésnél a márkák körökben szűrődnek: amit ismersz, amit egyáltalán mérlegelsz, és amiből végül választasz. A döntésnek öt al-döntése van, ezek egyike az időzítés. A vásárlás után pedig az ember megerősítést keres, és vagy ajánl, vagy lebeszél. Két fontos megszorítás: nem mindenki megy végig mind az öt lépcsőn, a megszokott termékeknél egyenesen a vásárlásba lépsz. És a modell a nagy bevonódású, új vásárlásra érvényes a legjobban.</p></div></div>
+
+<div data-n="e8"><h4>A sorrend</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet (The Communications Process Models)</p><div class="hj"><h5>Jegyzet</h5><p>Ez a nap egyik legfontosabb diája, mert ez töri meg a lineáris tölcsért. Kotler és Keller négy klasszikus válaszhierarchia-modellt tesz egymás mellé, és mind azt feltételezi, hogy előbb megismersz valamit, aztán kialakul egy érzésed, aztán cselekszel. Rögtön utána kimondják, hogy ez a sorrend nem állandó.</p><p>Tanul, érez, tesz: ha erősen bevonódsz, és a márkák láthatóan különböznek, például autónál vagy háznál. Tesz, érez, tanul: ha erősen bevonódsz, de a márkák egyformának tűnnek. Repülőjegyet veszel, aztán kialakul egy érzésed a légitársaságról, és csak a végén tudod meg, milyen valójában. Tanul, tesz, érez: ha nem fontos a döntés, és nincs különbség. Sót vagy elemet veszel, tudsz róla valamit, megveszed, és lehet, hogy soha nem lesz róla érzésed.</p><p>A könyv mondata a lényeg: a megfelelő sorrend kiválasztásával a marketinges jobban tudja tervezni a kommunikációt. Vagyis a sorrend döntés. Ha rossz sorrendre tervezel, jó eszközzel rossz helyre lősz. A mai feladatban ezzel indokoljátok a modellválasztást.</p></div></div>
+
+<div data-n="e9"><h4>A tölcsér nem a vásárló útja</h4><p class="src top">Forrás: Court et al.: The Consumer Decision Journey, McKinsey Quarterly, 2009; idézi Chaffey, Ellis-Chadwick: Digital Marketing, 2. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Írd fel a négy számot a táblára, mielőtt beszélsz róla. A tölcsér azt sugallja, hogy az elején sok márkára gondolunk, aztán egyre kevesebbre. A McKinsey lemérte, és fordítva jött ki. Számítógépnél az emberek átlagosan 1,7 márkával indultak, és a döntés előtt egy márkával többet mérlegeltek. Autónál a 3,8 márkás kezdő körhöz 2,2 jött hozzá. A lista tehát nem szűkül, hanem bővül.</p><p>Ennek két következménye van. Jó hír: ha a márkád az elején nincs benne, még bekerülhetsz. Rossz hír: ha benne vagy, még kieshetsz, és pont akkor, amikor azt hiszed, hogy már nyertél.</p><p>A dia címe az első lépcső a mai tanulsághoz: a tölcsér nem a vásárló útja. Kotler előző diája ugyanezt mondta a sorrendről, a McKinsey-adat a lista méretéről. A tölcsér ettől még nem haszontalan, csak nem az ember viselkedését írja le. Hogy akkor mire jó, az a következő diákon derül ki.</p></div></div>
+
+<div data-n="e10"><h4>Három journey</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 1. és 2. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A szakmában mind a hármat journey-nek hívják, és ebből sok félreértés lesz. Chaffey definíciója szerint a customer journey az online és offline kontaktpontok sora, amit a vevő egy vásárlás vagy egy tágabb vevői élmény során bejár. A customer journey map ezt modellezi, perszónánként. A decision journey csak a márkaválasztás: hogyan tágul és szűkül a mérlegelt kör, amit az előző dián láttál. A user journey egy felületen belüli útvonal, például a webshopban a kosárig. Ez a tematika pontjában szereplő user és decision journey szétválasztása.</p><p>A legfontosabb a negyedik sor: a vevő és a használó gyakran nem ugyanaz. A gyerekjátékot a szülő veszi, a gyerek használja. A könyvelőprogramot a tulaj fizeti, de a könyvelő használja, és ha a könyvelő utálja, a tulaj le fogja mondani. Ezért nem lehet egy journey-t rajzolni, annyit kell, ahány szerep van. Chaffey ehhez a perszónát és a customer scenariót ajánlja: a scenario azoknak a feladatoknak a sora, amelyeket egy vevő el akar végezni, hogy elérje, amit akar. Ha a briefben „journey” szerepel, mindig kérdezd meg, melyikről van szó.</p></div></div>
+
+<div data-n="e11"><h4>A modellek</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet; Kotler, Kartajaya, Setiawan: Marketing 4.0, 5. fejezet; Kaushik: Occam's Razor blog; Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Menj végig soronként, és mindegyiknél mondd el, milyen problémára készült. Ez a lényeg, nem a nevek. Az AIDA 1925-ös, Strong értékesítési könyvéből: egy ügynök áll az ajtóban, egy beszélgetés pedig tényleg lineáris. A Hierarchy of Effects 1961-es, a reklám hatásának méréséhez készült, ezért több a lépcsője. Rucker négy A-ja az AIDA módosítása, és a Marketing 4.0 szerint még tölcsérszerű folyamatot ír le. Az 5A azért kellett, mert a konnektivitás korában az ajánlás bekerült magába a folyamatba.</p><p>Az alsó kettő más irányból jön. A See-Think-Do-Care a közönség szándékából indul, nem a vásárlás lépcsőiből. A RACE a Smart Insights keretrendszere a digitális marketing teljesítményének áttekintésére: ha ügynökségnél dolgoztok, ezt a négy szót fogjátok hallani a tervezéskor.</p><p>A dia címe egy olvasat, nem a könyvek állítása: hogy a modellek egymás után azért változtak, mert a valóság nem fért bele az előzőbe, az az oktató következtetése. Rucker négy A-jához évszámot nem írtam, mert a forrásban nem ellenőriztem.</p></div></div>
+
+<div data-n="e12"><h4>See-Think-Do-Care</h4><p class="src top">Forrás: Avinash Kaushik: See-Think-Do: A Content, Marketing, Measurement Business Framework, és See, Think, Do, Care Winning Combo: Content +Marketing +Measurement!, Occam's Razor blog</p><div class="hj"><h5>Jegyzet</h5><p>Kaushik keretrendszere nem a vásárlás lépcsőit írja le, hanem a közönség szándékát. A példája a ruha. See: mindenki, aki ruhát hord. Think: aki ruhát hord, és úgy gondolja, kellene neki. Do: aki ruhát hord, úgy gondolja, kellene neki, és épp most akar venni. Care, a később hozzáadott negyedik kör: aki nem egyszer vett, hanem többször. Ugyanaz az ember van mindhárom első körben, csak a helyzete más. Ez az 1. alkalom tanulságának folytatása időben: a célcsoport nem demográfia, hanem szituáció.</p><p>Minden körhöz más üzenet és más mérőszám tartozik. See-ben széles, márkaépítő tartalom, és interakciót, ismertséget mérsz. Think-ben a márka értékét mutatod meg, és a bevonódást méred. Do-ban fókuszált ajánlat, és konverziót mérsz. Care-ben a vevőnek adsz valami hasznosat, és az ismételt vásárlást méred. Kaushik szerint a marketing túlnyomó része a Do körre megy. A mérésről azt írja: a halat az úszásán mérd.</p><p>A dia alján lévő mondat a legközelebbi, amit a szakirodalomban a mai tanulság második mondatához találtunk: szörnyű marketing, és még udvariatlan is, „vedd meg most” kampányt küldeni See-körben lévőknek. Jó üzenet, rossz időben. A „legtöbbször” szó a tanulságban az oktatóé, Kaushik nem mondja.</p></div></div>
+
+<div data-n="e12b"><h4>See-Think-Do-Care a gyakorlatban</h4><p class="src top">Forrás: Avinash Kaushik, Occam's Razor blog (See-Think-Do és Winning Combo bejegyzés), összeállítás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ez a dia arra való, hogy a négy kört a saját szemeddel lásd: honnan jön be az ember. Kaushik a bejegyzéseiben a körökhöz csatornákat és célzási elveket rendel. See-ben YouTube-videót és Facebook-posztot említ, amelyek tájékoztatnak, szórakoztatnak vagy hasznosak, és széles kreatívot, demográfiai és pszichográfiai célzást, márkaépítő céllal. Think-ben display-hirdetést, gyenge szándékot mutató kereséseket, e-mailt és YouTube-ot, szűkebb kreatívval. Do-ban keresést, remarketinget, e-mailt, szándékalapú célzással. Care-ben e-mailt, és azt kifogásolja, hogy a legtöbb cég ott csak GYIK-et és ügyfélszolgálati számot ad.</p><p>A táblázat ezeket rendezi egy helyre. A forma az oktatóé: Kaushik nem közöl ilyen táblázatot, és a TikTok, az Instagram vagy az összehasonlító oldal a mi kiegészítésünk. A lényeg nem az, hogy egy csatorna csak egy körbe tartozhat. A YouTube lehet See és Do is. A kérdés mindig az, hogy aki ott épp nézi, melyik körben van, és mit mondasz neki.</p><p>A negyedik oszlop a legfontosabb: minden kör valahova tovább visz. A See nem vásárláshoz visz, hanem a márka saját tartalmához. Ha egy See-hirdetés egyenesen a kosárhoz visz, azt a következő demó mutatja meg.</p></div></div>
+
+<div data-n="e12c"><h4>Demó: Anna és a nyelviskola</h4><p class="src top">Forrás: oktató (kitalált példa), Kaushik See-Think-Do-Care kerete alapján</p><div class="hj"><h5>Jegyzet</h5><p>Menj végig soronként, és minden sornál kérdezd meg a termet: ha ti lennétek a nyelviskola, ezt mondanátok itt? Anna kitalált, a nyelviskola is, ugyanaz, mint a tölcsér számainál, így a két dia összeér.</p><p>See: Anna még nem gondol nyelvtanulásra, csak tudja, hogy költözik. Egy hasznos reel megragad, mert az ő helyzetéről szól, és semmit nem akar eladni. Think: már tudja, hogy kellene, és általános kérdést keres. Itt egy útmutató és egy ingyenes szintfelmérő működik, mert a félelme az, hogy felnőttként nem fog menni. Do: két iskola között választ, márkára és városra keres. Itt jön az ajánlat, ár, kezdés, időpont, és a remarketing is, mert ő már kitöltötte a szintfelmérőt. Care: fizető tanuló. A havi e-mail a haladásáról szól, és innen jön az ajánlás, ami az 5A Advocate szakasza.</p><p>Az utolsó sor a tanulság élőben. Ugyanaz a próbaórás hirdetés, ami Do-ban a legjobb üzenet, See-ben zaj, mert Anna még nem is keres iskolát. Nem az üzenet rossz, hanem az idő. Ha van idő, kérdezd meg: ti melyik körben kaptatok utoljára ilyen hirdetést?</p><p>A feladatnál ugyanezt csináljátok a saját márkátokkal: fázisonként hol találkozik vele az ember, mit mond ott jelenleg a márka, és illik-e ahhoz, ahol az ember épp tart.</p></div></div>
+
+<div data-n="e13"><h4>Kotler 5A</h4><p class="src top">Forrás: Kotler, Kartajaya, Setiawan: Marketing 4.0, 5. fejezet (The New Customer Path)</p><div class="hj"><h5>Jegyzet</h5><p>A tematika név szerint kéri ezt a modellt, tehát ezt a diát nem szabad kihagyni, akkor sem, ha csúszol. Három dolgot kell átadni, nem az öt nevet.</p><p>Az első: az Aware szakaszban nemcsak a márka kommunikációjából tudunk a márkákról, hanem a saját tapasztalatunkból és mások ajánlásából is. A második: az Act nem egyenlő a vásárlással, a használat és a vásárlás utáni kiszolgálás is ide tartozik. A marketing nem áll meg a pénztárnál. A harmadik a legfontosabb: az Advocate. A könyv szerint Derek Rucker négy A-ja (aware, attitude, act, act again) még tölcsérszerű folyamatot ír le, az ötödik szakasz azért új, mert az ajánlás bekerült magába a folyamatba. A hűség mérőszáma már nem az, hogy visszajössz, hanem az, hogy ajánlasz.</p><p>Hivatkozz vissza az egyéni feladatra: szinte mindenki említett egy másik embert, akit megkérdezett. Ez az Ask szakasz az ő oldalukról, és az Advocate valaki más oldaláról.</p></div></div>
+
+<div data-n="e13b"><h4>A csatornamix mint térkép</h4><p class="src top">Forrás: Keneth Misquith: How to apply the STDC framework, Essentialize Marketing, 2022; Allan Baptista: See, Think, Do, Care, Medium, 2020; Avinash Kaushik, Occam's Razor blog; összeállítás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ez a dia a csatornamixet térképként mutatja. Az egyik tengely a csatorna, a másik a döntési fázis. Minden cella egy kérdés: ebben a fázisban ez a csatorna dolgozik-e, és ha igen, fő vagy mellék szerepben.</p><p>A jelölések három forrásból állnak össze. Misquith példatáblázata fázisonként sorolja a csatornákat: See-ben Instagram, LinkedIn, SEO, keresőhirdetés és display, Facebook; Think-ben e-mail, organikus social, keresőhirdetés, display és remarketing, SEO, blog, affiliate; Do-ban e-mail, organikus social, SEO, remarketing, közvetlen kommunikáció, affiliate; Care-ben e-mail, hírlevél, közvetlen kommunikáció, organikus social, ajánlóprogram. Baptista szerint a blogtartalom és a SEO minden fázisban dolgozhat, a videó pedig inkább See és Think, Do-ban csak kicsit. Kaushik a Do körhöz a keresést és a remarketinget, a Care-hez az e-mailt köti. A fő és másodlagos szerep jelölése, valamint az 5A fázisok párosítása a See-Think-Do-Care-rel az oktató következtetése, nem a szerzőké.</p><p>Két dolgot érdemes kiolvasni belőle. Az egyik, hogy szinte minden csatorna több fázisban is dolgozik, tehát a csatorna önmagában nem mondja meg, mit kell mondani rajta. A másik, hogy a Care oszlop a legüresebb, és pont itt születik az ajánlás. Kaushik is azt írja, hogy a legtöbb cég a Care-ben csak GYIK-et és ügyfélszolgálati számot ad.</p></div></div>
+
+<div data-n="e13c"><h4>Az STDC-sablon</h4><p class="src top">Forrás: Allan Baptista: See, Think, Do, Care. A Content Focused Business Framework, Medium, 2020</p><div class="hj"><h5>Jegyzet</h5><p>Baptista egy kitalált utazási iroda példáján mutatja meg, hogyan lesz a See-Think-Do-Care-ből munkaeszköz, és azt írja róla, hogy ez csak egy egyszerű táblázat. Oszlopai a négy fázis, sorai egymás után: a közönség fázisonként, a tartalom fázisonként, a csatornák fázisonként, végül a mérőszámok. A kérdései: melyik tartalom illik melyik szándékhoz, melyik csatorna melyik szándékhoz, mennyit dolgoznak a csatornáink az egyes fázisokban, hogyan segítjük át az embert a következő fázisba, és mi méri az egyes fázisok sikerét.</p><p>A mai térkép ugyanez a táblázat, két kiegészítéssel. Az egyik a befogadó sora: mit érez, mitől fél, mi akasztja meg. Ez a big shift „how they feel” gondolata. A másik a lyuk: hol szakad meg az út. A Journey-térkép felületen a modellt ti választjátok; ha nem az STDC, az oszlopok a választott modell fázisai lesznek, a sorok ugyanazok maradnak.</p></div></div>
+
+<div data-n="e14"><h4>ROPO</h4><p class="src top">Forrás: Google (2010), idézi Chaffey, Ellis-Chadwick: Digital Marketing, 2. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Research Online Purchase Offline: online kutat, offline vásárol. A Google kutatása mobil- és internet-előfizetésekről szólt, a Vodafone németországi weboldalán és boltjaiban, 16 ezer fős panellel. A bal felső doboz a tiszta online út: online tájékozódik és online vesz, 22%. A jobb alsó a tiszta offline, 32%. A legnagyobb csoport a bal alsó: 37% online tájékozódik és offline vásárol.</p><p>Ez a dia a leggyakoribb kkv-kifogásra válaszol: minek weboldal, ha nem árulunk online? Ha egy boltnak nincs rendes weboldala, nem az online eladást veszíti el, hanem a boltit. A fordítottja a showrooming: bemész a boltba, megfogod, aztán a telefonodon megveszed máshol. Kérdezd meg, ki csinált már ilyet a héten.</p><p>A mai kulcsgondolathoz ez annyit tesz hozzá, hogy nemcsak a hirdetés és a vásárlás ideje esik szét, hanem a helye is. A térképen ezért kell offline kontaktpont is.</p></div></div>
+
+<div data-n="e15"><h4>Egy tölcsér számokban</h4><p class="src top">Forrás: oktató (kitalált példa); a konverziós modell logikája Chaffey, Ellis-Chadwick: Digital Marketing, 2. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Csapatban öt perc, aztán kézfeltartással szavazás: hova tennétek a pénzt? Ne segíts, és ne kommentáld a számokat. A többség az ismertséget szokta választani, mert az van a tölcsér tetején, és az látszik nagynak.</p><p>Számoljátok ki közösen a négy átmenetet, és írd fel a táblára: 40, 30, 50, 20. A leggyengébb pont a próbaóra és a beiratkozás között van: öt emberből négy, aki eljött és kipróbálta, mégsem iratkozik be. Ott van a pénz. Ha ezt az átmenetet 20-ról 30%-ra javítod, 12 helyett 18 tanuló lesz, egy forint plusz médiaköltés nélkül. Ha az ismertséget duplázod, a médiaköltést is duplázod.</p><p>Chaffey konverziós modellje ugyanezt csinálja: célközönség, látogató, aktív látogató, eredmény, és köztük a hatékonysági arányok. Ez a tölcsér riportként: megmutatja, hol esnek ki. Az utolsó mondat viszont a lényeg, és ez a második lépcső a tanulság felé: arra, hogy mitől lesz valaki a próbaóra után tanuló, a számokban nincs válasz. Azt csak az tudja megmondani, aki eldönti, mit mond ott annak az embernek.</p></div></div>
+
+<div data-n="e16"><h4>Summázás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Három lépcső, egymás után. Az első: a tölcsér nem a vásárló útja. A mérlegelt lista a folyamat közben bővül (McKinsey), a sorrend termékfüggő (Kotler, 17. fejezet), és az út a vásárlás után is folytatódik (5A, Care). A második: a tölcsér számai megmutatják, hol esnek ki az emberek, de azt nem, mit mondj annak, aki ott áll. Ezt a nyelviskolán láttuk.</p><p>A harmadik a tanulság: a tölcsér nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor. Minden lépcső egy kérdés: aki itt áll, mit akar hallani, mitől fél, mi akasztja meg? A See-Think-Do-Care ezt mondja ki a legtisztábban, mert nem lépcsőkből, hanem szándékokból indul. És ebből jön a második mondat: a rossz üzenet legtöbbször jó üzenet rossz időben. A „vedd meg most” jó üzenet annak, aki épp vásárolni akar, és tolakodó annak, aki csak nézelődik.</p></div></div>
+
+<div data-n="e17"><h4>A második beadandó</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A mai feladat a múlt heti munka folytatása. A célcsoportot, a helyzetet és a mondatot már leírtátok, most annak az embernek az útját rajzoljátok meg az ügyfeletekhez.</p><p>Az első lépés a modellválasztás. Nincs jó és rossz modell, csak illő és nem illő. Egy fesztiválnál, ahol a jegyvásárlás után hónapokig tart a várakozás és az élmény, más modell illik, mint egy online számlázónál, ahol a próbaidőszak dönt. Az indoklás a sorrendből jön: a ti termékkategóriátoknál az ember előbb tanul, érez vagy tesz?</p><p>Utána egy szerep útja. Ha a vevő és a használó nem ugyanaz, válasszatok egyet, és írjátok le, miért azt. A fázisokba a kontaktpontok kerülnek, azok is, amik nem a márkáé: egy vélemény, egy összehasonlító oldal, egy ismerős. Fázisonként két mondat: mit érez az ember, mitől fél, mi akasztja meg; és mit mond ott jelenleg a márka. Ez a második mondat bizonyítékkal áll, ugyanúgy, mint múlt héten.</p><p>A térkép nem attól ér valamit, hogy szép, hanem attól, hogy megmutat egy lyukat. Háromféle van: üres fázis, ahol a márka nincs jelen; olyan fázis, ahol csak mások beszélnek helyette; és olyan, ahol a márka jelen van, de rossz üzenettel, például „vedd meg most”-tal ott, ahol az ember még csak ismerkedik. Amíg dolgoznak, járj körbe, és a lyuknál kérdezd meg: és ezt miből tudjátok?</p></div></div>
+
+<div data-n="e18"><h4>Mi keletkezik</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A beadandó ugyanúgy egy oldal, mint múlt héten, nyolc blokkban. A fejléc és az „amit néztünk” ugyanaz. Az utóbbiba most a vélemények és az összehasonlító oldalak is beletartoznak, mert a journey-n ezek is kontaktpontok.</p><p>A modell és miért: egy mondat, amiben benne van a sorrend. A journey egy mondatban a lényeg, ez látszik a szavazólistán: kinek az útja, honnan hova jut, és hol dől el. A fázisok és kontaktpontok a térkép maga, szövegben. A bizonyíték külön blokk, mert itt is érv kell, nem vélemény. A „hol szakad meg az út” az ítélet: egy pont, amire rá lehet bökni. Az „ami hiányzik” pedig az a fázis, ahol a márka semmit nem mond.</p><p>A rajzot tartsátok meg papíron vagy fotón a saját mappátokban, mert a 3. alkalmon a térkép Act fázisából indultok: amikor az ember már a márka saját felületén áll.</p></div></div>
+
+<div data-n="e19"><h4>Csapatmunka-szavazás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A beadandók a telefonotokon vagy a falon, tíz perc olvasás és szavazás. Egy csapatra szavaztok, a sajátotokra nem, egytől öt csillagig, kötelező egy mondat indoklással. A három szempont: indokolt-e a modellválasztás, vagy csak az tetszett; bizonyítékkal állnak-e a fázisok; és rábök-e a térkép egy konkrét pontra, ahol az út megszakad. A rajz szépsége nem szempont.</p><p>A két legjobb átlagot kapott csapat két-két percben indokol. Az oktató kérdése a győztesnek: ha holnap egyetlen üzenetet változtathatnátok meg a márkánál, melyik fázisban lenne, és mit mondana?</p></div></div>
+
+<div data-n="e20"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ma a kinek és a mit mellé bekerült a mikor. Az ember nem akkor vásárol, amikor te hirdetsz: a döntés jóval előtte kezdődik és utána is tart, a sorrendje termékfüggő, és a mérlegelt lista közben bővül. A modellek ugyanezt írják le más-más problémára. A tölcsér ezért nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor. A rossz üzenet legtöbbször jó üzenet rossz időben.</p><p>A beküldendő vizsgakérdések közül egyet írhatsz erről az alkalomról: olyat, ami egy márkát és egy helyzetet ad, és azt kéri, döntsd el, melyik fázisban van a vevő, és mit mondanál neki.</p><p>A következő kérdés: hol fogadjuk, amikor megérkezik hozzánk. A térkép Act fázisában az ember már a márka saját felületén áll, a weboldalon, a webshopban, a regisztrációnál. A 3. alkalom erről szól, október 12-én.</p></div></div>
+</aside>
+
+<aside class="sheet" id="minta" aria-label="Sablon">
+  <button class="btn close" data-close="minta">Bezár (Esc)</button>
+  <div class="inner">
+    <h2>2. beadandó: journey-térkép</h2>
+    <p>Rajzoljátok meg az ügyfeletek vásárlójának útját a múlt heti célcsoportból indulva. Válasszatok modellt, és indokoljátok, miért az illik a termékhez. Egy szerep útja, fázisonként kontaktpontokkal, érzéssel és azzal, amit ott jelenleg a márka mond. A végén egy ítélet: hol szakad meg az út. Ez dekonstrukció: azt írjátok le, mit csinál jelenleg a márka, és ezt bizonyítjátok.</p>
+    <p><b>Terjedelem</b> legfeljebb egy A4 oldal. <b>Formátum</b> a Leadás gombbal, és legyen meg saját doksiban is, a rajzzal együtt. <b>Határidő</b> óra vége, utána szavazunk. <b>Hogyan értékeljük</b> a modellválasztás indokolt-e; a fázisok bizonyítékkal állnak-e; megmutat-e a térkép egy konkrét pontot, ahol az út megszakad.</p>
+
+    <h3>Sablon</h3>
+    <div class="blk"><b>1. Fejléc</b>Ügynökség · Ügyfél · Tagok · Ki mit csinált</div>
+    <div class="blk"><b>2. Amit néztünk</b>Weboldal · Közösségi felületek (melyik, legalább az utolsó két hét) · Hirdetés (hol láttuk; ha nem találtunk, ezt írjátok le) · Vélemények vagy összehasonlító oldal</div>
+    <div class="blk"><b>3. A modell és miért</b>Melyik modell (AIDA, Kotler öt lépcsője, 5A, See-Think-Do-Care) · Milyen sorrend illik a termékhez (tanul · érez · tesz, tesz · érez · tanul, tanul · tesz · érez) · Egy mondat indoklás</div>
+    <div class="blk"><b>4. A journey egy mondatban</b>Kinek az útja (vevő vagy használó), honnan hova jut, és hol dől el.</div>
+    <div class="blk"><b>5. Fázisok és kontaktpontok</b>Fázisonként: a kontaktpontok (a nem saját is) · Mit érez, mitől fél, mi akasztja meg a vevőt · Mit mond ott jelenleg a márka</div>
+    <div class="blk"><b>6. Bizonyíték</b>Melyik poszt, oldal, hirdetés, vélemény mutatja, amit a fázisokról állítottatok</div>
+    <div class="blk"><b>7. Hol szakad meg az út</b>Üres fázis · Olyan fázis, ahol csak mások beszélnek · Jó üzenet rossz fázisban · Egy pont, amire rá lehet bökni</div>
+    <div class="blk"><b>8. Ami hiányzik</b>Melyik fázisban nem mond semmit a márka, egy mondat</div>
+  </div>
+</aside>
+
+<div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
+<div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
+<div class="revout" id="revout"><h2>Megjegyzések</h2><p class="small muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár (Esc)</button></p></div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,notes=document.getElementById('notes'),pos=document.getElementById('pos');
+  function show(n){
+    n=Math.max(0,Math.min(slides.length-1,n));
+    slides[i].classList.remove('cur');i=n;slides[i].classList.add('cur');
+    pos.textContent=(i+1)+' / '+slides.length;
+    var sec=slides[i].getAttribute('data-sec')||'ep2'; [].forEach.call(document.querySelectorAll('.strip a[data-sec]'),function(a){a.classList.toggle('on',a.getAttribute('data-sec')===sec)});
+    var key=slides[i].getAttribute('data-notes');
+    [].forEach.call(notes.children,function(d){d.style.display=d.getAttribute('data-n')===key?'block':'none'});
+    location.hash='d'+(i+1);
+  }
+  function step(){
+    var s=slides[i].querySelector('.step:not(.in)');
+    if(s){s.classList.add('in');return true}return false;
+  }
+  function next(){if(!step())show(i+1)}
+  function prev(){show(i-1)}
+  document.addEventListener('keydown',function(e){
+    if(e.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)){return}
+    if(e.key==='ArrowRight'||e.key==='PageDown'){next();e.preventDefault()}
+    else if(e.key===' '){next();e.preventDefault()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){prev();e.preventDefault()}
+    else if(e.key==='n'||e.key==='N'){notes.classList.toggle('open')}
+    else if(e.key==='j'||e.key==='J'){document.body.classList.toggle('rev')}
+    else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+    else if(e.key==='Escape'){notes.classList.remove('open');document.getElementById('minta').classList.remove('open');document.getElementById('revbox').classList.remove('open');document.getElementById('revout').classList.remove('open')}
+  });
+  document.querySelectorAll('[data-nav]').forEach(function(b){b.addEventListener('click',function(){b.getAttribute('data-nav')==='1'?next():prev()})});
+  document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(+a.getAttribute('data-go'))})});
+  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
+
+  document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var t=b.getAttribute('data-open');var el=document.getElementById(t);if(t==='notes'){notes.classList.toggle('open')}else{el.classList.add('open')}})});
+  document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();document.getElementById(b.getAttribute('data-close')).classList.remove('open')})});
+
+  /* csapatmunka-szavazás-szavazás: csapatonként számláló, csak a memóriában */
+
+  var u=(location.protocol==='file:'?'https://egyetem.bemind.dev/om2026nappali/':location.href.replace(/[#?].*$/,'').replace(/[^\/]*$/,''))+'app.html?ep=ep2&v=szavazas'; var vu=document.getElementById('voteurl'); if(vu)vu.textContent=u;
+
+  /* ===== javító mód: J billentyű; a megjegyzések a böngészőben maradnak, a Lista kimentése adja ki őket ===== */
+  var REVSEL='.slide h1,.slide h2,.slide h3,.slide p,.slide li,.slide td,.slide th,.slide .blocks>div,.slide .ep,.slide .triad>div,.slide .cols3>div,.slide .task,.notes .hj p,.notes h4';
+  var REVQ='h1,h2,h3,h4,p,li,td,th,.blocks>div,.ep,.triad>div,.cols3>div,.task';
+  var REVKEY='om2026-rev-ep2', rev={}, revTarget=null;
+  try{rev=JSON.parse(localStorage.getItem(REVKEY)||'{}')}catch(e){rev={}}
+  function revSave(){try{localStorage.setItem(REVKEY,JSON.stringify(rev))}catch(e){} document.getElementById('revcount').textContent=Object.keys(rev).length; revMark()}
+  function slideNo(el){var sl=el.closest('.slide'); if(sl)return slides.indexOf(sl)+1; return i+1}
+  function revId(el){ var sl=el.closest('.slide'), inNotes=!!el.closest('.notes'); var root=sl||document.getElementById('notes'); var all=[].slice.call(root.querySelectorAll(REVQ)); return (inNotes?'j':'d')+slideNo(el)+'-'+all.indexOf(el)}
+  function revText(el){ var parts=[]; el.childNodes.forEach(function(n){ var t=(n.textContent||'').trim(); if(t)parts.push(t) }); return parts.join(' · ') }
+  function revMark(){ [].forEach.call(document.querySelectorAll('.rev-marked'),function(e){e.classList.remove('rev-marked')}); Object.keys(rev).forEach(function(k){var e=rev[k].el; if(e)e.classList.add('rev-marked')}) }
+  function revOpen(el,x,y){ revTarget=el; var id=revId(el); var box=document.getElementById('revbox'); document.getElementById('revorig').textContent=revText(el); document.getElementById('revtext').value=rev[id]?rev[id].note:''; box.style.left=Math.min(x,window.innerWidth-560)+'px'; box.style.top=Math.min(y,window.innerHeight-260)+'px'; box.classList.add('open'); document.getElementById('revtext').focus() }
+  document.addEventListener('click',function(e){ if(!document.body.classList.contains('rev'))return; if(e.target.closest('#revbox,#revbar,#revout,button,input,select,textarea,a'))return; var el=e.target.closest(REVSEL); if(!el)return; e.preventDefault(); e.stopPropagation(); revOpen(el,e.clientX,e.clientY) },true);
+  document.getElementById('revsave').addEventListener('click',function(){ var t=document.getElementById('revtext').value.trim(); var id=revId(revTarget); if(t){rev[id]={slide:slideNo(revTarget),where:revTarget.closest('.notes')?'jegyzet':'dia',orig:revText(revTarget),note:t,el:revTarget}}else{delete rev[id]} revSave(); document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revdel').addEventListener('click',function(){ delete rev[revId(revTarget)]; revSave(); document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revcancel').addEventListener('click',function(){ document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revexport').addEventListener('click',function(){ var keys=Object.keys(rev).sort(function(a,b){return rev[a].slide-rev[b].slide}); var out=keys.map(function(k){var r=rev[k]; return r.slide+'. dia'+(r.where==='jegyzet'?' (jegyzet)':'')+'\nEredeti: '+r.orig+'\nJavítás: '+r.note}).join('\n\n'); if(!out)out='Nincs megjegyzés.'; document.getElementById('revouttext').value=out; document.getElementById('revout').classList.add('open'); try{navigator.clipboard.writeText(out)}catch(e){} });
+  document.getElementById('revoutclose').addEventListener('click',function(){document.getElementById('revout').classList.remove('open')});
+  document.getElementById('revclear').addEventListener('click',function(){ if(confirm('Minden megjegyzés törlése?')){rev={};revSave()} });
+  document.getElementById('revoff').addEventListener('click',function(){document.body.classList.remove('rev')});
+  /* a tárolt megjegyzések elemhez kötése betöltéskor */
+  (function(){ var pending=Object.keys(rev); if(!pending.length)return; var map={}; slides.forEach(function(sl,idx){ [].slice.call(sl.querySelectorAll(REVQ)).forEach(function(el,j){map['d'+(idx+1)+'-'+j]=el}) }); var nAll=[].slice.call(document.getElementById('notes').querySelectorAll('h1,h2,h3,h4,p,li,td,th')); pending.forEach(function(k){ if(k[0]==='d'){rev[k].el=map[k]} else { var m=nAll.filter(function(el){return el.textContent.trim()===rev[k].orig})[0]; rev[k].el=m } }); revSave() })();
+  var m=location.hash.match(/^#d(\d+)$/);show(m?+m[1]-1:0);
+})();
+</script>
+</body>
+</html>
