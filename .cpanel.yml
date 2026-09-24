@@ -9,3 +9,4 @@ deployment:
     - /bin/cp online-marketing-2026-evad-1-epizod.html $DEPLOYPATH
     - /bin/cp online-marketing-2026-evad-2-epizod.html $DEPLOYPATH
     - /bin/cp journey-terkep.html $DEPLOYPATH
+    - /bin/cp journey-tippek.html $DEPLOYPATH

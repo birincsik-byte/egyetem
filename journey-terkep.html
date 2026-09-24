@@ -16,6 +16,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45}
 button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--cobalt)}
 .top{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:1.2em;padding:.7em 3vw;flex-wrap:wrap}
 .top b{font-family:var(--display);font-weight:500;font-size:1.25em}
 .top .sp{flex:1}
@@ -78,6 +79,7 @@ td.holed{background:rgba(242,201,76,.25)}
 <div class="top">
   <b>Journey-térkép</b><span class="muted small">2. alkalom · Hogyan dönt az ember</span>
   <span class="sp"></span>
+  <a class="btn" href="journey-tippek.html" target="_blank" style="text-decoration:none">Hogyan nézzétek meg</a>
   <button class="btn" id="demo">Minta betöltése</button>
   <button class="btn" id="print">Nyomtatás a falra</button>
   <button class="btn" id="clear">Új, üres térkép</button>
@@ -85,7 +87,7 @@ td.holed{background:rgba(242,201,76,.25)}
 
 <main>
   <h1>Az ügyfeletek vásárlójának útja</h1>
-  <p class="lead">Sorok: amit a befogadó átél, amit a márka mond, és a csatornák. Oszlopok: a döntési fázisok a választott modell szerint. A csatornasorokban kattints egy cellára: egyszer másodlagos, kétszer fő csatorna, háromszor üres. Az 1. alkalmon választott márkát bontjátok tovább: nem kitaláljátok az útját, hanem leírjátok, amit megfigyeltek, a választott modell szerkezetében. Ez a térkép a 2. alkalom leadása. A munka ebben a böngészőben mentődik, a végén a <span class="hl">Beküldés</span> gombbal adjátok le.</p>
+  <p class="lead">Sorok: amit a befogadó átél, amit a márka mond, és a csatornák. Oszlopok: a döntési fázisok a választott modell szerint. A csatornasorokban kattints egy cellára: egyszer másodlagos, kétszer fő csatorna, háromszor üres. Az 1. alkalmon választott márkát bontjátok tovább: nem kitaláljátok az útját, hanem leírjátok, amit megfigyeltek, a választott modell szerkezetében. Ez a térkép a 2. alkalom leadása. Hol és hogyan nézzétek meg: <a href="journey-tippek.html" target="_blank">megfigyelési útmutató</a>. A munka ebben a böngészőben mentődik, a végén a <span class="hl">Beküldés</span> gombbal adjátok le.</p>
 
   <div class="row">
     <div><label for="team">Ügynökség (csapat)</label><select id="team"><option value="">válaszd ki a csapatotokat</option></select></div>
@@ -98,7 +100,7 @@ td.holed{background:rgba(242,201,76,.25)}
     <div style="grid-column:span 2"><label>Milyen sorrend illik a termékhez (Kotler, Keller, 17. fejezet)</label>
       <div class="seq" id="seq"></div></div>
   </div>
-  <div style="margin-top:.8em"><label for="why">Egy mondat indoklás: miért ez a modell illik a márkához</label><textarea id="why"></textarea></div>
+  <div style="margin-top:.8em"><label for="why">Egy mondat indoklás: miért ez a modell illik a márkához. Az alap a See-Think-Do-Care; ha mást választotok, írjátok meg, mit mutat meg jobban a márkánál</label><textarea id="why"></textarea></div>
 
   <h2>2. A journey egy mondatban</h2>
   <textarea id="sentence" placeholder="Honnan hova jut, és hol dől el."></textarea>
@@ -109,6 +111,7 @@ td.holed{background:rgba(242,201,76,.25)}
   <div class="addch noprint"><input id="newch" placeholder="saját csatorna, pl. Google Térkép-értékelések"><button class="btn" id="addch">Hozzáad</button></div>
 
   <h2>4. Bizonyíték, lyuk, hiány</h2>
+  <p class="small muted noprint" style="margin-bottom:.6em">Hol és hogyan találtok bizonyítékot: <a href="journey-tippek.html" target="_blank">Hogyan nézzétek meg</a>, eszközök élő linkekkel.</p>
   <div class="row" style="align-items:end">
     <div><label for="evidence">Bizonyíték: melyik poszt, oldal, hirdetés, vélemény mutatja, amit a fázisokról állítottatok</label><textarea id="evidence"></textarea></div>
     <div><label for="gap">Hol szakad meg az út: egy pont, amire rá lehet bökni, és miért</label><textarea id="gap"></textarea></div>
@@ -129,7 +132,7 @@ td.holed{background:rgba(242,201,76,.25)}
     <div class="out" id="out" style="margin-top:1em"></div>
   </div>
 
-  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.6 · 2026. szeptember 24.</p>
+  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.7 · 2026. szeptember 24.</p>
 </main>
 
 <script>
@@ -137,11 +140,10 @@ td.holed{background:rgba(242,201,76,.25)}
   var MODELS={
     stdc:{name:'See-Think-Do-Care (Kaushik)',ph:[['See','nincs vásárlási szándék'],['Think','gyenge szándék'],['Do','erős szándék, vásárol'],['Care','többször vásárolt']]},
     a5:{name:'5A (Kotler, Kartajaya, Setiawan)',ph:[['Aware','ismeri'],['Appeal','vonzódik'],['Ask','kérdez'],['Act','vásárol, használ'],['Advocate','ajánl']]},
-    k5:{name:'Öt lépcső (Kotler, Keller)',ph:[['Problémafelismerés',''],['Információkeresés',''],['Értékelés',''],['Döntés',''],['Vásárlás után','']]},
-    aida:{name:'AIDA (Strong, 1925)',ph:[['Attention',''],['Interest',''],['Desire',''],['Action','']]}
+    k5:{name:'Öt lépcső (Kotler, Keller)',ph:[['Problémafelismerés',''],['Információkeresés',''],['Értékelés',''],['Döntés',''],['Vásárlás után','']]}
   };
   var SEQ=['tanul · érez · tesz','tesz · érez · tanul','tanul · tesz · érez'];
-  var ROWS=[['aud','Ki van itt','kit és milyen helyzetben ér el ez a fázis'],['feel','Mit érez, mitől fél','mi akasztja meg'],['says','Mit mond itt jelenleg a márka','szó szerint, ha lehet'],['kpi','Mit mérnénk','egy mérőszám fázisonként']];
+  var ROWS=[['aud','Ki van itt','kit és milyen helyzetben ér el ez a fázis'],['feel','Mit érez, mitől fél','mi akasztja meg'],['says','Mit mond itt jelenleg a márka','szó szerint, ha lehet'],['kpi','Mit mérnénk','tippeljétek meg: mit mérhet itt a márka']];
   var CH=['Blog, saját tartalom','Facebook','Reddit','Instagram','TikTok','YouTube rövid videó','YouTube hosszú videó','Pinterest','Facebook hirdetés','Instagram hirdetés','YouTube hirdetés','TikTok hirdetés','Display','Keresőhirdetés','Remarketing','E-mail, hírlevél','Affiliate','Árösszehasonlító oldal','Ajánlás, ajánlóprogram','Ügyfélszolgálat, chat','Személyes'];
   var OLDCH=['SEO, blog, saját tartalom','Videó (YouTube, TikTok, Reels)','Organikus social','Fizetett social','Display','Keresőhirdetés','Remarketing','E-mail, hírlevél','Affiliate, összehasonlító oldal','Vélemények, ajánlás, ajánlóprogram','Ügyfélszolgálat, chat, személyes'];
   var HOLES=[['','nem itt'],['üres fázis','itt: a márka nem mond semmit'],['csak mások beszélnek','itt: csak mások beszélnek (vélemény, ismerős)'],['jó üzenet rossz fázisban','itt: jó üzenet, de rossz fázisban']];
@@ -151,6 +153,7 @@ td.holed{background:rgba(242,201,76,.25)}
   function blank(){return {team:'',brand:'',model:'stdc',seq:'',why:'',sentence:'',evidence:'',gap:'',missing:'',who:'',looked:'',channels:CH.slice(),cells:{},mx:{},holes:{}}}
   var S=blank();
   try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in o)S[k]=o[k]}}catch(e){}
+  if(!MODELS[S.model])S.model='stdc';
   if(S.channels.indexOf(OLDCH[1])>=0){S.channels=CH.concat(S.channels.filter(function(c){return OLDCH.indexOf(c)<0&&CH.indexOf(c)<0}))}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   function $(id){return document.getElementById(id)}
