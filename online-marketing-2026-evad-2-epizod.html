@@ -284,6 +284,8 @@ ul.plain2 li{margin-bottom:.4em}
 #pos{border:1px solid var(--line);border-radius:4px;padding:.2em .7em;cursor:pointer;color:inherit;background:none;font:inherit}#pos::after{content:" ▾"}
 .jump{display:none;position:absolute;right:0;bottom:calc(100% + .6em);width:min(34em,80vw);max-height:70vh;overflow:auto;background:var(--paper,#F7F5F0);border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:.4em 0;font-size:1.25em;z-index:50}.jump.open{display:block}.pager{position:fixed}.jump a{display:grid;grid-template-columns:2.2em 1fr;gap:.4em;padding:.35em 1em;color:var(--ink);text-decoration:none;line-height:1.3}.jump a:hover{background:rgba(0,0,0,.05)}.jump a.cur{font-weight:600;color:var(--cobalt)}.jump a i{font-style:normal;color:var(--ink-soft)}
 
+svg.flow{width:100%;max-height:66vh;display:block}svg.flow .fh{font:600 13px var(--body);letter-spacing:.08em;text-transform:uppercase;fill:#5A5E78}svg.flow .fs{font:500 17px var(--body);fill:#1B1F3A}svg.flow .fl{font:600 19px var(--body);fill:#1B1F3A}svg.flow .fm{font:400 15px var(--body);fill:#5A5E78}svg.flow .fm2{font:400 15px var(--body);fill:#1B1F3A}svg.flow g.step{transition:opacity .35s}
+
 
 @media (max-width:900px){
   .strip a span{display:none}
@@ -622,6 +624,61 @@ ul.plain2 li{margin-bottom:.4em}
   <p class="small muted" style="margin-top:.6em"><span class="dot2">●</span> fő szerep &nbsp; <span class="dot1">○</span> másodlagos. Egy csatorna több fázisban is dolgozhat; a kérdés mindig az, hogy ott épp ki nézi.</p>
 </section>
 
+<!-- e13f -->
+<section class="slide" data-notes="e13f">
+  <p class="kicker">Áramlási térkép · Anna útja a weboldalig</p>
+  <h2 class="long" style="margin-bottom:.4em;max-width:none">Hogyan érkeznek meg a weboldalra, és mi lesz belőle?</h2>
+  <svg class="flow" viewBox="0 0 1200 545" role="img" aria-label="Áramlási térkép: honnan érkezik a látogató, hová jut a weboldalon, és mi lesz belőle">
+<text class="fh" x="0" y="16">Honnan jön</text><text class="fh" x="470" y="16">Hová érkezik a weboldalon</text><text class="fh" x="880" y="16">Mi lesz belőle</text>
+<g>
+<rect x="0" y="34" width="250" height="52" rx="8" fill="#DCE7FB"/><rect x="0" y="34" width="7" height="52" rx="3" fill="#4A86E8"/><text class="fs" x="20" y="66.0">TikTok, Reels, YouTube</text>
+<rect x="0" y="100" width="250" height="52" rx="8" fill="#DCE7FB"/><rect x="0" y="100" width="7" height="52" rx="3" fill="#4A86E8"/><text class="fs" x="20" y="132.0">Display, fizetett social</text>
+<rect x="0" y="166" width="250" height="52" rx="8" fill="#D3EBDD"/><rect x="0" y="166" width="7" height="52" rx="3" fill="#3E9A5C"/><text class="fs" x="20" y="198.0">Google: a problémára keres</text>
+<rect x="0" y="232" width="250" height="52" rx="8" fill="#D3EBDD"/><rect x="0" y="232" width="7" height="52" rx="3" fill="#3E9A5C"/><text class="fs" x="20" y="264.0">Értékelések, összehasonlítás</text>
+<rect x="0" y="298" width="250" height="52" rx="8" fill="#FCEBC6"/><rect x="0" y="298" width="7" height="52" rx="3" fill="#F1B53B"/><text class="fs" x="20" y="330.0">Rákeres a márkanévre</text>
+<rect x="0" y="364" width="250" height="52" rx="8" fill="#F6D5D0"/><rect x="0" y="364" width="7" height="52" rx="3" fill="#D5503F"/><text class="fs" x="20" y="396.0">Hírlevél, ajánlás</text>
+<rect x="0" y="430" width="250" height="52" rx="8" fill="#FCEBC6"/><rect x="0" y="430" width="7" height="52" rx="3" fill="#F1B53B"/><text class="fs" x="20" y="462.0">Remarketing</text>
+</g>
+<g class="step">
+<path d="M250,60.0 C360.0,60.0 360.0,67.0 470,67.0" stroke="#4A86E8" stroke-width="18" fill="none" stroke-opacity=".42"/>
+<path d="M250,126.0 C360.0,126.0 360.0,76.0 470,76.0" stroke="#4A86E8" stroke-width="8" fill="none" stroke-opacity=".42"/>
+<path d="M250,126.0 C360.0,126.0 360.0,279.0 470,279.0" stroke="#4A86E8" stroke-width="6" fill="none" stroke-opacity=".42"/>
+<path d="M250,192.0 C360.0,192.0 360.0,85.0 470,85.0" stroke="#3E9A5C" stroke-width="14" fill="none" stroke-opacity=".42"/>
+<path d="M250,192.0 C360.0,192.0 360.0,173.0 470,173.0" stroke="#3E9A5C" stroke-width="11" fill="none" stroke-opacity=".42"/>
+<path d="M250,258.0 C360.0,258.0 360.0,288.0 470,288.0" stroke="#3E9A5C" stroke-width="12" fill="none" stroke-opacity=".42"/>
+<path d="M250,324.0 C360.0,324.0 360.0,297.0 470,297.0" stroke="#F1B53B" stroke-width="13" fill="none" stroke-opacity=".42"/>
+<path d="M250,324.0 C360.0,324.0 360.0,385.0 470,385.0" stroke="#F1B53B" stroke-width="10" fill="none" stroke-opacity=".42"/>
+<path d="M250,390.0 C360.0,390.0 360.0,394.0 470,394.0" stroke="#D5503F" stroke-width="10" fill="none" stroke-opacity=".42"/>
+<path d="M250,390.0 C360.0,390.0 360.0,94.0 470,94.0" stroke="#D5503F" stroke-width="5" fill="none" stroke-opacity=".42"/>
+<path d="M250,456.0 C360.0,456.0 360.0,403.0 470,403.0" stroke="#F1B53B" stroke-width="15" fill="none" stroke-opacity=".42"/>
+<rect x="470" y="44" width="200" height="70" rx="10" fill="#fff" stroke="#1B1F3A" stroke-width="1.5"/><text class="fl" x="488" y="74">Blog, tartalom</text><text class="fm" x="488" y="97">ahol megérkezik</text>
+<rect x="470" y="150" width="200" height="70" rx="10" fill="#fff" stroke="#1B1F3A" stroke-width="1.5"/><text class="fl" x="488" y="180">Szintfelmérő</text><text class="fm" x="488" y="203">kipróbálja</text>
+<rect x="470" y="256" width="200" height="70" rx="10" fill="#fff" stroke="#1B1F3A" stroke-width="1.5"/><text class="fl" x="488" y="286">Kurzusok és árak</text><text class="fm" x="488" y="309">összehasonlít</text>
+<rect x="470" y="362" width="200" height="70" rx="10" fill="#fff" stroke="#1B1F3A" stroke-width="1.5"/><text class="fl" x="488" y="392">Próbaóra-űrlap</text><text class="fm" x="488" y="415">dönt</text>
+</g>
+<g class="step">
+<path d="M670,79.0 C775.0,79.0 775.0,136.0 880,136.0" stroke="#1B1F3A" stroke-width="14" fill="none" stroke-opacity=".42"/>
+<path d="M670,185.0 C775.0,185.0 775.0,152.0 880,152.0" stroke="#1B1F3A" stroke-width="11" fill="none" stroke-opacity=".42"/>
+<path d="M670,291.0 C775.0,291.0 775.0,340.0 880,340.0" stroke="#1B1F3A" stroke-width="12" fill="none" stroke-opacity=".42"/>
+<path d="M670,397.0 C775.0,397.0 775.0,356.0 880,356.0" stroke="#1B1F3A" stroke-width="24" fill="none" stroke-opacity=".42"/>
+<rect x="880" y="96" width="255" height="96" rx="10" fill="#F2C94C"/><text class="fl" x="898" y="134">Mikrokonverzió</text><text class="fm2" x="898" y="160">feliratkozik, kitölti a szintfelmérőt</text>
+<rect x="880" y="300" width="255" height="96" rx="10" fill="#F2C94C"/><text class="fl" x="898" y="338">Makrokonverzió</text><text class="fm2" x="898" y="364">próbaórát foglal, beiratkozik</text>
+</g>
+<g class="step">
+<path d="M670,93.0 C775.0,93.0 775.0,458 880,458" stroke="#9A9DB0" stroke-width="14" fill="none" stroke-opacity=".42" stroke-dasharray="6 5"/>
+<path d="M670,305.0 C775.0,305.0 775.0,458 880,458" stroke="#9A9DB0" stroke-width="10" fill="none" stroke-opacity=".42" stroke-dasharray="6 5"/>
+<rect x="880" y="440" width="130" height="38" rx="19" fill="#EDEBE4"/><text class="fm" x="945" y="465" text-anchor="middle">Kilép</text>
+</g>
+<g class="step">
+<path d="M1135,144.0 C1195,144.0 1195,525 1120,525 L140,525 C125,525 125,482 125,484" stroke="#D5503F" stroke-width="2.5" fill="none" stroke-dasharray="7 6" marker-end="url(#ar)"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D5503F"/></marker></defs>
+<text class="fm" x="660" y="518" text-anchor="middle" fill="#B53A2B">visszahozzuk: remarketing, e-mail</text>
+</g></svg>
+
+
+  <p class="small muted" style="margin-top:.3em">Szemléltető ábra: a sávok színe a fázis (See, Think, Do, Care), a vastagságuk nem mért adat.</p>
+</section>
+
 <!-- e17a -->
 <section class="slide" data-notes="e17a">
   <p class="kicker">Hol szakad meg az út · a térkép ítélete</p>
@@ -719,8 +776,8 @@ ul.plain2 li{margin-bottom:.4em}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.31 · 2026. szeptember 24.</span></div>
-<div class="pager"><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 29</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.32 · 2026. szeptember 27.</span></div>
+<div class="pager"><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
@@ -777,6 +834,7 @@ ul.plain2 li{margin-bottom:.4em}
 
 <div data-n="e17"><h4>A második beadandó</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A mai feladat a múlt heti munka folytatása. A célcsoportot, a helyzetet és a mondatot már leírtátok, most ugyanannál a márkánál annak az embernek az útját írják le. Nem kitalálják az utat, hanem a megfigyeléseiket rendezik a modell szerkezetébe.</p><p>Az első lépés a modellválasztás. Az alap a See-Think-Do-Care, mert egész nap ezen mutattuk meg; aki mást választ, annak meg kell mondania, mit lát meg vele jobban a márkánál. Nincs jó és rossz modell, csak illő és nem illő. Egy fesztiválnál, ahol a jegyvásárlás után hónapokig tart a várakozás és az élmény, más modell illik, mint egy online számlázónál, ahol a próbaidőszak dönt. Az indoklás a sorrendből jön: a ti termékkategóriátoknál az ember előbb tanul, érez vagy tesz?</p><p>A fázisokba a kontaktpontok kerülnek, azok is, amik nem a márkáé: egy vélemény, egy összehasonlító oldal, egy ismerős. Fázisonként két mondat: mit érez az ember, mitől fél, mi akasztja meg; és mit mond ott jelenleg a márka. Ez a második mondat bizonyítékkal áll, ugyanúgy, mint múlt héten.</p><p>A térkép nem attól ér valamit, hogy szép, hanem attól, hogy megmutat egy lyukat. Háromféle van: üres fázis, ahol a márka nincs jelen; olyan fázis, ahol csak mások beszélnek helyette; és olyan, ahol a márka jelen van, de rossz üzenettel, például „vedd meg most”-tal ott, ahol az ember még csak ismerkedik. Amíg dolgoznak, járj körbe, és a lyuknál kérdezd meg: és ezt miből tudjátok?</p><p>A megfigyelésről (a korábbi külön diából):</p><p>A négy lépés a vevő útja, amit a csapat maga jár végig: kategóriakeresés, márkakeresés, belépés a márka világába, a vevők meghallgatása. Hangsúlyozd, hogy inkognitó ablakban dolgozzanak, és mindenhez legyen link és dátum. A hírlevélre egy közös csapatcímmel iratkozzanak fel, és a végén iratkozzanak le; vásárolni nem kell.</p><p>A részletes útmutató élő linkekkel a térképről is elérhető („Hogyan nézzétek meg”). Az eszközök nyilvánosak, a működésük változhat; ha egy eszköz nem ad eredményt, az is megfigyelés.</p></div></div>
 <div data-n="e17h"><h4>Hogyan töltitek ki</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A hat lépés a térkép sorrendjét követi. Mondd ki, hogy a feladat vége a beküldött adatlap, és hogy egy csapat egy böngészőben dolgozzon. A segédlet a térkép tetejéről is elérhető.</p><p>A kivett „mi keletkezik” dia jegyzetéből:</p><p>A beadandó ugyanúgy egy oldal, mint múlt héten, nyolc blokkban. A fejléc és az „amit néztünk” ugyanaz. Az utóbbiba most a vélemények és az összehasonlító oldalak is beletartoznak, mert a journey-n ezek is kontaktpontok.</p><p>A modell és miért: egy mondat, amiben benne van a sorrend. A journey egy mondatban a lényeg, ez látszik a szavazólistán: honnan hova jut, és hol dől el. A fázisok és kontaktpontok a térkép maga, szövegben. A bizonyíték külön blokk, mert itt is érv kell, nem vélemény. A „hol szakad meg az út” az ítélet: egy pont, amire rá lehet bökni. Az „ami hiányzik” pedig az a fázis, ahol a márka semmit nem mond.</p><p>A rajzot tartsátok meg papíron vagy fotón a saját mappátokban, mert a 3. alkalmon a térkép Act fázisából indultok: amikor az ember már a márka saját felületén áll.</p><p><b>A térkép kezelése (a korábbi külön diából):</b></p><p>Nyisd meg élőben a térképet, és a „Minta betöltése” gombbal mutasd meg egyszer az egészet. Utána az „Új, üres térkép” gombbal indulnak. A csatornacellák: egy kattintás másodlagos, kettő fő, három üres. A saját csatorna hozzáadható és törölhető. A „Hol szakad meg az út?” sorban kiválasztott fázis oszlopa sárga lesz.</p><p>A munka a böngészőben mentődik, tehát egy gépen dolgozzon a csapat. A beküldés a leadás: újraküldéskor felülíródik, amíg le nem zárod.</p><p>A térkép sorai Allan Baptista STDC-sablonjára épülnek (közönség, tartalom, csatorna, mérőszám fázisonként). Forrás: Allan Baptista: See, Think, Do, Care. A Content Focused Business Framework, Medium, 2020</p></div></div>
+<div data-n="e13f"><h4>Áramlási térkép</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Az előző dia a csatornákat és a fázisokat tette egymás mellé. Ez a dia ugyanezt mozgásában mutatja: honnan jön az ember, hová érkezik a weboldalon, és mi lesz belőle. Balról jobbra olvasd. A sáv színe megmutatja, melyik fázisban van, aki azon az úton jön: a kék See még nem keres semmit, a zöld Think már kérdez, a sárga Do dönteni készül, a piros Care már ismeri a márkát.</p><p>Figyeld meg, hogy a különböző fázisból jövők máshol érkeznek meg. Aki egy reelből kattint át, az a blogon vagy egy tartalmi oldalon landol, és ott még nem fog próbaórát foglalni. Aki a márkanévre keresett rá, vagy remarketinget látott, az közvetlenül az árakhoz vagy az űrlaphoz megy. Ezért nem ugyanaz a jó landing oldal mindenkinek.</p><p>A konverzió két szinten történik. A mikrokonverzió egy kis lépés: feliratkozik, kitölti a szintfelmérőt. Ez még nem vásárlás, de ettől tudjuk újra megszólítani. A makrokonverzió maga a cél: próbaórát foglal, beiratkozik. Aki kilép, nem feltétlenül veszett el. A piros szaggatott vonal mutatja, hogyan hozzuk vissza remarketinggel vagy e-maillel, és ettől lesz az útból kör.</p><p>A sávok vastagsága szemléltetés, nem mért adat. Hogy a valóságban merre mennyien mennek, azt a mérés mutatja meg, erről a 6. alkalmon lesz szó.</p><p>Ez a dia a következő alkalomra is átvezet: a 3. alkalom arról szól, hogyan fogadjuk az embert, amikor megérkezik hozzánk.</p></div></div>
 <div data-n="e17a"><h4>A három lyuk</h4><p class="src top">Forrás: oktató; a rossz fázis: Kaushik, See-Think-Do (Occam's Razor blog)</p><div class="hj"><h5>Jegyzet</h5><p>Ez a térkép ítélete, erre szavaznak a végén. Mindhármat Annán mutasd meg, és mindegyiknél mondd el, hogyan lehet megtalálni, mert a térképre bizonyíték kell, nem érzés. Az üres fázist kategóriakereséssel, a „csak mások beszélnek” fázist értékelésekkel és fórumokkal, a rossz fázisban szóló üzenetet a hirdetéstárral lehet tetten érni.</p><p>Kaushik mondata a harmadikhoz: „It is horrible marketing to do a BUY FROM ME NOW campaign to See stage customers. It is also rude.”</p></div></div>
 
 
