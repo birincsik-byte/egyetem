@@ -27,6 +27,12 @@ button:disabled{opacity:.5;cursor:default}
 .vcard input{width:auto;margin-top:.3em}
 details{margin:.5em 0 0 2em}
 summary{cursor:pointer;color:var(--cobalt)}
+.esent{margin:.35em 0 0 2em;font-style:italic}.eopen{margin:.4em 0 0 2em}.obtn{font-size:.85em;padding:.25em .8em;border:1px solid var(--cobalt);color:var(--cobalt);background:#fff;border-radius:4px;cursor:pointer}
+.subm{position:fixed;inset:0;background:rgba(27,31,58,.45);z-index:100;display:flex;align-items:flex-start;justify-content:center;padding:4vh 1em;overflow:auto}.subm.hide{display:none}
+.subm_box{background:#fff;border-radius:8px;max-width:820px;width:100%;padding:1.4em 1.8em;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.subm_bar{display:flex;justify-content:space-between;gap:1em;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:.6em;margin-bottom:.8em}.subm_bar h2{margin:0}
+.subm_btns{display:flex;gap:.5em}.subm_btns button{padding:.3em .8em;border:1px solid var(--line);border-radius:4px;background:#fff;cursor:pointer}
+#subm_body .fld{margin:.9em 0;padding-left:.8em;border-left:3px solid var(--marker)}
 .fld{margin:.6em 0;padding-left:.8em;border-left:2px solid var(--line)}
 .bar{height:1.4em;background:var(--cobalt);border-radius:3px;min-width:2px}
 .row{display:grid;grid-template-columns:11em 1fr 2.5em;gap:.6em;align-items:center;margin:.4em 0}
@@ -134,6 +140,8 @@ summary{cursor:pointer;color:var(--cobalt)}
     <div id="e_list"></div>
   </section>
 
+  <div id="subm" class="subm hide" role="dialog" aria-modal="true" aria-labelledby="subm_t"><div class="subm_box"><div class="subm_bar"><div><h2 id="subm_t"></h2><p class="small muted" id="subm_m"></p></div><div class="subm_btns"><button id="subm_win">Új ablakban</button><button id="subm_x" aria-label="Bezárás">✕</button></div></div><div id="subm_body"></div></div></div>
+
   <!-- oktató -->
   <section id="v_admin" class="hide">
     <h2>Oktatói műveletek</h2>
@@ -156,7 +164,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.4 · 2026. szeptember 24.</p>
+  <p class="small muted" style="margin-top:3em">app v2.6 · 2026. szeptember 28.</p>
 </div>
 
 <script>
@@ -202,6 +210,19 @@ summary{cursor:pointer;color:var(--cobalt)}
 
   CLIENTS.forEach(function(c){var o=document.createElement('option');o.textContent=c;$('c_client').appendChild(o)});
 
+
+  function subHtml(tid){var t=S.teams.filter(function(x){return x.id===tid})[0]||{name:'',client:''},sub=S.subs[tid]||{},h='';
+    CFG.fields.forEach(function(f){var v=sub[f[0]];if(!v)return;h+='<div class="fld"><span class="small muted">'+esc(f[1])+'</span><br>'+esc(v).replace(/\n/g,'<br>')+'</div>'});
+    return {t:t,h:h,m:CFG.name+' · '+CFG.title};}
+  var curSub=null;
+  function openSub(tid){var o=subHtml(tid);curSub=tid;$('subm_t').textContent=o.t.name+' · '+o.t.client;$('subm_m').textContent=o.m;$('subm_body').innerHTML=o.h;$('subm').classList.remove('hide');$('subm_x').focus()}
+  function closeSub(){$('subm').classList.add('hide');curSub=null}
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-open-sub]');if(b){e.preventDefault();openSub(b.getAttribute('data-open-sub'))}});
+  $('subm_x').addEventListener('click',closeSub);
+  $('subm').addEventListener('click',function(e){if(e.target===$('subm'))closeSub()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&curSub)closeSub()});
+  $('subm_win').addEventListener('click',function(){if(!curSub)return;var o=subHtml(curSub),w=window.open('','_blank');if(!w)return;
+    w.document.write('<!doctype html><html lang="hu"><head><meta charset="utf-8"><title>'+esc(o.t.name)+' · beadandó</title><style>body{font-family:"Source Sans 3",Helvetica,Arial,sans-serif;max-width:780px;margin:2em auto;padding:0 1em;color:#1B1F3A;line-height:1.5}.fld{margin:1em 0;padding-left:.8em;border-left:3px solid #F2C94C}.small{font-size:.85em}.muted{color:#5A5E78}</style></head><body><h1>'+esc(o.t.name)+' · '+esc(o.t.client)+'</h1><p class="small muted">'+esc(o.m)+'</p>'+o.h+'</body></html>');w.document.close()});
   function refresh(){
     return api('state').then(function(d){ if(!d.ok)throw 0; S=d; render(); }).catch(function(){ ['c_status','l_status','s_status','e_status'].forEach(function(id){$(id).textContent='A szerver nem elérhető.'}); });
   }
@@ -224,10 +245,12 @@ summary{cursor:pointer;color:var(--cobalt)}
       var rate=''; if(t.id!==own){ rate='<div class="stars" data-t="'+t.id+'">'; for(var k=1;k<=5;k++)rate+='<span data-v="'+k+'" class="'+(k<=sv.stars?'on':'')+'">★</span>'; rate+='</div><textarea placeholder="Indoklás, legalább egy mondat">'+esc(sv.reason)+'</textarea>'; }
       card.innerHTML=head+body+rate; sl.appendChild(card)});
     /* eredmény */
-    var el=$('e_list'); el.innerHTML='';
+    var el=$('e_list'); var eOpen={}; [].forEach.call(el.querySelectorAll('details[open]'),function(x){eOpen[x.getAttribute('data-k')]=1}); el.innerHTML='';
     S.teams.slice().sort(function(a,b){var ta=S.tally[a.id]||{},tb=S.tally[b.id]||{};return (tb.avg||0)-(ta.avg||0)||(tb.n||0)-(ta.n||0)}).forEach(function(t){var r=S.tally[t.id]||{n:0,avg:0,reasons:[]};var d=document.createElement('div');d.className='erow';
       var st='<span class="stars show">'; for(var k=1;k<=5;k++)st+='<span class="'+(k<=Math.round(r.avg)?'on':'')+'">★</span>'; st+='</span>';
-      d.innerHTML='<div class="name">'+esc(t.name)+' <span class="small muted">· '+esc(t.client)+'</span></div>'+st+' <b>'+(r.n?Number(r.avg).toFixed(1):'–')+'</b> <span class="small muted">('+r.n+' szavazat)</span>'+(r.reasons&&r.reasons.length?'<details><summary class="small">Indoklások</summary>'+r.reasons.map(function(x){return '<p class="reason">'+x.stars+'★ '+esc(x.reason)+'</p>'}).join('')+'</details>':'');
+      var sub=S.subs[t.id], sb='';
+      if(sub){ sb='<p class="esent">'+esc(sub.sentence||'')+'</p><p class="eopen"><button class="obtn" data-open-sub="'+t.id+'">A teljes beadandó</button></p>'; } else { sb='<p class="small muted">Nem adtak le beadandót.</p>'; }
+      d.innerHTML='<div class="name">'+esc(t.name)+' <span class="small muted">· '+esc(t.client)+'</span></div>'+st+' <b>'+(r.n?Number(r.avg).toFixed(1):'–')+'</b> <span class="small muted">('+r.n+' szavazat)</span>'+sb+(r.reasons&&r.reasons.length?'<details data-k="r'+t.id+'"'+(eOpen['r'+t.id]?' open':'')+'><summary class="small">Indoklások</summary>'+r.reasons.map(function(x){return '<p class="reason">'+x.stars+'★ '+esc(x.reason)+'</p>'}).join('')+'</details>':'');
       el.appendChild(d)});
     if(S.locked){$('l_send').disabled=true;$('l_status').textContent='A leadás le van zárva. Ha javítani szeretnétek, kérjétek az oktatót, hogy oldja fel.'} else {$('l_send').disabled=false}
     $('e_meta').textContent=S.votes+' szavazólap érkezett · '+Object.keys(S.subs).length+' leadás a '+S.teams.length+' csapatból';
