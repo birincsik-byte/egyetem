@@ -4,7 +4,7 @@ Ez a doksi az induló állapot minden új chathez ebben a Projectben. Utolsó fr
 
 ## Összefoglaló
 
-A kurzus (VEGTKMB5, nappali, hét hétfői alkalom, alkalmanként négy 45 perces blokk) teljes digitális infrastruktúrája él. Az 1. alkalom kész és lement. A hallgatók ügynökségként dolgoznak egy valós magyar márkán, minden alkalom végén egy beadandóval, amire a többi csapat csillaggal és kötelező indoklással szavaz. Hét beadandó a jegy 70%-a. A soron következő munka a 2. alkalom, 2026. szeptember 28., „Hogyan dönt az ember", beadandó a journey-térkép.
+A kurzus (VEGTKMB5, nappali, hét hétfői alkalom, alkalmanként négy 45 perces blokk) teljes digitális infrastruktúrája él. Az 1. alkalom (2026. szeptember 14.) és a 2. alkalom (2026. szeptember 28.) lement. A hallgatók ügynökségként dolgoznak egy valós magyar márkán, minden alkalom végén egy beadandóval, amire a többi csapat csillaggal és kötelező indoklással szavaz. Hét beadandó a jegy 70%-a. A soron következő munka a 3. alkalom, 2026. október 12., „A saját terep”, beadandó a landing page-audit és e-mail-folyamat.
 
 ## Hol dolgozunk
 
@@ -37,13 +37,16 @@ Belépés: a hallgató a Neptun-kódjával lép be (18 kód a `neptun.php`-ben, 
 
 ## Verziószámok
 
-2026. szeptember 23-án közvetlenül a projektmappából és az élő oldalról ellenőrizve, a `09c286d` commit állapotában:
+2026. szeptember 28-án a projektmappából ellenőrizve, az `a54ca9e` commit állapotában (a mappa tiszta, minden fent van):
 
 - `online-marketing-2026-evad-1-epizod.html` · v1.7 · 2026. szeptember 13.
-- `app.html` · v1.8 · 2026. szeptember 14.
-- `index.html` · v1.3 · 2026. szeptember 14.
+- `online-marketing-2026-evad-2-epizod.html` · v1.32 · 2026. szeptember 27.
+- `app.html` · v2.8 · 2026. szeptember 28. (commitra vár)
+- `index.html` · v1.6 · 2026. szeptember 24.
+- `journey-terkep.html` · v1.11 · 2026. szeptember 24.
+- `journey-tippek.html` · v1.1 · 2026. szeptember 24.
 
-A deck tehát v1.7, nem v1.8. A korábbi v1.8-as hivatkozás ebben a doksiban téves volt. A hiteles forrás mindig a projektmappa és az élő oldal lábjegyzete, nem ez a doksi.
+A hiteles forrás mindig a projektmappa és az élő oldal lábjegyzete, nem ez a doksi.
 
 ## A titkok állapota
 
@@ -51,34 +54,46 @@ A `.gitignore` jelenleg kizárja a `data/`, `key.php`, `neptun.php`, `.DS_Store`
 
 ## A következő alkalom
 
-2. alkalom, „Hogyan dönt az ember", 2026. szeptember 28.
+3. alkalom, „A saját terep”, 2026. október 12. A lánc kérdése: „Hol fogadjuk, amikor megérkezik hozzánk”. Beadandó a leadandók sorrendje szerint: landing page-audit és e-mail-folyamat. A feladat pontos formáját az alkalom előtt találjuk ki (lásd „Új alkalom indítása”).
 
-A hivatalos tematikai pont szó szerint: „Elméleti keretrendszerek: user/decision journey, tölcsérmodell (See-Think-Do-Care, Kotler 5A)".
+A hivatalos tematikai pontok szó szerint, a gondolati ív doksiból:
+
+> • Weboldal és UX/UI mint forgalomterelő felület, loyalty/regisztrációs logika
+> • *(és a „Platformok és eszközök" pontból: automatizált email marketing)*
+> • *(és a „Webanalitika és GDPR" pontból: a GDPR / jogi vonatkozások)*
 
 Az oktató mondatai a gondolati ívből, ezek változatlanul mennek a deckbe:
 
-- Miről szól: user journey, See-Think-Do-Care, Kotler 5A.
-- Kulcsgondolat: az ember nem akkor vásárol, amikor te hirdetsz.
-- Tanulság: a tölcsér nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor. A rossz üzenet legtöbbször jó üzenet rossz időben.
+- Miről szól: weboldal, UX/UI, regisztrációs és loyalty logika, automatizált e-mail, adatkezelés.
+- Kulcsgondolat: a forgalom nem eredmény, és a weboldal az egyetlen felület, ami tényleg a tiéd.
+- Tanulság: a konverzió ritkán meggyőzés kérdése, sokkal inkább súrlódásé. Egy akadály elvétele többet hoz, mint egy újabb érv.
+
+A fázis-táblázat sora: mit hoz magával „Bizalom és meggyőzés.”, mire vált „Akadályok megszűntetése, percepció kialakítás a márkáról.”, mit tesz hozzá a végcélhoz „A felelősség átkerül a másik emberről a saját felületünkre.”
+
+Átvezetés a 2. alkalomból: a 2. deck zárása és az áramlási térkép dia („Hogyan érkeznek meg a weboldalra, és mi lesz belőle?”) már a 3. alkalom kérdésére mutat: hol fogadjuk, amikor megérkezik, mert a térkép Act / Do fázisában már a mi felületünkön jár. A források a lenti „Források a 3. alkalomhoz” szakaszban vannak.
 
 A készítés sorrendje kötött, a jelenlegi menet a fenti „Új alkalom indítása” szakaszban van.
 
-Egy alkalom négy dolgot érint, ezek egyszerre, egy commitban mennek:
+Egy alkalom ezeket érinti, egyszerre, egy commitban:
 
-1. az új deck fájl (`online-marketing-2026-evad-2-epizod.html`)
-2. az `app.html`-ben az `EPISODES` objektum `ep2` bejegyzése a beadandó mezőivel (az `f3` mindig kötelező, ez a leadás egymondatos lényege, ezt mutatja a szavazólista)
-3. az `index.html`-ben a 2. alkalom sorának élesítése (az `off` osztály törlése, linkek)
-4. a `.cpanel.yml`-ben egy új `cp` sor
+1. az új deck fájl (`online-marketing-2026-evad-3-epizod.html`)
+2. az `app.html`-ben az `EPISODES` objektum `ep3` bejegyzése a beadandó mezőivel (az `f3` mindig kötelező, ez a leadás egymondatos lényege, ezt mutatja a szavazólista és az eredmény oldal)
+3. az `index.html`-ben a 3. alkalom sorának élesítése (az `off` osztály törlése, linkek)
+4. a `.cpanel.yml`-ben új `cp` sor a deckre, és minden új fájlra (eszköz, segédlet), ha lesz
 
 Az `app.html`, az `index.html` és az `api.php` mind a hét alkalmat kiszolgálja, tehát ezeket mindig a projektmappában lévő állapotukból kell módosítani.
 
-### Állapot, 2026. szeptember 23.
+## A 2. alkalom (lement, 2026. szeptember 28.)
+
+2. alkalom, „Hogyan érjük el az embert és hogyan dönt?” (a gondolati ívben még „Hogyan dönt az ember”). A hivatalos tematikai pont szó szerint: „Elméleti keretrendszerek: user/decision journey, tölcsérmodell (See-Think-Do-Care, Kotler 5A)". Beadandó: a journey-térkép (`journey-terkep.html`), ami maga a leadás.
+
+### Előkészítés és állapot, 2026. szeptember 23–28.
 
 A 2. alkalom forrásdoksija elkészült: `forrasfeldolgozas-2-alkalom.md` (a Projectben és a projektmappában is). Az oktató átnézésére vár. A deckhez addig nem nyúlunk.
 
 Eldöntve: a v9 26. diáján csak „A tölcsér nem a vásárló útja.” marad, utána a riportolvasat, végül az oktató tanulsága szó szerint (három lépcső a diák sorrendjéből, nem egy új mondatban). Az 5A forrása a Marketing 4.0, 5. fejezet („The New Customer Path”), a Marketing 5.0-ra nem hivatkozunk. Az STDC Kaushik két eredeti blogbejegyzéséből van feldolgozva. Nyitott még: a tölcsér két könyvbeli olvasatából mi kell, a v9-ből mely diák kerülnek át, a tölcsérszámolás helye, a 32. dia idézete, és hogy az AIDA, Rucker, 5A időrend legyen-e az elméleti gerinc.
 
-A 2. alkalom fájljai a projektmappában vannak, commitra várnak: `online-marketing-2026-evad-2-epizod.html` v1.32 · 2026. szeptember 27. (30 dia, új áramlási térkép dia a csatornamix után: honnan jön, hová érkezik a weboldalon, mikro- és makrokonverzió, kilépés és visszahozás, szemléltető vastagsággal, a „Miről szól” szövege az oktató javításával, a címlap („Hogyan érjük el az embert és hogyan dönt?”) az első, utána a lánc-dia („Hogyan érjük el az embert.”, benne a korábbi nyitó dia), majd a „Múlt héten” dia; a fázis-táblázat dia („Mit tesz hozzá minden alkalom”) kikerült, a 2. és 3. dia szövege az oktató javításával, jobb alul lenyíló dianavigátor a számlálón, a megfigyelés négy lépése egymás mellett, a feladat szövege és a megfigyelés egy dián, a félreérthető 4 kártya és „A térkép kezelése” dia kikerült, utóbbi jegyzete a „Hogyan töltitek ki” diához került; a big shift négy dián mind a tizennégy gondolattal, See-Think-Do-Care csatornatérkép és Anna-demó, csatorna × fázis mátrix, Baptista STDC-sablonja), új fájl `journey-terkep.html` v1.11 (interaktív térkép: modellválasztás, fázisonként közönség, érzés, üzenet, KPI, csatorna-mátrix, lyuk; nyomtatható, és közvetlenül beküldi a nyolc blokkot az `ep2` Leadásba az api-n át; a böngészőben ment), `app.html` v2.7 · 2026. szeptember 28. (`ep2` nyolc mező, a Leadás nézet a térképre mutat; a szavazásnál az indoklás alatt karakterszámláló (legalább 15), a hibaüzenet megnevezi a csapatot és kimondja, hogy írásjel nem kötelező; az Eredmény nézetben minden alkalomnál a csapat sorában „A teljes beadandó” gomb, ami az oldal fölött nyitja meg a leadást, „Új ablakban” gombbal is), `index.html` v1.6 (2. sor élesítve), `.cpanel.yml` (két új `cp` sor: 2. deck és journey-térkép). Eldöntve 2026. szeptember 24.: a 2. alkalomnál a journey-térkép maga a leadás. Az indexen egy link van („Leadás: journey-térkép”), az app Leadás nézete csak a beküldött szöveg javítására szolgál. A térképen az Ügynökség (csapat) és a Márka is legördülő lista, a márka a csapat bejegyzéséből töltődik, a márkalista a bejegyzett csapatok márkáiból áll. A feladat dekonstrukció: az 1. alkalmon választott márka útját írják le megfigyelés alapján, nem kitalálják. Eldöntve 2026. szeptember 24. délelőtt: az AIDA mindenhonnan kikerült. A See-Think-Do-Care az alap, az 5A és az öt lépcső választható, de indoklással (mit mutat meg jobban a márkánál). A deckben új diák: „Ugyanaz az út, más kérdés” (a három modell mint döntési/szándék folyamat modell, mire válaszol), fordítókulcs Annával három modellben, a három lyuk példával, a megfigyelés négy lépése, a térkép kezelése képernyőképpel (36 dia). Új fájl: `journey-tippek.html` v1.0, megfigyelési útmutató élő linkekkel, a térképről és a deckből elérhető, `.cpanel.yml` sora megvan. A „Mit mérnénk” sor marad, a hallgatók tippelnek (a mérés későbbi alkalom). A vevő és a használó szétválasztása kikerült a feladatból (csak az e10 elméleti diáján maradt). 2026. szeptember 24., az oktató szövegmódosításai után (deck v1.8, 36 dia): a deckben a kulcsgondolat „A figyelem több helyen van. A konverzió egy cél és folyamat is egyben.” (a gondolati ív doksija még a régit tartalmazza). A ROPO-dia kikerült. A tölcsérszámolás helyén tölcsér és STDC-körök ábra, a sorrend-dia kártyákra bontva, új dia: „Honnan tudjuk, melyik fázisban van?”. A bővebb jegyzetek a `jegyzet-kutatas-2-alkalom.md` alapján készülnek. A 2. alkalom címe az oktató döntése szerint (2026. szeptember 24.): „Hogyan érjük el az embert és hogyan dönt?”, a deckben, az indexen, az appban, a térképen és a tippek oldalon átírva; az 1. alkalom deckjében még a régi cím áll. A deck 34 diás: a STDC-sablon dia kikerült, a tölcsér és körök dia az Anna-példa után áll, a „Honnan tudjuk” dia összevonva a „Melyik körrel hol találkozol” diával. A térképen csak a See-Think-Do-Care (alap) és az 5A választható, az öt lépcső csak elméletként szerepel a deckben (oktatói döntés, 2026. szeptember 24.). Minden STDC-t érintő dián Kaushik színei (See kék, Think zöld, Do sárga, Care piros). A Sablon lap kikerült, a „mi keletkezik” dia a térkép szakaszait követi. Egy csapat egy böngészőben javasolt dolgozni (a térkép és a deck is kiírja); a beküldés figyelmeztet, ha már van leadás. A fejléc-csík diánként jelölve (`data-sec`): csak a lánc és a fázis-táblázat Évad, minden más 2.
+A 2. alkalom fájljai a projektmappában vannak, commitra várnak: `online-marketing-2026-evad-2-epizod.html` v1.32 · 2026. szeptember 27. (30 dia, új áramlási térkép dia a csatornamix után: honnan jön, hová érkezik a weboldalon, mikro- és makrokonverzió, kilépés és visszahozás, szemléltető vastagsággal, a „Miről szól” szövege az oktató javításával, a címlap („Hogyan érjük el az embert és hogyan dönt?”) az első, utána a lánc-dia („Hogyan érjük el az embert.”, benne a korábbi nyitó dia), majd a „Múlt héten” dia; a fázis-táblázat dia („Mit tesz hozzá minden alkalom”) kikerült, a 2. és 3. dia szövege az oktató javításával, jobb alul lenyíló dianavigátor a számlálón, a megfigyelés négy lépése egymás mellett, a feladat szövege és a megfigyelés egy dián, a félreérthető 4 kártya és „A térkép kezelése” dia kikerült, utóbbi jegyzete a „Hogyan töltitek ki” diához került; a big shift négy dián mind a tizennégy gondolattal, See-Think-Do-Care csatornatérkép és Anna-demó, csatorna × fázis mátrix, Baptista STDC-sablonja), új fájl `journey-terkep.html` v1.11 (interaktív térkép: modellválasztás, fázisonként közönség, érzés, üzenet, KPI, csatorna-mátrix, lyuk; nyomtatható, és közvetlenül beküldi a nyolc blokkot az `ep2` Leadásba az api-n át; a böngészőben ment), `app.html` v2.8 · 2026. szeptember 28. (`ep2` nyolc mező, a Leadás nézet a térképre mutat; a 2. alkalom beadandójában a fázisokat (f4) az eredmény ablakban és a szavazásnál táblázatként mutatja, fázisszínekkel és a jelölt lyukakkal, mert a szerver csak a nyolc szövegblokkot tárolja, a térkép nyers állapotát nem; a szavazásnál az indoklás alatt karakterszámláló (legalább 15), a hibaüzenet megnevezi a csapatot és kimondja, hogy írásjel nem kötelező; az Eredmény nézetben minden alkalomnál a csapat sorában „A teljes beadandó” gomb, ami az oldal fölött nyitja meg a leadást, „Új ablakban” gombbal is), `index.html` v1.6 (2. sor élesítve), `.cpanel.yml` (két új `cp` sor: 2. deck és journey-térkép). Eldöntve 2026. szeptember 24.: a 2. alkalomnál a journey-térkép maga a leadás. Az indexen egy link van („Leadás: journey-térkép”), az app Leadás nézete csak a beküldött szöveg javítására szolgál. A térképen az Ügynökség (csapat) és a Márka is legördülő lista, a márka a csapat bejegyzéséből töltődik, a márkalista a bejegyzett csapatok márkáiból áll. A feladat dekonstrukció: az 1. alkalmon választott márka útját írják le megfigyelés alapján, nem kitalálják. Eldöntve 2026. szeptember 24. délelőtt: az AIDA mindenhonnan kikerült. A See-Think-Do-Care az alap, az 5A és az öt lépcső választható, de indoklással (mit mutat meg jobban a márkánál). A deckben új diák: „Ugyanaz az út, más kérdés” (a három modell mint döntési/szándék folyamat modell, mire válaszol), fordítókulcs Annával három modellben, a három lyuk példával, a megfigyelés négy lépése, a térkép kezelése képernyőképpel (36 dia). Új fájl: `journey-tippek.html` v1.0, megfigyelési útmutató élő linkekkel, a térképről és a deckből elérhető, `.cpanel.yml` sora megvan. A „Mit mérnénk” sor marad, a hallgatók tippelnek (a mérés későbbi alkalom). A vevő és a használó szétválasztása kikerült a feladatból (csak az e10 elméleti diáján maradt). 2026. szeptember 24., az oktató szövegmódosításai után (deck v1.8, 36 dia): a deckben a kulcsgondolat „A figyelem több helyen van. A konverzió egy cél és folyamat is egyben.” (a gondolati ív doksija még a régit tartalmazza). A ROPO-dia kikerült. A tölcsérszámolás helyén tölcsér és STDC-körök ábra, a sorrend-dia kártyákra bontva, új dia: „Honnan tudjuk, melyik fázisban van?”. A bővebb jegyzetek a `jegyzet-kutatas-2-alkalom.md` alapján készülnek. A 2. alkalom címe az oktató döntése szerint (2026. szeptember 24.): „Hogyan érjük el az embert és hogyan dönt?”, a deckben, az indexen, az appban, a térképen és a tippek oldalon átírva; az 1. alkalom deckjében még a régi cím áll. A deck 34 diás: a STDC-sablon dia kikerült, a tölcsér és körök dia az Anna-példa után áll, a „Honnan tudjuk” dia összevonva a „Melyik körrel hol találkozol” diával. A térképen csak a See-Think-Do-Care (alap) és az 5A választható, az öt lépcső csak elméletként szerepel a deckben (oktatói döntés, 2026. szeptember 24.). Minden STDC-t érintő dián Kaushik színei (See kék, Think zöld, Do sárga, Care piros). A Sablon lap kikerült, a „mi keletkezik” dia a térkép szakaszait követi. Egy csapat egy böngészőben javasolt dolgozni (a térkép és a deck is kiírja); a beküldés figyelmeztet, ha már van leadás. A fejléc-csík diánként jelölve (`data-sec`): csak a lánc és a fázis-táblázat Évad, minden más 2.
 
 ## Források a 2. alkalomhoz
 

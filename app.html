@@ -28,6 +28,7 @@ button:disabled{opacity:.5;cursor:default}
 details{margin:.5em 0 0 2em}
 summary{cursor:pointer;color:var(--cobalt)}
 .esent{margin:.35em 0 0 2em;font-style:italic}.eopen{margin:.4em 0 0 2em}.obtn{font-size:.85em;padding:.25em .8em;border:1px solid var(--cobalt);color:var(--cobalt);background:#fff;border-radius:4px;cursor:pointer}
+.jwrap{overflow-x:auto;margin-top:.4em}table.jt{border-collapse:collapse;width:100%;min-width:620px;font-size:.88em}table.jt th{color:#fff;padding:.45em .6em;text-align:left;font-weight:600;vertical-align:top}table.jt td{border:1px solid var(--line);padding:.45em .6em;vertical-align:top}table.jt td.jl{color:var(--soft);font-size:.9em;width:9em;background:var(--paper)}table.jt td.jh{background:#FFF6D6}.jhole{display:block;font-weight:400;font-size:.85em;background:#F2C94C;color:#1B1F3A;border-radius:3px;padding:.05em .35em;margin-top:.3em}.subm_box{max-width:1080px}
 .subm{position:fixed;inset:0;background:rgba(27,31,58,.45);z-index:100;display:flex;align-items:flex-start;justify-content:center;padding:4vh 1em;overflow:auto}.subm.hide{display:none}
 .subm_box{background:#fff;border-radius:8px;max-width:820px;width:100%;padding:1.4em 1.8em;box-shadow:0 20px 60px rgba(0,0,0,.25)}
 .subm_bar{display:flex;justify-content:space-between;gap:1em;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:.6em;margin-bottom:.8em}.subm_bar h2{margin:0}
@@ -165,7 +166,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.7 · 2026. szeptember 28.</p>
+  <p class="small muted" style="margin-top:3em">app v2.8 · 2026. szeptember 28.</p>
 </div>
 
 <script>
@@ -212,8 +213,27 @@ summary{cursor:pointer;color:var(--cobalt)}
   CLIENTS.forEach(function(c){var o=document.createElement('option');o.textContent=c;$('c_client').appendChild(o)});
 
 
-  function subHtml(tid){var t=S.teams.filter(function(x){return x.id===tid})[0]||{name:'',client:''},sub=S.subs[tid]||{},h='';
-    CFG.fields.forEach(function(f){var v=sub[f[0]];if(!v)return;h+='<div class="fld"><span class="small muted">'+esc(f[1])+'</span><br>'+esc(v).replace(/\n/g,'<br>')+'</div>'});
+
+  /* 2. alkalom: a journey-térkép f4 mezőjét visszaalakítjuk táblázattá */
+  var PHC={See:'#4A86E8',Think:'#3E9A5C',Do:'#F1B53B',Care:'#D5503F',Aware:'#4A86E8',Appeal:'#3E9A5C',Ask:'#3E9A5C',Act:'#F1B53B',Advocate:'#D5503F'};
+  var JMK=[['aud','Ki van itt: '],['ch','Kontaktpontok: '],['feel','Érez, fél: '],['says','A márka most: '],['kpi','Mérnénk: ']];
+  function parseJourney(f4){ if(!f4)return null; var out=[];
+    f4.split('\n').forEach(function(line){ var m=line.match(/^([A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+):\s?(.*)$/); if(!m||!PHC[m[1]])return; var rest=m[2], row={ph:m[1]};
+      var pos=[]; JMK.forEach(function(k){var i=rest.indexOf(k[1]); if(i>=0)pos.push([i,k[0],k[1].length])}); pos.sort(function(a,b){return a[0]-b[0]});
+      pos.forEach(function(p,j){var end=j+1<pos.length?pos[j+1][0]:rest.length; row[p[1]]=rest.slice(p[0]+p[2],end).trim().replace(/\.$/,'')});
+      out.push(row)});
+    return out.length?out:null }
+  function parseHoles(f6){var h={}; if(!f6)return h; var m=f6.match(/^A térképen jelölve: (.*?)\.(\s|$)/); if(!m)return h; m[1].split('; ').forEach(function(x){var i=x.indexOf(': '); if(i>0)h[x.slice(0,i)]=x.slice(i+2)}); return h}
+  function journeyTable(sub){ var rows=parseJourney(sub.f4); if(!rows)return ''; var holes=parseHoles(sub.f6);
+    function ch(v){ if(!v)return ''; var fo=v.match(/fő: ([^;]*)/), ma=v.match(/másodlagos: (.*)$/); var h=''; if(fo)h+='<b>'+esc(fo[1])+'</b>'; if(ma)h+=(h?'<br>':'')+'<span class="muted">'+esc(ma[1])+'</span>'; return h||esc(v)}
+    var labs=[['aud','Ki van itt'],['ch','Kontaktpontok (fő, másodlagos)'],['feel','Mit érez, mitől fél'],['says','Mit mond a márka'],['kpi','Mit mérnénk']];
+    var h='<div class="jwrap"><table class="jt"><tr><th></th>'+rows.map(function(r){return '<th style="background:'+PHC[r.ph]+(r.ph==='Do'||r.ph==='Act'?';color:#1B1F3A':'')+'">'+esc(r.ph)+(holes[r.ph]?'<span class="jhole">lyuk: '+esc(holes[r.ph])+'</span>':'')+'</th>'}).join('')+'</tr>';
+    labs.forEach(function(l){ h+='<tr><td class="jl">'+l[1]+'</td>'+rows.map(function(r){return '<td'+(holes[r.ph]?' class="jh"':'')+'>'+(l[0]==='ch'?ch(r.ch):esc(r[l[0]]||''))+'</td>'}).join('')+'</tr>' });
+    return h+'</table></div>' }
+  function fieldsHtml(sub,cls){ var jt=journeyTable(sub), h='';
+    CFG.fields.forEach(function(f){ var v=sub[f[0]]; if(!v)return; if(f[0]==='f4'&&jt){ h+='<div class="'+cls+'"><span class="small muted">'+esc(f[1])+'</span>'+jt+'</div>'; return } h+='<div class="'+cls+'"><span class="small muted">'+esc(f[1])+'</span><br>'+esc(v).replace(/\n/g,'<br>')+'</div>' });
+    return h }
+  function subHtml(tid){var t=S.teams.filter(function(x){return x.id===tid})[0]||{name:'',client:''},sub=S.subs[tid]||{},h=fieldsHtml(sub,'fld');
     return {t:t,h:h,m:CFG.name+' · '+CFG.title};}
   var curSub=null;
   function openSub(tid){var o=subHtml(tid);curSub=tid;$('subm_t').textContent=o.t.name+' · '+o.t.client;$('subm_m').textContent=o.m;$('subm_body').innerHTML=o.h;$('subm').classList.remove('hide');$('subm_x').focus()}
@@ -223,7 +243,7 @@ summary{cursor:pointer;color:var(--cobalt)}
   $('subm').addEventListener('click',function(e){if(e.target===$('subm'))closeSub()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&curSub)closeSub()});
   $('subm_win').addEventListener('click',function(){if(!curSub)return;var o=subHtml(curSub),w=window.open('','_blank');if(!w)return;
-    w.document.write('<!doctype html><html lang="hu"><head><meta charset="utf-8"><title>'+esc(o.t.name)+' · beadandó</title><style>body{font-family:"Source Sans 3",Helvetica,Arial,sans-serif;max-width:780px;margin:2em auto;padding:0 1em;color:#1B1F3A;line-height:1.5}.fld{margin:1em 0;padding-left:.8em;border-left:3px solid #F2C94C}.small{font-size:.85em}.muted{color:#5A5E78}</style></head><body><h1>'+esc(o.t.name)+' · '+esc(o.t.client)+'</h1><p class="small muted">'+esc(o.m)+'</p>'+o.h+'</body></html>');w.document.close()});
+    w.document.write('<!doctype html><html lang="hu"><head><meta charset="utf-8"><title>'+esc(o.t.name)+' · beadandó</title><style>body{font-family:"Source Sans 3",Helvetica,Arial,sans-serif;max-width:1080px;margin:2em auto;padding:0 1em;color:#1B1F3A;line-height:1.5}.fld{margin:1em 0;padding-left:.8em;border-left:3px solid #F2C94C}.small{font-size:.85em}.muted{color:#5A5E78}.jwrap{overflow-x:auto}table.jt{border-collapse:collapse;width:100%;font-size:.9em}table.jt th{color:#fff;padding:.45em .6em;text-align:left;vertical-align:top}table.jt td{border:1px solid #D9D7CE;padding:.45em .6em;vertical-align:top}table.jt td.jl{color:#5A5E78;width:9em;background:#F7F6F1}table.jt td.jh{background:#FFF6D6}.jhole{display:block;font-weight:400;font-size:.85em;background:#F2C94C;color:#1B1F3A;border-radius:3px;padding:.05em .35em;margin-top:.3em}</style></head><body><h1>'+esc(o.t.name)+' · '+esc(o.t.client)+'</h1><p class="small muted">'+esc(o.m)+'</p>'+o.h+'</body></html>');w.document.close()});
   function refresh(){
     return api('state').then(function(d){ if(!d.ok)throw 0; S=d; render(); }).catch(function(){ ['c_status','l_status','s_status','e_status'].forEach(function(id){$(id).textContent='A szerver nem elérhető.'}); });
   }
@@ -241,7 +261,7 @@ summary{cursor:pointer;color:var(--cobalt)}
       var head='<div><b>'+esc(t.name)+'</b> · '+esc(t.client)+(t.id===own?' <span class="small muted">(a tiétek, nem értékelhető)</span>':'')+'<br>'+(sub?esc(sub.sentence):'<span class="muted">még nincs beküldve</span>')+'</div>';
       var body='';
       if(sub){ body='<details data-t="'+t.id+'"'+(openIds[t.id]?' open':'')+'><summary class="small">A teljes beadandó</summary>';
-        CFG.fields.forEach(function(f){ if(f[0]==='f3')return; var v=sub[f[0]]; if(!v)return; body+='<p class="fld"><span class="small muted">'+esc(f[1])+'</span><br>'+esc(v).replace(/\n/g,'<br>')+'</p>'; });
+        var sub2={}; for(var kk in sub)sub2[kk]=sub[kk]; sub2.f3=''; body+=fieldsHtml(sub2,'fld');
         body+='</details>'; }
       var rate=''; if(t.id!==own){ rate='<div class="stars" data-t="'+t.id+'">'; for(var k=1;k<=5;k++)rate+='<span data-v="'+k+'" class="'+(k<=sv.stars?'on':'')+'">★</span>'; var rl=sv.reason.trim().length; rate+='</div><textarea placeholder="Indoklás, legalább 15 karakter">'+esc(sv.reason)+'</textarea><div class="cnt'+(rl>=15?' ok':'')+'">'+rl+' / 15 karakter</div>'; }
       card.innerHTML=head+body+rate; sl.appendChild(card)});
