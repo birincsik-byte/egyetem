@@ -8,8 +8,9 @@ A félév weboldala és az ügynökségi app. Élesben: https://egyetem.bemind.d
 - `online-marketing-2026-evad-1-epizod.html` – az 1. alkalom prezentációja (a többi alkalom ugyanígy, saját fájlban)
 - `app.html` – ügynökségi app: csapat, leadás, szavazás, eredmény, oktató (`?ep=ep1&v=csapat`)
 - `api.php` – az app háttere, JSON-tár a `data/` mappában
-- `ALKALOM-SZABALYOK.md` – a további alkalmak készítési szabályai az 1. alkalom mintájára
-- `forrasfeldolgozas-online-marketing-2026.md` – a könyvek fejezet-térképe epizódonként
+- `munkadoksik/` – a félév munkadoksijai (állapot, szabályok, gondolati ív, forrástérkép); nem mennek ki a webre
+- `alkalom-N/` – alkalmanként a forrásfeldolgozás és a jegyzetek; nem mennek ki a webre
+- `UJ-FIOK-INDULAS.md` – belépési pont egy új munkamenethez
 - `.cpanel.yml` – ez mondja meg a cPanelnek, mit másoljon a mappába deploykor
 - `key.php.example` – az oktatói kulcs mintája; a szerveren `key.php` néven, a gitben nincs
 
@@ -21,4 +22,4 @@ Nincs a gitben, szándékosan: `data/` (a beküldések és szavazatok), `key.php
 2. `app.html` elején az `EPISODES` listában az `ep2` mezőit átírni a beadandóhoz.
 3. `index.html`-ben a 2. alkalom sorát élesíteni (az `off` osztály törlése, linkek).
 4. `.cpanel.yml`-be egy új `cp` sor az új deck fájlra.
-5. Commit, push; a cron öt percen belül deployol.
+5. Commit, push; a cron legfeljebb negyed órán belül deployol (a pontos ütemezés a `CLAUDE.md`-ben).

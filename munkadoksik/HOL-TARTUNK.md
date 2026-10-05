@@ -1,6 +1,6 @@
 # Online marketing 2026 ősz · nappali · hol tartunk
 
-Ez a doksi az induló állapot minden új chathez ebben a Projectben. Utolsó frissítés: 2026. szeptember 24.
+Ez a doksi az induló állapot minden új chathez ebben a Projectben. Utolsó frissítés: 2026. október 5.
 
 ## Összefoglaló
 
@@ -11,6 +11,8 @@ A kurzus (VEGTKMB5, nappali, hét hétfői alkalom, alkalmanként négy 45 perce
 A projektmappa az oktató gépén: `/Users/birincsik/Claude/Projects/Egyetem`. Ez a helyi git-klón. **Minden új chat ezt a mappát adja hozzá az elején**, és a kész fájlokat egyenesen ide írja, nem a letöltésekbe.
 
 A lánc: a chat ír a mappába, Claude Code commitol és pushol, a szerver cronnal húz. Kézi fájlmozgatás sehol nincs. Ha a chat nincs a géphez kötve (például mobilról), akkor marad a letöltéses tartaléklánc, ennek menete a `CLAUDE.md`-ben van.
+
+A mappa rendje (2026. október 5.): a webre kerülő fájlok a gyökérben maradnak, a félév egészére vonatkozó munkadoksik (ez a doksi, `ALKALOM-SZABALYOK.md`, `ALKALOM-INDITO-PROMPT.md`, `gondolati-iv-7-epizod.md`, `forrasfeldolgozas-online-marketing-2026.md`, `findq.py`) a `munkadoksik/` alatt, az alkalmankénti munkadoksik az `alkalom-N/` alatt vannak, mindegyikben egy `README.md`-vel. A forrásjegyzetek és a v9 deck szövege a `konyvek/` alatt. Részletek a gyökérben lévő `UJ-FIOK-INDULAS.md`-ben.
 
 Remote: `git@github.com:birincsik-byte/egyetem.git`, publikus.
 Weboldal: https://egyetem.bemind.dev/om2026nappali/
@@ -41,7 +43,7 @@ Belépés: a hallgató a Neptun-kódjával lép be (18 kód a `neptun.php`-ben, 
 
 - `online-marketing-2026-evad-1-epizod.html` · v1.7 · 2026. szeptember 13.
 - `online-marketing-2026-evad-2-epizod.html` · v1.32 · 2026. szeptember 27.
-- `app.html` · v2.9 · 2026. szeptember 28. (commitra vár)
+- `app.html` · v2.9 · 2026. szeptember 28. (commitolva: `d8bfa7e`)
 - `index.html` · v1.6 · 2026. szeptember 24.
 - `journey-terkep.html` · v1.11 · 2026. szeptember 24.
 - `journey-tippek.html` · v1.1 · 2026. szeptember 24.
@@ -53,6 +55,8 @@ A hiteles forrás mindig a projektmappa és az élő oldal lábjegyzete, nem ez 
 A `.gitignore` jelenleg kizárja a `data/`, `key.php`, `neptun.php`, `.DS_Store`, `BCKP/`, `.claude/` és `konyvek/` elemeket (az utolsó kettő 2026. szeptember 24-én került be, commitra vár; a `konyvek/` tankönyvszöveg, ezért nem mehet a publikus repóba). A git történetében a `neptun.php`, a `key.php` és a `data/` soha nem szerepelt, tehát a Neptun-kódok nem szivárogtak ki a publikus repóba. Ezt a sort ne vedd ki a `.gitignore`-ból.
 
 ## A következő alkalom
+
+2026. október 5.: a 3. alkalom munkája új Claude-fiókban folytatódik, a belépési pont a gyökérben az `UJ-FIOK-INDULAS.md`. A 2026. szeptember 28-i könyvfeldolgozás nem került a gépre, az 1. fázist újra kell kezdeni. A munkadoksik helye az `alkalom-3/`.
 
 3. alkalom, „A saját terep”, 2026. október 12. A lánc kérdése: „Hol fogadjuk, amikor megérkezik hozzánk”. Beadandó a leadandók sorrendje szerint: landing page-audit és e-mail-folyamat. A feladat pontos formáját az alkalom előtt találjuk ki (lásd „Új alkalom indítása”).
 

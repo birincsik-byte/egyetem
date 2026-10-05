@@ -18,7 +18,7 @@ A tartalmi munka a claude.ai chatben készül. Ha a chat a géphez van kötve, a
 - `.cpanel.yml` – deploy lista
 - az alkalmak beadandó-eszközei és segédletei, ha vannak (a 2. alkalomnál `journey-terkep.html`, `journey-tippek.html`)
 
-A munkadoksik (`HOL-TARTUNK.md`, `ALKALOM-SZABALYOK.md`, `ALKALOM-INDITO-PROMPT.md`, a forrásfeldolgozások és a jegyzetek) is ebben a mappában vannak, de nem kapnak `cp` sort, nem mennek ki a webre.
+A munkadoksik is ebben a mappában vannak, almappákban: a `munkadoksik/` alatt a félév egészére vonatkozók (`HOL-TARTUNK.md`, `ALKALOM-SZABALYOK.md`, `ALKALOM-INDITO-PROMPT.md`, `gondolati-iv-7-epizod.md`, `forrasfeldolgozas-online-marketing-2026.md`, `findq.py`), az `alkalom-N/` alatt az adott alkalom forrásfeldolgozása és jegyzetei, a gyökérben az `UJ-FIOK-INDULAS.md`. Ezek nem kapnak `cp` sort, nem mennek ki a webre; ha ilyen új fájl jelenik meg, az nem ok a push leállítására. A webre kerülő fájlok a gyökérben maradnak.
 
 ## Mit csinálj, ha a tulajdonos azt mondja, „vidd fel a mai fájlokat”
 
@@ -52,4 +52,4 @@ Minden fájl alján (a deckben a bal alsó segédsorban, az appban és az indexb
 
 ## Új alkalom készítése
 
-Egy új alkalom menetét az `ALKALOM-INDITO-PROMPT.md` írja le, a tartalom és a nyelv szabályait az `ALKALOM-SZABALYOK.md`. Ha a tulajdonos új alkalmat kér tőled, előbb ezt a kettőt olvasd el, és az ott leírt sorrendet tartsd: könyvek feldolgozása, jegyzet-kutatás, kidolgozott jegyzet, csak utána a deck és a gyakorlat, minden lépés után a tulajdonos jóváhagyásával, a tulajdonos mondatai változatlanul.
+Egy új alkalom menetét a `munkadoksik/ALKALOM-INDITO-PROMPT.md` írja le, a tartalom és a nyelv szabályait a `munkadoksik/ALKALOM-SZABALYOK.md`. Ha a tulajdonos új alkalmat kér tőled, előbb ezt a kettőt olvasd el, és az ott leírt sorrendet tartsd: könyvek feldolgozása, jegyzet-kutatás, kidolgozott jegyzet, csak utána a deck és a gyakorlat, minden lépés után a tulajdonos jóváhagyásával, a tulajdonos mondatai változatlanul.
