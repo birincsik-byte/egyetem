@@ -166,7 +166,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.9 · 2026. szeptember 28.</p>
+  <p class="small muted" style="margin-top:3em">app v2.10 · 2026. október 11.</p>
 </div>
 
 <script>
@@ -190,7 +190,16 @@ summary{cursor:pointer;color:var(--cobalt)}
       ['f4','Fázisok és kontaktpontok: fázisonként a kontaktpontok (a nem saját is: vélemény, ismerős, összehasonlító oldal); mit érez, mitől fél, mi akasztja meg a vevőt; mit mond ott jelenleg a márka'],
       ['f5','Bizonyíték: melyik poszt, oldal, hirdetés, vélemény mutatja, amit a fázisokról állítottatok'],
       ['f6','Hol szakad meg az út: üres fázis, olyan fázis, ahol csak mások beszélnek, vagy jó üzenet rossz fázisban; egy pont, amire rá lehet bökni'],
-      ['f8','Ami hiányzik: melyik fázisban nem mond semmit a márka, egy mondat']]}
+      ['f8','Ami hiányzik: melyik fázisban nem mond semmit a márka, egy mondat']]},
+    ep3:{name:'3. alkalom · A saját terep', title:'3. beadandó: oldalvizsgálat nyolc szemüveggel', tool:'oldal-vizsgalat.html', toolname:'Oldalvizsgálat', toolnote:'az Oldalvizsgálat lapon', novote:true, nosample:true, limit:'nyolc blokk, blokkonként legfeljebb 4000 karakter', fields:[
+      ['f1','Ki mit csinált ma'],
+      ['f2','A két oldal: a márka saját oldala (vagy ha nincs, amit a keresés hoz és egy második külső oldal), a külső oldal, és min néztük'],
+      ['f3','Egy mondatban: melyik oldalon könnyebb a látogató dolga, és mi a legnagyobb különbség a kettő között'],
+      ['f8','Áttekintés szemüvegenként (saját / külső), és amit átvinnénk a másik oldalról'],
+      ['f4','1. Ránézés: miről szól az oldal, mit akar az oldal, mit mond a márka és milyen a hangvétel'],
+      ['f5','2. Olvasás: tartalom és layout'],
+      ['f6','3. Cselekvés a saját (vagy második külső) oldalon: folyamat, konverziós pontok, bizalom'],
+      ['f7','3. Cselekvés a külső oldalon: folyamat, konverziós pontok, bizalom']]}
   };
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
   var API='api.php';
@@ -217,11 +226,15 @@ summary{cursor:pointer;color:var(--cobalt)}
 
   $('eplabel').textContent=CFG.name;
   var views=['csapat','leadas','szavazas','eredmeny','admin'], labels={csapat:'Csapat',leadas:'Leadás',szavazas:'Szavazás',eredmeny:'Eredmény',admin:'Oktató'};
+  /* 3. alkalom: nincs szavazás, az Eredmény helyett a beadandók listája */
+  if(CFG.novote){views=views.filter(function(v){return v!=='szavazas'}); labels.eredmeny='Beadandók';}
   views.forEach(function(v){var a=document.createElement('a');a.href='?ep='+EP+'&v='+v;a.textContent=labels[v];if(v===VIEW)a.className='on';if(v==='admin'){a.id='navadmin';a.style.display='none'}$('nav').appendChild(a)});
   fetch(API+'?a=me',{credentials:'same-origin'}).then(function(r){return r.json()}).then(function(d){ if(d.role==='oktato'||VIEW==='admin'){var n=$('navadmin'); if(n)n.style.display=''} }).catch(function(){});
-  if(views.indexOf(VIEW)<0)VIEW='csapat';
+  if(views.indexOf(VIEW)<0)VIEW=(CFG.novote&&VIEW==='szavazas')?'eredmeny':'csapat';
   $('v_'+VIEW).classList.remove('hide');
-  $('title').textContent=VIEW==='leadas'?CFG.title:(VIEW==='eredmeny'?'Csapatmunka-szavazás':'Ügynökségek');
+  $('title').textContent=VIEW==='leadas'?CFG.title:(VIEW==='eredmeny'?(CFG.novote?'Beadandók':'Csapatmunka-szavazás'):'Ügynökségek');
+  if(CFG.novote){var eh=document.querySelector('#v_eredmeny h2'); if(eh)eh.textContent='Beadandók';}
+  if(CFG.nosample){var mb=document.querySelector('.mintabox'); if(mb)mb.style.display='none';}
 
   CLIENTS.forEach(function(c){var o=document.createElement('option');o.textContent=c;$('c_client').appendChild(o)});
 
@@ -284,10 +297,10 @@ summary{cursor:pointer;color:var(--cobalt)}
       var st='<span class="stars show">'; for(var k=1;k<=5;k++)st+='<span class="'+(k<=Math.round(r.avg)?'on':'')+'">★</span>'; st+='</span>';
       var sub=S.subs[t.id], sb='';
       if(sub){ sb='<p class="esent">'+rich(sub.sentence||'')+'</p><p class="eopen"><button class="obtn" data-open-sub="'+t.id+'">A teljes beadandó</button></p>'; } else { sb='<p class="small muted">Nem adtak le beadandót.</p>'; }
-      d.innerHTML='<div class="name">'+esc(t.name)+' <span class="small muted">· '+esc(t.client)+'</span></div>'+st+' <b>'+(r.n?Number(r.avg).toFixed(1):'–')+'</b> <span class="small muted">('+r.n+' szavazat)</span>'+sb+(r.reasons&&r.reasons.length?'<details data-k="r'+t.id+'"'+(eOpen['r'+t.id]?' open':'')+'><summary class="small">Indoklások</summary>'+r.reasons.map(function(x){return '<p class="reason">'+x.stars+'★ '+rich(x.reason)+'</p>'}).join('')+'</details>':'');
+      d.innerHTML='<div class="name">'+esc(t.name)+' <span class="small muted">· '+esc(t.client)+'</span></div>'+(CFG.novote?'':st+' <b>'+(r.n?Number(r.avg).toFixed(1):'–')+'</b> <span class="small muted">('+r.n+' szavazat)</span>')+sb+(r.reasons&&r.reasons.length?'<details data-k="r'+t.id+'"'+(eOpen['r'+t.id]?' open':'')+'><summary class="small">Indoklások</summary>'+r.reasons.map(function(x){return '<p class="reason">'+x.stars+'★ '+rich(x.reason)+'</p>'}).join('')+'</details>':'');
       el.appendChild(d)});
     if(S.locked){$('l_send').disabled=true;$('l_status').textContent='A leadás le van zárva. Ha javítani szeretnétek, kérjétek az oktatót, hogy oldja fel.'} else {$('l_send').disabled=false}
-    $('e_meta').textContent=S.votes+' szavazólap érkezett · '+Object.keys(S.subs).length+' leadás a '+S.teams.length+' csapatból';
+    $('e_meta').textContent=(CFG.novote?'':S.votes+' szavazólap érkezett · ')+Object.keys(S.subs).length+' leadás a '+S.teams.length+' csapatból';
     if(typeof lockState==='function')lockState();
     /* oktató lista */
     var at=$('a_teams'); at.innerHTML=''; S.teams.forEach(function(t){var d=document.createElement('div');d.className='card';d.innerHTML='<b>'+esc(t.name)+'</b> · '+esc(t.client)+(t.members?' · <span class="small muted">'+esc(t.members)+'</span>':'')+'<button class="del" data-id="'+t.id+'">Törlés</button>';at.appendChild(d)});
@@ -302,7 +315,7 @@ summary{cursor:pointer;color:var(--cobalt)}
 
   /* leadás */
   $('l_title').textContent=CFG.title; $('l_limit').textContent=CFG.limit;
-  if(CFG.tool){var tp=document.createElement('p');tp.className='step';tp.innerHTML='Ennek az alkalomnak a leadása a Journey-térképen történik. Itt csak a már beküldött szöveget javíthatjátok. <a class="btn" href="'+CFG.tool+'">Journey-térkép</a>';$('l_title').parentNode.insertBefore(tp,$('l_title').nextSibling)}
+  if(CFG.tool){var tp=document.createElement('p');tp.className='step';tp.innerHTML='Ennek az alkalomnak a leadása '+(CFG.toolnote||'a Journey-térképen')+' történik. Itt csak a már beküldött szöveget javíthatjátok. <a class="btn" href="'+CFG.tool+'">'+(CFG.toolname||'Journey-térkép')+'</a>';$('l_title').parentNode.insertBefore(tp,$('l_title').nextSibling)}
   CFG.fields.forEach(function(f){var lab=document.createElement('label');lab.textContent=f[1];var ta=document.createElement('textarea');ta.id='l_'+f[0];$('l_fields').appendChild(lab);$('l_fields').appendChild(ta);ta.addEventListener('input',words)});
   function words(){var n=0;CFG.fields.forEach(function(f){var v=$('l_'+f[0]).value.trim();if(v)n+=v.split(/\s+/).length});$('l_words').textContent=n}
   $('l_team').addEventListener('change',function(){var tid=this.value;if(!tid)return;api('getsub',null,'&team='+tid).then(function(d){var sub=d.sub;if(!sub)return;CFG.fields.forEach(function(f){$('l_'+f[0]).value=sub[f[0]]||''});words();$('l_status').textContent='Korábbi beküldés betöltve, szerkeszthető.'})});

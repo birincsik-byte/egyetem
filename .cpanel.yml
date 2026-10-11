@@ -6,7 +6,10 @@ deployment:
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp app.html $DEPLOYPATH
     - /bin/cp api.php $DEPLOYPATH
-    - /bin/cp online-marketing-2026-evad-1-epizod.html $DEPLOYPATH
-    - /bin/cp online-marketing-2026-evad-2-epizod.html $DEPLOYPATH
-    - /bin/cp journey-terkep.html $DEPLOYPATH
-    - /bin/cp journey-tippek.html $DEPLOYPATH
+    - /bin/cp alkalom-1/online-marketing-2026-evad-1-epizod.html $DEPLOYPATH
+    - /bin/cp alkalom-2/online-marketing-2026-evad-2-epizod.html $DEPLOYPATH
+    - /bin/cp alkalom-2/journey-terkep.html $DEPLOYPATH
+    - /bin/cp alkalom-2/journey-tippek.html $DEPLOYPATH
+    - /bin/cp alkalom-3/online-marketing-2026-evad-3-epizod.html $DEPLOYPATH
+    - /bin/cp alkalom-3/oldal-anatomia.html $DEPLOYPATH
+    - /bin/cp alkalom-3/oldal-vizsgalat.html $DEPLOYPATH

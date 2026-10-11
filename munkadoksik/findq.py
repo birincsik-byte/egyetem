@@ -8,10 +8,11 @@ Az oldalszám a legközelebbi előtte álló futófejből jön:
   Kotler:  '... CHAPTER 5  125' vagy '124  PART ...'
 Az idézőjeleket és a kötőjeleket normalizálja.
 Eredetileg 2026. szeptember 28-án készült a 3. alkalom forrásfeldolgozásához.
+2026. október 5.: a Chaffey 10. fejezet páratlan oldalainak kettétört futófejét is felismeri.
 """
 import re, sys, bisect
 
-HDR = re.compile(r'^\s*(?:Chapter \d+ .*?\s(\d{2,3})\s*$|(\d{2,3})\s+Part \d|.*CHAPTER \d+\s+(\d{2,3})\s*$|(\d{2,3})\s+PART\b)')
+HDR = re.compile(r'^\s*(?:\W*igital channel performance\s+(\d{3})\s*$|Chapter \d+ .*?\s(\d{2,3})\s*$|(\d{2,3})\s+Part \d|.*CHAPTER \d+\s+(\d{2,3})\s*$|(\d{2,3})\s+PART\b)')
 
 def load(fn):
     lines = open(fn, encoding='utf-8', errors='replace').read().split('\n')

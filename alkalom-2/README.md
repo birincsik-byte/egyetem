@@ -2,7 +2,7 @@
 
 Lement.
 
-## Élesben (a mappa gyökerében, a deploy miatt ott kell maradniuk)
+## Élesben (ebben a mappában; a `.cpanel.yml` innen másolja a szerver gyökerébe, a webcím nem változik)
 
 - `online-marketing-2026-evad-2-epizod.html`: a deck
 - `journey-terkep.html`: a beadandó-eszköz, maga a leadás (`ep2`)

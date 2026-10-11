@@ -30,7 +30,7 @@ Az alkalom szerkezete fix (oktatói döntés, 2026. szeptember 24.): az első fe
 ## A fájlok
 
 - `index.html` – gyűjtőoldal a hét alkalommal, Neptun-kódos beléptetéssel
-- `online-marketing-2026-evad-1-epizod.html` – az 1. alkalom deckje, 29 dia
+- `alkalom-1/online-marketing-2026-evad-1-epizod.html` – az 1. alkalom deckje, 29 dia (2026. október 11. óta minden alkalom webes fájlja a saját `alkalom-N/` mappájában van, a `.cpanel.yml` onnan másol)
 - `app.html` – ügynökségi app, öt nézet: csapat, leadás, szavazás, eredmény, oktatói panel (`?ep=ep1&v=csapat`)
 - `api.php` – PHP háttér, JSON-tár a `data/` mappában, `flock` zárolással
 - `neptun.php` és `key.php` – csak a mappában és a szerveren, a gitben nincsenek
@@ -41,12 +41,12 @@ Belépés: a hallgató a Neptun-kódjával lép be (18 kód a `neptun.php`-ben, 
 
 2026. szeptember 28-án a projektmappából ellenőrizve, az `a54ca9e` commit állapotában (a mappa tiszta, minden fent van):
 
-- `online-marketing-2026-evad-1-epizod.html` · v1.7 · 2026. szeptember 13.
-- `online-marketing-2026-evad-2-epizod.html` · v1.32 · 2026. szeptember 27.
+- `alkalom-1/online-marketing-2026-evad-1-epizod.html` · v1.7 · 2026. szeptember 13.
+- `alkalom-2/online-marketing-2026-evad-2-epizod.html` · v1.32 · 2026. szeptember 27.
 - `app.html` · v2.9 · 2026. szeptember 28. (commitolva: `d8bfa7e`)
 - `index.html` · v1.6 · 2026. szeptember 24.
-- `journey-terkep.html` · v1.11 · 2026. szeptember 24.
-- `journey-tippek.html` · v1.1 · 2026. szeptember 24.
+- `alkalom-2/journey-terkep.html` · v1.11 · 2026. szeptember 24.
+- `alkalom-2/journey-tippek.html` · v1.1 · 2026. szeptember 24.
 
 A hiteles forrás mindig a projektmappa és az élő oldal lábjegyzete, nem ez a doksi.
 
@@ -56,7 +56,9 @@ A `.gitignore` jelenleg kizárja a `data/`, `key.php`, `neptun.php`, `.DS_Store`
 
 ## A következő alkalom
 
-2026. október 5.: a 3. alkalom munkája új Claude-fiókban folytatódik, a belépési pont a gyökérben az `UJ-FIOK-INDULAS.md`. A 2026. szeptember 28-i könyvfeldolgozás nem került a gépre, az 1. fázist újra kell kezdeni. A munkadoksik helye az `alkalom-3/`.
+2026. október 5.: a 3. alkalom munkája új Claude-fiókban folytatódik, a belépési pont a gyökérben az `UJ-FIOK-INDULAS.md`. A munkadoksik helye az `alkalom-3/`. Eldöntve 2026. október 5.: előbb az 1–3. fázis, utána a deck és a feladat; a deck alapmérete kb. 20%-kal nagyobb (1440 px-en kb. 23 px, semmi 18 px alatt); az e-mail-feliratkozás előre kiadása nem kell. Ugyanaznap eldöntve: a korábbi sessionből beemelt kulcsgondolat, tanulság és fázis-sor nem az oktatóé, elengedve; az új hármas a `forrasfeldolgozas-3-alkalom.md` v2 „3. alkalom” szakaszában; a beadandó a saját és egy külső márka oldalának elemzése javító javaslat nélkül, a külső oldalt a csapatok listából választják; a nap másfél óra elmélet és másfél óra csoportmunka; a mérésből a weboldal kulcseseményei és eszközei (cookie, hőtérkép) kerülnek elő, a mérési terv a 6. alkalomé. Webes kutatás: `alkalom-3/webkutatas-3-alkalom.md` v2. A 3. alkalom tematikája: `alkalom-3/tematika-3-alkalom.md` v6, benne a hármas B változata és a deck interaktív, wireframe-szerű layout-bemutatásának döntése, 2026. október 6.; példaoldalak: `alkalom-3/ux-peldaoldalak-3-alkalom.md` (2026. október 6., az oktató jóváhagyta: hangsúly a weboldalon és a landingen, mitől lesz jó; 0–M blokk a szelektálással, az L blokk kikerült). A v1 (2026. október 5.) (kilenc elméleti blokk másfél órában, a design system, a mikrointerakciók, az akadálymentesség és a UX-szövegírás csak a jegyzetbe). Chaffey 9. és 10. fejezete 2026. október 5-én bekerült (a teljes könyvből, `konyvek/`), a `findq.py` a 10. fejezet páratlan oldalainak futófejét is felismeri. A deck kattintható vázlata (v0.12, 30 dia, 2026. október 6.: egységes kártya- és címelrendezés; „Mi a UX, és mi a UI?” és „Ugyanaz az oldal kétszer” (forrás: `alkalom-3/ux-ui-hatar-3-alkalom.md`); nincs soronkénti felfedés, csak az interaktív elemek kattinthatók; új „Mi micsoda?” definíciós dia; az „Amit a hirdetés ígért” is átkerült a 4. alkalomhoz; a hirdetés és a landing relevanciájáról szóló dia és öt gyakorlat 2026. október 6-án az oktató kérésére átkerült a 4. alkalomhoz: `alkalom-4/hirdetes-landing-jatek.html`, `alkalom-4/README.md`; a 3. deckben az „Amit a hirdetés ígért” gyakorlat maradt, interaktív drótvázas diák, nagyobb betűméret; új aloldal: `oldal-anatomia.html` v0.3, a landing anatómiája, landingtípusok, layout-sablonok mikor melyiket, bizalom, oldaltípusok, szín; a deckből gomb nyitja új lapon; ennek is kell majd `cp` sor) a gyökérben: `online-marketing-2026-evad-3-epizod.html`, 2026. október 6.; még nincs `cp` sora, nem élesíthető, a jegyzetek helyén helykitöltő. A deckvázlat: `alkalom-3/deck-vazlat-3-alkalom.md` v1.0. A 2. fázis kész, átnézésre vár: `alkalom-3/jegyzet-kutatas-3-alkalom.md` v1 (a tematika kilenc blokkja szerint). Az 1. fázis (v3): `alkalom-3/forrasfeldolgozas-3-alkalom.md` (Chaffey 7., 6., 3., 4., Kotler 5. és 6./171., valamint három új könyv: Krug 2014, Weinschenk 2011, Yablonski 2024; ezek szövege a `konyvek/3ik alkalom/` alatt, idézetellenőrző `munkadoksik/findq_pdf.py`). A deckvázlat: `alkalom-3/deck-vazlat-3-alkalom.md` v0.3.
+
+2026. október 11.: a 3. alkalom anyaga kész, deployra vár: `alkalom-3/online-marketing-2026-evad-3-epizod.html` v0.14, `alkalom-3/oldal-anatomia.html` v0.4, `alkalom-3/oldal-vizsgalat.html` v2.1 (a beadandó, nyolc szemüveg, szavazás nélkül), `app.html` v2.10 (`ep3`), `index.html` v1.7 (3. sor élő), `.cpanel.yml` (`cp` sorok mappával). Ugyanaznap minden alkalom webes fájlja a saját `alkalom-N/` mappájába került. A részletek: `alkalom-3/FOLYTATAS.md`.
 
 3. alkalom, „A saját terep”, 2026. október 12. A lánc kérdése: „Hol fogadjuk, amikor megérkezik hozzánk”. Beadandó a leadandók sorrendje szerint: landing page-audit és e-mail-folyamat. A feladat pontos formáját az alkalom előtt találjuk ki (lásd „Új alkalom indítása”).
 
@@ -66,13 +68,13 @@ A hivatalos tematikai pontok szó szerint, a gondolati ív doksiból:
 > • *(és a „Platformok és eszközök" pontból: automatizált email marketing)*
 > • *(és a „Webanalitika és GDPR" pontból: a GDPR / jogi vonatkozások)*
 
-Az oktató mondatai a gondolati ívből, ezek változatlanul mennek a deckbe:
+Elengedve 2026. október 5-én, ezek nem az oktató mondatai, egy korábbi session emelte be őket; az érvényes hármas és tematika: `alkalom-3/FOLYTATAS.md`:
 
 - Miről szól: weboldal, UX/UI, regisztrációs és loyalty logika, automatizált e-mail, adatkezelés.
 - Kulcsgondolat: a forgalom nem eredmény, és a weboldal az egyetlen felület, ami tényleg a tiéd.
 - Tanulság: a konverzió ritkán meggyőzés kérdése, sokkal inkább súrlódásé. Egy akadály elvétele többet hoz, mint egy újabb érv.
 
-A fázis-táblázat sora: mit hoz magával „Bizalom és meggyőzés.”, mire vált „Akadályok megszűntetése, percepció kialakítás a márkáról.”, mit tesz hozzá a végcélhoz „A felelősség átkerül a másik emberről a saját felületünkre.”
+A fázis-táblázat sora (szintén elengedve): mit hoz magával „Bizalom és meggyőzés.”, mire vált „Akadályok megszűntetése, percepció kialakítás a márkáról.”, mit tesz hozzá a végcélhoz „A felelősség átkerül a másik emberről a saját felületünkre.”
 
 Átvezetés a 2. alkalomból: a 2. deck zárása és az áramlási térkép dia („Hogyan érkeznek meg a weboldalra, és mi lesz belőle?”) már a 3. alkalom kérdésére mutat: hol fogadjuk, amikor megérkezik, mert a térkép Act / Do fázisában már a mi felületünkön jár. A források a lenti „Források a 3. alkalomhoz” szakaszban vannak.
 
@@ -80,7 +82,7 @@ A készítés sorrendje kötött, a jelenlegi menet a fenti „Új alkalom indí
 
 Egy alkalom ezeket érinti, egyszerre, egy commitban:
 
-1. az új deck fájl (`online-marketing-2026-evad-3-epizod.html`)
+1. az új deck fájl (`alkalom-3/online-marketing-2026-evad-3-epizod.html`)
 2. az `app.html`-ben az `EPISODES` objektum `ep3` bejegyzése a beadandó mezőivel (az `f3` mindig kötelező, ez a leadás egymondatos lényege, ezt mutatja a szavazólista és az eredmény oldal)
 3. az `index.html`-ben a 3. alkalom sorának élesítése (az `off` osztály törlése, linkek)
 4. a `.cpanel.yml`-ben új `cp` sor a deckre, és minden új fájlra (eszköz, segédlet), ha lesz
@@ -124,6 +126,8 @@ A 3. alkalom (2026. október 12., „A saját terep”, beadandó: landing page-
 - `konyvek/chaffey-ch4-digital-marketing-strategy.txt` – Chaffey 6. kiadás, 4. fejezet, ebben az OVP
 
 ## Ami el van halasztva
+
+- A 6. alkalomhoz (mérés), az oktató döntése 2026. október 6.: a weboldal eseményei és mérőeszközei a 3. alkalomból ide kerülnek: esemény, oldalmegtekintés, elköteleződési idő, átkattintás, navigációs útvonal, mikro- és makrokonverzió, kulcsesemény (GA4), cookie, hőtérkép és munkamenet-felvétel (Microsoft Clarity-demó), mi látszik kívülről egy idegen oldalon. A források már megvannak: `alkalom-3/jegyzet-kutatas-3-alkalom.md` 8. blokk, `alkalom-3/webkutatas-3-alkalom.md` „Események, mérőeszközök, cookie és hozzájárulás” szakasz, Chaffey 10. fejezet (`konyvek/chaffey-ch10-evaluation-improvement.txt`, feldolgozva a `forrasfeldolgozas-3-alkalom.md`-ben).
 
 - Csapatkódok a beadandók védelmére. Jelenleg bárki felülírhatja bármelyik csapat leadását, amíg az alkalom nincs lezárva; ezt ideiglenesen az oktatói zárolás kezeli. A csapatkódok a 2. alkalomnál jönnének.
 - Saját vizsgakérdések kidolgozása. A jelenlegiek Nórától jött ötletek, nem véglegesek. A 2. alkalom után kerül elő.

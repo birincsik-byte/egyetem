@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Az oldal anatómiája · Online marketing · 3. alkalom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F6F1;--ink:#1B1F3A;--ink-soft:#5A5E78;--line:#D9D7CE;--cobalt:#1E4BD8;--marker:#F2C94C;--display:'Fraunces',Georgia,serif;--body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+--b-bg:#FFF8EE;--b-ink:#23202B;--b-acc:#E8572A;--b-acc2:#2A6F5E;--b-soft:#7A7385}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:clamp(18px,1.4vw,24px);line-height:1.5}
+a{color:var(--cobalt)}
+button{font:inherit;cursor:pointer;background:none;border:0;color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 5vw}
+header.top{position:sticky;top:0;z-index:20;background:rgba(247,246,241,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;gap:1em}
+header.top b{font-family:var(--display);font-weight:500}
+header.top nav{display:flex;gap:1.2em;font-size:.85em;flex-wrap:wrap}
+header.top nav a{text-decoration:none;color:var(--ink-soft)}
+header.top nav a:hover{color:var(--cobalt)}
+section{padding:9vh 0 6vh;border-bottom:1px solid var(--line)}
+.kicker{color:var(--ink-soft);font-size:.85em;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.6em}
+h1{font-family:var(--display);font-weight:300;font-size:clamp(2.6em,6vw,4.6em);line-height:1;letter-spacing:-.02em}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(1.8em,3.2vw,2.6em);line-height:1.1;margin-bottom:.4em}
+h3{font-family:var(--display);font-weight:500;font-size:1.25em;margin-bottom:.3em}
+.lead{font-size:1.2em;max-width:44ch;color:var(--ink-soft);margin-top:.6em}
+.hl{background:linear-gradient(transparent 58%,var(--marker) 58%)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff;margin:1.2em 0}
+.seg button{padding:.45em 1.2em;font-size:.9em}
+.seg button.on{background:var(--ink);color:#fff}
+
+/* ===== annotated landing ===== */
+.anat{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:4vw;align-items:start;margin-top:1em}
+.mock{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(27,31,58,.35),0 0 0 1px rgba(27,31,58,.08);background:var(--b-bg);color:var(--b-ink);font-size:.82em;transition:all .4s}
+.mock .chrome{display:flex;gap:6px;padding:10px 12px;background:#EDEAE3}
+.mock .chrome i{width:11px;height:11px;border-radius:50%;background:#D3CEC4}
+.mock .chrome span{margin-left:12px;font-size:.75em;color:#8A8576;background:#fff;border-radius:6px;padding:0 10px;flex:1;max-width:60%}
+.m-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 28px}
+.m-logo{font-family:var(--display);font-weight:700;font-size:1.25em}
+.m-logo em{color:var(--b-acc);font-style:normal}
+.m-nav .links{display:flex;gap:18px;color:var(--b-soft);font-size:.9em}
+.m-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;padding:18px 28px 26px;align-items:center}
+.m-h{font-family:var(--display);font-weight:700;font-size:2.1em;line-height:1.05;letter-spacing:-.01em}
+.m-sub{color:var(--b-soft);margin:.6em 0 1em;font-size:1.02em}
+.m-cta{display:inline-block;background:var(--b-acc);color:#fff;font-weight:700;padding:.75em 1.4em;border-radius:10px;box-shadow:0 8px 18px -6px rgba(232,87,42,.6)}
+.m-cta2{margin-left:12px;color:var(--b-ink);text-decoration:underline;font-size:.92em}
+.m-img{aspect-ratio:4/3;border-radius:16px;background:radial-gradient(circle at 30% 30%,#FFD7A8,transparent 55%),radial-gradient(circle at 75% 70%,#9FD3C2,transparent 55%),linear-gradient(135deg,#F6C28B,#E8572A);position:relative;overflow:hidden}
+.m-img::after{content:"";position:absolute;left:18%;bottom:0;width:36%;height:70%;background:rgba(35,32,43,.85);border-radius:50% 50% 0 0}
+.m-img::before{content:"";position:absolute;left:24%;bottom:62%;width:24%;aspect-ratio:1;background:rgba(35,32,43,.85);border-radius:50%}
+.m-ben{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:6px 28px 22px}
+.m-ben div{background:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.m-ben b{display:block;color:var(--b-acc2);font-size:1.05em}
+.m-ben small{color:var(--b-soft)}
+.m-proof{display:flex;align-items:center;gap:18px;padding:14px 28px;background:#fff;border-top:1px solid #F0E8DA;border-bottom:1px solid #F0E8DA}
+.m-proof .stars{color:#E8A22A;letter-spacing:2px}
+.m-proof q{color:var(--b-soft);font-style:italic}
+.m-form{display:flex;gap:10px;padding:18px 28px 24px;align-items:center}
+.m-form span{flex:1;height:2.4em;border:1.5px solid #E2D8C6;border-radius:8px;background:#fff;display:flex;align-items:center;padding:0 10px;color:#B5AC9B}
+.m-form .m-cta{padding:.6em 1.2em}
+.m-trust{display:flex;gap:18px;padding:0 28px 18px;color:var(--b-soft);font-size:.85em}
+/* wireframe mode */
+.mock.wire{background:#fff;color:#777}
+.mock.wire *{color:#888!important;font-family:var(--body)!important;box-shadow:none!important;text-shadow:none}
+.mock.wire .m-img,.mock.wire .m-img::before,.mock.wire .m-img::after{background:repeating-linear-gradient(45deg,#eee,#eee 8px,#f7f7f7 8px,#f7f7f7 16px)!important}
+.mock.wire .m-cta{background:#ddd!important}
+.mock.wire .m-ben div,.mock.wire .m-proof{background:#f4f4f4!important}
+/* hotspots */
+.mock [data-k]{position:relative;transition:outline-color .2s,opacity .3s}
+.mock.focus [data-k]{opacity:.28}
+.mock.focus [data-k].lit{opacity:1;outline:3px solid var(--cobalt);outline-offset:4px;border-radius:8px}
+.pin{position:absolute;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--cobalt);color:#fff!important;font:700 13px/1 var(--body)!important;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #fff;left:-26px;top:2px}
+.pin.edge{left:4px}
+.mock.wire .pin{background:var(--cobalt)!important}
+.legend{list-style:none;counter-reset:l;display:flex;flex-direction:column;gap:.35em}
+.legend li{display:grid;grid-template-columns:2em 1fr;gap:.6em;padding:.55em .7em;border-radius:10px;cursor:pointer;transition:background .2s}
+.legend li::before{counter-increment:l;content:counter(l);width:1.6em;height:1.6em;border-radius:50%;background:var(--cobalt);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.85em}
+.legend li:hover,.legend li.on{background:#fff;box-shadow:0 2px 10px rgba(27,31,58,.08)}
+.legend b{display:block}
+.legend span{color:var(--ink-soft);font-size:.9em}
+
+/* ===== types ===== */
+.types{display:grid;grid-template-columns:repeat(auto-fit,minmax(15em,1fr));gap:1.4em;margin-top:1.4em}
+.card{background:#fff;border-radius:16px;padding:1.1em;box-shadow:0 1px 0 rgba(0,0,0,.04),0 10px 30px -18px rgba(27,31,58,.4);display:flex;flex-direction:column;gap:.6em}
+.card .tag{align-self:flex-start;font-size:.75em;font-weight:700;padding:.15em .6em;border-radius:999px}
+.card p{color:var(--ink-soft);font-size:.92em}
+.mini{aspect-ratio:4/3;border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:6px;background:#F3F1EA}
+.mini i{display:block;border-radius:4px;background:#D9D5C9}
+.mini .h{height:12%;width:80%;background:#9A94A6}
+.mini .s{height:5%;width:60%}
+.mini .img{flex:1}
+.mini .btn{height:9%;width:45%;border-radius:6px}
+.mini .f{height:7%;background:#fff;border:1px solid #D9D5C9}
+.mini .row{display:flex;gap:6px;height:14%}.mini .row i{flex:1}
+.c1 .tag{background:#FDE5DB;color:#B0401C}.c1 .btn{background:#E8572A}
+.c2 .tag{background:#DCEBFF;color:#1E4BD8}.c2 .btn{background:#1E4BD8}
+.c3 .tag{background:#DDF1E8;color:#1E6B4F}.c3 .btn{background:#2A6F5E}
+.c4 .tag{background:#F6EDCB;color:#8A6A00}.c4 .btn{background:#E0A800}
+.c5 .tag{background:#EBE3F7;color:#5B3A99}.c5 .btn{background:#7A4FC4}
+
+/* ===== layouts ===== */
+.lays{display:grid;grid-template-columns:repeat(auto-fit,minmax(14em,1fr));gap:1.4em;margin-top:1.4em}
+.lay svg{width:100%;height:auto;display:block;background:#fff;border-radius:12px;box-shadow:0 10px 30px -20px rgba(27,31,58,.5)}
+.lay h3{margin-top:.6em}
+.lay p{color:var(--ink-soft);font-size:.92em}
+
+/* ===== page types ===== */
+.ptypes{display:grid;grid-template-columns:repeat(auto-fit,minmax(12em,1fr));gap:1em;margin-top:1.2em}
+.ptypes div{border-top:4px solid var(--ink);padding-top:.6em}
+.ptypes b{font-family:var(--display);font-weight:500;font-size:1.15em;display:block}
+.ptypes span{color:var(--ink-soft);font-size:.92em}
+
+/* ===== color ===== */
+.colors{display:grid;grid-template-columns:1fr 1fr;gap:3vw;margin-top:1.2em}
+.cdemo{background:#fff;border-radius:14px;padding:1.4em;box-shadow:0 10px 30px -20px rgba(27,31,58,.5)}
+.cdemo .row{display:flex;flex-wrap:wrap;gap:.6em;margin-top:.8em}
+.cdemo .b{padding:.55em 1em;border-radius:8px;font-weight:600;font-size:.9em}
+.swatch{display:flex;gap:.5em;margin-top:1em}
+.swatch i{flex:1;height:2.6em;border-radius:8px}
+.swatch-l{display:flex;gap:.5em;font-size:.75em;color:var(--ink-soft)}.swatch-l span{flex:1}
+footer{padding:4vh 0 6vh;color:var(--ink-soft);font-size:.8em}
+@media (max-width:900px){.anat,.colors{grid-template-columns:1fr}.m-hero{grid-template-columns:1fr}}
+body.embed header.top,body.embed #landing .kicker,body.embed #landing h1,body.embed #landing > .wrap > .lead{display:none}
+body.embed section{padding:3vh 0}
+body.embed{font-size:clamp(16px,1.25vw,22px)}
+.ltypes{display:flex;flex-direction:column;gap:1.4em;margin-top:1.4em}
+.lt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:2.5vw;align-items:center;background:#fff;border-radius:18px;padding:1.3em;box-shadow:0 1px 0 rgba(0,0,0,.04),0 14px 34px -22px rgba(27,31,58,.45)}
+.lt-mock{background:var(--b-bg);border-radius:12px;padding:1.1em 1.2em;display:flex;flex-direction:column;gap:.45em;color:var(--b-ink);font-size:.88em;border:1px solid #F0E8DA}
+.lt-mock b{font-family:var(--display);font-size:1.25em;line-height:1.15}
+.lt-mock small{color:var(--b-soft)}
+.lt-mock .f{border:1.5px solid #E2D8C6;border-radius:8px;background:#fff;padding:.3em .6em;color:#B5AC9B}
+.lt-mock .cta{align-self:flex-start;color:#fff;font-weight:700;padding:.5em 1em;border-radius:8px;margin-top:.2em}
+.lt-mock .cta.ghost{background:transparent!important;color:var(--b-ink);border:1.5px solid var(--b-ink)}
+.lt-mock.center{align-items:center;text-align:center;flex-direction:column}
+.lt-mock.center .cta{align-self:center}
+.lt-mock.long{background:linear-gradient(var(--b-bg) 70%,#fff)}
+.lt .tag{display:inline-block;font-size:.75em;font-weight:700;padding:.15em .7em;border-radius:999px;margin-bottom:.4em}
+.lt dl{display:grid;grid-template-columns:5.5em 1fr;gap:.25em .8em;margin-top:.5em;font-size:.95em}
+.lt dt{font-weight:700;color:var(--ink-soft)}
+.lt dd{color:var(--ink)}
+.c1 .tag{background:#FDE5DB;color:#B0401C}.c1 .cta{background:#E8572A}
+.c2 .tag{background:#DCEBFF;color:#1E4BD8}.c2 .cta{background:#1E4BD8}
+.c3 .tag{background:#DDF1E8;color:#1E6B4F}.c3 .cta{background:#2A6F5E}
+.c4 .tag{background:#F6EDCB;color:#8A6A00}.c4 .cta{background:#C99300}
+.c5 .tag{background:#EBE3F7;color:#5B3A99}.c5 .cta{background:#7A4FC4}
+.lay .when{margin-top:.5em;font-size:.9em}
+.lay .when b{color:var(--cobalt)}
+.lay .not{font-size:.9em;color:var(--ink-soft)}
+.lay .not b{color:#B0401C}
+@media (max-width:900px){.lt{grid-template-columns:1fr}}
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(12em,1fr));gap:1em;margin-top:1.2em}.trust div{background:#fff;border-radius:14px;padding:1em;box-shadow:0 10px 30px -22px rgba(27,31,58,.5);border-top:4px solid var(--cobalt)}.trust b{font-family:var(--display);font-weight:500;font-size:1.15em;display:block}.trust span{color:var(--ink-soft);font-size:.92em}
+html{scroll-behavior:auto}
+@media (min-width:900px){.trust{grid-template-columns:repeat(5,1fr)}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><b>Az oldal anatómiája</b><nav><a href="#landing">Landing</a><a href="#tipusok">Landingtípusok</a><a href="#layout">Layout-sablonok</a><a href="#bizalom">Bizalom</a><a href="#oldalak">Oldaltípusok</a><a href="#szin">Szín</a></nav></div></header>
+
+<section id="landing"><div class="wrap">
+  <p class="kicker">Online marketing · 3. alkalom · A saját terep</p>
+  <h1>Az oldal <span class="hl">anatómiája</span></h1>
+  <p class="lead">Minden elemnek dolga van. Ha egy hiányzik, a látogatónak kell pótolnia, és ez energiába kerül.</p>
+  <div class="seg" id="mode"><button type="button" class="on" data-v="kesz">Kész oldal</button><button type="button" data-v="wire">Drótváz</button></div>
+  <div class="anat">
+    <div class="mock" id="mock">
+      <div class="chrome"><i></i><i></i><i></i><span>szoforgo.hu/angol-osz</span></div>
+      <div class="m-nav" data-k="1"><span class="m-logo">Szó<em>forgó</em></span><span class="links"><span>Tanfolyamok</span><span>Árak</span><span>Kapcsolat</span></span></div>
+      <div class="m-hero">
+        <div>
+          <div class="m-h" data-k="2">Angolul beszélni, nem magolni.</div>
+          <div class="m-sub" data-k="3">Kis csoportos esti tanfolyam Veszprémben, legfeljebb 8 fővel. Kezdés október 20.</div>
+          <div data-k="6"><span class="m-cta">Kérem a szintfelmérőt</span><span class="m-cta2">Árak</span></div>
+        </div>
+        <div class="m-img" data-k="4"></div>
+      </div>
+      <div class="m-ben" data-k="5"><div><b>8 fő</b><small>a csoport maximum</small></div><div><b>10 perc</b><small>ingyenes szintfelmérő</small></div><div><b>Visszajár</b><small>ha az első óra nem tetszik</small></div></div>
+      <div class="m-proof" data-k="7"><span class="stars">★★★★★</span><b>4,9</b><q>Két hónap után mertem először angolul telefonálni.</q></div>
+      <div class="m-form" data-k="8"><span>Neved</span><span>E-mail-címed</span><span class="m-cta">Jelentkezem</span></div>
+      <div class="m-trust" data-k="9"><span>Adataidat csak a szintfelmérőhöz használjuk</span><span>Telefon: 06 88 000 000</span></div>
+    </div>
+    <ol class="legend" id="legend">
+      <li data-k="1"><div><b>Fejléc és logó</b><span>Kinél vagyok? A navigáció a landingen minimális: kevés kijárat.</span></div></li>
+      <li data-k="2"><div><b>Cím</b><span>Egy ígéret, amit a hirdetés is mondott. Nem „Üdvözöljük!”.</span></div></li>
+      <li data-k="3"><div><b>Alcím</b><span>Mit kapsz, kinek szól, hol, mikor. Itt válaszol Chaffey négy kérdésére.</span></div></li>
+      <li data-k="4"><div><b>Kép</b><span>Megmutatja, milyen lesz. Nem díszít, hanem bizonyít.</span></div></li>
+      <li data-k="5"><div><b>Előnyök</b><span>Három, nem tizenhárom. Számokkal, amiket a szem egy pillantással felvesz.</span></div></li>
+      <li data-k="6"><div><b>Fő gomb</b><span>Egy, kiemelt színnel. A második lehetőség csak szöveges link.</span></div></li>
+      <li data-k="7"><div><b>Társas bizonyíték</b><span>Mások már kipróbálták: értékelés, valódi idézet.</span></div></li>
+      <li data-k="8"><div><b>Űrlap</b><span>Csak annyi mező, amennyi tényleg kell.</span></div></li>
+      <li data-k="9"><div><b>Bizalmi apróságok</b><span>Adatkezelés egy mondatban, elérhetőség, valódi telefonszám.</span></div></li>
+    </ol>
+  </div>
+  <p class="lead" style="font-size:.9em">A Szóforgó kitalált márka, a minta kedvéért.</p>
+</div></section>
+
+<section id="tipusok"><div class="wrap">
+  <p class="kicker">Landingtípusok</p>
+  <h2>Mindegyik másra való.</h2>
+  <p class="lead">A típust az dönti el, mit akarsz, hogy a látogató most megtegyen. Ugyanaz a nyelviskola ötféle landinggel:</p>
+  <div class="ltypes">
+    <article class="lt c1">
+      <div class="lt-mock"><b>Ingyenes szintfelmérő 10 perc alatt</b><small>Megtudod, melyik csoportba illesz.</small><span class="f">Neved</span><span class="f">E-mail-címed</span><span class="cta">Kérem a szintfelmérőt</span></div>
+      <div class="lt-txt"><span class="tag">Leadgyűjtő</span><h3>Elérhetőséget kér, és ad érte valamit</h3><dl><dt>Mikor</dt><dd>Érdeklődik, de még nem vásárol. Előbb a kapcsolat kell.</dd><dt>A siker</dt><dd>Kitöltött űrlap.</dd></dl></div>
+    </article>
+    <article class="lt c2">
+      <div class="lt-mock"><b>Őszi angol, −20% október 15-ig</b><small>✓ 8 fős csoport ✓ esti órák ✓ ingyenes első óra</small><span class="cta">Tovább a jelentkezéshez →</span></div>
+      <div class="lt-txt"><span class="tag">Átvezető</span><h3>Meggyőz, és átküld a következő lépésre</h3><dl><dt>Mikor</dt><dd>Közel a döntés, de a vásárlás máshol történik: kosár, foglalómotor, jelentkezési rendszer.</dd><dt>A siker</dt><dd>Kattintás tovább.</dd></dl></div>
+    </article>
+    <article class="lt c3">
+      <div class="lt-mock long"><b>Angolul beszélni 3 hónap alatt, nulláról</b><small>Hogyan zajlik · Kik tanítanak · Mennyibe kerül</small><small>Vélemények · Gyakori kérdések · Garancia</small><span class="cta">Jelentkezem</span><small>… és lent még egyszer ugyanaz a gomb</small></div>
+      <div class="lt-txt"><span class="tag">Értékesítő</span><h3>Hosszú, és végig egy célja van</h3><dl><dt>Mikor</dt><dd>Drágább, átgondolt döntés, sok kérdéssel és kétellyel. Minden kételyre választ ad, mielőtt fizetni kér.</dd><dt>A siker</dt><dd>Vásárlás.</dd></dl></div>
+    </article>
+    <article class="lt c4">
+      <div class="lt-mock"><b>Nyílt nap · október 15., 18:00</b><small>Szóforgó, Veszprém, Óváros tér 1. · ingyenes</small><span class="cta">Regisztrálok</span></div>
+      <div class="lt-txt"><span class="tag">Esemény</span><h3>Időponthoz kötött</h3><dl><dt>Mikor</dt><dd>Egy alkalomra hívsz: nyílt nap, webinárium, koncert. Mikor, hol, kinek, mennyiért.</dd><dt>A siker</dt><dd>Regisztráció vagy jegy.</dd></dl></div>
+    </article>
+    <article class="lt c5">
+      <div class="lt-mock center"><b>Melyik városban tanulnál?</b><span class="cta">Veszprém</span><span class="cta ghost">Győr</span></div>
+      <div class="lt-txt"><span class="tag">Splash</span><h3>Egy kérdés vagy bejelentés a belépés előtt</h3><dl><dt>Mikor</dt><dd>Ha a válasz nélkül nem tudod, hová vidd: város, nyelv, életkor. Ritkán, mert egy plusz lépés.</dd><dt>A siker</dt><dd>Jó helyre jut.</dd></dl></div>
+    </article>
+  </div>
+</div></section>
+
+<section id="layout"><div class="wrap">
+  <p class="kicker">Layout-sablonok</p>
+  <h2>Merre megy a szem?</h2>
+  <p class="lead">A sablon nem díszítés, hanem útvonal: azt dönti el, mit lát először, és mit lát utoljára. Azt választod, ami a tartalomhoz és a célhoz illik.</p>
+  <div class="lays">
+    <div class="lay"><svg viewBox="0 0 200 150"><rect x="14" y="12" width="40" height="10" rx="2" fill="#1B1F3A"/><rect x="140" y="12" width="46" height="10" rx="2" fill="#D9D7CE"/><rect x="14" y="62" width="172" height="26" rx="4" fill="#ECEAE2"/><rect x="14" y="120" width="60" height="10" rx="2" fill="#D9D7CE"/><rect x="136" y="116" width="50" height="16" rx="4" fill="#1E4BD8"/><path d="M30 26 L160 26 L30 112 L160 122" fill="none" stroke="#F2C94C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/></svg><h3>Z-minta</h3><p>Kevés szöveg, egy cél: a szem a logótól a menün át átlósan a gombig fut.</p><p class="when"><b>Mikor:</b> Landing, kezdőlap nyitóképernyője, egyetlen ajánlat.</p><p class="not"><b>Nem jó:</b> Sok szövegnél, sok választásnál.</p></div>
+    <div class="lay"><svg viewBox="0 0 200 150"><rect x="14" y="12" width="172" height="12" rx="2" fill="#1B1F3A"/><g fill="#D9D7CE"><rect x="14" y="34" width="150" height="6" rx="2"/><rect x="14" y="48" width="110" height="6" rx="2"/><rect x="14" y="62" width="70" height="6" rx="2"/><rect x="14" y="76" width="40" height="6" rx="2"/><rect x="14" y="90" width="60" height="6" rx="2"/><rect x="14" y="104" width="30" height="6" rx="2"/><rect x="14" y="118" width="45" height="6" rx="2"/></g><path d="M18 30 L170 30 M18 58 L120 58 M18 30 L18 130" stroke="#F2C94C" stroke-width="5" stroke-linecap="round" opacity=".85"/></svg><h3>F-minta</h3><p>Ezt nem választod: sok szövegnél ide jut magától a szem, a sorok elejére.</p><p class="when"><b>Mikor:</b> Blog, cikk, GYIK, tanfolyamleírás: kulcsszó a sor elején, beszédes alcímek, felsorolás.</p><p class="not"><b>Nem jó:</b> Ha egy fontos dolog a sor végére vagy a szövegtömb közepére kerül.</p></div>
+    <div class="lay"><svg viewBox="0 0 200 150"><rect x="60" y="8" width="80" height="8" rx="2" fill="#1B1F3A"/><rect x="40" y="22" width="120" height="30" rx="4" fill="#ECEAE2"/><rect x="60" y="58" width="80" height="5" rx="2" fill="#D9D7CE"/><rect x="40" y="70" width="120" height="30" rx="4" fill="#ECEAE2"/><rect x="60" y="106" width="80" height="5" rx="2" fill="#D9D7CE"/><rect x="75" y="120" width="50" height="14" rx="4" fill="#1E4BD8"/><path d="M100 18 L100 132" stroke="#F2C94C" stroke-width="4" stroke-dasharray="6 5"/></svg><h3>Egyoszlopos történet</h3><p>Görgetve, fejezetenként halad, a végén a gomb.</p><p class="when"><b>Mikor:</b> Mobilon, értékesítő landingen, ahol sorban kell válaszolni a kételyekre.</p><p class="not"><b>Nem jó:</b> Ha a látogató sok dolog közül akar választani.</p></div>
+    <div class="lay"><svg viewBox="0 0 200 150"><rect x="14" y="12" width="90" height="10" rx="2" fill="#1B1F3A"/><g fill="#ECEAE2"><rect x="14" y="32" width="54" height="46" rx="4"/><rect x="73" y="32" width="54" height="46" rx="4"/><rect x="132" y="32" width="54" height="46" rx="4"/><rect x="14" y="84" width="54" height="46" rx="4"/><rect x="73" y="84" width="54" height="46" rx="4"/><rect x="132" y="84" width="54" height="46" rx="4"/></g><g fill="#1E4BD8"><rect x="20" y="70" width="20" height="4" rx="2"/><rect x="79" y="70" width="20" height="4" rx="2"/><rect x="138" y="70" width="20" height="4" rx="2"/></g></svg><h3>Kártyarács</h3><p>A kínálat egymás mellett, egyforma kártyákon.</p><p class="when"><b>Mikor:</b> Kategóriaoldal, tanfolyamlista, csomagok összehasonlítása.</p><p class="not"><b>Nem jó:</b> Ha egy ajánlatot akarsz kiemelni: ott egy kártya legyen hangsúlyos, vagy ne rács legyen.</p></div>
+    <div class="lay"><svg viewBox="0 0 200 150"><rect x="0" y="0" width="100" height="150" fill="#DCEBFF"/><rect x="100" y="0" width="100" height="150" fill="#FDE5DB"/><rect x="25" y="60" width="50" height="10" rx="2" fill="#1B1F3A"/><rect x="30" y="80" width="40" height="14" rx="4" fill="#1E4BD8"/><rect x="125" y="60" width="50" height="10" rx="2" fill="#1B1F3A"/><rect x="130" y="80" width="40" height="14" rx="4" fill="#E8572A"/></svg><h3>Osztott képernyő</h3><p>Két egyenrangú út egymás mellett.</p><p class="when"><b>Mikor:</b> Két külön közönség: magánszemély és cég, tanuló és tanár.</p><p class="not"><b>Nem jó:</b> Ha az egyik út fontosabb: akkor az kapja a fő gombot.</p></div>
+  </div>
+</div></section>
+
+<section id="bizalom"><div class="wrap">
+  <p class="kicker">Bizalom</p>
+  <h2>Miért higgyen nektek?</h2>
+  <p class="lead">A bizalmi elemek a döntés előtti kételyeket veszik le. Nem egy helyen vannak, hanem végig az oldalon.</p>
+  <div class="trust">
+    <div><b>Mások</b><span>Vélemények, értékelések, ismert ügyfelek.</span></div>
+    <div><b>Garancia</b><span>Visszaküldés, pénzvisszafizetés, próbaidő.</span></div>
+    <div><b>Elérhetőség</b><span>Telefon, cím, valódi arcok és nevek.</span></div>
+    <div><b>Nyíltság</b><span>Ár és szállítási díj előre, nem a pénztárban.</span></div>
+    <div><b>Biztonság</b><span>Ismert fizetési mód, biztonságos kapcsolat, adatkezelés egy mondatban.</span></div>
+  </div>
+</div></section>
+
+<section id="oldalak"><div class="wrap">
+  <p class="kicker">Oldaltípusok</p>
+  <h2>Hol vagyok, hol voltam, hová mehetek?</h2>
+  <p class="lead">A látogató ritkán a kezdőlapon kezd. Minden oldalnak meg kell mondania, hol van, és mi a következő lépés.</p>
+  <div class="ptypes">
+    <div><b>Kezdőlap</b><span>Sokféle látogató sokféle céllal: elosztja őket.</span></div>
+    <div><b>Kategória</b><span>A kínálat áttekintése, szűrés, összehasonlítás.</span></div>
+    <div><b>Termék</b><span>Egy dolog minden kérdésre választ adva, egy gombbal.</span></div>
+    <div><b>Landing</b><span>Egy hirdetés, egy ígéret, egy cél.</span></div>
+    <div><b>Köszönőoldal</b><span>Sikerült, mi történik most, mikor jön a levél. Az élmény vége.</span></div>
+    <div><b>404</b><span>Elveszett: segíts neki visszatalálni, ne hagyd ott.</span></div>
+  </div>
+</div></section>
+
+<section id="szin"><div class="wrap">
+  <p class="kicker">Szín</p>
+  <h2>Egy szín a cselekvésé.</h2>
+  <p class="lead">Ami mindenhol ugyanolyan, az nem látszik. Ami egyedül más, azt a szem megjegyzi.</p>
+  <div class="colors">
+    <div class="cdemo"><h3>Minden kiemelt</h3><div class="row"><span class="b" style="background:#E8572A;color:#fff">Jelentkezem</span><span class="b" style="background:#1E4BD8;color:#fff">Árak</span><span class="b" style="background:#2A6F5E;color:#fff">Rólunk</span><span class="b" style="background:#7A4FC4;color:#fff">Blog</span></div><p class="lead" style="font-size:.85em">Négy szín, négy hangos gomb: egyik sem nyer.</p></div>
+    <div class="cdemo"><h3>Egy kiemelt</h3><div class="row"><span class="b" style="background:#E8572A;color:#fff">Jelentkezem</span><span class="b" style="color:#23202B;text-decoration:underline">Árak</span><span class="b" style="color:#23202B;text-decoration:underline">Rólunk</span><span class="b" style="color:#23202B;text-decoration:underline">Blog</span></div><p class="lead" style="font-size:.85em">Egy szín csak a fő cselekvésé, a többi csendes.</p></div>
+  </div>
+  <div class="swatch"><i style="background:#FFF8EE;border:1px solid #eee"></i><i style="background:#23202B"></i><i style="background:#7A7385"></i><i style="background:#2A6F5E"></i><i style="background:#E8572A"></i></div>
+  <div class="swatch-l"><span>Háttér · nyugodt</span><span>Szöveg · olvasható</span><span>Másodlagos szöveg</span><span>Márkaszín</span><span>Cselekvés · csak a gomb</span></div>
+</div></section>
+
+<footer><div class="wrap">Online marketing · Pannon Egyetem · 2026 ősz · 3. alkalom · <span id="ver">v0.4 · 2026. október 11. · vázlat</span></div></footer>
+
+<script>
+(function(){
+  if(/embed/.test(location.search))document.body.classList.add('embed');
+  var mock=document.getElementById('mock'),leg=document.getElementById('legend');
+  function lit(k){mock.classList.add('focus');mock.querySelectorAll('[data-k]').forEach(function(e){e.classList.toggle('lit',e.getAttribute('data-k')===k)});leg.querySelectorAll('li').forEach(function(l){l.classList.toggle('on',l.getAttribute('data-k')===k)})}
+  function off(){mock.classList.remove('focus');mock.querySelectorAll('.lit').forEach(function(e){e.classList.remove('lit')});leg.querySelectorAll('li').forEach(function(l){l.classList.remove('on')})}
+  leg.querySelectorAll('li').forEach(function(l){l.addEventListener('mouseenter',function(){lit(l.getAttribute('data-k'))});l.addEventListener('click',function(){lit(l.getAttribute('data-k'))})});
+  leg.addEventListener('mouseleave',off);
+  mock.querySelectorAll('[data-k]').forEach(function(e){e.addEventListener('mouseenter',function(){lit(e.getAttribute('data-k'))})});
+  mock.addEventListener('mouseleave',off);
+  /* számozott jelölők */
+  mock.querySelectorAll('[data-k]').forEach(function(e){var p=document.createElement('i');p.className='pin';p.textContent=e.getAttribute('data-k');if(['1','5','7','8','9'].indexOf(e.getAttribute('data-k'))>-1)p.classList.add('edge');e.appendChild(p)});
+  var bs=document.querySelectorAll('#mode button');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.classList.toggle('on',x===b)});mock.classList.toggle('wire',b.getAttribute('data-v')==='wire')})});
+})();
+</script>
+</body>
+</html>

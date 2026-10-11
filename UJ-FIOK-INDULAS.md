@@ -1,5 +1,8 @@
 # Új fiók, 3. alkalom · innen veszed fel a szálat
 
+> **2026. október 11.:** a 3. alkalom munkája előrehaladott állapotban van. Előbb az `alkalom-3/FOLYTATAS.md`-t olvasd el, az felülírja ennek a doksinak a 3. alkalomra vonatkozó részét. A lenti „A 3. alkalom adatai” részben szereplő kulcsgondolat, tanulság és fázis-sor nem az oktatóé, el van engedve.
+
+
 Online marketing 2026 ősz · nappali · Pannon Egyetem
 Készült: 2026. október 5. · a régi fiók „Egyetem tanítás” Projectjéből és a korábbi chatekből
 
@@ -15,7 +18,7 @@ Az 1. alkalom 2026. szeptember 14-én, a 2. alkalom 2026. szeptember 28-án volt
 
 ## A mappa rendje
 
-2026. október 5-én rendeztem át. A webre kerülő fájlok a gyökérben maradtak, mert a nevük és a helyük a `.cpanel.yml`-hez és a szerverhez van kötve; ezeket soha ne mozgasd és ne nevezd át. A munkadoksik almappákba kerültek.
+2026. október 5-én rendeztem át, 2026. október 11-én tovább rendeztük: minden, ami egy alkalomhoz tartozik (deck, beadandó-eszköz, segédlet, munkadoksik), az `alkalom-N/` mappában van. A webre kerülő fájlok nevét ne változtasd; a `.cpanel.yml` mappával együtt másolja őket, a szerveren a gyökérbe kerülnek. A gyökérben csak a közös fájlok maradnak. A munkadoksik almappákba kerültek.
 
 ```
 Egyetem/
@@ -23,13 +26,9 @@ Egyetem/
 ├── CLAUDE.md                   a Claude Code szabályai (a gyökérben kell lennie)
 ├── README.md                   a repó leírása
 │
-├── index.html                  ┐
-├── app.html                    │
-├── api.php                     │ élesbe menő fájlok,
-├── online-marketing-2026-evad-1-epizod.html   │ a .cpanel.yml másolja őket,
-├── online-marketing-2026-evad-2-epizod.html   │ a gyökérben maradnak
-├── journey-terkep.html         │
-├── journey-tippek.html         ┘
+├── index.html                  ┐ közös, élesbe menő fájlok,
+├── app.html                    │ a .cpanel.yml másolja őket,
+├── api.php                     ┘ a gyökérben maradnak
 ├── .cpanel.yml  .gitignore  key.php.example
 │
 ├── munkadoksik/                a félév egészére vonatkozó doksik
@@ -40,16 +39,17 @@ Egyetem/
 │   ├── forrasfeldolgozas-online-marketing-2026.md
 │   └── findq.py                idézetellenőrző a könyvfájlokhoz
 │
-├── alkalom-1/README.md         mi tartozik az 1. alkalomhoz
-├── alkalom-2/                  README, forrasfeldolgozas-2-alkalom.md, jegyzet-kutatas-2-alkalom.md
-├── alkalom-3/                  README; ide kerülnek a 3. alkalom munkadoksijai
+├── alkalom-1/                  README, a deck (élesbe megy)
+├── alkalom-2/                  README, a deck, journey-terkep.html, journey-tippek.html (élesbe mennek), munkadoksik
+├── alkalom-3/                  README, FOLYTATAS, a deck, oldal-anatomia.html, oldal-vizsgalat.html (élesbe mennek), munkadoksik
+├── alkalom-4/                  README, előzetes anyag
 │
 ├── konyvek/                    könyvfejezetek és forrásjegyzetek (gitignorálva, nem mehet a publikus repóba)
 │
 └── nem gitbe: data/, key.php, neptun.php, BCKP/, .claude/, .DS_Store
 ```
 
-Minden új alkalomnak saját `alkalom-N/` mappája van, benne egy `README.md` arról, mi tartozik hozzá, és a munkadoksik (`forrasfeldolgozas-N-alkalom.md`, `jegyzet-kutatas-N-alkalom.md`, `jegyzet-N-alkalom.md`). A deck, a beadandó-eszköz és a segédlet a gyökérbe kerül, `cp` sorral. A régi doksik (`ALKALOM-INDITO-PROMPT.md`, `CLAUDE.md`, `HOL-TARTUNK.md`) a munkadoksikat még fájlnévvel, mappa nélkül említik: a helyük a fenti rend szerint értendő.
+Minden új alkalomnak saját `alkalom-N/` mappája van, benne egy `README.md` arról, mi tartozik hozzá, és a munkadoksik (`forrasfeldolgozas-N-alkalom.md`, `jegyzet-kutatas-N-alkalom.md`, `jegyzet-N-alkalom.md`). A deck, a beadandó-eszköz és a segédlet is az `alkalom-N/` mappába kerül, `cp` sorral, mappával együtt. A régi doksik (`ALKALOM-INDITO-PROMPT.md`, `CLAUDE.md`, `HOL-TARTUNK.md`) a munkadoksikat még fájlnévvel, mappa nélkül említik: a helyük a fenti rend szerint értendő.
 
 ## Mit olvass el, ebben a sorrendben
 
@@ -65,7 +65,7 @@ Mind a mappában van. Ha valamelyik hiányzik, állj meg, és kérd el.
 8. **`alkalom-2/forrasfeldolgozas-2-alkalom.md`** és **`alkalom-2/jegyzet-kutatas-2-alkalom.md`**: csak a szerkezetük miatt, ez a minta a 3. alkalom doksijaihoz.
 9. **`alkalom-3/README.md`**: mi hova kerül a 3. alkalomnál.
 
-Utána nézd meg a gyökérben: `online-marketing-2026-evad-2-epizod.html` (a legfrissebb dizájnváz), `app.html`, `index.html`, `api.php`, `.cpanel.yml`, `.gitignore`, `journey-terkep.html`, `journey-tippek.html`; a `konyvek/` mappa öt 3. alkalmas fájlját, és a `munkadoksik/findq.py` idézetellenőrzőt.
+Utána nézd meg: `alkalom-2/online-marketing-2026-evad-2-epizod.html` (a legfrissebb dizájnváz), a gyökérben `app.html`, `index.html`, `api.php`, `.cpanel.yml`, `.gitignore`, és `alkalom-2/journey-terkep.html`, `alkalom-2/journey-tippek.html`; a `konyvek/` mappa öt 3. alkalmas fájlját, és a `munkadoksik/findq.py` idézetellenőrzőt.
 
 Ha bármelyik doksi ellentmond ennek, jelezd, ne dönts helyettem.
 
@@ -80,13 +80,13 @@ Ha bármelyik doksi ellentmond ennek, jelezd, ne dönts helyettem.
   - (és a „Platformok és eszközök” pontból: automatizált email marketing)
   - (és a „Webanalitika és GDPR” pontból: a GDPR / jogi vonatkozások)
 
-Az én mondataim, szó szerint mennek a deckbe:
+Elengedve 2026. október 5-én, ezek nem az oktató mondatai (lásd `alkalom-3/FOLYTATAS.md`):
 
 - **Miről szól:** weboldal, UX/UI, regisztrációs és loyalty logika, automatizált e-mail, adatkezelés.
 - **Kulcsgondolat:** a forgalom nem eredmény, és a weboldal az egyetlen felület, ami tényleg a tiéd.
 - **Tanulság:** a konverzió ritkán meggyőzés kérdése, sokkal inkább súrlódásé. Egy akadály elvétele többet hoz, mint egy újabb érv.
 
-A fázis-táblázat sora: mit hoz magával „Bizalom és meggyőzés.”, mire vált „Akadályok megszűntetése, percepció kialakítás a márkáról.”, mit tesz hozzá a végcélhoz „A felelősség átkerül a másik emberről a saját felületünkre.”
+A fázis-táblázat sora (szintén elengedve): mit hoz magával „Bizalom és meggyőzés.”, mire vált „Akadályok megszűntetése, percepció kialakítás a márkáról.”, mit tesz hozzá a végcélhoz „A felelősség átkerül a másik emberről a saját felületünkre.”
 
 Átvezetés a 2. alkalomból: a 2. deck zárása és az áramlási térkép dia („Hogyan érkeznek meg a weboldalra, és mi lesz belőle?”) már a 3. alkalom kérdésére mutat. A térkép Act / Do fázisában a látogató már a mi felületünkön jár. A v9 deck 25. diája (Kotler, Keller 170–171., hat kockázat) azt ígérte: „Minden kockázathoz tartozik egy weboldalelem, ami leveszi. Ez lesz a harmadik alkalom.”
 
@@ -119,7 +119,7 @@ A teljes menet az `ALKALOM-INDITO-PROMPT.md`-ben van. A sorrend kötött, minden
 1. könyvek feldolgozása → `alkalom-3/forrasfeldolgozas-3-alkalom.md`
 2. jegyzet-kutatás → `alkalom-3/jegyzet-kutatas-3-alkalom.md`
 3. kidolgozott jegyzet → `alkalom-3/jegyzet-3-alkalom.md`
-4. deck → `online-marketing-2026-evad-3-epizod.html` (a gyökérbe) (először vázlat, utána a teljes deck, Playwright-renderteszt 1440×900-on)
+4. deck → `alkalom-3/online-marketing-2026-evad-3-epizod.html` (először vázlat, utána a teljes deck, Playwright-renderteszt 1440×900-on)
 5. a feladat kitalálása (javaslat kérdésekkel, amíg nem döntök, nem építed)
 6. a feladat megvalósítása (eszköz, segédlet, `app.html` `ep3`, `index.html` 3. sor élesítése, `.cpanel.yml` új `cp` sorok)
 7. jegyzetek a deckbe

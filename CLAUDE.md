@@ -12,13 +12,13 @@ Ne állítsd át `*/5`-re. 2026. szeptember 13-án és 14-én háromszor is át 
 A tartalmi munka a claude.ai chatben készül. Ha a chat a géphez van kötve, a kész fájlt közvetlenül ebbe a mappába írja, a régi helyére, ugyanazzal a fájlnévvel. Ha nincs a géphez kötve, a fájl a `~/Downloads` mappába kerül, és innen te viszed a helyére (lásd lent). A fájlnevek rögzítettek:
 
 - `index.html` – gyűjtőoldal, a hét alkalom
-- `online-marketing-2026-evad-1-epizod.html` – 1. alkalom deck (a többi alkalom hasonló néven, saját fájlban)
+- `alkalom-1/online-marketing-2026-evad-1-epizod.html` – 1. alkalom deck (a többi alkalom hasonló néven, a saját `alkalom-N/` mappájában)
 - `app.html` – ügynökségi app (csapat, leadás, szavazás, eredmény)
 - `api.php` – az app háttere
 - `.cpanel.yml` – deploy lista
-- az alkalmak beadandó-eszközei és segédletei, ha vannak (a 2. alkalomnál `journey-terkep.html`, `journey-tippek.html`)
+- az alkalmak beadandó-eszközei és segédletei, ha vannak, az alkalom mappájában (a 2. alkalomnál `alkalom-2/journey-terkep.html`, `alkalom-2/journey-tippek.html`, a 3.-nál `alkalom-3/oldal-anatomia.html`, `alkalom-3/oldal-vizsgalat.html`)
 
-A munkadoksik is ebben a mappában vannak, almappákban: a `munkadoksik/` alatt a félév egészére vonatkozók (`HOL-TARTUNK.md`, `ALKALOM-SZABALYOK.md`, `ALKALOM-INDITO-PROMPT.md`, `gondolati-iv-7-epizod.md`, `forrasfeldolgozas-online-marketing-2026.md`, `findq.py`), az `alkalom-N/` alatt az adott alkalom forrásfeldolgozása és jegyzetei, a gyökérben az `UJ-FIOK-INDULAS.md`. Ezek nem kapnak `cp` sort, nem mennek ki a webre; ha ilyen új fájl jelenik meg, az nem ok a push leállítására. A webre kerülő fájlok a gyökérben maradnak.
+A munkadoksik is ebben a mappában vannak, almappákban: a `munkadoksik/` alatt a félév egészére vonatkozók (`HOL-TARTUNK.md`, `ALKALOM-SZABALYOK.md`, `ALKALOM-INDITO-PROMPT.md`, `gondolati-iv-7-epizod.md`, `forrasfeldolgozas-online-marketing-2026.md`, `findq.py`), az `alkalom-N/` alatt az adott alkalom forrásfeldolgozása és jegyzetei, a gyökérben az `UJ-FIOK-INDULAS.md`. Ezek nem kapnak `cp` sort, nem mennek ki a webre; ha ilyen új fájl jelenik meg, az nem ok a push leállítására. 2026. október 11. óta az alkalmakhoz tartozó webes fájlok (deck, eszköz, segédlet) is az `alkalom-N/` mappában vannak; a `.cpanel.yml` `cp` sora a mappával együtt adja meg őket, a szerveren a gyökérbe kerülnek, a webcím nem változik. A gyökérben csak a közös fájlok maradnak: `index.html`, `app.html`, `api.php`, `.cpanel.yml`.
 
 ## Mit csinálj, ha a tulajdonos azt mondja, „vidd fel a mai fájlokat”
 

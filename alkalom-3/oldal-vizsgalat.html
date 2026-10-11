@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Online marketing · Oldalvizsgálat · 3. alkalom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F6F1; --ink:#1B1F3A; --ink-soft:#5A5E78; --line:#D9D7CE; --cobalt:#1E4BD8; --marker:#F2C94C;
+  --good:#1E7B45; --bad:#C0392B;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--cobalt)}
+.top{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:1em;padding:.7em 3vw;flex-wrap:wrap}
+.top b{font-family:var(--display);font-weight:500;font-size:1.25em}
+.top .sp{flex:1}
+.btn{padding:.35em .9em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;background:none;cursor:pointer;font-size:.9em}
+.btn.solid{background:var(--cobalt);color:#fff}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.tab:focus-visible,.ch:focus-visible{outline:3px solid var(--cobalt);outline-offset:1px}
+main{padding:2em 3vw 5em;max-width:1400px;margin:0 auto}
+h1{font-family:var(--display);font-weight:300;font-size:2.4em;line-height:1.05;margin-bottom:.3em}
+h2{font-family:var(--display);font-weight:500;font-size:1.45em;margin:1.2em 0 .3em}
+h3{font-family:var(--display);font-weight:500;font-size:1.15em;margin:0 0 .3em}
+.muted{color:var(--ink-soft)} .small{font-size:.85em}
+.lead{max-width:72ch;margin-bottom:1em}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:1em}
+label{display:block;font-size:.82em;color:var(--ink-soft);margin-bottom:.2em}
+input,select,textarea{width:100%;padding:.45em .6em;border:1px solid var(--line);border-radius:4px;background:#fff}
+textarea{min-height:4.2em;resize:vertical}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55%)}
+.onebox{background:#fff;border-left:4px solid var(--cobalt);padding:.6em 1em;max-width:72ch;margin:.2em 0 1em;font-size:.95em}
+.warn{background:#fff;border-left:4px solid var(--bad);padding:.6em 1em;max-width:72ch;margin:.2em 0 1em;font-size:.95em}
+.check{display:flex;gap:.5em;align-items:center;font-size:.95em;color:var(--ink);margin:.6em 0}
+.check input{width:auto}
+/* a nyolc szemüveg áttekintője */
+.lenses{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;margin:1.2em 0 .4em}
+.round{background:#fff;border-radius:12px;padding:.9em 1.1em;box-shadow:0 14px 30px -22px rgba(27,31,58,.45)}
+.round h3{display:flex;justify-content:space-between;align-items:baseline;gap:.5em}
+.round h3 small{font-family:var(--body);font-size:.72em;color:var(--ink-soft);font-weight:400}
+.round ol{list-style:none;margin-top:.3em}
+.round li{padding:.15em 0;font-size:.95em}
+.round li b{font-family:var(--display);font-weight:500;color:var(--cobalt);display:inline-block;width:1.4em}
+/* tabs */
+.tabs{display:flex;gap:.4em;flex-wrap:wrap;margin:1.6em 0 0;border-bottom:2px solid var(--ink)}
+.tab{border:1px solid var(--line);border-bottom:0;background:#fff;padding:.5em 1em;border-radius:6px 6px 0 0;cursor:pointer;font-family:var(--display);font-weight:500;font-size:1.05em;color:var(--ink-soft)}
+.tab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tab span{font-family:var(--body);font-size:.75em;font-weight:400;margin-left:.4em}
+.pane{display:none;padding-top:1em}
+.pane.on{display:block}
+/* egy szemüveg */
+.lens{background:#fff;border-radius:14px;padding:1.1em 1.3em 1.2em;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);margin-bottom:1.4em;border-left:6px solid var(--cobalt)}
+.lhead{display:grid;grid-template-columns:3.2em 1fr;gap:.2em .9em;align-items:start;margin-bottom:.8em}
+.lnum{font-family:var(--display);font-weight:700;font-size:2.6em;line-height:.9;color:var(--cobalt)}
+.lhead h3{font-size:1.4em;margin:0}
+.lhead ul{margin:.35em 0 0 1.1em;max-width:80ch}
+.lhead ul li{padding:.08em 0}
+.lref{font-size:.82em;color:var(--ink-soft);margin-top:.35em}
+.sites{display:grid;grid-template-columns:1fr 1fr;gap:1.2em;align-items:start}
+.site{border-top:3px solid var(--cobalt);padding-top:.5em}
+.site.b{border-top-color:var(--marker)}
+.site .who{font-size:.78em;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+.site .nm{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.05em;margin-bottom:.35em}
+.chips{display:flex;gap:.35em;margin-bottom:.4em;flex-wrap:wrap}
+.ch{border:1px solid var(--line);background:#fff;border-radius:99px;padding:.2em .8em;cursor:pointer;font-size:.88em}
+.ch.on.igen{background:var(--good);border-color:var(--good);color:#fff}
+.ch.on.reszben{background:var(--marker);border-color:var(--marker)}
+.ch.on.nem{background:var(--bad);border-color:var(--bad);color:#fff}
+/* összegzés */
+.map{border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);min-width:min(100%,760px)}
+.map th,.map td{padding:.5em .9em;border-bottom:1px solid var(--line);text-align:left;font-size:.95em}
+.map th{font-family:var(--display);font-weight:500;background:var(--ink);color:var(--paper)}
+.map td.r{font-size:.75em;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;background:#FBFAF6}
+.dot{display:inline-block;min-width:6.5em;padding:.1em .6em;border-radius:99px;font-size:.85em;text-align:center;background:#ECEAE2;color:var(--ink-soft)}
+.dot.igen{background:var(--good);color:#fff}.dot.reszben{background:var(--marker);color:var(--ink)}.dot.nem{background:var(--bad);color:#fff}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:1em}
+.out div{border:1px solid var(--line);border-radius:6px;background:#fff;padding:.8em 1em}
+.out b{display:block;font-family:var(--display);font-weight:500;margin-bottom:.3em}
+.out pre{white-space:pre-wrap;font-family:var(--body);font-size:.88em}
+.out .long{color:var(--bad);font-size:.85em}
+.status{font-size:.95em;margin-top:.5em}
+.demobar{position:sticky;top:3.4em;z-index:9;background:var(--marker);padding:.6em 1em;border-radius:6px;margin-bottom:1em;display:flex;gap:1em;align-items:center;flex-wrap:wrap}
+.demobar[hidden]{display:none}
+.next{margin-top:.4em}
+.foot{margin-top:3em;font-size:.8em;color:var(--ink-soft)}
+@media (max-width:900px){.row,.sites,.out,.lenses{grid-template-columns:1fr}.lhead{grid-template-columns:2.4em 1fr}.lnum{font-size:2em}}
+@media print{
+  .top,.noprint,.tabs,.demobar,.out,.lenses{display:none!important}
+  .pane{display:block!important}
+  .lens{page-break-inside:avoid;box-shadow:none;border:1px solid var(--line);border-left:4px solid var(--cobalt)}
+  body{font-size:11px} main{padding:0}
+  textarea,input,select{border:0;min-height:0;resize:none;padding:0}
+  @page{size:A4 portrait;margin:10mm}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <b>Oldalvizsgálat</b><span class="muted small">3. alkalom · A saját terep · nyolc szemüveg</span>
+  <span class="sp"></span>
+  <button class="btn" id="demo">Minta betöltése</button>
+  <button class="btn" id="print">Nyomtatás</button>
+  <button class="btn" id="clear">Új, üres lap</button>
+</div>
+
+<main>
+  <div class="demobar" id="demobar" hidden><b>Ez a minta (Tunki-Tunki, a deck bemutatója), nem a ti munkátok.</b> Nézzétek meg, aztán vegyétek ki: a saját munkátok visszajön. <button class="btn solid" id="undemo">Minta kivétele</button></div>
+
+  <h1>A ti oldalatok és egy másik</h1>
+  <p class="lead">Két oldalt néztek meg ugyanazzal a nyolc szemüveggel: a márkátok oldalát és egy listából választott külső oldalt. Nem javítotok és nem pontoztok, hanem <span class="hl">megfigyeltek, és leírjátok, mit láttatok</span>. Minden szemüvegnél egy jelölés (működik, részben, nem működik) és mellé a bizonyíték: hol, mit, ha lehet, idézettel. A munka ebben a böngészőben mentődik, a végén az Összegzés fülön adjátok le.</p>
+
+  <div class="lenses">
+    <div class="round"><h3>1. Ránézés <small>kattintás nélkül</small></h3><ol><li><b>1</b>Miről szól az oldal?</li><li><b>2</b>Mit akar az oldal?</li><li><b>3</b>Mit mond a márka, milyen a hangvétel?</li></ol></div>
+    <div class="round"><h3>2. Olvasás <small>görgetve</small></h3><ol><li><b>4</b>Tartalom</li><li><b>5</b>Layout</li></ol></div>
+    <div class="round"><h3>3. Cselekvés <small>kattintva</small></h3><ol><li><b>6</b>Folyamat: vezetett az oldal?</li><li><b>7</b>Konverziós pontok</li><li><b>8</b>Bizalom</li></ol></div>
+  </div>
+  <p class="onebox"><b>A sorrend számít.</b> Az első benyomást csak egyszer lehet megfigyelni: aki már végigkattintotta az oldalt, az nem látja újra először. Ezért a ránézést az csinálja, aki még nem látta az oldalt, és addig senki ne kattintson. A csapat egyik fele a saját, a másik a külső oldalt nézi, lehetőleg telefonon, mert a látogatók nagy része onnan jön.</p>
+  <p class="warn"><b>Valódi adatot nem adtok meg, és nem fizettek.</b> A pénztárig vagy az űrlapig mentek el, megnézni elég. Hírlevélre csak a csapat közös, erre a célra nyitott e-mail-címével iratkozzatok fel.</p>
+
+  <div class="row">
+    <div><label for="team">Ügynökség (csapat)</label><select id="team"><option value="">válaszd ki a csapatotokat</option></select></div>
+    <div><label for="brand">Márka, amit az 1. alkalmon választottatok</label><select id="brand"><option value="">válaszd ki a márkát</option></select></div>
+    <div><label for="device">Min néztétek</label><select id="device"><option value="telefon">telefonon</option><option value="gép">gépen</option><option value="telefon és gép">telefonon és gépen</option></select></div>
+  </div>
+  <label class="check"><input type="checkbox" id="noown"> A márkánknak nincs saját weboldala. Ilyenkor leírjátok, mit talál, aki rákeres, és két külső oldalt néztek meg.</label>
+  <div class="row" style="margin-top:.4em">
+    <div><label for="ownurl" id="ownlab">A márkátok oldala (cím)</label><input id="ownurl" placeholder="https://…"></div>
+    <div><label for="ext">Külső oldal a listából</label><select id="ext"></select></div>
+    <div><label for="exturl">A külső oldal címe</label><input id="exturl" placeholder="https://…"></div>
+  </div>
+  <div class="row" id="ext2row" style="margin-top:.6em" hidden>
+    <div><label for="ext2">Második külső oldal a listából</label><select id="ext2"></select></div>
+    <div><label for="ext2url">A második külső oldal címe</label><input id="ext2url" placeholder="https://…"></div>
+    <div><label for="search">Mit talál, aki rákeres a márkátokra?</label><textarea id="search" placeholder="pl. Google-térkép, Facebook-oldal, értékelések"></textarea></div>
+  </div>
+
+  <div class="tabs noprint" role="tablist">
+    <button class="tab on" data-p="p1" role="tab">1. Ránézés<span>1–3 · 25 perc</span></button>
+    <button class="tab" data-p="p2" role="tab">2. Olvasás<span>4–5 · 20 perc</span></button>
+    <button class="tab" data-p="p3" role="tab">3. Cselekvés<span>6–8 · 30 perc</span></button>
+    <button class="tab" data-p="p4" role="tab">Összegzés és leadás<span>15 perc</span></button>
+  </div>
+
+  <section class="pane on" id="p1">
+    <h2>1. Ránézés, kattintás nélkül</h2>
+    <p class="lead">Nyissátok meg a nyitóoldalt, nézzétek öt másodpercig, aztán fordítsátok le a telefont, és mondjátok ki, mit láttatok. Utána nyugodtan nézzétek tovább az első képernyőt, de még ne görgessetek és ne kattintsatok.</p>
+    <div id="r1"></div>
+    <button class="btn noprint next" data-go="p2">Tovább az olvasáshoz →</button>
+  </section>
+
+  <section class="pane" id="p2">
+    <h2>2. Olvasás, görgetve</h2>
+    <p class="lead">Most görgessetek végig a nyitóoldalon és egy-két fontos aloldalon (termék, szolgáltatás, rólunk). Úgy olvassatok, ahogy egy látogató: futva, nem betűről betűre.</p>
+    <div id="r2"></div>
+    <button class="btn noprint next" data-go="p3">Tovább a cselekvéshez →</button>
+  </section>
+
+  <section class="pane" id="p3">
+    <h2>3. Cselekvés, kattintva</h2>
+    <p class="lead">Válasszátok ki azt a lépést, amit az oldal a legjobban akar (amit a 2. szemüvegnél találtatok), és próbáljátok ki: a kosárig és a pénztár első lépéséig, a foglalás vagy a jelentkezés űrlapjáig, a feliratkozásig. Közben figyeljétek, vezet-e az oldal.</p>
+    <div id="r3"></div>
+    <button class="btn noprint next" data-go="p4">Tovább az összegzéshez →</button>
+  </section>
+
+  <section class="pane" id="p4">
+    <h2>Összegzés</h2>
+    <p class="lead">Így néz ki a két oldal a nyolc szemüvegen át. Ahol két szín eltér, ott van a legtöbb tanulnivaló.</p>
+    <div style="overflow-x:auto"><table class="map" id="map"></table></div>
+    <div style="margin-top:1.4em;max-width:72ch"><label for="sentence">Egy mondatban: melyik oldalon könnyebb a látogató dolga, és mi a legnagyobb különbség a kettő között? (kötelező, ez látszik a listán)</label><textarea id="sentence"></textarea></div>
+    <div style="margin-top:.8em;max-width:72ch"><label for="take">Mit vinnétek át a másik oldalról a márkátok oldalára, és miért?</label><textarea id="take"></textarea></div>
+    <div style="margin-top:.8em;max-width:72ch"><label for="who">Ki mit csinált ma</label><textarea id="who"></textarea></div>
+    <div class="noprint" style="margin-top:1em">
+      <div style="display:flex;gap:.6em;flex-wrap:wrap"><button class="btn solid" id="send">Beküldés</button><button class="btn" id="preview">Előnézet</button></div>
+      <p class="status" id="status"></p>
+      <p class="small muted">A nyolc blokk a lapból áll össze, a fenti csapat nevében megy be. Újraküldéskor az előző felülíródik, amíg az oktató le nem zárja a leadást.</p>
+      <div class="out" id="out" style="margin-top:1em"></div>
+    </div>
+  </section>
+
+  <p class="foot">A szemüvegek a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v2.1 · 2026. október 11.</p>
+</main>
+
+<script>
+(function(){
+  var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
+  /* ellenőrizve 2026. október 11-én: mind betölt, a címke a fő lépés */
+  var EXT=[
+    ['Hunguest Hotels','szálloda · foglalás','https://www.hunguesthotels.hu/'],
+    ['Bamba Marha','burgerbár · asztalfoglalás, étlap','https://bambamarha.hu/'],
+    ['Babilon Nyelvstúdió','nyelviskola · jelentkezés','https://www.babilon-nyelvstudio.hu/'],
+    ['Paloznaki Jazzpiknik','fesztivál · szezonon kívül, 2027-re vár','https://www.jazzpiknik.hu/'],
+    ['Tisza Cipő','webshop · kosár','https://www.tiszacipo.hu/'],
+    ['Szamos','édesség-webshop · kosár','https://szamos.hu/'],
+    ['Más','az oktatóval egyeztetve','']
+  ];
+  /* [kör, azonosító, cím, vezetőkérdések, a deck diái] */
+  var LENS=[
+    [1,'l1','Miről szól az oldal?',['Mi ez, kinek az oldala, milyen oldalon állok?','Mit kínál, és kinek?','Mitől más, mint a többi?'],'Három kérdés, az első pillanatban · 0,05 másodperc'],
+    [1,'l2','Mit akar az oldal?',['Mi a fő célja: vásárlás, foglalás, jelentkezés, feliratkozás, hívás?','Melyik a fő gomb, és kiemelkedik-e a többi közül?','Mit kér tőlem először?'],'Egy fő gomb · Az oldal anatómiája'],
+    [1,'l3','Mit mond a márka, milyen a hangvétel?',['Milyennek mutatja magát? Mondjatok rá három szót.','Egy hangon szól-e a szöveg, a kép és a szín?','Illik-e ahhoz, akinek szól?'],'Ugyanaz az oldal kétszer · 0,05 másodperc'],
+    [2,'l4','Tartalom',['Válaszol-e: ki vagy, mit csinálsz, hol, miben vagy más?','Végig lehet-e futni rajta: címek, rövid bekezdések, kiemelések?','Van-e töltelékszöveg, ami semmit nem mond?'],'A szöveg dolga, hogy válaszoljon · Hogyan néz?'],
+    [2,'l5','Layout',['A fontos van elöl és felül, a kevésbé fontos hátrébb?','Ami összetartozik (kép, név, ár, gomb), egy csoportban van?','Ott van-e a menü, a kereső, a kosár, ahol máshol megszokta?'],'A layout dönt a sorrendről · Amit máshol megszokott'],
+    [3,'l6','Folyamat: vezetett az oldal a szövegeivel?',['Mindig látszik, mi a következő lépés?','Megmondja-e a gomb felirata, mi fog történni?','Kap-e visszajelzést, hogy sikerült, és látja-e, hol tart?'],'Ne kelljen gondolkodnia · A goodwill-tartály'],
+    [3,'l7','Konverziós pontok',['Hol tud lépni a látogató: gomb, űrlap, feliratkozás, telefon, chat?','Mit kér, és mit ad cserébe? Csak a szükségeset kéri, semmit nem kell kétszer megadni?','Aki most nem vásárol, hagyhat-e valamit (feliratkozás), és mit kap érte?'],'Semmit ne kelljen kétszer · Egy akadály elvétele · Aki most nem vásárol'],
+    [3,'l8','Bizalom',['Mi látszik ezekből: mások véleménye, garancia, elérhetőség, nyíltság (ár, szállítás előre), biztonság?','Ott van-e, ahol a döntés születik: a gomb, a kosár, a pénztár mellett?','Mi hiányzik, amitől a látogató megtorpanhat?'],'Hat kockázat a fejében · Az oldal anatómiája, Bizalom']
+  ];
+  var ROUNDS={1:'Ránézés',2:'Olvasás',3:'Cselekvés'};
+  var ANS=[['igen','működik'],['reszben','részben'],['nem','nem működik']];
+  var KEY='om2026-oldal-ep3-v2';
+  var TEAMS={}, SUBS={};
+  function blank(){return {team:'',brand:'',device:'telefon',noown:false,ownurl:'',ext:'',exturl:'',ext2:'',ext2url:'',search:'',sentence:'',take:'',who:'',A:{},B:{}}}
+  var S=blank();
+  try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in o)S[k]=o[k]}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  function $(id){return document.getElementById(id)}
+  function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function ansTxt(v){for(var i=0;i<ANS.length;i++)if(ANS[i][0]===v)return ANS[i][1];return 'nincs jelölve'}
+
+  function brands(list){ $('brand').innerHTML='<option value="">válaszd ki a márkát</option>'; list.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;$('brand').appendChild(o)}); if(S.brand&&list.indexOf(S.brand)<0){var o=document.createElement('option');o.value=o.textContent=S.brand;$('brand').appendChild(o)} $('brand').value=S.brand||''; }
+  var BRANDLIST=CLIENTS; brands(BRANDLIST);
+  ['ext','ext2'].forEach(function(id){ $(id).innerHTML='<option value="">válassz a listából</option>'+EXT.map(function(x){return '<option value="'+esc(x[0])+'">'+esc(x[0])+' · '+esc(x[1])+'</option>'}).join(''); });
+
+  function nameA(){return S.noown?(S.ext2||'második külső oldal'):(S.brand||'a márkátok oldala')}
+  function nameB(){return S.ext||'külső oldal'}
+  function labA(){return S.noown?'Második külső oldal':'A ti oldalatok'}
+
+  function cell(k,id){var c=S[k][id]; if(!c){c=S[k][id]={v:'',t:''}} return c}
+  function lensHTML(L,n){
+    var h='<article class="lens"><div class="lhead"><div class="lnum">'+n+'</div><div><h3>'+esc(L[2])+'</h3><ul>'+L[3].map(function(q){return '<li>'+esc(q)+'</li>'}).join('')+'</ul><div class="lref">A deckben: '+esc(L[4])+'</div></div></div><div class="sites">';
+    ['A','B'].forEach(function(k){var c=S[k][L[1]]||{};
+      h+='<div class="site '+(k==='B'?'b':'')+'"><div class="who">'+(k==='A'?labA():'Külső oldal')+'</div><div class="nm">'+esc(k==='A'?nameA():nameB())+'</div>'+
+        '<div class="chips">'+ANS.map(function(a){return '<button type="button" class="ch '+a[0]+(c.v===a[0]?' on':'')+'" data-k="'+k+'" data-l="'+L[1]+'" data-v="'+a[0]+'">'+a[1]+'</button>'}).join('')+'</div>'+
+        '<textarea data-k="'+k+'" data-l="'+L[1]+'" placeholder="Mit láttatok? Hol, mit, ha lehet, idézettel.">'+esc(c.t||'')+'</textarea></div>';
+    });
+    return h+'</div></article>';
+  }
+  function drawRounds(){
+    [1,2,3].forEach(function(r){var h=''; LENS.forEach(function(L,i){if(L[0]===r)h+=lensHTML(L,i+1)}); $('r'+r).innerHTML=h;});
+  }
+  function drawMap(){
+    var h='<tr><th></th><th>Szemüveg</th><th>'+esc(labA())+': '+esc(nameA())+'</th><th>Külső oldal: '+esc(nameB())+'</th></tr>', last=0;
+    LENS.forEach(function(L,i){
+      var r=L[0]===last?'':ROUNDS[L[0]]; last=L[0];
+      h+='<tr><td class="r">'+r+'</td><td>'+(i+1)+'. '+esc(L[2])+'</td>'+['A','B'].map(function(k){var v=(S[k][L[1]]||{}).v||''; return '<td><span class="dot '+v+'">'+ansTxt(v)+'</span></td>'}).join('')+'</tr>';
+    });
+    $('map').innerHTML=h;
+  }
+  function drawAll(){drawRounds();drawMap()}
+
+  var FIELDS=['team','brand','device','ownurl','ext','exturl','ext2','ext2url','search','sentence','take','who'];
+  function grow(t){t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'}
+  function growAll(){[].forEach.call(document.querySelectorAll('.pane.on textarea, #ext2row textarea'),grow)}
+  function fill(){ brands(BRANDLIST); FIELDS.forEach(function(f){$(f).value=S[f]||''}); $('noown').checked=!!S.noown; noownUI(); drawAll(); growAll(); }
+  FIELDS.forEach(function(f){$(f).addEventListener(/^(team|brand|device|ext|ext2)$/.test(f)?'change':'input',function(){S[f]=this.value;save(); if(/^(brand|ext|ext2)$/.test(f))drawAll()})});
+  function extUrl(n){for(var i=0;i<EXT.length;i++)if(EXT[i][0]===n)return EXT[i][2];return ''}
+  [['ext','exturl'],['ext2','ext2url']].forEach(function(p){$(p[0]).addEventListener('change',function(){var u=extUrl(this.value); var cur=$(p[1]).value; var auto=EXT.some(function(x){return x[2]&&x[2]===cur}); if(u&&(!cur||auto)){$(p[1]).value=u; S[p[1]]=u; save();}})});
+  $('team').addEventListener('change',function(){var t=TEAMS[this.value]; if(t&&t.client){ $('brand').value=t.client; S.brand=t.client; save(); drawAll(); }});
+  function noownUI(){$('ext2row').hidden=!S.noown; $('ownlab').textContent=S.noown?'Ha van, a márka legközelebbi saját felülete (pl. Facebook-oldal)':'A márkátok oldala (cím)'}
+  $('noown').addEventListener('change',function(){S.noown=this.checked;save();noownUI();drawAll()});
+
+  function showTab(p){[].forEach.call(document.querySelectorAll('.tab'),function(b){b.classList.toggle('on',b.getAttribute('data-p')===p)});[].forEach.call(document.querySelectorAll('.pane'),function(x){x.classList.toggle('on',x.id===p)}); if(p==='p4')drawMap(); growAll(); window.scrollTo({top:document.querySelector('.tabs').offsetTop-60,behavior:'smooth'})}
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.classList.contains('tab')){showTab(t.getAttribute('data-p'));return}
+    if(t.hasAttribute('data-go')){showTab(t.getAttribute('data-go'));return}
+    if(t.classList.contains('ch')){var k=t.getAttribute('data-k'),l=t.getAttribute('data-l'),v=t.getAttribute('data-v'),c=cell(k,l); c.v=c.v===v?'':v; save();
+      [].forEach.call(t.parentNode.children,function(b){b.classList.toggle('on',b===t&&!!c.v)}); return}
+  });
+  document.addEventListener('input',function(e){var t=e.target; if(t.tagName==='TEXTAREA')grow(t); var k=t.getAttribute('data-k'),l=t.getAttribute('data-l'); if(!k||!l)return; cell(k,l).t=t.value; save();});
+
+  /* --- a nyolc blokk a leadáshoz --- */
+  function nm(k){return k==='A'?(S.noown?'Második külső oldal: '+nameA():'Saját oldal: '+nameA()):'Külső oldal: '+nameB()}
+  function lensTxt(L,i,k){var c=S[k][L[1]]||{}; return (i+1)+'. '+L[2]+': '+ansTxt(c.v)+((c.t||'').trim()?'. '+c.t.trim():'')}
+  function roundTxt(r,keys){return keys.map(function(k){return nm(k)+'\n'+LENS.map(function(L,i){return L[0]===r?lensTxt(L,i,k):null}).filter(Boolean).join('\n')}).join('\n\n')}
+  function blocks(){
+    var f2=(S.brand?'Márka: '+S.brand+'. ':'')+(S.noown?'A márkának nincs saját weboldala. Ami a keresésre jön: '+(S.search||'nincs kitöltve').trim()+'. Második külső oldal: '+(S.ext2||'-')+' '+(S.ext2url||'')+'. ':'Saját oldal: '+(S.ownurl||'-')+'. ')+'Külső oldal: '+(S.ext||'-')+' '+(S.exturl||'')+'. Eszköz: '+S.device+'.';
+    var map=LENS.map(function(L,i){return (i+1)+'. '+L[2]+': '+ansTxt((S.A[L[1]]||{}).v)+' / '+ansTxt((S.B[L[1]]||{}).v)}).join('\n');
+    return {
+      f1:(S.who||'').trim(),
+      f2:f2,
+      f3:(S.sentence||'').trim(),
+      f4:roundTxt(1,['A','B']),
+      f5:roundTxt(2,['A','B']),
+      f6:roundTxt(3,['A']),
+      f7:roundTxt(3,['B']),
+      f8:'Áttekintés ('+nm('A')+' / '+nm('B')+')\n'+map+'\n\nAmit átvinnénk: '+((S.take||'').trim()||'nincs kitöltve')
+    };
+  }
+  var LABELS={f1:'Ki mit csinált ma',f2:'A két oldal',f3:'Egy mondatban',f4:'1. Ránézés (1–3. szemüveg)',f5:'2. Olvasás (4–5. szemüveg)',f6:'3. Cselekvés, saját (vagy második külső) oldal',f7:'3. Cselekvés, külső oldal',f8:'Áttekintés és amit átvinnénk'};
+  $('preview').addEventListener('click',function(){var b=blocks(),h=''; ['f1','f2','f3','f4','f5','f6','f7','f8'].forEach(function(f){var s=b[f]||''; h+='<div><b>'+LABELS[f]+'</b><pre>'+esc(s||'(üres)')+'</pre>'+(s.length>4000?'<p class="long">Ez a blokk '+s.length+' karakter, a szerver 4000 után levágja. Rövidítsetek.</p>':'')+'</div>'}); $('out').innerHTML=h});
+
+  var API='api.php';
+  function api(a,body){var o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}; return fetch(API+'?a='+a+'&ep=ep3',o).then(function(r){return r.json()})}
+  api('state').then(function(d){ if(!d.ok)return; SUBS=d.subs||{}; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; var bl=[]; d.teams.forEach(function(t){if(t.client&&bl.indexOf(t.client)<0)bl.push(t.client)}); if(bl.length)BRANDLIST=bl.sort(function(a,b){return a.localeCompare(b,'hu')}); brands(BRANDLIST); }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A lap így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
+  $('send').addEventListener('click',function(){
+    if(S.demo){$('status').textContent='Ez a minta. Előbb vegyétek ki, és a saját munkátokat küldjétek be.';return}
+    var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return} if(!S.brand){$('status').textContent='Válaszd ki a márkát.';return} if(!S.ext){$('status').textContent='Válaszd ki a külső oldalt.';return}
+    var b=blocks(); if(!b.f3){$('status').textContent='Az egy mondat hiányzik, enélkül nem lehet beküldeni.';return}
+    if(SUBS&&SUBS[tid]&&!confirm('Ennek a csapatnak már van beküldött munkája. Ez felülírja. Folytatod?'))return;
+    b.team=tid; $('status').textContent='Küldés…';
+    api('submit',b).then(function(d){if(d.ok)SUBS[tid]=true; $('status').textContent=d.ok?'Beküldve.':d.error}).catch(function(){$('status').textContent='Nem sikerült, a szerver nem válaszol.'});
+  });
+  $('print').addEventListener('click',function(){window.print()});
+  $('clear').addEventListener('click',function(){ if(!confirm('Új, üres lap? A mostani tartalom törlődik ebből a böngészőből.'))return; var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; try{localStorage.removeItem(KEY+'-prev')}catch(e){} save(); fill(); demoUI(); $('out').innerHTML=''});
+
+  /* minta: a deck bemutatója, Tunki-Tunki, telefonon nézve, 2026. október 11. */
+  $('demo').addEventListener('click',function(){
+    if(S.demo)return;
+    try{localStorage.setItem(KEY+'-prev',JSON.stringify(S))}catch(e){}
+    var tm=S.team; S=blank(); S.demo=true; S.team=tm; S.brand='Tunki-Tunki (minta)'; S.ownurl='https://tunkitunki.hu/'; S.device='telefon';
+    var m={
+      l1:['reszben','Kinek az oldala: egyértelmű, logó és kosár ikon felül. Mit kínál: az első képernyőn logó, kereső és egy nagy termékfotó, hogy vegán mártogatós, az csak görgetés után derül ki („MÁRTSD HARAPD ÉLVEZD”, „100% vegán”).'],
+      l2:['reszben','A cél a vásárlás. Termékenként van Kosárba gomb, de az első képernyőn nincs fő gomb, az alját ráadásul a sütisáv takarja.'],
+      l3:['igen','Vidám, színes. A kép, a szín és a szöveg egy hangon szól, a hírlevél is így beszél („aztán jöhet a jóság”).'],
+      l4:['reszben','Ki vagy és miben más: megvan, de lejjebb („100% vegán”, „semmi mesterséges”). Hol: van offline boltlista. A termékkártyán egy mondatos leírás, végig lehet futni rajta.'],
+      l5:['igen','A termékkártyán név, leírás, ár (2.500 Ft) és Kosárba gomb egy csoportban. Kosár és kereső felül, a megszokott helyen. A kártya képe az első pillanatban üres volt, később töltött be.'],
+      l6:['reszben','Kipróbált lépés: egy mártogatós a kosárig és a pénztár első lépéséig. Kosárba tételnél a gomb nem változik, csak a kosár ikonján jelenik meg egy 1-es, nem derül ki, sikerült-e. A pénztárban lépésjelző van (Elérhetőség, Szállítás, Fizetés, Összegzés), ott mindig látszik, hol tartok.'],
+      l7:['igen','Kosárba gomb minden terméknél. A pénztár regisztráció nélkül is megy, négy kötelező mező, a hírlevél doboza alapból üres. Feliratkozás: keresztnév és e-mail, plusz egy kötelező hozzájárulás. Cserébe újdonságokat és eseményeket ígér, kedvezményt nem. Mobilon a kép kiszorítja az űrlapot, keskeny hasábban tördelődik.'],
+      l8:['igen','Nyíltság: a kosárban előre látszik a szállítási díj (1.850 Ft-tól), hogy mennyi kell még az ingyenes szállításhoz, és a várható szállítási nap. Biztonság: lakat a pénztárban. Mások: médiamegjelenések.']
+    };
+    for(var k in m)S.A[k]={v:m[k][0],t:m[k][1]};
+    S.sentence='Minta: a Tunki-Tunkin a vásárlás könnyű, mert a kosártól kezdve vezet (nyílt szállítási díj, lépésjelző, regisztráció nélkül), de az első képernyő nem mondja meg, mit kínál és mit tegyek.';
+    S.take='Minta: a kosár nyíltságát, vagyis hogy a szállítási díj és a szállítási nap már a kosárban látszik, mert ott dől el, hogy továbbmegy-e.';
+    S.who='Minta, a deck bemutatója.';
+    save(); fill(); demoUI();
+  });
+  function demoUI(){$('demobar').hidden=!S.demo; $('demo').disabled=!!S.demo;}
+  $('undemo').addEventListener('click',function(){
+    var prev=null; try{prev=JSON.parse(localStorage.getItem(KEY+'-prev')||'null')}catch(e){}
+    var tm=S.team; S=blank(); if(prev){for(var k in prev)S[k]=prev[k]} S.demo=false; S.team=tm;
+    try{localStorage.removeItem(KEY+'-prev')}catch(e){}
+    save(); fill(); demoUI(); $('out').innerHTML='';
+  });
+  window.addEventListener('storage',function(e){if(e.key===KEY){try{S=JSON.parse(e.newValue)||blank()}catch(x){} fill(); demoUI()}});
+
+  fill(); demoUI();
+})();
+</script>
+</body>
+</html>
