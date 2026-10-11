@@ -109,58 +109,58 @@ Csak ha az oktató engedi: a `HOL-TARTUNK.md` szerint a 2. alkalomnál „A Mark
 
 ## 2. Deck-vázlat (32 dia)
 
-A nap: másfél óra elmélet, másfél óra csoportmunka, mint a 3. alkalmon. A gyakorlat nyolc szemüvege négy lépésben (lásd 3. pont); minden elméleti dián jelölve, melyikhez ad muníciót.
+A nap: másfél óra elmélet, másfél óra csoportmunka, mint a 3. alkalmon. A gyakorlat nyolc szempontja négy lépésben (lásd 3. pont); minden elméleti dián jelölve, melyikhez ad muníciót.
 
-**A nyolc szemüveg röviden** (a dián a jelölés): Fizetett: 1 Hirdetésleltár, 2 Formátum és fizetési mód · Saját: 3 Saját felületek és ami gyűlik, 4 Organikus és fizetett viszonya · Megszerzett: 5 Vélemény és ajánlás, 6 Említés, sajtó, alkotók · Felosztás: 7 Súly és időzítés, 8 Kikapcsolás-teszt.
+**A nyolc szempont röviden** (a dián a jelölés): Fizetett: 1 Hirdetésleltár, 2 Formátum és fizetési mód · Saját: 3 Saját felületek és ami gyűlik, 4 Organikus és fizetett viszonya · Megszerzett: 5 Vélemény és ajánlás, 6 Említés, sajtó, alkotók · Felosztás: 7 Súly és időzítés, 8 Kikapcsolás-teszt.
 
 ### Nyitás (1–5.)
 
 1. **Címlap.** 2026. november 9. · Mennyiért · „Mennyiért, mit bérlünk és mit építünk” · A tematikából: POEM-modell (paid/earned/owned), organikus vs. fizetett tartalom, hirdetésformátumok. Forrás: oktató.
 2. **A lánc ötödik szeme.** A hét kérdés, az 1–4. az elkészült beadandóval (pozicionálási mondat, journey-térkép, oldalvizsgálat, csatornaterv), az 5. „ma”. Forrás: oktató.
 3. **Visszamutatás · a 4. beadandó.** Ha leadták: egy közös megfigyelés a csatornatervekből, és az átvezetés: „Leírtátok, hol és milyen nyelven beszél a márkátok. Most azt nézzük meg, melyik hangért fizet, melyiket építi, és melyiket kapja.” Ha nem: csak a feladat és a lánc. Forrás: oktató.
-4. **A hármas.** Miről szól, kulcsgondolat, tanulság szó szerint, alatta a nap: másfél óra elmélet, másfél óra csoportmunka, a márkátok médialeltára nyolc szemüveggel. Forrás: oktató.
+4. **A hármas.** Miről szól, kulcsgondolat, tanulság szó szerint, alatta a nap: másfél óra elmélet, másfél óra csoportmunka, a márkátok médialeltára nyolc szemponttal. Forrás: oktató.
 5. **Egyéni feladat · 5 perc · írásban, magadnak.** „Gondolj az utolsó dologra, amit az elmúlt hónapban egy új márkától vettél. Honnan tudtál róla először: hirdetésből, a márka saját felületéről, vagy valakitől?” Egy szó (hirdetés / saját / valaki) és egy mondat. Interakció: a végén kézfelemeléssel vagy szófelhővel összeszámoljuk; ez a hármas első, saját bizonyítéka. Forrás: oktató.
 
 ### A. blokk: három média (6–12.)
 
-6. **Mennyibe kerül, vagy mi hogyan éri meg?** A fázis-sor két mondata egymás mellett („Mennyibe kerül.” → „Mi hogyan éri meg?”), egy mondat: a mai kérdés nem az ár, hanem hogy a pénz melyik munkát végzi. Szemüveg: mind. Forrás: oktató. (Nyitott: kell-e ez a dia, lásd 5. pont.)
-7. **Három média, egy ábra.** Három egymásba lógó kör: fizetett, saját, megszerzett, példákkal (Chaffey Figure 1.2 mintájára: hirdetés, keresés, display; weboldal, hírlevél, közösségi jelenlét; vélemény, sajtó, szájreklám). Szemüveg: 1–6. Forrás: Chaffey 1. fejezet.
-8. **Fizetett: figyelmet bérel.** Fizetsz a megjelenésért, a látogatóért, a cselekvésért; amíg fizetsz, látszol, ha kikapcsolod, eltűnsz. Idézet: „you can switch the campaign on or off in real time as you please.” Szemüveg: 1, 8. Forrás: Chaffey 1.; Kingsnorth, Presenting Your Strategy; Marketing 4.0, 9. fejezet.
-9. **Saját: vagyont épít.** Weboldal, hírlevél-lista, közösségi oldal, keresési helyezés: ami ma készül, holnap is ott van, és bármikor szólhatsz rajta. Ára nem a médiapénz, hanem az idő. Kingsnorth képe a lassan induló, aztán gyorsuló kőről. A jegyzetbe: a saját média elérése jellemzően a meglévő vevőkre korlátozódik (Marketing 4.0). Szemüveg: 3. Forrás: Chaffey 1.; Kingsnorth, Content Strategy és Presenting Your Strategy; Marketing 4.0, 9. fejezet.
-10. **Megszerzett: bizalmat hoz.** Ajánlás, vélemény, cikk, poszt, amit nem te írtál. Nem lehet megvenni, ki lehet érdemelni. Mellette a Nielsen-oszlopok Chaffey Figure 9.2-jéből: ismerős ajánlása 58%, online vélemény 45%, márka weboldala 34%, közösségi hirdetés 13% (2013-as adat, a jegyzetbe az évszám és a pontos kérdés). Szemüveg: 5, 6. Forrás: Kotler, Keller 17. fejezet; Kingsnorth, Content Strategy; Chaffey 9. fejezet.
-11. **Ami ingyen van, az sem ingyenes.** Három mondat: a saját médiáért idővel fizetsz, a megszerzettért termékkel és szolgáltatással, a fizetettért pénzzel. Kotler: „Earned media isn’t literally free”. Szemüveg: 7. Forrás: Kotler, Keller 19. fejezet; Marketing 4.0, 9. fejezet; Kingsnorth, Planning.
-12. **Hova tennéd?** A határesetek. Hét kártya: a márka Facebook-oldalának posztja · ugyanez a poszt meghirdetve · Google-vélemény · alkotó posztja „#reklám” jelöléssel · alkotó posztja jelölés nélkül · cikk egy sajtóközlemény után · videó, amit egy vevő készített a termékről. Interakció: a hallgatók a körökbe húzzák, utána a Walker és Mullins kérdése: „Is a Facebook fan page owned or earned?” Ez tanít: a felosztás nem a felületen, hanem azon múlik, ki fizet és ki beszél. Szemüveg: 4, 6. Forrás: Walker, Mullins 11. fejezet; Chaffey 1. fejezet.
+6. **Mennyibe kerül, vagy mi hogyan éri meg?** A fázis-sor két mondata egymás mellett („Mennyibe kerül.” → „Mi hogyan éri meg?”), egy mondat: a mai kérdés nem az ár, hanem hogy a pénz melyik munkát végzi. Szempont: mind. Forrás: oktató. (Nyitott: kell-e ez a dia, lásd 5. pont.)
+7. **Három média, egy ábra.** Három egymásba lógó kör: fizetett, saját, megszerzett, példákkal (Chaffey Figure 1.2 mintájára: hirdetés, keresés, display; weboldal, hírlevél, közösségi jelenlét; vélemény, sajtó, szájreklám). Szempont: 1–6. Forrás: Chaffey 1. fejezet.
+8. **Fizetett: figyelmet bérel.** Fizetsz a megjelenésért, a látogatóért, a cselekvésért; amíg fizetsz, látszol, ha kikapcsolod, eltűnsz. Idézet: „you can switch the campaign on or off in real time as you please.” Szempont: 1, 8. Forrás: Chaffey 1.; Kingsnorth, Presenting Your Strategy; Marketing 4.0, 9. fejezet.
+9. **Saját: vagyont épít.** Weboldal, hírlevél-lista, közösségi oldal, keresési helyezés: ami ma készül, holnap is ott van, és bármikor szólhatsz rajta. Ára nem a médiapénz, hanem az idő. Kingsnorth képe a lassan induló, aztán gyorsuló kőről. A jegyzetbe: a saját média elérése jellemzően a meglévő vevőkre korlátozódik (Marketing 4.0). Szempont: 3. Forrás: Chaffey 1.; Kingsnorth, Content Strategy és Presenting Your Strategy; Marketing 4.0, 9. fejezet.
+10. **Megszerzett: bizalmat hoz.** Ajánlás, vélemény, cikk, poszt, amit nem te írtál. Nem lehet megvenni, ki lehet érdemelni. Mellette a Nielsen-oszlopok Chaffey Figure 9.2-jéből: ismerős ajánlása 58%, online vélemény 45%, márka weboldala 34%, közösségi hirdetés 13% (2013-as adat, a jegyzetbe az évszám és a pontos kérdés). Szempont: 5, 6. Forrás: Kotler, Keller 17. fejezet; Kingsnorth, Content Strategy; Chaffey 9. fejezet.
+11. **Ami ingyen van, az sem ingyenes.** Három mondat: a saját médiáért idővel fizetsz, a megszerzettért termékkel és szolgáltatással, a fizetettért pénzzel. Kotler: „Earned media isn’t literally free”. Szempont: 7. Forrás: Kotler, Keller 19. fejezet; Marketing 4.0, 9. fejezet; Kingsnorth, Planning.
+12. **Hova tennéd?** A határesetek. Hét kártya: a márka Facebook-oldalának posztja · ugyanez a poszt meghirdetve · Google-vélemény · alkotó posztja „#reklám” jelöléssel · alkotó posztja jelölés nélkül · cikk egy sajtóközlemény után · videó, amit egy vevő készített a termékről. Interakció: a hallgatók a körökbe húzzák, utána a Walker és Mullins kérdése: „Is a Facebook fan page owned or earned?” Ez tanít: a felosztás nem a felületen, hanem azon múlik, ki fizet és ki beszél. Szempont: 4, 6. Forrás: Walker, Mullins 11. fejezet; Chaffey 1. fejezet.
 
 ### B. blokk: organikus és fizetett (13–16.)
 
-13. **A fizetett szikra.** A három kör nem verseng, hanem egymást hajtja: a hirdetés a saját felületre visz, a saját tartalom ad mit megosztani, a megszerzett gyakran fizetett indulásból jön („often requires a paid spark”). Szemüveg: 4, 6. Forrás: Walker, Mullins 11.; Marketing 4.0, 9.; Kotler, Keller 17. fejezet.
-14. **A saját követőidért is fizetsz.** Organikus és fizetett nem két csatorna, hanem két mód ugyanazon a felületen. Kingsnorth: „you need to pay to reach people – including your own fans.” Itt hangzik el először a tanulság második mondata, előkészítve. Szemüveg: 4, 8. Forrás: Kingsnorth, Content Strategy.
-15. **A keresőben két hely van.** Organikus találat és hirdetés ugyanazon a találati oldalon: az egyik lassan épül és megmarad, a másik azonnal ott van, és azonnal eltűnik. Kingsnorth: a fizetett keresés kitölti az organikus rés helyét. Interakció (rövid): a márkátok nevére keresve mit láttok elöl, a sajátotokat vagy egy hirdetést? (a 4. alkalom SEO-részére épít) Szemüveg: 1, 3. Forrás: Kingsnorth, Presenting Your Strategy; Chaffey 9. fejezet.
-16. **Folyamatosan vagy hullámokban.** Négy minta egy idővonalon: folyamatos, egyszeri, szakaszos, alapzaj hullámokkal (continuity, concentration, flighting, pulsing). Minél gyorsabban felejt a vevő, annál folyamatosabb kell. Plusz Chaffey: always-on mellett kampány. Szemüveg: 7. Forrás: Kotler, Keller 18. fejezet; Chaffey 8. fejezet.
+13. **A fizetett szikra.** A három kör nem verseng, hanem egymást hajtja: a hirdetés a saját felületre visz, a saját tartalom ad mit megosztani, a megszerzett gyakran fizetett indulásból jön („often requires a paid spark”). Szempont: 4, 6. Forrás: Walker, Mullins 11.; Marketing 4.0, 9.; Kotler, Keller 17. fejezet.
+14. **A saját követőidért is fizetsz.** Organikus és fizetett nem két csatorna, hanem két mód ugyanazon a felületen. Kingsnorth: „you need to pay to reach people – including your own fans.” Itt hangzik el először a tanulság második mondata, előkészítve. Szempont: 4, 8. Forrás: Kingsnorth, Content Strategy.
+15. **A keresőben két hely van.** Organikus találat és hirdetés ugyanazon a találati oldalon: az egyik lassan épül és megmarad, a másik azonnal ott van, és azonnal eltűnik. Kingsnorth: a fizetett keresés kitölti az organikus rés helyét. Interakció (rövid): a márkátok nevére keresve mit láttok elöl, a sajátotokat vagy egy hirdetést? (a 4. alkalom SEO-részére épít) Szempont: 1, 3. Forrás: Kingsnorth, Presenting Your Strategy; Chaffey 9. fejezet.
+16. **Folyamatosan vagy hullámokban.** Négy minta egy idővonalon: folyamatos, egyszeri, szakaszos, alapzaj hullámokkal (continuity, concentration, flighting, pulsing). Minél gyorsabban felejt a vevő, annál folyamatosabb kell. Plusz Chaffey: always-on mellett kampány. Szempont: 7. Forrás: Kotler, Keller 18. fejezet; Chaffey 8. fejezet.
 
 ### C. blokk: hirdetésformátumok (17–21.)
 
-17. **Mit veszel meg: megjelenést, kattintást vagy cselekvést?** CPM, CPC, CPA egy-egy mondatban, és hogy a fizetési mód elárulja, mit akar a hirdető. Chaffey: a kattintási arány önmagában nem ítélet. Szemüveg: 2. Forrás: Chaffey 9. fejezet; Marketing 4.0, 9. fejezet.
-18. **A formátumok családja.** Keresési szöveges hirdetés, termékhirdetés (shopping), display és banner, videó, natív és szponzorált tartalom, közösségi hirdetés (hírfolyam, történet, rövid videó), alkotói együttműködés. A könyvek a 2012–2016-os állapotot írják le; a mai platformformátumokhoz a platformok súgója kell (hiányzó forrás, 5. pont). Szemüveg: 2. Forrás: Kotler, Keller 19. fejezet; Chaffey 9. fejezet; Kingsnorth, Paid search és Display fejezet; a platformok súgója.
-19. **A formátum elárulja a fázist.** Párosítás: melyik formátum melyik See-Think-Do-Care fázisnak szól (tág keresés márkaépítés, szűk keresés lead; videó és display figyelem; termékhirdetés és újracélzás Do). Kotler: „Broader search terms are useful for general brand building; more specific ones […] are useful for generating and converting sales leads.” Chaffey Figure 8.16: direkt válaszra és márkára más mix. Interakció: hat formátumkártya négy fázisoszlopba. Szemüveg: 2, 7. Forrás: Kotler, Keller 19.; Chaffey 8. fejezet; oktató (a 2. alkalom STDC-je).
-20. **Ugyanabból a pénzből: sok ember egyszer, vagy kevés sokszor.** Elérés, gyakoriság, hatás. Interakció: csúszka, egy rögzített keret és egy rögzített ezer megjelenésre jutó ár mellett az elérés és a gyakoriság egymás rovására nő (a Kotler-példa logikája; a diára kerek, jelölten szemléltető számok, nem piaci ár). Szemüveg: 7. Forrás: Kotler, Keller 18. fejezet.
-21. **Hogyan látod kívülről?** A három hirdetéstár (Meta Ad Library, Google Ads Transparency Center, TikTok Commercial Content Library) egy-egy képernyőképe, és két oszlop: mit látsz (hirdetés, hirdető, mióta fut, formátum, Meta-nál EU-s elérés és célzás) és mit nem (mennyit költ). Ez vezeti át a gyakorlathoz: forintot nem fogtok látni, súlyt igen. Szemüveg: 1, 2, 7. Forrás: a Digital Services Act 39. cikke; a hirdetéstárak.
+17. **Mit veszel meg: megjelenést, kattintást vagy cselekvést?** CPM, CPC, CPA egy-egy mondatban, és hogy a fizetési mód elárulja, mit akar a hirdető. Chaffey: a kattintási arány önmagában nem ítélet. Szempont: 2. Forrás: Chaffey 9. fejezet; Marketing 4.0, 9. fejezet.
+18. **A formátumok családja.** Keresési szöveges hirdetés, termékhirdetés (shopping), display és banner, videó, natív és szponzorált tartalom, közösségi hirdetés (hírfolyam, történet, rövid videó), alkotói együttműködés. A könyvek a 2012–2016-os állapotot írják le; a mai platformformátumokhoz a platformok súgója kell (hiányzó forrás, 5. pont). Szempont: 2. Forrás: Kotler, Keller 19. fejezet; Chaffey 9. fejezet; Kingsnorth, Paid search és Display fejezet; a platformok súgója.
+19. **A formátum elárulja a fázist.** Párosítás: melyik formátum melyik See-Think-Do-Care fázisnak szól (tág keresés márkaépítés, szűk keresés lead; videó és display figyelem; termékhirdetés és újracélzás Do). Kotler: „Broader search terms are useful for general brand building; more specific ones […] are useful for generating and converting sales leads.” Chaffey Figure 8.16: direkt válaszra és márkára más mix. Interakció: hat formátumkártya négy fázisoszlopba. Szempont: 2, 7. Forrás: Kotler, Keller 19.; Chaffey 8. fejezet; oktató (a 2. alkalom STDC-je).
+20. **Ugyanabból a pénzből: sok ember egyszer, vagy kevés sokszor.** Elérés, gyakoriság, hatás. Interakció: csúszka, egy rögzített keret és egy rögzített ezer megjelenésre jutó ár mellett az elérés és a gyakoriság egymás rovására nő (a Kotler-példa logikája; a diára kerek, jelölten szemléltető számok, nem piaci ár). Szempont: 7. Forrás: Kotler, Keller 18. fejezet.
+21. **Hogyan látod kívülről?** A három hirdetéstár (Meta Ad Library, Google Ads Transparency Center, TikTok Commercial Content Library) egy-egy képernyőképe, és két oszlop: mit látsz (hirdetés, hirdető, mióta fut, formátum, Meta-nál EU-s elérés és célzás) és mit nem (mennyit költ). Ez vezeti át a gyakorlathoz: forintot nem fogtok látni, súlyt igen. Szempont: 1, 2, 7. Forrás: a Digital Services Act 39. cikke; a hirdetéstárak.
 
 ### D. blokk: keretfelosztás (22–25.)
 
-22. **Honnan jön a szám?** A négy módszer Kotler kritikájával, egy-egy mondatban: amit megengedhetünk („ignores the role of promotion as an investment”), az árbevétel százaléka („views sales as the determiner […] rather than as the result”), amennyit a versenytárs („no grounds for believing competitors know better”), cél és feladat (kimondatja a feltevéseket). Szemüveg: 7, 8. Forrás: Kotler, Keller 17. fejezet; Chaffey 8. fejezet.
-23. **Három döntés egy keretben.** Chaffey hármasa: digitális vagy hagyományos, melyik digitális csatorna, és mennyi jut a saját eszközökre (kreatív, tartalom). Mellette a feszültség: ami a médiára megy, az nem megy a kreatívra. Szemüveg: 7. Forrás: Chaffey 8. fejezet.
-24. **Amire nem költöttek, mégis hozott.** Chaffey Table 8.5 négy sora (nyomtatás, PR, szájreklám, banner): keret és hozzájárulás. Interakció: tippeljétek meg a szájreklám hozzájárulását, mielőtt felfedjük (0% keret, 25% hozzájárulás). A jegyzetbe: ez egy 2000-es illusztráció, nem mai mérés. Szemüveg: 5, 7. Forrás: Chaffey 8. fejezet.
-25. **A felosztás megmutatja, mit tart fontosnak.** Kingsnorth: „Whatever the priorities of your business, they will be reflected in the core principles behind the allocation of the budget”. Itt áll ki teljesen a tanulság első mondata, és a fázis-sor harmadik mondata: indokolni kell. Szemüveg: 7, 8. Forrás: Kingsnorth, Presenting Your Strategy; oktató.
+22. **Honnan jön a szám?** A négy módszer Kotler kritikájával, egy-egy mondatban: amit megengedhetünk („ignores the role of promotion as an investment”), az árbevétel százaléka („views sales as the determiner […] rather than as the result”), amennyit a versenytárs („no grounds for believing competitors know better”), cél és feladat (kimondatja a feltevéseket). Szempont: 7, 8. Forrás: Kotler, Keller 17. fejezet; Chaffey 8. fejezet.
+23. **Három döntés egy keretben.** Chaffey hármasa: digitális vagy hagyományos, melyik digitális csatorna, és mennyi jut a saját eszközökre (kreatív, tartalom). Mellette a feszültség: ami a médiára megy, az nem megy a kreatívra. Szempont: 7. Forrás: Chaffey 8. fejezet.
+24. **Amire nem költöttek, mégis hozott.** Chaffey Table 8.5 négy sora (nyomtatás, PR, szájreklám, banner): keret és hozzájárulás. Interakció: tippeljétek meg a szájreklám hozzájárulását, mielőtt felfedjük (0% keret, 25% hozzájárulás). A jegyzetbe: ez egy 2000-es illusztráció, nem mai mérés. Szempont: 5, 7. Forrás: Chaffey 8. fejezet.
+25. **A felosztás megmutatja, mit tart fontosnak.** Kingsnorth: „Whatever the priorities of your business, they will be reflected in the core principles behind the allocation of the budget”. Itt áll ki teljesen a tanulság első mondata, és a fázis-sor harmadik mondata: indokolni kell. Szempont: 7, 8. Forrás: Kingsnorth, Presenting Your Strategy; oktató.
 
 ### Bemutató (26–29.)
 
 Javaslat: **Tunki-Tunki** (tunkitunki.hu), mert a 3. alkalom bemutatója is ez volt, a hallgatók ismerik a saját terepét, és most azt nézzük, hogyan jut el oda a forgalom. Ha a hirdetéstárban az alkalom előtti héten nincs futó hirdetése, az maga is megfigyelés (organikus és megszerzett súly), de akkor kell mellé egy ellenpélda: egy országos, sokat hirdető magyar márka, ami nincs a csapatok listáján (jelöltek, ellenőrizendő: Túró Rudi, Szentkirályi). Adatot itt nem írok: minden „Mit látunk?” sor az alkalom előtti élő gyűjtésből jön, képernyőképpel és dátummal.
 
-26. **Bemutató · Fizetett (1–2. szemüveg).** Mit látunk? A hirdetéstárak állása [dátum]: hány aktív hirdetés, mióta, milyen formátum, mire szól a gomb, hova visz. Miért így? Melyik fázisnak szól, mit vesz meg (megjelenést, kattintást, vásárlást). Ítélet: működik / részben / nem.
-27. **Bemutató · Saját (3–4. szemüveg).** Weboldal, hírlevél, közösségi oldalak: milyen gyakran szól, mi gyűlik (lista, követő, tartalom). Ugyanaz a tartalom megy-e organikusan és hirdetésként.
-28. **Bemutató · Megszerzett (5–6. szemüveg).** Vélemények (Google, Facebook), említések, alkotók, sajtó: ki beszél róla, jelölt-e a fizetett együttműködés, milyen a hangnem.
-29. **Bemutató · Felosztás (7–8. szemüveg).** A 100 pont a három kör között a látott jelekből, folyamatos vagy hullámos, és a kikapcsolás-teszt: ha holnap leállna minden hirdetése, mi maradna. A végén a mondat a sablonnal.
+26. **Bemutató · Fizetett (1–2. szempont).** Mit látunk? A hirdetéstárak állása [dátum]: hány aktív hirdetés, mióta, milyen formátum, mire szól a gomb, hova visz. Miért így? Melyik fázisnak szól, mit vesz meg (megjelenést, kattintást, vásárlást). Ítélet: működik / részben / nem.
+27. **Bemutató · Saját (3–4. szempont).** Weboldal, hírlevél, közösségi oldalak: milyen gyakran szól, mi gyűlik (lista, követő, tartalom). Ugyanaz a tartalom megy-e organikusan és hirdetésként.
+28. **Bemutató · Megszerzett (5–6. szempont).** Vélemények (Google, Facebook), említések, alkotók, sajtó: ki beszél róla, jelölt-e a fizetett együttműködés, milyen a hangnem.
+29. **Bemutató · Felosztás (7–8. szempont).** A 100 pont a három kör között a látott jelekből, folyamatos vagy hullámos, és a kikapcsolás-teszt: ha holnap leállna minden hirdetése, mi maradna. A végén a mondat a sablonnal.
 
 ### Gyakorlat és zárás (30–32.)
 
@@ -176,9 +176,9 @@ Javaslat: **Tunki-Tunki** (tunkitunki.hu), mert a 3. alkalom bemutatója is ez v
 
 **Kötöttségek:** csapatban, a félév végéig fix márkán, 90 perc. Valódi adat (személyes adat, belépés) nem kell; a hirdetéstárak belépés nélkül is kereshetők (élőben ellenőrizendő, főleg a Meta Ad Library).
 
-### A nyolc szemüveg, négy lépésben
+### A nyolc szempont, négy lépésben
 
-| Lépés | Szemüveg | Mit látok? (bizonyíték) | Miért így? | Működik? |
+| Lépés | Szempont | Mit látok? (bizonyíték) | Miért így? | Működik? |
 |---|---|---|---|---|
 | Fizetett | 1 Hirdetésleltár | hirdetéstárak: hány aktív hirdetés, mióta fut, melyik platformon, hova visz | melyik fázisnak szól, kit akar elérni | egy sorban: részben / működik / nem |
 | | 2 Formátum és fizetési mód | formátum (videó, kép, kereső, termék), gomb szövege, célzás, ha látszik | mit vesz meg: megjelenést, kattintást, cselekvést | |
@@ -196,11 +196,11 @@ A „Mit látok? Miért így? Működik?” logika ugyanaz, mint a 3. alkalomon:
 - **f1** Ki mit csinált ma
 - **f2** Amit néztünk: a három hirdetéstár linkje a márkára szűrve, a saját felületek, a vélemény- és említésforrások, a gyűjtés dátuma
 - **f3** (kötelező, ez látszik a listán) A mondat: „A [márka] figyelmet bérel [hol, mire], vagyont épít [hol], bizalmat [honnan] kap, és ha holnap leállna a fizetett, [mi maradna].”
-- **f4** Fizetett: hirdetésleltár és formátumok (1–2. szemüveg), mit látok, miért így, működik
-- **f5** Saját: felületek, ami gyűlik, organikus és fizetett viszonya (3–4. szemüveg)
-- **f6** Megszerzett: vélemények, említések, alkotók, a fizetett és megszerzett határa (5–6. szemüveg)
-- **f7** Súly és időzítés: a 100 pont elosztása és az indoklás bizonyítékkal (7. szemüveg)
-- **f8** Kikapcsolás-teszt és ami hiányzik: mi maradna, és melyik kör üres vagy elhanyagolt, egy mondat (8. szemüveg)
+- **f4** Fizetett: hirdetésleltár és formátumok (1–2. szempont), mit látok, miért így, működik
+- **f5** Saját: felületek, ami gyűlik, organikus és fizetett viszonya (3–4. szempont)
+- **f6** Megszerzett: vélemények, említések, alkotók, a fizetett és megszerzett határa (5–6. szempont)
+- **f7** Súly és időzítés: a 100 pont elosztása és az indoklás bizonyítékkal (7. szempont)
+- **f8** Kikapcsolás-teszt és ami hiányzik: mi maradna, és melyik kör üres vagy elhanyagolt, egy mondat (8. szempont)
 
 ### Az eszköz ötlete: Médialeltár (`media-leltar.html`)
 
@@ -251,7 +251,7 @@ Ami kimarad: a lánc és visszamutatás (a levelezős blokk eleje közösen int�
 1. A hármas a gondolati ívből jön. A 3. alkalomnál a deckbe végül más hármas került, mint ami a gondolati ívben állt. Az 5. alkalom hármasa végleges, vagy még változik?
 2. A fázis-sor („Mennyibe kerül.” → „Mi hogyan éri meg?”) kerüljön-e diára (6. dia), vagy maradjon a háttérben, mint a 2. alkalomnál, ahol a fázis-táblázat dia kikerült?
 3. „POEM”: a könyvekben nincs ilyen betűszó. Mondjuk ki a hallgatóknak, hogy ez a paid, owned, earned rövidítése, és honnan jön (Walker, Mullins a Forrester 2009-es bejegyzésére hivatkozik)? A PESO-t (shared, megosztott média mint negyedik kör) behozzuk, vagy maradunk a tematika hármasánál? Egyik könyvben sem találtam a PESO-t.
-4. Rendben van-e, hogy a beadandóban nem forintot, hanem 100 pontos súlyt kérünk, mert a költés kívülről nem látszik? És a kikapcsolás-teszt mint a 8. szemüveg (saját javaslat, a tanulságod második mondatából)?
+4. Rendben van-e, hogy a beadandóban nem forintot, hanem 100 pontos súlyt kérünk, mert a költés kívülről nem látszik? És a kikapcsolás-teszt mint a 8. szempont (saját javaslat, a tanulságod második mondatából)?
 5. Hirdetésformátumok mélysége: itt kívülről, a hirdetéstárakból nézzük őket; a fiókba belépés a 6. alkalom. Ez a határ jó így? A 4. alkalomra átkerült hirdetés és landing játékkal nincs ütközés?
 6. Bemutató márka: Tunki-Tunki (folytonosság a 3. alkalommal) és egy nagy, sokat hirdető ellenpélda. Melyik legyen az ellenpélda, vagy van saját jelölted?
 7. Csapatmunka-szavazás: a 3. alkalomnál nem volt (`novote`). Az 5.-nél legyen?

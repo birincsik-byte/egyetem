@@ -157,7 +157,7 @@ Mai ellenőrzés (2026. október 11., WebFetch, elsődleges):
 
 ## 2. Deck-vázlat (32 dia)
 
-A 3. alkalom szerkezete szerint. A diák fejlécében a „szemüveg” helyett **állomás** jelöli, melyik vizsgálati szemponthoz ad muníciót a dia a gyakorlatban (javaslat, lásd nyitott kérdések). A javasolt állomások, Berti „a megjelenéstől a konverzióig” láncából: **1. Megjelenés · 2. Kattintás · 3. Érkezés · 4. Haladás · 5. Konverzió**, és külön a **Műszer** (mér-e egyáltalán, és mit enged a hozzájárulás). A Műszer az én javaslatom, nem Berti láncának része. Forrás nem kerül a diára, a jegyzetbe megy.
+A 3. alkalom szerkezete szerint. A diák fejlécében a „szempont” helyett **állomás** jelöli, melyik vizsgálati szemponthoz ad muníciót a dia a gyakorlatban (javaslat, lásd nyitott kérdések). A javasolt állomások, Berti „a megjelenéstől a konverzióig” láncából: **1. Megjelenés · 2. Kattintás · 3. Érkezés · 4. Haladás · 5. Konverzió**, és külön a **Műszer** (mér-e egyáltalán, és mit enged a hozzájárulás). A Műszer az én javaslatom, nem Berti láncának része. Forrás nem kerül a diára, a jegyzetbe megy.
 
 ### Keret
 
@@ -301,7 +301,7 @@ Lépések: Az út kiválasztása · Megjelenés · Kattintás · Érkezés · M�
 
 1. **A GDPR helye.** A gondolati ív lefedettségi táblája a GDPR-t a 3. alkalomhoz rendeli, a 3. deck vázlatának nyitott kérdése volt, hogy a 6.-ra megy-e, és a kész 3. deckben a címlapon kívül nincs róla dia. A HOL-TARTUNK szerint a cookie és a hozzájárulás 2026. október 6-án ide került. Itt marad-e, és milyen mélységben: csak a mérés jogi lába (24–25. dia, javaslat), vagy teljes blokk (jogalapok, adatkezelési tájékoztató, érintetti jogok)?
 2. **Melyik fiókot mutatod élőben?** Saját BEMIND-fiók, ügyfélfiók engedéllyel, vagy csak a GA4 demófiók? Ha ügyfélé, a képernyőn látszó adatokat anonimizálni kell-e.
-3. **Az állomások.** Az öt állomás neve (Megjelenés, Kattintás, Érkezés, Haladás, Konverzió) az én javaslatom a te „megjelenéstől a konverzióig” mondatodra. A külön **Műszer** (mér-e egyáltalán, mit enged a hozzájárulás) szintén az enyém, és túlmegy a láncodon. Maradhat így, vagy más neveket, más számot szeretnél? A szemüveg helyett állomás-jelölés a diákon rendben van?
+3. **Az állomások.** Az öt állomás neve (Megjelenés, Kattintás, Érkezés, Haladás, Konverzió) az én javaslatom a te „megjelenéstől a konverzióig” mondatodra. A külön **Műszer** (mér-e egyáltalán, mit enged a hozzájárulás) szintén az enyém, és túlmegy a láncodon. Maradhat így, vagy más neveket, más számot szeretnél? A szempont helyett állomás-jelölés a diákon rendben van?
 4. **A „Működik?” értelmezése.** Javaslatom: itt azt jelentse, „észrevenné-e a márka, ha ezen az állomáson szakadna”. Elfogadod, vagy maradjon a 3. alkalom jelentése?
 5. **A sablonmondat és a nyolc mező** (fent) jó-e így. A fázis-sor „a saját döntését is megcáfolni” részét az f8-ba tettem (a 4. és 5. beadandó döntésének próbája). Ez kell-e, vagy túl sok?
 6. **A bemutató márkája.** Tunki-Tunki a folytonosság miatt; nem ellenőriztem, fut-e hirdetése és milyen mérőkódok vannak az oldalán. Ha nincs hirdetése, kell egy másik magyar márka a kívülről nézett részhez. Megfelel-e a Google Merchandise Store a belső nézethez?

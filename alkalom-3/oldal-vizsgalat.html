@@ -101,6 +101,26 @@ textarea{min-height:4.2em;resize:vertical}
   textarea,input,select{border:0;min-height:0;resize:none;padding:0}
   @page{size:A4 portrait;margin:10mm}
 }
+
+/* v3.3: a négy fázis egyértelműen, a megjegyzések egy sorban */
+.notes3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8em;margin:1.2em 0 1.4em}
+.notes3 p{max-width:none!important;margin:0!important}
+.phases-h{margin:1.8em 0 .2em;font-size:1.3em}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6em;margin:.6em 0 0;border-bottom:0;flex-wrap:nowrap}
+.tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.2em;text-align:left;border:1px solid var(--line);border-top:4px solid var(--line);border-radius:10px;background:#fff;padding:.8em 1em .9em;font-family:var(--body);font-weight:400;font-size:1em;color:var(--ink)}
+.tab .pn{position:absolute;top:.6em;right:.8em;font-family:var(--display);font-weight:500;font-size:1.6em;line-height:1;color:var(--line);margin:0}
+.tab .ph{font-family:var(--display);font-weight:500;font-size:1.15em;margin:0}
+.tab .meta{font-size:.8em;color:var(--ink-soft);margin:0}
+.tab ol{list-style:none;margin:.35em 0 0;padding:0;font-size:.85em;color:var(--ink-soft);line-height:1.35}
+.tab ol li{padding:.1em 0}
+.tab ol b{display:inline-block;width:1.2em;color:var(--cobalt);font-weight:600}
+.tab:hover{border-color:var(--cobalt)}
+.tab.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tab.on .meta,.tab.on ol{color:#C9CBDA}
+.tab.on ol b{color:var(--marker)}
+.tab.on .pn{color:rgba(255,255,255,.35)}
+@media (max-width:980px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.notes3{grid-template-columns:1fr}}
+@media (max-width:520px){.tabs{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -119,14 +139,12 @@ textarea{min-height:4.2em;resize:vertical}
   <h1>A ti oldalatok és egy másik</h1>
   <p class="lead">Két oldalt néztek meg ugyanazzal a nyolc szemponttal: a márkátok oldalát és egy listából választott külső oldalt. Nem javítotok, hanem <span class="hl">visszafejtitek, mit miért csinál az oldal</span>. Minden szempontnál három lépés, mindkét oldalon: <b>Mit láttok?</b> (a bizonyíték: hol, mit, ha lehet, idézettel), <b>Miért így?</b> (mit akar ezzel a márka, és kinek szól), <b>Működik?</b> (működik, részben, nem működik). Az ítélet a végére kerül, mert a megértésből jön. A munka ebben a böngészőben mentődik, a végén az Összegzés fülön adjátok le.</p>
 
-  <div class="lenses">
-    <div class="round"><h3>1. Ránézés <small>kattintás nélkül</small></h3><ol><li><b>1</b>Miről szól az oldal?</li><li><b>2</b>Mit akar az oldal?</li><li><b>3</b>Mit mond a márka, milyen a hangvétel?</li></ol></div>
-    <div class="round"><h3>2. Olvasás <small>görgetve</small></h3><ol><li><b>4</b>Tartalom</li><li><b>5</b>Layout</li></ol></div>
-    <div class="round"><h3>3. Cselekvés <small>kattintva</small></h3><ol><li><b>6</b>Folyamat: vezetett az oldal?</li><li><b>7</b>Konverziós pontok</li><li><b>8</b>Bizalom</li></ol></div>
+  <div class="notes3">
+    <p class="onebox"><b>A sorrend számít.</b> Az első benyomást csak egyszer lehet megfigyelni: aki már végigkattintotta az oldalt, az nem látja újra először. Ezért a ránézést az csinálja, aki még nem látta az oldalt, és addig senki ne kattintson. A csapat egyik fele a saját, a másik a külső oldalt nézi, lehetőleg telefonon, mert a látogatók nagy része onnan jön.</p>
+    <p class="onebox"><b>Mi a bizonyíték?</b> Hol, mit láttatok, ha lehet, idézettel: „a nyitóképen nincs gomb”, „a kosárban látszik a szállítási díj”. Nem bizonyíték: tetszik, modern, letisztult, profi.</p>
+    <p class="warn"><b>Valódi adatot nem adtok meg, és nem fizettek.</b> A pénztárig vagy az űrlapig mentek el, megnézni elég. Hírlevélre csak a csapat közös, erre a célra nyitott e-mail-címével iratkozzatok fel.</p>
+
   </div>
-  <p class="onebox"><b>A sorrend számít.</b> Az első benyomást csak egyszer lehet megfigyelni: aki már végigkattintotta az oldalt, az nem látja újra először. Ezért a ránézést az csinálja, aki még nem látta az oldalt, és addig senki ne kattintson. A csapat egyik fele a saját, a másik a külső oldalt nézi, lehetőleg telefonon, mert a látogatók nagy része onnan jön.</p>
-  <p class="onebox"><b>Mi a bizonyíték?</b> Hol, mit láttatok, ha lehet, idézettel: „a nyitóképen nincs gomb”, „a kosárban látszik a szállítási díj”. Nem bizonyíték: tetszik, modern, letisztult, profi.</p>
-  <p class="warn"><b>Valódi adatot nem adtok meg, és nem fizettek.</b> A pénztárig vagy az űrlapig mentek el, megnézni elég. Hírlevélre csak a csapat közös, erre a célra nyitott e-mail-címével iratkozzatok fel.</p>
 
   <div class="row">
     <div><label for="team">Ügynökség (csapat)</label><select id="team"><option value="">válaszd ki a csapatotokat</option></select></div>
@@ -145,11 +163,12 @@ textarea{min-height:4.2em;resize:vertical}
     <div><label for="search">Mit talál, aki rákeres a márkátokra?</label><textarea id="search" placeholder="pl. Google-térkép, Facebook-oldal, értékelések"></textarea></div>
   </div>
 
+  <h2 class="phases-h noprint">A munka négy fázisa, sorban</h2>
   <div class="tabs noprint" role="tablist">
-    <button class="tab on" data-p="p1" role="tab">1. Ránézés<span>1–3 · 25 perc</span></button>
-    <button class="tab" data-p="p2" role="tab">2. Olvasás<span>4–5 · 20 perc</span></button>
-    <button class="tab" data-p="p3" role="tab">3. Cselekvés<span>6–8 · 30 perc</span></button>
-    <button class="tab" data-p="p4" role="tab">Összegzés és leadás<span>15 perc</span></button>
+    <button class="tab on" data-p="p1" role="tab"><span class="pn">1</span><span class="ph">Ránézés</span><span class="meta">kattintás nélkül · 25 perc</span><ol><li><b>1</b>Miről szól az oldal?</li><li><b>2</b>Mit akar az oldal?</li><li><b>3</b>Mit mond a márka, milyen a hangvétel?</li></ol></button>
+    <button class="tab" data-p="p2" role="tab"><span class="pn">2</span><span class="ph">Olvasás</span><span class="meta">görgetve · 20 perc</span><ol><li><b>4</b>Tartalom</li><li><b>5</b>Layout</li></ol></button>
+    <button class="tab" data-p="p3" role="tab"><span class="pn">3</span><span class="ph">Cselekvés</span><span class="meta">kattintva · 30 perc</span><ol><li><b>6</b>Folyamat: vezetett az oldal?</li><li><b>7</b>Konverziós pontok</li><li><b>8</b>Bizalom</li></ol></button>
+    <button class="tab" data-p="p4" role="tab"><span class="pn">4</span><span class="ph">Összegzés és leadás</span><span class="meta">15 perc</span><ol><li>az egy mondat</li><li>amit nem tudtok biztosan</li><li>a legtudatosabb döntés</li><li>ki mit csinált</li></ol></button>
   </div>
 
   <section class="pane on" id="p1">
@@ -190,7 +209,7 @@ textarea{min-height:4.2em;resize:vertical}
     </div>
   </section>
 
-  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.2 · 2026. október 11.</p>
+  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.3 · 2026. október 11.</p>
 </main>
 
 <script>
@@ -275,7 +294,7 @@ textarea{min-height:4.2em;resize:vertical}
   function showTab(p){[].forEach.call(document.querySelectorAll('.tab'),function(b){b.classList.toggle('on',b.getAttribute('data-p')===p)});[].forEach.call(document.querySelectorAll('.pane'),function(x){x.classList.toggle('on',x.id===p)}); if(p==='p4')drawMap(); growAll(); window.scrollTo({top:document.querySelector('.tabs').offsetTop-60,behavior:'smooth'})}
   document.addEventListener('click',function(e){
     var t=e.target;
-    if(t.classList.contains('tab')){showTab(t.getAttribute('data-p'));return}
+    var tb=t.closest&&t.closest('.tab'); if(tb){showTab(tb.getAttribute('data-p'));return}
     if(t.hasAttribute('data-go')){showTab(t.getAttribute('data-go'));return}
     if(t.classList.contains('ch')){var k=t.getAttribute('data-k'),l=t.getAttribute('data-l'),v=t.getAttribute('data-v'),c=cell(k,l); c.v=c.v===v?'':v; save();
       [].forEach.call(t.parentNode.children,function(b){b.classList.toggle('on',b===t&&!!c.v)}); return}

@@ -501,7 +501,12 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 .kicker .lt{font-size:.95em}
 .slide.fit{font-size:.88em}
 /* ===== v0.24: egy betűrendszer. Két család, két vastagság családonként, öt méret ===== */
-:root{--t-xl:3.4rem;--t-h2:2.3rem;--t-h3:1.2rem;--t-lead:1.12rem;--t-body:.92rem;--t-sm:.78rem}
+html,body{font-size:clamp(20px,min(1.78vw,2.9vh),32px)}
+.slide{padding-bottom:6.5vh}
+.slide{max-width:1720px}
+.lshots img{height:60vh}
+.forms .phone{gap:.18em;padding:.5em .8em}.forms .phone input{padding:.18em .5em}.forms .phone button{padding:.25em}
+:root{--t-xl:3.4rem;--t-h2:2.3rem;--t-h3:1.2rem;--t-lead:1.12rem;--t-body:.92rem;--t-sm:max(.78rem,18px)}
 .slide,.slide.dense,.slide.roomy,.slide.fit{font-size:var(--t-body)!important}
 .slide *{font-size:inherit!important;font-style:normal!important;letter-spacing:normal!important;text-transform:none!important}
 .slide b,.slide strong,.slide th,.slide .label,.slide .mini-h,.slide .wf-btn.main,.slide .btn-big,.slide .verdict{font-weight:600!important}
@@ -1004,7 +1009,7 @@ svg.flow .fs,svg.flow .fl,svg.flow .fm,svg.flow .fm2{font-size:17px}svg.flow .fl
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.25 · 2026. október 11. · vázlat</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.26 · 2026. október 11. · vázlat</span></div>
 <div class="pager"><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->

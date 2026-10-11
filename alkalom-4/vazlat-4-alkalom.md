@@ -21,7 +21,7 @@ Online marketing, Pannon Egyetem, 2026 őszi félév · munkaanyag, v0.1 · kés
 
 A forrásokban Berti mindkét mondata ott van, és ellenőrzött oldalszámmal idézhető. A kulcsgondolat két felét három könyv külön-külön kimondja: a keresőben a szándék már megvan (Chaffey 488., 498.; Kotler–Keller 542.), a socialban az ember nem vásárolni van ott (Kotler–Keller 548.; Kingsnorth 159.; Chaffey 533.). A tanulsághoz a legerősebb támasz Kingsnorth 159. oldala („social ads should not necessarily be duplicates”) és Kotler–Keller 548. oldala (más hálózat, más haszon). Egy feszültséget jelzek: Kingsnorth 154–155. oldalán a márkaszemélyiségnek minden csatornán azonosnak kell lennie. Ez szerintem nem ellentmondás, mert a hang marad, a mondat és a forma változik, de ezt Bertinek kell eldöntenie, hogyan kerül a deckbe (saját következtetés, lásd a nyitott kérdéseknél).
 
-A deck 31 dia, a 3. alkalom szerkezetét követi: nyolc szemüveg, három lépés, Mit látok? Miért így? Működik? A szemüvegek most nem egy oldalra, hanem egy márka csatornáira irányulnak. A beadandó a „Csatornaterv üzenetenként” dekonstrukciós változata: a csapat a saját márkája kereső-, social- és videós jelenlétét fejti vissza kívülről, a nyilvános hirdetéstárak segítségével. A bemutató márkája javaslatom szerint ismét a Tunki-Tunki (folytonosság a 3. alkalommal), de a csatornáit élőben ellenőrizni kell, mielőtt bármi a diára kerül.
+A deck 31 dia, a 3. alkalom szerkezetét követi: nyolc szempont, három lépés, Mit látok? Miért így? Működik? A szempontok most nem egy oldalra, hanem egy márka csatornáira irányulnak. A beadandó a „Csatornaterv üzenetenként” dekonstrukciós változata: a csapat a saját márkája kereső-, social- és videós jelenlétét fejti vissza kívülről, a nyilvános hirdetéstárak segítségével. A bemutató márkája javaslatom szerint ismét a Tunki-Tunki (folytonosság a 3. alkalommal), de a csatornáit élőben ellenőrizni kell, mielőtt bármi a diára kerül.
 
 ---
 
@@ -55,7 +55,7 @@ Az oldalszámok a nyomtatott oldalszámok, a fájl fej- vagy láblécéből elle
 8. **Chaffey, 532. o.** „The golden rule: behave like a social networker.” (Microsoft 2007 ajánlása) és **528. o.** a Cluetrain-idézet: „Conversations among human beings sound human.” → **[T]**, és a fázis-sor második fele: „úgy beszéljünk, ahogy ott beszélnek” **[F]**
 9. **Chaffey, 481. o.** (Kate Webb, Vision Express) „we find that Twitter is more of a customer service tool, while Facebook is a fun and engaging platform, suitable for promotional outreach.” Ugyanitt: „Otherwise resources and communication will simply be spread too thinly.” → **[T]**, **[F]**
 10. **Chaffey, 534. o.** „social media updates may generate initial awareness, but conversion occurs in a subsequent visit following a search or direct visit.” → **[K1]** és **[K2]** együtt: a social kelti, a kereső fogadja a szándékot
-11. **Chaffey, 541. o.** (Summary 4.) „Key characteristics of interactive communications are the combination of push and pull media” → a „ki kezdeményez” szemüveg alapja
+11. **Chaffey, 541. o.** (Summary 4.) „Key characteristics of interactive communications are the combination of push and pull media” → a „ki kezdeményez” szempont alapja
 12. **Kingsnorth, 151. o.** „Reason number one for getting involved is to be where your customers are.” → **[F]**: ez szó szerint a fázis-sor kiinduló hite („Ott legyünk, ahol a vevő.”), tehát a deckben a meghaladandó álláspont forrása
 13. **Kingsnorth, 159. o.** „when on Facebook users’ mindsets were not generally in shopping mode” és ugyanott: „social ads should not necessarily be duplicates of your direct response display ads.” → **[K2]** és **[T]**
 14. **Kingsnorth, 114. o.** A fehér sportzokni: a „white sports socks” keresésre három hirdetés („Buy white socks today.” / „White sports socks.” / „Get cheap socks here.”), és a pontosan illeszkedő kapja a legtöbb kattintást, ezért olcsóbban is elöl lehet. → **[K1]**, **[T]**
@@ -67,7 +67,7 @@ Az oldalszámok a nyomtatott oldalszámok, a fájl fej- vagy láblécéből elle
 20. **Kotler, Keller, 551. o.** A buzz és a viral: „Some believe these influences are driven more by the rules of entertainment than the rules of selling.” → videós platformok, **[T]**
 21. **Kotler, Keller, 552. o.** (Marketing Memo: How to Start a Buzz Fire) „Companies shouldn’t communicate with customers in terms better suited for a press release.” → **[T]**
 22. **Marketing 4.0, 122. o.** „In social media, advertisements cannot significantly interrupt customers while they are consuming content.” és „We call it ‘the skippable world’s five-second challenge.’” → videós platformok, **[K2]**
-23. **Marketing 4.0, 12. o.** Az f-factor: „most customers believe more in the f-factor (friends, families, Facebook fans, Twitter followers) than in marketing communications.” → a „mások hangja” szemüveg
+23. **Marketing 4.0, 12. o.** Az f-factor: „most customers believe more in the f-factor (friends, families, Facebook fans, Twitter followers) than in marketing communications.” → a „mások hangja” szempont
 24. **Marketing 5.0, 26. o.** „Generation Z hates brands that broadcast imageries that are manufactured and too good to be true.” → a videós platform nyelve, **[T]**
 25. **Marketing 5.0, 56. o.** A kereső és a social mint fő információforrás, és „the use of algorithms that provide information tailored to users’ profiles.” → a feed nem a márkáé, hanem az algoritmusé (saját következtetés a videós blokkhoz)
 26. **Abraham, Edelman: Personalized, PDF-oldal 77** (a tárgymutató a TikTokot a 66. oldalra teszi, és a szövegben ez az egyetlen előfordulás, tehát ez valószínűleg a 66. oldal; saját következtetés). A Fidelity: „Fidelity has begun posting content on TikTok and Instagram”, „content that is more fun”, és mellé a landingeken is a fiatalabb közönség nyelvét használja. → **[T]**: ugyanaz a márka, más nyelv; és visszakötés a 3. alkalomhoz
@@ -75,7 +75,7 @@ Az oldalszámok a nyomtatott oldalszámok, a fájl fej- vagy láblécéből elle
 
 ### A feszültség, amit Bertinek látnia kell
 
-Kingsnorth (154–155.) azt mondja, a márka ne alkalmazkodjon a csatornához, hanem a csatornát illessze magához, és a személyisége mindenhol ugyanaz legyen. Berti tanulsága azt mondja, ugyanaz az üzenet minden platformon annak a jele, hogy egyik platformot sem érted. Saját következtetés: a kettő két szintről beszél. Kingsnorth a márka hangjáról és személyiségéről (ez a 3. alkalom 3. szemüvege volt), Berti az üzenetről és a formáról. Ugyanaz a hang, más mondat, más hossz, más belépő. A Kingsnorth-idézet így a tanulság mellé tehető határként („ne legyél más ember, csak beszélj másképp”), de ezt Berti dönti el, mert a tanulság szövegéhez nem nyúlhatunk.
+Kingsnorth (154–155.) azt mondja, a márka ne alkalmazkodjon a csatornához, hanem a csatornát illessze magához, és a személyisége mindenhol ugyanaz legyen. Berti tanulsága azt mondja, ugyanaz az üzenet minden platformon annak a jele, hogy egyik platformot sem érted. Saját következtetés: a kettő két szintről beszél. Kingsnorth a márka hangjáról és személyiségéről (ez a 3. alkalom 3. szempontja volt), Berti az üzenetről és a formáról. Ugyanaz a hang, más mondat, más hossz, más belépő. A Kingsnorth-idézet így a tanulság mellé tehető határként („ne legyél más ember, csak beszélj másképp”), de ezt Berti dönti el, mert a tanulság szövegéhez nem nyúlhatunk.
 
 ### Ami a forrásokban nincs meg
 
@@ -85,11 +85,11 @@ A TikTokról és a rövid videóról a könyvek szinte semmit nem mondanak (Chaf
 
 ## 2. Deck-vázlat (31 dia)
 
-A szemüveg-jelölés a diák fölött ugyanúgy megy, mint a 3. alkalomnál. A módszer diája (13. dia) definiálja a nyolc szemüveget; az elméleti diák jelzik, melyikhez adnak muníciót. Forrás csak a jegyzetbe kerül, a diára nem.
+A szempont-jelölés a diák fölött ugyanúgy megy, mint a 3. alkalomnál. A módszer diája (13. dia) definiálja a nyolc szempontot; az elméleti diák jelzik, melyikhez adnak muníciót. Forrás csak a jegyzetbe kerül, a diára nem.
 
-A nyolc szemüveg (javaslat, saját következtetés a fenti forrásokból):
+A nyolc szempont (javaslat, saját következtetés a fenti forrásokból):
 
-| Lépés | Szemüveg | A kérdés |
+| Lépés | Szempont | A kérdés |
 |---|---|---|
 | Megtalálás (kívülről, kattintás nélkül) | 1 Jelenlét | Hol van ott a márka, és hol nincs? |
 | | 2 Szándékállapot | Milyen helyzetben találkozik vele az ember: keres, görget, néz, kérdez? |
@@ -108,75 +108,75 @@ A nyolc szemüveg (javaslat, saját következtetés a fenti forrásokból):
 
 **3. Visszamutatás · a 3. beadandó.** Ha leadták: mit találtak a csapatok a saját oldalukon (a beadandók f3 mondataiból), és az átvezetés: „Az oldal fogad. Most azt nézzük meg, mi viszi oda az embert.” Ha még nincs eredmény: csak a feladat és a lánc, konkrétum nélkül. Forrás: oktató, a hallgatói beadandók.
 
-**4. A csatornák nyelve.** Miről szól, kulcsgondolat, tanulság, Berti szövege szó szerint. Alatta a nap ritmusa: másfél óra elmélet, másfél óra csoportmunka, a márkátok csatornáit fejtitek vissza nyolc szemüveggel. Forrás: oktató.
+**4. A csatornák nyelve.** Miről szól, kulcsgondolat, tanulság, Berti szövege szó szerint. Alatta a nap ritmusa: másfél óra elmélet, másfél óra csoportmunka, a márkátok csatornáit fejtitek vissza nyolc szemponttal. Forrás: oktató.
 
 **5. Egyéni feladat · 5 perc · írásban, magadnak.** „Mit kerestél rá utoljára a Google-ben, mielőtt vettél valamit? És mi volt az utolsó dolog, amit úgy vettél meg, hogy nem kerested, hanem eléd jött?” Mellé: hol láttad először, és hol vetted meg. Interakció: igen, ez a kulcsgondolat két fele a saját tapasztalatukból; a 7. dián visszahivatkozunk rá. Forrás: oktató.
 
 ### Elméleti blokk A · A csatorna mint szándékállapot (4 dia)
 
-**6. „Ott legyünk, ahol a vevő.”** · 1. szemüveg Jelenlét. A fázis-sor kiinduló hite, és egy könyv, amelyik szó szerint ezt tanítja (Kingsnorth: „be where your customers are”). Mellette Chaffey: ha az eszközzel kezdesz, az nem stratégia, hanem taktika. A dia kérdése: elég ott lenni? Forrás: Kingsnorth, Digital Marketing Strategy, 8. fejezet; Chaffey, Digital Marketing, 9. fejezet.
+**6. „Ott legyünk, ahol a vevő.”** · 1. szempont Jelenlét. A fázis-sor kiinduló hite, és egy könyv, amelyik szó szerint ezt tanítja (Kingsnorth: „be where your customers are”). Mellette Chaffey: ha az eszközzel kezdesz, az nem stratégia, hanem taktika. A dia kérdése: elég ott lenni? Forrás: Kingsnorth, Digital Marketing Strategy, 8. fejezet; Chaffey, Digital Marketing, 9. fejezet.
 
-**7. Két helyzet, két ember.** · 2. szemüveg Szándékállapot. Bal oldalon valaki beír egy keresést, jobb oldalon ugyanő görget este. Ugyanaz az ember, két állapot: az egyikben már tudja, mit akar, a másikban a barátaival van, nem a márkákkal. Itt jön a kulcsgondolat. Interakció: visszautalás az 5. dia válaszaira, két oszlopba gyűjtve (kerestem / elém jött). Forrás: Kotler, Keller, Marketing Management, 19. fejezet; Chaffey, 9. fejezet; Kingsnorth, 8. fejezet.
+**7. Két helyzet, két ember.** · 2. szempont Szándékállapot. Bal oldalon valaki beír egy keresést, jobb oldalon ugyanő görget este. Ugyanaz az ember, két állapot: az egyikben már tudja, mit akar, a másikban a barátaival van, nem a márkákkal. Itt jön a kulcsgondolat. Interakció: visszautalás az 5. dia válaszaira, két oszlopba gyűjtve (kerestem / elém jött). Forrás: Kotler, Keller, Marketing Management, 19. fejezet; Chaffey, 9. fejezet; Kingsnorth, 8. fejezet.
 
-**8. Ki kezdeményez?** · 3. szemüveg Ki kezdeményez. Pull és push: a keresőben ő hív, a feedben te szakítod félbe, és a feedben a megszakítás egy hüvelykujjnyi mozdulattal elutasítható. Forrás: Chaffey, 9. fejezet (összefoglaló); Marketing 4.0, 9. fejezet.
+**8. Ki kezdeményez?** · 3. szempont Ki kezdeményez. Pull és push: a keresőben ő hív, a feedben te szakítod félbe, és a feedben a megszakítás egy hüvelykujjnyi mozdulattal elutasítható. Forrás: Chaffey, 9. fejezet (összefoglaló); Marketing 4.0, 9. fejezet.
 
-**9. A szándék útja.** · 2. és 7. szemüveg. A 2. alkalom See-Think-Do-Care körei, rajtuk a csatornák: a social és a videó jellemzően a See és a Think körben kelt szándékot, a kereső a Think és a Do körben fogadja, és a 3. alkalom oldala a Do körben zárja. Chaffey adata mellé: a social sokszor csak az első érintés, a vásárlás egy későbbi keresésből jön. Forrás: Chaffey, 9. fejezet; Kingsnorth, 15. fejezet (Alice útja); a csatornák elhelyezése a körökön az oktató következtetése.
+**9. A szándék útja.** · 2. és 7. szempont. A 2. alkalom See-Think-Do-Care körei, rajtuk a csatornák: a social és a videó jellemzően a See és a Think körben kelt szándékot, a kereső a Think és a Do körben fogadja, és a 3. alkalom oldala a Do körben zárja. Chaffey adata mellé: a social sokszor csak az első érintés, a vásárlás egy későbbi keresésből jön. Forrás: Chaffey, 9. fejezet; Kingsnorth, 15. fejezet (Alice útja); a csatornák elhelyezése a körökön az oktató következtetése.
 
 ### Elméleti blokk B · A kereső: SEO és keresőhirdetés (5 dia)
 
-**10. A keresés: a szándék kimondva.** · 2. szemüveg. Kétféle keresés: a márkanévre (navigációs, már ismer) és a kategóriára (például „vegán mártogatós”, még választ). A kettő mást árul el a márka helyzetéről. Forrás: Chaffey, 9. fejezet; Kotler, Keller, 19. fejezet.
+**10. A keresés: a szándék kimondva.** · 2. szempont. Kétféle keresés: a márkanévre (navigációs, már ismer) és a kategóriára (például „vegán mártogatós”, még választ). A kettő mást árul el a márka helyzetéről. Forrás: Chaffey, 9. fejezet; Kotler, Keller, 19. fejezet.
 
-**11. A találati oldal.** · 1. és 3. szemüveg. Drótvázas találati oldal: fizetett és organikus találatok, és ami köztük van. Interakció: a hallgatók egy kattintható drótvázon megjelölik, melyik fizetett és melyik nem (a 3. deck drótvázas diáinak mintájára). A jelenlegi Google-oldalt előtte élőben kell lefotózni, mert a könyvbeli ábra 2015-ös. Forrás: Chaffey, 9. fejezet.
+**11. A találati oldal.** · 1. és 3. szempont. Drótvázas találati oldal: fizetett és organikus találatok, és ami köztük van. Interakció: a hallgatók egy kattintható drótvázon megjelölik, melyik fizetett és melyik nem (a 3. deck drótvázas diáinak mintájára). A jelenlegi Google-oldalt előtte élőben kell lefotózni, mert a könyvbeli ábra 2015-ös. Forrás: Chaffey, 9. fejezet.
 
-**12. SEO: lassan indul, sokáig hoz.** · 1. szemüveg. A SEO előnye és ára: célzott és hiteles, de lassú, kiszámíthatatlan, és nem épít ismertséget, mert csak azt találják meg, akit már keresnek. Forrás: Chaffey, 9. fejezet; Kingsnorth, 5. és 15. fejezet.
+**12. SEO: lassan indul, sokáig hoz.** · 1. szempont. A SEO előnye és ára: célzott és hiteles, de lassú, kiszámíthatatlan, és nem épít ismertséget, mert csak azt találják meg, akit már keresnek. Forrás: Chaffey, 9. fejezet; Kingsnorth, 5. és 15. fejezet.
 
-**13. Keresőhirdetés: nem a legtöbbet fizető nyer.** · 5. és 7. szemüveg. A quality score egyszerűen: a hirdetés helye a relevancián is múlik (kulcsszó, hirdetésszöveg, landing). Itt jön be a fehér sportzokni: három hirdetés ugyanarra a keresésre. Interakció: „Melyikre kattintanál?” egy kattintással, utána a magyarázat. Forrás: Chaffey, 9. fejezet; Kingsnorth, 6. fejezet.
+**13. Keresőhirdetés: nem a legtöbbet fizető nyer.** · 5. és 7. szempont. A quality score egyszerűen: a hirdetés helye a relevancián is múlik (kulcsszó, hirdetésszöveg, landing). Itt jön be a fehér sportzokni: három hirdetés ugyanarra a keresésre. Interakció: „Melyikre kattintanál?” egy kattintással, utána a magyarázat. Forrás: Chaffey, 9. fejezet; Kingsnorth, 6. fejezet.
 
-**14. Amit a hirdetés ígért.** · 7. szemüveg Következő lépés. Hirdetés és landing párok: illik-e az érkezés ahhoz, amit a hirdetés ígért. A 2026. október 6-i döntés szerint a hirdetés-landing játék (`alkalom-4/hirdetes-landing-jatek.html`) ide kerül; a fájl a mostani repóállapotban nem látszik, a helyét ellenőrizni kell. Interakció: a játék 5 percben. Forrás: Chaffey, 9. fejezet (landing page relevancia, kulcsszavanként saját landing); oktató.
+**14. Amit a hirdetés ígért.** · 7. szempont Következő lépés. Hirdetés és landing párok: illik-e az érkezés ahhoz, amit a hirdetés ígért. A 2026. október 6-i döntés szerint a hirdetés-landing játék (`alkalom-4/hirdetes-landing-jatek.html`) ide kerül; a fájl a mostani repóállapotban nem látszik, a helyét ellenőrizni kell. Interakció: a játék 5 percben. Forrás: Chaffey, 9. fejezet (landing page relevancia, kulcsszavanként saját landing); oktató.
 
 ### Elméleti blokk C · Social (5 dia)
 
-**15. A socialban nem vásárolni van.** · 2. szemüveg. Három könyv ugyanarról: a felhasználó ott kapcsolódni akar, nem márkával beszélgetni, és a figyelem megszerzése nehezebb. Ez a kulcsgondolat második fele. Forrás: Kotler, Keller, 19. fejezet; Kingsnorth, 8. fejezet; Chaffey, 9. fejezet.
+**15. A socialban nem vásárolni van.** · 2. szempont. Három könyv ugyanarról: a felhasználó ott kapcsolódni akar, nem márkával beszélgetni, és a figyelem megszerzése nehezebb. Ez a kulcsgondolat második fele. Forrás: Kotler, Keller, 19. fejezet; Kingsnorth, 8. fejezet; Chaffey, 9. fejezet.
 
-**16. Beszélgetés, nem bemondás.** · 5. szemüveg Nyelv. Két poszt ugyanarról: az egyik sajtóközlemény-nyelven, a másik úgy, ahogy ott beszélnek. Cluetrain és az „aranyszabály”: viselkedj úgy, mint egy jó felhasználó. Interakció: melyik illik a feedbe, és miért (bizonyítékkal, nem ízléssel). A két poszt kitalált szemléltetés, ezt a jegyzetben jelölni kell. Forrás: Chaffey, 9. fejezet; Kotler, Keller, 19. fejezet (Marketing Memo); Kingsnorth, 8. fejezet.
+**16. Beszélgetés, nem bemondás.** · 5. szempont Nyelv. Két poszt ugyanarról: az egyik sajtóközlemény-nyelven, a másik úgy, ahogy ott beszélnek. Cluetrain és az „aranyszabály”: viselkedj úgy, mint egy jó felhasználó. Interakció: melyik illik a feedbe, és miért (bizonyítékkal, nem ízléssel). A két poszt kitalált szemléltetés, ezt a jegyzetben jelölni kell. Forrás: Chaffey, 9. fejezet; Kotler, Keller, 19. fejezet (Marketing Memo); Kingsnorth, 8. fejezet.
 
-**17. Platformonként más dolga van.** · 4. és 8. szemüveg. Egy gyakorló marketinges tapasztalata: az egyik platform ügyfélszolgálat, a másik szórakoztató felület. Kotler–Keller ugyanezt mondja: más hálózat, más haszon. A dia alján a tanulság előkészítése, a tanulság még nem. Forrás: Chaffey, 9. fejezet (Vision Express-interjú); Kotler, Keller, 19. fejezet.
+**17. Platformonként más dolga van.** · 4. és 8. szempont. Egy gyakorló marketinges tapasztalata: az egyik platform ügyfélszolgálat, a másik szórakoztató felület. Kotler–Keller ugyanezt mondja: más hálózat, más haszon. A dia alján a tanulság előkészítése, a tanulság még nem. Forrás: Chaffey, 9. fejezet (Vision Express-interjú); Kotler, Keller, 19. fejezet.
 
-**18. A social hirdetés nem a kereső hirdetése.** · 3. és 5. szemüveg. A feedbe tett hirdetés nem másolata a keresőhirdetésnek: ott nincs kimondott szándék, ezért a hirdetésnek magának kell okot adnia a megállásra. Organikus és fizetett itt csak megjelenik, a viszonyuk az 5. alkalomé. Forrás: Kingsnorth, 8. fejezet; Marketing 4.0, 9. fejezet.
+**18. A social hirdetés nem a kereső hirdetése.** · 3. és 5. szempont. A feedbe tett hirdetés nem másolata a keresőhirdetésnek: ott nincs kimondott szándék, ezért a hirdetésnek magának kell okot adnia a megállásra. Organikus és fizetett itt csak megjelenik, a viszonyuk az 5. alkalomé. Forrás: Kingsnorth, 8. fejezet; Marketing 4.0, 9. fejezet.
 
-**19. Amit mások mondanak rólad.** · 6. szemüveg Mások hangja. Az f-factor: az ember jobban hisz az ismerőseinek, a követőknek és az idegenek értékeléseinek, mint a márkának. A kommentek és az értékelések a csatorna részei, és kívülről a legjobban láthatók. Forrás: Marketing 4.0, 1. fejezet; Kotler, Keller, 19. fejezet; Kingsnorth, 8. fejezet.
+**19. Amit mások mondanak rólad.** · 6. szempont Mások hangja. Az f-factor: az ember jobban hisz az ismerőseinek, a követőknek és az idegenek értékeléseinek, mint a márkának. A kommentek és az értékelések a csatorna részei, és kívülről a legjobban láthatók. Forrás: Marketing 4.0, 1. fejezet; Kotler, Keller, 19. fejezet; Kingsnorth, 8. fejezet.
 
 ### Elméleti blokk D · TikTok és videós platformok (4 dia)
 
-**20. Az első öt másodperc.** · 5. szemüveg Nyelv. A „kihagyható világ” öt másodperce: ha a videó addig nem fog meg, a néző joggal lép tovább. Interakció: két videónyitány (élő, valós példák, Berti választja), a hallgatók öt másodperc után megállítják és megmondják, kié és miről szól. Forrás: Marketing 4.0, 9. fejezet.
+**20. Az első öt másodperc.** · 5. szempont Nyelv. A „kihagyható világ” öt másodperce: ha a videó addig nem fog meg, a néző joggal lép tovább. Interakció: két videónyitány (élő, valós példák, Berti választja), a hallgatók öt másodperc után megállítják és megmondják, kié és miről szól. Forrás: Marketing 4.0, 9. fejezet.
 
-**21. A szórakoztatás szabályai.** · 5. és 6. szemüveg. A videós platformon a szórakoztatás szabályai érvényesek, nem az eladáséi, és a fiatalabb közönség nem bízik a túl tökéletes, gyártott képben. Forrás: Kotler, Keller, 19. fejezet; Marketing 5.0, 2. fejezet.
+**21. A szórakoztatás szabályai.** · 5. és 6. szempont. A videós platformon a szórakoztatás szabályai érvényesek, nem az eladáséi, és a fiatalabb közönség nem bízik a túl tökéletes, gyártott képben. Forrás: Kotler, Keller, 19. fejezet; Marketing 5.0, 2. fejezet.
 
-**22. A feed nem a tiéd.** · 1. és 3. szemüveg. A keresőben a kulcsszó dönt, a feedben az algoritmus: ő választja ki, kinek mutatja meg. Ezért a social és a videó felfedezési csatorna is. Forrás: Marketing 5.0, 4. fejezet; Kingsnorth, 8. fejezet. A TikTok működésére nincs könyvi forrás, platformadatot ide csak ellenőrzött webes forrással lehet tenni.
+**22. A feed nem a tiéd.** · 1. és 3. szempont. A keresőben a kulcsszó dönt, a feedben az algoritmus: ő választja ki, kinek mutatja meg. Ezért a social és a videó felfedezési csatorna is. Forrás: Marketing 5.0, 4. fejezet; Kingsnorth, 8. fejezet. A TikTok működésére nincs könyvi forrás, platformadatot ide csak ellenőrzött webes forrással lehet tenni.
 
-**23. Ugyanaz a márka, más nyelven.** · 8. szemüveg Összevetés. A Fidelity befektetési cég TikTokon és Instagramon könnyedebb tartalmat posztol a fiatalabb közönségnek, és a landingjei is ezen a nyelven folytatják. Ez a tanulság előtti utolsó lépés, és visszakötés a 3. alkalomhoz. Forrás: Abraham, Edelman: Personalized, Industry spotlight: Financial Services.
+**23. Ugyanaz a márka, más nyelven.** · 8. szempont Összevetés. A Fidelity befektetési cég TikTokon és Instagramon könnyedebb tartalmat posztol a fiatalabb közönségnek, és a landingjei is ezen a nyelven folytatják. Ez a tanulság előtti utolsó lépés, és visszakötés a 3. alkalomhoz. Forrás: Abraham, Edelman: Personalized, Industry spotlight: Financial Services.
 
 ### Összerakás és módszer (3 dia)
 
-**24. Ugyanaz az üzenet mindenhol?** · 8. szemüveg. Itt jelenik meg a tanulság szó szerint. Alatta a határ (ha Berti jóváhagyja): a márka hangja ugyanaz marad, a mondat, a hossz és a belépő csatornánként más. Forrás: oktató; Kingsnorth, 8. fejezet; a hang és a mondat szétválasztása az oktató következtetése (ha elfogadja).
+**24. Ugyanaz az üzenet mindenhol?** · 8. szempont. Itt jelenik meg a tanulság szó szerint. Alatta a határ (ha Berti jóváhagyja): a márka hangja ugyanaz marad, a mondat, a hossz és a belépő csatornánként más. Forrás: oktató; Kingsnorth, 8. fejezet; a hang és a mondat szétválasztása az oktató következtetése (ha elfogadja).
 
-**25. A mai nap módszere: nyolc szemüveg, három lépés.** A fenti táblázat diaként, a 3. alkalom „Nyolc szemüveg, három lépés” diájának mintájára. Alatta: 1. Mit látok? (hol, mit, linkkel, idézettel, képernyőképpel) 2. Miért így? (milyen szándékállapotra számít a márka, és melyik körben) 3. Működik? (a végén). Bizonyíték: „a hirdetés szövege szó szerint a keresett kifejezés”. Nem bizonyíték: tetszik, ütős, modern. Forrás: oktató.
+**25. A mai nap módszere: nyolc szempont, három lépés.** A fenti táblázat diaként, a 3. alkalom „Nyolc szempont, három lépés” diájának mintájára. Alatta: 1. Mit látok? (hol, mit, linkkel, idézettel, képernyőképpel) 2. Miért így? (milyen szándékállapotra számít a márka, és melyik körben) 3. Működik? (a végén). Bizonyíték: „a hirdetés szövege szó szerint a keresett kifejezés”. Nem bizonyíték: tetszik, ütős, modern. Forrás: oktató.
 
-**26. Kívülről is látszik.** · 1. és 3. szemüveg. Ahol egy márka fizetett jelenléte nyilvánosan megnézhető: Google Ads Transparency Center (Google, 2023 óta), Meta Hirdetéstár (Ad Library), TikTok Commercial Content Library (az EU digitális szolgáltatásokról szóló rendelete, a DSA alapján). A keresést inkognitóablakban, kijelentkezve végezzétek. Fontos szabály: a versenytárs keresőhirdetésére ne kattintsatok, mert kattintásonként fizet érte; a hirdetéstárban ugyanaz megnézhető. Forrás: Google Ads súgó (support.google.com/adspolicy/answer/13733850), Európai Bizottság (digital-strategy.ec.europa.eu, a TikTok hirdetési átláthatóságáról); a kattintásonkénti díj: Chaffey, 9. fejezet. Hogy a három tár az EU-ban jelenleg pontosan mit mutat (minden hirdetést vagy csak egy részét, mennyi ideig visszamenőleg), azt az alkalom előtt élőben ellenőrizni kell.
+**26. Kívülről is látszik.** · 1. és 3. szempont. Ahol egy márka fizetett jelenléte nyilvánosan megnézhető: Google Ads Transparency Center (Google, 2023 óta), Meta Hirdetéstár (Ad Library), TikTok Commercial Content Library (az EU digitális szolgáltatásokról szóló rendelete, a DSA alapján). A keresést inkognitóablakban, kijelentkezve végezzétek. Fontos szabály: a versenytárs keresőhirdetésére ne kattintsatok, mert kattintásonként fizet érte; a hirdetéstárban ugyanaz megnézhető. Forrás: Google Ads súgó (support.google.com/adspolicy/answer/13733850), Európai Bizottság (digital-strategy.ec.europa.eu, a TikTok hirdetési átláthatóságáról); a kattintásonkénti díj: Chaffey, 9. fejezet. Hogy a három tár az EU-ban jelenleg pontosan mit mutat (minden hirdetést vagy csak egy részét, mennyi ideig visszamenőleg), azt az alkalom előtt élőben ellenőrizni kell.
 
 ### Bemutató (3 dia)
 
 Javaslat: **Tunki-Tunki** (tunkitunki.hu), mert a 3. alkalom bemutatója ugyanez a márka volt, így a hallgató látja, hogyan jut el valaki az oldalig, amit már ismer. Ellenőrzött tény (2026. október 11., a tunkitunki.hu nyitóoldala, elsődleges forrás): a weboldal Facebookra (facebook.com/vegantunkitunki) és Instagramra (@vegantunkitunki) linkel, TikTok- és YouTube-link nincs rajta. Minden más (van-e keresőhirdetése, milyen találat jön a „vegán mártogatós” keresésre, mit posztol, fut-e Meta-hirdetése, van-e TikTokja) ellenőrizetlen, és csak élő megnézés után kerülhet diára. Ha kiderül, hogy a márkának alig van fizetett jelenléte, akkor ez maga is tanulságos (hol van szándék, és ott van-e), de ha a bemutató így túl vékony, kell egy második, nagyobb márka, amit Berti választ a hirdetéstárak alapján.
 
-**27. Bemutató · a keresőben.** 1–3. és 7. szemüveg: mi jön a márkanévre és mi a kategóriára, van-e hirdetés, hová visz a találat. Mit látunk? Miért így? Működik? kártyákkal, mint a 3. deckben. Tartalom: élőben kitöltendő.
+**27. Bemutató · a keresőben.** 1–3. és 7. szempont: mi jön a márkanévre és mi a kategóriára, van-e hirdetés, hová visz a találat. Mit látunk? Miért így? Működik? kártyákkal, mint a 3. deckben. Tartalom: élőben kitöltendő.
 
-**28. Bemutató · Instagram és Facebook.** 2–6. szemüveg: az utolsó posztok nyelve, hosszúsága, a kommentek, a Meta Hirdetéstár. Tartalom: élőben kitöltendő.
+**28. Bemutató · Instagram és Facebook.** 2–6. szempont: az utolsó posztok nyelve, hosszúsága, a kommentek, a Meta Hirdetéstár. Tartalom: élőben kitöltendő.
 
-**29. Bemutató · összevetés.** 8. szemüveg: a három hely egy mátrixban, és a minta-f3 mondat. Ha nincs TikTok, a kérdés: van-e ott szándék a márka kategóriájára, és hiányzik-e onnan. Tartalom: élőben kitöltendő.
+**29. Bemutató · összevetés.** 8. szempont: a három hely egy mátrixban, és a minta-f3 mondat. Ha nincs TikTok, a kérdés: van-e ott szándék a márka kategóriájára, és hiányzik-e onnan. Tartalom: élőben kitöltendő.
 
 ### Feladat és zárás (2 dia)
 
-**30. A negyedik beadandó · csoportmunka.** A márkátok csatornái kívülről, nyolc szemüveggel. Három csatornacsoport (kereső, social, videó), a csapat három felé oszlik. Nem javítotok és nem terveztek, hanem visszafejtitek, ki mit csinál és miért. A végén egy mondat (lásd f3). Utána a csapatmunka-szavazás menete egy sorban. Forrás: oktató.
+**30. A negyedik beadandó · csoportmunka.** A márkátok csatornái kívülről, nyolc szemponttal. Három csatornacsoport (kereső, social, videó), a csapat három felé oszlik. Nem javítotok és nem terveztek, hanem visszafejtitek, ki mit csinál és miért. A végén egy mondat (lásd f3). Utána a csapatmunka-szavazás menete egy sorban. Forrás: oktató.
 
 **31. Zárás.** A tanulság szó szerint. „Legközelebb, 2026. november 9-én: mennyiért, mit bérlünk és mit építünk?” Forrás: oktató.
 
@@ -199,15 +199,15 @@ Javaslat (saját következtetés): mellé egy versenytárs is, az 1. alkalom poz
 ### Időbeosztás (90 perc)
 
 - Felosztás és keresés inkognitóban, közösen: 5 perc
-- Három csoport párhuzamosan, mindegyik a saját csatornáján, 1–7. szemüveg: 45 perc (kereső, social, videó)
-- Összevetés együtt, 8. szemüveg, a mátrix kitöltése: 20 perc
+- Három csoport párhuzamosan, mindegyik a saját csatornáján, 1–7. szempont: 45 perc (kereső, social, videó)
+- Összevetés együtt, 8. szempont, a mátrix kitöltése: 20 perc
 - Összegzés és leadás (az egy mondat, a legtudatosabb csatornadöntés, a legnagyobb rés, ki mit csinált): 20 perc
 
 ### Eszköz: `csatorna-vizsgalat.html` (munkacím)
 
 A 3. alkalom `oldalvizsgalat.html` eszközének mintájára, ugyanazzal a kezeléssel: csapat és márka legördülő listából, minta betöltése és kivétele, nyomtatás, a böngészőben mentődik, a végén beküldés az `ep4` Leadásba.
 
-Lépések a felületen: 1. Felosztás (melyik csatornán ki dolgozik, linkek: márka, versenytárs, profilok) 2. Kereső fül 3. Social fül 4. Videó fül 5. Összevetés (mátrix: csatornák × szemüvegek, színes ítélettel: működik, részben, nem működik, nincs jelen) 6. Összegzés és leadás. Minden fülön a nyolc szemüveg kérdései és a három mező (Mit láttok? Miért így? Működik?), a 3. alkalom eszközéhez hasonlóan. A fülön egy sor súgó: hol nézzétek (inkognitóablak; Google Ads Transparency Center; Meta Hirdetéstár; TikTok Commercial Content Library), és a szabályok: ne kattintsatok fizetett hirdetésre, ne kommenteljetek, ne kövessetek be a csapat nevében.
+Lépések a felületen: 1. Felosztás (melyik csatornán ki dolgozik, linkek: márka, versenytárs, profilok) 2. Kereső fül 3. Social fül 4. Videó fül 5. Összevetés (mátrix: csatornák × szempontok, színes ítélettel: működik, részben, nem működik, nincs jelen) 6. Összegzés és leadás. Minden fülön a nyolc szempont kérdései és a három mező (Mit láttok? Miért így? Működik?), a 3. alkalom eszközéhez hasonlóan. A fülön egy sor súgó: hol nézzétek (inkognitóablak; Google Ads Transparency Center; Meta Hirdetéstár; TikTok Commercial Content Library), és a szabályok: ne kattintsatok fizetett hirdetésre, ne kommenteljetek, ne kövessetek be a csapat nevében.
 
 Ha a márkátoknak nincs jelenléte egy csatornán (gyakori lesz a videónál), az nem üres mező: leírjátok, mi jön, ha valaki a márka kategóriájára keres azon a platformon, és ki van ott helyettetek.
 
@@ -216,10 +216,10 @@ Ha a márkátoknak nincs jelenléte egy csatornán (gyakori lesz a videónál), 
 - **f1** Ki mit csinált ma
 - **f2** A vizsgált helyek (márka és versenytárs, linkekkel; hol nincs jelen)
 - **f3** Egy mondatban (kötelező, ez látszik a szavazólistán). Sablonmondat: „A [márka] a vevővel [hol] találkozik, [milyen szándékállapotban], [ugyanazon / csatornánként más] nyelven, és nincs ott, ahol [hol van még szándék].”
-- **f4** Kereső: márkanévre és kategóriára, organikus és fizetett (1–7. szemüveg)
-- **f5** Social: profilok és hirdetések (1–7. szemüveg)
-- **f6** Videós platform (1–7. szemüveg, vagy ha nincs jelen: ki van ott helyette)
-- **f7** Összevetés: a mátrix és a 8. szemüveg (ugyanaz az üzenet, vagy csatornánként más)
+- **f4** Kereső: márkanévre és kategóriára, organikus és fizetett (1–7. szempont)
+- **f5** Social: profilok és hirdetések (1–7. szempont)
+- **f6** Videós platform (1–7. szempont, vagy ha nincs jelen: ki van ott helyette)
+- **f7** Összevetés: a mátrix és a 8. szempont (ugyanaz az üzenet, vagy csatornánként más)
 - **f8** A legtudatosabb csatornadöntés és a legnagyobb rés: mi az, és mit akar vele elérni a márka (illetve mit veszít vele)
 
 A szavazólistán az f3 megy. A szavazás szempontja (javaslat): melyik csapat látott meg olyan rést vagy olyan tudatos döntést, amit a márka maga sem mond ki.
@@ -239,14 +239,14 @@ A szavazólistán az f3 megy. A szavazás szempontja (javaslat): melyik csapat l
 7. A socialban nem vásárolni van (a 15. dia)
 8. Az első öt másodperc és a szórakoztatás szabályai (a 20. és a 21. dia összevonva)
 9. Ugyanaz a márka, más nyelven (a 23. dia), utána a tanulság (a 24. dia)
-10. A módszer: négy szemüveg a nyolcból (2 Szándékállapot, 3 Ki kezdeményez, 5 Nyelv, 8 Összevetés) és a hirdetéstárak
+10. A módszer: négy szempont a nyolcból (2 Szándékállapot, 3 Ki kezdeményez, 5 Nyelv, 8 Összevetés) és a hirdetéstárak
 11. Mini-gyakorlat és zárás
 
 A SEO-dia, a hirdetés-landing játék, a „mások hangja” és a bemutató kimarad, vagy a bemutatóból egy dia marad (a keresőben), ha az idő engedi.
 
 ### Az órai mini-gyakorlat (20–25 perc): „Két ablak”
 
-A csapat két telefonon dolgozik a saját márkáján. Az egyik inkognitóablakban rákeres a márkanévre és egy kategóriaszóra, és megnézi a Google Ads Transparency Centert. A másik megnyitja a márka Instagram- vagy TikTok-profilját (amelyik van), megnézi az utolsó három posztot és a Meta Hirdetéstárat. 12 perc nézés, utána 8 perc: a négy szemüvegre egy-egy sor (Mit láttok? Miért így? Működik?), és az f3 mondat. Végül 2–3 csapat felolvassa a mondatát, a többiek egy kérdést tehetnek fel. Ha nincs net vagy kevés az idő, tartalék: a hirdetés-landing játék 5 percben, csoportban.
+A csapat két telefonon dolgozik a saját márkáján. Az egyik inkognitóablakban rákeres a márkanévre és egy kategóriaszóra, és megnézi a Google Ads Transparency Centert. A másik megnyitja a márka Instagram- vagy TikTok-profilját (amelyik van), megnézi az utolsó három posztot és a Meta Hirdetéstárat. 12 perc nézés, utána 8 perc: a négy szempontra egy-egy sor (Mit láttok? Miért így? Működik?), és az f3 mondat. Végül 2–3 csapat felolvassa a mondatát, a többiek egy kérdést tehetnek fel. Ha nincs net vagy kevés az idő, tartalék: a hirdetés-landing játék 5 percben, csoportban.
 
 ---
 
@@ -257,7 +257,7 @@ A csapat két telefonon dolgozik a saját márkáján. Az egyik inkognitóablakb
 1. **A tanulság és Kingsnorth.** Kingsnorth (154–155.) szerint a márka személyisége minden csatornán ugyanaz. A te tanulságod az üzenetről szól. Javasolhatom-e, hogy a 24. dián a tanulság alatt megjelenjen a határ („a hang ugyanaz, a mondat más”), vagy a tanulság álljon egyedül, és a Kingsnorth-féle ellenpont csak a jegyzetbe kerüljön?
 2. **A címlap tematikai pontja.** A szó szerinti pont tartalmazza az „automatizált email marketing”-et, ami a 3. alkalomé volt. Teljes egészében idézzük a jelöléssel (ahogy a gondolati ív doksiban áll), vagy a 3. deck mintájára „A tematikából:” sorral, e-mail nélkül?
 3. **Van-e a 4. alkalomnak újabb hármasa?** A 3. alkalomnál a deck a gondolati ív szövegétől eltérő hármast használ (a tematika-doksi B változata). Ehhez a vázlathoz csak a gondolati ív szövege volt meg; ha a 4.-hez is lesz új változat, azt kell beírni.
-4. **A nyolc szemüveg.** Megfelel-e a módszer (a 3. alkalom tükrében, csatornákra), vagy kevesebb szemüveg kell, mert három csatorna nyolc szemüveggel 24 cella?
+4. **A nyolc szempont.** Megfelel-e a módszer (a 3. alkalom tükrében, csatornákra), vagy kevesebb szempont kell, mert három csatorna nyolc szemponttal 24 cella?
 5. **A versenytárs.** Legyen-e a beadandóban egy versenytárs is (a pozicionálási mondat „mi helyett” eleméből), vagy csak a saját márka?
 6. **A bemutató márkája.** Tunki-Tunki (folytonosság, kis márka, lehet, hogy alig van fizetett jelenléte), vagy egy nagyobb márka, ami mindhárom hirdetéstárban látszik? A második márkát a hirdetéstárak élő megnézése után érdemes kiválasztani.
 7. **A hirdetés-landing játék.** A 2026. október 6-i döntés szerint ide került. A 14. dián legyen (a kereső blokk végén), vagy a gyakorlat bemelegítése?

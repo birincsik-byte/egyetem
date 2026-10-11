@@ -144,7 +144,7 @@ A **tavalyi Briefing doksi** és a **Brief sablon** (Drive, Online marketing map
 
 ## 2. Deck-vázlat (31 dia)
 
-A szerkezet a 3. alkalom deckjét követi: keret, hármas, egyéni nyitó kérdés, elméleti blokkok, bemutató, feladat, zárás. A 3. alkalom „szemüveg” jele helyett itt minden elméleti dián az áll, **melyik briefmezőhöz (f1–f8) vagy a gyakorlat melyik lépéséhez** ad muníciót. A mezőket a 3. szakasz írja le. A források a jegyzetbe kerülnek, a diára nem.
+A szerkezet a 3. alkalom deckjét követi: keret, hármas, egyéni nyitó kérdés, elméleti blokkok, bemutató, feladat, zárás. A 3. alkalom „szempont” jele helyett itt minden elméleti dián az áll, **melyik briefmezőhöz (f1–f8) vagy a gyakorlat melyik lépéséhez** ad muníciót. A mezőket a 3. szakasz írja le. A források a jegyzetbe kerülnek, a diára nem.
 
 ### Keret (1–6.)
 
