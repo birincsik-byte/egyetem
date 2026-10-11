@@ -441,7 +441,7 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 .slide.dense .chain li{padding:.32em 0}
 .slide.roomy{font-size:1.12em}
 .slide.roomy .kicker{font-size:.75em}
-/* ===== v0.14: nyolc szemüveg, Tunki-bemutató ===== */
+/* ===== v0.14: nyolc szempont, Tunki-bemutató ===== */
 .lenslist{list-style:none;margin-top:.4em}
 .lenslist li{padding:.18em 0;font-size:.95em}
 .lenslist li b{font-family:var(--display);font-weight:500;color:var(--cobalt);display:inline-block;width:1.3em}
@@ -455,19 +455,64 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 .verdict{display:inline-block;margin-top:1em;padding:.1em .8em;border-radius:99px;font-size:.8em;font-weight:600}
 .v-igen{background:#1E7B45;color:#fff}.v-reszben{background:var(--marker);color:var(--ink)}.v-nem{background:#C0392B;color:#fff}
 .seen{margin-top:.5em;font-size:1.05em;max-width:40ch}
+/* ===== v0.15: az évadsáv vékony csík, ráhúzva nyílik ki; minden feljebb kerül ===== */
+.strip{height:10px;overflow:hidden;transition:height .2s,box-shadow .2s}
+.strip:hover,.strip:focus-within{height:96px;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)}
+.strip a>*{opacity:0;transition:opacity .15s}
+.strip:hover a>*,.strip:focus-within a>*{opacity:1}
+.deck{top:10px}
+.notes,.revout,.sheet{top:10px}
+/* ===== v0.16: kisebb segédsor és lapozó ===== */
+.hint{font-size:.46em;bottom:1.6vh;opacity:.55;transition:opacity .2s}
+.hint:hover{opacity:1}
+.pager{font-size:.5em;bottom:1.4vh;gap:1em}
+.pager button{padding:.1em .45em}
+/* ===== v0.17: az évadsáv kisebb betűvel, egy-két sorban ===== */
+.strip a{font-size:.48em;line-height:1.25;padding:0 12px}
+.strip a b{font-size:1.3em}
+.strip:hover,.strip:focus-within{height:72px}
+/* ===== v0.18: szempont-jel, módszer, hang, visszajelzés, konverziós pont ===== */
+.kicker .lt{display:inline-block;background:var(--cobalt);color:#fff;border-radius:99px;padding:.05em .7em;margin-right:.7em;font-weight:600;font-size:1em}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw;margin-top:1em}
+.steps3>div{border-left:4px solid var(--marker);padding:.3em .9em;background:#fff;border-radius:0 8px 8px 0}
+.steps3 b{display:block;font-family:var(--display);font-weight:500;font-size:1.2em;margin-bottom:.15em}
+.voice{font-family:var(--display);font-weight:300;font-size:1.35em;line-height:1.3;margin-top:.4em}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;margin-top:.8em}
+.grid4 .card h3{font-size:1.15em}
+.grid4 .card p{color:var(--ink-soft);font-size:.85em}
+.cure{color:var(--cobalt);font-size:.8em;margin-top:.3em}
+.fb-wf{max-width:none;margin-top:.5em}
+.fb-cart{margin-left:auto;font-size:.85em;color:var(--ink-soft)}
+.fb-cart i{font-size:1em;font-style:normal;display:inline-block;min-width:1.4em;text-align:center;border-radius:99px;background:var(--line);margin-left:.2em}
+.fb-wf .fb-go{margin-top:.6em}
+.fb-wf .fb-go.done{background:#1E7B45;border-color:#1E7B45}
+.fb-msg{min-height:1.4em;font-size:.85em;color:#1E7B45;margin-top:.4em}
+.seen b{font-family:var(--display);font-weight:500;color:var(--ink)}
+.seen.why{color:var(--ink-soft)}
+.seen.why b{color:var(--cobalt)}
+.lensdemo .verdict{margin-top:.8em}
+.kicker a.klink{color:var(--cobalt);text-decoration:underline;text-underline-offset:.15em}
+/* ===== v0.22: egységes betűskála és képaláírás ===== */
+.slide.dense,.slide.roomy{font-size:inherit}
+.slide h2{font-size:2.3rem}
+.slide .kicker{font-size:.8rem}
+.slide .lead{font-size:1.12rem}
+.slide > p.small.muted,.slide > div > p.small.muted,.slide > div > div > p.small.muted,.btn-cap{font-size:.9rem;color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:62ch;margin-top:1em;line-height:1.4}
+.kicker .lt{font-size:.95em}
+.slide.fit{font-size:.88em}
 </style>
 </head>
 <body>
 
 <nav class="strip" aria-label="Évad">
   <a href="#" data-go="1" data-sec="keret"><b>Évad</b><span>a keret</span></a>
-  <a href="#" data-go="1"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
-  <a href="#" data-go="1"><b>2</b><span>Hogyan érjük el és hogyan dönt · 09. 28.</span></a>
-  <a href="#" data-go="0" data-sec="ep3"><b>3</b><span>A saját terep · 10. 12.</span></a>
-  <a href="#" data-go="1" class="dim"><b>4</b><span>A csatornák nyelve · 11. 02.</span></a>
-  <a href="#" data-go="1" class="dim"><b>5</b><span>Mennyiért · 11. 09.</span></a>
-  <a href="#" data-go="1" class="dim"><b>6</b><span>Mit mutat a valóság · 11. 23.</span></a>
-  <a href="#" data-go="1" class="dim"><b>7</b><span>Hogyan dolgozik egy marketinges · 12. 07.</span></a>
+  <a href="#" data-go="1"><b>1</b><span>Kinek és mit&nbsp;·&nbsp;09.&nbsp;14.</span></a>
+  <a href="#" data-go="1"><b>2</b><span>Hogyan érjük el és hogyan dönt&nbsp;·&nbsp;09.&nbsp;28.</span></a>
+  <a href="#" data-go="0" data-sec="ep3"><b>3</b><span>A saját terep&nbsp;·&nbsp;10.&nbsp;12.</span></a>
+  <a href="#" data-go="1" class="dim"><b>4</b><span>A csatornák nyelve&nbsp;·&nbsp;11.&nbsp;02.</span></a>
+  <a href="#" data-go="1" class="dim"><b>5</b><span>Mennyiért&nbsp;·&nbsp;11.&nbsp;09.</span></a>
+  <a href="#" data-go="1" class="dim"><b>6</b><span>Mit mutat a valóság&nbsp;·&nbsp;11.&nbsp;23.</span></a>
+  <a href="#" data-go="1" class="dim"><b>7</b><span>Hogyan dolgozik egy marketinges&nbsp;·&nbsp;12.&nbsp;07.</span></a>
 </nav>
 
 <main class="deck">
@@ -479,7 +524,7 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   <h1>A saját terep</h1>
   <p class="lead">Hol fogadjuk, amikor megérkezik hozzánk</p>
   <hr class="rule">
-  <p class="small muted">A tematikából: Weboldal és UX/UI mint forgalomterelő felület, loyalty/regisztrációs logika · (és a „Platformok és eszközök” pontból: automatizált email marketing) · (és a „Webanalitika és GDPR” pontból: a GDPR / jogi vonatkozások)</p>
+  <p class="small muted">A tematikából: weboldal és UX/UI mint forgalomterelő felület, loyalty- és regisztrációs logika · automatizált e-mail-marketing · GDPR és jogi vonatkozások</p>
 </section>
 
 <section class="slide dense" data-notes="c2" data-sec="keret">
@@ -498,19 +543,10 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 
 <section class="slide roomy" data-notes="c3">
   <p class="kicker">Visszamutatás · a 2. beadandó</p>
-  <h2>A térképeitek ugyanoda futottak be.</h2>
+  <h2>A térképeitek ugyanoda érkeztek.</h2>
   <p class="lead">A Do fázisban az út a márka saját felületéhez ér: foglalás, kosár, jelentkezés.</p>
-  <p >Ahol nem, azt is látjuk: van, ahol egy közvetítő platformon rendelnek, és van, ahol a márka szinte csak offline él.</p>
+  <p >Ahol nem, azt is látjuk: van, ahol egy közvetítő platformon rendelnek, és van, ahol a márka szinte csak offline van jelen.</p>
   <p ><b>Most azt nézzük meg, mi történik, amikor odaér.</b></p>
-</section>
-
-<section class="slide" data-notes="c4">
-  <p class="kicker">A nap ritmusa</p>
-  <h2>Két nagy blokk</h2>
-  <div class="blocks" style="grid-template-columns:1fr 1fr">
-    <div><b>Elmélet · másfél óra</b>Miért a weboldal, az alapképlet, mitől lesz jó egy oldal, hol akad el, hogyan marad.</div>
-    <div><b>Csoportmunka · másfél óra</b>A saját márkátok oldala és egy külső oldal, ugyanazzal a nyolc szemüveggel. A végén egy mondat és amit átvinnétek.</div>
-  </div>
 </section>
 
 <section class="slide roomy" data-notes="c5">
@@ -520,23 +556,37 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
     <div ><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.15em">A jó weboldal energiát spórol a látogatónak, és ezért cserébe bizalmat kap.</p></div>
     <div ><h3>Tanulság</h3><p>Ha a látogatónak gondolkodnia kell, hol van és mit tegyen, az oldal már veszített.</p></div>
   </div>
+  <p class="small muted" style="margin-top:1.2em">A nap: másfél óra elmélet, másfél óra csoportmunka. A csoportmunkában a márkátok oldalát és egy külső oldalt fejtitek vissza nyolc szemponttal.</p>
 </section>
 
 <section class="slide roomy" data-notes="c6">
   <p class="kicker">Egyéni feladat · 5 perc · írásban, magadnak</p>
   <h2>Mikor hagytál ott utoljára egy oldalt úgy, hogy venni akartál?</h2>
-  <div class="task"><p>Mi akasztott meg? Írd le egy mondatban, mi volt az utolsó dolog, amit láttál, mielőtt bezártad.</p></div>
+  <div class="task"><p>Miért zártad be? Mi akasztott meg? Mi volt az utolsó gondolatod? Mit láttál, mielőtt bezártad?</p></div>
 </section>
 
-<!-- NYITÓ -->
+<section class="slide roomy" data-notes="n1">
+  <p class="kicker">Miért a weboldal</p>
+  <h2>Az előszoba</h2>
+  <div class="card qcard"><p class="qt">„A website is like a house with a million entrances: the front door is simply one among many ways to get in.”</p><span class="label">Jakob Nielsen</span></div>
+  <p class="lead" style="margin-top:1em">A hirdetés, a poszt, a keresés csak idevezet. A döntés itt születik, és bármelyik forrás lehet az előszoba (inbound szemlélet).</p>
+</section>
+
+<section class="slide roomy" data-notes="n4">
+  <p class="kicker">Krug első törvénye</p>
+  <h2>Ne kelljen gondolkodnia.</h2>
+  <div class="card qcard"><p class="qt big">„Don't make me think!”</p><span class="label">Steve Krug</span></div>
+  <p class="lead" style="margin-top:1em">Minden kérdőjel a fejében figyelmet fogyaszt. Hol vagyok, ez kattintható-e, mit jelent ez a szó, mennyibe kerül? Azt keresi, amit KAPHAT, nem azt, amit neki akarnak (EL)ADNI.</p>
+</section>
+
 <section class="slide dense" data-notes="d0">
-  <p class="kicker">Mielőtt belekezdünk</p>
+  <p class="kicker">UX és UI</p>
   <h2>Mi a UX, és mi a UI?</h2>
   <div class="two">
     <div class="card">
       <span class="label">UX · user experience · felhasználói élmény</span>
       <h3>A teljes élmény</h3>
-      <p>Minden, ami a látogatóval történik a márkával, a szolgáltatással és a termékkel, nem csak a képernyőn.</p>
+      <p>Minden, ami a látogatóval a márka, a szolgáltatás és a termék körül történik, a képernyőn és azon kívül is.</p>
       <p class="mini-h">Mit csinál</p>
       <p>Kutat, kitalálja, kinek mire van szüksége, felépíti a szerkezetet és az útvonalat, drótvázat és prototípust rajzol, embereken teszteli.</p>
     </div>
@@ -553,23 +603,10 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
     <p class="muted">A UI a UX része: ha a UX az autó, a UI a műszerfal.</p>
   </div>
 </section>
-<section class="slide roomy" data-notes="n1">
-  <p class="kicker">Miért a weboldal</p>
-  <h2>Az előszoba</h2>
-  <div class="card qcard"><p class="qt">„A website is like a house with a million entrances: the front door is simply one among many ways to get in.”</p><span class="label">Jakob Nielsen</span></div>
-  <p class="lead" style="margin-top:1em">A hirdetés, a poszt, a keresés csak idevezet. A döntés itt születik, és bármelyik oldal lehet az előszoba.</p>
-</section>
-
-<section class="slide roomy" data-notes="n4">
-  <p class="kicker">Krug első törvénye</p>
-  <h2>Ne kelljen gondolkodnia.</h2>
-  <div class="card qcard"><p class="qt big">„Don't make me think!”</p><span class="label">Steve Krug</span></div>
-  <p class="lead" style="margin-top:1em">Minden kérdőjel a fejében figyelmet fogyaszt: hol vagyok, ez kattintható-e, mit jelent ez a szó, mennyibe kerül. Amit nem kell kitalálnia, arra nem megy el energia, és ami megmarad, az a döntésre jut.</p>
-</section>
 
 <section class="slide dense" data-notes="n6">
   <p class="kicker">UX és UI</p>
-  <h2>Ugyanaz az oldal kétszer</h2>
+  <h2>UX vs. UI</h2>
   <div data-ix="uxui" class="uxui2">
     <div>
       <div class="seg"><button type="button" class="on" data-v="ux">Drótváz · UX-döntések</button><button type="button" data-v="ui">Kész oldal · UI-döntések</button></div>
@@ -587,47 +624,39 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
     </div>
   </div>
   <p class="ux-def">„User experience encompasses all aspects of the end-user's interaction with the company, its services, and its products.” <span>Don Norman és Jakob Nielsen</span></p>
-  <p class="ux-foot"><b>A UX nem csak design.</b> A tartalom is UX: a szöveg, az ár, a válasz, a szállítási díj. Szép felület mellett is lehet rossz az élmény.</p>
+  <p class="ux-foot"><b>A tartalom is UX:</b> a szöveg, az ár, a válasz, a szállítási díj. Szép felület mellett is lehet rossz az élmény.</p>
 </section>
 
-<section class="slide roomy" data-notes="n7">
-  <p class="kicker">Jakob-törvény és következetesség</p>
-  <h2>Amit máshol megszokott</h2>
-  <p class="lead">A látogató ideje nagy részét más oldalakon tölti, és azt várja, hogy a tiéd is úgy működjön.</p>
-  <p >Ugyanaz a dolog mindenhol ugyanazt jelentse: ha egy gomb „Foglalás”, ne legyen mellette egy másik, ami ugyanoda visz más néven.</p>
-</section>
-
-<!-- MITŐL LESZ JÓ -->
-<section class="slide" data-notes="j5">
-  <p class="kicker">Layout</p>
-  <h2>Hogyan néz?</h2>
-  <div class="eye" data-ix="eye">
-    <div class="seg"><button type="button" data-v="0" class="on">Az oldal</button><button type="button" data-v="1">Ahol a szem jár</button></div>
-    <div class="wf eye-wf">
-      <div class="wf-h">Cím</div>
-      <div class="lines"><i style="width:92%"></i><i style="width:85%"></i><i style="width:60%"></i><i style="width:88%"></i><i style="width:40%"></i><i style="width:75%"></i><i style="width:30%"></i><i style="width:66%"></i></div>
-      <div class="fold">hajtás</div>
-      <div class="lines"><i style="width:80%"></i><i style="width:55%"></i></div>
-      <div class="heat"></div>
-    </div>
-    <p class="small muted">Szkennel, nem olvas: a sorok elejét, a címeket és a hajtás feletti részt látja.</p>
+<section class="slide dense" data-notes="m1">
+  <p class="kicker">A mai nap módszere</p>
+  <h2>Hogyan, mit gondoljunk át?</h2>
+  <div class="grid3 lensgrid">
+    <div class="card"><p class="small muted">kattintás nélkül</p><h3>Ránézés</h3><ol class="lenslist"><li><b>1</b>Miről szól az oldal?</li><li><b>2</b>Mit akar az oldal?</li><li><b>3</b>Mit mond a márka, milyen a hangvétel?</li></ol></div>
+    <div class="card"><p class="small muted">görgetve</p><h3>Olvasás</h3><ol class="lenslist"><li><b>4</b>Tartalom</li><li><b>5</b>Layout</li></ol></div>
+    <div class="card"><p class="small muted">kattintva</p><h3>Cselekvés</h3><ol class="lenslist"><li><b>6</b>Folyamat: vezetett az oldal?</li><li><b>7</b>Konverziós pontok</li><li><b>8</b>Bizalom</li></ol></div>
   </div>
+  <div class="steps3">
+    <div><b>1. Mit látok?</b>Hol, mit, ha lehet, idézettel.</div>
+    <div><b>2. Miért így?</b>Mit akar ezzel a márka, és kinek szól?</div>
+    <div><b>3. Működik?</b>Az ítélet a végén jön, a megértésből.</div>
+  </div>
+  <p class="small muted" style="margin-top:.8em">Bizonyíték: „a nyitóképen nincs gomb”. Nem bizonyíték: tetszik, modern, letisztult.</p>
 </section>
 
-<section class="slide" data-notes="j6">
-  <p class="kicker">Layout</p>
-  <h2>A layout dönt a sorrendről.</h2>
-  <div data-ix="lay">
-    <div class="seg"><button type="button" class="on" data-v="a">Zsúfolt</button><button type="button" data-v="b">Csoportosított</button></div>
-    <div class="wf lay-wf">
-      <span class="t1">Angol tanfolyam</span><span class="t2">Kis csoport</span><span class="t3">Szintfelmérő</span><span class="t4">Online is</span><span class="t5 wf-btn">Jelentkezem</span><span class="t6">Ár: 89 000 Ft</span><span class="t7">Vélemények</span><span class="t8">Kezdés: október</span>
-    </div>
+<section class="slide" data-notes="j11">
+  <p class="kicker"><span class="lt">1. szempont</span>Ránézés · Grafika és első benyomás</p>
+  <h2>0,05 másodperc</h2>
+  <div data-ix="flash">
+    <button type="button" class="btn-big">Villantsd fel</button>
+    <div class="flash-box"><div class="wf flash-wf"><div class="wf-bar"><span class="wf-logo">LOGÓ</span></div><div class="wf-hero">Nyitókép</div><div class="wf-row"><span class="wf-btn main">Gomb</span></div></div></div>
+    <p class="flash-q lead"></p>
+    <p class="small muted">Ennyi idő alatt kialakul, tetszik-e, és a szép felületet használhatóbbnak is érezzük. Az első képernyőnek közben három kérdésre kell felelnie: hol vagyok, mit kapok, és mit tegyek most?</p>
   </div>
 </section>
 
 <section class="slide" data-notes="j7">
-  <p class="kicker">Layout</p>
-  <h2>Egy fő gomb</h2>
+  <p class="kicker"><span class="lt">2. szempont</span>Ránézés · Layout</p>
+  <h2>Mit emelsz ki?</h2>
   <div data-ix="btn">
     <div class="seg"><button type="button" class="on" data-v="4">Négy egyenrangú</button><button type="button" data-v="1">Egy kiemelt</button></div>
     <div class="wf btn-wf">
@@ -638,8 +667,42 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   </div>
 </section>
 
+<section class="slide roomy" data-notes="j1">
+  <p class="kicker"><span class="lt">1–2. szempont</span>Ránézés · Tipikus felépítések</p>
+  <h2>Az oldal anatómiája</h2>
+  <p class="lead">Egy jó oldalon minden elemnek dolga van: megmondja, hol vagy, mit kapsz, és mit tegyél most. Ha egy hiányzik, a látogatónak kell pótolnia, és ez energiába kerül.</p>
+  <p >Megnézzük egy kész landingen és drótvázként, aztán azt, milyen típusai vannak, melyik layout mikor jó, mitől higgyen nekünk, és mi a szín dolga.</p>
+  <p style="margin-top:1.4em"><a class="btn-big" href="oldal-anatomia.html" target="_blank" style="text-decoration:none">Az oldal anatómiája →</a></p>
+</section>
+
+<section class="slide" data-notes="v1">
+  <p class="kicker"><span class="lt">3. szempont</span>Ránézés · Hangvétel</p>
+  <h2>A márka hangja</h2>
+  <div class="two">
+    <div class="card"><span class="label">hivatalos</span><p class="voice">Nyelvi képzéseink a résztvevők egyéni igényeihez igazodnak. Jelentkezését örömmel fogadjuk.</p></div>
+    <div class="card alt"><span class="label">közvetlen</span><p class="voice">Itt nem magolsz. Az első órától beszélsz, nyolcan vagytok, és mindenkire jut idő.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Ugyanaz az ajánlat, két hangon. Mindkettő lehet jó: az számít, illik-e ahhoz, akinek szól, és egy hangon szól-e a szöveg, a kép és a szín.</p>
+</section>
+
+<section class="slide" data-notes="j5">
+  <p class="kicker"><span class="lt">4–5. szempont</span>Olvasás · Layout</p>
+  <h2>Hogyan néz?</h2>
+  <div class="eye" data-ix="eye">
+    <div class="seg"><button type="button" data-v="0" class="on">Az oldal</button><button type="button" data-v="1">Ahol a szem jár</button></div>
+    <div class="wf eye-wf">
+      <div class="wf-h">Cím</div>
+      <div class="lines"><i style="width:92%"></i><i style="width:85%"></i><i style="width:60%"></i><i style="width:88%"></i><i style="width:40%"></i><i style="width:75%"></i><i style="width:30%"></i><i style="width:66%"></i></div>
+      <div class="fold">hajtás</div>
+      <div class="lines"><i style="width:80%"></i><i style="width:55%"></i></div>
+      <div class="heat"></div>
+    </div>
+    <p class="small muted">Nem olvas, hanem átfut rajta: a sorok elejét, a címeket és a hajtás feletti részt látja.</p>
+  </div>
+</section>
+
 <section class="slide" data-notes="j8">
-  <p class="kicker">Szöveges tartalom</p>
+  <p class="kicker"><span class="lt">4. szempont</span>Olvasás · Szöveges tartalom</p>
   <h2>A szöveg dolga, hogy válaszoljon.</h2>
   <div data-ix="txt">
     <div class="seg"><button type="button" class="on" data-v="a">Előtte</button><button type="button" data-v="b">Utána</button></div>
@@ -647,41 +710,44 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
       <div class="txt-a"><p class="wf-h" style="font-size:1.1em">Üdvözöljük megújult weboldalunkon!</p><p>Cégünk 1998 óta elkötelezett a minőségi nyelvoktatás iránt. Tapasztalt, dinamikus csapatunk innovatív módszerekkel, egyedi igényekre szabott megoldásokat kínál, hogy Ön a lehető legjobb élményben részesüljön.</p></div>
       <div class="txt-b" hidden><p class="wf-h" style="font-size:1.1em">Angol tanfolyam Veszprémben, kezdés október 20.</p><p>Kis csoport, legfeljebb 8 fő. Ingyenes szintfelmérő 10 perc alatt.</p><span class="wf-btn main">Szintfelmérő</span></div>
     </div>
-    <p class="small muted">Ki vagy, mit csinálsz, hol, miben vagy más. A többi húzható.</p>
+    <p class="small muted">Ki vagy, mit csinálsz, hol, és miben vagy más. Ami ezen túl van, az húzható.</p>
   </div>
 </section>
 
-<section class="slide roomy" data-notes="j1">
-  <p class="kicker">Tipikus felépítések</p>
-  <h2>Az oldal anatómiája</h2>
-  <p class="lead">Egy jó oldalon minden elemnek dolga van: megmondja, hol vagy, mit kapsz, és mit tegyél most. Ha egy hiányzik, a látogatónak kell pótolnia, és ez energiába kerül.</p>
-  <p >Megnézzük egy kész landingen és drótvázként, aztán azt, milyen típusai vannak, melyik layout mikor jó, mitől higgyen nekünk, és mi a szín dolga.</p>
-  <p style="margin-top:1.4em"><a class="btn-big" href="oldal-anatomia.html" target="_blank" style="text-decoration:none">Az oldal anatómiája →</a></p>
-</section>
-
-<section class="slide roomy" data-notes="j10">
-  <p class="kicker">Mitől egyértelmű?</p>
-  <h2>Három kérdés, az első pillanatban</h2>
-  <ol class="chain">
-    <li ><div>Tudja-e, hol van?</div></li>
-    <li ><div>Tudja-e, mit kap?</div></li>
-    <li ><div>Tudja-e, mit tegyen most?</div></li>
-  </ol>
-</section>
-
-<section class="slide" data-notes="j11">
-  <p class="kicker">Grafika és első benyomás</p>
-  <h2>0,05 másodperc</h2>
-  <div data-ix="flash">
-    <button type="button" class="btn-big">Villantsd fel</button>
-    <div class="flash-box"><div class="wf flash-wf"><div class="wf-bar"><span class="wf-logo">LOGÓ</span></div><div class="wf-hero">Nyitókép</div><div class="wf-row"><span class="wf-btn main">Gomb</span></div></div></div>
-    <p class="flash-q lead"></p>
-    <p class="small muted">Ennyi idő alatt kialakul, tetszik-e. A szép felületet használhatóbbnak is érezzük.</p>
+<section class="slide" data-notes="j6">
+  <p class="kicker"><span class="lt">5. szempont</span>Olvasás · Layout</p>
+  <h2>A layout dönt a sorrendről.</h2>
+  <div data-ix="lay">
+    <div class="seg"><button type="button" class="on" data-v="a">Zsúfolt</button><button type="button" data-v="b">Csoportosított</button></div>
+    <div class="wf lay-wf">
+      <span class="t1">Angol tanfolyam</span><span class="t2">Kis csoport</span><span class="t3">Szintfelmérő</span><span class="t4">Online is</span><span class="t5 wf-btn">Jelentkezem</span><span class="t6">Ár: 89 000 Ft</span><span class="t7">Vélemények</span><span class="t8">Kezdés: október</span>
+    </div>
   </div>
+  <p class="small muted">Ami összetartozik, egy csoportba kerül, és a csoportok sorrendje mondja meg, mit lásson először.</p>
+</section>
+
+<section class="slide roomy" data-notes="n7">
+  <p class="kicker"><span class="lt">5. szempont</span>Olvasás · Jakob-törvény és következetesség</p>
+  <h2>Amit máshol megszokott</h2>
+  <p class="lead">A látogató ideje nagy részét más oldalakon tölti, és azt várja, hogy a tiéd is úgy működjön.</p>
+  <p >Ugyanaz a dolog mindenhol ugyanazt jelentse: ha egy gomb „Foglalás”, ne legyen mellette egy másik, ami ugyanoda visz más néven.</p>
+</section>
+
+<section class="slide" data-notes="k1">
+  <p class="kicker"><span class="lt">7. szempont</span>Cselekvés · Konverziós pontok</p>
+  <h2>Ahol a látogató lép egyet</h2>
+  <p class="lead">Konverziós pont minden hely, ahol a látogató a márka felé lép, és nem csak a vásárlás.</p>
+  <div class="grid4">
+    <div class="card"><h3>Vásárlás, foglalás</h3><p>kosár, pénztár, foglalási naptár</p></div>
+    <div class="card"><h3>Jelentkezés, ajánlatkérés</h3><p>űrlap, szintfelmérő, időpont</p></div>
+    <div class="card"><h3>Feliratkozás</h3><p>hírlevél, regisztráció, letöltés</p></div>
+    <div class="card"><h3>Kapcsolat</h3><p>telefon, chat, útvonal, üzlet</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Mindegyiknél ugyanaz a kérdés: hol van, mit kér, és mit ad cserébe?</p>
 </section>
 
 <section class="slide" data-notes="j12">
-  <p class="kicker">Ergonómia</p>
+  <p class="kicker"><span class="lt">7. szempont</span>Cselekvés · Ergonómia</p>
   <h2>Semmit ne kelljen kétszer.</h2>
   <div class="cols forms" data-ix="form">
     <div><h3>Így ne</h3>
@@ -691,70 +757,59 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
       <div class="phone"><label>E-mail<input class="f-mail" aria-label="E-mail"></label><span class="f-ok"></span><button type="button" class="wf-btn main f-good">Kérem a szintfelmérőt</button><p class="f-msg good"></p></div>
     </div>
   </div>
+  <p class="small muted">Csak azt kérd, ami a következő lépéshez kell. Minden további mező egy újabb ok a kilépésre.</p>
 </section>
 
-<section class="slide" data-notes="j13">
-  <p class="kicker">A szakma csúcsa</p>
-  <h2>Nézzük meg élőben</h2>
-  <div class="cols">
-    <ol class="chain small">
-      <li><div><a href="https://www.gov.uk" target="_blank" rel="noopener">GOV.UK</a><span>az elv: „Do the hard work to make it simple”</span></div></li>
-      <li><div><a href="https://bkk.hu" target="_blank" rel="noopener">BKK.hu</a><span>a fő feladat a főoldalon</span></div></li>
-      <li><div><a href="https://www.billingo.hu" target="_blank" rel="noopener">Billingo</a><span>landing, nyílt árazás</span></div></li>
-      <li><div><a href="https://www.zooplus.hu" target="_blank" rel="noopener">zooplus</a><span>nagy webshop</span></div></li>
-    </ol>
-    <ol class="chain small" start="5" style="counter-reset:q 4">
-      <li><div><a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com</a><span>foglalás, tesztkultúra</span></div></li>
-      <li><div><a href="https://ligetbudapest.hu" target="_blank" rel="noopener">Liget Budapest</a><span>szolgáltatás, jegy</span></div></li>
-      <li><div><a href="https://tunkitunki.hu/" target="_blank" rel="noopener">Tunki-Tunki</a><span>kis webshop, márkahang</span></div></li>
-      <li><div><a href="https://landonorris.com" target="_blank" rel="noopener">Lando Norris</a><span>ellenpélda: díjnyertes, de a használhatóságra kapta a legkevesebb pontot</span></div></li>
-    </ol>
+<section class="slide" data-notes="f1">
+  <p class="kicker"><span class="lt">6. szempont</span>Cselekvés · Folyamat</p>
+  <h2>Tudja, hogy sikerült?</h2>
+  <div class="two fb" data-ix="fb">
+    <div class="card"><span class="label">így ne</span>
+      <div class="wf fb-wf"><div class="wf-bar"><span class="wf-logo">LOGÓ</span><span class="fb-cart">kosár <i class="fb-n">0</i></span></div><div class="u-sub">Mártogatós, 300 g · 2.500 Ft</div><button type="button" class="wf-btn main fb-go" data-m="bad">Kosárba</button><p class="fb-msg"></p></div>
+    </div>
+    <div class="card alt"><span class="label">így igen</span>
+      <div class="wf fb-wf"><div class="wf-bar"><span class="wf-logo">LOGÓ</span><span class="fb-cart">kosár <i class="fb-n">0</i></span></div><div class="u-sub">Mártogatós, 300 g · 2.500 Ft</div><button type="button" class="wf-btn main fb-go" data-m="good">Kosárba</button><p class="fb-msg"></p></div>
+    </div>
   </div>
+  <p class="lead" style="margin-top:1em">Minden kattintás után a látogató azt kérdezi: megtörtént? Ha az oldal nem felel, kattint még egyszer, vagy elmegy. A visszajelzés és a lépésjelző erre a kérdésre felel.</p>
 </section>
 
-<!-- HOL AKAD EL -->
 <section class="slide" data-notes="h1">
-  <p class="kicker">Hol akad el</p>
+  <p class="kicker"><span class="lt">6. szempont</span>Cselekvés · Hol akad el</p>
   <h2>A goodwill-tartály</h2>
   <div class="gw" data-ix="gw">
     <div class="tank"><i></i><b>70</b></div>
     <div><ol class="gw-steps"></ol><button type="button" class="btn-big gw-next">Következő lépés</button> <button type="button" class="gw-reset">Újra</button></div>
   </div>
-  <p class="small muted">Mindenki egy adag jóindulattal érkezik. Minden akadály fogyaszt belőle, minden segítség tölti.</p>
-</section>
-
-<section class="slide" data-notes="h2">
-  <p class="kicker">Hol akad el</p>
-  <h2>Hat kockázat a fejében</h2>
-  <div class="grid3">
-    <div class="card"><span class="label">funkcionális</span><h3>Nem fog működni</h3></div>
-    <div class="card"><span class="label">fizikai</span><h3>Árt nekem vagy másnak</h3></div>
-    <div class="card"><span class="label">pénzügyi</span><h3>Nem ér annyit</h3></div>
-    <div class="card"><span class="label">társas</span><h3>Ciki lesz mások előtt</h3></div>
-    <div class="card"><span class="label">pszichés</span><h3>Rosszul érzem magam tőle</h3></div>
-    <div class="card"><span class="label">idő</span><h3>Újra kell keresnem</h3></div>
-  </div>
-  <p class="lead" style="margin-top:1em">Mindegyikhez tartozik egy bizalmi elem, ami leveszi.</p>
+  <p class="small muted">Mindenki egy adag jóindulattal érkezik. Minden akadály fogyaszt belőle, minden segítség visszatölt bele.</p>
 </section>
 
 <section class="slide" data-notes="h3">
-  <p class="kicker">Hol akad el</p>
+  <p class="kicker"><span class="lt">6. szempont</span>Cselekvés · Hol akad el</p>
   <h2>Egy akadály elvétele</h2>
   <div class="two">
-    <div class="card"><p class="num">+6%</p><p>Az eladás ennyivel nőtt, amikor elhagytak egy feltételt a visszatérítésnél.</p></div>
-    <div class="card"><p class="num">18%</p><p>A pénztárban elhagyók ekkora része azért ment el, mert fiókot kellett nyitnia.</p></div>
+    <div class="card"><p class="num">+6%</p><p>Ennyivel nőtt az eladás, amikor a visszatérítés egyik feltételét elhagyták.</p></div>
+    <div class="card"><p class="num">18%</p><p>A pénztárban félbehagyott vásárlások ekkora részénél az volt az ok, hogy fiókot kellett nyitni.</p></div>
   </div>
+  <p class="lead" style="margin-top:1em">Néha az akadály épít: egy megerősítő lépés vagy egy zárt klub belépője értéket ad. A kérdés az, hogy a látogatót szolgálja-e, vagy csak nekünk kényelmes.</p>
 </section>
 
-<section class="slide roomy" data-notes="h4">
-  <p class="kicker">Ellenpont</p>
-  <h2>Néha az akadály épít.</h2>
-  <div class="card"><p class="lead" style="max-width:none">Egy megerősítő lépés, egy rövid várakozás, egy zárt klub belépője: ilyenkor a súrlódás bizalmat és értéket ad.</p></div>
-  <p class="lead" style="margin-top:1em">A kérdés nem az, van-e akadály, hanem hogy a látogatónak szolgál-e, vagy csak nekünk kényelmes.</p>
+<section class="slide dense fit" data-notes="h2">
+  <p class="kicker"><span class="lt">8. szempont</span>Cselekvés · Bizalom</p>
+  <h2>Hat kockázat a fejében</h2>
+  <div class="grid3">
+    <div class="card"><span class="label">funkcionális</span><h3>Nem fog működni</h3><p class="cure">→ vélemények, garancia, bemutató</p></div>
+    <div class="card"><span class="label">fizikai</span><h3>Árt nekem vagy másnak</h3><p class="cure">→ összetevők, tanúsítvány, tájékoztatás</p></div>
+    <div class="card"><span class="label">pénzügyi</span><h3>Nem ér annyit</h3><p class="cure">→ nyílt ár, visszatérítés, összehasonlítás</p></div>
+    <div class="card"><span class="label">társas</span><h3>Ciki lesz mások előtt</h3><p class="cure">→ mások véleménye, ismert ügyfelek</p></div>
+    <div class="card"><span class="label">pszichés</span><h3>Rosszul érzem magam tőle</h3><p class="cure">→ közvetlen hang, egyértelmű lépések, nincs nyomás</p></div>
+    <div class="card"><span class="label">idő</span><h3>Újra kell keresnem</h3><p class="cure">→ szállítási nap, egyszerű visszaküldés, elérhetőség</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Mindegyiknek van ellenszere: egy bizalmi elem, ami csökkenti. A legjobb helye ott van, ahol a döntés születik.</p>
 </section>
 
 <section class="slide roomy" data-notes="h5">
-  <p class="kicker">Hogyan marad</p>
+  <p class="kicker"><span class="lt">7. szempont</span>Cselekvés · Hogyan marad</p>
   <h2>Aki most nem vásárol</h2>
   <div class="two">
     <div class="card"><h3>Engedély mint csere</h3><p>Mit kérsz tőle, és mit adsz érte? Aki jól érezte magát, az ad engedélyt arra, hogy legközelebb mi szólhassunk.</p></div>
@@ -762,130 +817,138 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   </div>
 </section>
 
-<section class="slide" data-notes="h6">
-  <p class="kicker">A szempontkészlet</p>
-  <h2>Nyolc szemüveg, három körben</h2>
-  <div class="grid3 lensgrid">
-    <div class="card"><p class="small muted">kattintás nélkül</p><h3>1. Ránézés</h3><ol class="lenslist"><li><b>1</b>Miről szól az oldal?</li><li><b>2</b>Mit akar az oldal?</li><li><b>3</b>Mit mond a márka, milyen a hangvétel?</li></ol></div>
-    <div class="card"><p class="small muted">görgetve</p><h3>2. Olvasás</h3><ol class="lenslist"><li><b>4</b>Tartalom</li><li><b>5</b>Layout</li></ol></div>
-    <div class="card"><p class="small muted">kattintva</p><h3>3. Cselekvés</h3><ol class="lenslist"><li><b>6</b>Folyamat: vezetett az oldal?</li><li><b>7</b>Konverziós pontok</li><li><b>8</b>Bizalom</li></ol></div>
-  </div>
-  <p class="lead" style="margin-top:1em">A sorrend számít: az első benyomást csak egyszer lehet megfigyelni. Most végignézünk egy oldalt mind a nyolccal.</p>
+<section class="slide" data-notes="j13">
+  <p class="kicker">A szakma csúcsa · minden szempont</p>
+  <h2>Nézzük meg élőben</h2>
+  <ol class="chain">
+    <li><div><a href="https://www.gov.uk" target="_blank" rel="noopener">GOV.UK</a><span>az elv: „Do the hard work to make it simple”</span></div></li>
+    <li><div><a href="https://bkk.hu" target="_blank" rel="noopener">BKK.hu</a><span>a fő feladat a főoldalon</span></div></li>
+    <li><div><a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com</a><span>foglalás, minden lépésben visszajelzés</span></div></li>
+    <li><div><a href="https://landonorris.com" target="_blank" rel="noopener">Lando Norris</a><span>ellenpélda: díjnyertes, de a használhatóságra kapta a legkevesebb pontot</span></div></li>
+  </ol>
+
 </section>
 
 <section class="slide" data-notes="t1">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 1. szemüveg · Ránézés</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 1. szempont · Ránézés</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="1-elso" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">1</span>Miről szól az oldal?</h2>
       <ul class="lqs"><li>Mi ez, kinek az oldala?</li><li>Mit kínál, és kinek?</li><li>Mitől más?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> Az egyértelmű, kinek az oldala: felül a logó és a kosár. Hogy vegán mártogatósról van szó, az csak görgetés után derül ki, mert az első képernyőn csak a logó, a kereső és egy nagy termékfotó látszik.</p>
+      <p class="seen why"><b>Miért így?</b> Hangulatot ad el, mielőtt információt: azt akarja, hogy kedvet kapj, mielőtt tudnád, mi ez. Annak működik, aki már ismeri a márkát.</p>
       <p class="verdict v-reszben">részben</p>
-      <p class="seen">Kinek az oldala, az egyértelmű: logó és kosár felül. Hogy vegán mártogatós, az csak görgetés után derül ki, az első képernyőn logó, kereső és egy nagy termékfotó van.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-notes="t2">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 2. szemüveg · Ránézés</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 2. szempont · Ránézés</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="1-elso" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">2</span>Mit akar az oldal?</h2>
       <ul class="lqs"><li>Mi a fő célja?</li><li>Melyik a fő gomb?</li><li>Mit kér tőlem először?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> A cél a vásárlás, termékenként van Kosárba gomb. Az első képernyőn viszont nincs fő gomb, az alját pedig a sütisáv takarja.</p>
+      <p class="seen why"><b>Miért így?</b> A vásárlást a termékkártyákra bízza, nem a nyitóképre. Valószínűleg abból indul ki, hogy a látogató a termékért jön, és görget.</p>
       <p class="verdict v-reszben">részben</p>
-      <p class="seen">A cél a vásárlás, termékenként van Kosárba gomb. Az első képernyőn viszont nincs fő gomb, az alját pedig a sütisáv takarja.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-notes="t3">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 3. szemüveg · Ránézés</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 3. szempont · Ránézés</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="5-hirlevel" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">3</span>Mit mond a márka, milyen a hangvétel?</h2>
-      <ul class="lqs"><li>Három szó rá?</li><li>Egy hangon szól a szöveg, a kép és a szín?</li><li>Illik ahhoz, akinek szól?</li></ul>
+      <ul class="lqs"><li>Milyen három szó illik rá?</li><li>Egy hangon szól a szöveg, a kép és a szín?</li><li>Illik ahhoz, akinek szól?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> Vidám és színes. A kép, a szín és a szöveg egy hangon szól, a hírlevél is így beszél: „aztán jöhet a jóság”.</p>
+      <p class="seen why"><b>Miért így?</b> A játékos hang a vegán ételt szórakozásként adja el. Így annak is szól, aki nem vegán, csak kíváncsi.</p>
       <p class="verdict v-igen">működik</p>
-      <p class="seen">Vidám, színes. A kép, a szín és a szöveg egy hangon szól, a hírlevél is így beszél: „aztán jöhet a jóság”.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-notes="t4">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 4. szemüveg · Olvasás</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 4. szempont · Olvasás</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="2-kosarba" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">4</span>Tartalom</h2>
       <ul class="lqs"><li>Ki vagy, mit csinálsz, hol, miben vagy más?</li><li>Végig lehet futni rajta?</li><li>Van töltelékszöveg?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> Elmondja, ki és miben más („100% vegán”, „semmi mesterséges”), de csak lejjebb. Van offline boltlista. A termékkártyán egy mondat mondja meg, mi a termék.</p>
+      <p class="seen why"><b>Miért így?</b> A „100% vegán” és a „semmi mesterséges” arra felel, amit egy tudatos vásárló először kérdez: mi van benne.</p>
       <p class="verdict v-reszben">részben</p>
-      <p class="seen">Megvan, ki és miben más („100% vegán”, „semmi mesterséges”), de lejjebb. Van offline boltlista. A termékkártyán egy mondat mondja meg, mi ez.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-notes="t5">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 5. szemüveg · Olvasás</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 5. szempont · Olvasás</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="2-kosarba" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">5</span>Layout</h2>
       <ul class="lqs"><li>A fontos van elöl és felül?</li><li>Ami összetartozik, egy csoportban van?</li><li>Ott van minden, ahol megszokta?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> A kártyán egy csoportban van a név, a leírás, az ár és a Kosárba gomb. A kosár és a kereső felül van, a megszokott helyen.</p>
+      <p class="seen why"><b>Miért így?</b> A kártyán ott van minden, ami a döntéshez kell, így a listából is lehet vásárolni.</p>
       <p class="verdict v-igen">működik</p>
-      <p class="seen">A kártyán név, leírás, ár és Kosárba gomb egy csoportban. Kosár és kereső felül, a megszokott helyen.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-notes="t6">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 6. szemüveg · Cselekvés</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 6. szempont · Cselekvés</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="2-kosarba" alt="Tunki-Tunki, telefonos képernyőkép"><img data-shot="4-penztar" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">6</span>Folyamat: vezetett az oldal?</h2>
       <ul class="lqs"><li>Látszik a következő lépés?</li><li>Megmondja a gomb, mi történik?</li><li>Tudja, hogy sikerült, és hol tart?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> Kosárba tételnél a gomb nem változik, csak a kosár ikonján jelenik meg egy 1-es: nem derül ki, sikerült-e. A pénztárban lépésjelző van, ott mindig látszik, hol tartok.</p>
+      <p class="seen why"><b>Miért így?</b> A lépésjelző azt üzeni, hogy a pénztár rövid. A kosárba tétel visszajelzésére láthatóan kevesebb figyelem jutott.</p>
       <p class="verdict v-reszben">részben</p>
-      <p class="seen">Kosárba tételnél a gomb nem változik, csak a kosár ikonján jelenik meg egy 1-es: nem derül ki, sikerült-e. A pénztárban lépésjelző van, ott mindig látszik, hol tartok.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-notes="t7">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 7. szemüveg · Cselekvés</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 7. szempont · Cselekvés</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="4-penztar" alt="Tunki-Tunki, telefonos képernyőkép"><img data-shot="5-hirlevel" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">7</span>Konverziós pontok</h2>
       <ul class="lqs"><li>Hol tud lépni?</li><li>Mit kér, és mit ad cserébe?</li><li>Aki most nem vásárol, hagyhat valamit?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> Regisztráció nélkül is lehet rendelni, négy kötelező mezővel, és a hírlevél doboza alapból üres. A feliratkozás keresztnevet és e-mailt kér, cserébe újdonságokat ígér, kedvezményt nem.</p>
+      <p class="seen why"><b>Miért így?</b> Az első vásárlást nem akarja megnehezíteni. A hírlevél újdonságot ígér, nem akciót, mert közösséget épít.</p>
       <p class="verdict v-igen">működik</p>
-      <p class="seen">Regisztráció nélkül is lehet rendelni, négy kötelező mező, a hírlevél doboza alapból üres. A feliratkozás keresztnevet és e-mailt kér, cserébe újdonságokat ígér, kedvezményt nem.</p>
     </div>
   </div>
 </section>
 
 <section class="slide" data-notes="t8">
-  <p class="kicker">Bemutató · Tunki-Tunki, telefonon · 8. szemüveg · Cselekvés</p>
+  <p class="kicker">Bemutató · <a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">tunkitunki.hu</a>, telefonon · 8. szempont · Cselekvés</p>
   <div class="lensdemo">
     <div class="lshots"><img data-shot="3-kosar" alt="Tunki-Tunki, telefonos képernyőkép"><img data-shot="4-penztar" alt="Tunki-Tunki, telefonos képernyőkép"></div>
     <div>
       <h2><span class="ln">8</span>Bizalom</h2>
       <ul class="lqs"><li>Mi látszik: mások, garancia, elérhetőség, nyíltság, biztonság?</li><li>Ott van, ahol a döntés születik?</li><li>Mi hiányzik?</li></ul>
+      <p class="seen"><b>Mit látunk?</b> Nyíltság: a kosárban előre látszik a szállítási díj (1.850 Ft-tól), hogy mennyi kell még az ingyenes szállításhoz, és a várható szállítási nap. Biztonság: lakat a pénztárban.</p>
+      <p class="seen why"><b>Miért így?</b> A pénzügyi és az időkockázatot ott csökkenti, ahol a döntés születik: a kosárban.</p>
       <p class="verdict v-igen">működik</p>
-      <p class="seen">Nyíltság: a kosárban előre látszik a szállítási díj (1.850 Ft-tól), hogy mennyi kell még az ingyenes szállításhoz, és a várható szállítási nap. Biztonság: lakat a pénztárban.</p>
     </div>
   </div>
 </section>
 
-<!-- GYAKORLAT -->
 <section class="slide" data-notes="g1">
   <p class="kicker">A harmadik beadandó · csoportmunka</p>
   <h2>A ti oldalatok és egy másik</h2>
-  <p class="lead">Két oldal, ugyanaz a nyolc szemüveg: a márkátok oldala és egy külső oldal a listából, amit ma nem néztünk meg. Nem javítotok és nem pontoztok, megfigyeltek és leírjátok, mit láttatok.</p>
+  <p class="lead">Két oldal, ugyanaz a nyolc szempont: a márkátok oldala és egy külső oldal a listából. Nem javítotok, hanem visszafejtitek, mit miért csinál az oldal.</p>
   <div class="grid3" style="margin-top:1em">
-    <div class="card"><h3>Ketten, két oldal</h3><p>Fél csapat a saját, fél a külső oldalt nézi, telefonon. A ránézést az csinálja, aki még nem látta.</p></div>
-    <div class="card"><h3>Jelölés és bizonyíték</h3><p>Szemüvegenként: működik, részben vagy nem, és mellé, hol, mit láttatok.</p></div>
-    <div class="card alt"><h3>A végén egy mondat</h3><p>Hol könnyebb a látogató dolga, mi a legnagyobb különbség, mit vinnétek át.</p></div>
+    <div class="card"><h3>Két fél, két oldal</h3><p>A csapat egyik fele a saját, a másik a külső oldalt nézi, telefonon. A ránézést az csinálja, aki még nem látta az oldalt.</p></div>
+    <div class="card"><h3>Három lépés</h3><p>Szemüvegenként: mit láttok, miért így, működik-e. Az ítélet a végén jön.</p></div>
+    <div class="card alt"><h3>A végén egy mondat</h3><p>„A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen], és ebben [miben] segíti, [miben] akadályozza.”</p></div>
   </div>
   <p class="small muted" style="margin-top:1em">Ha a márkátoknak nincs weboldala: leírjátok, mit talál, aki rákeres, és két külső oldalt néztek meg.</p>
 </section>
@@ -894,10 +957,10 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   <p class="kicker">A harmadik beadandó · hogyan töltitek ki</p>
   <h2>Másfél óra, négy fül</h2>
   <ol class="chain">
-    <li><div>Ránézés, kattintás nélkül<span>1–3. szemüveg · 25 perc</span></div></li>
-    <li><div>Olvasás, görgetve<span>4–5. szemüveg · 20 perc</span></div></li>
-    <li><div>Cselekvés, kattintva<span>6–8. szemüveg · 30 perc</span></div></li>
-    <li><div>Összegzés és leadás<span>egy mondat, mit vinnétek át, ki mit csinált · 15 perc</span></div></li>
+    <li><div>Ránézés, kattintás nélkül<span>1–3. szempont · 25 perc</span></div></li>
+    <li><div>Olvasás, görgetve<span>4–5. szempont · 20 perc</span></div></li>
+    <li><div>Cselekvés, kattintva<span>6–8. szempont · 30 perc</span></div></li>
+    <li><div>Összegzés és leadás<span>az egy mondat, a legtudatosabb döntés mindkét oldalon, ki mit csinált · 15 perc</span></div></li>
   </ol>
   <p style="margin-top:1.2em"><a class="btn-big" href="oldal-vizsgalat.html" target="_blank" style="text-decoration:none">Oldalvizsgálat →</a> <span class="small muted" style="margin-left:1em">A Tunki-Tunki minta benne van, betölthetitek.</span></p>
   <p class="small muted" style="margin-top:.8em">Valódi adatot nem adtok meg, és nem fizettek: a pénztárig mentek, megnézni elég.</p>
@@ -913,7 +976,7 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.14 · 2026. október 11. · vázlat</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.22 · 2026. október 11. · vázlat</span></div>
 <div class="pager"><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -921,29 +984,25 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 <div data-n="c1"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="c2"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="c3"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="c4"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="c5"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="c6"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="d0"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="n1"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="n4"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="n6"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="n7"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j1"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j5"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j6"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j7"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j8"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j10"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j11"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j12"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="j13"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="h1"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="h2"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="h3"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="h4"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="h5"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
-<div data-n="h6"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
+<div data-n="d0"><h4>Jegyzet</h4><p class="src top">Forrás: Nielsen Norman Group, Norman és Nielsen UX-definíciója (nngroup.com); a UX és UI határa: alkalom-3/ux-ui-hatar-3-alkalom.md.</p><div class="hj"><p>A UX a teljes élmény, a UI az a felület, amin keresztül ez az élmény történik. A dián a hasonlat (autó és műszerfal) saját szemléltetés.</p></div></div>
+<div data-n="n1"><h4>Jegyzet</h4><p class="src top">Forrás: Jakob Nielsen, 2002-es cikk (nngroup.com): „A website is like a house with a million entrances: the front door is simply one among many ways to get in.”</p><div class="hj"><p>A látogató ritkán a kezdőlapon érkezik: hirdetésből, posztból, keresésből bármelyik aloldalra beeshet. Ezért minden oldalnak meg kell állnia a saját lábán.</p><p>Arányszám arra, hogy milyen gyakran érkeznek nem a kezdőlapon, egyik feldolgozott forrásban sincs.</p></div></div>
+<div data-n="n4"><h4>Jegyzet</h4><p class="src top">Forrás: Steve Krug: Don’t Make Me Think, Revisited, 3. kiadás (New Riders, 2014), Chapter 1.</p><div class="hj"><p>Krug első törvénye: az oldal legyen magától értetődő. Minden apró kérdőjel (hol vagyok, ez kattintható-e, mit jelent ez a szó) figyelmet és energiát visz el.</p></div></div>
+<div data-n="n6"><h4>Jegyzet</h4><p class="src top">Forrás: Norman és Nielsen UX-definíciója (nngroup.com); a drótváz és a kész oldal példája kitalált.</p><div class="hj"><p>A UX-döntések a szerkezetről szólnak (mi van az oldalon, milyen sorrendben, hány lépés), a UI-döntések a kinézetről és a reakcióról. A tartalom is UX: a szöveg, az ár, a szállítási díj.</p></div></div>
+<div data-n="n7"><h4>Jegyzet</h4><p class="src top">Forrás: Yablonski: Laws of UX, 1. fejezet: „Users spend most of their time on other sites, and they prefer your site to work the same way as all the other sites they already know.”</p><div class="hj"><p>A megszokott minta (kosár jobbra fent, logó a kezdőlapra visz) csökkenti a gondolkodást. A szokatlan megoldás frusztrál, és feladáshoz vezet (Yablonski).</p></div></div>
+<div data-n="j1"><h4>Jegyzet</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick 7. fejezet (a landing page és hat célja).</p><div class="hj"><p>A részletek az „Az oldal anatómiája” aloldalon: a kész landing elemei, a landingtípusok, a layout-sablonok, a bizalmi elemek és a szín.</p></div></div>
+<div data-n="j5"><h4>Jegyzet</h4><p class="src top">Forrás: Krug: Don’t Make Me Think, Revisited, Chapter 2 és 3.</p><div class="hj"><p>A látogató nem olvas, hanem átfut a szövegen; nem a legjobb lehetőséget választja, hanem az első elfogadhatót (satisficing, Herbert Simon kifejezése).</p><p>Krug tanácsai a szkennelésre: konvenciók, világos hierarchia, elkülönülő területek, egyértelmű kattinthatóság, kevesebb zaj, szkennelhető szöveg.</p></div></div>
+<div data-n="j6"><h4>Jegyzet</h4><p class="src top">Forrás: Krug: Don’t Make Me Think, Revisited, Chapter 3 (vizuális hierarchia, jól elkülönülő területek).</p><div class="hj"><p>Ami összetartozik, egy csoportba kerül. A csoportok sorrendje és mérete mondja meg a látogatónak, mi a fontos.</p></div></div>
+<div data-n="j7"><h4>Jegyzet</h4><p class="src top">Forrás: Yablonski: Laws of UX, 4. fejezet (Hick-törvény, choice overload); Chaffey, Ellis-Chadwick 7. fejezet (feltűnő cselekvésre hívás a hajtás felett).</p><div class="hj"><p>A döntés ideje a lehetőségek számával nő. A lekvárkísérletben a nagy kínálatot látók egytizedannyian vásároltak, mint a kicsit látók (Yablonski).</p><p>Egy fő gomb: a többi lehetőség maradhat, de szövegként, kisebb hangsúllyal.</p></div></div>
+<div data-n="j8"><h4>Jegyzet</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick 7. fejezet: „who you are, what you do, where you operate and what makes you different”. Az előtte–utána példa kitalált.</p><div class="hj"><p>Az első szövegnek négy kérdésre kell felelnie: ki vagy, mit csinálsz, hol, és miben vagy más. Ami ezen túl van, az másodlagos.</p></div></div>
+<div data-n="j11"><h4>Jegyzet</h4><p class="src top">Forrás: Lindgaard, Fernandes, Dudek, Brown (2006), Behaviour and Information Technology 25(2), idézi Jon Yablonski: Laws of UX, 2. kiadás (O’Reilly, 2024); az esztétikai–használhatósági hatás: Kurosu és Kashimura, Yablonski; a három kérdés az oktató összefoglalása Chaffey (7. fejezet) és Krug (Chapter 7) alapján.</p><div class="hj"><p>Az első benyomás kb. 50 ezredmásodperc alatt kialakul. A szépnek látott felületet használhatóbbnak is érezzük, akkor is, ha nem az.</p><p>Az „öt másodperc” nem kutatási eredmény, hanem egy tesztmódszer neve (öt másodperces teszt).</p></div></div>
+<div data-n="j12"><h4>Jegyzet</h4><p class="src top">Forrás: Krug: Don’t Make Me Think, Revisited, Chapter 11; Baymard Institute, kosárelhagyási lista (baymard.com, frissítve 2025. szeptember 22., letöltve 2026. október 5.).</p><div class="hj"><p>Krug szerint egy sokmezős regisztrációs űrlap megnyitása önmagában is lenullázhatja a látogató jóindulatát.</p><p>A Baymard szerint az ideális pénztár 12–14 űrlapelemből áll, az amerikai átlag 23,48.</p></div></div>
+<div data-n="j13"><h4>Jegyzet</h4><p class="src top">Forrás: A példaoldalak és a mellettük álló állítások forrása: alkalom-3/ux-peldaoldalak-3-alkalom.md.</p><div class="hj"><p>Mind a négy oldal mind a nyolc szemponttal nézhető. A Lando Norris oldala ellenpélda: szép, de nehezen használható.</p></div></div>
+<div data-n="h1"><h4>Jegyzet</h4><p class="src top">Forrás: Krug: Don’t Make Me Think, Revisited, Chapter 11: „every time we enter a Web site, we start out with a reservoir of goodwill. Each problem we encounter on the site lowers the level of that reservoir.”</p><div class="hj"><p>A tartály egyéni és helyzetfüggő (aki siet, alacsonyabb szinttel érkezik), és újratölthető. A dián a lépések és a pontszámok szemléltető példák.</p></div></div>
+<div data-n="h2"><h4>Jegyzet</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 14. kiadás, 6. fejezet (az észlelt kockázat hat típusa).</p><div class="hj"><p>A könyv szerint a marketing feladata megérteni, mi váltja ki a kockázatérzetet, és olyan információt adni, ami csökkenti. A kockázat és a bizalmi elem párosítása a dián az oktató következtetése; a könyv a garanciát és az ismert márkát említi.</p></div></div>
+<div data-n="h3"><h4>Jegyzet</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 14. kiadás; Baymard Institute, kosárelhagyási lista (baymard.com).</p><div class="hj"><p>+6%: Kotler, Keller: Marketing Management, 14. kiadás, 129. oldal. Ez a TurboTax esete (Intuit): a vevői visszajelzésből derült ki, hogy a visszatérítéshez kért vásárlásigazolás zavarja őket, és amikor ezt a feltételt elhagyták, az eladás 6%-kal nőtt. A könyv szavaival: „sales jumped 6 percent”. Az elhagyott lépés a vásárlás utánra esett, nem a rendelés közbenre.</p><p>18%: Baymard Institute kosárelhagyási listája (baymard.com, frissítve 2025. szeptember 22., letöltve 2026. október 5.). Akik a pénztárban félbehagyták a vásárlást, azok 18%-a azt jelölte meg okként, hogy fiókot kellett volna nyitnia. Amerikai vásárlókról szól. Az első ok egyébként a váratlan extra költség (40%). Van egy másik Baymard-szám is, a 24% (2022-es felmérés, 4384 fő), de az egy másik kérdésre adott válasz.</p><p>Az ellenpont (az akadály néha értéket ad) az oktató következtetése.</p></div></div>
+<div data-n="h5"><h4>Jegyzet</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick 6. fejezet (Seth Godin, engedélyalapú marketing); a csúcs és a vég: Yablonski: Laws of UX, 6. fejezet</p><div class="hj"><p>Az engedély csere: a látogató adatot és figyelmet ad, a márka cserébe információt vagy élményt.</p><p>Az élményt a legintenzívebb pillanat és a vége alapján ítéljük meg, ezért számít a köszönőoldal és az első levél.</p></div></div>
 <div data-n="t1"><h4>Jegyzet</h4><p class="src top">Forrás: saját megfigyelés, tunkitunki.hu, telefonos nézet, 2026. október 11.</p><div class="hj"><p>A bemutató ugyanazt csinálja, amit a hallgatók az eszközben: egy jelölés és mellé a bizonyíték. A jelölés vitatható, a bizonyíték nem, ezért arról érdemes beszélgetni, amit láttunk.</p></div></div>
 <div data-n="t2"><h4>Jegyzet</h4><p class="src top">Forrás: saját megfigyelés, tunkitunki.hu, telefonos nézet, 2026. október 11.</p><div class="hj"><p>A bemutató ugyanazt csinálja, amit a hallgatók az eszközben: egy jelölés és mellé a bizonyíték. A jelölés vitatható, a bizonyíték nem, ezért arról érdemes beszélgetni, amit láttunk.</p></div></div>
 <div data-n="t3"><h4>Jegyzet</h4><p class="src top">Forrás: saját megfigyelés, tunkitunki.hu, telefonos nézet, 2026. október 11.</p><div class="hj"><p>A bemutató ugyanazt csinálja, amit a hallgatók az eszközben: egy jelölés és mellé a bizonyíték. A jelölés vitatható, a bizonyíték nem, ezért arról érdemes beszélgetni, amit láttunk.</p></div></div>
@@ -952,6 +1011,10 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 <div data-n="t6"><h4>Jegyzet</h4><p class="src top">Forrás: saját megfigyelés, tunkitunki.hu, telefonos nézet, 2026. október 11.</p><div class="hj"><p>A bemutató ugyanazt csinálja, amit a hallgatók az eszközben: egy jelölés és mellé a bizonyíték. A jelölés vitatható, a bizonyíték nem, ezért arról érdemes beszélgetni, amit láttunk.</p></div></div>
 <div data-n="t7"><h4>Jegyzet</h4><p class="src top">Forrás: saját megfigyelés, tunkitunki.hu, telefonos nézet, 2026. október 11.</p><div class="hj"><p>A bemutató ugyanazt csinálja, amit a hallgatók az eszközben: egy jelölés és mellé a bizonyíték. A jelölés vitatható, a bizonyíték nem, ezért arról érdemes beszélgetni, amit láttunk.</p></div></div>
 <div data-n="t8"><h4>Jegyzet</h4><p class="src top">Forrás: saját megfigyelés, tunkitunki.hu, telefonos nézet, 2026. október 11.</p><div class="hj"><p>A bemutató ugyanazt csinálja, amit a hallgatók az eszközben: egy jelölés és mellé a bizonyíték. A jelölés vitatható, a bizonyíték nem, ezért arról érdemes beszélgetni, amit láttunk.</p></div></div>
+<div data-n="m1"><h4>Jegyzet</h4><p class="src top">Forrás: Oktató. A sorrend (megfigyelés, szándék, ítélet) az 1. alkalom visszafejtésének mintáját követi.</p><div class="hj"><p>Mit látok? Csak az, ami ténylegesen az oldalon van, helyével együtt, ha lehet, idézettel.</p><p>Miért így? A döntés mögötti szándék: mit akar vele a márka, és kinek szól. Ez feltevés, ezért a bizonyítékra kell épülnie.</p><p>Működik? Az ítélet a végén jön, mert csak akkor lehet megítélni egy döntést, ha értjük, mit akart.</p><p>Nem bizonyíték az ízlés: tetszik, modern, letisztult.</p></div></div>
+<div data-n="v1"><h4>Jegyzet</h4><p class="src top">Forrás: Az 1. alkalom (a márka hangja a beadandóban). A két példamondat kitalált.</p><div class="hj"><p>A hangvétel az, ahogyan a márka beszél: tegez vagy magáz, hivatalos vagy közvetlen, komoly vagy játékos. Egyik sem jó vagy rossz önmagában.</p><p>Két kérdés dönt: illik-e ahhoz, akinek szól, és egy hangon szól-e a szöveg, a kép és a szín. Ha az oldal másképp beszél, mint a posztok, a látogató két márkát lát (az oktató következtetése).</p></div></div>
+<div data-n="k1"><h4>Jegyzet</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick 7. fejezet: „The fulfilment of the offer or purchase must be as simple as possible to avoid attrition during this process.” A négy típus az oktató felosztása.</p><div class="hj"><p>Konverziós pont minden hely, ahol a látogató a márka felé lép: vásárlás, foglalás, jelentkezés, feliratkozás, kapcsolatfelvétel.</p><p>A mérés (mikro- és makrokonverzió, események) a 6. alkalom anyaga; most csak azt nézzük, hol van, mit kér és mit ad cserébe.</p></div></div>
+<div data-n="f1"><h4>Jegyzet</h4><p class="src top">Forrás: Jakob Nielsen tíz használhatósági heurisztikája (1994, frissítve 2020), 1. „Visibility of System Status”, nngroup.com/articles/ten-usability-heuristics.</p><div class="hj"><p>Az oldalnak mindig jeleznie kell, mi történik: sikerült-e a kattintás, hol tart a látogató, mi jön utána.</p><p>A pénztár lépésjelzője ugyanezt adja a folyamat egészére. A dián a kosár példája kitalált.</p></div></div>
 <div data-n="g1"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="g2"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="g4"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
@@ -1030,6 +1093,8 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   document.querySelectorAll('[data-ix="uxui"]').forEach(function(r){var m=r.querySelector('.uxm');seg(r,function(v){m.classList.toggle('ui',v==='ui');r.querySelector('.dec-ux').hidden=v!=='ux';r.querySelector('.dec-ui').hidden=v!=='ui'})});
   document.querySelectorAll('[data-ix="eye"]').forEach(function(r){seg(r,function(v){r.classList.toggle('on',v==='1')})});
   document.querySelectorAll('[data-ix="lay"]').forEach(function(r){var w=r.querySelector('.lay-wf');w.classList.add('a');seg(r,function(v){w.classList.remove('a','b');w.classList.add(v)})});
+  /* v0.18: visszajelzés-dia */
+  document.querySelectorAll('[data-ix="fb"]').forEach(function(r){r.querySelectorAll('.fb-go').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var w=b.closest('.fb-wf'),n=w.querySelector('.fb-n'),m=w.querySelector('.fb-msg');n.textContent=(+n.textContent)+1;if(b.getAttribute('data-m')==='good'){b.textContent='✓ A kosárban van';b.classList.add('done');m.innerHTML='Hozzáadtuk a kosárhoz. <u>Tovább a pénztárhoz →</u><br>1 Kosár · 2 Adatok · 3 Fizetés'}else{m.textContent=''}})})});
   document.querySelectorAll('[data-ix="btn"]').forEach(function(r){var w=r.querySelector('.btn-wf'),c=r.querySelector('.btn-cap');seg(r,function(v){w.classList.toggle('one',v==='1');c.textContent=v==='1'?'Egy kiemelt gomb, a többi szövegként: a szem tudja, hova menjen.':'Négy egyforma gomb: négy döntés. Minél több az egyenrangú választás, annál lassabb a döntés.'})});
   document.querySelectorAll('[data-ix="txt"]').forEach(function(r){seg(r,function(v){r.querySelector('.txt-a').hidden=v!=='a';r.querySelector('.txt-b').hidden=v!=='b'})});
   document.querySelectorAll('[data-ix="mm"]').forEach(function(r){var o=r.querySelector('.mm-out');r.querySelectorAll('.mm-opts button').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();r.querySelectorAll('.mm-opts button').forEach(function(x){x.classList.remove('ok','no')});var good=b.getAttribute('data-ok')==='1';b.classList.add(good?'ok':'no');o.textContent=b.getAttribute('data-fb')})})});

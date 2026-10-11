@@ -166,7 +166,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.10 · 2026. október 11.</p>
+  <p class="small muted" style="margin-top:3em">app v2.12 · 2026. október 11.</p>
 </div>
 
 <script>
@@ -191,16 +191,38 @@ summary{cursor:pointer;color:var(--cobalt)}
       ['f5','Bizonyíték: melyik poszt, oldal, hirdetés, vélemény mutatja, amit a fázisokról állítottatok'],
       ['f6','Hol szakad meg az út: üres fázis, olyan fázis, ahol csak mások beszélnek, vagy jó üzenet rossz fázisban; egy pont, amire rá lehet bökni'],
       ['f8','Ami hiányzik: melyik fázisban nem mond semmit a márka, egy mondat']]},
-    ep3:{name:'3. alkalom · A saját terep', title:'3. beadandó: oldalvizsgálat nyolc szemüveggel', tool:'oldal-vizsgalat.html', toolname:'Oldalvizsgálat', toolnote:'az Oldalvizsgálat lapon', novote:true, nosample:true, limit:'nyolc blokk, blokkonként legfeljebb 4000 karakter', fields:[
+    ep3:{name:'3. alkalom · A saját terep', title:'3. beadandó: oldalvizsgálat nyolc szemponttal', tool:'oldal-vizsgalat.html', toolname:'Oldalvizsgálat', toolnote:'az Oldalvizsgálat lapon', novote:true, nosample:true, limit:'nyolc blokk, blokkonként legfeljebb 4000 karakter', fields:[
       ['f1','Ki mit csinált ma'],
       ['f2','A két oldal: a márka saját oldala (vagy ha nincs, amit a keresés hoz és egy második külső oldal), a külső oldal, és min néztük'],
-      ['f3','Egy mondatban: melyik oldalon könnyebb a látogató dolga, és mi a legnagyobb különbség a kettő között'],
-      ['f8','Áttekintés szemüvegenként (saját / külső), és amit átvinnénk a másik oldalról'],
-      ['f4','1. Ránézés: miről szól az oldal, mit akar az oldal, mit mond a márka és milyen a hangvétel'],
-      ['f5','2. Olvasás: tartalom és layout'],
-      ['f6','3. Cselekvés a saját (vagy második külső) oldalon: folyamat, konverziós pontok, bizalom'],
-      ['f7','3. Cselekvés a külső oldalon: folyamat, konverziós pontok, bizalom']]}
+      ['f3','Egy mondatban a márka oldala: kinek szól, mit akar, hogy tegyen a látogató, miben segíti és miben akadályozza'],
+      ['f8','A legtudatosabb döntés mindkét oldalon (mi az, és mit akar vele elérni a márka), és az áttekintés szempontonként'],
+      ['f4','Ránézés és olvasás (1–5. szempont), saját oldal: mit láttunk, miért így, működik-e'],
+      ['f5','Ránézés és olvasás (1–5. szempont), külső oldal: mit láttunk, miért így, működik-e'],
+      ['f6','Cselekvés (6–8. szempont), saját oldal: mit láttunk, miért így, működik-e'],
+      ['f7','Cselekvés (6–8. szempont), külső oldal: mit láttunk, miért így, működik-e']]}
   };
+  /* ===== levelező (om2026levelezo): ugyanaz a hét téma, témánként rövid órai gyakorlat ===== */
+  var LEV=/levelezo/i.test(location.pathname);
+  if(LEV){
+    EPISODES.ep1={name:'1. téma · Kinek és mit (levelező)', title:'1. gyakorlat: a márka mondata visszafejtve', limit:'rövid, kb. 25 perc', fields:[
+      ['f1','Ki mit csinált'],
+      ['f2','Amit néztünk: a márka weboldala és egy közösségi felülete (linkkel)'],
+      ['f3','A mondat: „A(z) [márka] [kinek] szól, [mi helyett] választják, és az értékajánlata: [értékajánlat].”'],
+      ['f4','Bizonyíték: melyik mondat, poszt vagy vélemény mutatja, amit a mondatban állítottatok']]};
+    EPISODES.ep2={name:'2. téma · Hogyan érjük el az embert és hogyan dönt (levelező)', title:'2. gyakorlat: rövid journey-térkép', limit:'rövid, kb. 25 perc', fields:[
+      ['f1','Ki mit csinált'],
+      ['f7','A modell és miért: See-Think-Do-Care vagy 5A, egy mondat indoklás'],
+      ['f3','A journey egy mondatban: honnan hova jut, és hol dől el'],
+      ['f4','Fázisonként egy kontaktpont, és mit mond ott jelenleg a márka'],
+      ['f6','Hol szakad meg az út: egy pont, amire rá lehet bökni']]};
+    EPISODES.ep3={name:'3. téma · A saját terep (levelező)', title:'3. gyakorlat: oldalvizsgálat a márka oldalán', limit:'rövid, kb. 25 perc', nosample:true, fields:[
+      ['f1','Ki mit csinált'],
+      ['f2','Az oldal címe, és min néztétek (telefon vagy gép)'],
+      ['f3','Egy mondatban: „A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen a látogató], és ebben [miben] segíti, [miben] akadályozza.”'],
+      ['f4','Ránézés (1–3. szempont): mit láttok, miért így, működik-e'],
+      ['f5','Cselekvés (6–8. szempont): egy konverziós pont kipróbálva, mit láttok, miért így, működik-e'],
+      ['f8','A legtudatosabb döntés az oldalon: mi az, és mit akar vele elérni a márka']]};
+  }
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
   var API='api.php';
 

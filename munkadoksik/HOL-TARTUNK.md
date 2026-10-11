@@ -60,6 +60,8 @@ A `.gitignore` jelenleg kizárja a `data/`, `key.php`, `neptun.php`, `.DS_Store`
 
 2026. október 11.: a 3. alkalom anyaga kész, deployra vár: `alkalom-3/online-marketing-2026-evad-3-epizod.html` v0.14, `alkalom-3/oldal-anatomia.html` v0.4, `alkalom-3/oldal-vizsgalat.html` v2.1 (a beadandó, nyolc szemüveg, szavazás nélkül), `app.html` v2.10 (`ep3`), `index.html` v1.7 (3. sor élő), `.cpanel.yml` (`cp` sorok mappával). Ugyanaznap minden alkalom webes fájlja a saját `alkalom-N/` mappájába került. A részletek: `alkalom-3/FOLYTATAS.md`.
 
+2026. október 11. este: a 4–7. alkalom vázlata kész, jóváhagyásra: `munkadoksik/VAZLAT-4-7-ES-LEVELEZO.md` és `alkalom-N/vazlat-N-alkalom.md`. A GDPR a 6. alkalomba kerül (a tematikában a webanalitikával egy ponton van). Levelező: két alkalom (2026. október 16. és november 6., 14:30–19:00, A.2.A226), az 1–3. téma pénteken a nappali deckjeivel, a 4–7. november 6-án; témánként rövid órai gyakorlat, az alkalmak végén csapatmunka-szavazás, ugyanaz a márkalista. Saját oldal: om2026levelezo, a kezdőlap a `LEVELEZŐ/index.html`, az `app.html` (v2.12) a címből ismeri fel a levelezős oldalt és ott a rövid gyakorlatok mezőit mutatja; a `.cpanel.yml` mindkét mappába másol. A szerveren kézzel kell: `key.php` (egyelőre ugyanaz), `neptun.php` (a levelezős lista, Berti adja meg). A 3. alkalomnál „szemüveg” helyett „szempont” (2026. október 11., Berti kérése).
+
 3. alkalom, „A saját terep”, 2026. október 12. A lánc kérdése: „Hol fogadjuk, amikor megérkezik hozzánk”. Beadandó a leadandók sorrendje szerint: landing page-audit és e-mail-folyamat. A feladat pontos formáját az alkalom előtt találjuk ki (lásd „Új alkalom indítása”).
 
 A hivatalos tematikai pontok szó szerint, a gondolati ív doksiból:

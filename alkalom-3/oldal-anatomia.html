@@ -154,6 +154,32 @@ body.embed{font-size:clamp(16px,1.25vw,22px)}
 .trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(12em,1fr));gap:1em;margin-top:1.2em}.trust div{background:#fff;border-radius:14px;padding:1em;box-shadow:0 10px 30px -22px rgba(27,31,58,.5);border-top:4px solid var(--cobalt)}.trust b{font-family:var(--display);font-weight:500;font-size:1.15em;display:block}.trust span{color:var(--ink-soft);font-size:.92em}
 html{scroll-behavior:auto}
 @media (min-width:900px){.trust{grid-template-columns:repeat(5,1fr)}}
+/* v0.5: hero és hajtás */
+.m-hero{position:relative;margin:12px 14px 0;border:2px dashed rgba(30,75,216,.35);border-radius:14px;padding-top:26px}
+.m-zone{position:absolute;top:0;right:14px;transform:translateY(-50%);background:#F2C94C;color:#1B1F3A;font:700 11px/1 'Source Sans 3',sans-serif;letter-spacing:.04em;text-transform:uppercase;padding:5px 9px;border-radius:99px}
+.m-hero.zlit{border-color:var(--cobalt);border-style:solid}
+.mock.focus .m-zone{opacity:.4}.m-hero.zlit .m-zone{opacity:1}
+.m-fold{position:relative;margin:16px 0 12px;border-top:2px dashed #C9C2B4}
+.m-fold span{position:absolute;right:16px;top:-.75em;background:var(--b-bg);padding:0 8px;font-size:.8em;color:#8A8576}
+.mock.wire .m-fold span{background:#fff}
+.legend li.grp{counter-increment:none}
+.legend li.grp::before{counter-increment:none;content:"H";background:#F2C94C;color:#1B1F3A}
+/* v0.6: a hajtás alatti elemek */
+.m-sec{grid-column:1/-1;flex-basis:100%;font-weight:700;color:var(--b-ink);margin:0 0 4px;font-size:.95em}
+.m-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:20px 28px 8px}
+.m-steps div{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:start}
+.m-steps i:not(.pin){grid-row:span 2;font-style:normal;width:26px;height:26px;border-radius:50%;border:2px solid var(--b-acc);color:var(--b-acc);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.85em}
+.m-steps b{color:var(--b-ink)}.m-steps small{color:var(--b-soft)}
+.m-faq{padding:16px 28px 6px}
+.m-faq .qa{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#fff;border-radius:10px;padding:9px 14px;margin-bottom:6px}
+.m-faq .qa b{font-weight:600}.m-faq .qa span{color:var(--b-acc);font-weight:700}
+.m-faq .qa.open small{flex-basis:100%;color:var(--b-soft)}
+.m-form{flex-wrap:wrap}
+.m-form span.m-cta{flex:0 0 auto;height:auto;border:0;background:var(--b-acc);color:#fff;display:inline-block;padding:.65em 1.2em}
+.m-foot{display:flex;flex-wrap:wrap;gap:6px 18px;padding:14px 28px;background:#2B2731;color:#CFC8BC;font-size:.8em}
+.m-foot span:first-child{color:#fff;font-weight:600;margin-right:auto}
+.mock.wire .m-faq .qa,.mock.wire .m-foot{background:#f4f4f4!important}
+.mock.wire .m-steps i:not(.pin){border-color:#bbb!important}
 </style>
 </head>
 <body>
@@ -168,29 +194,37 @@ html{scroll-behavior:auto}
     <div class="mock" id="mock">
       <div class="chrome"><i></i><i></i><i></i><span>szoforgo.hu/angol-osz</span></div>
       <div class="m-nav" data-k="1"><span class="m-logo">Szó<em>forgó</em></span><span class="links"><span>Tanfolyamok</span><span>Árak</span><span>Kapcsolat</span></span></div>
-      <div class="m-hero">
+      <div class="m-hero" id="hero"><span class="m-zone">Hero · az első képernyő</span>
         <div>
           <div class="m-h" data-k="2">Angolul beszélni, nem magolni.</div>
           <div class="m-sub" data-k="3">Kis csoportos esti tanfolyam Veszprémben, legfeljebb 8 fővel. Kezdés október 20.</div>
-          <div data-k="6"><span class="m-cta">Kérem a szintfelmérőt</span><span class="m-cta2">Árak</span></div>
+          <div data-k="4"><span class="m-cta">Kérem a szintfelmérőt</span><span class="m-cta2">Árak</span></div>
         </div>
-        <div class="m-img" data-k="4"></div>
+        <div class="m-img" data-k="5"></div>
       </div>
-      <div class="m-ben" data-k="5"><div><b>8 fő</b><small>a csoport maximum</small></div><div><b>10 perc</b><small>ingyenes szintfelmérő</small></div><div><b>Visszajár</b><small>ha az első óra nem tetszik</small></div></div>
+      <div class="m-fold"><span>hajtás · ami fölötte van, görgetés nélkül is látszik</span></div>
+      <div class="m-ben" data-k="6"><div><b>8 fő</b><small>a csoport maximum</small></div><div><b>10 perc</b><small>ingyenes szintfelmérő</small></div><div><b>Visszajár</b><small>ha az első óra nem tetszik</small></div></div>
       <div class="m-proof" data-k="7"><span class="stars">★★★★★</span><b>4,9</b><q>Két hónap után mertem először angolul telefonálni.</q></div>
-      <div class="m-form" data-k="8"><span>Neved</span><span>E-mail-címed</span><span class="m-cta">Jelentkezem</span></div>
-      <div class="m-trust" data-k="9"><span>Adataidat csak a szintfelmérőhöz használjuk</span><span>Telefon: 06 88 000 000</span></div>
+      <div class="m-steps" data-k="8"><p class="m-sec">Így működik</p><div><i>1</i><b>Szintfelmérő</b><small>10 perc, online</small></div><div><i>2</i><b>Próbaóra</b><small>ingyenes, kötelezettség nélkül</small></div><div><i>3</i><b>Csoportba lépsz</b><small>október 20-tól, heti két este</small></div></div>
+      <div class="m-faq" data-k="9"><p class="m-sec">Gyakori kérdések</p><div class="qa open"><b>Mi van, ha teljesen kezdő vagyok?</b><small>A szintfelmérő alapján kezdő csoportba kerülsz.</small></div><div class="qa"><b>Mennyibe kerül egy hónap?</b><span>+</span></div><div class="qa"><b>Mi van, ha lemaradok egy óráról?</b><span>+</span></div></div>
+      <div class="m-form" data-k="10"><p class="m-sec">Kezdjük a szintfelmérővel</p><span>Neved</span><span>E-mail-címed</span><span class="m-cta">Kérem a szintfelmérőt</span></div>
+      <div class="m-trust" data-k="11"><span>Adataidat csak a szintfelmérőhöz használjuk</span><span>Telefon: 06 88 000 000</span></div>
+      <div class="m-foot" data-k="12"><span>Szóforgó Nyelvstúdió · Veszprém</span><span>Impresszum</span><span>ÁSZF</span><span>Adatkezelés</span><span>Kapcsolat</span></div>
     </div>
     <ol class="legend" id="legend">
       <li data-k="1"><div><b>Fejléc és logó</b><span>Kinél vagyok? A navigáció a landingen minimális: kevés kijárat.</span></div></li>
+      <li data-k="H" class="grp"><div><b>Hero, az első képernyő</b><span>A cím, az alcím, a fő gomb és a kép együtt. Ennyit lát görgetés nélkül, és itt dől el, marad‑e. A hajtás alatt csak az olvas tovább, akit a hero megfogott.</span></div></li>
       <li data-k="2"><div><b>Cím</b><span>Egy ígéret, amit a hirdetés is mondott. Nem „Üdvözöljük!”.</span></div></li>
       <li data-k="3"><div><b>Alcím</b><span>Mit kapsz, kinek szól, hol, mikor. Itt válaszol Chaffey négy kérdésére.</span></div></li>
-      <li data-k="4"><div><b>Kép</b><span>Megmutatja, milyen lesz. Nem díszít, hanem bizonyít.</span></div></li>
-      <li data-k="5"><div><b>Előnyök</b><span>Három, nem tizenhárom. Számokkal, amiket a szem egy pillantással felvesz.</span></div></li>
-      <li data-k="6"><div><b>Fő gomb</b><span>Egy, kiemelt színnel. A második lehetőség csak szöveges link.</span></div></li>
+      <li data-k="4"><div><b>Fő gomb</b><span>Egy, kiemelt színnel, még a hajtás fölött. A második lehetőség csak szöveges link.</span></div></li>
+      <li data-k="5"><div><b>Kép</b><span>Megmutatja, milyen lesz. Nem díszít, hanem bizonyít.</span></div></li>
+      <li data-k="6"><div><b>Előnyök</b><span>Három, nem tizenhárom. Számokkal, amiket a szem egy pillantással felvesz.</span></div></li>
       <li data-k="7"><div><b>Társas bizonyíték</b><span>Mások már kipróbálták: értékelés, valódi idézet.</span></div></li>
-      <li data-k="8"><div><b>Űrlap</b><span>Csak annyi mező, amennyi tényleg kell.</span></div></li>
-      <li data-k="9"><div><b>Bizalmi apróságok</b><span>Adatkezelés egy mondatban, elérhetőség, valódi telefonszám.</span></div></li>
+      <li data-k="8"><div><b>Hogyan működik</b><span>Három lépés arra a kérdésre, hogy mi történik, ha jelentkezem. Amit előre lát, attól nem tart.</span></div></li>
+      <li data-k="9"><div><b>Gyakori kérdések</b><span>Az ellenvetésekre felel, mielőtt a látogató máshol keresné a választ.</span></div></li>
+      <li data-k="10"><div><b>Űrlap és ismételt fő gomb</b><span>Aki végigolvasta, itt lép, nem kell visszagörgetnie. Ugyanaz a gomb, mint fent, és csak annyi mező, amennyi tényleg kell.</span></div></li>
+      <li data-k="11"><div><b>Bizalmi apróságok</b><span>Adatkezelés egy mondatban, elérhetőség, valódi telefonszám.</span></div></li>
+      <li data-k="12"><div><b>Lábléc</b><span>Cégnév, impresszum, ÁSZF, adatkezelés: a hiteles cég jele. Aki idáig görget, az már komolyan gondolja.</span></div></li>
     </ol>
   </div>
   <p class="lead" style="font-size:.9em">A Szóforgó kitalált márka, a minta kedvéért.</p>
@@ -276,20 +310,20 @@ html{scroll-behavior:auto}
   <div class="swatch-l"><span>Háttér · nyugodt</span><span>Szöveg · olvasható</span><span>Másodlagos szöveg</span><span>Márkaszín</span><span>Cselekvés · csak a gomb</span></div>
 </div></section>
 
-<footer><div class="wrap">Online marketing · Pannon Egyetem · 2026 ősz · 3. alkalom · <span id="ver">v0.4 · 2026. október 11. · vázlat</span></div></footer>
+<footer><div class="wrap">Online marketing · Pannon Egyetem · 2026 ősz · 3. alkalom · <span id="ver">v0.6 · 2026. október 11. · vázlat</span></div></footer>
 
 <script>
 (function(){
   if(/embed/.test(location.search))document.body.classList.add('embed');
   var mock=document.getElementById('mock'),leg=document.getElementById('legend');
-  function lit(k){mock.classList.add('focus');mock.querySelectorAll('[data-k]').forEach(function(e){e.classList.toggle('lit',e.getAttribute('data-k')===k)});leg.querySelectorAll('li').forEach(function(l){l.classList.toggle('on',l.getAttribute('data-k')===k)})}
-  function off(){mock.classList.remove('focus');mock.querySelectorAll('.lit').forEach(function(e){e.classList.remove('lit')});leg.querySelectorAll('li').forEach(function(l){l.classList.remove('on')})}
+  function lit(k){var HZ=['2','3','4','5'];mock.classList.add('focus');document.getElementById('hero').classList.toggle('zlit',k==='H');mock.querySelectorAll('[data-k]').forEach(function(e){var d=e.getAttribute('data-k');e.classList.toggle('lit',d===k||(k==='H'&&HZ.indexOf(d)>-1))});leg.querySelectorAll('li').forEach(function(l){l.classList.toggle('on',l.getAttribute('data-k')===k)})}
+  function off(){document.getElementById('hero').classList.remove('zlit');mock.classList.remove('focus');mock.querySelectorAll('.lit').forEach(function(e){e.classList.remove('lit')});leg.querySelectorAll('li').forEach(function(l){l.classList.remove('on')})}
   leg.querySelectorAll('li').forEach(function(l){l.addEventListener('mouseenter',function(){lit(l.getAttribute('data-k'))});l.addEventListener('click',function(){lit(l.getAttribute('data-k'))})});
   leg.addEventListener('mouseleave',off);
   mock.querySelectorAll('[data-k]').forEach(function(e){e.addEventListener('mouseenter',function(){lit(e.getAttribute('data-k'))})});
   mock.addEventListener('mouseleave',off);
   /* számozott jelölők */
-  mock.querySelectorAll('[data-k]').forEach(function(e){var p=document.createElement('i');p.className='pin';p.textContent=e.getAttribute('data-k');if(['1','5','7','8','9'].indexOf(e.getAttribute('data-k'))>-1)p.classList.add('edge');e.appendChild(p)});
+  mock.querySelectorAll('[data-k]').forEach(function(e){var p=document.createElement('i');p.className='pin';p.textContent=e.getAttribute('data-k');if(['1','5','6','7','8','9','10','11','12'].indexOf(e.getAttribute('data-k'))>-1)p.classList.add('edge');e.appendChild(p)});
   var bs=document.querySelectorAll('#mode button');bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.classList.toggle('on',x===b)});mock.classList.toggle('wire',b.getAttribute('data-v')==='wire')})});
 })();
 </script>

@@ -13,3 +13,15 @@ deployment:
     - /bin/cp alkalom-3/online-marketing-2026-evad-3-epizod.html $DEPLOYPATH
     - /bin/cp alkalom-3/oldal-anatomia.html $DEPLOYPATH
     - /bin/cp alkalom-3/oldal-vizsgalat.html $DEPLOYPATH
+    - export LDEPLOY=/home2/egyetembemind/public_html/om2026levelezo/
+    - /bin/mkdir -p $LDEPLOY
+    - /bin/cp LEVELEZ*/index.html $LDEPLOY
+    - /bin/cp app.html $LDEPLOY
+    - /bin/cp api.php $LDEPLOY
+    - /bin/cp alkalom-1/online-marketing-2026-evad-1-epizod.html $LDEPLOY
+    - /bin/cp alkalom-2/online-marketing-2026-evad-2-epizod.html $LDEPLOY
+    - /bin/cp alkalom-2/journey-terkep.html $LDEPLOY
+    - /bin/cp alkalom-2/journey-tippek.html $LDEPLOY
+    - /bin/cp alkalom-3/online-marketing-2026-evad-3-epizod.html $LDEPLOY
+    - /bin/cp alkalom-3/oldal-anatomia.html $LDEPLOY
+    - /bin/cp alkalom-3/oldal-vizsgalat.html $LDEPLOY
