@@ -500,6 +500,30 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 .slide > p.small.muted,.slide > div > p.small.muted,.slide > div > div > p.small.muted,.btn-cap{font-size:.9rem;color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:62ch;margin-top:1em;line-height:1.4}
 .kicker .lt{font-size:.95em}
 .slide.fit{font-size:.88em}
+/* ===== v0.24: egy betűrendszer. Két család, két vastagság családonként, öt méret ===== */
+:root{--t-xl:3.4rem;--t-h2:2.3rem;--t-h3:1.2rem;--t-lead:1.12rem;--t-body:.92rem;--t-sm:.78rem}
+.slide,.slide.dense,.slide.roomy,.slide.fit{font-size:var(--t-body)!important}
+.slide *{font-size:inherit!important;font-style:normal!important;letter-spacing:normal!important;text-transform:none!important}
+.slide b,.slide strong,.slide th,.slide .label,.slide .mini-h,.slide .wf-btn.main,.slide .btn-big,.slide .verdict{font-weight:600!important}
+/* Fraunces: csak 500 */
+.slide :is(h1,h2,h3,.quote,.voice,.qt,.imper,.imper span,.bt-q,.num,.wf-h,.wf-logo,.u-h,.tank b,.fk .ph,td.sq,td.sq i,.seq3 b,.seq3 b i,.stdc4 .hd b,.task4 b,.task4 .n,.steps3 b,.story3 .cond b,.story3 li span,.lyuk b,.def3 b,.persona b,.persona .av,.ep b,.blocks b,.card h3,.chain li::before,.shift .t,.shift2 .t,td:first-child,.types span,.cloud,.cloud span){font-family:var(--display)!important;font-weight:500!important}
+.slide table.vp td:first-child{font-family:var(--body)!important;font-weight:400!important}
+.slide .uxm:not(.ui) *{font-family:var(--body)!important;font-weight:400!important}
+/* méretek */
+.slide :is(h1,.bt-q,.num,.qt.big){font-size:var(--t-xl)!important;line-height:1.02}
+.slide h2{font-size:var(--t-h2)!important}
+.slide :is(h3,.card h3,.quote,.voice,.qt,.imper,.u-h,.uxm.ui .u-h,.wf-h,.seq3 b,.stdc4 .hd b,.task4 b,.steps3 b,.story3 .cond b,.lyuk b,.def3 b,.persona b,.ep b,.blocks b,.fk .ph,.tank b,td.sq,.lay-wf.b .t1){font-size:var(--t-h3)!important;line-height:1.2}
+.slide :is(.lead,.seen,.flash-q,.cost-sum,.task){font-size:var(--t-lead)!important}
+.slide :is(.kicker,.kicker *,.label,.k,.k2,.lab,.small,.small *,.verdict,.chips span,.cure,.fb-msg,.fb-cart,.fb-cart i,.fold,.f-ok,.ux-def span,.lqs,.lqs li,.slot,.stdc4 .hd small,.seq3 .lab,th,th small,.how .k,.ep .d,.ep .p,.chain li span,.btn){font-size:var(--t-sm)!important}
+/* képaláírás: törzsszöveg-méret, halvány, sárga vonallal */
+.slide > p.small.muted,.slide > div > p.small.muted,.slide > div > div > p.small.muted,.slide .btn-cap{font-size:var(--t-body)!important}
+.slide .kicker .lt{font-size:var(--t-sm)!important}
+.slide .seen b,.slide .lenslist li b{font-family:var(--body)!important;font-weight:600!important}
+.slide a:not(.btn-big):not(.btn){color:var(--cobalt)}
+.slide .ux-def{font-family:var(--body)!important}
+.slide .ln{font-weight:inherit!important}
+.slide .card p.small.muted{border-left:0;padding-left:0;margin-top:0}
+svg.flow .fs,svg.flow .fl,svg.flow .fm,svg.flow .fm2{font-size:17px}svg.flow .fl{font-weight:600}svg.flow .fh{letter-spacing:0;text-transform:none;font-size:15px}
 </style>
 </head>
 <body>
@@ -523,8 +547,9 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   <p class="kicker">2026. október 12.</p>
   <h1>A saját terep</h1>
   <p class="lead">Hol fogadjuk, amikor megérkezik hozzánk</p>
+  <p class="lead"><span class="hl">Mit mondunk, és hogyan mondjuk el, hogy bizalmat kapjunk.</span></p>
   <hr class="rule">
-  <p class="small muted">A tematikából: weboldal és UX/UI mint forgalomterelő felület, loyalty- és regisztrációs logika · automatizált e-mail-marketing · GDPR és jogi vonatkozások</p>
+  <p class="small muted">A tematikából: weboldal és UX/UI mint forgalomterelő felület, loyalty- és regisztrációs logika · automatizált e-mail-marketing</p>
 </section>
 
 <section class="slide dense" data-notes="c2" data-sec="keret">
@@ -579,6 +604,16 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   <p class="lead" style="margin-top:1em">Minden kérdőjel a fejében figyelmet fogyaszt. Hol vagyok, ez kattintható-e, mit jelent ez a szó, mennyibe kerül? Azt keresi, amit KAPHAT, nem azt, amit neki akarnak (EL)ADNI.</p>
 </section>
 
+<section class="slide" data-notes="h1">
+  <p class="kicker">Miért számít · A bizalom</p>
+  <h2>A goodwill-tartály</h2>
+  <div class="gw" data-ix="gw">
+    <div class="tank"><i></i><b>70</b></div>
+    <div><ol class="gw-steps"></ol><button type="button" class="btn-big gw-next">Következő lépés</button> <button type="button" class="gw-reset">Újra</button></div>
+  </div>
+  <p class="small muted">Mindenki egy adag jóindulattal érkezik. Minden akadály fogyaszt belőle, minden segítség visszatölt bele.</p>
+</section>
+
 <section class="slide dense" data-notes="d0">
   <p class="kicker">UX és UI</p>
   <h2>Mi a UX, és mi a UI?</h2>
@@ -630,10 +665,11 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 <section class="slide dense" data-notes="m1">
   <p class="kicker">A mai nap módszere</p>
   <h2>Hogyan, mit gondoljunk át?</h2>
+  <p class="lead" style="margin:-.3em 0 .6em">A végén a kérdés: kapunk-e érte bizalmat?</p>
   <div class="grid3 lensgrid">
-    <div class="card"><p class="small muted">kattintás nélkül</p><h3>Ránézés</h3><ol class="lenslist"><li><b>1</b>Miről szól az oldal?</li><li><b>2</b>Mit akar az oldal?</li><li><b>3</b>Mit mond a márka, milyen a hangvétel?</li></ol></div>
-    <div class="card"><p class="small muted">görgetve</p><h3>Olvasás</h3><ol class="lenslist"><li><b>4</b>Tartalom</li><li><b>5</b>Layout</li></ol></div>
-    <div class="card"><p class="small muted">kattintva</p><h3>Cselekvés</h3><ol class="lenslist"><li><b>6</b>Folyamat: vezetett az oldal?</li><li><b>7</b>Konverziós pontok</li><li><b>8</b>Bizalom</li></ol></div>
+    <div class="card"><p class="small muted">kattintás nélkül · mit mondunk</p><h3>Ránézés</h3><ol class="lenslist"><li><b>1</b>Miről szól az oldal?</li><li><b>2</b>Mit akar az oldal?</li><li><b>3</b>Mit mond a márka, milyen a hangvétel?</li></ol></div>
+    <div class="card"><p class="small muted">görgetve · mit mondunk</p><h3>Olvasás</h3><ol class="lenslist"><li><b>4</b>Tartalom</li><li><b>5</b>Layout</li></ol></div>
+    <div class="card"><p class="small muted">kattintva · hogyan mondjuk el</p><h3>Cselekvés</h3><ol class="lenslist"><li><b>6</b>Folyamat: vezetett az oldal?</li><li><b>7</b>Konverziós pontok</li><li><b>8</b>Bizalom</li></ol></div>
   </div>
   <div class="steps3">
     <div><b>1. Mit látok?</b>Hol, mit, ha lehet, idézettel.</div>
@@ -774,15 +810,6 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   <p class="lead" style="margin-top:1em">Minden kattintás után a látogató azt kérdezi: megtörtént? Ha az oldal nem felel, kattint még egyszer, vagy elmegy. A visszajelzés és a lépésjelző erre a kérdésre felel.</p>
 </section>
 
-<section class="slide" data-notes="h1">
-  <p class="kicker"><span class="lt">6. szempont</span>Cselekvés · Hol akad el</p>
-  <h2>A goodwill-tartály</h2>
-  <div class="gw" data-ix="gw">
-    <div class="tank"><i></i><b>70</b></div>
-    <div><ol class="gw-steps"></ol><button type="button" class="btn-big gw-next">Következő lépés</button> <button type="button" class="gw-reset">Újra</button></div>
-  </div>
-  <p class="small muted">Mindenki egy adag jóindulattal érkezik. Minden akadály fogyaszt belőle, minden segítség visszatölt bele.</p>
-</section>
 
 <section class="slide" data-notes="h3">
   <p class="kicker"><span class="lt">6. szempont</span>Cselekvés · Hol akad el</p>
@@ -969,6 +996,7 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 <section class="slide center" data-notes="g4">
   <p class="kicker">Zárás</p>
   <h2>Ha a látogatónak gondolkodnia kell, hol van és mit tegyen, az oldal már veszített.</h2>
+  <p class="lead">Ma erre feleltünk: mit mondunk, és hogyan mondjuk el, hogy bizalmat kapjunk.</p>
   <hr class="rule">
   <p class="lead">Legközelebb, 2026. november 2-án: milyen lehetőségeink vannak elérni a vevőt?</p>
 </section>
@@ -976,7 +1004,7 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.22 · 2026. október 11. · vázlat</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.25 · 2026. október 11. · vázlat</span></div>
 <div class="pager"><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -1098,7 +1126,7 @@ html,body{font-size:clamp(22px,1.78vw,32px)}
   document.querySelectorAll('[data-ix="btn"]').forEach(function(r){var w=r.querySelector('.btn-wf'),c=r.querySelector('.btn-cap');seg(r,function(v){w.classList.toggle('one',v==='1');c.textContent=v==='1'?'Egy kiemelt gomb, a többi szövegként: a szem tudja, hova menjen.':'Négy egyforma gomb: négy döntés. Minél több az egyenrangú választás, annál lassabb a döntés.'})});
   document.querySelectorAll('[data-ix="txt"]').forEach(function(r){seg(r,function(v){r.querySelector('.txt-a').hidden=v!=='a';r.querySelector('.txt-b').hidden=v!=='b'})});
   document.querySelectorAll('[data-ix="mm"]').forEach(function(r){var o=r.querySelector('.mm-out');r.querySelectorAll('.mm-opts button').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();r.querySelectorAll('.mm-opts button').forEach(function(x){x.classList.remove('ok','no')});var good=b.getAttribute('data-ok')==='1';b.classList.add(good?'ok':'no');o.textContent=b.getAttribute('data-fb')})})});
-  document.querySelectorAll('[data-ix="flash"]').forEach(function(r){var w=r.querySelector('.flash-wf'),q=r.querySelector('.flash-q');r.querySelector('.btn-big').addEventListener('click',function(e){e.stopPropagation();q.textContent='';w.classList.add('show');setTimeout(function(){w.classList.remove('show');q.textContent='Mit láttál? Tetszett?'},50)})});
+  document.querySelectorAll('[data-ix="flash"]').forEach(function(r){var w=r.querySelector('.flash-wf'),q=r.querySelector('.flash-q');r.querySelector('.btn-big').addEventListener('click',function(e){e.stopPropagation();q.textContent='';w.classList.add('show');setTimeout(function(){w.classList.remove('show');q.textContent='Egy másodpercig láttad. A döntés ennél hússzor gyorsabb. Mit láttál? Tetszett?'},1000)})});
   document.querySelectorAll('[data-ix="form"]').forEach(function(r){var bad=r.querySelector('.f-bad'),bm=r.querySelector('.f-msg.bad'),mail=r.querySelector('.f-mail'),ok=r.querySelector('.f-ok'),good=r.querySelector('.f-good'),gm=r.querySelector('.f-msg.good');r.querySelectorAll('input,button').forEach(function(x){x.addEventListener('click',function(e){e.stopPropagation()})});bad.addEventListener('click',function(){r.querySelectorAll('.phone input:not(.f-mail)').forEach(function(i){i.value=''});bm.textContent='Hiba történt. Kérjük, töltse ki újra az űrlapot.'});mail.addEventListener('input',function(){var v=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value);ok.textContent=mail.value?(v?'Rendben.':'Hiányzik még valami a címből.'):''});good.addEventListener('click',function(){gm.textContent=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value)?'Elküldtük. Nézd meg a postafiókodat, 1 percen belül ott lesz.':'Írd be az e-mail-címed, és már küldjük is.'})});
   document.querySelectorAll('[data-ix="gw"]').forEach(function(r){var lv=70,k=0,t=r.querySelector('.tank i'),n=r.querySelector('.tank b'),ol=r.querySelector('.gw-steps');var S=[['Megérkezik egy hirdetésből a termékoldalra',0],['Nem találja a szállítási díjat',-15],['A kosárban kiderül: regisztrálnia kell',-20],['Van „vendégként folytatom” gomb',+10],['Az űrlap hibánál kitörli, amit beírt',-25],['A címet a böngésző magától kitölti',+5],['A végén: „Köszönjük, a csomagot holnap hozzuk”',+10]];function draw(){t.style.height=Math.max(0,lv)+'%';t.style.background=lv<30?'#C0392B':lv<50?'var(--marker)':'var(--cobalt)';n.textContent=Math.max(0,lv)}r.querySelector('.gw-next').addEventListener('click',function(e){e.stopPropagation();if(k>=S.length)return;var s=S[k++];lv+=s[1];var li=document.createElement('li');li.innerHTML='<span></span><span class="d '+(s[1]<0?'m':'p')+'">'+(s[1]>0?'+':'')+(s[1]||'')+'</span>';li.firstChild.textContent=s[0];ol.appendChild(li);draw()});r.querySelector('.gw-reset').addEventListener('click',function(e){e.stopPropagation();lv=70;k=0;ol.innerHTML='';draw()});draw()});
 })();

@@ -180,6 +180,7 @@ textarea{min-height:4.2em;resize:vertical}
     <div style="margin-top:1.4em;max-width:72ch"><label for="sentence">Egy mondatban a márkátok oldala (kötelező, ez látszik a listán): „A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen a látogató], és ebben [miben] segíti, [miben] akadályozza.”</label><textarea id="sentence" placeholder="A … oldala … szól, azt akarja, hogy …, és ebben … segíti, … akadályozza."></textarea></div>
     <div style="margin-top:.8em;max-width:72ch"><label for="decA" id="decAlab">A legtudatosabb döntés a ti oldalatokon: mi az, és mit akar vele elérni a márka?</label><textarea id="decA"></textarea></div>
     <div style="margin-top:.8em;max-width:72ch"><label for="decB">A legtudatosabb döntés a külső oldalon: mi az, és mit akar vele elérni a márka?</label><textarea id="decB"></textarea></div>
+    <div style="margin-top:.8em;max-width:72ch"><label for="unsure">Az öt közül mit nem tudtok biztosan a márkátokról, és miért? (ki beszél, kihez beszélünk, mit mondunk, hogyan jutunk el hozzá, honnan tudjuk, hogy eljutott) Egy mondat, a 7. alkalom briefjébe kerül.</label><textarea id="unsure" placeholder="Az öt közül ezt nem tudjuk biztosan: …, mert …"></textarea></div>
     <div style="margin-top:.8em;max-width:72ch"><label for="who">Ki mit csinált ma</label><textarea id="who"></textarea></div>
     <div class="noprint" style="margin-top:1em">
       <div style="display:flex;gap:.6em;flex-wrap:wrap"><button class="btn solid" id="send">Beküldés</button><button class="btn" id="preview">Előnézet</button></div>
@@ -189,7 +190,7 @@ textarea{min-height:4.2em;resize:vertical}
     </div>
   </section>
 
-  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.1 · 2026. október 11.</p>
+  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.2 · 2026. október 11.</p>
 </main>
 
 <script>
@@ -220,7 +221,7 @@ textarea{min-height:4.2em;resize:vertical}
   var ANS=[['igen','működik'],['reszben','részben'],['nem','nem működik']];
   var KEY='om2026-oldal-ep3-v2';
   var TEAMS={}, SUBS={};
-  function blank(){return {team:'',brand:'',device:'telefon',noown:false,ownurl:'',ext:'',exturl:'',ext2:'',ext2url:'',search:'',sentence:'',decA:'',decB:'',who:'',A:{},B:{}}}
+  function blank(){return {team:'',brand:'',device:'telefon',noown:false,ownurl:'',ext:'',exturl:'',ext2:'',ext2url:'',search:'',sentence:'',decA:'',decB:'',unsure:'',who:'',A:{},B:{}}}
   var S=blank();
   try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in o)S[k]=o[k]}}catch(e){}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -260,7 +261,7 @@ textarea{min-height:4.2em;resize:vertical}
   }
   function drawAll(){drawRounds();drawMap()}
 
-  var FIELDS=['team','brand','device','ownurl','ext','exturl','ext2','ext2url','search','sentence','decA','decB','who'];
+  var FIELDS=['team','brand','device','ownurl','ext','exturl','ext2','ext2url','search','sentence','decA','decB','unsure','who'];
   function grow(t){t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'}
   function growAll(){[].forEach.call(document.querySelectorAll('.pane.on textarea, #ext2row textarea'),grow)}
   function fill(){ brands(BRANDLIST); FIELDS.forEach(function(f){$(f).value=S[f]||''}); $('noown').checked=!!S.noown; noownUI(); drawAll(); growAll(); }
@@ -296,10 +297,10 @@ textarea{min-height:4.2em;resize:vertical}
       f5:roundTxt([1,2],['B']),
       f6:roundTxt([3],['A']),
       f7:roundTxt([3],['B']),
-      f8:'A legtudatosabb döntés, '+nm('A')+': '+((S.decA||'').trim()||'nincs kitöltve')+'\nA legtudatosabb döntés, '+nm('B')+': '+((S.decB||'').trim()||'nincs kitöltve')+'\n\nÁttekintés (működik?, '+nm('A')+' / '+nm('B')+')\n'+map
+      f8:'Az öt közül ezt nem tudjuk biztosan: '+((S.unsure||'').trim().replace(/^Az öt közül ezt nem tudjuk biztosan:\s*/i,'')||'nincs kitöltve')+'\n\nA legtudatosabb döntés, '+nm('A')+': '+((S.decA||'').trim()||'nincs kitöltve')+'\nA legtudatosabb döntés, '+nm('B')+': '+((S.decB||'').trim()||'nincs kitöltve')+'\n\nÁttekintés (működik?, '+nm('A')+' / '+nm('B')+')\n'+map
     };
   }
-  var LABELS={f1:'Ki mit csinált ma',f2:'A két oldal',f3:'Egy mondatban',f4:'Ránézés és olvasás (1–5. szempont), saját (vagy második külső) oldal',f5:'Ránézés és olvasás (1–5. szempont), külső oldal',f6:'Cselekvés (6–8. szempont), saját (vagy második külső) oldal',f7:'Cselekvés (6–8. szempont), külső oldal',f8:'A legtudatosabb döntések és az áttekintés'};
+  var LABELS={f1:'Ki mit csinált ma',f2:'A két oldal',f3:'Egy mondatban',f4:'Ránézés és olvasás (1–5. szempont), saját (vagy második külső) oldal',f5:'Ránézés és olvasás (1–5. szempont), külső oldal',f6:'Cselekvés (6–8. szempont), saját (vagy második külső) oldal',f7:'Cselekvés (6–8. szempont), külső oldal',f8:'Amit nem tudunk biztosan, a legtudatosabb döntések és az áttekintés'};
   $('preview').addEventListener('click',function(){var b=blocks(),h=''; ['f1','f2','f3','f4','f5','f6','f7','f8'].forEach(function(f){var s=b[f]||''; h+='<div><b>'+LABELS[f]+'</b><pre>'+esc(s||'(üres)')+'</pre>'+(s.length>4000?'<p class="long">Ez a blokk '+s.length+' karakter, a szerver 4000 után levágja. Rövidítsetek.</p>':'')+'</div>'}); $('out').innerHTML=h});
 
   var API='api.php';
@@ -335,6 +336,7 @@ textarea{min-height:4.2em;resize:vertical}
     for(var k in m)S.A[k]={v:m[k][0],t:m[k][1],w:W[k]};
     S.sentence='Minta: a Tunki-Tunki oldala annak szól, aki kíváncsi a vegán nassolásra, azt akarja, hogy kosárba tegyen egy-két mártogatóst, és ebben a nyílt kosár és a rövid pénztár segíti, az első képernyő és a kosárba tétel gyenge visszajelzése akadályozza.';
     S.decA='Minta: a kosárban előre látszik a szállítási díj, az ingyenes szállításig hiányzó összeg és a szállítási nap. Ezzel a márka a pénzügyi kockázatot csökkenti ott, ahol a vásárló dönt, és arra ösztönöz, hogy még egy terméket tegyen a kosárba.';
+    S.unsure='Minta: kihez beszélünk, mert az első képernyő annak szól, aki már ismeri a márkát, és nem derül ki, mit kap, aki most látja először.';
     S.who='Minta, a deck bemutatója.';
     save(); fill(); demoUI();
   });
