@@ -410,7 +410,7 @@ textarea{min-height:4.2em;resize:vertical}
     var b=blocks(); if(!b.f3){$('status').textContent='Az egy mondat hiányzik, enélkül nem lehet beküldeni.';return}
     if(SUBS&&SUBS[tid]&&!confirm('Ennek a csapatnak már van beküldött munkája. Ez felülírja. Folytatod?'))return;
     b.team=tid; $('status').textContent='Küldés…';
-    api('submit',b).then(function(d){if(d.ok)SUBS[tid]=true; $('status').textContent=d.ok?'Beküldve.':d.error}).catch(function(){$('status').textContent='Nem sikerült, a szerver nem válaszol.'});
+    api('submit',b).then(function(d){if(d.ok)SUBS[tid]=true; $('status').textContent=d.ok?'Leadtad, ügyes voltál! 🎉':d.error}).catch(function(){$('status').textContent='Nem sikerült, a szerver nem válaszol.'});
   });
   $('print').addEventListener('click',function(){window.print()});
   $('clear').addEventListener('click',function(){ if(!confirm('Új, üres lap? A mostani tartalom törlődik ebből a böngészőből.'))return; var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; try{localStorage.removeItem(KEY+'-prev')}catch(e){} save(); fill(); demoUI(); $('out').innerHTML=''});

@@ -346,7 +346,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     if(!b.team){$('l_status').textContent='Válaszd ki a csapatot.';return}
     if(!b.f3){$('l_status').textContent='A mondat nélkül nincs beadás.';return}
     $('l_status').textContent='Küldés…';
-    api('submit',b).then(function(d){$('l_status').textContent=d.ok?'Beküldve. Köszönjük.':d.error}).catch(function(){$('l_status').textContent='Nem sikerült, a szerver nem válaszol.'});
+    api('submit',b).then(function(d){$('l_status').textContent=d.ok?'Leadtad, ügyes voltál! 🎉':d.error}).catch(function(){$('l_status').textContent='Nem sikerült, a szerver nem válaszol.'});
   });
 
   /* szavazás */
