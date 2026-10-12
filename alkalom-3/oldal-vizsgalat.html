@@ -121,6 +121,60 @@ textarea{min-height:4.2em;resize:vertical}
 .tab.on .pn{color:rgba(255,255,255,.35)}
 @media (max-width:980px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.notes3{grid-template-columns:1fr}}
 @media (max-width:520px){.tabs{grid-template-columns:1fr}}
+
+/* v3.4: a következő fázis gombja jól látható sávban, minden fázis alján */
+.nextbar{display:flex;justify-content:space-between;align-items:center;gap:.8em 1.4em;flex-wrap:wrap;margin:1.8em 0 .6em;padding:1em 1.3em;background:var(--ink);color:var(--paper);border-radius:12px}
+.nextbar p{margin:0;max-width:none}
+.nextbar b{color:var(--marker)}
+.nb-st{display:inline-block;margin-right:.6em;padding:.15em .6em;border-radius:99px;background:rgba(255,255,255,.14);color:var(--marker);font-weight:600}
+.nextbar .btn.next{margin:0;background:var(--marker);border-color:var(--marker);color:var(--ink);font-weight:600;font-size:1.05em;padding:.6em 1.3em}
+.nextbar .btn.next:hover{background:#fff;border-color:#fff}
+
+/* v3.5: látlelet az összegzésben */
+.sum-sec{margin-top:1.8em}
+.sum-h{display:flex;gap:.8em;align-items:flex-start;margin-bottom:.9em}
+.sum-h h3{margin:0;font-size:1.25em}
+.sum-h p{margin:.1em 0 0;color:var(--ink-soft)}
+.sum-n{flex:none;width:1.9em;height:1.9em;border-radius:50%;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:500}
+.scores,.insights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9em}
+.insights{margin-top:.9em}
+.scard,.icard{background:#fff;border-radius:12px;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);padding:1em 1.2em;min-width:0}
+.scard{border-top:4px solid var(--cobalt)}
+.scard+.scard{border-top-color:var(--marker)}
+.sk{margin:0;font-size:.8em;font-weight:600;color:var(--ink-soft)}
+.sn{margin:.1em 0 .7em;font-family:var(--display);font-weight:500;font-size:1.15em}
+.sbar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:#ECEAE2}
+.sbar i{display:block;height:100%}
+.s-igen{background:var(--good)}.s-reszben{background:var(--marker)}.s-nem{background:var(--bad)}.s-x{background:#ECEAE2}
+.sleg{margin:.6em 0 0;font-size:.85em;color:var(--ink-soft);display:flex;flex-wrap:wrap;align-items:center;gap:.25em .4em}
+.sleg span{display:inline-block;width:.75em;height:.75em;border-radius:50%;margin-left:.5em}
+.sleg span:first-child{margin-left:0}
+.icard h4{margin:0;font-family:var(--display);font-weight:500;font-size:1.05em}
+.ihint{margin:.2em 0 .6em;font-size:.85em;color:var(--ink-soft)}
+.iempty{margin:0;color:var(--ink-soft)}
+.icard ul{list-style:none;margin:0;padding:0}
+.icard li{display:flex;justify-content:space-between;align-items:center;gap:.6em;padding:.45em 0;border-top:1px solid var(--line)}
+.icard li b{font-weight:600}
+.icard li span{display:flex;gap:.3em;flex:none}
+.icard .dot{font-style:normal;min-width:0}
+.icard .dot em{font-style:normal;opacity:.75;margin-right:.15em}
+.mapwrap{margin-top:.9em}
+.mapwrap summary{cursor:pointer;color:var(--cobalt);font-weight:600;padding:.3em 0}
+.mapwrap .map{margin-top:.5em}
+.fields{list-style:none;margin:0;padding:0;counter-reset:fl;display:grid;gap:1em;max-width:none}
+.fields li{counter-increment:fl;background:#fff;border-radius:12px;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);padding:1em 1.2em;display:grid;grid-template-columns:2em minmax(0,1fr);column-gap:.6em}
+.fields li::before{content:counter(fl);grid-row:1 / span 2;font-family:var(--display);font-weight:500;font-size:1.4em;color:var(--cobalt);line-height:1.1}
+.fields label{display:block;margin-bottom:.5em}
+.fields label b{font-weight:600;font-size:1.05em;color:var(--ink)}
+.fields .req{display:inline-block;margin-left:.4em;font-size:.75em;font-weight:600;color:var(--cobalt);background:#E9EEFC;border-radius:99px;padding:.1em .6em;vertical-align:middle}
+.fields .hint{display:block;margin-top:.2em;font-size:.85em;color:var(--ink-soft)}
+.fields textarea{width:100%}
+.sendbar{display:flex;justify-content:space-between;align-items:center;gap:.8em 1.4em;flex-wrap:wrap;margin:1.8em 0 .6em;padding:1em 1.3em;background:var(--ink);color:var(--paper);border-radius:12px}
+.sendbar p{margin:0;max-width:60ch}
+.sb-btns{display:flex;gap:.6em}
+.sendbar .btn{background:transparent;border-color:rgba(255,255,255,.5);color:var(--paper)}
+.sendbar .btn.solid{background:var(--marker);border-color:var(--marker);color:var(--ink);font-weight:600;font-size:1.05em;padding:.6em 1.4em}
+@media (max-width:800px){.scores,.insights{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -175,41 +229,51 @@ textarea{min-height:4.2em;resize:vertical}
     <h2>1. Ránézés, kattintás nélkül</h2>
     <p class="lead">Nyissátok meg a nyitóoldalt, nézzétek öt másodpercig, aztán fordítsátok le a telefont, és mondjátok ki, mit láttatok. Utána nyugodtan nézzétek tovább az első képernyőt, de még ne görgessetek és ne kattintsatok.</p>
     <div id="r1"></div>
-    <button class="btn noprint next" data-go="p2">Tovább az olvasáshoz →</button>
+    <div class="nextbar noprint"><p><span class="nb-st">1/4 kész</span> Következik: olvasás, görgetve, a 4–5. szempont.</p><button class="btn next" data-go="p2">Tovább a következő fázisra · 2/4 →</button></div>
   </section>
 
   <section class="pane" id="p2">
     <h2>2. Olvasás, görgetve</h2>
     <p class="lead">Most görgessetek végig a nyitóoldalon és egy-két fontos aloldalon (termék, szolgáltatás, rólunk). Úgy olvassatok, ahogy egy látogató: futva, nem betűről betűre.</p>
     <div id="r2"></div>
-    <button class="btn noprint next" data-go="p3">Tovább a cselekvéshez →</button>
+    <div class="nextbar noprint"><p><span class="nb-st">2/4 kész</span> Következik: cselekvés, kattintva, a 6–8. szempont.</p><button class="btn next" data-go="p3">Tovább a következő fázisra · 3/4 →</button></div>
   </section>
 
   <section class="pane" id="p3">
     <h2>3. Cselekvés, kattintva</h2>
     <p class="lead">Válasszátok ki azt a lépést, amit az oldal a legjobban akar (amit a 2. szempontnál találtatok), és próbáljátok ki: a kosárig és a pénztár első lépéséig, a foglalás vagy a jelentkezés űrlapjáig, a feliratkozásig. Közben figyeljétek, vezet-e az oldal.</p>
     <div id="r3"></div>
-    <button class="btn noprint next" data-go="p4">Tovább az összegzéshez →</button>
+    <div class="nextbar noprint"><p><span class="nb-st">3/4 kész</span> Következik: összegzés és leadás.</p><button class="btn next" data-go="p4">Tovább a következő fázisra · 4/4 →</button></div>
   </section>
 
   <section class="pane" id="p4">
-    <h2>Összegzés</h2>
-    <p class="lead">Így néz ki a két oldal a nyolc szemponton át. Ahol két szín eltér, ott érdemes megkérdezni, miért döntött másképp a két márka.</p>
-    <div style="overflow-x:auto"><table class="map" id="map"></table></div>
-    <div style="margin-top:1.4em;max-width:72ch"><label for="sentence">Egy mondatban a márkátok oldala (kötelező, ez látszik a listán): „A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen a látogató], és ebben [miben] segíti, [miben] akadályozza.”</label><textarea id="sentence" placeholder="A … oldala … szól, azt akarja, hogy …, és ebben … segíti, … akadályozza."></textarea></div>
-    <div style="margin-top:.8em;max-width:72ch"><label for="decA" id="decAlab">A legtudatosabb döntés a ti oldalatokon: mi az, és mit akar vele elérni a márka?</label><textarea id="decA"></textarea></div>
-    <div style="margin-top:.8em;max-width:72ch"><label for="decB">A legtudatosabb döntés a külső oldalon: mi az, és mit akar vele elérni a márka?</label><textarea id="decB"></textarea></div>
-    <div style="margin-top:.8em;max-width:72ch"><label for="unsure">Az öt közül mit nem tudtok biztosan a márkátokról, és miért? (ki beszél, kihez beszélünk, mit mondunk, hogyan jutunk el hozzá, honnan tudjuk, hogy eljutott) Egy mondat, a 7. alkalom briefjébe kerül.</label><textarea id="unsure" placeholder="Az öt közül ezt nem tudjuk biztosan: …, mert …"></textarea></div>
-    <div style="margin-top:.8em;max-width:72ch"><label for="who">Ki mit csinált ma</label><textarea id="who"></textarea></div>
-    <div class="noprint" style="margin-top:1em">
-      <div style="display:flex;gap:.6em;flex-wrap:wrap"><button class="btn solid" id="send">Beküldés</button><button class="btn" id="preview">Előnézet</button></div>
-      <p class="status" id="status"></p>
-      <p class="small muted">A nyolc blokk a lapból áll össze, a fenti csapat nevében megy be. Újraküldéskor az előző felülíródik, amíg az oktató le nem zárja a leadást.</p>
-      <div class="out" id="out" style="margin-top:1em"></div>
+    <h2>Összegzés és leadás</h2>
+    <p class="lead">Két rész. Fent a látlelet: a lap az eddigi jelöléseitekből magától rakja össze. Lent az öt mező, amit most írtok meg, és beküldtök.</p>
+
+    <div class="sum-sec">
+      <div class="sum-h"><span class="sum-n">A</span><div><h3>A látlelet</h3><p>Így ítéltétek meg a két oldalt a nyolc szemponton át.</p></div></div>
+      <div class="scores" id="scores"></div>
+      <div class="insights" id="insights"></div>
+      <details class="mapwrap"><summary>A teljes táblázat, szempontonként</summary><div style="overflow-x:auto"><table class="map" id="map"></table></div></details>
     </div>
+
+    <div class="sum-sec">
+      <div class="sum-h"><span class="sum-n">B</span><div><h3>Amit most írtok meg</h3><p>Öt rövid mező. Ami a látleletben gyengének látszik, abból dolgozzatok.</p></div></div>
+      <ol class="fields">
+        <li><label for="sentence"><b>Egy mondatban a márkátok oldala</b> <span class="req">kötelező, ez látszik a listán</span><span class="hint">„A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen a látogató], és ebben [miben] segíti, [miben] akadályozza.”</span></label><textarea id="sentence" placeholder="A … oldala … szól, azt akarja, hogy …, és ebben … segíti, … akadályozza."></textarea></li>
+        <li><label for="decA"><b id="decAlab">A legtudatosabb döntés a ti oldalatokon</b><span class="hint">Mi az, és mit akar vele elérni a márka?</span></label><textarea id="decA"></textarea></li>
+        <li><label for="decB"><b>A legtudatosabb döntés a külső oldalon</b><span class="hint">Mi az, és mit akar vele elérni a márka?</span></label><textarea id="decB"></textarea></li>
+        <li><label for="unsure"><b>Amit nem tudtok biztosan</b><span class="hint">Az öt közül melyik: ki beszél, kihez beszélünk, mit mondunk, hogyan jutunk el hozzá, honnan tudjuk, hogy eljutott? És miért? Egy mondat, a 7. alkalom briefjébe kerül.</span></label><textarea id="unsure" placeholder="Az öt közül ezt nem tudjuk biztosan: …, mert …"></textarea></li>
+        <li><label for="who"><b>Ki mit csinált ma</b></label><textarea id="who"></textarea></li>
+      </ol>
+    </div>
+
+    <div class="sendbar noprint"><p><span class="nb-st">4/4</span> Ha minden mező kész, küldjétek be. Újraküldéskor az előző felülíródik, amíg az oktató le nem zárja a leadást.</p><div class="sb-btns"><button class="btn" id="preview">Előnézet</button><button class="btn solid" id="send">Beküldés</button></div></div>
+    <p class="status noprint" id="status"></p>
+    <div class="out noprint" id="out" style="margin-top:1em"></div>
   </section>
 
-  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.3 · 2026. október 11.</p>
+  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.6 · 2026. október 12.</p>
 </main>
 
 <script>
@@ -271,14 +335,29 @@ textarea{min-height:4.2em;resize:vertical}
     [1,2,3].forEach(function(r){var h=''; LENS.forEach(function(L,i){if(L[0]===r)h+=lensHTML(L,i+1)}); $('r'+r).innerHTML=h;});
   }
   function drawMap(){
-    var h='<tr><th></th><th>Szemüveg</th><th>'+esc(labA())+': '+esc(nameA())+'</th><th>Külső oldal: '+esc(nameB())+'</th></tr>', last=0;
+    var h='<tr><th></th><th>Szempont</th><th>'+esc(labA())+': '+esc(nameA())+'</th><th>Külső oldal: '+esc(nameB())+'</th></tr>', last=0;
     LENS.forEach(function(L,i){
       var r=L[0]===last?'':ROUNDS[L[0]]; last=L[0];
       h+='<tr><td class="r">'+r+'</td><td>'+(i+1)+'. '+esc(L[2])+'</td>'+['A','B'].map(function(k){var v=(S[k][L[1]]||{}).v||''; return '<td><span class="dot '+v+'">'+ansTxt(v)+'</span></td>'}).join('')+'</tr>';
     });
     $('map').innerHTML=h;
+    drawVerdict();
+  }
+  function drawVerdict(){
+    function count(k){var c={igen:0,reszben:0,nem:0,x:0};LENS.forEach(function(L){var v=(S[k][L[1]]||{}).v||'';if(c.hasOwnProperty(v))c[v]++;else c.x++});return c}
+    function card(k,label,name){var c=count(k),n=LENS.length;
+      var bar='<div class="sbar">'+[['igen',c.igen],['reszben',c.reszben],['nem',c.nem],['x',c.x]].map(function(p){return p[1]?'<i class="s-'+p[0]+'" style="width:'+(p[1]/n*100)+'%"></i>':''}).join('')+'</div>';
+      var leg='<p class="sleg"><span class="s-igen"></span>'+c.igen+' működik<span class="s-reszben"></span>'+c.reszben+' részben<span class="s-nem"></span>'+c.nem+' nem működik'+(c.x?'<span class="s-x"></span>'+c.x+' nincs jelölve':'')+'</p>';
+      return '<div class="scard"><p class="sk">'+esc(label)+'</p><p class="sn">'+esc(name)+'</p>'+bar+leg+'</div>'}
+    $('scores').innerHTML=card('A',labA(),nameA())+card('B','Külső oldal',nameB());
+    var diff=[],weak=[],part=[],both=0;
+    LENS.forEach(function(L,i){var a=(S.A[L[1]]||{}).v||'',b=(S.B[L[1]]||{}).v||'';if(a&&b){both++;if(a!==b)diff.push('<li><b>'+(i+1)+'. '+esc(L[2])+'</b><span><i class="dot '+a+'"><em>'+(S.noown?'2. külső':'ti')+':</em> '+esc(ansTxt(a))+'</i><i class="dot '+b+'"><em>külső:</em> '+esc(ansTxt(b))+'</i></span></li>')}if(a==='nem')weak.push('<li><b>'+(i+1)+'. '+esc(L[2])+'</b><span><i class="dot nem">nem működik</i></span></li>');if(a==='reszben')part.push('<li><b>'+(i+1)+'. '+esc(L[2])+'</b><span><i class="dot reszben">részben</i></span></li>')});
+    var d='<div class="icard"><h4>Ahol a két oldal eltér</h4><p class="ihint">Itt a két márka ugyanarra a kérdésre másképp felelt. Mi lehet az oka?</p>'+(!both?'<p class="iempty">Még nincs olyan szempont, ahol mindkét oldalt jelöltétek.</p>':diff.length?'<ul>'+diff.join('')+'</ul>':'<p class="iempty">Ahol mindkét oldalt jelöltétek, ott ugyanúgy ítéltétek meg őket.</p>')+'</div>';
+    var w='<div class="icard"><h4>Ahol a ti oldalatok gyenge</h4><p class="ihint">Ebből dolgozzatok az egy mondatnál („miben akadályozza”) és annál, amit nem tudtok biztosan.</p>'+(weak.length||part.length?'<ul>'+weak.join('')+part.join('')+'</ul>':'<p class="iempty">Egyik szempontnál sem jelöltétek gyengének.</p>')+'</div>';
+    $('insights').innerHTML=d+w;
   }
   function drawAll(){drawRounds();drawMap()}
+  window.addEventListener('beforeprint',function(){[].forEach.call(document.querySelectorAll('details.mapwrap'),function(d){d.open=true})});
 
   var FIELDS=['team','brand','device','ownurl','ext','exturl','ext2','ext2url','search','sentence','decA','decB','unsure','who'];
   function grow(t){t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'}
@@ -288,14 +367,14 @@ textarea{min-height:4.2em;resize:vertical}
   function extUrl(n){for(var i=0;i<EXT.length;i++)if(EXT[i][0]===n)return EXT[i][2];return ''}
   [['ext','exturl'],['ext2','ext2url']].forEach(function(p){$(p[0]).addEventListener('change',function(){var u=extUrl(this.value); var cur=$(p[1]).value; var auto=EXT.some(function(x){return x[2]&&x[2]===cur}); if(u&&(!cur||auto)){$(p[1]).value=u; S[p[1]]=u; save();}})});
   $('team').addEventListener('change',function(){var t=TEAMS[this.value]; if(t&&t.client){ $('brand').value=t.client; S.brand=t.client; save(); drawAll(); }});
-  function noownUI(){$('ext2row').hidden=!S.noown; $('ownlab').textContent=S.noown?'Ha van, a márka legközelebbi saját felülete (pl. Facebook-oldal)':'A márkátok oldala (cím)'; $('decAlab').textContent='A legtudatosabb döntés '+(S.noown?'a második külső oldalon':'a ti oldalatokon')+': mi az, és mit akar vele elérni a márka?'}
+  function noownUI(){$('ext2row').hidden=!S.noown; $('ownlab').textContent=S.noown?'Ha van, a márka legközelebbi saját felülete (pl. Facebook-oldal)':'A márkátok oldala (cím)'; $('decAlab').textContent='A legtudatosabb döntés '+(S.noown?'a második külső oldalon':'a ti oldalatokon')}
   $('noown').addEventListener('change',function(){S.noown=this.checked;save();noownUI();drawAll()});
 
   function showTab(p){[].forEach.call(document.querySelectorAll('.tab'),function(b){b.classList.toggle('on',b.getAttribute('data-p')===p)});[].forEach.call(document.querySelectorAll('.pane'),function(x){x.classList.toggle('on',x.id===p)}); if(p==='p4')drawMap(); growAll(); window.scrollTo({top:document.querySelector('.tabs').offsetTop-60,behavior:'smooth'})}
   document.addEventListener('click',function(e){
     var t=e.target;
     var tb=t.closest&&t.closest('.tab'); if(tb){showTab(tb.getAttribute('data-p'));return}
-    if(t.hasAttribute('data-go')){showTab(t.getAttribute('data-go'));return}
+    var gb=t.closest&&t.closest('[data-go]'); if(gb){showTab(gb.getAttribute('data-go'));return}
     if(t.classList.contains('ch')){var k=t.getAttribute('data-k'),l=t.getAttribute('data-l'),v=t.getAttribute('data-v'),c=cell(k,l); c.v=c.v===v?'':v; save();
       [].forEach.call(t.parentNode.children,function(b){b.classList.toggle('on',b===t&&!!c.v)}); return}
   });

@@ -17,7 +17,7 @@ Előkészítés alatt. Állapot: 2026. október 11. **Új session: előbb a `FOL
 
 - `online-marketing-2026-evad-3-epizod.html`: a deck (v0.27, 37 dia)
 - `oldal-anatomia.html`: aloldal, az oldal anatómiája (v0.6), a deckből gomb nyitja
-- `oldal-vizsgalat.html`: a beadandó-eszköz, maga a leadás (`ep3`, v3.3): nyolc szempont három körben, szempontonként Mit láttok? Miért így? Működik?, Tunki-Tunki minta; az összegzésben az öt lépésből, amit nem tudnak biztosan (az f8 elejére kerül)
+- `oldal-vizsgalat.html`: a beadandó-eszköz, maga a leadás (`ep3`, v3.6): nyolc szempont három körben, szempontonként Mit láttok? Miért így? Működik?, Tunki-Tunki minta; az összegzésben az öt lépésből, amit nem tudnak biztosan (az f8 elejére kerül)
 - kész: a három `cp` sor a `.cpanel.yml`-ben, `app.html` `ep3` (szavazás nélkül, „Beadandók” nézet), `index.html` 3. sor
 
 ## Források (`konyvek/`, nincs a gitben)
