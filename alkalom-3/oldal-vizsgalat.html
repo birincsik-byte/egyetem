@@ -273,7 +273,7 @@ textarea{min-height:4.2em;resize:vertical}
     <div class="out noprint" id="out" style="margin-top:1em"></div>
   </section>
 
-  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.7 · 2026. október 14.</p>
+  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.8 · 2026. október 14.</p>
 </main>
 
 <script>
@@ -406,6 +406,9 @@ textarea{min-height:4.2em;resize:vertical}
     var ins=$('insights'); if(ins)ins.style.gridTemplateColumns='1fr';
     var sc=$('scores'); if(sc)sc.style.gridTemplateColumns='1fr';
     [].forEach.call(document.querySelectorAll('.sum-h p'),function(e){e.textContent=e.textContent.replace('Öt rövid mező.','Négy rövid mező.')});
+    var pl=document.querySelector('#p4 .lead'); if(pl)pl.textContent=pl.textContent.replace('Lent az öt mező','Lent a négy mező');
+    var wl=document.querySelector('label[for="who"] b'); if(wl)wl.textContent='Ki mit csinált';
+    [].forEach.call(document.querySelectorAll('#p4 .hint'),function(e){e.textContent=e.textContent.replace('a 7. alkalom briefjébe kerül','a 7. téma briefjébe kerül, 2026. november 6-án')});
     [].forEach.call(document.querySelectorAll('span.muted.small'),function(e){if(/nyolc szempont/.test(e.textContent))e.textContent='Levelező · A saját terep · hat szempont'});
   }
 

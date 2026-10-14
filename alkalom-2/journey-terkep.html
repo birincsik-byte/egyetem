@@ -138,7 +138,7 @@ td.holed{background:rgba(242,201,76,.25)}
     <div class="out" id="out" style="margin-top:1em"></div>
   </div>
 
-  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.12 · 2026. október 14.</p>
+  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.13 · 2026. október 14.</p>
 </main>
 
 <script>
@@ -288,7 +288,18 @@ td.holed{background:rgba(242,201,76,.25)}
     hs.forEach(function(h){ if(/Bizonyíték, lyuk, hiány/.test(h.textContent)) h.textContent=h.textContent.replace('Bizonyíték, lyuk, hiány','Hol szakad meg az út, és mi hiányzik') });
     var ev=$('evidence'); if(ev&&ev.parentNode)ev.parentNode.style.display='none';
     var ld=document.querySelector('.lead'); if(ld)ld.innerHTML=ld.innerHTML.replace('a döntési fázisok a választott modell szerint','a See-Think-Do-Care négy fázisa');
-    var ob=document.querySelector('.onebox'); if(ob)ob.innerHTML='<b>Kettesben, egy böngészőben dolgozzatok.</b> A térkép abban a böngészőben mentődik, ahol kitöltitek. Az egyik a See és a Think, a másik a Do és a Care fázist nézi; ugyanabba a térképbe írjatok.';
+    var ob=document.querySelector('.onebox'); if(ob)ob.innerHTML='<b>Kettesben, egy böngészőben dolgozzatok.</b> Az egyik a See és a Think, a másik a Do és a Care oszlopot tölti ki, ugyanabba a térképbe. Két gépen két külön térkép lenne, és csak az egyik kerülne a leadásba.';
+    var tp=document.querySelector('.top .muted'); if(tp)tp.textContent='Levelező · 2. téma · Hogyan érjük el az embert és hogyan dönt';
+    if(ld)ld.innerHTML=ld.innerHTML.replace(', a választott modell szerkezetében','').replace('Ez a térkép a 2. alkalom leadása.','Ez a térkép a 2. gyakorlat leadása.');
+    function lab(id,t){var l=document.querySelector('label[for="'+id+'"]'); if(l)l.textContent=t}
+    lab('gap','Hol szakad meg az út? Egy konkrét pont (melyik fázis, melyik csatorna), ahol a vevő elakad vagy elvész, és miből gondoljátok.');
+    lab('missing','Ami hiányzik: melyik fázisban nem mond semmit a márka? Egy mondat.');
+    lab('who','Ki mit csinált');
+    lab('looked','Amit megnéztetek: a weboldal, egy közösségi felület, és ha van, egy hirdetés vagy vélemények, linkkel');
+    [].forEach.call(document.querySelectorAll('p.small.muted'),function(x){
+      if(/^Hol és hogyan találtok bizonyítékot/.test(x.textContent)) x.innerHTML='Ha elakadtok: <a href="journey-tippek.html" target="_blank">Hogyan nézzétek meg</a>, eszközök élő linkekkel.';
+      if(/^A nyolc blokk a térképből/.test(x.textContent)) x.textContent='A leadás a térképből áll össze, a fenti csapat nevében megy be. Újraküldéskor az előző felülíródik, amíg az oktató le nem zárja a leadást.';
+    });
   }
   fill();
 })();

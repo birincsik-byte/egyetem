@@ -59,6 +59,8 @@ summary{cursor:pointer;color:var(--cobalt)}
 .erow{border:1px solid var(--line);border-radius:6px;padding:.7em 1em;margin:.5em 0;background:#fff}
 .erow .name{font-family:Georgia,serif;font-size:1.2em}
 .del{border-color:#c33;color:#c33;margin:0 0 0 .6em;padding:.2em .6em;font-size:.85em}
+.fhint{font-size:.9em;color:var(--soft);margin:.15em 0 .45em;line-height:1.4}
+#l_fields label.fl{font-weight:600;color:var(--ink);font-size:1.02em;margin-top:1.1em}
 </style>
 </head>
 <body>
@@ -117,7 +119,8 @@ summary{cursor:pointer;color:var(--cobalt)}
     <h3>Miért jó ez a minta, és miért nem tökéletes</h3>
     <p>Jó, mert a márka, a célcsoport és a mondat mind bizonyítékkal áll, a forrás meg van nevezve, és az ítélet kimond valamit, amit meg lehet védeni és meg lehet támadni: hogy a nyári üzenet nem zár ki senkit. Nem tökéletes, mert a hirdetést nem találtuk meg, és ezt nem takartuk el, hanem leírtuk. Ez a helyes viselkedés: nem találunk ki adatot a történethez. A 6. epizódon, amikor a hirdetési fiók logikáját nézzük, ez a hiány lesz az egyik első kérdés.</p>
   </details>
-    <label>Csapat</label><select id="l_team"><option value="">válassz</option></select>
+    <label>Csapat és márka</label><select id="l_team"><option value="">válassz</option></select>
+    <p class="fhint hide" id="l_noteam">Még nincs bejegyzett csapat. Előbb jegyezzétek be a csapatot és a választott márkát a <a href="#" id="l_tocsapat" style="color:var(--cobalt)">Csapat</a> fülön, utána itt kiválaszthatjátok.</p>
     <div id="l_fields"></div>
     <p class="small muted"><span id="l_words">0</span> szó · <span id="l_limit"></span></p>
     <button id="l_send">Beküld</button>
@@ -166,7 +169,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.14 · 2026. október 14.</p>
+  <p class="small muted" style="margin-top:3em">app v2.16 · 2026. október 14.</p>
 </div>
 
 <script>
@@ -204,27 +207,29 @@ summary{cursor:pointer;color:var(--cobalt)}
   /* ===== levelező (om2026levelezo): ugyanaz a hét téma, témánként rövid órai gyakorlat ===== */
   var LEV=/levelezo/i.test(location.pathname);
   if(LEV){
-    EPISODES.ep1={name:'1. téma · Kinek és mit (levelező)', title:'1. gyakorlat: a márka, a célcsoport és az üzenet visszafejtve', limit:'rövid, kb. 45 perc, kettesben', fields:[
-      ['f1','Ki mit csinált'],
-      ['f2','Amit néztünk: a márka weboldala és egy közösségi felülete (linkkel)'],
-      ['f7','A márka: mi ez a márka és mit csinál (egy mondat), milyen hangon beszél (két-három jelző); mindegyik mellé, miből látjátok'],
-      ['f8','A célcsoport: kit szólít meg, nem demográfia, hanem helyzet: ki az, akinek épp most kell; miből látjátok'],
-      ['f3','A mondat: „A(z) [márka] [kinek] szól, [mi helyett] választják, és az értékajánlata: [értékajánlat].”'],
-      ['f6','Ami hiányzik: a döntések közül melyik nincs kimondva, egy mondat']]};
+    EPISODES.ep1={name:'1. téma · Kinek és mit (levelező)', title:'1. gyakorlat: a márka, a célcsoport és az üzenet visszafejtve', limit:'nyolc blokk, a kitöltött minta szerint, kb. 45 perc, kettesben', fields:[
+      ['f1','1. Ki mit csinált','Egy-két mondat: ki nézte a márkát és a hangját, ki a célcsoportot, és mit írtatok együtt. A csapat nevét és a márkát fent, a legördülőben választjátok.','pl. Anna: weboldal, a márka és a hangja. Bence: Instagram és vélemények, a célcsoport. A mondatot együtt írtuk.'],
+      ['f2','2. Amit megnéztetek','Három forrás, linkkel: a weboldal (a főoldal és egy aloldal), egy közösségi felület az utolsó két hétből, és egy hirdetés. Hirdetést a Meta hirdetéstárban kereshettek; ha nem találtok, írjátok le, hogy nincs látható.','pl. weboldal: https://… (főoldal, Rólunk) · Instagram: https://… (az utolsó két hét posztjai) · hirdetés: nem találtunk'],
+      ['f7','3. A márka: ki beszél?','Mi ez a márka és mit csinál, egy mondatban, úgy, ahogy ő mondja magáról. Milyen hangon beszél: két-három szó (például közvetlen, hivatalos, játékos) és egy szó szerinti példamondat a felületéről. Mit mondanak róla mások (egy-két vélemény vagy komment), és ez egyezik-e azzal, amit magáról állít.','pl. Hangja: közvetlen, tegező. Példa a weboldalról: „…”. A vélemények a kiszolgálást dicsérik, a márka a minőségről beszél: ez nem teljesen egyezik.'],
+      ['f8','4. A célcsoport: kihez beszél?','Ne korosztályt és jövedelmet írjatok, hanem helyzetet: ki az, akinek épp most szüksége van erre a márkára, és mi történik vele abban a pillanatban? Mit mond a vevő, hogy mit akar, és mit akar valójában? Van-e kimondatlan vágy, amire a márka válaszol? Ezek közül melyikre válaszol a márka?','pl. nem „25–40 éves nők”, hanem „aki vasárnap este rájön, hogy holnap reggelre nincs mit ennie”. Azt mondja: gyors legyen. Valójában: ne kelljen gondolkodnia.'],
+      ['f3','5. A mondat','Egyetlen mondatban, a sablon szerint. Ez a beküldés lényege, ez látszik a szavazásnál.','A(z) [márka] [kinek] szól, [mi helyett] választják, és az értékajánlata: [mit kap, amit máshol nem].'],
+      ['f4','6. Bizonyíték','Miből gondoljátok, amit a márkáról, a célcsoportról és a mondatról írtatok? Mindháromhoz legalább egy konkrétum: melyik mondat, poszt, hirdetés vagy vélemény. A „tetszik” és a „modern” nem bizonyíték.','pl. Márka: a Rólunk oldal első mondata. Célcsoport: az október 10-i poszt („…”). Mondat: a főoldal címe.'],
+      ['f5','7. Ítélet','Kit zár ki ez a pozicionálás, és szándékosnak látszik-e? Hány dologra épít a márka: egy-kettőre, vagy mindenre egyszerre? Látszik-e fókusz?','pl. Kizárja azt, aki az árat nézi, és ez szándékos: sehol nem beszél akcióról. Két dologra épít: minőség és helyi eredet.'],
+      ['f6','8. Ami hiányzik','A mondat három része közül (kinek, mi helyett, mi az értékajánlata) melyiket nem mondja ki a márka sehol, úgyhogy nektek kellett kitalálni a jelekből? Egy mondat.','']]};
     EPISODES.ep2={name:'2. téma · Hogyan érjük el az embert és hogyan dönt (levelező)', title:'2. gyakorlat: journey-térkép', tool:'journey-terkep.html', limit:'rövid, kb. 45 perc, kettesben', fields:[
-      ['f1','Ki mit csinált'],
-      ['f2','Amit néztünk'],
-      ['f3','A journey egy mondatban: honnan hova jut, és hol dől el'],
-      ['f4','Fázisok és kontaktpontok (See-Think-Do-Care): fázisonként egy kontaktpont, és mit mond ott a márka'],
-      ['f6','Hol szakad meg az út: egy pont, amire rá lehet bökni'],
-      ['f8','Ami hiányzik: melyik fázisban nem mond semmit a márka, egy mondat']]};
+      ['f1','Ki mit csinált','Ki melyik fázisokat töltötte ki a térképen (See és Think, vagy Do és Care).',''],
+      ['f2','Amit megnéztetek','A weboldal, egy közösségi felület, és ha van, egy hirdetés vagy vélemények, linkkel.',''],
+      ['f3','A journey egy mondatban','Honnan hova jut a vevő, és hol dől el, hogy a márkát választja-e.','pl. Instagramon látja meg, a Google-ben hasonlítja össze, és a vélemények döntenek.'],
+      ['f4','Fázisok és kontaktpontok','A See-Think-Do-Care négy fázisában: hol találkozik a vevő a márkával (kontaktpont), és mit mond ott a márka. Ezt a Journey-térkép tölti ki.',''],
+      ['f6','Hol szakad meg az út','Egy konkrét pont (melyik fázis, melyik csatorna), ahol a vevő elakad vagy elvész, és miből gondoljátok.',''],
+      ['f8','Ami hiányzik','Melyik fázisban nem mond semmit a márka? Egy mondat.','']]};
     EPISODES.ep3={name:'3. téma · A saját terep (levelező)', title:'3. gyakorlat: oldalvizsgálat a saját oldalon, hat szemponttal', tool:'oldal-vizsgalat.html', toolname:'Oldalvizsgálat', toolnote:'az Oldalvizsgálat lapon', limit:'rövid, kb. 35 perc, kettesben', nosample:true, fields:[
-      ['f1','Ki mit csinált'],
-      ['f2','Az oldal, és min néztétek (telefon vagy gép)'],
-      ['f3','Egy mondatban: „A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen a látogató], és ebben [miben] segíti, [miben] akadályozza.”'],
-      ['f4','Ránézés (1–3. szempont): mit láttok, miért így, működik-e'],
-      ['f6','Cselekvés (6–8. szempont): mit láttok, miért így, működik-e'],
-      ['f8','Amit nem tudtok biztosan (az öt lépésből), a legtudatosabb döntés az oldalon, és az áttekintés']]};
+      ['f1','Ki mit csinált','Ki nézett rá először az oldalra, ki írt, és ki mit csinált a cselekvésnél.',''],
+      ['f2','Az oldal','A márkátok oldalának címe, és hogy telefonon vagy gépen néztétek.',''],
+      ['f3','Egy mondatban a márkátok oldala','A sablon szerint, egyetlen mondatban. Ez látszik a szavazásnál.','A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen a látogató], és ebben [miben] segíti, [miben] akadályozza.'],
+      ['f4','Ránézés (1–3. szempont)','Szempontonként: mit láttok (hol, mit, ha lehet, idézettel), miért így (mit akar ezzel a márka), és működik-e. Ezt az Oldalvizsgálat tölti ki.',''],
+      ['f6','Cselekvés (6–8. szempont)','Ugyanígy, a végigkattintott útról: vezetett-e az oldal, hol tud lépni a látogató, és mi építi vagy rontja a bizalmat.',''],
+      ['f8','Összegzés','Az öt kérdés közül (ki beszél, kihez beszélünk, mit mondunk, hogyan jutunk el hozzá, honnan tudjuk, hogy eljutott) melyiket nem tudjátok biztosan az oldalból; a legtudatosabb döntés az oldalon; és a hat szempont áttekintése.','']]};
   }
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
   var API='api.php';
@@ -262,6 +267,7 @@ summary{cursor:pointer;color:var(--cobalt)}
   if(CFG.nosample){var mb=document.querySelector('.mintabox'); if(mb)mb.style.display='none';}
 
   CLIENTS.forEach(function(c){var o=document.createElement('option');o.textContent=c;$('c_client').appendChild(o)});
+  if(LEV){ var cl=$('c_client').previousElementSibling; if(cl&&cl.tagName==='LABEL') cl.textContent='Választott márka (ügyfél)'; $('c_members').placeholder='pl. Anna (márka és hang), Bence (célcsoport)'; var rp=$('c_members').nextElementSibling; if(rp&&rp.tagName==='P') rp.textContent='Kettesben dolgoztok: az egyik a márkát és a hangját nézi, a másik a célcsoportot, a mondatot együtt írjátok. Az ügyfél a márka, amivel a félév végéig dolgoztok.'; }
 
 
 
@@ -303,7 +309,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     /* csapat */
     var l=$('c_list'); l.innerHTML=''; S.teams.forEach(function(t){var d=document.createElement('div');d.className='card';d.innerHTML='<b>'+esc(t.name)+'</b> · '+esc(t.client)+(t.members?'<br><span class="small muted">'+esc(t.members)+'</span>':'');l.appendChild(d)});
     if(VIEW==='csapat')$('c_status').textContent=S.teams.length+' csapat bejegyezve';
-    fillSelect('l_team'); fillSelect('s_own');
+    fillSelect('l_team'); fillSelect('s_own'); var nt=$('l_noteam'); if(nt) nt.classList.toggle('hide',S.teams.length>0);
     /* szavazás lista */
     var sl=$('s_list'); var openIds={}; [].forEach.call(sl.querySelectorAll('details[open]'),function(d){openIds[d.getAttribute('data-t')]=1});
     var saved={}; [].forEach.call(sl.querySelectorAll('.vcard'),function(c){var t=c.getAttribute('data-t');saved[t]={stars:+c.getAttribute('data-stars')||0,reason:(c.querySelector('textarea')||{}).value||''}});
@@ -341,8 +347,9 @@ summary{cursor:pointer;color:var(--cobalt)}
   /* leadás */
   $('l_title').textContent=CFG.title; $('l_limit').textContent=CFG.limit;
   if(CFG.tool){var tp=document.createElement('p');tp.className='step';tp.innerHTML='Ennek az alkalomnak a leadása '+(CFG.toolnote||'a Journey-térképen')+' történik. Itt csak a már beküldött szöveget javíthatjátok. <a class="btn" href="'+CFG.tool+'">'+(CFG.toolname||'Journey-térkép')+'</a>';$('l_title').parentNode.insertBefore(tp,$('l_title').nextSibling)}
-  CFG.fields.forEach(function(f){var lab=document.createElement('label');lab.textContent=f[1];var ta=document.createElement('textarea');ta.id='l_'+f[0];$('l_fields').appendChild(lab);$('l_fields').appendChild(ta);ta.addEventListener('input',words)});
+  CFG.fields.forEach(function(f){var lab=document.createElement('label');lab.textContent=f[1];var ta=document.createElement('textarea');ta.id='l_'+f[0];$('l_fields').appendChild(lab);if(f[2]){lab.className='fl';var hp=document.createElement('p');hp.className='fhint';hp.textContent=f[2];$('l_fields').appendChild(hp)}if(f[3])ta.placeholder=f[3];$('l_fields').appendChild(ta);ta.addEventListener('input',words)});
   function words(){var n=0;CFG.fields.forEach(function(f){var v=$('l_'+f[0]).value.trim();if(v)n+=v.split(/\s+/).length});$('l_words').textContent=n}
+  if($('l_tocsapat')) $('l_tocsapat').href='app.html?ep='+EP+'&v=csapat';
   $('l_team').addEventListener('change',function(){var tid=this.value;if(!tid)return;api('getsub',null,'&team='+tid).then(function(d){var sub=d.sub;if(!sub)return;CFG.fields.forEach(function(f){$('l_'+f[0]).value=sub[f[0]]||''});words();$('l_status').textContent='Korábbi beküldés betöltve, szerkeszthető.'})});
   $('l_send').addEventListener('click',function(){
     var b={team:$('l_team').value}; CFG.fields.forEach(function(f){b[f[0]]=$('l_'+f[0]).value.trim()});

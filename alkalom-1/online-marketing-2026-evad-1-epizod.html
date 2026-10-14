@@ -175,6 +175,10 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .strip a{font-size:clamp(11px,.78vw,15px)}
 .hint{font-size:clamp(11px,.82vw,16px)}
 .slide{max-width:1720px;padding-left:7vw;padding-right:7vw;padding-bottom:7vh}
+.pager a.home{padding:.2em .6em;border:1px solid var(--line);border-radius:4px;color:inherit;text-decoration:none}
+.pager a.home:hover{color:var(--cobalt);border-color:var(--cobalt)}
+.task.wide{max-width:none;font-size:1.18em}
+.task.wide p{max-width:none}
 </style>
 <style id="lev-css">
 /* levelezős mód: a kihagyott diák és a nappali évadsáv nem látszik */
@@ -496,16 +500,10 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Üzenet</p>
   <h2>Egy mondatban három fontos szempont.</h2>
   <p class="quote"><span class="hl">Kinek</span> szól, <span class="hl">mi helyett</span> választják, <span class="hl">mi az értékajánlata</span>.</p>
-  <div class="task" style="margin-top:1em">
+  <div class="task wide" style="margin-top:1em">
     <p><b>Példa, egy 2001-es márkabriefből.</b> <span class="hl">A weben böngésző, könyveket szerető embereknek</span> az Amazon.com egy könyvkereskedés, amit <span class="hl">a hagyományos könyvesboltok helyett</span> választanak, mert <span class="hl">azonnal elérhető 1,1 millió könyv, kényelmesen, olcsón, teljes választékkal</span>.</p>
     <p class="small muted">Eredetiben: „For World Wide Web users who enjoy books, Amazon.com is a retail bookseller that provides instant access to over 1.1 million books. Unlike traditional book retailers, Amazon.com provides a combination of extraordinary convenience, low prices, and comprehensive selection." (Amazon.com pozicionálási állítása, 2001)</p>
   </div>
-  <table class="vp" style="margin-top:1em">
-    <colgroup><col style="width:24%"><col style="width:20%"><col style="width:12%"><col style="width:44%"></colgroup>
-    <tr><th>Célvevő</th><th>Kulcselőny</th><th>Ár</th><th>Értékajánlat</th></tr>
-    <tr><td>biztonságtudatos, tehetős családok</td><td>tartósság és biztonság</td><td>20% felár</td><td>a legbiztonságosabb, legtartósabb kombi, amiben a családod utazhat</td></tr>
-  </table>
-  <p class="small muted" style="margin-top:1em">A sikeres termékek legfeljebb egy-két meghatározó attribútumra pozicionálnak, több csak összezavar (Walker, Mullins, 7. fejezet; a Volvo-sor Kotler, Keller 10. fejezet). Aki mindenki mindenének akar lenni, a legkisebb közös nevezőre pozicionál, és az tipikusan hatástalan (Kotler, Keller, 10. fejezet).</p>
 </section>
 
 <!-- 9f -->
@@ -580,7 +578,7 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 <section class="slide" data-notes="lev1" data-lev="only">
   <p class="kicker">Levelező gyakorlat · 45 perc · kettesben</p>
   <h2>A márka, a célcsoport és az üzenet, visszafejtve</h2>
-  <div class="task lev-task"><ol><li>Nézzétek meg a márkátokat: a weboldalát és egy közösségi felületét.</li><li>Az egyik a márkát és a hangját nézi, a másik a célcsoportot. Minden állítás mellé: miből látjátok.</li><li>Együtt írjátok meg a mondatot és azt, ami hiányzik.</li><li>Leadás a levelezős felületen, a Leadás fülön.</li></ol></div>
+  <div class="task lev-task"><ol><li>Nézzétek meg a márkátokat: a weboldalát, egy közösségi felületét az utolsó két hétből, és ha van, egy hirdetését.</li><li>Az egyik a márkát és a hangját nézi, a másik a célcsoportot.</li><li>Együtt írjátok meg a mondatot, a bizonyítékot, az ítéletet és azt, ami hiányzik.</li><li>Leadás a Leadás fülön, nyolc blokkban. A kitöltött minta ugyanott van.</li></ol></div>
   <p class="small muted" style="margin-top:1em">A mondat: „A(z) [márka] [kinek] szól, [mi helyett] választják, és az értékajánlata: [értékajánlat].”</p>
 </section>
 
@@ -659,8 +657,8 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.18 · 2026. október 14.</span></div>
-<div class="pager"><button data-open="notes">Jegyzet</button><span id="pos">1 / 13</span><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.20 · 2026. október 14.</span></div>
+<div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><span id="pos">1 / 13</span><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
@@ -771,7 +769,7 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=["n0", "n5", "n6", "n6b", "n9a2", "n10", "n9f", "n11", "n11c", "n11d"], TXT={"2026. szeptember 14.": "2026. október 16.", "2. alkalom · Hogyan dönt az ember · 2026. szeptember 28.": "Következik: Hogyan dönt az ember"};
+  var SKIP=["n0", "n5", "n6", "n6b", "n9a2", "n10", "n11", "n11d"], TXT={"2026. szeptember 14.": "2026. október 16.", "2. alkalom · Hogyan dönt az ember · 2026. szeptember 28.": "Következik: Hogyan dönt az ember"};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
