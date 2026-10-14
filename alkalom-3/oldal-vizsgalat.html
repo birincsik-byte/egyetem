@@ -273,12 +273,13 @@ textarea{min-height:4.2em;resize:vertical}
     <div class="out noprint" id="out" style="margin-top:1em"></div>
   </section>
 
-  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.8 · 2026. október 14.</p>
+  <p class="foot">A szempontok a mai deck blokkjait követik, mindegyiknél ott a dia címe. · oldalvizsgálat v3.10 · 2026. október 14.</p>
 </main>
 
 <script>
 (function(){
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
+  if(/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search))CLIENTS=CLIENTS.filter(function(c){return c!=='Kolorádó'}); /* levelezőn a fesztivál nem választható */
   /* ellenőrizve 2026. október 11-én: mind betölt, a címke a fő lépés */
   var EXT=[
     ['Hunguest Hotels','szálloda · foglalás','https://www.hunguesthotels.hu/'],
@@ -302,7 +303,6 @@ textarea{min-height:4.2em;resize:vertical}
   ];
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
   LENS.forEach(function(L,i){L.n=i+1});
-  if(LEV) LENS=LENS.filter(function(L){return L[0]!==2});
   var SIDES=LEV?['A']:['A','B'];
   var ROUNDS={1:'Ránézés',2:'Olvasás',3:'Cselekvés'};
   var ANS=[['igen','működik'],['reszben','részben'],['nem','nem működik']];
@@ -384,24 +384,20 @@ textarea{min-height:4.2em;resize:vertical}
   });
   document.addEventListener('input',function(e){var t=e.target; if(t.tagName==='TEXTAREA')grow(t); var k=t.getAttribute('data-k'),l=t.getAttribute('data-l'); if(!k||!l)return; cell(k,l)[t.getAttribute('data-f')||'t']=t.value; save();});
 
-  /* --- levelező: egy oldal, hat szempont, három fázis --- */
+  /* --- levelező: egy oldal (a sajátjuk), nyolc szempont, négy fázis --- */
   if(LEV){
     document.documentElement.classList.add('lev');
     function hideP(id){var e=$(id); if(e&&e.parentNode)e.parentNode.style.display='none'}
     hideP('ext'); hideP('exturl');
     var h1=document.querySelector('h1'); if(h1)h1.textContent='A ti oldalatok';
-    var ld=document.querySelector('.lead'); if(ld)ld.innerHTML='A márkátok oldalát nézitek meg hat szemponttal, kettesben. Nem javítotok, hanem <span class="hl">visszafejtitek, mit miért csinál az oldal</span>. Minden szempontnál három lépés: <b>Mit láttok?</b> (a bizonyíték: hol, mit, ha lehet, idézettel), <b>Miért így?</b> (mit akar ezzel a márka, és kinek szól), <b>Működik?</b> (működik, részben, nem működik). A munka ebben a böngészőben mentődik, a végén az Összegzés fülön adjátok le.';
+    var ld=document.querySelector('.lead'); if(ld)ld.innerHTML='A márkátok oldalát nézitek meg nyolc szemponttal, kettesben. Nem javítotok, hanem <span class="hl">visszafejtitek, mit miért csinál az oldal</span>. Minden szempontnál három lépés: <b>Mit láttok?</b> (a bizonyíték: hol, mit, ha lehet, idézettel), <b>Miért így?</b> (mit akar ezzel a márka, és kinek szól), <b>Működik?</b> (működik, részben, nem működik). A munka ebben a böngészőben mentődik, a végén az Összegzés fülön adjátok le.';
     var ob=document.querySelector('.notes3 .onebox'); if(ob)ob.innerHTML='<b>A sorrend számít.</b> Az első benyomást csak egyszer lehet megfigyelni. Aki még nem látta az oldalt, az néz rá először, és addig senki ne kattintson; a másik ír. Lehetőleg telefonon nézzétek, mert a látogatók nagy része onnan jön.';
-    var t2=document.querySelector('.tab[data-p="p2"]'); if(t2)t2.style.display='none';
-    var tabs=document.querySelector('.tabs'); if(tabs)tabs.style.gridTemplateColumns='repeat(3,minmax(0,1fr))';
     function tabSet(p,n,meta){var t=document.querySelector('.tab[data-p="'+p+'"]'); if(!t)return; t.querySelector('.pn').textContent=n; t.querySelector('.meta').textContent=meta}
-    tabSet('p1','1','kattintás nélkül · 10 perc'); tabSet('p3','2','kattintva · 15 perc'); tabSet('p4','3','10 perc');
-    var ph=document.querySelector('.phases-h'); if(ph)ph.textContent='A munka három fázisa, sorban';
-    var nb1=document.querySelector('#p1 .nextbar'); if(nb1)nb1.innerHTML='<p><span class="nb-st">1/3 kész</span> Következik: cselekvés, kattintva, a 6–8. szempont.</p><button class="btn next" data-go="p3">Tovább a következő fázisra · 2/3 →</button>';
-    var nb3=document.querySelector('#p3 .nextbar'); if(nb3)nb3.innerHTML='<p><span class="nb-st">2/3 kész</span> Következik: összegzés és leadás.</p><button class="btn next" data-go="p4">Tovább a következő fázisra · 3/3 →</button>';
-    var sb=document.querySelector('.sendbar .nb-st'); if(sb)sb.textContent='3/3';
-    var p3h=document.querySelector('#p3 h2'); if(p3h)p3h.textContent='2. '+p3h.textContent.replace(/^\d+\.\s*/,'');
-    var sh=document.querySelector('.sum-h p'); if(sh)sh.textContent='Így ítéltétek meg az oldalt a hat szemponton át.';
+    tabSet('p1','1','kattintás nélkül · 8 perc'); tabSet('p2','2','görgetve · 7 perc'); tabSet('p3','3','kattintva · 12 perc'); tabSet('p4','4','8 perc');
+    var nb1=document.querySelector('#p1 .nextbar'); if(nb1)nb1.innerHTML='<p><span class="nb-st">1/4 kész</span> Következik: olvasás, görgetve, a 4–5. szempont.</p><button class="btn next" data-go="p2">Tovább a következő fázisra · 2/4 →</button>';
+    var nb2=document.querySelector('#p2 .nextbar'); if(nb2)nb2.innerHTML='<p><span class="nb-st">2/4 kész</span> Következik: cselekvés, kattintva, a 6–8. szempont.</p><button class="btn next" data-go="p3">Tovább a következő fázisra · 3/4 →</button>';
+    var nb3=document.querySelector('#p3 .nextbar'); if(nb3)nb3.innerHTML='<p><span class="nb-st">3/4 kész</span> Következik: összegzés és leadás.</p><button class="btn next" data-go="p4">Tovább a következő fázisra · 4/4 →</button>';
+    var sh=document.querySelector('.sum-h p'); if(sh)sh.textContent='Így ítéltétek meg az oldalt a nyolc szemponton át.';
     var db=$('decB'); if(db){var li=db.closest('li'); if(li)li.style.display='none'}
     var ins=$('insights'); if(ins)ins.style.gridTemplateColumns='1fr';
     var sc=$('scores'); if(sc)sc.style.gridTemplateColumns='1fr';
@@ -409,7 +405,7 @@ textarea{min-height:4.2em;resize:vertical}
     var pl=document.querySelector('#p4 .lead'); if(pl)pl.textContent=pl.textContent.replace('Lent az öt mező','Lent a négy mező');
     var wl=document.querySelector('label[for="who"] b'); if(wl)wl.textContent='Ki mit csinált';
     [].forEach.call(document.querySelectorAll('#p4 .hint'),function(e){e.textContent=e.textContent.replace('a 7. alkalom briefjébe kerül','a 7. téma briefjébe kerül, 2026. november 6-án')});
-    [].forEach.call(document.querySelectorAll('span.muted.small'),function(e){if(/nyolc szempont/.test(e.textContent))e.textContent='Levelező · A saját terep · hat szempont'});
+    [].forEach.call(document.querySelectorAll('span.muted.small'),function(e){if(/nyolc szempont/.test(e.textContent))e.textContent='Levelező · A saját terep · nyolc szempont'});
   }
 
   /* --- a nyolc blokk a leadáshoz --- */
@@ -420,12 +416,12 @@ textarea{min-height:4.2em;resize:vertical}
     var f2=(S.brand?'Márka: '+S.brand+'. ':'')+(S.noown?'A márkának nincs saját weboldala. Ami a keresésre jön: '+(S.search||'nincs kitöltve').trim()+'. Második külső oldal: '+(S.ext2||'-')+' '+(S.ext2url||'')+'. ':'Saját oldal: '+(S.ownurl||'-')+'. ')+'Külső oldal: '+(S.ext||'-')+' '+(S.exturl||'')+'. Eszköz: '+S.device+'.';
     var map=LENS.map(function(L,i){return L.n+'. '+L[2]+': '+ansTxt((S.A[L[1]]||{}).v)+(LEV?'':' / '+ansTxt((S.B[L[1]]||{}).v))}).join('\n');
     if(LEV){
-      var f2l=(S.brand?'Márka: '+S.brand+'. ':'')+(S.noown?'A márkának nincs saját weboldala. Ami a keresésre jön: '+(S.search||'nincs kitöltve').trim()+'. Helyette nézett oldal: '+(S.ext2||'-')+' '+(S.ext2url||'')+'. ':'Saját oldal: '+(S.ownurl||'-')+'. ')+'Eszköz: '+S.device+'. Levelező: egy oldal, hat szempont.';
+      var f2l=(S.brand?'Márka: '+S.brand+'. ':'')+(S.noown?'A márkának nincs saját weboldala. Ami a keresésre jön: '+(S.search||'nincs kitöltve').trim()+'. Helyette nézett oldal: '+(S.ext2||'-')+' '+(S.ext2url||'')+'. ':'Saját oldal: '+(S.ownurl||'-')+'. ')+'Eszköz: '+S.device+'. Levelező: a saját oldal, nyolc szempont.';
       return {
         f1:(S.who||'').trim(),
         f2:f2l,
         f3:(S.sentence||'').trim(),
-        f4:roundTxt([1],['A']),
+        f4:roundTxt([1,2],['A']),
         f5:'',
         f6:roundTxt([3],['A']),
         f7:'',

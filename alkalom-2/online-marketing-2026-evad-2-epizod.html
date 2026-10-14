@@ -303,6 +303,8 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .slide{max-width:1720px;padding-left:7vw;padding-right:7vw;padding-bottom:7vh}
 .pager a.home{padding:.2em .6em;border:1px solid var(--line);border-radius:4px;color:inherit;text-decoration:none}
 .pager a.home:hover{color:var(--cobalt);border-color:var(--cobalt)}
+.btn.go{background:var(--cobalt);color:#fff;font-weight:600;text-decoration:none}
+.lev-go .btn{display:inline-block;margin:0 .5em .5em 0;text-decoration:none}
 </style>
 <style id="lev-css">
 /* levelezős mód: a kihagyott diák és a nappali évadsáv nem látszik */
@@ -711,6 +713,7 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Levelező gyakorlat · 45 perc · kettesben</p>
   <h2>Journey-térkép</h2>
   <div class="task lev-task"><ol><li>Nyissátok meg a Journey-térképet, válasszátok ki a csapatot és a márkát.</li><li>Az egyik a See és a Think, a másik a Do és a Care fázist térképezi fel: fázisonként egy kontaktpont, és mit mond ott a márka.</li><li>Együtt döntsétek el, hol szakad meg az út: egy pont, amire rá lehet bökni.</li><li>Leadás az eszközből, a Beküldés gombbal.</li></ol></div>
+  <p class="lev-go" style="margin-top:1.2em"><a class="btn go" href="journey-terkep.html" target="_blank">Journey-térkép megnyitása →</a> <a class="btn" href="journey-tippek.html" target="_blank">Megfigyelési segédlet</a></p>
   <p class="small muted" style="margin-top:1em">A modell: See-Think-Do-Care.</p>
 </section>
 
@@ -799,7 +802,7 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.37 · 2026. október 14.</span></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.38 · 2026. október 14.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->

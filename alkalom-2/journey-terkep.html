@@ -138,7 +138,7 @@ td.holed{background:rgba(242,201,76,.25)}
     <div class="out" id="out" style="margin-top:1em"></div>
   </div>
 
-  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.13 · 2026. október 14.</p>
+  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.14 · 2026. október 14.</p>
 </main>
 
 <script>
@@ -153,6 +153,7 @@ td.holed{background:rgba(242,201,76,.25)}
   var OLDCH=['SEO, blog, saját tartalom','Videó (YouTube, TikTok, Reels)','Organikus social','Fizetett social','Display','Keresőhirdetés','Remarketing','E-mail, hírlevél','Affiliate, összehasonlító oldal','Vélemények, ajánlás, ajánlóprogram','Ügyfélszolgálat, chat, személyes'];
   var HOLES=[['','nem itt'],['üres fázis','itt: a márka nem mond semmit'],['csak mások beszélnek','itt: csak mások beszélnek (vélemény, ismerős)'],['jó üzenet rossz fázisban','itt: jó üzenet, de rossz fázisban']];
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
+  if(/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search))CLIENTS=CLIENTS.filter(function(c){return c!=='Kolorádó'}); /* levelezőn a fesztivál nem választható */
   var TEAMS={};
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
   var KEY='om2026-journey-ep2'+(LEV?'-lev':'');
