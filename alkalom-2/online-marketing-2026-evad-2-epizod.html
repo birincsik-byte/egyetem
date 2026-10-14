@@ -296,6 +296,14 @@ svg.flow{width:100%;max-height:66vh;display:block}svg.flow .fh{font:600 13px var
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<style id="lev-css">
+/* levelezős mód: a kihagyott diák és a nappali évadsáv nem látszik */
+html.lev .strip{display:none!important}
+html.lev .deck{top:0!important}
+html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
+.lev-task ol{margin:.6em 0 0 1.2em}
+.lev-task li{margin:.35em 0}
+</style>
 </head>
 <body>
 
@@ -691,6 +699,13 @@ svg.flow{width:100%;max-height:66vh;display:block}svg.flow .fh{font:600 13px var
   <p class="step" style="margin-top:1em;max-width:62ch">A térkép, a journey hasznos, mert észrevesszük, hogy mire nem gondoltunk, illetve strukturált marad a marketing és a kommunikáció.</p>
 </section>
 
+<section class="slide" data-notes="lev2" data-lev="only">
+  <p class="kicker">Levelező gyakorlat · 45 perc · kettesben</p>
+  <h2>Journey-térkép</h2>
+  <div class="task lev-task"><ol><li>Nyissátok meg a Journey-térképet, válasszátok ki a csapatot és a márkát.</li><li>Az egyik a See és a Think, a másik a Do és a Care fázist térképezi fel: fázisonként egy kontaktpont, és mit mond ott a márka.</li><li>Együtt döntsétek el, hol szakad meg az út: egy pont, amire rá lehet bökni.</li><li>Leadás az eszközből, a Beküldés gombbal.</li></ol></div>
+  <p class="small muted" style="margin-top:1em">A modell: See-Think-Do-Care.</p>
+</section>
+
 <!-- e17 -->
 <section class="slide" data-notes="e17">
   <p class="kicker kb"><span class="hl">A második beadandó</span> · 30 perc · csoportmunka</p>
@@ -776,7 +791,7 @@ svg.flow{width:100%;max-height:66vh;display:block}svg.flow .fh{font:600 13px var
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.32 · 2026. szeptember 27.</span></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.33 · 2026. október 14.</span></div>
 <div class="pager"><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -846,6 +861,23 @@ svg.flow{width:100%;max-height:66vh;display:block}svg.flow .fh{font:600 13px var
 <div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
 <div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
 <div class="revout" id="revout"><h2>Megjegyzések</h2><p class="small muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár (Esc)</button></p></div>
+<script id="lev-js">
+/* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
+(function(){
+  var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
+  var SKIP=["k2", "e2", "e5", "e6a", "e6b", "e11", "e11b", "e12b", "e15", "e13b", "e13f", "e17", "e17h", "e19"], TXT={"2026. szeptember 28.": "2026. október 16.", "Múlt héten egy mondatot írtatok.": "Az előbb egy mondatot írtatok.", "3. alkalom · A saját terep · 2026. október 12.": "Következik: A saját terep"};
+  [].forEach.call(document.querySelectorAll('section.slide'),function(s){
+    var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
+    if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
+  });
+  if(!LEV) return;
+  document.documentElement.classList.add('lev');
+  [].forEach.call(document.querySelectorAll('section.slide *'),function(e){
+    if(e.children.length) return; var t=e.textContent.trim(); if(TXT.hasOwnProperty(t)) e.textContent=TXT[t];
+  });
+  var v=document.getElementById('ver'); if(v) v.textContent=v.textContent+' · levelező';
+})();
+</script>
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,notes=document.getElementById('notes'),pos=document.getElementById('pos');

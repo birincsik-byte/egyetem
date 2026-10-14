@@ -161,18 +161,26 @@ body.rev .revbar{display:flex}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<style id="lev-css">
+/* levelezős mód: a kihagyott diák és a nappali évadsáv nem látszik */
+html.lev .strip{display:none!important}
+html.lev .deck{top:0!important}
+html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
+.lev-task ol{margin:.6em 0 0 1.2em}
+.lev-task li{margin:.35em 0}
+</style>
 </head>
 <body>
 
 <nav class="strip" aria-label="Évad">
   <a href="#" data-go="0" data-sec="keret"><b>Évad</b><span>a keret</span></a>
-  <a href="#" data-go="12" data-sec="ep1"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
-  <a href="#" data-go="6" class="dim"><b>2</b><span>Hogyan dönt az ember · 09. 28.</span></a>
-  <a href="#" data-go="6" class="dim"><b>3</b><span>A saját terep · 10. 12.</span></a>
-  <a href="#" data-go="6" class="dim"><b>4</b><span>A csatornák nyelve · 11. 02.</span></a>
-  <a href="#" data-go="6" class="dim"><b>5</b><span>Mennyiért · 11. 09.</span></a>
-  <a href="#" data-go="6" class="dim"><b>6</b><span>Mit mutat a valóság · 11. 23.</span></a>
-  <a href="#" data-go="6" class="dim"><b>7</b><span>Hogyan dolgozik egy marketinges · 12. 07.</span></a>
+  <a href="#" data-go="13" data-sec="ep1"><b>1</b><span>Kinek és mit · 09. 14.</span></a>
+  <a href="#" data-go="7" class="dim"><b>2</b><span>Hogyan dönt az ember · 09. 28.</span></a>
+  <a href="#" data-go="7" class="dim"><b>3</b><span>A saját terep · 10. 12.</span></a>
+  <a href="#" data-go="7" class="dim"><b>4</b><span>A csatornák nyelve · 11. 02.</span></a>
+  <a href="#" data-go="7" class="dim"><b>5</b><span>Mennyiért · 11. 09.</span></a>
+  <a href="#" data-go="7" class="dim"><b>6</b><span>Mit mutat a valóság · 11. 23.</span></a>
+  <a href="#" data-go="7" class="dim"><b>7</b><span>Hogyan dolgozik egy marketinges · 12. 07.</span></a>
 </nav>
 
 <main class="deck">
@@ -219,6 +227,23 @@ body.rev .revbar{display:flex}
       <li class="step"><div>Kikkel csináljuk<span>7. Hogyan dolgozik egy marketinges</span></div></li>
     </ol>
   </div>
+</section>
+
+<!-- 3b -->
+<section class="slide" data-notes="n3b">
+  <p class="kicker">Az öt lépés · összefoglalva</p>
+  <h2>Öt kérdés, amire a félév válaszol</h2>
+  <table>
+    <thead><tr><th>Kérdés</th><th>Kotler–Keller makromodell</th><th>Melyik alkalom ad rá választ</th></tr></thead>
+    <tbody>
+      <tr><td>Ki beszél? (márka)</td><td>sender</td><td>1. (a márka mondata), 3. (a márka hangja a saját terepen)</td></tr>
+      <tr><td>Kihez beszélünk? (célcsoport)</td><td>receiver</td><td>1. (helyzet, nem demográfia), 2. (hogyan dönt)</td></tr>
+      <tr><td>Mit mondunk? (üzenet)</td><td>message</td><td>1. (az értékajánlat), 4. (a csatornánkénti nyelv)</td></tr>
+      <tr><td>Hogyan jutunk el hozzá? (mix)</td><td>media</td><td>2. (mikor), 3. (hol fogadjuk), 4. (csatorna), 5. (mennyiért)</td></tr>
+      <tr><td>Honnan tudjuk, hogy eljutott?</td><td>feedback, response</td><td>6.</td></tr>
+    </tbody>
+  </table>
+  <p class="small muted" style="margin-top:1em">Forrás: Kotler, Keller: Marketing Management, 14. kiadás, 17. fejezet, 17.1 ábra, 480. oldal</p>
 </section>
 
 <!-- 4 -->
@@ -554,6 +579,13 @@ body.rev .revbar{display:flex}
   <p class="small muted" style="margin-top:.6em">Ha megvan: <a class="btn" href="app.html?ep=ep1&amp;v=csapat" target="_blank">Csapat bejegyzése</a> A csapatnév, az ügyfél és a tagok innentől a félév szereposztása.</p>
 </section>
 
+<section class="slide" data-notes="lev1" data-lev="only">
+  <p class="kicker">Levelező gyakorlat · 45 perc · kettesben</p>
+  <h2>A márka, a célcsoport és az üzenet, visszafejtve</h2>
+  <div class="task lev-task"><ol><li>Nézzétek meg a márkátokat: a weboldalát és egy közösségi felületét.</li><li>Az egyik a márkát és a hangját nézi, a másik a célcsoportot. Minden állítás mellé: miből látjátok.</li><li>Együtt írjátok meg a mondatot és azt, ami hiányzik.</li><li>Leadás a levelezős felületen, a Leadás fülön.</li></ol></div>
+  <p class="small muted" style="margin-top:1em">A mondat: „A(z) [márka] [kinek] szól, [mi helyett] választják, és az értékajánlata: [értékajánlat].”</p>
+</section>
+
 <!-- 11 -->
 <section class="slide" data-notes="n11">
   <p class="kicker">Az első beadandó · 30 perc</p>
@@ -629,7 +661,7 @@ body.rev .revbar{display:flex}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.7 · 2026. szeptember 13.</span></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.9 · 2026. október 14.</span></div>
 <div class="pager"><button data-open="notes">Jegyzet</button><span id="pos">1 / 13</span><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -642,6 +674,7 @@ body.rev .revbar{display:flex}
 <p>A három kiemelt szó a félév három szereplője. Az ember, aki fogyaszt: ez a célcsoport. A marketing eszközei, a csatornák: ez az, ahol találkozunk vele. A termék, ami márkává lesz: ez az, amit mondunk róla. Az 1. alkalom az elsőről és a harmadikról szól, és arról, hogy a kettő egyetlen mondatban összeér.</p></div></div>
   <div data-n="n3"><h4>A hét kérdés</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A hét kérdés együtt egy döntési lánc, és ez nem véletlen: pontosan ezek a kérdések vannak egy marketingstratégiában és egy briefben is. Kinek és mit mondunk: ez a célcsoport és az üzenet, az 1. alkalom. Mikor mondjuk: az ember nem akkor vásárol, amikor mi beszélünk, tehát a folyamatát kell érteni, ez a 2. alkalom. Hol fogadjuk, amikor megérkezik: a weboldal és minden, ami a miénk, ez a 3. Milyen lehetőségeink vannak elérni: a csatornák és a nyelvük, ez a 4. Mennyiért, mit bérlünk és mit építünk: a pénz felosztása, ez az 5. Miből tudjuk meg, hogy működött: mérés és hibakeresés, ez a 6. Kikkel csináljuk: a csapat, a brief, a visszajelzés, ez a 7.</p>
 <p>A sorrend logikája: minden kérdés az előzőre épül. Nem tudod időzíteni, amíg nem tudod, kinek beszélsz. Nem tudod beárazni a csatornát, amíg nem tudod, melyik kell. A hetedik alkalomra a lánc minden eleme megvan, és akkor már csak az kell, hogy más ember is megértse.</p></div></div>
+  <div data-n="n3b"><h4>Az öt lépés</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 14. kiadás, 17. fejezet, 480. oldal (makromodell); a hozzárendelés: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A hét alkalom mögött öt kérdés van, és ez az öt kérdés a kommunikáció alapmodelljéből jön. Kotler makromodelljében kilenc elem van: a két fél (küldő és fogadó), a két eszköz (üzenet és média), és a négy funkció (kódolás, dekódolás, válasz, visszacsatolás), plusz a zaj. Mi ötöt emelünk ki belőle kérdésként. Ki beszél: ez a márka. Kihez beszélünk: ez a célcsoport. Mit mondunk: ez az üzenet. Hogyan jutunk el hozzá: ez a mix, a csatornák, az időzítés és a pénz. Honnan tudjuk, hogy eljutott: ez a mérés. A jobb oldali oszlop megmutatja, melyik alkalom melyik kérdésre ad választ. Egy kérdésre több alkalom is felel, és egy alkalom több kérdésre is. A félév végén ugyanerre az öt kérdésre épül a brief.</p></div></div>
   <div data-n="n4"><h4>Honnan hova</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A bal oldali mondat nem hiba, hanem kiindulópont. Mindenki így érkezik, mert a marketing eddig veled történt: láttál reklámot, görgettél tartalmat, tetszett vagy nem. Ebből az következik, hogy azt tartod jónak, ami neked tetszik. A probléma ezzel az, hogy a te ízlésed nem érv. Ha egy ügyfélnek vagy egy főnöknek azt mondod, hogy „szerintem ez jó", arra bármit lehet válaszolni.</p>
 <p>A jobb oldali mondat az, ahová a félév visz. A marketing döntéssor: kit választottál és ezzel kit zártál ki, miért akkor, miért ott, miért annyiért, és honnan tudod. Egy döntést akkor tudsz megvédeni, ha minden lépésnél meg tudod mondani, mire alapoztad, és nem az ízlésedre. A vizsga is ezt kérdezi: nem azt, hogy mit tudsz, hanem hogyan gondolkodsz egy életszagú helyzetben.</p></div></div>
   <div data-n="n5"><h4>Fázis-táblázat</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A táblázat soronként ugyanazt a mozgást írja le: mit hozol magaddal, mire vált át, és mit ad hozzá a végcélhoz, a megvédhető döntéshez. Az 1. alkalmon a „nekem tetszik" válik „valakinek pont megoldás"-sá, és ezzel megjelenik az első döntéselem: a kiválasztás, ami egyben kizárás. A 2.-ban az időzítés kerül a döntésbe, mert a folyamat nem egy pillanat. A 3.-ban a felelősség a másik emberről a saját felületünkre kerül: nem őt kell meggyőzni, az akadályt kell elvenni. A 4.-ben a platformválasztás megszűnik ízlés lenni. Az 5.-ben a pénz felosztása állásfoglalás lesz, tehát indokolni kell. A 6.-ban megtanulod ellenőrizni, és ha kell, megcáfolni a saját döntésedet. A 7.-ben a döntés kikerül a fejedből, és mások előtt is megáll.</p>
@@ -738,6 +771,23 @@ body.rev .revbar{display:flex}
 <div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
 <div class="revout" id="revout"><h2>Megjegyzések</h2><p class="small muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár (Esc)</button></p></div>
 
+<script id="lev-js">
+/* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
+(function(){
+  var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
+  var SKIP=["n0", "n5", "n6", "n6b", "n9a2", "n10", "n9f", "n11", "n11c", "n11d"], TXT={"2026. szeptember 14.": "2026. október 16.", "2. alkalom · Hogyan dönt az ember · 2026. szeptember 28.": "Következik: Hogyan dönt az ember"};
+  [].forEach.call(document.querySelectorAll('section.slide'),function(s){
+    var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
+    if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
+  });
+  if(!LEV) return;
+  document.documentElement.classList.add('lev');
+  [].forEach.call(document.querySelectorAll('section.slide *'),function(e){
+    if(e.children.length) return; var t=e.textContent.trim(); if(TXT.hasOwnProperty(t)) e.textContent=TXT[t];
+  });
+  var v=document.getElementById('ver'); if(v) v.textContent=v.textContent+' · levelező';
+})();
+</script>
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,notes=document.getElementById('notes'),pos=document.getElementById('pos');

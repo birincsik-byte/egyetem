@@ -20,3 +20,9 @@ A deckek, az eszközök és az app ugyanazok a fájlok (`alkalom-N/` és a gyök
 - `key.php`: az oktatói kulcs, egyelőre ugyanaz, mint a nappalin.
 - `neptun.php`: a levelezős hallgatók Neptun-kódjai. Amíg nincs, csak az oktatói kulccsal lehet belépni.
 - `data/`: az api.php magától létrehozza, a csapatlista üresen indul.
+
+## Feltölthető csomag: `om2026levelezo/` (2026. október 14.)
+
+A `LEVELEZŐ/om2026levelezo/` mappában pontosan az van, ami a szerveren a `public_html/om2026levelezo/` mappába kell: a kezdőlap, az app, az api.php, a három deck, a Journey-térkép a tippekkel, az Oldalvizsgálat, az Oldal anatómiája, valamint a `neptun.php` (a 8 levelezős hallgató) és a `key.php` (az oktatói kulcs). A mappa a `.gitignore`-ban van, mert kódokat tartalmaz; a fájlokat a gyökérből és az `alkalom-N` mappákból másoltuk, ha ott változik valami, a csomagot újra kell másolni.
+
+A levelezős mód magától bekapcsol az `om2026levelezo` címen (helyben `?lev=1` a cím végén): a deckekből kimaradnak a jelölt diák, a dátumok cserélődnek, a gyakorlatok rövidebbek (kettesben; Journey-térkép kötött See-Think-Do-Care modellel; Oldalvizsgálat egy oldalra, hat szemponttal).

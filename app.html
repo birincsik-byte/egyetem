@@ -166,7 +166,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.13 · 2026. október 11.</p>
+  <p class="small muted" style="margin-top:3em">app v2.14 · 2026. október 14.</p>
 </div>
 
 <script>
@@ -204,24 +204,27 @@ summary{cursor:pointer;color:var(--cobalt)}
   /* ===== levelező (om2026levelezo): ugyanaz a hét téma, témánként rövid órai gyakorlat ===== */
   var LEV=/levelezo/i.test(location.pathname);
   if(LEV){
-    EPISODES.ep1={name:'1. téma · Kinek és mit (levelező)', title:'1. gyakorlat: a márka mondata visszafejtve', limit:'rövid, kb. 25 perc', fields:[
+    EPISODES.ep1={name:'1. téma · Kinek és mit (levelező)', title:'1. gyakorlat: a márka, a célcsoport és az üzenet visszafejtve', limit:'rövid, kb. 45 perc, kettesben', fields:[
       ['f1','Ki mit csinált'],
       ['f2','Amit néztünk: a márka weboldala és egy közösségi felülete (linkkel)'],
+      ['f7','A márka: mi ez a márka és mit csinál (egy mondat), milyen hangon beszél (két-három jelző); mindegyik mellé, miből látjátok'],
+      ['f8','A célcsoport: kit szólít meg, nem demográfia, hanem helyzet: ki az, akinek épp most kell; miből látjátok'],
       ['f3','A mondat: „A(z) [márka] [kinek] szól, [mi helyett] választják, és az értékajánlata: [értékajánlat].”'],
-      ['f4','Bizonyíték: melyik mondat, poszt vagy vélemény mutatja, amit a mondatban állítottatok']]};
-    EPISODES.ep2={name:'2. téma · Hogyan érjük el az embert és hogyan dönt (levelező)', title:'2. gyakorlat: rövid journey-térkép', limit:'rövid, kb. 25 perc', fields:[
+      ['f6','Ami hiányzik: a döntések közül melyik nincs kimondva, egy mondat']]};
+    EPISODES.ep2={name:'2. téma · Hogyan érjük el az embert és hogyan dönt (levelező)', title:'2. gyakorlat: journey-térkép', tool:'journey-terkep.html', limit:'rövid, kb. 45 perc, kettesben', fields:[
       ['f1','Ki mit csinált'],
-      ['f7','A modell és miért: See-Think-Do-Care vagy 5A, egy mondat indoklás'],
+      ['f2','Amit néztünk'],
       ['f3','A journey egy mondatban: honnan hova jut, és hol dől el'],
-      ['f4','Fázisonként egy kontaktpont, és mit mond ott jelenleg a márka'],
-      ['f6','Hol szakad meg az út: egy pont, amire rá lehet bökni']]};
-    EPISODES.ep3={name:'3. téma · A saját terep (levelező)', title:'3. gyakorlat: oldalvizsgálat a márka oldalán', limit:'rövid, kb. 25 perc', nosample:true, fields:[
+      ['f4','Fázisok és kontaktpontok (See-Think-Do-Care): fázisonként egy kontaktpont, és mit mond ott a márka'],
+      ['f6','Hol szakad meg az út: egy pont, amire rá lehet bökni'],
+      ['f8','Ami hiányzik: melyik fázisban nem mond semmit a márka, egy mondat']]};
+    EPISODES.ep3={name:'3. téma · A saját terep (levelező)', title:'3. gyakorlat: oldalvizsgálat a saját oldalon, hat szemponttal', tool:'oldal-vizsgalat.html', toolname:'Oldalvizsgálat', toolnote:'az Oldalvizsgálat lapon', limit:'rövid, kb. 35 perc, kettesben', nosample:true, fields:[
       ['f1','Ki mit csinált'],
-      ['f2','Az oldal címe, és min néztétek (telefon vagy gép)'],
+      ['f2','Az oldal, és min néztétek (telefon vagy gép)'],
       ['f3','Egy mondatban: „A [márka] oldala [kinek] szól, azt akarja, hogy [mit tegyen a látogató], és ebben [miben] segíti, [miben] akadályozza.”'],
       ['f4','Ránézés (1–3. szempont): mit láttok, miért így, működik-e'],
-      ['f5','Cselekvés (6–8. szempont): egy konverziós pont kipróbálva, mit láttok, miért így, működik-e'],
-      ['f8','A legtudatosabb döntés az oldalon: mi az, és mit akar vele elérni a márka']]};
+      ['f6','Cselekvés (6–8. szempont): mit láttok, miért így, működik-e'],
+      ['f8','Amit nem tudtok biztosan (az öt lépésből), a legtudatosabb döntés az oldalon, és az áttekintés']]};
   }
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
   var API='api.php';

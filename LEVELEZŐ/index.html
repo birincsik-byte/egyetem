@@ -53,14 +53,15 @@ h1{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:2em;lin
   <div class="alk off"><div class="n">7</div><div><b>Hogyan dolgozik egy marketinges</b><p class="q">Kikkel csináljuk.</p><p class="soon">Az anyag az alkalom előtt kerül ide.</p></div></div>
 
   <p class="links" id="oktlink" style="display:none"><a href="app.html?ep=ep1&amp;v=admin">Oktató</a></p>
-  <p class="foot">Oktató: Birincsik Albert. · <a href="#" id="logout" style="color:var(--soft)">Kilépés</a> · levelező v1.0 · 2026. október 11.</p>
+  <p class="foot">Oktató: Birincsik Albert. · <a href="#" id="logout" style="color:var(--soft)">Kilépés</a> · levelező v1.2 · 2026. október 14.</p>
 </div>
 <script>
 (function(){
   var gate=document.getElementById('gate'),site=document.getElementById('site');
   function api(a,body){return fetch('api.php?a='+a,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),credentials:'same-origin'}:{credentials:'same-origin'}).then(function(r){return r.json()})}
   function show(role,code){gate.style.display='none';site.style.display='';document.getElementById('who').textContent=role==='oktato'?'· oktató':(code?'· '+code:'');document.getElementById('oktlink').style.display=role==='oktato'?'':'none'}
-  api('me').then(function(d){ if(d.role)show(d.role,d.code); }).catch(function(){});
+  if(location.protocol==='file:'){show('oktato'); if(!/om2026levelezo\//.test(location.pathname)){[].forEach.call(document.querySelectorAll('a[href]'),function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)!=='#'&&!/^[a-z]+:/i.test(h))a.setAttribute('href','om2026levelezo/'+h)})} var w=document.getElementById('who'); if(w)w.textContent='· helyi előnézet, belépés nélkül (a belépés és a leadás csak a szerveren működik)';}
+  else api('me').then(function(d){ if(d.role)show(d.role,d.code); }).catch(function(){});
   function go(){var c=document.getElementById('g_code').value.trim();if(!c){document.getElementById('g_status').textContent='Írd be a kódot.';return}api('auth',{code:c}).then(function(d){if(d.ok)show(d.role,c.toUpperCase());else document.getElementById('g_status').textContent=d.error}).catch(function(){document.getElementById('g_status').textContent='A szerver nem elérhető.'})}
   document.getElementById('g_send').addEventListener('click',go);
   document.getElementById('g_code').addEventListener('keydown',function(e){if(e.key==='Enter')go()});

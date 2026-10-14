@@ -138,7 +138,7 @@ td.holed{background:rgba(242,201,76,.25)}
     <div class="out" id="out" style="margin-top:1em"></div>
   </div>
 
-  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.11 · 2026. szeptember 24.</p>
+  <p class="foot">A csatornalista az oktató összeállítása. Saját csatorna a lista alján hozzáadható. · journey-térkép v1.12 · 2026. október 14.</p>
 </main>
 
 <script>
@@ -154,11 +154,12 @@ td.holed{background:rgba(242,201,76,.25)}
   var HOLES=[['','nem itt'],['üres fázis','itt: a márka nem mond semmit'],['csak mások beszélnek','itt: csak mások beszélnek (vélemény, ismerős)'],['jó üzenet rossz fázisban','itt: jó üzenet, de rossz fázisban']];
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
   var TEAMS={};
-  var KEY='om2026-journey-ep2';
+  var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
+  var KEY='om2026-journey-ep2'+(LEV?'-lev':'');
   function blank(){return {team:'',brand:'',model:'stdc',seq:'',why:'',sentence:'',evidence:'',gap:'',missing:'',who:'',looked:'',channels:CH.slice(),cells:{},mx:{},holes:{}}}
   var S=blank();
   try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in o)S[k]=o[k]}}catch(e){}
-  if(!MODELS[S.model])S.model='stdc';
+  if(!MODELS[S.model]||LEV)S.model='stdc';
   if(S.channels.indexOf(OLDCH[1])>=0){S.channels=CH.concat(S.channels.filter(function(c){return OLDCH.indexOf(c)<0&&CH.indexOf(c)<0}))}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
   function $(id){return document.getElementById(id)}
@@ -217,10 +218,10 @@ td.holed{background:rgba(242,201,76,.25)}
     return {
       f1:(S.who||'').trim(),
       f2:(S.brand?'Márka: '+S.brand+'. ':'')+(S.looked||'').trim(),
-      f7:'Modell: '+M.name+'. Sorrend: '+(S.seq||'nincs megadva')+'. '+(S.why||'').trim(),
+      f7:LEV?'Modell: '+M.name+' (a levelezőn kötött).':'Modell: '+M.name+'. Sorrend: '+(S.seq||'nincs megadva')+'. '+(S.why||'').trim(),
       f3:(S.sentence||'').trim(),
       f4:f4,
-      f5:(S.evidence||'').trim(),
+      f5:LEV?'':(S.evidence||'').trim(),
       f6:(holes?'A térképen jelölve: '+holes+'. ':'')+(S.gap||'').trim(),
       f8:(S.missing||'').trim()
     };
@@ -277,6 +278,18 @@ td.holed{background:rgba(242,201,76,.25)}
   demoUI();
   window.addEventListener('storage',function(e){ if(e.key!==KEY||!e.newValue)return; try{var o=JSON.parse(e.newValue); S=blank(); for(var k in o)S[k]=o[k]; fill(); demoUI(); $('status').textContent='A térkép egy másik fülön módosult, betöltöttem a friss állapotot.'}catch(x){} });
 
+  if(LEV){
+    document.documentElement.classList.add('lev');
+    var hs=[].slice.call(document.querySelectorAll('main h2'));
+    hs.forEach(function(h){
+      if(/^1\. A modell/.test(h.textContent)){h.style.display='none'; var n=h.nextElementSibling; while(n&&n.tagName!=='H2'){n.style.display='none'; n=n.nextElementSibling}}
+    });
+    var num=0; hs.forEach(function(h){ if(h.style.display==='none')return; num++; h.textContent=h.textContent.replace(/^\d+\./,num+'.') });
+    hs.forEach(function(h){ if(/Bizonyíték, lyuk, hiány/.test(h.textContent)) h.textContent=h.textContent.replace('Bizonyíték, lyuk, hiány','Hol szakad meg az út, és mi hiányzik') });
+    var ev=$('evidence'); if(ev&&ev.parentNode)ev.parentNode.style.display='none';
+    var ld=document.querySelector('.lead'); if(ld)ld.innerHTML=ld.innerHTML.replace('a döntési fázisok a választott modell szerint','a See-Think-Do-Care négy fázisa');
+    var ob=document.querySelector('.onebox'); if(ob)ob.innerHTML='<b>Kettesben, egy böngészőben dolgozzatok.</b> A térkép abban a böngészőben mentődik, ahol kitöltitek. Az egyik a See és a Think, a másik a Do és a Care fázist nézi; ugyanabba a térképbe írjatok.';
+  }
   fill();
 })();
 </script>
