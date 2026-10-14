@@ -295,6 +295,12 @@ svg.flow{width:100%;max-height:66vh;display:block}svg.flow .fh{font:600 13px var
   .season{grid-template-columns:repeat(2,1fr)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* nagyobb betű a TV-hez */
+html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
+.strip a{font-size:clamp(11px,.78vw,15px)}
+.hint{font-size:clamp(11px,.82vw,16px)}
+.slide{max-width:1720px;padding-left:7vw;padding-right:7vw;padding-bottom:7vh}
 </style>
 <style id="lev-css">
 /* levelezős mód: a kihagyott diák és a nappali évadsáv nem látszik */
@@ -354,8 +360,8 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Visszamutatás · az 1. beadandó</p>
   <h2>Múlt héten egy mondatot írtatok.</h2>
   <p class="quote">A(z) [ügyfél] [kinek] szól, [mi helyett] választják, és az értékajánlata: [értékajánlat].</p>
-  <p class="step" style="margin-top:1em">Ez a mondat megmondja, kinek és mit. Azt nem mondja meg, mikor. Ma ebből a mondatból indultok, nem nulláról.</p>
-  <p class="step" style="margin-top:1em"><a class="btn" href="app.html?ep=ep1&amp;v=eredmeny" target="_blank">Az 1. alkalom eredménye</a></p>
+  <p style="margin-top:1em">Ez a mondat megmondja, kinek és mit. Azt nem mondja meg, mikor. Ma ebből a mondatból indultok, nem nulláról.</p>
+  <p style="margin-top:1em"><a class="btn" href="app.html?ep=ep1&amp;v=eredmeny" target="_blank">Az 1. alkalom eredménye</a></p>
 </section>
 
 <!-- e2 -->
@@ -363,9 +369,9 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">A nap ritmusa · 4 × 45 perc</p>
   <h2>Az egész alkalom ennyi:</h2>
   <div class="blocks">
-    <div class="step"><b>1. Szavazás megnézése</b>Az 1. alkalom eredménye és a lánc: hol tartunk. A saját legutóbbi vásárlásod, papíron.</div>
-    <div class="step"><b>2. Elmélet</b>Szemlélet: a befogadó felől nézünk. A döntés mint folyamat, a sorrend, a tölcsér. A modellek: See-Think-Do-Care, 5A, Kotler öt lépcsője.</div>
-    <div class="step"><b>3. Gyakorlat és leadás</b>Journey-térkép a saját márkátokra, 30 perc. Leadás, szavazás és zárás, 15 perc.</div>
+    <div><b>1. Szavazás megnézése</b>Az 1. alkalom eredménye és a lánc: hol tartunk. A saját legutóbbi vásárlásod, papíron.</div>
+    <div><b>2. Elmélet</b>Szemlélet: a befogadó felől nézünk. A döntés mint folyamat, a sorrend, a tölcsér. A modellek: See-Think-Do-Care, 5A, Kotler öt lépcsője.</div>
+    <div><b>3. Gyakorlat és leadás</b>Journey-térkép a saját márkátokra, 30 perc. Leadás, szavazás és zárás, 15 perc.</div>
   </div>
 </section>
 
@@ -373,9 +379,9 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 <section class="slide" data-notes="e3">
   <p class="kicker">Hogyan érjük el az embert és hogyan dönt?</p>
   <div class="triad">
-    <div class="step"><h3>Miről szól</h3><p>Journey modellek - hogyan jut el hozzánk a vevő?</p></div>
-    <div class="step"><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.2em">A figyelem több helyen van. A konverzió egy cél és folyamat is egyben.</p></div>
-    <div class="step"><h3>Tanulság</h3><p>A tölcsér nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor. A rossz üzenet legtöbbször jó üzenet rossz időben.</p></div>
+    <div><h3>Miről szól</h3><p>Journey modellek - hogyan jut el hozzánk a vevő?</p></div>
+    <div><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.2em">A figyelem több helyen van. A konverzió egy cél és folyamat is egyben.</p></div>
+    <div><h3>Tanulság</h3><p>A tölcsér nem riportsor, hanem tartalmi döntés arról, mit mondasz és mikor. A rossz üzenet legtöbbször jó üzenet rossz időben.</p></div>
   </div>
 </section>
 
@@ -384,11 +390,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Egyéni feladat · 5 perc · írásban, magadnak</p>
   <h2>Milyen volt az utolsó vásárlásod, ami legalább 15e Ft felett volt?</h2>
   <ol class="chain">
-    <li class="step"><div>Hol láttad először?</div></li>
-    <li class="step"><div>Hány eszközön nézted meg?</div></li>
-    <li class="step"><div>Hány nap telt el az elsőtől a vásárlásig?</div></li>
-    <li class="step"><div>Kit kérdeztél meg?</div></li>
-    <li class="step"><div>Vásárlás után foglalkoztak veled?</div></li>
+    <li><div>Hol láttad először?</div></li>
+    <li><div>Hány eszközön nézted meg?</div></li>
+    <li><div>Hány nap telt el az elsőtől a vásárlásig?</div></li>
+    <li><div>Kit kérdeztél meg?</div></li>
+    <li><div>Vásárlás után foglalkoztak veled?</div></li>
   </ol>
 </section>
 
@@ -399,10 +405,10 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="small muted">trend: general direction in which something is developing or changing</p>
   <hr class="rule">
   <p class="small muted" style="margin-bottom:.4em">But before anything:</p>
-  <p class="imper step">Think <span>and not just</span> do</p>
-  <p class="imper step">Collaborate <span>not just</span> create</p>
-  <p class="imper step">Reframe <span>not just</span> review</p>
-  <p class="small muted step" style="margin-top:.6em">design thinking</p>
+  <p class="imper">Think <span>and not just</span> do</p>
+  <p class="imper">Collaborate <span>not just</span> create</p>
+  <p class="imper">Reframe <span>not just</span> review</p>
+  <p class="small muted" style="margin-top:.6em">design thinking</p>
 </section>
 
 <!-- e6 -->
@@ -410,8 +416,8 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Szemlélet · a big shift lényege</p>
   <h2>Megfordítjuk a nézőpontot.</h2>
   <div class="cols" style="margin-top:.6em">
-    <div class="step"><h3 class="muted">Honnan</h3><p class="quote">Mi beszélünk. Azt nézzük, mit mondunk, mit mutatunk, mit ajánlunk.</p></div>
-    <div class="step"><h3 style="color:var(--cobalt)">Hova</h3><p class="quote">Ő érzékel. Azt nézzük, hogyan érzékeli, hogyan érzi a befogadó.</p></div>
+    <div><h3 class="muted">Honnan</h3><p class="quote">Mi beszélünk. Azt nézzük, mit mondunk, mit mutatunk, mit ajánlunk.</p></div>
+    <div><h3 style="color:var(--cobalt)">Hova</h3><p class="quote">Ő érzékel. Azt nézzük, hogyan érzékeli, hogyan érzi a befogadó.</p></div>
   </div>
 </section>
 
@@ -420,11 +426,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Szemlélet · 1. kivel beszélünk</p>
   <h2 class="long">Lássuk az embert, ne csak a „célcsoportot”. Azt tedd, amit magadnak is kívánnál.</h2>
   <div class="shift2">
-    <div class="srow step"><span class="f">just portraying consumers</span><span class="a">→</span><span class="t"><span class="hl">building dialogues with people</span></span><span class="hu">Nem bemutatod őt, hanem beszélgetsz vele. Nem szereplő a hirdetésedben, hanem a beszélgetés másik fele.</span></div>
-    <div class="srow step"><span class="f">“talk about” them</span><span class="a">→</span><span class="t"><span class="hl">“talk to” them</span></span><span class="hu">Nem róla beszélsz, hanem hozzá. Azt érzi, hogy megszólították, nem azt, hogy leírták.</span></div>
-    <div class="srow step"><span class="f">general public</span><span class="a">→</span><span class="t"><span class="hl">diverse group of people</span></span><span class="hu">Nincs nagyközönség. Különböző emberek vannak, különböző helyzetben.</span></div>
-    <div class="srow step"><span class="f">“cliches”</span><span class="a">→</span><span class="t"><span class="hl">“representation”</span></span><span class="hu">Ha kliséket lát, nem ismer magára. Ha magát látja, igen.</span></div>
-    <div class="srow step"><span class="f">something to everyone</span><span class="a">→</span><span class="t"><span class="hl">everything to someone</span></span><span class="hu">Valami mindenkinek helyett minden valakinek. Ezt már az 1. alkalmon kimondtuk.</span></div>
+    <div class="srow"><span class="f">just portraying consumers</span><span class="a">→</span><span class="t"><span class="hl">building dialogues with people</span></span><span class="hu">Nem bemutatod őt, hanem beszélgetsz vele. Nem szereplő a hirdetésedben, hanem a beszélgetés másik fele.</span></div>
+    <div class="srow"><span class="f">“talk about” them</span><span class="a">→</span><span class="t"><span class="hl">“talk to” them</span></span><span class="hu">Nem róla beszélsz, hanem hozzá. Azt érzi, hogy megszólították, nem azt, hogy leírták.</span></div>
+    <div class="srow"><span class="f">general public</span><span class="a">→</span><span class="t"><span class="hl">diverse group of people</span></span><span class="hu">Nincs nagyközönség. Különböző emberek vannak, különböző helyzetben.</span></div>
+    <div class="srow"><span class="f">“cliches”</span><span class="a">→</span><span class="t"><span class="hl">“representation”</span></span><span class="hu">Ha kliséket lát, nem ismer magára. Ha magát látja, igen.</span></div>
+    <div class="srow"><span class="f">something to everyone</span><span class="a">→</span><span class="t"><span class="hl">everything to someone</span></span><span class="hu">Valami mindenkinek helyett minden valakinek. Ezt már az 1. alkalmon kimondtuk.</span></div>
   </div>
 </section>
 
@@ -433,11 +439,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Szemlélet · 2. mit adunk</p>
   <h2 class="long">Nem teszünk ajánlatot. Értékeljük, hogy van. Rászolgálunk a figyelemre.</h2>
   <div class="shift2">
-    <div class="srow step"><span class="f">“offers”</span><span class="a">→</span><span class="t"><span class="hl">“promise”</span></span><span class="hu">Az ajánlat egy tranzakció. Az ígéret az, amit ő úgy érez, hogy a márka vállal neki.</span></div>
-    <div class="srow step"><span class="f">prize</span><span class="a">→</span><span class="t"><span class="hl">participation</span></span><span class="hu">Nem nyereményt vár, hanem hogy részese lehessen.</span></div>
-    <div class="srow step"><span class="f">“reward”</span><span class="a">→</span><span class="t"><span class="hl">“access”</span></span><span class="hu">Nem jutalmat akar, hanem hozzáférést: hogy bent legyen.</span></div>
-    <div class="srow step"><span class="f">just what is in it for me</span><span class="a">→</span><span class="t"><span class="hl">where am I in it</span></span><span class="hu">Nem az a kérdése, mit kap, hanem hogy hol van ő ebben a történetben.</span></div>
-    <div class="srow step"><span class="f">“wants”</span><span class="a">→</span><span class="t"><span class="hl">“needs”</span></span><span class="hu">Amit kimond, az a kívánság. Ami mögötte van, az a szükséglet.</span></div>
+    <div class="srow"><span class="f">“offers”</span><span class="a">→</span><span class="t"><span class="hl">“promise”</span></span><span class="hu">Az ajánlat egy tranzakció. Az ígéret az, amit ő úgy érez, hogy a márka vállal neki.</span></div>
+    <div class="srow"><span class="f">prize</span><span class="a">→</span><span class="t"><span class="hl">participation</span></span><span class="hu">Nem nyereményt vár, hanem hogy részese lehessen.</span></div>
+    <div class="srow"><span class="f">“reward”</span><span class="a">→</span><span class="t"><span class="hl">“access”</span></span><span class="hu">Nem jutalmat akar, hanem hozzáférést: hogy bent legyen.</span></div>
+    <div class="srow"><span class="f">just what is in it for me</span><span class="a">→</span><span class="t"><span class="hl">where am I in it</span></span><span class="hu">Nem az a kérdése, mit kap, hanem hogy hol van ő ebben a történetben.</span></div>
+    <div class="srow"><span class="f">“wants”</span><span class="a">→</span><span class="t"><span class="hl">“needs”</span></span><span class="hu">Amit kimond, az a kívánság. Ami mögötte van, az a szükséglet.</span></div>
   </div>
 </section>
 
@@ -446,10 +452,10 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Szemlélet · 3. mit érzékel</p>
   <h2 class="long">Nem az számít, amit mi mondunk. Az számít, amit ő átél.</h2>
   <div class="shift2">
-    <div class="srow step"><span class="f">what they say</span><span class="a">→</span><span class="t"><span class="hl">how they feel</span></span><span class="hu">Nem az számít, mit mond, hanem hogy mit érez. Ezt írjátok a térkép minden fázisához.</span></div>
-    <div class="srow step"><span class="f">what</span><span class="a">→</span><span class="t"><span class="hl">why</span></span><span class="hu">Nem az, hogy mit csinálsz, hanem hogy miért számít neki.</span></div>
-    <div class="srow step"><span class="f">“what you see”</span><span class="a">→</span><span class="t"><span class="hl">“what you don't see”</span></span><span class="hu">A lényeg a felszín alatt van: a félelem, a vágy, a kimondatlan.</span></div>
-    <div class="srow step"><span class="f">“relevance”</span><span class="a">→</span><span class="t"><span class="hl">“remarkable”</span></span><span class="hu">Relevánsnak lenni belépő. Emlékezetesnek lenni az, amiért beszélni fog rólad.</span></div>
+    <div class="srow"><span class="f">what they say</span><span class="a">→</span><span class="t"><span class="hl">how they feel</span></span><span class="hu">Nem az számít, mit mond, hanem hogy mit érez. Ezt írjátok a térkép minden fázisához.</span></div>
+    <div class="srow"><span class="f">what</span><span class="a">→</span><span class="t"><span class="hl">why</span></span><span class="hu">Nem az, hogy mit csinálsz, hanem hogy miért számít neki.</span></div>
+    <div class="srow"><span class="f">“what you see”</span><span class="a">→</span><span class="t"><span class="hl">“what you don't see”</span></span><span class="hu">A lényeg a felszín alatt van: a félelem, a vágy, a kimondatlan.</span></div>
+    <div class="srow"><span class="f">“relevance”</span><span class="a">→</span><span class="t"><span class="hl">“remarkable”</span></span><span class="hu">Relevánsnak lenni belépő. Emlékezetesnek lenni az, amiért beszélni fog rólad.</span></div>
   </div>
 </section>
 
@@ -458,11 +464,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">A döntés mint folyamat</p>
   <h2>A vásárlás jóval a vásárlás előtt kezdődik.</h2>
   <ol class="chain">
-    <li class="step"><div>Problémafelismerés<span>belső vagy külső inger: éhség, egy barát új autója, egy hirdetés</span></div></li>
-    <li class="step"><div>Információkeresés<span>előbb csak fogékonyabb leszel, aztán aktívan keresel</span></div></li>
-    <li class="step"><div>Alternatívák értékelése<span>a márkák körei: amit ismersz, amit mérlegelsz, amiből választasz</span></div></li>
-    <li class="step"><div>Vásárlási döntés<span>öt al-döntés: márka, kereskedő, mennyiség, időzítés, fizetési mód</span></div></li>
-    <li class="step"><div>Vásárlás utáni viselkedés<span>megerősítést keresel, elégedett vagy csalódott, ajánlasz vagy lebeszélsz</span></div></li>
+    <li><div>Problémafelismerés<span>belső vagy külső inger: éhség, egy barát új autója, egy hirdetés</span></div></li>
+    <li><div>Információkeresés<span>előbb csak fogékonyabb leszel, aztán aktívan keresel</span></div></li>
+    <li><div>Alternatívák értékelése<span>a márkák körei: amit ismersz, amit mérlegelsz, amiből választasz</span></div></li>
+    <li><div>Vásárlási döntés<span>öt al-döntés: márka, kereskedő, mennyiség, időzítés, fizetési mód</span></div></li>
+    <li><div>Vásárlás utáni viselkedés<span>megerősítést keresel, elégedett vagy csalódott, ajánlasz vagy lebeszélsz</span></div></li>
   </ol>
 </section>
 
@@ -483,8 +489,8 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 <section class="slide" data-notes="e9">
   <p class="kicker">A tölcsér</p>
   <h2>A tölcsér nem feltétlenül tükrözi a vásárló útját.</h2>
-  <p class="lead step">A tölcsér szűkül. A valóság nem: a mérlegelt márkák száma a folyamat közben sokszor nő. Mi szűkíteni nem tudunk, de tudunk egyre relevánsabbak lenni a vevő számára.</p>
-  <table class="step" style="margin-top:.8em;max-width:36em">
+  <p class="lead">A tölcsér szűkül. A valóság nem: a mérlegelt márkák száma a folyamat közben sokszor nő. Mi szűkíteni nem tudunk, de tudunk egyre relevánsabbak lenni a vevő számára.</p>
+  <table style="margin-top:.8em;max-width:36em">
     <tr><th></th><th>Induláskor</th><th>Döntés előtt</th></tr>
     <tr><td>Számítógép</td><td>1,7 márka</td><td>2,7 márka</td></tr>
     <tr><td>Autó</td><td>3,8 márka</td><td>6,0 márka</td></tr>
@@ -496,12 +502,12 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">User és decision journey</p>
   <h2>Három modell.</h2>
   <div class="cols3">
-    <div class="step"><h3>Customer journey</h3><p>A teljes út a márkával, az első találkozástól az ajánlásig. Online és offline kontaktpontok sora.</p></div>
-    <div class="step"><h3>Decision journey</h3><p>Csak a döntés: hogyan szűkül és tágul a mérlegelt márkák köre. Márkaválasztásról szól.</p></div>
-    <div class="step"><h3>User journey</h3><p>Útvonal egy felületen belül, feladatonként. Nem márkáról szól, hanem használatról.</p></div>
+    <div><h3>Customer journey</h3><p>A teljes út a márkával, az első találkozástól az ajánlásig. Online és offline kontaktpontok sora.</p></div>
+    <div><h3>Decision journey</h3><p>Csak a döntés: hogyan szűkül és tágul a mérlegelt márkák köre. Márkaválasztásról szól.</p></div>
+    <div><h3>User journey</h3><p>Útvonal egy felületen belül, feladatonként. Nem márkáról szól, hanem használatról.</p></div>
   </div>
   <hr class="rule">
-  <p class="step"><b>Vevő ≠ használó.</b> A gyerekjátékot a szülő veszi. A könyvelőprogramot a tulaj fizeti, a könyvelő használja. Ahány szerep, annyi térkép.</p>
+  <p><b>Vevő ≠ használó.</b> A gyerekjátékot a szülő veszi. A könyvelőprogramot a tulaj fizeti, a könyvelő használja. Ahány szerep, annyi térkép.</p>
 </section>
 
 <!-- e11 -->
@@ -510,11 +516,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <h2 class="long">A modellek is fejlődnek és változnak. Többféle létezik. Itt mutatok néhányat.</h2>
   <table style="font-size:.72em">
     <tr><th>Modell</th><th>Honnan</th><th>Szakaszok</th></tr>
-    <tr class="step"><td>Hierarchy of Effects</td><td>Lavidge, Steiner, 1961</td><td>Awareness · Knowledge · Liking · Preference · Conviction · Purchase</td></tr>
-    <tr class="step"><td>4A</td><td>Derek Rucker, Kellogg School of Management</td><td>Aware · Attitude · Act · Act again</td></tr>
-    <tr class="step"><td>5A</td><td>Kotler, Kartajaya, Setiawan, 2017</td><td>Aware · Appeal · Ask · Act · Advocate</td></tr>
-    <tr class="step"><td>See-Think-Do-Care</td><td>Avinash Kaushik</td><td>See · Think · Do · Care</td></tr>
-    <tr class="step"><td>RACE</td><td>Smart Insights, 2010</td><td>Reach · Act · Convert · Engage</td></tr>
+    <tr><td>Hierarchy of Effects</td><td>Lavidge, Steiner, 1961</td><td>Awareness · Knowledge · Liking · Preference · Conviction · Purchase</td></tr>
+    <tr><td>4A</td><td>Derek Rucker, Kellogg School of Management</td><td>Aware · Attitude · Act · Act again</td></tr>
+    <tr><td>5A</td><td>Kotler, Kartajaya, Setiawan, 2017</td><td>Aware · Appeal · Ask · Act · Advocate</td></tr>
+    <tr><td>See-Think-Do-Care</td><td>Avinash Kaushik</td><td>See · Think · Do · Care</td></tr>
+    <tr><td>RACE</td><td>Smart Insights, 2010</td><td>Reach · Act · Convert · Engage</td></tr>
   </table>
 </section>
 
@@ -524,11 +530,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <h2 class="long">A modellválasztást az adott helyzet, márka vagy folyamat adhatja meg. Ebből a háromból már meg tudtok élni :)</h2>
   <table style="font-size:.7em">
     <tr><th>Modell</th><th>Mire válaszol</th><th>A forrás szerint</th></tr>
-    <tr class="step"><td>Öt lépcső<br><small class="muted">Kotler, Keller</small></td><td>Mi zajlik a vevő fejében, amikor dönt?</td><td>„The Buying Decision Process: The Five-Stage Model”<br><small class="muted">Marketing Management, 6. fejezet</small></td></tr>
-    <tr class="step"><td>5A<br><small class="muted">Kotler, Kartajaya, Setiawan</small></td><td>Milyen úton jár a vevő a márkák között, és ki hat rá közben?</td><td>„The New Customer Path”<br><small class="muted">Marketing 4.0, 5. fejezet</small></td></tr>
-    <tr class="step"><td>See-Think-Do-Care<br><small class="muted">Kaushik</small></td><td>Kinek szól a márka, milyen szándékkal van ott, és mit mond neki?</td><td>„A Content, Marketing, Measurement Business Framework”<br><small class="muted">Occam's Razor blog</small></td></tr>
+    <tr><td>Öt lépcső<br><small class="muted">Kotler, Keller</small></td><td>Mi zajlik a vevő fejében, amikor dönt?</td><td>„The Buying Decision Process: The Five-Stage Model”<br><small class="muted">Marketing Management, 6. fejezet</small></td></tr>
+    <tr><td>5A<br><small class="muted">Kotler, Kartajaya, Setiawan</small></td><td>Milyen úton jár a vevő a márkák között, és ki hat rá közben?</td><td>„The New Customer Path”<br><small class="muted">Marketing 4.0, 5. fejezet</small></td></tr>
+    <tr><td>See-Think-Do-Care<br><small class="muted">Kaushik</small></td><td>Kinek szól a márka, milyen szándékkal van ott, és mit mond neki?</td><td>„A Content, Marketing, Measurement Business Framework”<br><small class="muted">Occam's Razor blog</small></td></tr>
   </table>
-  <p class="step" style="margin-top:.8em;max-width:62ch">Ma a See-Think-Do-Care-en keresztül dolgozunk, mert a közönségből és a tartalomból indul. A térképen a See-Think-Do-Care mellett az 5A-t is választhatjátok, ha meg tudjátok mondani, mit mutat meg jobban a márkánál.</p>
+  <p style="margin-top:.8em;max-width:62ch">Ma a See-Think-Do-Care-en keresztül dolgozunk, mert a közönségből és a tartalomból indul. A térképen a See-Think-Do-Care mellett az 5A-t is választhatjátok, ha meg tudjátok mondani, mit mutat meg jobban a márkánál.</p>
 </section>
 
 <!-- e12 -->
@@ -537,12 +543,12 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <h2>Nem szakaszok. Szándékok.</h2>
   <table style="font-size:.74em">
     <tr><th>Kör</th><th>Kik ők</th><th>Mit mondasz nekik</th><th>Mit mérsz</th></tr>
-    <tr class="step"><td class="k-see">See</td><td>„all people who wear clothes”<br><span class="muted">vásárlási szándék nincs</span></td><td>széles, márkaépítő, hasznos vagy szórakoztató</td><td>interakció, ismertség, új látogató</td></tr>
-    <tr class="step"><td class="k-think">Think</td><td>„… who think they might need some”<br><span class="muted">gyenge szándék</span></td><td>a márka értéke, összehasonlítás, első bevonás</td><td>átkattintás, oldalmélység, segített konverzió</td></tr>
-    <tr class="step"><td class="k-do">Do</td><td>„… and are currently looking to buy them”<br><span class="muted">erős szándék, közel a vásárláshoz</span></td><td>fókuszált ajánlat, vásárlás</td><td>konverziós arány, költség per szerzés</td></tr>
-    <tr class="step"><td class="k-care">Care</td><td>„Not just people who've purchased once, but multiple times.”</td><td>hasznos tartalom a vevőnek, közösség</td><td>ismételt vásárlás, élettartam-érték</td></tr>
+    <tr><td class="k-see">See</td><td>„all people who wear clothes”<br><span class="muted">vásárlási szándék nincs</span></td><td>széles, márkaépítő, hasznos vagy szórakoztató</td><td>interakció, ismertség, új látogató</td></tr>
+    <tr><td class="k-think">Think</td><td>„… who think they might need some”<br><span class="muted">gyenge szándék</span></td><td>a márka értéke, összehasonlítás, első bevonás</td><td>átkattintás, oldalmélység, segített konverzió</td></tr>
+    <tr><td class="k-do">Do</td><td>„… and are currently looking to buy them”<br><span class="muted">erős szándék, közel a vásárláshoz</span></td><td>fókuszált ajánlat, vásárlás</td><td>konverziós arány, költség per szerzés</td></tr>
+    <tr><td class="k-care">Care</td><td>„Not just people who've purchased once, but multiple times.”</td><td>hasznos tartalom a vevőnek, közösség</td><td>ismételt vásárlás, élettartam-érték</td></tr>
   </table>
-  <p class="quote step" style="margin-top:.6em;font-size:1.25em">„It is horrible marketing to do a BUY FROM ME NOW campaign to See stage customers. It is also rude.”</p>
+  <p class="quote" style="margin-top:.6em;font-size:1.25em">„It is horrible marketing to do a BUY FROM ME NOW campaign to See stage customers. It is also rude.”</p>
 </section>
 
 <!-- e12b -->
@@ -550,23 +556,23 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">See-Think-Do-Care a gyakorlatban</p>
   <h2>Melyik körrel hol találkozol</h2>
   <div class="stdc4 tight kc">
-    <div class="step c-see"><div class="hd"><b>See</b><small>nincs szándék</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>YouTube</span><span>Instagram</span><span>TikTok</span><span>Facebook</span><span>helyi hírportál</span></p></div><div class="sec"><p class="k">Jel</p><p>nem keres; legfeljebb megáll, lájkol, ment</p></div><div class="sec"><p class="k">Mit mondasz</p><p>szórakoztat vagy hasznos, nincs benne ajánlat</p></div><p class="to">saját tartalom, követés</p></div>
-    <div class="step c-think"><div class="hd"><b>Think</b><small>gyenge szándék</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>„hogyan, melyik, mennyi” keresés</span><span>helyi Facebook-csoport</span><span>blog</span><span>hírlevél</span></p></div><div class="sec"><p class="k">Jel</p><p>kérdez, összehasonlít, feliratkozik</p></div><div class="sec"><p class="k">Mit mondasz</p><p>összehasonlítás, útmutató, a márka értéke</p></div><p class="to">útmutató, feliratkozás</p></div>
-    <div class="step c-do"><div class="hd"><b>Do</b><small>erős szándék</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>márkanév keresése</span><span>„közelemben”</span><span>Google Térkép</span><span>remarketing</span><span>Árukereső</span></p></div><div class="sec"><p class="k">Jel</p><p>árat, nyitvatartást néz, útvonalat tervez, kosárba tesz</p></div><div class="sec"><p class="k">Mit mondasz</p><p>ajánlat, ár, határidő, egy egyértelmű lépés</p></div><p class="to">termékoldal, foglalás, kosár</p></div>
-    <div class="step c-care"><div class="hd"><b>Care</b><small>már vásárolt</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>e-mail</span><span>saját app</span><span>közösség</span><span>ügyfélszolgálat</span></p></div><div class="sec"><p class="k">Jel</p><p>visszatér, értékel, ajánl</p></div><div class="sec"><p class="k">Mit mondasz</p><p>hasznos a vevőnek, nem újabb eladás</p></div><p class="to">visszatérés, ajánlás</p></div>
+    <div class="c-see"><div class="hd"><b>See</b><small>nincs szándék</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>YouTube</span><span>Instagram</span><span>TikTok</span><span>Facebook</span><span>helyi hírportál</span></p></div><div class="sec"><p class="k">Jel</p><p>nem keres; legfeljebb megáll, lájkol, ment</p></div><div class="sec"><p class="k">Mit mondasz</p><p>szórakoztat vagy hasznos, nincs benne ajánlat</p></div><p class="to">saját tartalom, követés</p></div>
+    <div class="c-think"><div class="hd"><b>Think</b><small>gyenge szándék</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>„hogyan, melyik, mennyi” keresés</span><span>helyi Facebook-csoport</span><span>blog</span><span>hírlevél</span></p></div><div class="sec"><p class="k">Jel</p><p>kérdez, összehasonlít, feliratkozik</p></div><div class="sec"><p class="k">Mit mondasz</p><p>összehasonlítás, útmutató, a márka értéke</p></div><p class="to">útmutató, feliratkozás</p></div>
+    <div class="c-do"><div class="hd"><b>Do</b><small>erős szándék</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>márkanév keresése</span><span>„közelemben”</span><span>Google Térkép</span><span>remarketing</span><span>Árukereső</span></p></div><div class="sec"><p class="k">Jel</p><p>árat, nyitvatartást néz, útvonalat tervez, kosárba tesz</p></div><div class="sec"><p class="k">Mit mondasz</p><p>ajánlat, ár, határidő, egy egyértelmű lépés</p></div><p class="to">termékoldal, foglalás, kosár</p></div>
+    <div class="c-care"><div class="hd"><b>Care</b><small>már vásárolt</small></div><div class="sec"><p class="k">Hol éred el</p><p class="chips"><span>e-mail</span><span>saját app</span><span>közösség</span><span>ügyfélszolgálat</span></p></div><div class="sec"><p class="k">Jel</p><p>visszatér, értékel, ajánl</p></div><div class="sec"><p class="k">Mit mondasz</p><p>hasznos a vevőnek, nem újabb eladás</p></div><p class="to">visszatérés, ajánlás</p></div>
   </div>
-  <p class="step" style="margin-top:.8em;max-width:52ch;font-family:var(--display);font-size:1.25em;line-height:1.3"><span class="hl">A szándékot az online térben történő viselkedésből következtetjük. Ezért mérünk, így tudunk számszerűsíteni, modellezni, súlyozni, optimalizálni.</span></p>
+  <p style="margin-top:.8em;max-width:52ch;font-family:var(--display);font-size:1.25em;line-height:1.3"><span class="hl">A szándékot az online térben történő viselkedésből következtetjük. Ezért mérünk, így tudunk számszerűsíteni, modellezni, súlyozni, optimalizálni.</span></p>
 </section>
 
 <!-- e12c -->
 <section class="slide" data-notes="e12c">
   <p class="kicker">Példa</p>
-  <div class="persona step"><span class="av">A</span><div><b>Anna, 34</b>egy év múlva Lisszabonba költözik a munkája miatt</div></div>
+  <div class="persona"><span class="av">A</span><div><b>Anna, 34</b>egy év múlva Lisszabonba költözik a munkája miatt</div></div>
   <div class="stdc4 anna4 kc2">
-    <div class="step c-see"><div class="hd"><b>See</b><small>még eszébe sem jutott nyelvet tanulni</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>Instagram-reel a feedjében</span></p><p class="k">Mit mond a márka</p><p class="q">„5 mondat, amivel az első héten elboldogulsz Lisszabonban”</p><p class="to">megtekintés, mentés, követés</p></div>
-    <div class="step c-think"><div class="hd"><b>Think</b><small>tudja, hogy kellene, de nem tudja, hogyan</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>Google: „hogyan tanuljak portugálul felnőttként”</span><span>blogcikk</span></p><p class="k">Mit mond a márka</p><p class="q">útmutató és ingyenes szintfelmérő, hírlevél</p><p class="to">feliratkozás, kitöltött szintfelmérő</p></div>
-    <div class="step c-do"><div class="hd"><b>Do</b><small>két iskola között választ</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>Google: „portugál nyelviskola Budapest”</span><span>remarketing</span></p><p class="k">Mit mond a márka</p><p class="q">„Ingyenes próbaóra, októberi kezdés, esti csoport”</p><p class="to">próbaóra-foglalás, költség per jelentkező</p></div>
-    <div class="step c-care"><div class="hd"><b>Care</b><small>fizető tanuló, fél év múlva utazik</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>havi e-mail</span><span>csoportos chat</span></p><p class="k">Mit mond a márka</p><p class="q">„Ennyit haladtál. Hozd el a kollégádat a következő szintre.”</p><p class="to">továbbiratkozás, ajánlás</p></div>
+    <div class="c-see"><div class="hd"><b>See</b><small>még eszébe sem jutott nyelvet tanulni</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>Instagram-reel a feedjében</span></p><p class="k">Mit mond a márka</p><p class="q">„5 mondat, amivel az első héten elboldogulsz Lisszabonban”</p><p class="to">megtekintés, mentés, követés</p></div>
+    <div class="c-think"><div class="hd"><b>Think</b><small>tudja, hogy kellene, de nem tudja, hogyan</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>Google: „hogyan tanuljak portugálul felnőttként”</span><span>blogcikk</span></p><p class="k">Mit mond a márka</p><p class="q">útmutató és ingyenes szintfelmérő, hírlevél</p><p class="to">feliratkozás, kitöltött szintfelmérő</p></div>
+    <div class="c-do"><div class="hd"><b>Do</b><small>két iskola között választ</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>Google: „portugál nyelviskola Budapest”</span><span>remarketing</span></p><p class="k">Mit mond a márka</p><p class="q">„Ingyenes próbaóra, októberi kezdés, esti csoport”</p><p class="to">próbaóra-foglalás, költség per jelentkező</p></div>
+    <div class="c-care"><div class="hd"><b>Care</b><small>fizető tanuló, fél év múlva utazik</small></div><p class="k">Hol találkozik a márkával</p><p class="chips"><span>havi e-mail</span><span>csoportos chat</span></p><p class="k">Mit mond a márka</p><p class="q">„Ennyit haladtál. Hozd el a kollégádat a következő szintre.”</p><p class="to">továbbiratkozás, ajánlás</p></div>
   </div>
 </section>
 
@@ -575,8 +581,8 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Tölcsér és See-Think-Do-Care · egy nyelviskola</p>
   <h2 class="long">A tölcsér megmutatja, hol esnek ki. A kör azt, hogy az út nem egyirányú.</h2>
   <div class="tv">
-    <div class="step"><svg viewBox="0 0 560 274" role="img" aria-label="Tölcsér öt szakasszal: célcsoport 1000, ismeri a márkát 400, érdeklődött 120, próbaórára jött 60, fizető tanuló 12; minden átmenetnél látszik, hányan mennek tovább és hányan esnek ki." style="width:100%;height:auto;display:block"><polygon points="60.0,10 360.0,10 339.0,56 81.0,56" style="fill:#DCE7FB;stroke:#4A86E8;stroke-width:1"/><text x="210.0" y="30" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Célcsoport</text><text x="210.0" y="47" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">1000</text><text x="0" y="38" style="fill:#2F6FD6;font-size:12px;font-weight:600">See</text><polygon points="81.0,62 339.0,62 318.0,108 102.0,108" style="fill:#DCE7FB;stroke:#4A86E8;stroke-width:1"/><text x="210.0" y="82" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Ismeri a márkát</text><text x="210.0" y="99" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">400</text><text x="0" y="90" style="fill:#2F6FD6;font-size:12px;font-weight:600">See</text><text x="374" y="70" style="fill:var(--ink-soft);font-size:11.5px">↓ 40% megy tovább, 600 kiesik</text><polygon points="102.0,114 318.0,114 297.0,160 123.0,160" style="fill:#D3EBDD;stroke:#3E9A5C;stroke-width:1"/><text x="210.0" y="134" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Érdeklődött már</text><text x="210.0" y="151" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">120</text><text x="0" y="142" style="fill:#2E7D48;font-size:12px;font-weight:600">Think</text><text x="374" y="122" style="fill:var(--ink-soft);font-size:11.5px">↓ 30% megy tovább, 280 kiesik</text><polygon points="123.0,166 297.0,166 276.0,212 144.0,212" style="fill:#FCEBC6;stroke:#F1B53B;stroke-width:1"/><text x="210.0" y="186" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Próbaórára jött</text><text x="210.0" y="203" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">60</text><text x="0" y="194" style="fill:#9A6B00;font-size:12px;font-weight:600">Do</text><text x="374" y="174" style="fill:var(--ink-soft);font-size:11.5px">↓ 50% megy tovább, 60 kiesik</text><polygon points="144.0,218 276.0,218 260.0,264 160.0,264" style="fill:#D5503F;stroke:#D5503F;stroke-width:1"/><text x="210.0" y="238" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">Fizető tanuló</text><text x="210.0" y="255" text-anchor="middle" style="fill:#fff;font-size:15px;font-family:var(--display)">12</text><text x="0" y="246" style="fill:#B53A2B;font-size:12px;font-weight:600">Care</text><text x="374" y="226" style="fill:var(--ink-soft);font-size:11.5px">↓ 20% megy tovább, 48 kiesik</text></svg><p class="small muted" style="margin-top:.4em">Minden átmenet mérhető: hányan konvertálnak tovább, és hányan morzsolódnak le.</p></div>
-    <div class="step"><svg viewBox="0 0 360 340" role="img" aria-label="See-Think-Do-Care koncentrikus körökben: kívül See, benne Think, benne Do, középen Care. Nyilak befelé és kifelé is mutatnak, jelezve, hogy az ember a fázisok között oda-vissza mozog." style="width:100%;height:auto;display:block">
+    <div><svg viewBox="0 0 560 274" role="img" aria-label="Tölcsér öt szakasszal: célcsoport 1000, ismeri a márkát 400, érdeklődött 120, próbaórára jött 60, fizető tanuló 12; minden átmenetnél látszik, hányan mennek tovább és hányan esnek ki." style="width:100%;height:auto;display:block"><polygon points="60.0,10 360.0,10 339.0,56 81.0,56" style="fill:#DCE7FB;stroke:#4A86E8;stroke-width:1"/><text x="210.0" y="30" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Célcsoport</text><text x="210.0" y="47" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">1000</text><text x="0" y="38" style="fill:#2F6FD6;font-size:12px;font-weight:600">See</text><polygon points="81.0,62 339.0,62 318.0,108 102.0,108" style="fill:#DCE7FB;stroke:#4A86E8;stroke-width:1"/><text x="210.0" y="82" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Ismeri a márkát</text><text x="210.0" y="99" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">400</text><text x="0" y="90" style="fill:#2F6FD6;font-size:12px;font-weight:600">See</text><text x="374" y="70" style="fill:var(--ink-soft);font-size:11.5px">↓ 40% megy tovább, 600 kiesik</text><polygon points="102.0,114 318.0,114 297.0,160 123.0,160" style="fill:#D3EBDD;stroke:#3E9A5C;stroke-width:1"/><text x="210.0" y="134" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Érdeklődött már</text><text x="210.0" y="151" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">120</text><text x="0" y="142" style="fill:#2E7D48;font-size:12px;font-weight:600">Think</text><text x="374" y="122" style="fill:var(--ink-soft);font-size:11.5px">↓ 30% megy tovább, 280 kiesik</text><polygon points="123.0,166 297.0,166 276.0,212 144.0,212" style="fill:#FCEBC6;stroke:#F1B53B;stroke-width:1"/><text x="210.0" y="186" text-anchor="middle" style="fill:var(--ink);font-size:13px;font-weight:600">Próbaórára jött</text><text x="210.0" y="203" text-anchor="middle" style="fill:var(--ink);font-size:15px;font-family:var(--display)">60</text><text x="0" y="194" style="fill:#9A6B00;font-size:12px;font-weight:600">Do</text><text x="374" y="174" style="fill:var(--ink-soft);font-size:11.5px">↓ 50% megy tovább, 60 kiesik</text><polygon points="144.0,218 276.0,218 260.0,264 160.0,264" style="fill:#D5503F;stroke:#D5503F;stroke-width:1"/><text x="210.0" y="238" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:600">Fizető tanuló</text><text x="210.0" y="255" text-anchor="middle" style="fill:#fff;font-size:15px;font-family:var(--display)">12</text><text x="0" y="246" style="fill:#B53A2B;font-size:12px;font-weight:600">Care</text><text x="374" y="226" style="fill:var(--ink-soft);font-size:11.5px">↓ 20% megy tovább, 48 kiesik</text></svg><p class="small muted" style="margin-top:.4em">Minden átmenet mérhető: hányan konvertálnak tovább, és hányan morzsolódnak le.</p></div>
+    <div><svg viewBox="0 0 360 340" role="img" aria-label="See-Think-Do-Care koncentrikus körökben: kívül See, benne Think, benne Do, középen Care. Nyilak befelé és kifelé is mutatnak, jelezve, hogy az ember a fázisok között oda-vissza mozog." style="width:100%;height:auto;display:block">
 <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker></defs>
 <circle cx="180" cy="170" r="160" style="fill:#DCE7FB;stroke:#4A86E8;stroke-width:1.5"/>
 <circle cx="180" cy="170" r="116" style="fill:#D3EBDD;stroke:#3E9A5C;stroke-width:1.5"/>
@@ -599,11 +605,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Kotler 5A</p>
   <h2>Amit a korábbi modellek nem tudtak: az ajánlás</h2>
   <ol class="chain">
-    <li class="step"><div>Aware<span>hosszú márkalistának van kitéve: saját tapasztalatból, kommunikációból, mások ajánlásából</span></div></li>
-    <li class="step"><div>Appeal<span>néhány márka megragad, rövid lista lesz belőle</span></div></li>
-    <li class="step"><div>Ask<span>aktívan kérdez: barátot, médiát, magát a márkát</span></div></li>
-    <li class="step"><div>Act<span>nem csak a vásárlás: a használat és a vásárlás utáni kiszolgálás is</span></div></li>
-    <li class="step"><div>Advocate<span>a hűség mérőszáma a visszatérésből az ajánlás lesz</span></div></li>
+    <li><div>Aware<span>hosszú márkalistának van kitéve: saját tapasztalatból, kommunikációból, mások ajánlásából</span></div></li>
+    <li><div>Appeal<span>néhány márka megragad, rövid lista lesz belőle</span></div></li>
+    <li><div>Ask<span>aktívan kérdez: barátot, médiát, magát a márkát</span></div></li>
+    <li><div>Act<span>nem csak a vásárlás: a használat és a vásárlás utáni kiszolgálás is</span></div></li>
+    <li><div>Advocate<span>a hűség mérőszáma a visszatérésből az ajánlás lesz</span></div></li>
   </ol>
 </section>
 
@@ -613,12 +619,12 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <h2>Ugyanaz az Anna, háromféle szemüvegen át.</h2>
   <div class="fk fk2">
     <div class="labs"><div></div><div class="lab">5A</div><div class="lab">Öt lépcső</div><div class="lab">Anna</div></div>
-    <div class="col step"><div class="ph k-see-bg">See</div><div class="pill t-see">Aware</div><div class="pill t-see">Problémafelismerés</div><div class="anna t-see"><i></i>egy reel, és rájön: a költözéshez nyelv kell</div></div>
-    <div class="col step"><div class="ph k-think-bg">Think</div><div class="pill t-think">Appeal · Ask</div><div class="pill t-think">Információkeresés · Értékelés</div><div class="anna t-think"><i></i>rákeres, szintfelmérő, megkérdezi a kollégáját</div></div>
-    <div class="col step"><div class="ph k-do-bg">Do</div><div class="pill t-do">Act</div><div class="pill t-do">Döntés</div><div class="anna t-do"><i></i>két iskola között dönt, próbaóra, beiratkozik</div></div>
-    <div class="col step"><div class="ph k-care-bg">Care</div><div class="pill t-care">Act · Advocate</div><div class="pill t-care">Vásárlás után</div><div class="anna t-care"><i></i>tanul, látja, mennyit haladt, elhívja a kollégáját</div></div>
+    <div class="col"><div class="ph k-see-bg">See</div><div class="pill t-see">Aware</div><div class="pill t-see">Problémafelismerés</div><div class="anna t-see"><i></i>egy reel, és rájön: a költözéshez nyelv kell</div></div>
+    <div class="col"><div class="ph k-think-bg">Think</div><div class="pill t-think">Appeal · Ask</div><div class="pill t-think">Információkeresés · Értékelés</div><div class="anna t-think"><i></i>rákeres, szintfelmérő, megkérdezi a kollégáját</div></div>
+    <div class="col"><div class="ph k-do-bg">Do</div><div class="pill t-do">Act</div><div class="pill t-do">Döntés</div><div class="anna t-do"><i></i>két iskola között dönt, próbaóra, beiratkozik</div></div>
+    <div class="col"><div class="ph k-care-bg">Care</div><div class="pill t-care">Act · Advocate</div><div class="pill t-care">Vásárlás után</div><div class="anna t-care"><i></i>tanul, látja, mennyit haladt, elhívja a kollégáját</div></div>
   </div>
-  <p class="step" style="margin-top:1em;max-width:62ch">Amit See-Think-Do-Care-ben megláttok, az átvihető. A különbség az, hogy melyik modell mit tesz a középpontba: a szándékot, a mások hatását, vagy a döntés lépéseit.</p>
+  <p style="margin-top:1em;max-width:62ch">Amit See-Think-Do-Care-ben megláttok, az átvihető. A különbség az, hogy melyik modell mit tesz a középpontba: a szándékot, a mások hatását, vagy a döntés lépéseit.</p>
 </section>
 
 <!-- e13b -->
@@ -692,11 +698,11 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   <p class="kicker">Hol szakad meg az út · a térkép ítélete</p>
   <h2>Háromféle lyuk van. Mindegyiket meg lehet találni.</h2>
   <div class="cols3 lyuk">
-    <div class="step"><b>Üres fázis</b><p>A márka nincs jelen. Az ember itt elvész, vagy máshova megy.</p><p><i>Anna:</i> a nyelviskola hirdet, és van próbaórája, de a „hogyan tanuljak portugálul felnőttként” kérdésre nincs tartalma. A Think üres, Anna máshol olvas.</p><p class="muted"><i>Így veszitek észre:</i> a kategóriára kerestek, nem a márkára, és a márka nem jön fel.</p></div>
-    <div class="step"><b>Csak mások beszélnek</b><p>Van tartalom, de nem a márkáé. A márka nem irányítja, mit hall a vevő.</p><p><i>Anna:</i> a próbaóra után Google-értékeléseket és egy Facebook-csoportot olvas, a márka ott hallgat.</p><p class="muted"><i>Így veszitek észre:</i> értékelések, fórumok, és a keresés úgy, hogy a márka saját oldala ki van zárva.</p></div>
-    <div class="step"><b>Jó üzenet rossz fázisban</b><p>A márka beszél, de nem annak, aki ott áll.</p><p><i>Anna:</i> a TikTok-feedjében görget, nem keres semmit, és „Jelentkezz most, ingyenes próbaóra” hirdetést kap.</p><p class="muted"><i>Így veszitek észre:</i> a hirdetés vásárlásra hív ott, ahol az emberek nem keresnek, csak nézelődnek.</p></div>
+    <div><b>Üres fázis</b><p>A márka nincs jelen. Az ember itt elvész, vagy máshova megy.</p><p><i>Anna:</i> a nyelviskola hirdet, és van próbaórája, de a „hogyan tanuljak portugálul felnőttként” kérdésre nincs tartalma. A Think üres, Anna máshol olvas.</p><p class="muted"><i>Így veszitek észre:</i> a kategóriára kerestek, nem a márkára, és a márka nem jön fel.</p></div>
+    <div><b>Csak mások beszélnek</b><p>Van tartalom, de nem a márkáé. A márka nem irányítja, mit hall a vevő.</p><p><i>Anna:</i> a próbaóra után Google-értékeléseket és egy Facebook-csoportot olvas, a márka ott hallgat.</p><p class="muted"><i>Így veszitek észre:</i> értékelések, fórumok, és a keresés úgy, hogy a márka saját oldala ki van zárva.</p></div>
+    <div><b>Jó üzenet rossz fázisban</b><p>A márka beszél, de nem annak, aki ott áll.</p><p><i>Anna:</i> a TikTok-feedjében görget, nem keres semmit, és „Jelentkezz most, ingyenes próbaóra” hirdetést kap.</p><p class="muted"><i>Így veszitek észre:</i> a hirdetés vásárlásra hív ott, ahol az emberek nem keresnek, csak nézelődnek.</p></div>
   </div>
-  <p class="step" style="margin-top:1em;max-width:62ch">A térkép, a journey hasznos, mert észrevesszük, hogy mire nem gondoltunk, illetve strukturált marad a marketing és a kommunikáció.</p>
+  <p style="margin-top:1em;max-width:62ch">A térkép, a journey hasznos, mert észrevesszük, hogy mire nem gondoltunk, illetve strukturált marad a marketing és a kommunikáció.</p>
 </section>
 
 <section class="slide" data-notes="lev2" data-lev="only">
@@ -710,18 +716,18 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 <section class="slide" data-notes="e17">
   <p class="kicker kb"><span class="hl">A második beadandó</span> · 30 perc · csoportmunka</p>
   <h2 class="long" style="margin-bottom:.3em">A márkátok journey-jét fogjátok áttekinteni, felismerni, azonosítani, dekonstruálni.</h2>
-  <p class="step" style="max-width:76ch;margin-bottom:.4em;font-size:.9em">Az első alkalommal megnéztétek a márkátokat: mit mond, hogyan mondja, kinek mondja. Most azt nézzük meg, hogyan mozgatja a márka a vevőiteket a különböző csatornákon, és ez milyen folyamatot mutat a döntési szándék vonatkozásában.</p>
-  <p class="step" style="max-width:76ch;margin-bottom:.8em;font-size:.9em">Nem kitaláljátok, hanem leírjátok, amit megfigyeltek, a <a href="journey-terkep.html" target="_blank">Journey-térkép adatlapon</a>. Ehhez segédlet is van: <a href="journey-tippek.html" target="_blank">Hogyan nézzétek meg</a>.</p>
+  <p style="max-width:76ch;margin-bottom:.4em;font-size:.9em">Az első alkalommal megnéztétek a márkátokat: mit mond, hogyan mondja, kinek mondja. Most azt nézzük meg, hogyan mozgatja a márka a vevőiteket a különböző csatornákon, és ez milyen folyamatot mutat a döntési szándék vonatkozásában.</p>
+  <p style="max-width:76ch;margin-bottom:.8em;font-size:.9em">Nem kitaláljátok, hanem leírjátok, amit megfigyeltek, a <a href="journey-terkep.html" target="_blank">Journey-térkép adatlapon</a>. Ehhez segédlet is van: <a href="journey-tippek.html" target="_blank">Hogyan nézzétek meg</a>.</p>
   <p class="k2">Hogyan nézzétek meg: járjátok végig a vevő útját, és jegyezzetek</p>
   <ol class="chain row4">
-    <li class="step"><div>Legyetek az, aki még nem ismeri<span>a problémára és a kategóriára kerestek, nem a márkára: Google, YouTube, TikTok, Instagram. Feltűnik a márka?</span></div></li>
-    <li class="step"><div>Keressetek rá a márkára<span>mit hoz a Google, ki hirdet a márkanévre, milyen értékelések és árösszehasonlítók jönnek fel</span></div></li>
-    <li class="step"><div>Lépjetek be a márka világába<span>weboldal, kosár, hírlevél-feliratkozás; a következő napokban jön-e remarketing és levél, és mit mond</span></div></li>
-    <li class="step"><div>Hallgassátok meg a vevőket<span>értékelések, kommentek, fórumok: innen jön, mit érez és mitől fél, nem a ti véleményetekből</span></div></li>
+    <li><div>Legyetek az, aki még nem ismeri<span>a problémára és a kategóriára kerestek, nem a márkára: Google, YouTube, TikTok, Instagram. Feltűnik a márka?</span></div></li>
+    <li><div>Keressetek rá a márkára<span>mit hoz a Google, ki hirdet a márkanévre, milyen értékelések és árösszehasonlítók jönnek fel</span></div></li>
+    <li><div>Lépjetek be a márka világába<span>weboldal, kosár, hírlevél-feliratkozás; a következő napokban jön-e remarketing és levél, és mit mond</span></div></li>
+    <li><div>Hallgassátok meg a vevőket<span>értékelések, kommentek, fórumok: innen jön, mit érez és mitől fél, nem a ti véleményetekből</span></div></li>
   </ol>
   <div class="obsrow">
-    <div class="step"><p><b>Hol nézzétek</b></p><p>Hirdetések: Meta Hirdetéstár, Google Ads Transparency Center, TikTok Commercial Content Library.<br>Kérdések: Google-kiegészítés, „Mások ezt is kérdezték”, Google Trends.<br>Érzés és félelem: Google Térkép, Árukereső, Reddit, kommentek.</p></div>
-    <div class="step"><p><b>Három szabály</b></p><p>Inkognitó ablak, mert a találatok személyre szabottak. Telefonon is. Minden megfigyeléshez link, dátum, és ha lehet, képernyőkép.</p><p style="margin-top:.7em"><a class="btn" href="journey-tippek.html" target="_blank">Hogyan nézzétek meg: az útmutató élő linkekkel</a></p></div>
+    <div><p><b>Hol nézzétek</b></p><p>Hirdetések: Meta Hirdetéstár, Google Ads Transparency Center, TikTok Commercial Content Library.<br>Kérdések: Google-kiegészítés, „Mások ezt is kérdezték”, Google Trends.<br>Érzés és félelem: Google Térkép, Árukereső, Reddit, kommentek.</p></div>
+    <div><p><b>Három szabály</b></p><p>Inkognitó ablak, mert a találatok személyre szabottak. Telefonon is. Minden megfigyeléshez link, dátum, és ha lehet, képernyőkép.</p><p style="margin-top:.7em"><a class="btn" href="journey-tippek.html" target="_blank">Hogyan nézzétek meg: az útmutató élő linkekkel</a></p></div>
   </div>
 </section>
 
@@ -729,7 +735,7 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 <section class="slide" data-notes="e17h">
   <p class="kicker kb"><span class="hl">A második beadandó</span> · hogyan töltitek ki</p>
   <h2 class="long">Hogyan töltitek ki az adatlapot?</h2>
-  <div class="how step" style="border-top:0;padding-top:0;margin-top:0">
+  <div class="how" style="border-top:0;padding-top:0;margin-top:0">
     <p class="k">A Journey-térképen, lépésről lépésre</p>
     <ol>
       <li><b>Nyissátok meg</b>válasszátok ki a csapatot és a márkát</li>
@@ -741,20 +747,20 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
     </ol>
   </div>
   <div class="cols" style="margin-top:1.1em;gap:3vw">
-    <div class="step"><p class="k2">Mire figyeljetek</p><ul class="plain2">
+    <div><p class="k2">Mire figyeljetek</p><ul class="plain2">
       <li>Nem kitaláljátok: minden állítás mögött legyen, amit láttatok. Link, dátum, ha lehet képernyőkép.</li>
       <li>Inkognitó ablakban keressetek, mert a találatok személyre szabottak, és nézzétek telefonon is.</li>
       <li>A nem saját kontaktpont is számít: vélemény, ismerős, összehasonlító oldal.</li>
       <li>Ha a választott modell nem illik a márkához, azt is írjátok le: az is eredmény.</li>
     </ul></div>
-    <div class="step"><p class="k2">Csoportmunka</p><ul class="plain2">
+    <div><p class="k2">Csoportmunka</p><ul class="plain2">
       <li>Egy csapat egy böngészőben javasolt dolgozni: egy ember gépel, a többiek keresnek és diktálnak.</li>
       <li>Osszátok fel a fázisokat vagy a csatornákat, és a végén egyeztessetek.</li>
       <li>A munka a böngészőben mentődik, a beküldés a térkép alján van.</li>
       <li>Határidő: óra vége, utána szavazunk. Legyen meg saját doksiban is: a 3. alkalmon a térkép Act fázisából indultok.</li>
     </ul></div>
   </div>
-  <p class="end2 step"><span class="hl">A feladat vége: a kitöltött és beküldött journey-adatlap.</span> <a class="btn" href="journey-terkep.html" target="_blank">Journey-térkép</a> <a class="btn" href="journey-tippek.html" target="_blank">Segédlet</a></p>
+  <p class="end2"><span class="hl">A feladat vége: a kitöltött és beküldött journey-adatlap.</span> <a class="btn" href="journey-terkep.html" target="_blank">Journey-térkép</a> <a class="btn" href="journey-tippek.html" target="_blank">Segédlet</a></p>
 </section>
 
 <!-- e19 -->
@@ -791,7 +797,7 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.33 · 2026. október 14.</span></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.35 · 2026. október 14.</span></div>
 <div class="pager"><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -943,6 +949,20 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
   /* a tárolt megjegyzések elemhez kötése betöltéskor */
   (function(){ var pending=Object.keys(rev); if(!pending.length)return; var map={}; slides.forEach(function(sl,idx){ [].slice.call(sl.querySelectorAll(REVQ)).forEach(function(el,j){map['d'+(idx+1)+'-'+j]=el}) }); var nAll=[].slice.call(document.getElementById('notes').querySelectorAll('h1,h2,h3,h4,p,li,td,th')); pending.forEach(function(k){ if(k[0]==='d'){rev[k].el=map[k]} else { var m=nAll.filter(function(el){return el.textContent.trim()===rev[k].orig})[0]; rev[k].el=m } }); revSave() })();
   var m=location.hash.match(/^#d(\d+)$/);show(m?+m[1]-1:0);
+})();
+</script>
+<script id="fit-js">
+/* ha egy dia a nagyobb betűvel nem fér ki, csak azt az egy diát kicsinyíti, legfeljebb 76%-ig */
+(function(){
+  function fit(s){ if(!s.classList.contains('cur')) return; s.style.fontSize=''; var f=1;
+    while(s.scrollHeight>s.clientHeight+2 && f>0.77){ f-=0.03; s.style.fontSize=f.toFixed(2)+'em'; } }
+  var sl=[].slice.call(document.querySelectorAll('section.slide'));
+  var mo=new MutationObserver(function(m){ m.forEach(function(r){ fit(r.target); }); });
+  sl.forEach(function(s){ mo.observe(s,{attributes:true,attributeFilter:['class']}); });
+  function cur(){ var c=document.querySelector('section.slide.cur'); if(c) fit(c); }
+  window.addEventListener('resize',cur); window.addEventListener('load',cur);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(cur);
+  cur();
 })();
 </script>
 </body>
