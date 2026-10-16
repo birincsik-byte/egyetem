@@ -549,6 +549,13 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .slide{justify-content:center;padding-top:6vh}
 .btn.go{background:var(--cobalt);color:#fff;font-weight:600;text-decoration:none}
 .lev-go .btn{display:inline-block;margin:0 .5em .5em 0;text-decoration:none}
+
+/* betűtípus-szabály (2026. október 16.): a cím Fraunces, minden szöveg és magyarázat Source Sans 3 */
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,.cond b,td,li span,p[style*="--display"]),
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,td,p[style*="--display"]) *{font-family:var(--body)!important;letter-spacing:normal}
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,td,p[style*="--display"]),
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,p[style*="--display"]) :not(b,strong){font-weight:400!important}
+:is(.slide,#_fonts) :is(.cond b,td b,td strong){font-weight:600!important}
 </style>
 <style id="lev-css">
 /* levelezős mód: a kihagyott diák és a nappali évadsáv nem látszik */
@@ -1046,7 +1053,7 @@ html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.35 · 2026. október 14. · vázlat</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.36 · 2026. október 16. · vázlat</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
