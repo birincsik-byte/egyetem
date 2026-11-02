@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Online marketing · Csatornavizsgálat · 4. alkalom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F6F1; --ink:#1B1F3A; --ink-soft:#5A5E78; --line:#D9D7CE; --cobalt:#1E4BD8; --marker:#F2C94C;
+  --good:#1E7B45; --bad:#C0392B;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--cobalt)}
+.top{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:1em;padding:.7em 3vw;flex-wrap:wrap}
+.top b{font-family:var(--display);font-weight:500;font-size:1.25em}
+.top .sp{flex:1}
+.btn{padding:.35em .9em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;background:none;cursor:pointer;font-size:.9em}
+.btn.solid{background:var(--cobalt);color:#fff}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.tab:focus-visible,.ch:focus-visible{outline:3px solid var(--cobalt);outline-offset:1px}
+main{padding:2em 3vw 5em;max-width:1400px;margin:0 auto}
+h1{font-family:var(--display);font-weight:300;font-size:2.4em;line-height:1.05;margin-bottom:.3em}
+h2{font-family:var(--display);font-weight:500;font-size:1.45em;margin:1.2em 0 .3em}
+h3{font-family:var(--display);font-weight:500;font-size:1.15em;margin:0 0 .3em}
+.muted{color:var(--ink-soft)} .small{font-size:.85em}
+.lead{max-width:72ch;margin-bottom:1em}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:1em}
+label{display:block;font-size:.82em;color:var(--ink-soft);margin-bottom:.2em}
+input,select,textarea{width:100%;padding:.45em .6em;border:1px solid var(--line);border-radius:4px;background:#fff}
+textarea{min-height:4.2em;resize:vertical}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55%)}
+.onebox{background:#fff;border-left:4px solid var(--cobalt);padding:.6em 1em;max-width:72ch;margin:.2em 0 1em;font-size:.95em}
+.warn{background:#fff;border-left:4px solid var(--bad);padding:.6em 1em;max-width:72ch;margin:.2em 0 1em;font-size:.95em}
+.check{display:flex;gap:.5em;align-items:center;font-size:.95em;color:var(--ink);margin:.6em 0}
+.check input{width:auto}
+/* a nyolc szempont áttekintője */
+.lenses{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;margin:1.2em 0 .4em}
+.round{background:#fff;border-radius:12px;padding:.9em 1.1em;box-shadow:0 14px 30px -22px rgba(27,31,58,.45)}
+.round h3{display:flex;justify-content:space-between;align-items:baseline;gap:.5em}
+.round h3 small{font-family:var(--body);font-size:.72em;color:var(--ink-soft);font-weight:400}
+.round ol{list-style:none;margin-top:.3em}
+.round li{padding:.15em 0;font-size:.95em}
+.round li b{font-family:var(--display);font-weight:500;color:var(--cobalt);display:inline-block;width:1.4em}
+/* tabs */
+.tabs{display:flex;gap:.4em;flex-wrap:wrap;margin:1.6em 0 0;border-bottom:2px solid var(--ink)}
+.tab{border:1px solid var(--line);border-bottom:0;background:#fff;padding:.5em 1em;border-radius:6px 6px 0 0;cursor:pointer;font-family:var(--display);font-weight:500;font-size:1.05em;color:var(--ink-soft)}
+.tab.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tab span{font-family:var(--body);font-size:.75em;font-weight:400;margin-left:.4em}
+.pane{display:none;padding-top:1em}
+.pane.on{display:block}
+/* egy szempont */
+.lens{background:#fff;border-radius:14px;padding:1.1em 1.3em 1.2em;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);margin-bottom:1.4em;border-left:6px solid var(--cobalt)}
+.lhead{display:grid;grid-template-columns:3.2em 1fr;gap:.2em .9em;align-items:start;margin-bottom:.8em}
+.lnum{font-family:var(--display);font-weight:700;font-size:2.6em;line-height:.9;color:var(--cobalt)}
+.lhead h3{font-size:1.4em;margin:0}
+.lhead ul{margin:.35em 0 0 1.1em;max-width:80ch}
+.lhead ul li{padding:.08em 0}
+.lref{font-size:.82em;color:var(--ink-soft);margin-top:.35em}
+.sites{display:grid;grid-template-columns:1fr 1fr;gap:1.2em;align-items:start}
+.site{border-top:3px solid var(--cobalt);padding-top:.5em}
+.site.b{border-top-color:var(--marker)}
+.site .who{font-size:.78em;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+.site .nm{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.05em;margin-bottom:.35em}
+.site label.step{color:var(--ink);font-weight:600;font-size:.85em;margin:.55em 0 .2em}
+.chips{display:flex;gap:.35em;margin-bottom:.4em;flex-wrap:wrap}
+.ch{border:1px solid var(--line);background:#fff;border-radius:99px;padding:.2em .8em;cursor:pointer;font-size:.88em}
+.ch.on.igen{background:var(--good);border-color:var(--good);color:#fff}
+.ch.on.reszben{background:var(--marker);border-color:var(--marker)}
+.ch.on.nem{background:var(--bad);border-color:var(--bad);color:#fff}
+/* összegzés */
+.map{border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);min-width:min(100%,760px)}
+.map th,.map td{padding:.5em .9em;border-bottom:1px solid var(--line);text-align:left;font-size:.95em}
+.map th{font-family:var(--body);font-weight:600;background:var(--ink);color:var(--paper)}
+.map td.r{font-size:.75em;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;background:#FBFAF6}
+.dot{display:inline-block;min-width:6.5em;padding:.1em .6em;border-radius:99px;font-size:.85em;text-align:center;background:#ECEAE2;color:var(--ink-soft)}
+.dot.igen{background:var(--good);color:#fff}.dot.reszben{background:var(--marker);color:var(--ink)}.dot.nem{background:var(--bad);color:#fff}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:1em}
+.out div{border:1px solid var(--line);border-radius:6px;background:#fff;padding:.8em 1em}
+.out b{display:block;font-family:var(--display);font-weight:500;margin-bottom:.3em}
+.out pre{white-space:pre-wrap;font-family:var(--body);font-size:.88em}
+.out .long{color:var(--bad);font-size:.85em}
+.status{font-size:.95em;margin-top:.5em}
+.demobar{position:sticky;top:3.4em;z-index:9;background:var(--marker);padding:.6em 1em;border-radius:6px;margin-bottom:1em;display:flex;gap:1em;align-items:center;flex-wrap:wrap}
+.demobar[hidden]{display:none}
+.next{margin-top:.4em}
+.foot{margin-top:3em;font-size:.8em;color:var(--ink-soft)}
+@media (max-width:900px){.row,.sites,.out,.lenses{grid-template-columns:1fr}.lhead{grid-template-columns:2.4em 1fr}.lnum{font-size:2em}}
+@media print{
+  .top,.noprint,.tabs,.demobar,.out,.lenses{display:none!important}
+  .pane{display:block!important}
+  .lens{page-break-inside:avoid;box-shadow:none;border:1px solid var(--line);border-left:4px solid var(--cobalt)}
+  body{font-size:11px} main{padding:0}
+  textarea,input,select{border:0;min-height:0;resize:none;padding:0}
+  @page{size:A4 portrait;margin:10mm}
+}
+
+/* v3.3: a négy fázis egyértelműen, a megjegyzések egy sorban */
+.notes3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8em;margin:1.2em 0 1.4em}
+.notes3 p{max-width:none!important;margin:0!important}
+.phases-h{margin:1.8em 0 .2em;font-size:1.3em}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6em;margin:.6em 0 0;border-bottom:0;flex-wrap:nowrap}
+.tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.2em;text-align:left;border:1px solid var(--line);border-top:4px solid var(--line);border-radius:10px;background:#fff;padding:.8em 1em .9em;font-family:var(--body);font-weight:400;font-size:1em;color:var(--ink)}
+.tab .pn{position:absolute;top:.6em;right:.8em;font-family:var(--display);font-weight:500;font-size:1.6em;line-height:1;color:var(--line);margin:0}
+.tab .ph{font-family:var(--display);font-weight:500;font-size:1.15em;margin:0}
+.tab .meta{font-size:.8em;color:var(--ink-soft);margin:0}
+.tab ol{list-style:none;margin:.35em 0 0;padding:0;font-size:.85em;color:var(--ink-soft);line-height:1.35}
+.tab ol li{padding:.1em 0}
+.tab ol b{display:inline-block;width:1.2em;color:var(--cobalt);font-weight:600}
+.tab:hover{border-color:var(--cobalt)}
+.tab.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.tab.on .meta,.tab.on ol{color:#C9CBDA}
+.tab.on ol b{color:var(--marker)}
+.tab.on .pn{color:rgba(255,255,255,.35)}
+@media (max-width:980px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.notes3{grid-template-columns:1fr}}
+@media (max-width:520px){.tabs{grid-template-columns:1fr}}
+
+/* v3.4: a következő fázis gombja jól látható sávban, minden fázis alján */
+.nextbar{display:flex;justify-content:space-between;align-items:center;gap:.8em 1.4em;flex-wrap:wrap;margin:1.8em 0 .6em;padding:1em 1.3em;background:var(--ink);color:var(--paper);border-radius:12px}
+.nextbar p{margin:0;max-width:none}
+.nextbar b{color:var(--marker)}
+.nb-st{display:inline-block;margin-right:.6em;padding:.15em .6em;border-radius:99px;background:rgba(255,255,255,.14);color:var(--marker);font-weight:600}
+.nextbar .btn.next{margin:0;background:var(--marker);border-color:var(--marker);color:var(--ink);font-weight:600;font-size:1.05em;padding:.6em 1.3em}
+.nextbar .btn.next:hover{background:#fff;border-color:#fff}
+
+/* v3.5: látlelet az összegzésben */
+.sum-sec{margin-top:1.8em}
+.sum-h{display:flex;gap:.8em;align-items:flex-start;margin-bottom:.9em}
+.sum-h h3{margin:0;font-size:1.25em}
+.sum-h p{margin:.1em 0 0;color:var(--ink-soft)}
+.sum-n{flex:none;width:1.9em;height:1.9em;border-radius:50%;background:var(--cobalt);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:500}
+.scores,.insights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9em}
+.insights{margin-top:.9em}
+.scard,.icard{background:#fff;border-radius:12px;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);padding:1em 1.2em;min-width:0}
+.scard{border-top:4px solid var(--cobalt)}
+.scard+.scard{border-top-color:var(--marker)}
+.sk{margin:0;font-size:.8em;font-weight:600;color:var(--ink-soft)}
+.sn{margin:.1em 0 .7em;font-family:var(--display);font-weight:500;font-size:1.15em}
+.sbar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:#ECEAE2}
+.sbar i{display:block;height:100%}
+.s-igen{background:var(--good)}.s-reszben{background:var(--marker)}.s-nem{background:var(--bad)}.s-x{background:#ECEAE2}
+.sleg{margin:.6em 0 0;font-size:.85em;color:var(--ink-soft);display:flex;flex-wrap:wrap;align-items:center;gap:.25em .4em}
+.sleg span{display:inline-block;width:.75em;height:.75em;border-radius:50%;margin-left:.5em}
+.sleg span:first-child{margin-left:0}
+.icard h4{margin:0;font-family:var(--display);font-weight:500;font-size:1.05em}
+.ihint{margin:.2em 0 .6em;font-size:.85em;color:var(--ink-soft)}
+.iempty{margin:0;color:var(--ink-soft)}
+.icard ul{list-style:none;margin:0;padding:0}
+.icard li{display:flex;justify-content:space-between;align-items:center;gap:.6em;padding:.45em 0;border-top:1px solid var(--line)}
+.icard li b{font-weight:600}
+.icard li span{display:flex;gap:.3em;flex:none}
+.icard .dot{font-style:normal;min-width:0}
+.icard .dot em{font-style:normal;opacity:.75;margin-right:.15em}
+.mapwrap{margin-top:.9em}
+.mapwrap summary{cursor:pointer;color:var(--cobalt);font-weight:600;padding:.3em 0}
+.mapwrap .map{margin-top:.5em}
+.fields{list-style:none;margin:0;padding:0;counter-reset:fl;display:grid;gap:1em;max-width:none}
+.fields li{counter-increment:fl;background:#fff;border-radius:12px;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);padding:1em 1.2em;display:grid;grid-template-columns:2em minmax(0,1fr);column-gap:.6em}
+.fields li::before{content:counter(fl);grid-row:1 / span 2;font-family:var(--display);font-weight:500;font-size:1.4em;color:var(--cobalt);line-height:1.1}
+.fields label{display:block;margin-bottom:.5em}
+.fields label b{font-weight:600;font-size:1.05em;color:var(--ink)}
+.fields .req{display:inline-block;margin-left:.4em;font-size:.75em;font-weight:600;color:var(--cobalt);background:#E9EEFC;border-radius:99px;padding:.1em .6em;vertical-align:middle}
+.fields .hint{display:block;margin-top:.2em;font-size:.85em;color:var(--ink-soft)}
+.fields textarea{width:100%}
+.sendbar{display:flex;justify-content:space-between;align-items:center;gap:.8em 1.4em;flex-wrap:wrap;margin:1.8em 0 .6em;padding:1em 1.3em;background:var(--ink);color:var(--paper);border-radius:12px}
+.sendbar p{margin:0;max-width:60ch}
+.sb-btns{display:flex;gap:.6em}
+.sendbar .btn{background:transparent;border-color:rgba(255,255,255,.5);color:var(--paper)}
+.sendbar .btn.solid{background:var(--marker);border-color:var(--marker);color:var(--ink);font-weight:600;font-size:1.05em;padding:.6em 1.4em}
+@media (max-width:800px){.scores,.insights{grid-template-columns:1fr}}
+
+/* 4. alkalom: csatornavizsgálat */
+.ch.on.nincs{background:#8A8FA8;border-color:#8A8FA8;color:#fff}
+.dot.nincs{background:#8A8FA8;color:#fff}
+.s-nincs{background:#8A8FA8}
+.where{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.7em 1em;margin:.6em 0 1em}
+.where b{font-family:var(--display);font-weight:500}
+.where a{color:var(--cobalt)}
+.extra{margin:.4em 0 1.2em}
+.extra label{display:block;font-weight:600;margin-top:.6em}
+.extra .hint{display:block;font-weight:400;color:var(--ink-soft);font-size:.9em}
+#scores{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:800px){#scores{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <b>Csatornavizsgálat</b><span class="muted small">4. alkalom · A csatornák nyelve · nyolc szempont</span>
+  <span class="sp"></span>
+  <button class="btn" id="demo">Minta betöltése</button>
+  <button class="btn" id="print">Nyomtatás</button>
+  <button class="btn" id="clear">Új, üres lap</button>
+</div>
+
+<main>
+  <div class="demobar" id="demobar" hidden><b>Ez a minta (Tunki-Tunki, a deck bemutatója), nem a ti munkátok.</b> Nézzétek meg, aztán vegyétek ki: a saját munkátok visszajön. <button class="btn solid" id="undemo">Minta kivétele</button></div>
+
+  <h1>A márkátok csatornái kívülről</h1>
+  <p class="lead">Ott nézitek meg a márkátokat, ahol a vevő találkozhat vele: a keresőben, a Facebookon és az Instagramon, a TikTokon és a YouTube-on. Nem javítotok és nem terveztek, hanem <span class="hl">visszafejtitek, mit csinál a márka a csatornáin, és miért</span>. Minden szempontnál három lépés: <b>Mit láttok?</b> (hol, mit, linkkel, idézettel), <b>Miért így?</b> (milyen szándékállapotra számít a márka), <b>Működik?</b> A munka ebben a böngészőben mentődik, a végén az utolsó fülön adjátok le.</p>
+
+  <div class="notes3">
+    <p class="onebox"><b>Osszátok fel.</b> Egy ember a keresőt nézi, egy a Facebookot és az Instagramot, egy a TikTokot és a YouTube-ot. Mindenki a saját fülén dolgozik, ugyanabban a böngészőben vagy egymás után beírva. Az összevetést és az egy mondatot együtt írjátok.</p>
+    <p class="onebox"><b>Mi a bizonyíték?</b> Hol, mit láttatok, linkkel vagy idézettel: „a márkanévre a saját oldal az első találat”, „az utolsó poszt első sora: …”. Nem bizonyíték: tetszik, ütős, modern.</p>
+    <p class="warn"><b>Inkognitóablakban kerestek.</b> Fizetett hirdetésre nem kattintotok, mert a hirdető kattintásonként fizet érte; a hirdetéstárban kattintás nélkül is megnézhető. Nem kommenteltek, nem kedveltek és nem követtek be a csapat nevében.</p>
+  </div>
+
+  <div class="row">
+    <div><label for="team">Ügynökség (csapat)</label><select id="team"><option value="">válaszd ki a csapatotokat</option></select></div>
+    <div><label for="brand">Márka, amit az 1. alkalmon választottatok</label><select id="brand"><option value="">válaszd ki a márkát</option></select></div>
+    <div><label for="rival">Versenytárs (csak a keresőhöz)</label><input id="rival" placeholder="akivel szemben választják, az 1. alkalom mondatából"></div>
+  </div>
+  <div class="row" style="margin-top:.4em">
+    <div><label for="u_web">Weboldal</label><input id="u_web" placeholder="https://…"></div>
+    <div><label for="u_fb">Facebook</label><input id="u_fb" placeholder="https://… vagy: nincs"></div>
+    <div><label for="u_ig">Instagram</label><input id="u_ig" placeholder="https://… vagy: nincs"></div>
+  </div>
+  <div class="row" style="margin-top:.4em">
+    <div><label for="u_tt">TikTok</label><input id="u_tt" placeholder="https://… vagy: nincs"></div>
+    <div><label for="u_yt">YouTube</label><input id="u_yt" placeholder="https://… vagy: nincs"></div>
+    <div><label for="split">Ki melyik csatornát nézi</label><input id="split" placeholder="pl. Anna: kereső, Bence: Meta, Dóra: videó"></div>
+  </div>
+
+  <h2 class="phases-h noprint">A munka négy fázisa</h2>
+  <div class="tabs noprint" role="tablist">
+    <button class="tab on" data-p="p1" role="tab"><span class="pn">1</span><span class="ph">Kereső</span><span class="meta">Google és AI-válasz · 45 perc</span><ol><li>márkanévre és kategóriára</li><li>egy AI-válasz</li><li>Google hirdetéstár</li></ol></button>
+    <button class="tab" data-p="p2" role="tab"><span class="pn">2</span><span class="ph">Meta</span><span class="meta">Facebook, Instagram · 45 perc</span><ol><li>az utolsó posztok</li><li>kommentek</li><li>Meta Hirdetéstár</li></ol></button>
+    <button class="tab" data-p="p3" role="tab"><span class="pn">3</span><span class="ph">Videó</span><span class="meta">TikTok, YouTube · 45 perc</span><ol><li>az első másodpercek</li><li>kommentek</li><li>TikTok Ad Library</li></ol></button>
+    <button class="tab" data-p="p4" role="tab"><span class="pn">4</span><span class="ph">Összevetés és leadás</span><span class="meta">együtt · 40 perc</span><ol><li>8. szempont: összevetés</li><li>az egy mondat</li><li>amit nem tudtok biztosan</li></ol></button>
+  </div>
+
+  <section class="pane on" id="p1">
+    <h2>1. Kereső</h2>
+    <div class="where"><b>Hol nézzétek?</b> Inkognitóablakban a Google-ben: egyszer a márka nevére, egyszer a kategóriára (amit a vevő írna be, ha még nem ismeri a márkát). Egy AI-válaszban: Google AI mód, ChatGPT vagy Perplexity. A fizetett hirdetéseket a <a href="https://adstransparency.google.com/?region=HU" target="_blank" rel="noopener">Google Ads Átláthatósági Központban</a> nézzétek meg, a márka domainjére keresve.</div>
+    <div class="extra">
+      <label for="q_brand">Mit írtatok be?<span class="hint">a márkanév és egy kategóriaszó, ahogy a vevő írná</span></label><textarea id="q_brand" placeholder="pl. „tunki tunki” · „vegán mártogatós”"></textarea>
+      <label for="ai">Egy AI-válasz<span class="hint">Mit kérdeztetek, melyik eszközben? Megemlítette-e a márkát, és milyen forrásra hivatkozott?</span></label><textarea id="ai"></textarea>
+      <label for="rivaltxt">A versenytárs a keresőben, egy sor<span class="hint">Ugyanarra a kategóriaszóra ott van-e a versenytárs: fizetett vagy organikus helyen?</span></label><textarea id="rivaltxt"></textarea>
+    </div>
+    <div id="r1"></div>
+    <div class="nextbar noprint"><p><span class="nb-st">1/4 kész</span> Következik: a Meta, Facebook és Instagram.</p><button class="btn next" data-go="p2">Tovább a következő fázisra · 2/4 →</button></div>
+  </section>
+
+  <section class="pane" id="p2">
+    <h2>2. Meta: Facebook és Instagram</h2>
+    <div class="where"><b>Hol nézzétek?</b> A márka Facebook-oldala és Instagram-profilja: az utolsó három-öt poszt, az első soruk, a hosszuk, és a kommentek. A fizetett hirdetéseket a <a href="https://www.facebook.com/ads/library/?country=HU" target="_blank" rel="noopener">Meta Hirdetéstárban</a> nézzétek meg, Magyarországra szűrve, a márka nevére keresve. Ha a márka nincs jelen, jelöljétek a „nincs jelen” gombot, és írjátok le, ki van ott helyette.</div>
+    <div id="r2"></div>
+    <div class="nextbar noprint"><p><span class="nb-st">2/4 kész</span> Következik: videó, TikTok és YouTube.</p><button class="btn next" data-go="p3">Tovább a következő fázisra · 3/4 →</button></div>
+  </section>
+
+  <section class="pane" id="p3">
+    <h2>3. Videó: TikTok és YouTube</h2>
+    <div class="where"><b>Hol nézzétek?</b> A márka TikTok- és YouTube-csatornája: az utolsó videók első három-öt másodperce, a hossz, a hang és a felirat, és a kommentek. A TikTok hirdetéseit a <a href="https://library.tiktok.com/ads" target="_blank" rel="noopener">TikTok Ad Libraryben</a> nézzétek meg. Ha a márka nincs jelen, keressetek rá a kategóriára a TikTokon: ki van ott helyette?</div>
+    <div id="r3"></div>
+    <div class="nextbar noprint"><p><span class="nb-st">3/4 kész</span> Következik: összevetés és leadás, együtt.</p><button class="btn next" data-go="p4">Tovább a következő fázisra · 4/4 →</button></div>
+  </section>
+
+  <section class="pane" id="p4">
+    <h2>Összevetés és leadás</h2>
+    <p class="lead">Két rész. Fent a látlelet: a lap az eddigi jelöléseitekből magától rakja össze. Lent a mezők, amiket most együtt írtok meg, és beküldtök.</p>
+
+    <div class="sum-sec">
+      <div class="sum-h"><span class="sum-n">A</span><div><h3>A látlelet</h3><p>Így ítéltétek meg a márkát a három csatornán, hét szemponton át.</p></div></div>
+      <div class="scores" id="scores"></div>
+      <details class="mapwrap" open><summary>A teljes táblázat, szempontonként és csatornánként</summary><div style="overflow-x:auto"><table class="map" id="map"></table></div></details>
+    </div>
+
+    <div class="sum-sec">
+      <div class="sum-h"><span class="sum-n">B</span><div><h3>Amit most együtt írtok meg</h3><p>Négy rövid mező. A látleletből dolgozzatok.</p></div></div>
+      <ol class="fields">
+        <li><label for="cmp"><b>8. szempont: összevetés</b><span class="hint">Ugyanazt mondja a márka ugyanúgy mindenhol, vagy csatornánként mást? Hol illik a nyelv a helyhez, és hol nem?</span></label><textarea id="cmp"></textarea></li>
+        <li><label for="sentence"><b>Az egy mondat</b> <span class="req">kötelező, ez látszik a listán</span><span class="hint">„A [márka] a vevővel [hol] találkozik, [milyen szándékállapotban], [ugyanazon / csatornánként más] nyelven, és nincs ott, ahol [hol van még szándék].”</span></label><textarea id="sentence" placeholder="A … a vevővel … találkozik, … , … nyelven, és nincs ott, ahol …"></textarea></li>
+        <li><label for="dec"><b>A legtudatosabb csatornadöntés, és amit nem tudtok biztosan</b><span class="hint">Mi a márka legtudatosabb döntése a csatornái között, és mit akar vele elérni? Utána: az öt közül melyiket nem tudjátok biztosan (ki beszél, kihez beszélünk, mit mondunk, hogyan jutunk el hozzá, honnan tudjuk, hogy eljutott), és miért?</span></label><textarea id="dec" placeholder="A legtudatosabb döntés: … Az öt közül ezt nem tudjuk biztosan: …, mert …"></textarea></li>
+        <li><label for="who"><b>Ki mit csinált</b></label><textarea id="who"></textarea></li>
+      </ol>
+    </div>
+
+    <div class="sendbar noprint"><p><span class="nb-st">4/4</span> Ha minden mező kész, küldjétek be. Újraküldéskor az előző felülíródik, amíg az oktató le nem zárja a leadást.</p><div class="sb-btns"><button class="btn" id="preview">Előnézet</button><button class="btn solid" id="send">Beküldés</button></div></div>
+    <p class="status noprint" id="status"></p>
+    <div class="out noprint" id="out" style="margin-top:1em"></div>
+  </section>
+
+  <p class="foot">A szempontok a mai deck diáit követik, mindegyiknél ott a dia címe. · csatornavizsgálat v0.1 · 2026. október 28.</p>
+</main>
+<script>
+(function(){
+  var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
+  var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
+  if(LEV)CLIENTS=CLIENTS.filter(function(c){return c!=='Kolorádó'});
+  /* [azonosító, cím, vezetőkérdések, a deck diái] */
+  var LENS=[
+    ['l1','Jelenlét',['Ott van-e itt a márka, és mióta, milyen gyakran szól?','Fizetett, organikus vagy mindkettő?','Ha nincs ott: ki van ott helyette?'],'„Ott legyünk, ahol a vevő.” · A találati oldal · A kereső két arca'],
+    ['l2','Szándékállapot',['Milyen helyzetben találkozik itt a márkával az ember: keres, görget, néz, kérdez?','Melyik körben van (See, Think, Do, Care)?'],'Ugyanaz az ember, két állapot · A szándék útja'],
+    ['l3','Ki kezdeményez',['Az ember kereste, vagy a márka szakította félbe?','Ha megszakít: ad-e okot, hogy megálljon?'],'Ő hív, vagy te szakítod félbe? · A hírfolyam nem a tiéd'],
+    ['l4','Üzenet',['Mit mond itt a márka egy mondatban?','Ugyanaz-e, mint a pozicionálási mondatotok?'],'Platformonként más dolga van'],
+    ['l5','Nyelv',['Milyen formában, hosszban, hangon szól?','Mi van az első sorban vagy az első három-öt másodpercben?','Úgy beszél, ahogy ott beszélnek?'],'Beszélgetés, nem bemondás · Az első öt másodperc · Don’t Make Ads'],
+    ['l6','Mások hangja',['Mit írnak a kommentekben és az értékelésekben?','Ki beszél még a márkáról: vásárlók, boltok, partnerek, a gép válasza?'],'Amit mások mondanak rólad · GEO'],
+    ['l7','Következő lépés',['Hová visz a találat, a poszt vagy a hirdetés?','Illik-e az érkezés ahhoz, amit ígért?'],'Amit a hirdetés ígért · Ott van, ahol keresi?']
+  ];
+  LENS.forEach(function(L,i){L.n=i+1});
+  var CH=[['K','Kereső',1],['M','Meta',2],['V','Videó',3]];
+  var ANS=[['igen','működik'],['reszben','részben'],['nem','nem működik'],['nincs','nincs jelen']];
+  var KEY='om2026-csatorna-ep4'+(LEV?'-lev':'');
+  var TEAMS={}, SUBS={};
+  function blank(){return {team:'',brand:'',rival:'',u_web:'',u_fb:'',u_ig:'',u_tt:'',u_yt:'',split:'',q_brand:'',ai:'',rivaltxt:'',cmp:'',sentence:'',dec:'',who:'',K:{},M:{},V:{}}}
+  var S=blank();
+  try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); for(var k in o)S[k]=o[k]}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  function $(id){return document.getElementById(id)}
+  function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function ansTxt(v){for(var i=0;i<ANS.length;i++)if(ANS[i][0]===v)return ANS[i][1];return 'nincs jelölve'}
+  function chName(k){for(var i=0;i<CH.length;i++)if(CH[i][0]===k)return CH[i][1];return k}
+
+  var BRANDLIST=CLIENTS;
+  function brands(list){ $('brand').innerHTML='<option value="">válaszd ki a márkát</option>'; list.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;$('brand').appendChild(o)}); if(S.brand&&list.indexOf(S.brand)<0){var o=document.createElement('option');o.value=o.textContent=S.brand;$('brand').appendChild(o)} $('brand').value=S.brand||''; }
+
+  function lensHTML(L,k){var c=S[k][L[0]]||{};
+    return '<article class="lens"><div class="lhead"><div class="lnum">'+L.n+'</div><div><h3>'+esc(L[1])+'</h3><ul>'+L[2].map(function(q){return '<li>'+esc(q)+'</li>'}).join('')+'</ul><div class="lref">A deckben: '+esc(L[3])+'</div></div></div><div class="sites"><div class="site">'+
+      '<label class="step">1. Mit láttok?</label><textarea data-k="'+k+'" data-l="'+L[0]+'" data-f="t" placeholder="Hol, mit, linkkel vagy idézettel.">'+esc(c.t||'')+'</textarea>'+
+      '<label class="step">2. Miért így?</label><textarea data-k="'+k+'" data-l="'+L[0]+'" data-f="w" placeholder="Milyen szándékállapotra számít itt a márka, és mit akar elérni?">'+esc(c.w||'')+'</textarea>'+
+      '<label class="step">3. Működik?</label><div class="chips">'+ANS.map(function(a){return '<button type="button" class="ch '+a[0]+(c.v===a[0]?' on':'')+'" data-k="'+k+'" data-l="'+L[0]+'" data-v="'+a[0]+'">'+a[1]+'</button>'}).join('')+'</div></div></div></article>';
+  }
+  function cell(k,id){var c=S[k][id]; if(!c){c=S[k][id]={v:'',t:'',w:''}} return c}
+  function drawRounds(){CH.forEach(function(ch){var el=$('r'+ch[2]); if(el)el.innerHTML=LENS.map(function(L){return lensHTML(L,ch[0])}).join('')})}
+  function drawMap(){
+    var h='<tr><th>Szempont</th>'+CH.map(function(c){return '<th>'+c[1]+'</th>'}).join('')+'</tr>';
+    LENS.forEach(function(L){h+='<tr><td>'+L.n+'. '+esc(L[1])+'</td>'+CH.map(function(c){var v=(S[c[0]][L[0]]||{}).v||'';return '<td><span class="dot '+v+'">'+ansTxt(v)+'</span></td>'}).join('')+'</tr>'});
+    $('map').innerHTML=h;
+    var n=LENS.length;
+    $('scores').innerHTML=CH.map(function(c){var cnt={igen:0,reszben:0,nem:0,nincs:0,x:0};LENS.forEach(function(L){var v=(S[c[0]][L[0]]||{}).v||'';if(cnt.hasOwnProperty(v))cnt[v]++;else cnt.x++});
+      var bar='<div class="sbar">'+[['igen',cnt.igen],['reszben',cnt.reszben],['nem',cnt.nem],['nincs',cnt.nincs],['x',cnt.x]].map(function(p){return p[1]?'<i class="s-'+p[0]+'" style="width:'+(p[1]/n*100)+'%"></i>':''}).join('')+'</div>';
+      var leg='<p class="sleg"><span class="s-igen"></span>'+cnt.igen+' működik<span class="s-reszben"></span>'+cnt.reszben+' részben<span class="s-nem"></span>'+cnt.nem+' nem működik<span class="s-nincs"></span>'+cnt.nincs+' nincs jelen'+(cnt.x?'<span class="s-x"></span>'+cnt.x+' nincs jelölve':'')+'</p>';
+      return '<div class="scard"><p class="sk">'+esc(c[1])+'</p><p class="sn">'+esc(S.brand||'a márkátok')+'</p>'+bar+leg+'</div>'}).join('');
+  }
+  function drawAll(){drawRounds();drawMap()}
+  var FIELDS=['team','brand','rival','u_web','u_fb','u_ig','u_tt','u_yt','split','q_brand','ai','rivaltxt','cmp','sentence','dec','who'];
+  function grow(t){t.style.height='auto'; t.style.height=(t.scrollHeight+2)+'px'}
+  function growAll(){[].forEach.call(document.querySelectorAll('.pane.on textarea'),grow)}
+  function fill(){brands(BRANDLIST); FIELDS.forEach(function(f){$(f).value=S[f]||''}); drawAll(); growAll()}
+  FIELDS.forEach(function(f){$(f).addEventListener(/^(team|brand)$/.test(f)?'change':'input',function(){S[f]=this.value;save(); if(f==='brand')drawMap()})});
+  $('team').addEventListener('change',function(){var t=TEAMS[this.value]; if(t&&t.client){$('brand').value=t.client; S.brand=t.client; save(); drawMap()}});
+  function showTab(p){[].forEach.call(document.querySelectorAll('.tab'),function(b){b.classList.toggle('on',b.getAttribute('data-p')===p)});[].forEach.call(document.querySelectorAll('.pane'),function(x){x.classList.toggle('on',x.id===p)}); if(p==='p4')drawMap(); growAll(); window.scrollTo({top:document.querySelector('.tabs').offsetTop-60,behavior:'smooth'})}
+  document.addEventListener('click',function(e){var t=e.target;
+    var tb=t.closest&&t.closest('.tab'); if(tb){showTab(tb.getAttribute('data-p'));return}
+    var gb=t.closest&&t.closest('[data-go]'); if(gb){showTab(gb.getAttribute('data-go'));return}
+    if(t.classList.contains('ch')){var k=t.getAttribute('data-k'),l=t.getAttribute('data-l'),v=t.getAttribute('data-v'),c=cell(k,l); c.v=c.v===v?'':v; save(); [].forEach.call(t.parentNode.children,function(b){b.classList.toggle('on',b===t&&!!c.v)}); return}
+  });
+  document.addEventListener('input',function(e){var t=e.target; if(t.tagName==='TEXTAREA')grow(t); var k=t.getAttribute('data-k'),l=t.getAttribute('data-l'); if(!k||!l)return; cell(k,l)[t.getAttribute('data-f')||'t']=t.value; save()});
+
+  /* --- levelező: kettesben, a videó fül ráadás --- */
+  if(LEV){
+    document.documentElement.classList.add('lev');
+    function tabSet(p,meta){var t=document.querySelector('.tab[data-p="'+p+'"]'); if(t)t.querySelector('.meta').textContent=meta}
+    tabSet('p1','Google és AI-válasz · 15 perc'); tabSet('p2','Facebook, Instagram · 15 perc'); tabSet('p3','ráadás, ha marad idő'); tabSet('p4','együtt · 15 perc');
+    var ob=document.querySelector('.notes3 .onebox'); if(ob)ob.innerHTML='<b>Kettesben dolgoztok.</b> Az egyik a keresőt és egy AI-választ nézi, a másik a Facebookot és az Instagramot. A videó fül ráadás, ha marad idő. Az összevetést és az egy mondatot együtt írjátok.';
+    var sp=$('split'); if(sp)sp.placeholder='pl. Anna: kereső, Bence: Meta';
+    [].forEach.call(document.querySelectorAll('span.muted.small'),function(e){e.textContent='Levelező · A csatornák nyelve · nyolc szempont'});
+  }
+
+  /* --- a nyolc blokk a leadáshoz --- */
+  function lensTxt(L,k){var c=S[k][L[0]]||{}; return L.n+'. '+L[1]+' · Láttuk: '+((c.t||'').trim()||'nincs kitöltve')+' · Miért így: '+((c.w||'').trim()||'nincs kitöltve')+' · Működik: '+ansTxt(c.v)}
+  function chTxt(k){return LENS.map(function(L){return lensTxt(L,k)}).join('\n')}
+  function blocks(){
+    var links=[['Weboldal','u_web'],['Facebook','u_fb'],['Instagram','u_ig'],['TikTok','u_tt'],['YouTube','u_yt']].map(function(p){return p[0]+': '+((S[p[1]]||'').trim()||'nincs megadva')}).join(' · ');
+    var map=LENS.map(function(L){return L.n+'. '+L[1]+': '+CH.map(function(c){return c[1]+' '+ansTxt((S[c[0]][L[0]]||{}).v)}).join(' / ')}).join('\n');
+    return {
+      f1:(((S.split||'').trim()?'Felosztás: '+S.split.trim()+'\n':'')+(S.who||'').trim()).trim(),
+      f2:(S.brand?'Márka: '+S.brand+'. ':'')+links+(S.rival?' · Versenytárs: '+S.rival:''),
+      f3:(S.sentence||'').trim(),
+      f4:'Keresés: '+((S.q_brand||'').trim()||'nincs kitöltve')+'\nAI-válasz: '+((S.ai||'').trim()||'nincs kitöltve')+'\nVersenytárs a keresőben: '+((S.rivaltxt||'').trim()||'nincs kitöltve')+'\n'+chTxt('K'),
+      f5:chTxt('M'),
+      f6:chTxt('V'),
+      f7:'Összevetés: '+((S.cmp||'').trim()||'nincs kitöltve')+'\n\nÁttekintés (működik?, kereső / Meta / videó)\n'+map,
+      f8:(S.dec||'').trim()
+    };
+  }
+  var LABELS={f1:'Ki mit csinált',f2:'Amit megnéztetek',f3:'Az egy mondat',f4:'Kereső',f5:'Meta: Facebook és Instagram',f6:'Videó: TikTok és YouTube',f7:'Összevetés',f8:'A legtudatosabb csatornadöntés, és amit nem tudunk biztosan'};
+  $('preview').addEventListener('click',function(){var b=blocks(),h=''; ['f1','f2','f3','f4','f5','f6','f7','f8'].forEach(function(f){var s=b[f]||''; h+='<div><b>'+LABELS[f]+'</b><pre>'+esc(s||'(üres)')+'</pre>'+(s.length>4000?'<p class="long">Ez a blokk '+s.length+' karakter, a szerver 4000 után levágja. Rövidítsetek.</p>':'')+'</div>'}); $('out').innerHTML=h});
+
+  var API='api.php';
+  function api(a,body){var o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{}; return fetch(API+'?a='+a+'&ep=ep4',o).then(function(r){return r.json()})}
+  api('state').then(function(d){ if(!d.ok)return; SUBS=d.subs||{}; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; var bl=[]; d.teams.forEach(function(t){if(t.client&&bl.indexOf(t.client)<0)bl.push(t.client)}); if(bl.length){BRANDLIST=bl.sort(function(a,b){return a.localeCompare(b,'hu')}); brands(BRANDLIST)} }).catch(function(){});
+  $('send').addEventListener('click',function(){
+    if(S.demo){$('status').textContent='Ez a minta. Előbb vegyétek ki, és a saját munkátokat küldjétek be.';return}
+    var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return} if(!S.brand){$('status').textContent='Válaszd ki a márkát.';return}
+    var b=blocks(); if(!b.f3){$('status').textContent='Az egy mondat hiányzik, enélkül nem lehet beküldeni.';return}
+    if(SUBS&&SUBS[tid]&&!confirm('Ennek a csapatnak már van beküldött munkája. Ez felülírja. Folytatod?'))return;
+    b.team=tid; $('status').textContent='Küldés…';
+    api('submit',b).then(function(d){if(d.ok)SUBS[tid]=true; $('status').textContent=d.ok?'Leadtad, ügyes voltál! 🎉':d.error}).catch(function(){$('status').textContent='Nem sikerült, a szerver nem válaszol.'});
+  });
+  $('print').addEventListener('click',function(){window.print()});
+  $('clear').addEventListener('click',function(){ if(!confirm('Új, üres lap? A mostani tartalom törlődik ebből a böngészőből.'))return; var tm=S.team,br=S.brand; S=blank(); S.team=tm; S.brand=br; try{localStorage.removeItem(KEY+'-prev')}catch(e){} save(); fill(); demoUI(); $('out').innerHTML=''});
+
+  /* minta: a deck bemutatója, Tunki-Tunki, 2026. október 27–28. Csak ellenőrzött tények; ami élőben nézendő, az jelölve. */
+  function loadDemo(){
+    if(S.demo)return;
+    try{localStorage.setItem(KEY+'-prev',JSON.stringify(S))}catch(e){}
+    var tm=S.team; S=blank(); S.demo=true; S.team=tm; S.brand='Tunki-Tunki (minta)';
+    S.u_web='https://tunkitunki.hu/'; S.u_fb='https://www.facebook.com/vegantunkitunki'; S.u_ig='https://www.instagram.com/vegantunkitunki/'; S.u_tt='nincs link a weboldalon'; S.u_yt='nincs link a weboldalon';
+    S.rival='Primavika (minta)'; S.split='Minta: a deck bemutatója.';
+    S.q_brand='„tunki tunki” · „vegán mártogatós” (Google, 2026. október 28.)';
+    S.ai='Minta: élőben kitöltendő az órán, Google AI módban: „milyen vegán mártogatóst vigyek egy bulira?”';
+    S.rivaltxt='A „vegán mártogatós” keresésre a Google Shopping-sávban a Primavika termékei jelennek meg (835–975 Ft), a Tunki-Tunki ott sincs.';
+    var K={
+      l1:['reszben','Márkanévre: első a tunkitunki.hu, webhelylinkekkel (Tunkik, Kapcsolat, Rólunk), alatta a Facebook (7,1 E követő) és az Instagram (3,6 E követő), majd boltok (Kifli.hu, Herbadiszkont). Kategóriára („vegán mártogatós”): az első oldalon nincs ott. A Google Ads Átláthatósági Központban 0 hirdetés.','Aki már ismeri, megtalálja. Aki a kategóriára keres, az nem találkozik vele: a márka ide nem tesz sem pénzt, sem tartalmat.'],
+      l2:['reszben','A „vegán mártogatós” keresésre receptoldalak jönnek (Vegán Blog, Nosalty, Street Kitchen, Mindmegette): a keresők többsége főzni akar, nem vásárolni.','A kategóriaszó szándéka recept, nem termék. Ez magyarázhatja, miért nem hirdet rá a márka.'],
+      l3:['igen','A keresőben az ember kezdeményez. Fizetett megszakítás nincs.','A márka a már meglévő érdeklődést fogadja.'],
+      l4:['igen','A saját oldal leírása: „A Tunki-Tunkinál azon ügyködünk, hogy forradalmasítsuk a tunkolást különleges, vegán szószainkkal.”','Ugyanaz a játékos hang, mint az oldalon.'],
+      l5:['igen','A találati leírás első szava: „Lássuk be, tunkolni élvezetes.”','A márka a saját szavával (tunkolni) szól, már a találati listában.'],
+      l6:['reszben','A boltok (Kifli.hu, Herbadiszkont, DIZKO) is leírják a terméket, ezek mások hangjai a keresőben.','A márkáról mások is beszélnek, de a kategóriakeresésben nem.'],
+      l7:['igen','A márkanévre a találat a saját kezdőoldalra visz, a boltok a termékoldalra.','Az érkezés illik a kereséshez.']
+    };
+    var M={
+      l1:['reszben','Facebook és Instagram van (a weboldal mindkettőre linkel). A Meta Hirdetéstárban a nevére kb. 12 hirdetés, de egyiket sem ő adta fel: az ügynöksége, egy mentes fesztivál és egy partnerrendezvény említi.','Organikusan van jelen, fizetett hirdetés nélkül. Mások fizetnek azért, hogy róla beszéljenek.'],
+      l2:['','Élőben: az utolsó posztok alapján görgető, nem kereső állapot.',''],
+      l6:['igen','A Meta Hirdetéstárban mások hirdetései említik (fesztivál, partnerrendezvény, az ügynökség díjai).','Mások hangja itt fizetett formában is megjelenik.']
+    };
+    var V={
+      l1:['nincs','A weboldalon nincs TikTok- és YouTube-link (2026. október 11.).','Élőben: ki van ott a kategóriára helyette?']
+    };
+    function put(dst,src){for(var k in src)dst[k]={v:src[k][0],t:src[k][1],w:src[k][2]}}
+    put(S.K,K); put(S.M,M); put(S.V,V);
+    S.cmp='Minta: a keresőben és az Instagramon ugyanaz a játékos hang („tunkolni”), videón nincs jelen. A hang ugyanaz, a formátum még nem csatornánként más.';
+    S.sentence='Minta: A Tunki-Tunki a vevővel a keresőben és az Instagramon találkozik, amikor már ismeri a márkát, ugyanazon a játékos nyelven, és nincs ott, ahol a kategóriára keresnek.';
+    S.dec='Minta: a legtudatosabb döntés, hogy nem hirdet, hanem a már meglévő érdeklődést fogadja a saját nyelvén. Az öt közül ezt nem tudjuk biztosan: hogyan jutunk el hozzá, mert aki nem ismeri a márkát, annak egyik csatornán sem kerül elé.';
+    S.who='Minta, a deck bemutatója.';
+    save(); fill(); demoUI();
+  }
+  $('demo').addEventListener('click',loadDemo);
+  function demoUI(){$('demobar').hidden=!S.demo; $('demo').disabled=!!S.demo;}
+  $('undemo').addEventListener('click',function(){
+    var prev=null; try{prev=JSON.parse(localStorage.getItem(KEY+'-prev')||'null')}catch(e){}
+    var tm=S.team; S=blank(); if(prev){for(var k in prev)S[k]=prev[k]} S.demo=false; S.team=tm;
+    try{localStorage.removeItem(KEY+'-prev')}catch(e){}
+    save(); fill(); demoUI(); $('out').innerHTML='';
+  });
+  window.addEventListener('storage',function(e){if(e.key===KEY){try{S=JSON.parse(e.newValue)||blank()}catch(x){} fill(); demoUI()}});
+  fill(); demoUI();
+  if(/[?&]minta=1\b/.test(location.search)&&!S.demo)loadDemo();
+})();
+</script>
+</body>
+</html>

@@ -171,7 +171,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.19 · 2026. október 16.</p>
+  <p class="small muted" style="margin-top:3em">app v2.20 · 2026. október 28.</p>
 </div>
 
 <script>
@@ -204,7 +204,16 @@ summary{cursor:pointer;color:var(--cobalt)}
       ['f4','Ránézés és olvasás (1–5. szempont), saját oldal: mit láttunk, miért így, működik-e'],
       ['f5','Ránézés és olvasás (1–5. szempont), külső oldal: mit láttunk, miért így, működik-e'],
       ['f6','Cselekvés (6–8. szempont), saját oldal: mit láttunk, miért így, működik-e'],
-      ['f7','Cselekvés (6–8. szempont), külső oldal: mit láttunk, miért így, működik-e']]}
+      ['f7','Cselekvés (6–8. szempont), külső oldal: mit láttunk, miért így, működik-e']]},
+    ep4:{name:'4. alkalom · A csatornák nyelve', title:'4. beadandó: csatornatérkép üzenetenként', tool:'csatorna-vizsgalat.html', toolname:'Csatornavizsgálat', toolnote:'a Csatornavizsgálat lapon', novote:true, nosample:true, limit:'nyolc blokk, blokkonként legfeljebb 4000 karakter', fields:[
+      ['f1','Ki mit csinált','Ki melyik csatornát nézte (kereső, Meta, videó), és mit írtatok együtt.',''],
+      ['f2','Amit megnéztetek','A márka linkjei (weboldal, Facebook, Instagram, TikTok, YouTube), hol nincs jelen, és a versenytárs neve.',''],
+      ['f3','Az egy mondat','A sablon szerint, egyetlen mondatban. Ez látszik a beadandók között.','A [márka] a vevővel [hol] találkozik, [milyen szándékállapotban], [ugyanazon / csatornánként más] nyelven, és nincs ott, ahol [hol van még szándék].'],
+      ['f4','Kereső','Márkanévre és kategóriára, egy AI-válasz, a Google hirdetéstár, a versenytárs egy sorban; az 1–7. szempont. Ezt a Csatornavizsgálat tölti ki.',''],
+      ['f5','Meta: Facebook és Instagram','Az utolsó posztok, a kommentek és a Meta Hirdetéstár; az 1–7. szempont.',''],
+      ['f6','Videó: TikTok és YouTube','Az első másodpercek, a kommentek és a TikTok Ad Library; az 1–7. szempont, vagy ha nincs jelen: ki van ott helyette.',''],
+      ['f7','Összevetés','8. szempont: ugyanazt mondja-e a márka ugyanúgy mindenhol, és a hét szempont áttekintése csatornánként.',''],
+      ['f8','A legtudatosabb csatornadöntés, és amit nem tudunk biztosan','Mi a márka legtudatosabb döntése a csatornái között; és az öt kérdés közül melyiket nem tudjátok biztosan, és miért.','']]}
   };
   /* ===== levelező (om2026levelezo): ugyanaz a hét téma, témánként rövid órai gyakorlat ===== */
   var LEV=/levelezo/i.test(location.pathname);
@@ -232,6 +241,16 @@ summary{cursor:pointer;color:var(--cobalt)}
       ['f4','Ránézés és olvasás (1–5. szempont)','Szempontonként: mit láttok (hol, mit, ha lehet, idézettel), miért így (mit akar ezzel a márka), és működik-e. Ezt az Oldalvizsgálat tölti ki.',''],
       ['f6','Cselekvés (6–8. szempont)','Ugyanígy, a végigkattintott útról: vezetett-e az oldal, hol tud lépni a látogató, és mi építi vagy rontja a bizalmat.',''],
       ['f8','Összegzés','Az öt kérdés közül (ki beszél, kihez beszélünk, mit mondunk, hogyan jutunk el hozzá, honnan tudjuk, hogy eljutott) melyiket nem tudjátok biztosan az oldalból; a legtudatosabb döntés az oldalon; és a nyolc szempont áttekintése.','']]};
+    EPISODES.ep4={name:'4. téma · A csatornák nyelve (levelező)', title:'4. gyakorlat: csatornatérkép a saját márkán', tool:'csatorna-vizsgalat.html', toolname:'Csatornavizsgálat', toolnote:'a Csatornavizsgálat lapon', limit:'rövid, kb. 45 perc, kettesben', nosample:true, fields:[
+      ['f1','Ki mit csinált','Ki melyik csatornát nézte (kereső, Meta, videó), és mit írtatok együtt.',''],
+      ['f2','Amit megnéztetek','A márka linkjei (weboldal, Facebook, Instagram, TikTok, YouTube), hol nincs jelen, és a versenytárs neve.',''],
+      ['f3','Az egy mondat','A sablon szerint, egyetlen mondatban. Ez látszik a beadandók között.','A [márka] a vevővel [hol] találkozik, [milyen szándékállapotban], [ugyanazon / csatornánként más] nyelven, és nincs ott, ahol [hol van még szándék].'],
+      ['f4','Kereső','Márkanévre és kategóriára, egy AI-válasz, a Google hirdetéstár, a versenytárs egy sorban; az 1–7. szempont. Ezt a Csatornavizsgálat tölti ki.',''],
+      ['f5','Meta: Facebook és Instagram','Az utolsó posztok, a kommentek és a Meta Hirdetéstár; az 1–7. szempont.',''],
+      ['f6','Videó: TikTok és YouTube','Az első másodpercek, a kommentek és a TikTok Ad Library; az 1–7. szempont, vagy ha nincs jelen: ki van ott helyette.',''],
+      ['f7','Összevetés','8. szempont: ugyanazt mondja-e a márka ugyanúgy mindenhol, és a hét szempont áttekintése csatornánként.',''],
+      ['f8','A legtudatosabb csatornadöntés, és amit nem tudunk biztosan','Mi a márka legtudatosabb döntése a csatornái között; és az öt kérdés közül melyiket nem tudjátok biztosan, és miért.','']]};
+
   }
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
   if(/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search))CLIENTS=CLIENTS.filter(function(c){return c!=='Kolorádó'}); /* levelezőn a fesztivál nem választható */

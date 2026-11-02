@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Online marketing · A csatornák nyelve · 4. alkalom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F6F1;
+  --ink:#1B1F3A;
+  --ink-soft:#5A5E78;
+  --line:#D9D7CE;
+  --cobalt:#1E4BD8;
+  --marker:#F2C94C;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:clamp(20px,1.62vw,29px);line-height:1.45;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* season strip: the one persistent element */
+.strip{position:fixed;top:0;left:0;right:0;height:96px;display:flex;align-items:stretch;border-bottom:1px solid var(--line);background:var(--paper);z-index:20}
+.strip a{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 14px;text-decoration:none;color:var(--ink-soft);border-right:1px solid var(--line);font-size:max(.62em,18px);line-height:1.2;transition:background .2s}
+.strip a:last-child{border-right:0}
+.strip a b{font-family:var(--display);font-weight:500;font-size:1.25em;color:var(--ink)}
+.strip a.on{background:var(--marker);color:var(--ink)}
+.strip a.dim b{color:var(--ink-soft)}
+.strip a:focus-visible{outline:3px solid var(--cobalt);outline-offset:-3px}
+
+/* slides */
+.deck{position:absolute;top:96px;bottom:0;left:0;right:0}
+.slide{position:absolute;inset:0;padding:6vh 8vw 10vh;display:none;overflow-y:auto;flex-direction:column;justify-content:center;max-width:1400px;margin:0 auto}
+.slide.cur{display:flex}
+.kicker{font-size:.8em;color:var(--ink-soft);margin-bottom:.9em}
+h1{font-family:var(--display);font-weight:300;font-size:3.6em;line-height:1.02;letter-spacing:-.01em;margin-bottom:.35em}
+h2{font-family:var(--display);font-weight:500;font-size:2.2em;line-height:1.1;margin-bottom:.6em;max-width:20ch}
+h3{font-family:var(--display);font-weight:500;font-size:1.35em;margin-bottom:.35em}
+p{max-width:62ch}
+p+p{margin-top:.8em}
+.lead{font-size:1.25em;max-width:48ch}
+.quote{font-family:var(--display);font-weight:300;font-size:1.5em;line-height:1.3;max-width:34ch;margin:.4em 0}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55%);padding:0 .1em}
+.muted{color:var(--ink-soft)}
+.small{font-size:.8em}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:3vw}
+.rule{border:0;border-top:1px solid var(--line);margin:1.2em 0}
+
+/* build steps */
+.step{opacity:.18;transition:opacity .25s}
+.step.in{opacity:1}
+.hint{position:fixed;left:8vw;bottom:3.4vh;max-width:50vw;font-size:.65em;color:var(--ink-soft)}
+.pager{position:fixed;right:8vw;bottom:3.4vh;font-size:.65em;color:var(--ink-soft);display:flex;gap:1.5em;align-items:center}
+.pager button{padding:.2em .6em;border:1px solid var(--line);border-radius:4px}
+.pager button:focus-visible{outline:3px solid var(--cobalt)}
+
+/* chain of questions */
+.chain{list-style:none;counter-reset:q;max-width:56ch}
+.chain li{display:grid;grid-template-columns:2.2em 1fr;gap:.6em;padding:.45em 0;border-bottom:1px solid var(--line);align-items:baseline}
+.chain li::before{counter-increment:q;content:counter(q) ".";font-family:var(--display);font-weight:500;color:var(--cobalt)}
+.chain li>div{min-width:0}
+.chain li span{font-size:max(.75em,18px);color:var(--ink-soft);display:block;margin-top:.15em}
+
+/* episode cards */
+.season{display:grid;grid-template-columns:repeat(7,1fr);gap:.8vw;align-items:start}
+.ep{border-top:3px solid var(--line);padding-top:.6em;font-size:max(.72em,18px);line-height:1.3}
+.ep b{display:block;font-family:var(--display);font-weight:500;font-size:1.45em;line-height:1.1;margin:.15em 0 .3em}
+.ep .d{color:var(--ink-soft)}
+.ep.now{border-top-color:var(--cobalt)}
+.ep.now b{color:var(--cobalt)}
+.ep .q{margin-top:.5em;display:block}
+.ep .p{display:block;margin-top:.5em;color:var(--cobalt);font-size:.9em}
+
+/* arc table */
+table{border-collapse:collapse;width:100%;font-size:max(.78em,18px);table-layout:auto}
+table.vp td:first-child{white-space:normal;font-family:var(--body);font-weight:400}
+table.vp{font-size:.85em}
+th,td{text-align:left;vertical-align:top;padding:.45em .7em .45em 0;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--ink-soft);font-size:.9em}
+td:first-child{font-family:var(--display);font-weight:500;white-space:nowrap}
+tr.now td{background:var(--marker)}
+
+/* triad */
+.triad{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3vw;margin-top:1em}
+.triad div{border-top:3px solid var(--cobalt);padding-top:.8em}
+.triad h3{color:var(--cobalt)}
+
+/* day rhythm */
+.blocks{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;margin-top:.8em;font-size:.8em}
+.blocks div{border:1px solid var(--line);padding:.9em;border-radius:6px;min-height:9em}
+.blocks b{display:block;font-family:var(--display);font-weight:500;font-size:1.25em;margin-bottom:.35em}
+.slot{display:inline-block;margin-top:.7em;padding:.15em .55em;border:1px dashed var(--cobalt);color:var(--cobalt);border-radius:4px;font-size:.85em}
+
+/* task box */
+.task{border-left:4px solid var(--marker);padding:.6em 1.2em;max-width:60ch;font-size:1.05em}
+.task ul{margin:.4em 0 0 1.2em}
+
+/* presenter notes overlay */
+.notes{position:fixed;inset:96px 0 0 0;background:rgba(27,31,58,.96);color:#F7F6F1;padding:5vh 8vw;overflow:auto;display:none;z-index:30;font-size:.9em}
+.notes.open{display:block}
+.notes h4{font-family:var(--display);font-weight:500;font-size:1.4em;margin-bottom:.6em}
+.notes p{max-width:70ch}
+.notes .tag{display:inline-block;font-size:max(.75em,18px);padding:.1em .5em;border:1px solid rgba(255,255,255,.4);border-radius:4px;margin-bottom:1em}
+.notes .tag.fact{border-color:var(--marker);color:var(--marker)}
+.notes .tag.mine{border-color:#8FA9FF;color:#8FA9FF}
+.notes .hj{margin-top:1.4em;padding-top:1em;border-top:1px solid rgba(255,255,255,.25);max-width:70ch}
+.notes .hj h5{font-family:var(--display);font-weight:500;font-size:1.05em;color:var(--marker);margin-bottom:.6em}
+.notes .hj p{margin-bottom:.7em;line-height:1.5}
+.cloudwrap{margin-top:.5em}
+.cloud{min-height:34vh;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.25em .7em;padding:1em;border:1px dashed var(--line);border-radius:8px;font-family:var(--display);line-height:1.05}
+.cloud span{display:inline-block;padding:.05em .15em;transition:font-size .25s}
+.cloud span.big{color:var(--cobalt)}
+.cloud .empty{font-family:var(--body);color:var(--ink-soft);font-size:.8em}
+.cloudform{display:flex;gap:.6em;margin-top:.8em;align-items:center}
+.cloudform input{font:inherit;padding:.4em .7em;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);min-width:16em}
+.cloudform input:focus-visible{outline:3px solid var(--cobalt)}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,.blocks>div,.ep,.task),body.rev .notes .hj p,body.rev .notes h4{outline:1px dashed rgba(30,75,216,.35);outline-offset:2px;cursor:text}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,.blocks>div,.ep,.task):hover,body.rev .notes .hj p:hover{background:rgba(242,201,76,.35)}
+body.rev .rev-marked{border-left:4px solid var(--cobalt);padding-left:.5em;margin-left:-.5em}
+.revbar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#F7F6F1;padding:.6em 8vw;font-size:.8em;display:none;z-index:40;align-items:center;gap:1em}
+body.rev .revbar{display:flex}
+.revbar button{border:1px solid rgba(255,255,255,.4);color:#F7F6F1;padding:.2em .7em;border-radius:4px}
+.revbox{position:fixed;z-index:41;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.8em;width:min(34em,90vw);box-shadow:0 8px 30px rgba(0,0,0,.2);display:none}
+.revbox.open{display:block}
+.revbox .orig{font-size:.8em;color:var(--ink-soft);max-height:6em;overflow:auto;margin-bottom:.5em;border-left:3px solid var(--marker);padding-left:.6em}
+.revbox textarea{width:100%;min-height:5em;font:inherit;font-size:.9em;padding:.4em;border:1px solid var(--line);border-radius:4px}
+.revbox .row{display:flex;gap:.5em;margin-top:.5em}
+.revbox .row button{border:1px solid var(--cobalt);color:var(--cobalt);padding:.3em .8em;border-radius:4px}
+.revout{position:fixed;inset:96px 0 0 0;background:var(--paper);z-index:42;padding:4vh 8vw;display:none;overflow:auto}
+.revout.open{display:block}
+.revout textarea{width:100%;height:60vh;font:inherit;font-size:.85em;padding:.8em;border:1px solid var(--line);border-radius:6px}
+.notes .hj .src{font-size:.85em;color:#B9BCD6}
+.notes .src.top{font-size:.85em;color:var(--marker);margin-bottom:.4em}
+.notes .hj{margin-top:.6em;border-top:0;padding-top:0}
+.btn{padding:.35em .9em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;font-size:.85em}
+.btn:focus-visible{outline:3px solid var(--cobalt);outline-offset:2px}
+.sheet{position:fixed;inset:96px 0 0 0;background:var(--paper);color:var(--ink);overflow:auto;display:none;z-index:31;padding:5vh 8vw 8vh}
+.sheet.open{display:block}
+.sheet .inner{max-width:72ch;font-size:.9em}
+.sheet h2{font-size:1.9em}
+.sheet h3{margin-top:1.4em;color:var(--cobalt)}
+.sheet p{margin-bottom:.7em;line-height:1.5}
+.sheet .blk{border-left:3px solid var(--line);padding:.2em 1em;margin:.8em 0}
+.sheet .blk b{display:block;margin-bottom:.2em}
+.sheet .close{position:fixed;top:80px;right:8vw;z-index:32}
+.sheet .fill{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1.2em 1.6em;margin-top:1em}
+.sheet .mark{background:linear-gradient(transparent 55%,var(--marker) 55%)}
+
+
+/* 2. alkalom: a szemlélet-váltások és a lánc aktuális eleme */
+.shift{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw;font-size:max(.78em,18px);margin-top:.6em}
+.shift div{display:grid;grid-template-columns:1fr 1.4em 1fr;gap:.3em;padding:.4em 0;border-bottom:1px solid var(--line);align-items:baseline}
+.shift .f{color:var(--ink-soft)}
+.shift .a{color:var(--cobalt);text-align:center}
+.shift .t{font-family:var(--display);font-weight:500}
+.shift div.key .t{background:linear-gradient(transparent 55%,var(--marker) 55%)}
+.chain li.done div{color:var(--ink-soft)}
+.chain li.now div{font-weight:600;color:var(--cobalt)}
+.imper{font-family:var(--display);font-weight:500;font-size:1.6em;line-height:1.2;margin:.1em 0}
+.imper span{color:var(--ink-soft);font-weight:300}
+@media (max-width:900px){.shift{grid-template-columns:1fr}}
+.shift2{display:grid;grid-template-columns:1fr;gap:0;font-size:.82em;margin-top:.4em;max-width:64em}
+.shift2 .srow{display:grid;grid-template-columns:13em 1.4em 13em 1fr;gap:.5em;padding:.5em 0;border-bottom:1px solid var(--line);align-items:baseline}
+.shift2 .f{color:var(--ink-soft)}
+.shift2 .a{color:var(--cobalt);text-align:center}
+.shift2 .t{font-family:var(--display);font-weight:500}
+.shift2 .hu{font-size:.92em}
+@media (max-width:900px){.shift2 .srow{grid-template-columns:1fr 1.4em 1fr}.shift2 .hu{grid-column:1/-1}}
+table.mx{font-size:max(.7em,18px);max-width:52em}
+table.mx td,table.mx th{padding:.28em .6em .28em 0}
+table.mx th small{display:block;font-weight:400;color:var(--ink-soft);font-size:.85em}
+table.mx .c{text-align:center;width:7em}
+.dot2{color:var(--cobalt)}.dot1{color:var(--cobalt);opacity:.7}
+.lyuk>div{border-top:3px solid var(--marker);padding-top:.5em;font-size:max(.74em,18px)}
+.lyuk b{display:block;font-family:var(--display);font-weight:500;font-size:1.35em;margin-bottom:.3em}
+.lyuk p{margin-bottom:.45em}
+.shot{display:grid;grid-template-columns:1.75fr 1fr;gap:2.5vw;align-items:start}
+.shot img{width:100%;border:1px solid var(--line);border-radius:6px;display:block}
+@media (max-width:900px){.shot{grid-template-columns:1fr}}
+.seq3{display:grid;grid-template-columns:repeat(3,1fr);gap:2vw;margin-top:.4em}
+.seq3>div{background:#fff;border:1px solid var(--line);border-top:4px solid var(--cobalt);border-radius:6px;padding:.8em 1em;font-size:max(.78em,18px)}
+.seq3 .lab{display:block;font-size:.85em;color:var(--ink-soft);margin-bottom:.2em}
+.seq3 b{display:block;font-family:var(--display);font-weight:500;font-size:1.35em;color:var(--cobalt);margin-bottom:.4em}
+.seq3 b i{font-style:normal;color:var(--ink-soft);font-weight:300}
+.seq3 .ex{color:var(--ink-soft);font-style:italic}
+.seq3 .say{border-top:1px solid var(--line);padding-top:.4em;margin-top:.4em}
+.seq3 .say em{font-style:normal;font-weight:600}
+.stdc4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;margin-top:.3em}
+.stdc4>div{background:#fff;border:1px solid var(--line);border-radius:6px;padding:0 .9em .8em;font-size:max(.72em,18px);overflow:hidden}
+.stdc4 .hd{margin:0 -1.25em .6em;padding:.55em 1.25em;background:var(--cobalt);color:#fff}
+.stdc4>div:nth-child(1) .hd{background:rgba(30,75,216,.45)}.stdc4>div:nth-child(2) .hd{background:rgba(30,75,216,.65)}.stdc4>div:nth-child(3) .hd{background:rgba(30,75,216,.85)}
+.stdc4 .hd b{font-family:var(--display);font-weight:500;font-size:1.6em;display:block;line-height:1.1}
+.stdc4 .hd small{opacity:.9}
+.stdc4 .k{font-size:.8em;color:var(--ink-soft);margin:.5em 0 .15em;text-transform:uppercase;letter-spacing:.04em}
+.stdc4 .chips{display:flex;flex-wrap:wrap;gap:.3em}
+.stdc4 .chips span{background:#DCE4FB;border-radius:99px;padding:.1em .6em;font-size:.95em}
+.stdc4 .to{margin-top:.6em;padding-top:.4em;border-top:1px dashed var(--line);color:var(--cobalt)}
+.stdc4 .to::before{content:"→ "}
+.fk{display:grid;grid-template-columns:7em repeat(4,1fr);gap:.5em .8em;align-items:stretch;margin-top:.4em;font-size:max(.78em,18px)}
+.fk .ph{font-family:var(--display);font-weight:500;font-size:1.5em;color:#fff;background:var(--cobalt);border-radius:6px;padding:.25em .6em}
+.fk .ph.p1{background:rgba(30,75,216,.45)}.fk .ph.p2{background:rgba(30,75,216,.65)}.fk .ph.p3{background:rgba(30,75,216,.85)}
+.fk .lab{font-weight:600;color:var(--ink-soft);align-self:center}
+.fk .pill{background:#DCE4FB;border-radius:6px;padding:.45em .7em;text-align:center}
+.fk .anna{position:relative;border-top:2px solid var(--marker);padding:.7em .2em 0;font-size:.95em}
+.fk .anna i{position:absolute;top:-.45em;left:0;width:.8em;height:.8em;border-radius:50%;background:var(--marker)}
+.tv{display:grid;grid-template-columns:1.35fr 1fr;gap:3vw;align-items:start;margin-top:.4em}
+@media (max-width:900px){.seq3,.stdc4,.tv{grid-template-columns:1fr}.fk{grid-template-columns:5em repeat(4,1fr);font-size:max(.62em,18px)}}
+h2.long{font-size:1.55em;max-width:36ch}
+.tv svg{max-height:46vh}
+.def3{display:grid;grid-template-columns:repeat(3,1fr);gap:1vw;font-size:.8em;max-width:60em}
+.def3>div{background:#DCE4FB;border-radius:6px;padding:.5em .9em}
+.def3 b{display:block;font-family:var(--display);font-weight:500;font-size:1.4em;color:var(--cobalt)}
+table.seqt{font-size:.82em;max-width:52em}
+table.seqt td.sq{font-family:var(--display);font-weight:500;font-size:1.25em;color:var(--cobalt)}
+table.seqt td.sq i{font-style:normal;color:var(--ink-soft);font-weight:300}
+.persona{display:flex;align-items:center;gap:1em;margin:.2em 0 1em;font-size:.95em}
+.persona .av{width:2.6em;height:2.6em;border-radius:50%;background:var(--marker);display:grid;place-items:center;font-family:var(--display);font-size:1.3em;font-weight:500}
+.persona b{display:block;font-family:var(--display);font-weight:500;font-size:1.6em;line-height:1.1}
+.anna4 .hd small{display:block;line-height:1.25;margin-top:.15em}
+.anna4 .q{font-style:italic}
+.anna4 .to::before{content:"→ mérjük: "}
+.stdc4.tight>div{font-size:max(.66em,18px)}.stdc4.tight .k{margin-top:.4em}
+:root{--k-see:#4A86E8;--k-think:#3E9A5C;--k-do:#F1B53B;--k-care:#D5503F}
+.story3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw}
+.story3>div{background:#fff;border:1px solid var(--line);border-radius:6px;padding:.8em 1em;font-size:.8em}
+.story3 .cond{border-bottom:1px solid var(--line);padding-bottom:.5em;margin-bottom:.6em;color:var(--ink-soft)}
+.story3 .cond b{display:block;font-family:var(--display);font-weight:500;font-size:1.35em;color:var(--ink)}
+.story3 ol{list-style:none;counter-reset:st;padding:0;margin:0}
+.story3 li{counter-increment:st;display:grid;grid-template-columns:4.2em 1fr;gap:.6em;align-items:baseline;padding:.35em 0}
+.story3 li+li{border-top:1px dashed var(--line)}
+.story3 li span{font-family:var(--display);font-weight:500;font-size:1.15em;color:var(--cobalt)}
+.story3 li span::before{content:counter(st) ". ";color:var(--ink-soft);font-weight:300}
+.stdc4.kc{grid-template-rows:auto auto auto auto auto}
+.stdc4.kc>div{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0;padding-bottom:.6em}
+.stdc4.kc .sec{padding:.5em 0;border-bottom:1px solid var(--line)}
+.stdc4.kc .sec .k{margin:0 0 .3em}
+.stdc4.kc .to{border-top:0;margin-top:.2em;align-self:end}
+.stdc4.kc .c-see .hd{background:var(--k-see)}.stdc4.kc .c-think .hd{background:var(--k-think)}.stdc4.kc .c-do .hd{background:var(--k-do);color:var(--ink)}.stdc4.kc .c-care .hd{background:var(--k-care)}
+.stdc4.kc .c-see{border-top:0}.stdc4.kc .c-see .chips span{background:rgba(74,134,232,.16)}.stdc4.kc .c-think .chips span{background:rgba(62,154,92,.16)}.stdc4.kc .c-do .chips span{background:rgba(241,181,59,.25)}.stdc4.kc .c-care .chips span{background:rgba(213,80,63,.14)}
+.stdc4.kc .c-see .to{color:#2F6FD6}.stdc4.kc .c-think .to{color:#2E7D48}.stdc4.kc .c-do .to{color:#9A6B00}.stdc4.kc .c-care .to{color:#B53A2B}
+@media (max-width:900px){.story3{grid-template-columns:1fr}}
+td.k-see{color:#2F6FD6;font-weight:600}td.k-think{color:#2E7D48;font-weight:600}td.k-do{color:#9A6B00;font-weight:600}td.k-care{color:#B53A2B;font-weight:600}
+.fk .ph.k-see-bg{background:var(--k-see)}.fk .ph.k-think-bg{background:var(--k-think)}.fk .ph.k-do-bg{background:var(--k-do);color:var(--ink)}.fk .ph.k-care-bg{background:var(--k-care)}
+.stdc4.kc2 .c-see .hd{background:var(--k-see)}.stdc4.kc2 .c-think .hd{background:var(--k-think)}.stdc4.kc2 .c-do .hd{background:var(--k-do);color:var(--ink)}.stdc4.kc2 .c-care .hd{background:var(--k-care)}
+.stdc4.kc2 .c-see .chips span{background:rgba(74,134,232,.16)}.stdc4.kc2 .c-think .chips span{background:rgba(62,154,92,.16)}.stdc4.kc2 .c-do .chips span{background:rgba(241,181,59,.25)}.stdc4.kc2 .c-care .chips span{background:rgba(213,80,63,.14)}
+.stdc4.kc2 .c-see .to{color:#2F6FD6}.stdc4.kc2 .c-think .to{color:#2E7D48}.stdc4.kc2 .c-do .to{color:#9A6B00}.stdc4.kc2 .c-care .to{color:#B53A2B}
+table.kmx th:nth-child(2){color:#2F6FD6}table.kmx th:nth-child(3){color:#2E7D48}table.kmx th:nth-child(4){color:#9A6B00}table.kmx th:nth-child(5){color:#B53A2B}
+table.kmx td:nth-child(2) span{color:var(--k-see)}table.kmx td:nth-child(3) span{color:var(--k-think)}table.kmx td:nth-child(4) span{color:#D99A12}table.kmx td:nth-child(5) span{color:var(--k-care)}
+.fk .pill.t-see{background:#DCE7FB}.fk .pill.t-think{background:#D3EBDD}.fk .pill.t-do{background:#FCEBC6}.fk .pill.t-care{background:#F6D5D0}
+.fk .anna.t-see{border-color:var(--k-see)}.fk .anna.t-think{border-color:var(--k-think)}.fk .anna.t-do{border-color:var(--k-do)}.fk .anna.t-care{border-color:var(--k-care)}
+.fk .anna.t-see i{background:var(--k-see)}.fk .anna.t-think i{background:var(--k-think)}.fk .anna.t-do i{background:var(--k-do)}.fk .anna.t-care i{background:var(--k-care)}
+.fk.fk2{grid-template-rows:auto auto auto auto}
+.fk.fk2>.labs,.fk.fk2>.col{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:.5em}
+.task4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw}
+.task4>div{background:#fff;border:1px solid var(--line);border-top:4px solid var(--marker);border-radius:6px;padding:.8em 1em;font-size:max(.78em,18px)}
+.task4 .n{display:inline-grid;place-items:center;width:1.8em;height:1.8em;border-radius:50%;background:var(--marker);font-family:var(--display);font-weight:500;margin-bottom:.4em}
+.task4 b{display:block;font-family:var(--display);font-weight:500;font-size:1.3em;margin-bottom:.35em}
+.task4 p{margin-bottom:.4em}
+.task4 .sub{color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:.4em}
+@media (max-width:900px){.task4{grid-template-columns:1fr 1fr}}
+.task4.sm>div{font-size:max(.7em,18px);padding:.6em .9em}
+.how{margin-top:.9em;border-top:1px solid var(--line);padding-top:.6em}
+.how .k{font-size:max(.72em,18px);color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4em}
+.how ol{list-style:none;counter-reset:hw;display:grid;grid-template-columns:repeat(6,1fr);gap:.5em;padding:0;margin:0}
+.how li{counter-increment:hw;background:#DCE4FB;border-radius:6px;padding:.45em .6em;font-size:max(.66em,18px);line-height:1.3}
+.how li b{display:block;font-weight:600}
+.how li b::before{content:counter(hw) ". ";color:var(--cobalt)}
+.how li:last-child{background:var(--cobalt);color:#fff}.how li:last-child b::before{color:#fff}
+.how .end{margin-top:.6em;font-size:.85em}
+@media (max-width:900px){.how ol{grid-template-columns:1fr 1fr}}
+.how .end{max-width:none;display:flex;gap:1em;align-items:center;flex-wrap:wrap}.how .end .btn{white-space:nowrap}
+.k2{font-size:max(.72em,18px);color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4em}
+ul.plain2{margin:0 0 0 1.1em;font-size:.8em;max-width:46ch}
+ul.plain2 li{margin-bottom:.4em}
+.end2{margin-top:1em;display:flex;gap:1em;align-items:center;flex-wrap:wrap;max-width:none}
+.kicker.kb{font-size:.9em;color:var(--ink)}.kicker.kb .hl{font-weight:600}
+.kicker.kb{max-width:none}
+.chain.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4vw;max-width:none;font-size:max(.74em,18px)}.chain.row4 li{grid-template-columns:1.6em 1fr;border-bottom:0;border-top:2px solid var(--line);padding-top:.6em}
+.obsrow{display:grid;grid-template-columns:1.4fr 1fr;gap:3vw;margin-top:1em;padding-top:.8em;border-top:1px solid var(--line);font-size:max(.68em,18px)}.obsrow p{margin:0 0 .25em}
+#pos{border:1px solid var(--line);border-radius:4px;padding:.2em .7em;cursor:pointer;color:inherit;background:none;font:inherit}#pos::after{content:" ▾"}
+.jump{display:none;position:absolute;right:0;bottom:calc(100% + .6em);width:min(34em,80vw);max-height:70vh;overflow:auto;background:var(--paper,#F7F5F0);border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:.4em 0;font-size:1.25em;z-index:50}.jump.open{display:block}.pager{position:fixed}.jump a{display:grid;grid-template-columns:2.2em 1fr;gap:.4em;padding:.35em 1em;color:var(--ink);text-decoration:none;line-height:1.3}.jump a:hover{background:rgba(0,0,0,.05)}.jump a.cur{font-weight:600;color:var(--cobalt)}.jump a i{font-style:normal;color:var(--ink-soft)}
+
+svg.flow{width:100%;max-height:66vh;display:block}svg.flow .fh{font:600 13px var(--body);letter-spacing:.08em;text-transform:uppercase;fill:#5A5E78}svg.flow .fs{font:500 17px var(--body);fill:#1B1F3A}svg.flow .fl{font:600 19px var(--body);fill:#1B1F3A}svg.flow .fm{font:400 15px var(--body);fill:#5A5E78}svg.flow .fm2{font:400 15px var(--body);fill:#1B1F3A}svg.flow g.step{transition:opacity .35s}
+
+
+@media (max-width:900px){
+  .strip a span{display:none}
+  .slide{padding:4vh 6vw 12vh}
+  h1{font-size:2.4em}h2{font-size:1.6em}
+  .cols,.cols3,.triad,.blocks{grid-template-columns:1fr}
+  .season{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* ===== 3. alkalom: interaktív drótvázak ===== */
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:.8em}
+.seg button{padding:.35em 1em;font-size:.9em}
+.seg button.on{background:var(--ink);color:var(--paper)}
+.wf{border:2px solid var(--ink);border-radius:8px;background:#fff;padding:.8em;display:flex;flex-direction:column;gap:.55em;max-width:30em;font-size:max(.85em,19px)}
+.wf-bar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:.4em}
+.wf-logo{font-family:var(--display);font-weight:700;letter-spacing:.05em}
+.wf-nav{color:var(--ink-soft)}
+.wf-hero{background:repeating-linear-gradient(45deg,#ECEAE2,#ECEAE2 10px,#F4F3EE 10px,#F4F3EE 20px);border-radius:6px;min-height:5em;display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
+.wf-hero.short{min-height:3.2em}
+.wf-h{font-family:var(--display);font-weight:500;font-size:1.3em}
+.wf-sub{color:var(--ink-soft)}
+.wf-row{display:flex;gap:.5em;flex-wrap:wrap}
+.wf-btn{display:inline-block;border:1px solid var(--ink-soft);border-radius:6px;padding:.3em .8em}
+.wf-btn.main{background:var(--cobalt);color:#fff;border-color:var(--cobalt);font-weight:600}
+.wf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4em}
+.wf-grid i{height:2.2em;background:#ECEAE2;border-radius:4px}
+.wf-proof{border:1px dashed var(--ink-soft);border-radius:6px;padding:.3em .6em;color:var(--ink-soft)}
+.wf-foot{border-top:1px solid var(--line);padding-top:.4em;color:var(--ink-soft)}
+.wf-form{display:flex;flex-direction:column;gap:.3em}.wf-form span{height:1.6em;border:1px solid var(--line);border-radius:4px}
+.wl-wrap{display:flex;gap:2em;align-items:flex-start}
+.anat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3vw;align-items:start}
+.anat [data-k]{transition:outline-color .2s,background .2s,opacity .2s}
+.anat .wf [data-k]{opacity:.25}
+.anat .wf [data-k].lit{opacity:1;outline:3px solid var(--marker);outline-offset:2px}
+.legend{list-style:none;display:flex;flex-direction:column;gap:.5em}
+.legend li{border-left:4px solid var(--marker);padding-left:.6em}
+.cost{max-width:44em}
+.cost-row{display:grid;grid-template-columns:9em 1fr 9em;gap:1em;align-items:center;margin:.5em 0}
+.cost-row em{color:var(--ink-soft);font-style:normal}
+.cost-row button,.gw-reset{border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;padding:.2em .6em;font-size:.85em}
+.bar{height:1.2em;background:#ECEAE2;border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--cobalt);transition:width .4s}
+.cost-row[data-k="penz"] .bar i{background:var(--ink-soft)}
+.cost-sum{margin-top:.8em;font-size:1.15em}
+.tes input{width:100%;max-width:36em;margin:1em 0}
+.tes-bars{display:grid;grid-template-columns:1fr 1fr;gap:2em;max-width:44em}
+.tes-user{background:var(--marker)!important}
+.types{display:flex;flex-wrap:wrap;gap:.6em;margin:.6em 0 1em}
+.types span{border:2px solid var(--ink);border-radius:6px;padding:.35em .9em;font-family:var(--display)}
+.eye-wf{position:relative;overflow:hidden}
+.lines{display:flex;flex-direction:column;gap:.45em}.lines i{height:.6em;background:#D9D7CE;border-radius:3px}
+.fold{border-top:2px dashed var(--cobalt);color:var(--cobalt);font-size:max(.8em,18px);padding-top:.2em}
+.heat{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(ellipse 45% 9% at 30% 9%,rgba(242,80,40,.55),transparent 70%),radial-gradient(ellipse 40% 8% at 25% 26%,rgba(242,80,40,.45),transparent 70%),radial-gradient(ellipse 22% 40% at 10% 50%,rgba(242,160,40,.45),transparent 70%)}
+.eye.on .heat{opacity:1}
+.lay-wf{position:relative;min-height:15em}
+.lay-wf span{position:absolute;transition:all .5s}
+.lay-wf.a .t1{left:5%;top:60%}.lay-wf.a .t2{left:55%;top:10%}.lay-wf.a .t3{left:30%;top:40%}.lay-wf.a .t4{left:70%;top:75%}.lay-wf.a .t5{left:62%;top:42%}.lay-wf.a .t6{left:8%;top:12%}.lay-wf.a .t7{left:38%;top:82%}.lay-wf.a .t8{left:12%;top:30%}
+.lay-wf.b .t1{left:5%;top:6%;font-family:var(--display);font-size:1.4em}.lay-wf.b .t8{left:5%;top:24%;color:var(--ink-soft)}.lay-wf.b .t2{left:5%;top:42%}.lay-wf.b .t3{left:5%;top:54%}.lay-wf.b .t4{left:5%;top:66%}.lay-wf.b .t6{left:55%;top:42%;font-weight:600}.lay-wf.b .t5{left:55%;top:56%;background:var(--cobalt);color:#fff}.lay-wf.b .t7{left:5%;top:84%;color:var(--ink-soft)}
+.btn-wf.one .b2,.btn-wf.one .b3,.btn-wf.one .b4{border:0;color:var(--cobalt);text-decoration:underline;padding:.3em .2em}
+.btn-wf.one .b1{background:var(--cobalt);color:#fff;border-color:var(--cobalt);font-weight:600;font-size:1.15em}
+.mm{display:grid;gap:1em;max-width:44em}
+.ad{border:1px solid var(--line);border-radius:8px;padding:.7em 1em;background:#fff;display:flex;flex-direction:column}.ad small{color:var(--ink-soft)}
+.mm-opts{display:flex;flex-direction:column;gap:.5em}
+.mm-opts button{text-align:left;border:1px solid var(--ink-soft);border-radius:6px;padding:.5em .8em}
+.mm-opts button.ok{border-color:var(--cobalt);background:rgba(30,75,216,.08)}
+.mm-opts button.no{border-color:#C0392B;background:rgba(192,57,43,.06)}
+.btn-big{background:var(--cobalt);color:#fff;border-radius:6px;padding:.5em 1.2em;font-weight:600}
+.flash-box{height:15em;margin:1em 0;display:flex;align-items:center}
+.flash-wf{visibility:hidden;width:24em}
+.flash-wf.show{visibility:visible}
+.phone{border:2px solid var(--ink);border-radius:18px;padding:.7em 1em;max-width:17em;display:flex;flex-direction:column;gap:.3em;background:#fff}
+.phone input{font:inherit;font-size:max(.85em,18px);padding:.35em .5em;border:1px solid var(--line);border-radius:4px;width:100%}
+.phone label{display:flex;flex-direction:column;font-size:max(.85em,18px);gap:.2em}
+.phone button{border:1px solid var(--ink-soft);border-radius:6px;padding:.4em}
+.f-msg.bad{color:#C0392B}.f-msg.good{color:#1E7B45}.f-ok{font-size:max(.8em,18px);min-height:1.2em}
+.gw{display:grid;grid-template-columns:8em 1fr;gap:3vw;align-items:start}
+.tank{position:relative;height:16em;border:3px solid var(--ink);border-radius:0 0 12px 12px;overflow:hidden;background:#fff}
+.tank i{position:absolute;left:0;right:0;bottom:0;height:70%;background:var(--cobalt);transition:height .5s,background .5s}
+.tank b{position:absolute;top:.3em;left:0;right:0;text-align:center;font-family:var(--display);font-size:1.4em}
+.gw-steps{list-style:none;margin-bottom:1em;min-height:10em}
+.gw-steps li{padding:.25em 0;border-bottom:1px solid var(--line)}
+.gw-steps li .d{float:right;font-weight:600}
+.gw-steps li .d.m{color:#C0392B}.gw-steps li .d.p{color:#1E7B45}
+
+.big-thought{max-width:46em}
+.bt-q{font-family:var(--display);font-weight:700;font-size:4.2em;line-height:1;color:var(--cobalt);margin-bottom:.15em;letter-spacing:-.02em}
+.big-thought h2{max-width:none;margin-bottom:.4em}
+.big-thought .lead{max-width:40em}
+.ux-def{margin-top:.7em;font-family:var(--display);font-style:italic;font-size:.95em;max-width:none}
+.ux-def span{font-family:var(--body);font-style:normal;color:var(--ink-soft);font-size:max(.8em,18px);margin-left:.5em}
+.ux-foot{margin-top:.5em;max-width:none}
+
+/* ===== egységes elemek (v0.11) ===== */
+.slide{justify-content:flex-start;padding-top:5vh}
+.slide h2{max-width:28ch}
+.slide.center{justify-content:center}
+.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:0 14px 30px -22px rgba(27,31,58,.45);border-top:4px solid var(--cobalt)}
+.card.alt{border-top-color:var(--marker)}
+.card h3{font-size:1.3em;margin:.25em 0 .3em}
+.card p{max-width:none}
+.label{display:block;font-size:max(.75em,18px);font-weight:600;color:var(--ink-soft);letter-spacing:.02em}
+.mini-h{margin-top:.5em;font-weight:600;color:var(--cobalt)}
+.card p+p{margin-top:.35em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2vw}
+.bridge{margin-top:.8em;border-left:4px solid var(--marker);padding-left:1em}
+.bridge p{max-width:none}
+.uxui2{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2.5vw;align-items:start}
+.uxm{max-width:none;transition:all .4s}
+.uxm .u-h{font-family:var(--display);font-weight:500;font-size:1.35em;line-height:1.15}
+.uxm .u-sub{color:var(--ink-soft)}
+.uxm .u-link{text-decoration:underline;padding:.3em .2em}
+.uxm .u-ben{display:grid;grid-template-columns:repeat(3,1fr);gap:.5em}
+.uxm .u-ben i{font-style:normal;background:#ECEAE2;border-radius:6px;padding:.4em;text-align:center;color:var(--ink-soft)}
+.uxm:not(.ui) *{color:#8a8a8a!important;font-family:var(--body)!important;font-weight:400!important}
+.uxm:not(.ui) .wf-btn.main{background:#ddd!important;border-color:#ccc!important}
+.uxm.ui{background:#fff;border-color:var(--line);box-shadow:0 20px 40px -24px rgba(27,31,58,.5)}
+.uxm.ui .u-h{color:var(--ink);font-size:1.55em}
+.uxm.ui .u-ben i{background:#E9EEFC;color:var(--cobalt);font-weight:600}
+.dec ul{margin:.4em 0 0 1.1em}
+.ux-def{margin-top:.6em;font-family:var(--display);font-style:italic;font-size:.95em;max-width:none}
+.ux-def span{font-family:var(--body);font-style:normal;color:var(--ink-soft);font-size:max(.8em,18px);margin-left:.5em}
+.ux-foot{margin-top:.4em;max-width:none}
+/* egységes keretek */
+.wf{border:1px solid var(--line)!important;border-radius:12px;box-shadow:0 14px 30px -22px rgba(27,31,58,.45)}
+.tank{border:2px solid var(--ink-soft)!important}
+.phone{border:1px solid var(--line)!important;box-shadow:0 14px 30px -22px rgba(27,31,58,.45)}
+.ad{box-shadow:0 14px 30px -22px rgba(27,31,58,.45)}
+.slide>.small.muted:last-child{margin-top:1em}
+.qcard{max-width:46em}
+.qt{font-family:var(--display);font-weight:300;font-size:1.5em;line-height:1.3;max-width:none}
+.qt.big{font-weight:700;font-size:3em;line-height:1.05;color:var(--cobalt)}
+.qcard .label{margin-top:.5em}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw}
+.grid3 .card h3{margin-bottom:0}
+.num{font-family:var(--display);font-weight:700;font-size:3em;line-height:1;color:var(--cobalt);margin-bottom:.2em}
+
+/* ===== v0.13: nagyobb betű, jobb helykihasználás ===== */
+html,body{font-size:clamp(22px,1.78vw,32px)}
+.slide{max-width:1500px;padding-left:7vw;padding-right:7vw}
+.slide h2{font-size:2.35em}
+.lead{font-size:1.3em}
+.wf{max-width:36em}
+.eye-wf{max-width:40em}
+.lay-wf{min-height:17em}
+.flash-box{height:auto;min-height:12em;margin:.8em 0;border:2px dashed var(--line);border-radius:12px;max-width:30em;justify-content:center}
+.flash-wf{width:26em}
+.chain li.now div{font-weight:600;color:var(--cobalt)}
+.chain li.now div span{font-weight:400}
+.grid3 .card h3{font-size:1.4em}
+.num{font-size:3.6em}
+.chain.small,.cols.small{font-size:.9em}
+.slide.dense{font-size:.9em}
+.slide.dense .chain li{padding:.32em 0}
+.slide.roomy{font-size:1.12em}
+.slide.roomy .kicker{font-size:.75em}
+/* ===== v0.14: nyolc szempont, Tunki-bemutató ===== */
+.lenslist{list-style:none;margin-top:.4em}
+.lenslist li{padding:.18em 0;font-size:.95em}
+.lenslist li b{font-family:var(--display);font-weight:500;color:var(--cobalt);display:inline-block;width:1.3em}
+.lensdemo{display:grid;grid-template-columns:auto 1fr;gap:3.5vw;align-items:start}
+.lshots{display:flex;gap:1vw}
+.lshots img{height:66vh;width:auto;border-radius:16px;border:1px solid var(--line);box-shadow:0 14px 30px -22px rgba(27,31,58,.45);display:block}
+.lensdemo h2{margin-top:0}
+.lensdemo .ln{font-weight:700;color:var(--cobalt);margin-right:.35em}
+.lqs{margin:.5em 0 0 1.1em;color:var(--ink-soft);font-size:.85em}
+.lqs li{padding:.1em 0}
+.verdict{display:inline-block;margin-top:1em;padding:.1em .8em;border-radius:99px;font-size:.8em;font-weight:600}
+.v-igen{background:#1E7B45;color:#fff}.v-reszben{background:var(--marker);color:var(--ink)}.v-nem{background:#C0392B;color:#fff}
+.seen{margin-top:.5em;font-size:1.05em;max-width:40ch}
+/* ===== v0.15: az évadsáv vékony csík, ráhúzva nyílik ki; minden feljebb kerül ===== */
+.strip{height:10px;overflow:hidden;transition:height .2s,box-shadow .2s}
+.strip:hover,.strip:focus-within{height:96px;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)}
+.strip a>*{opacity:0;transition:opacity .15s}
+.strip:hover a>*,.strip:focus-within a>*{opacity:1}
+.deck{top:10px}
+.notes,.revout,.sheet{top:10px}
+/* ===== v0.16: kisebb segédsor és lapozó ===== */
+.hint{font-size:.46em;bottom:1.6vh;opacity:.55;transition:opacity .2s}
+.hint:hover{opacity:1}
+.pager{font-size:.5em;bottom:1.4vh;gap:1em}
+.pager button{padding:.1em .45em}
+/* ===== v0.17: az évadsáv kisebb betűvel, egy-két sorban ===== */
+.strip a{font-size:.48em;line-height:1.25;padding:0 12px}
+.strip a b{font-size:1.3em}
+.strip:hover,.strip:focus-within{height:72px}
+/* ===== v0.18: szempont-jel, módszer, hang, visszajelzés, konverziós pont ===== */
+.kicker .lt{display:inline-block;background:var(--cobalt);color:#fff;border-radius:99px;padding:.05em .7em;margin-right:.7em;font-weight:600;font-size:1em}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw;margin-top:1em}
+.steps3>div{border-left:4px solid var(--marker);padding:.3em .9em;background:#fff;border-radius:0 8px 8px 0}
+.steps3 b{display:block;font-family:var(--display);font-weight:500;font-size:1.2em;margin-bottom:.15em}
+.voice{font-family:var(--display);font-weight:300;font-size:1.35em;line-height:1.3;margin-top:.4em}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;margin-top:.8em}
+.grid4 .card h3{font-size:1.15em}
+.grid4 .card p{color:var(--ink-soft);font-size:.85em}
+.cure{color:var(--cobalt);font-size:.8em;margin-top:.3em}
+.fb-wf{max-width:none;margin-top:.5em}
+.fb-cart{margin-left:auto;font-size:.85em;color:var(--ink-soft)}
+.fb-cart i{font-size:1em;font-style:normal;display:inline-block;min-width:1.4em;text-align:center;border-radius:99px;background:var(--line);margin-left:.2em}
+.fb-wf .fb-go{margin-top:.6em}
+.fb-wf .fb-go.done{background:#1E7B45;border-color:#1E7B45}
+.fb-msg{min-height:1.4em;font-size:.85em;color:#1E7B45;margin-top:.4em}
+.seen b{font-family:var(--display);font-weight:500;color:var(--ink)}
+.seen.why{color:var(--ink-soft)}
+.seen.why b{color:var(--cobalt)}
+.lensdemo .verdict{margin-top:.8em}
+.kicker a.klink{color:var(--cobalt);text-decoration:underline;text-underline-offset:.15em}
+/* ===== v0.22: egységes betűskála és képaláírás ===== */
+.slide.dense,.slide.roomy{font-size:inherit}
+.slide h2{font-size:2.3rem}
+.slide .kicker{font-size:.8rem}
+.slide .lead{font-size:1.12rem}
+.slide > p.small.muted,.slide > div > p.small.muted,.slide > div > div > p.small.muted,.btn-cap{font-size:.9rem;color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:62ch;margin-top:1em;line-height:1.4}
+.kicker .lt{font-size:.95em}
+.slide.fit{font-size:.88em}
+/* ===== v0.24: egy betűrendszer. Két család, két vastagság családonként, öt méret ===== */
+html,body{font-size:clamp(20px,min(1.78vw,2.9vh),32px)}
+.slide{padding-bottom:6.5vh}
+.slide{max-width:1720px}
+.lshots img{height:60vh}
+.forms .phone{gap:.18em;padding:.5em .8em}.forms .phone input{padding:.18em .5em}.forms .phone button{padding:.25em}
+:root{--t-xl:3.4rem;--t-h2:2.3rem;--t-h3:1.2rem;--t-lead:1.12rem;--t-body:.92rem;--t-sm:max(.78rem,18px)}
+.slide,.slide.dense,.slide.roomy,.slide.fit{font-size:var(--t-body)!important}
+.slide *{font-size:inherit!important;font-style:normal!important;letter-spacing:normal!important;text-transform:none!important}
+.slide b,.slide strong,.slide th,.slide .label,.slide .mini-h,.slide .wf-btn.main,.slide .btn-big,.slide .verdict{font-weight:600!important}
+/* Fraunces: csak 500 */
+.slide :is(h1,h2,h3,.quote,.voice,.qt,.imper,.imper span,.bt-q,.num,.wf-h,.wf-logo,.u-h,.tank b,.fk .ph,td.sq,td.sq i,.seq3 b,.seq3 b i,.stdc4 .hd b,.task4 b,.task4 .n,.steps3 b,.story3 .cond b,.story3 li span,.lyuk b,.def3 b,.persona b,.persona .av,.ep b,.blocks b,.card h3,.chain li::before,.shift .t,.shift2 .t,td:first-child,.types span,.cloud,.cloud span){font-family:var(--display)!important;font-weight:500!important}
+.slide table.vp td:first-child{font-family:var(--body)!important;font-weight:400!important}
+.slide .uxm:not(.ui) *{font-family:var(--body)!important;font-weight:400!important}
+/* méretek */
+.slide :is(h1,.bt-q,.num,.qt.big){font-size:var(--t-xl)!important;line-height:1.02}
+.slide h2{font-size:var(--t-h2)!important}
+.slide :is(h3,.card h3,.quote,.voice,.qt,.imper,.u-h,.uxm.ui .u-h,.wf-h,.seq3 b,.stdc4 .hd b,.task4 b,.steps3 b,.story3 .cond b,.lyuk b,.def3 b,.persona b,.ep b,.blocks b,.fk .ph,.tank b,td.sq,.lay-wf.b .t1){font-size:var(--t-h3)!important;line-height:1.2}
+.slide :is(.lead,.seen,.flash-q,.cost-sum,.task){font-size:var(--t-lead)!important}
+.slide :is(.kicker,.kicker *,.label,.k,.k2,.lab,.small,.small *,.verdict,.chips span,.cure,.fb-msg,.fb-cart,.fb-cart i,.fold,.f-ok,.ux-def span,.lqs,.lqs li,.slot,.stdc4 .hd small,.seq3 .lab,th,th small,.how .k,.ep .d,.ep .p,.chain li span,.btn){font-size:var(--t-sm)!important}
+/* képaláírás: törzsszöveg-méret, halvány, sárga vonallal */
+.slide > p.small.muted,.slide > div > p.small.muted,.slide > div > div > p.small.muted,.slide .btn-cap{font-size:var(--t-body)!important}
+.slide .kicker .lt{font-size:var(--t-sm)!important}
+.slide .seen b,.slide .lenslist li b{font-family:var(--body)!important;font-weight:600!important}
+.slide a:not(.btn-big):not(.btn){color:var(--cobalt)}
+.slide .ux-def{font-family:var(--body)!important}
+.slide .ln{font-weight:inherit!important}
+.slide .card p.small.muted{border-left:0;padding-left:0;margin-top:0}
+svg.flow .fs,svg.flow .fl,svg.flow .fm,svg.flow .fm2{font-size:17px}svg.flow .fl{font-weight:600}svg.flow .fh{letter-spacing:0;text-transform:none;font-size:15px}
+.pager a.home{padding:.2em .6em;border:1px solid var(--line);border-radius:4px;color:inherit;text-decoration:none}
+.pager a.home:hover{color:var(--cobalt);border-color:var(--cobalt)}
+
+/* ===== v0.30: formázás és betűméret az 1. deck szerint ===== */
+html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
+:root{--t-xl:3.6rem;--t-h2:2.2rem;--t-h3:1.35rem;--t-lead:1.25rem;--t-body:1rem;--t-sm:max(.8rem,15px)}
+.slide{max-width:1720px;padding-left:7vw;padding-right:7vw;padding-bottom:7vh}
+.strip{height:64px;overflow:visible;box-shadow:none}
+.strip:hover,.strip:focus-within{height:64px;box-shadow:none}
+.strip a>*{opacity:1}
+.strip a{font-size:clamp(11px,.78vw,15px);line-height:1.2;padding:0 14px}
+.strip a b{font-size:1.25em}
+.deck{top:64px}
+.notes,.revout,.sheet{top:64px}
+.hint{font-size:clamp(11px,.82vw,16px);bottom:3.4vh;opacity:1}
+.pager{font-size:.65em;bottom:3.4vh;gap:1.5em}
+.pager button{padding:.2em .6em}
+.slide{justify-content:center;padding-top:6vh}
+.btn.go{background:var(--cobalt);color:#fff;font-weight:600;text-decoration:none}
+.lev-go .btn{display:inline-block;margin:0 .5em .5em 0;text-decoration:none}
+
+/* betűtípus-szabály (2026. október 16.): a cím Fraunces, minden szöveg és magyarázat Source Sans 3 */
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,.cond b,td,li span,p[style*="--display"]),
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,td,p[style*="--display"]) *{font-family:var(--body)!important;letter-spacing:normal}
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,td,p[style*="--display"]),
+:is(.slide,#_fonts) :is(.quote,.imper,.qt,.voice,.shift .t,.shift2 .t,p[style*="--display"]) :not(b,strong){font-weight:400!important}
+:is(.slide,#_fonts) :is(.cond b,td b,td strong){font-weight:600!important}
+
+/* 4. alkalom: találati oldal drótváz */
+.serp{display:flex;flex-direction:column;gap:.5em;max-width:46em}
+.serp-i{display:flex;flex-direction:column;align-items:flex-start;text-align:left;background:#fff;border:1px solid var(--line);border-radius:8px;padding:.55em 1em;position:relative;cursor:pointer}
+.serp-i small{color:var(--ink-soft);font-size:var(--t-sm)}
+.serp-i b{color:var(--cobalt);font-weight:600}
+.serp-i span{color:var(--ink-soft);font-size:.9em}
+.serp-i.ai{background:#F3F1FA;border-color:#C9C2E6}
+.serp-i::after{content:attr(data-shown);position:absolute;right:1em;top:50%;transform:translateY(-50%);font-weight:600;color:var(--cobalt);font-size:.85em;max-width:45%;text-align:right}
+.btn.go{background:var(--cobalt);color:#fff;font-weight:600;text-decoration:none}
+</style>
+<style id="lev-css">
+/* levelezős mód: a kihagyott diák és a nappali évadsáv nem látszik */
+html.lev .strip{display:none!important}
+html.lev .deck{top:0!important}
+html.lev .notes,html.lev .revout,html.lev .sheet{top:0!important}
+.lev-task ol{margin:.6em 0 0 1.2em}
+.lev-task li{margin:.35em 0}
+</style>
+</head>
+<body>
+
+
+<nav class="strip" aria-label="Évad">
+  <a href="#" data-go="1" data-sec="keret"><b>Évad</b><span>a keret</span></a>
+  <a href="#" data-go="1"><b>1</b><span>Kinek és mit&nbsp;·&nbsp;09.&nbsp;14.</span></a>
+  <a href="#" data-go="1"><b>2</b><span>Hogyan érjük el és hogyan dönt&nbsp;·&nbsp;09.&nbsp;28.</span></a>
+  <a href="#" data-go="1"><b>3</b><span>A saját terep&nbsp;·&nbsp;10.&nbsp;12.</span></a>
+  <a href="#" data-go="0" data-sec="ep4"><b>4</b><span>A csatornák nyelve&nbsp;·&nbsp;11.&nbsp;02.</span></a>
+  <a href="#" data-go="1" class="dim"><b>5</b><span>Mennyiért&nbsp;·&nbsp;11.&nbsp;09.</span></a>
+  <a href="#" data-go="1" class="dim"><b>6</b><span>Mit mutat a valóság&nbsp;·&nbsp;11.&nbsp;23.</span></a>
+  <a href="#" data-go="1" class="dim"><b>7</b><span>Hogyan dolgozik egy marketinges&nbsp;·&nbsp;12.&nbsp;07.</span></a>
+</nav>
+
+<main class="deck">
+
+<!-- NYITÁS -->
+<section class="slide cur center" data-notes="c1">
+  <p class="kicker">2026. november 2.</p>
+  <h1>A csatornák nyelve</h1>
+  <p class="lead">Milyen lehetőségeink vannak elérni a vevőt</p>
+  <hr class="rule">
+  <p class="small muted">A tematikából: social, keresőhirdetés, SEO, TikTok és videós platformok</p>
+</section>
+
+<section class="slide dense" data-notes="c2" data-sec="keret">
+  <p class="kicker">Az öt lépés · ma a negyedik alkalom</p>
+  <h2>Ma két kérdésen dolgozunk</h2>
+  <ol class="chain">
+    <li><div>Ki beszél? (márka)<span>1. és 3. alkalom</span></div></li>
+    <li><div>Kihez beszélünk? (célcsoport)<span>1. és 2. alkalom</span></div></li>
+    <li class="now"><div>Mit mondunk? (üzenet)<span>ma: ugyanazt nem lehet ugyanúgy mondani mindenhol</span></div></li>
+    <li class="now"><div>Hogyan jutunk el hozzá? (mix)<span>ma: melyik csatornán, milyen állapotban találkozik velünk</span></div></li>
+    <li><div>Honnan tudjuk, hogy eljutott?<span>6. alkalom</span></div></li>
+  </ol>
+</section>
+
+<section class="slide center" data-notes="c3">
+  <p class="kicker">Visszamutatás · a 3. beadandó</p>
+  <h2>Az oldal fogad. Most azt nézzük meg, mi viszi oda az embert.</h2>
+  <p class="lead">A márkátok oldalát már ismeritek: miről szól, mit akar, vezet-e, épít-e bizalmat. Ma visszalépünk egyet: honnan jön az ember, mielőtt az oldalra ér, és milyen állapotban.</p>
+</section>
+
+<section class="slide roomy" data-notes="c4">
+  <p class="kicker">A csatornák nyelve</p>
+  <div class="triad">
+    <div><h3>Miről szól</h3><p>Social, keresőhirdetés, SEO, videós platformok.</p></div>
+    <div><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.15em">A csatorna nem felület, hanem szándékállapot. A keresőben a szándék már ott van, a socialban neked kell megteremtened.</p></div>
+    <div><h3>Tanulság</h3><p>Ha ugyanaz az üzenet megy minden platformra, az nem hatékonyság, hanem annak a jele, hogy egyik platformot sem érted.</p></div>
+  </div>
+  <p class="small muted" style="margin-top:1.2em">A nap: másfél óra elmélet, másfél óra csoportmunka. A csoportmunkában a márkátok csatornáit fejtitek vissza nyolc szemponttal.</p>
+</section>
+
+<section class="slide" data-notes="c5">
+  <p class="kicker">Egyéni feladat · 5 perc · írásban, magadnak</p>
+  <h2>Két vásárlásod</h2>
+  <div class="cols">
+    <div class="card"><h3>Kerestem</h3><p>Mit kerestél rá utoljára a Google-ben, mielőtt vettél valamit?</p></div>
+    <div class="card alt"><h3>Elém jött</h3><p>Mi volt az utolsó dolog, amit úgy vettél meg, hogy nem kerested, hanem eléd jött?</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Mindkettőnél: hol láttad először, és hol vetted meg?</p>
+</section>
+
+<!-- A BLOKK -->
+<section class="slide" data-notes="a1">
+  <p class="kicker"><span class="lt">1. szempont</span>Jelenlét</p>
+  <h2>„Ott legyünk, ahol a vevő.”</h2>
+  <p class="lead">Ez a legtöbb cég kiindulása. Nem rossz, de nem elég.</p>
+  <div class="cols" style="margin-top:.6em">
+    <div class="card"><h3>Ahol a vevő van</h3><p>Hol van ott a márka, és hol nincs? Ez egyszerű leltár.</p></div>
+    <div class="card alt"><h3>Amilyen állapotban van</h3><p>Ha az eszközzel kezded („csináljunk TikTokot”), az nem stratégia, hanem taktika.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-notes="a2">
+  <p class="kicker"><span class="lt">2. szempont</span>Szándékállapot</p>
+  <h2>Ugyanaz az ember, két állapot</h2>
+  <div class="cols">
+    <div class="card"><p class="small muted">napközben, telefonon</p><h3>Keres</h3><p>Beírja: „vegán mártogatós bulira”. Már tudja, mit akar, csak még nem tudja, kitől.</p></div>
+    <div class="card alt"><p class="small muted">este, a kanapén</p><h3>Görget</h3><p>A barátai posztjait nézi. Nem akar semmit, és főleg nem márkával beszélgetni.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">A keresőben a szándék már ott van, a socialban neked kell megteremtened.</p>
+</section>
+
+<section class="slide" data-notes="a3">
+  <p class="kicker"><span class="lt">3. szempont</span>Ki kezdeményez</p>
+  <h2>Ő hív, vagy te szakítod félbe?</h2>
+  <div class="cols">
+    <div class="card"><h3>Húzás</h3><p>A keresőben ő jön érted. Neked válaszolnod kell: gyorsan és pontosan arra, amit kérdezett.</p></div>
+    <div class="card alt"><h3>Tolás</h3><p>A hírfolyamban te mész hozzá. Előbb okot kell adnod, hogy megálljon, mert egy hüvelykujjnyi mozdulattal továbblép.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-notes="a4">
+  <p class="kicker"><span class="lt">2. és 7. szempont</span>A szándék útja</p>
+  <h2>A csatornák átadják egymásnak az embert</h2>
+  <div class="grid4">
+    <div class="card"><h3>See</h3><p>social és videó: itt születik a szándék</p></div>
+    <div class="card"><h3>Think</h3><p>social, videó és kereső: itt keresgél és összevet</p></div>
+    <div class="card"><h3>Do</h3><p>kereső és a saját oldal: itt dönt és vásárol</p></div>
+    <div class="card"><h3>Care</h3><p>social, e-mail: itt marad vagy elmegy</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">A social sokszor csak az első érintés. A vásárlás egy későbbi keresésből jön.</p>
+</section>
+
+<!-- B BLOKK -->
+<section class="slide" data-notes="b1">
+  <p class="kicker"><span class="lt">2. szempont</span>A kereső</p>
+  <h2>A keresés: a szándék kimondva</h2>
+  <div class="cols">
+    <div class="card"><p class="small muted">márkanévre</p><h3>„tunki tunki”</h3><p>Már ismeri. A keresőt csak útnak használja.</p></div>
+    <div class="card alt"><p class="small muted">kategóriára</p><h3>„vegán mártogatós”</h3><p>Még választ. Itt dől el, hogy a márka egyáltalán szóba kerül-e.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Magyarországon a keresések 95%-a a Google-ön megy.</p>
+</section>
+
+<section class="slide" data-notes="b2">
+  <p class="kicker"><span class="lt">1. és 3. szempont</span>A találati oldal</p>
+  <h2>Melyik fizetett, melyik nem?</h2>
+  <div class="serp" data-ix="serp">
+    <button type="button" class="serp-i" data-t="Fizetett: hirdetés, „Szponzorált” címkével"><small>Szponzorált</small><b>Vegán mártogatósok házhoz</b><span>Rendeld meg ma, ingyenes szállítás 10 000 Ft felett</span></button>
+    <button type="button" class="serp-i ai" data-t="AI-áttekintés: a gép maga válaszol, mellé teszi a forrásait"><small>AI-áttekintés</small><b>A legnépszerűbb vegán mártogatósok: hummusz, …</b><span>3 forrás alapján</span></button>
+    <button type="button" class="serp-i" data-t="Organikus: ezt a helyet nem lehet megvenni"><small>webáruház.hu</small><b>Vegán mártogatós receptek és termékek</b><span>Növényi, glutén- és cukormentes</span></button>
+    <button type="button" class="serp-i" data-t="Organikus: ezt a helyet nem lehet megvenni"><small>recept.hu</small><b>5 vegán mártogatós bulira</b><span>Egyszerű receptek, 10 perc alatt</span></button>
+  </div>
+  <p class="small muted" style="margin-top:.6em">Kattints a találatokra. Drótváz: az élő oldal keresésenként és eszközönként más.</p>
+</section>
+
+<section class="slide" data-notes="b3">
+  <p class="kicker"><span class="lt">1. szempont</span>SEO</p>
+  <h2>Lassan indul, sokáig hoz</h2>
+  <div class="cols">
+    <div class="card"><h3>Ami jó benne</h3><p>Aki így érkezik, konkrét dolgot keres: célzott és hiteles látogató. A helyét nem lehet megvenni.</p></div>
+    <div class="card alt"><h3>Ami az ára</h3><p>Lassú, kiszámíthatatlan, és nem épít ismertséget: a keresőben csak azt találják meg, akit már keresnek.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-notes="b4">
+  <p class="kicker"><span class="lt">5. és 7. szempont</span>Keresőhirdetés</p>
+  <h2>Nem a legtöbbet fizető nyer</h2>
+  <div data-ix="mm" class="mm">
+    <div class="ad"><small>Keresés</small><b>fehér sportzokni</b><span>Melyik hirdetésre kattintanál?</span></div>
+    <div class="mm-opts">
+      <button type="button" data-ok="0" data-fb="Cselekvésre szólít, de nem azt mondja, amit kerestél.">A) „Vegyél fehér zoknit még ma.”</button>
+      <button type="button" data-ok="1" data-fb="Szó szerint azt mondja, amit beírtál. Ezt választják a legtöbben, és ezért olcsóbban is elöl lehet.">B) „Fehér sportzokni.”</button>
+      <button type="button" data-ok="0" data-fb="Az árra felel, nem arra, amit kerestél.">C) „Olcsó zokni itt.”</button>
+    </div>
+    <p class="mm-out lead"></p>
+  </div>
+  <p class="small muted" style="margin-top:.6em">A Google a hirdetés minőségét három dologgal méri: várható átkattintás, a hirdetés relevanciája, a céloldal élménye.</p>
+</section>
+
+<section class="slide" data-notes="b5">
+  <p class="kicker"><span class="lt">7. szempont</span>Következő lépés · gyakorlat 1/2</p>
+  <h2>Amit a hirdetés ígért</h2>
+  <div data-ix="mm" class="mm">
+    <div class="ad"><small>Hirdetés</small><b>Angol tanfolyam −20% októberben</b><span>Kis csoport, Veszprém</span></div>
+    <div class="mm-opts">
+      <button type="button" data-ok="0" data-fb="Nem egyezik: a kedvezményt és a tanfolyamot most neki kell megkeresnie.">A) Kezdőlap: „Üdvözöljük!”, menü, hírek</button>
+      <button type="button" data-ok="1" data-fb="Egyezik: amit a hirdetés ígért, azt látja. Nem kell keresnie.">B) Oldal: „Angol tanfolyam −20%, októberi kezdés”, jelentkezés gomb</button>
+    </div>
+    <p class="mm-out lead"></p>
+  </div>
+</section>
+
+<section class="slide" data-notes="b6">
+  <p class="kicker"><span class="lt">7. szempont</span>Következő lépés · gyakorlat 2/2</p>
+  <h2>Ott van, ahol keresi?</h2>
+  <div data-ix="mm" class="mm">
+    <div class="ad"><small>Keresés: „nyelvvizsga felkészítő Veszprém”</small><b>B2 nyelvvizsga-felkészítő Veszprémben</b><span>Kezdés október 20.</span></div>
+    <div class="mm-opts">
+      <button type="button" data-ok="0" data-fb="Jó tanfolyam, rossz város: a keresése egyik fele elveszett.">A) „B2 felkészítő, Budapest, XI. kerület”</button>
+      <button type="button" data-ok="1" data-fb="A szó, a szint és a hely is egyezik azzal, amit beírt.">B) „B2 felkészítő Veszprémben, kezdés október 20.”</button>
+    </div>
+    <p class="mm-out lead"></p>
+  </div>
+</section>
+
+<section class="slide" data-notes="b7">
+  <p class="kicker"><span class="lt">1. szempont</span>A kereső két arca</p>
+  <h2>A találati lista és a válasz</h2>
+  <div class="cols">
+    <div class="card"><p class="small muted">a régi arc</p><h3>Találati lista</h3><p>Az ember választ a linkek közül, és kattint.</p></div>
+    <div class="card alt"><p class="small muted">az új arc</p><h3>A válasz</h3><p>A gép választ helyette, összefoglal és forrást tesz mellé: Google AI-áttekintés és AI mód, ChatGPT, Perplexity. Magyarul is.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Megemlíti-e a márkátokat, és honnan tudja, amit mond?</p>
+</section>
+
+<section class="slide" data-notes="b8">
+  <p class="kicker"><span class="lt">1. és 6. szempont</span>GEO</p>
+  <h2>Hogyan kerül egy tartalom a gép válaszába?</h2>
+  <p class="lead">GEO (Generative Engine Optimization): a generatív keresők optimalizálása.</p>
+  <div class="cols" style="margin-top:.6em">
+    <div class="card"><h3>Ami segített</h3><p>idézet, adat és forrásmegjelölés a szövegben</p></div>
+    <div class="card alt"><h3>Ami nem</h3><p>kulcsszóhalmozás: rosszabbul teljesített, mint az eredeti szöveg</p></div>
+  </div>
+  <p class="small muted" style="margin-top:.8em">A Google szerint az AI-funkciókhoz nincs külön optimalizálás: a jó SEO szabályai érvényesek.</p>
+</section>
+
+<!-- C BLOKK -->
+<section class="slide" data-notes="s1">
+  <p class="kicker"><span class="lt">2. szempont</span>Social</p>
+  <h2>A socialban nem vásárolni van</h2>
+  <p class="lead">Az emberek kapcsolódni akarnak egymáshoz, nem márkával beszélgetni. A figyelmet meg kell szerezni.</p>
+  <div class="grid3" style="margin-top:.8em">
+    <div class="card"><p class="small muted">hirdetési elérés, Magyarország</p><h3>Facebook</h3><p>5,55 millió</p></div>
+    <div class="card"><p class="small muted">hirdetési elérés, Magyarország</p><h3>Instagram</h3><p>2,85 millió</p></div>
+    <div class="card"><p class="small muted">hirdetési elérés, 18 év felett</p><h3>TikTok</h3><p>3,40 millió</p></div>
+  </div>
+  <p class="small muted" style="margin-top:.6em">DataReportal, Digital 2026: Hungary (2025. októberi adatok). Elérés, nem felhasználószám.</p>
+</section>
+
+<section class="slide" data-notes="s2">
+  <p class="kicker"><span class="lt">5. szempont</span>Nyelv</p>
+  <h2>Beszélgetés, nem bemondás</h2>
+  <div data-ix="mm" class="mm" style="max-width:none">
+    <div class="mm-opts" style="flex-direction:row;gap:1em">
+      <button type="button" data-ok="0" data-fb="Sajtóközlemény-nyelv: igaz, de senki nem így beszél a barátaival." style="flex:1">A) „Örömmel jelentjük be, hogy termékcsaládunk új, innovatív ízvariánssal bővült, amely kiváló minőségű, növényi alapanyagokból készül.”</button>
+      <button type="button" data-ok="1" data-fb="Úgy szól, ahogy ott beszélnek: egy helyzetből indul, és kérdez." style="flex:1">B) „Péntek este, jön a csapat, és üres a hűtő? Új ízünk 10 perc alatt az asztalon. Ti mivel mártogattok?”</button>
+    </div>
+    <p class="mm-out lead"></p>
+  </div>
+  <p class="small muted" style="margin-top:.6em">Melyik illik a hírfolyamba, és miért? Bizonyítékkal, nem ízléssel. A két poszt kitalált szemléltetés.</p>
+</section>
+
+<section class="slide" data-notes="s3">
+  <p class="kicker"><span class="lt">4. és 8. szempont</span>Üzenet és összevetés</p>
+  <h2>Platformonként más dolga van</h2>
+  <div class="cols">
+    <div class="card"><p class="small muted">egy gyakorló marketinges</p><h3>„Az egyik ügyfélszolgálat, a másik szórakoztató felület.”</h3><p>Ha mindenhol ugyanazt csinálod, az erőforrás túl vékonyan terül szét.</p></div>
+    <div class="card alt"><p class="small muted">Kotler és Keller</p><h3>„Más hálózat, más haszon.”</h3><p>A közösségi média nem lehet az egyetlen csatorna.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-notes="s4">
+  <p class="kicker"><span class="lt">3. és 5. szempont</span>Social hirdetés</p>
+  <h2>A social hirdetés nem a kereső hirdetése</h2>
+  <div class="cols">
+    <div class="card"><h3>A keresőhirdetés válaszol</h3><p>Elég azt mondani, amit keresett.</p></div>
+    <div class="card alt"><h3>A hírfolyam-hirdetés megszakít</h3><p>Okot kell adnia a megállásra: itt a hirdetés maga is tartalom.</p></div>
+  </div>
+  <p class="small muted" style="margin-top:.8em">Mi fizetett, mi saját, mi megszerzett, és mennyibe kerül: a következő alkalom kérdése.</p>
+</section>
+
+<section class="slide" data-notes="s5">
+  <p class="kicker"><span class="lt">6. szempont</span>Mások hangja</p>
+  <h2>Amit mások mondanak rólad</h2>
+  <p class="lead">Az emberek jobban hisznek a barátaiknak, a családjuknak és a követőknek, mint a márkának.</p>
+  <div class="grid4" style="margin-top:.8em">
+    <div class="card"><h3>Kommentek</h3><p>a posztok alatt</p></div>
+    <div class="card"><h3>Értékelések</h3><p>Google, webáruház</p></div>
+    <div class="card"><h3>Megosztások</h3><p>és ajánlások</p></div>
+    <div class="card"><h3>A gép válasza</h3><p>amit mások írásaiból idéz</p></div>
+  </div>
+</section>
+
+<!-- D BLOKK -->
+<section class="slide" data-notes="v1">
+  <p class="kicker"><span class="lt">5. szempont</span>Videó</p>
+  <h2>Az első öt másodperc</h2>
+  <div class="grid3">
+    <div class="card"><p class="small muted">YouTube</p><h3>5 másodperc</h3><p>Ennyi után át lehet ugrani a kihagyható hirdetést.</p></div>
+    <div class="card"><p class="small muted">TikTok</p><h3>3 másodperc</h3><p>Ennyi alatt jelenjen meg, miről szól a videó.</p></div>
+    <div class="card"><p class="small muted">TikTok</p><h3>9:16, hang, felirat</h3><p>Függőleges kép, és inkább házi, nem túlcsiszolt stílus.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Élőben: két videó eleje. Öt másodperc után megállítjuk: kié, és miről szól?</p>
+</section>
+
+<section class="slide center" data-notes="v2">
+  <p class="kicker"><span class="lt">5. és 6. szempont</span>Videó</p>
+  <h2>„Don't Make Ads. Make TikToks.”</h2>
+  <p class="lead">Ne hirdetést csinálj, hanem TikTokot: a videós platformon a szórakoztatás szabályai érvényesek, nem az eladáséi.</p>
+</section>
+
+<section class="slide" data-notes="v3">
+  <p class="kicker"><span class="lt">1. és 3. szempont</span>Az algoritmus</p>
+  <h2>A hírfolyam nem a tiéd</h2>
+  <div class="cols">
+    <div class="card"><h3>A keresőben a kulcsszó dönt</h3><p>Arra kapsz találatot, amit beírtál.</p></div>
+    <div class="card alt"><h3>A hírfolyamban az algoritmus</h3><p>Ő választja ki, kinek mutatja meg: mit kedvelt, osztott meg, kit követ, mit néz végig. A TikTok szerint a követők száma nem közvetlen tényező.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1em">Ezért a hírfolyamban az is megtalálhatja a márkát, aki sosem kereste.</p>
+</section>
+
+<section class="slide" data-notes="v4">
+  <p class="kicker"><span class="lt">8. szempont</span>Összevetés</p>
+  <h2>Ugyanaz a márka, más nyelven</h2>
+  <p class="lead">Egy amerikai befektetési cég a TikTokon és az Instagramon könnyedebb tartalmat posztol a fiatalabb közönségnek, és a céloldalain is ezen a nyelven folytatja.</p>
+  <p class="lead" style="margin-top:.8em">A márka ugyanaz. A nyelv más. És a csatornától az oldalig kitart.</p>
+</section>
+
+<!-- ÖSSZERAKÁS -->
+<section class="slide center" data-notes="o1">
+  <p class="kicker">Tanulság</p>
+  <h2>Ha ugyanaz az üzenet megy minden platformra, az nem hatékonyság, hanem annak a jele, hogy egyik platformot sem érted.</h2>
+</section>
+
+<!-- MÓDSZER -->
+<section class="slide dense" data-notes="m1">
+  <p class="kicker">A mai nap módszere</p>
+  <h2>Nyolc szempont, három lépés</h2>
+  <div class="grid3 lensgrid">
+    <div class="card"><p class="small muted">kívülről, kattintás nélkül</p><h3>Megtalálás</h3><ol class="lenslist"><li><b>1</b>Jelenlét</li><li><b>2</b>Szándékállapot</li><li><b>3</b>Ki kezdeményez</li></ol></div>
+    <div class="card"><p class="small muted">a tartalom</p><h3>Nézés</h3><ol class="lenslist"><li><b>4</b>Üzenet</li><li><b>5</b>Nyelv</li><li><b>6</b>Mások hangja</li></ol></div>
+    <div class="card"><p class="small muted">kattintva</p><h3>Követés</h3><ol class="lenslist"><li><b>7</b>Következő lépés</li><li><b>8</b>Összevetés</li></ol></div>
+  </div>
+  <div class="steps3">
+    <div><b>1. Mit láttok?</b>Hol, mit, linkkel, idézettel.</div>
+    <div><b>2. Miért így?</b>Milyen szándékállapotra számít a márka?</div>
+    <div><b>3. Működik?</b>Az ítélet a végén jön, a megértésből.</div>
+  </div>
+  <p class="small muted" style="margin-top:.8em">Bizonyíték: „a hirdetés címe szó szerint a keresett kifejezés”. Nem bizonyíték: tetszik, ütős, modern.</p>
+</section>
+
+<section class="slide" data-notes="m2">
+  <p class="kicker"><span class="lt">1. és 3. szempont</span>Kívülről is látszik</p>
+  <h2>A hirdetéstárak</h2>
+  <div class="grid3">
+    <div class="card"><h3>Google</h3><p>Ads Átláthatósági Központ<br><a class="klink" href="https://adstransparency.google.com/?region=HU" target="_blank" rel="noopener">adstransparency.google.com</a></p></div>
+    <div class="card"><h3>Meta</h3><p>Hirdetéstár<br><a class="klink" href="https://www.facebook.com/ads/library/?country=HU" target="_blank" rel="noopener">facebook.com/ads/library</a></p></div>
+    <div class="card"><h3>TikTok</h3><p>Ad Library (hirdetéstár)<br><a class="klink" href="https://library.tiktok.com/ads" target="_blank" rel="noopener">library.tiktok.com</a></p></div>
+  </div>
+  <div class="task" style="margin-top:1em;max-width:none"><b>Szabályok.</b> Inkognitóablakban kerestek. A versenytárs keresőhirdetésére nem kattintotok, mert kattintásonként fizet érte. Nem kommenteltek és nem követtek be a csapat nevében.</div>
+</section>
+
+<!-- BEMUTATÓ -->
+<section class="slide" data-notes="t1">
+  <p class="kicker">Bemutató · 1–3. szempont · kereső és hirdetéstárak · 2026. október 27.</p>
+  <h2>Ki hirdet, és ki nem?</h2>
+  <div class="cols">
+    <div class="card"><p class="small muted">kis márka</p><h3>Tunki-Tunki</h3><p class="seen"><b>Mit látunk?</b> A Google hirdetéstárában Magyarországon 0 hirdetés. A Meta hirdetéstárában kb. 12 találat a nevére, de egyiket sem ő adta fel: az ügynöksége, egy mentes fesztivál és egy partnerrendezvény említi.</p></div>
+    <div class="card alt"><p class="small muted">nagy márka</p><h3>Pöttyös (Túró Rudi)</h3><p class="seen"><b>Mit látunk?</b> A Google hirdetéstárában 81 hirdetés a pottyos.hu-ra. A Meta hirdetéstárában kb. 120 aktív hirdetés a nevére, köztük a Túró Rudi oldal szeptember 16-án indult hirdetése.</p></div>
+  </div>
+  <p class="seen why" style="max-width:none;margin-top:.8em"><b>A keresőben, 2026. október 28.:</b> a „tunki tunki” keresésre a saját oldal az első. A „vegán mártogatós” keresésre a Tunki-Tunki nincs az első oldalon: receptoldalak jönnek, és a Google Shopping-sávban egy másik márka termékei.</p>
+</section>
+
+<section class="slide" data-notes="t2">
+  <p class="kicker">Bemutató · 2–6. szempont · Instagram, Facebook, TikTok</p>
+  <h2>Hol vannak jelen, és hogyan beszélnek?</h2>
+  <div class="cols">
+    <div class="card"><h3>Tunki-Tunki</h3><p class="seen"><b>Mit látunk?</b> A weboldal Facebookra és Instagramra linkel, TikTokra és YouTube-ra nem. Instagram: 3568 követő (2026. október 27.).</p><p class="seen why"><b>Élőben:</b> az utolsó három poszt első sora, a hossza és a kommentek.</p></div>
+    <div class="card alt"><h3>Pöttyös</h3><p class="seen why"><b>Élőben:</b> Instagram, TikTok, YouTube: hol van jelen, mi az első három másodperc, mit írnak a kommentekben.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-notes="t3">
+  <p class="kicker">Bemutató · 8. szempont · összevetés</p>
+  <h2>A két márka egy mátrixban</h2>
+  <table>
+    <tr><th></th><th>Kereső</th><th>Meta</th><th>TikTok, YouTube</th><th>AI-válasz</th></tr>
+    <tr><td>Tunki-Tunki</td><td>márkanévre első · kategóriára nincs az első oldalon · 0 hirdetés</td><td>organikus, hirdetés nélkül</td><td>nincs link a weboldalon</td><td>élőben</td></tr>
+    <tr><td>Pöttyös</td><td>81 hirdetés</td><td>kb. 120 aktív hirdetés</td><td>élőben</td><td>élőben</td></tr>
+  </table>
+  <p class="lead" style="margin-top:1em">Az egy mondat: „A [márka] a vevővel [hol] találkozik, [milyen szándékállapotban], [ugyanazon / csatornánként más] nyelven, és nincs ott, ahol [hol van még szándék].”</p>
+</section>
+
+<!-- GYAKORLAT -->
+<section class="slide" data-notes="g1">
+  <p class="kicker">A negyedik beadandó · csoportmunka · 90 perc</p>
+  <h2>Csatornatérkép üzenetenként</h2>
+  <div class="task lev-task" style="max-width:none"><ol>
+    <li>Nyissátok meg a Csatornavizsgálatot, válasszátok ki a csapatot és a márkát.</li>
+    <li>Osszátok fel: egy ember a keresőt (Google és egy AI-válasz), egy a Metát (Facebook, Instagram), egy a TikTokot és a YouTube-ot nézi.</li>
+    <li>Mindenki a saját csatornáján végigmegy az 1–7. szemponton: Mit láttok? Miért így? Működik?</li>
+    <li>Együtt: összevetés (8. szempont), és az egy mondat.</li>
+    <li>Leadás a Beküldés gombbal.</li>
+  </ol></div>
+  <p class="lev-go" style="margin-top:1.2em"><a class="btn go" href="csatorna-vizsgalat.html" target="_blank">Csatornavizsgálat megnyitása →</a> <a class="btn" href="csatorna-vizsgalat.html?minta=1" target="_blank">Kitöltött minta</a></p>
+</section>
+
+<section class="slide" data-notes="lev4" data-lev="only">
+  <p class="kicker">Levelező gyakorlat · 45 perc · kettesben</p>
+  <h2>Csatornatérkép a saját márkátokon</h2>
+  <div class="task lev-task"><ol>
+    <li>Nyissátok meg a Csatornavizsgálatot, válasszátok ki a csapatot és a márkát.</li>
+    <li>Az egyik a keresőt és egy AI-választ nézi, a másik a Metát (Facebook, Instagram). A videó fül ráadás.</li>
+    <li>Csatornánként az 1–7. szempont: Mit láttok? Miért így? Működik?</li>
+    <li>Együtt: összevetés és az egy mondat. Leadás a Beküldés gombbal.</li>
+  </ol></div>
+  <p class="lev-go" style="margin-top:1.2em"><a class="btn go" href="csatorna-vizsgalat.html" target="_blank">Csatornavizsgálat megnyitása →</a> <a class="btn" href="csatorna-vizsgalat.html?minta=1" target="_blank">Kitöltött minta</a></p>
+</section>
+
+<section class="slide center" data-notes="g2">
+  <p class="kicker">Zárás</p>
+  <h2>Ha ugyanaz az üzenet megy minden platformra, az nem hatékonyság, hanem annak a jele, hogy egyik platformot sem érted.</h2>
+  <hr class="rule">
+  <p class="lead">Legközelebb, 2026. november 9-én: mennyiért, mit bérlünk és mit építünk?</p>
+</section>
+
+</main>
+
+
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.1 · 2026. október 28.</span></div>
+<div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
+
+<!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
+<aside class="notes" id="notes" aria-label="Jegyzet">
+<div data-n="c1"><h4>Címlap</h4><p class="src top">Forrás: oktató; a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>Ma kilépünk a saját oldalunkról. Az előző alkalmon azt néztük, hogyan fogad a weboldal, ha valaki megérkezik. Ma azt nézzük, mi viszi oda: a kereső, a közösségi média és a videós platformok. A tematika ehhez a ponthoz az automatizált e-mailt is sorolja, de azt a 3. alkalmon már megnéztük, mert ott a saját felület része volt.</p></div></div>
+<div data-n="c2"><h4>Az öt lépés, ma a negyedik</h4><p class="src top">Forrás: oktató; Kotler, Keller: Marketing Management, 17. fejezet (a kommunikáció makromodellje)</p><div class="hj"><h5>Jegyzet</h5><p>A félév öt kérdés körül forog. Ma kettőn dolgozunk egyszerre. Hogyan jutunk el hozzá: melyik csatornán találkozik velünk a vevő. És mit mondunk: mert ugyanazt nem lehet ugyanúgy mondani a keresőben, a hírfolyamban és egy rövid videóban. A mai nap végére tudni fogod, miért nem.</p></div></div>
+<div data-n="c3"><h4>Visszamutatás · a 3. beadandó</h4><p class="src top">Forrás: oktató; a hallgatók 3. beadandója</p><div class="hj"><h5>Jegyzet</h5><p>A 3. alkalmon a márkátok oldalát néztétek meg nyolc szemponttal: miről szól, mit akar, vezet-e, épít-e bizalmat. Ez az út vége. Ma visszalépünk egyet: honnan jön az ember, mielőtt az oldalra ér, és milyen állapotban.</p></div></div>
+<div data-n="c4"><h4>A csatornák nyelve · Miről szól · Kulcsgondolat · Tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A mai nap egyetlen gondolatra épül: nem az számít, melyik felületen vagy, hanem az, hogy az ember milyen állapotban van ott. Aki keres, már tudja, mit akar. Aki görget, nem akar semmit, csak ott van. A kettőhöz nem lehet ugyanúgy beszélni.</p></div></div>
+<div data-n="c5"><h4>Egyéni feladat · 5 perc · írásban, magadnak</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Írd le mindkettőt egy-egy sorban. Nem kell beadni. A 7. dián visszatérünk rá: a két válaszod a mai nap két fele. Az egyiknél te kezdeményeztél, a másiknál valaki megszakított abban, amit éppen csináltál.</p></div></div>
+<div data-n="a1"><h4>„Ott legyünk, ahol a vevő.”</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 8. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A legtöbb cég így kezd: „legyünk fent mindenhol, ahol az emberek vannak”. Kingsnorth könyve szó szerint ezt írja a közösségi média első okaként: ott lenni, ahol a vásárlóid vannak. Ez nem rossz kiindulás, de nem elég. Chaffey arra figyelmeztet, hogy aki az eszközzel kezdi („csináljunk TikTokot”), az taktikát választ, nem stratégiát. A mai kérdés ezért nem az, hol van az ember, hanem az, hogy ott milyen állapotban van. Az 1. szempont, a Jelenlét, egyszerű leltár: hol van ott a márka, és hol nincs.</p></div></div>
+<div data-n="a2"><h4>Két helyzet, egy ember</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 19. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kingsnorth: Digital Marketing Strategy, 8. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey szerint aki keres, az konkrét terméket vagy szolgáltatást keres, ezért gyakran erős a vásárlási szándéka. Kotler és Keller ugyanezt mondja: aki keresésben már kifejezte az érdeklődését, az a legjobb potenciális vevő. A közösségi médiában fordított a helyzet: Kotler és Keller szerint ott az ember másokhoz akar kapcsolódni, ezért a figyelem megszerzése és a meggyőzés nehezebb. Kingsnorth egy kutatást idéz, amely szerint a Facebookon az emberek általában nincsenek vásárlási hangulatban. A 2. szempont ezt kérdezi: milyen helyzetben találkozik a márkával az ember? Keres, görget, néz, vagy kérdez?</p></div></div>
+<div data-n="a3"><h4>Ki kezdeményez?</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey az online kommunikációt a húzó és a toló média keverékeként írja le. Húzó, ha az ember jön érted: keres, rákattint, feliratkozik. Toló, ha te mész hozzá: hirdetés a hírfolyamban, egy videó előtt. A kettő más nyelvet kér. Aki hív, annak válaszolni kell, gyorsan és pontosan. Akit megszakítasz, annak előbb okot kell adnod, hogy megálljon. A Marketing 4.0 szerzői szerint a közösségi médiában a hirdetés nem tudja érdemben megszakítani a tartalomfogyasztást, ezért a hirdetésnek magának is tartalomnak kell lennie.</p></div></div>
+<div data-n="a4"><h4>A szándék útja</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kingsnorth: Digital Marketing Strategy, 15. fejezet; a csatornák elhelyezése a körökön az oktató következtetése</p><div class="hj"><h5>Jegyzet</h5><p>Ez a dia összeköti a 2. és a 3. alkalmat a maival. Chaffey szerint a közösségi média sokszor csak az első ismertséget hozza, a vásárlás egy későbbi látogatásból jön, ami keresésből vagy közvetlen beírásból indul. Vagyis a csatornák nem versenyeznek egymással, hanem egymásnak adják át az embert. A körökre tett elhelyezés egyszerűsítés: a kereső a See körben is dolgozhat (aki a problémájára keres, még nem ismeri a márkát), és a social a Care körben is (aki már vásárolt, ott követi a márkát).</p></div></div>
+<div data-n="b1"><h4>A keresés: a szándék kimondva</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kotler, Keller: Marketing Management, 19. fejezet; StatCounter Global Stats, 2026. szeptember</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey a márkanévre keresést navigációs keresésnek hívja: az ember már tudja, hová akar menni, a keresőt csak útnak használja. A kategóriára keresés más: az ember még választ, és itt dől el, hogy a márka egyáltalán szóba kerül-e. Kotler és Keller szerint az általános keresőszavak a márkaépítésre jók, a konkrétabbak a vásárlásra. A gyakorlatban mindkettőt megnézitek: ha a márkanévre a márka nem jön fel elsőként, az baj; ha a kategóriára nincs ott, az rés. A StatCounter adata nem embereket, hanem oldalmegtekintéseket számol, de a nagyságrendet jól mutatja: a magyar keresés gyakorlatilag a Google.</p></div></div>
+<div data-n="b2"><h4>A találati oldal</h4><p class="src top">Forrás: oktató; a Google találati oldala, 2026. október</p><div class="hj"><h5>Jegyzet</h5><p>A találati oldal már rég nem tíz kék link. Fent lehetnek fizetett hirdetések, „Szponzorált” felirattal. Lehet egy mesterséges intelligenciával írt összefoglaló, amely a kérdésre maga válaszol. Lehet térkép, termékek, videók. Az organikus találatok sokszor csak ezek alatt jönnek. Amikor a márkátokat nézitek, mindig jegyezzétek fel, hol jelenik meg: fizetett helyen, organikusan, az összefoglalóban, vagy sehol. A drótváz egyszerűsítés; az élő oldal keresésenként és eszközönként más.</p></div></div>
+<div data-n="b3"><h4>SEO: lassan indul, sokáig hoz</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kingsnorth: Digital Marketing Strategy, 5. és 15. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A keresőoptimalizálás (SEO) azt jelenti, hogy az oldal a fizetett helyek alatt, ingyen jelenik meg a releváns keresésekre. Chaffey szerint az előnye, hogy aki így érkezik, konkrét dolgot keres, tehát minősített látogató. A hátránya, hogy gyenge az ismertség építésében: a keresőben csak az találja meg a márkát, aki már ismeri, vagy aki a problémájára keres. Kingsnorth szerint a SEO lassan indul, de ha beindul, gyorsul. Ezért a keresőoptimalizálás befektetés, nem kampány.</p></div></div>
+<div data-n="b4"><h4>Keresőhirdetés: nem a legtöbbet fizető nyer</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 6. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Google Ads súgó: Minőségi mutató</p><div class="hj"><h5>Jegyzet</h5><p>A keresőhirdetés ugyanarra a kimondott szándékra válaszol, mint az organikus találat, csak fizetett helyen, „Szponzorált” címkével. Ezért itt is az nyer, aki pontosan arra felel, amit az ember beírt. Sokan azt hiszik, aki többet fizet, az kerül előre. Chaffey szerint ez nem igaz: a hirdetés helyét a relevancia is eldönti, a legjobb helyet nem lehet pénzzel megvenni. Kingsnorth példájában az nyer, amelyik szó szerint azt mondja, amit az ember keresett. A Google Ads minőségi mutatója három összetevőből áll: várható átkattintási arány, a hirdetés relevanciája és a céloldal élménye. A Google szerint ez diagnosztikai eszköz, nem közvetlen bemenete az aukciónak, de ugyanazt méri, ami a helyezést is befolyásolja: illik-e a hirdetés a kereséshez és az oldal a hirdetéshez. Hogy mennyibe kerül egy kattintás, és hogyan épül fel egy kampány a fiókban, azt a következő alkalmon nézzük meg.</p></div></div>
+<div data-n="b5"><h4>Amit a hirdetés ígért</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Google Ads súgó: Minőségi mutató; oktató</p><div class="hj"><h5>Jegyzet</h5><p>A 7. szempont azt kérdezi: hová visz a hirdetés vagy a poszt, és illik-e az érkezés ahhoz, amit ígért? Ez a 3. alkalom folytatása. Ha a hirdetés „-20% minden tanfolyamra” ígéretet tesz, és a kezdőlapra visz, ahol erről semmi nincs, a látogató elveszett. Chaffey szerint ezért érdemes kulcsszó-csoportonként saját céloldalt készíteni.</p></div></div>
+<div data-n="b6"><h4>Amit a hirdetés ígért</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Google Ads súgó: Minőségi mutató; oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ugyanaz a kérdés, mint az előző dián: illik-e az érkezés ahhoz, amit a keresés vagy a hirdetés ígért? Itt a hely a lényeg. Aki városnévvel keres, annak a város is a keresés része, és ha az oldal másik várost mutat, a keresése egyik fele elveszett.</p></div></div>
+<div data-n="b7"><h4>A kereső két arca: a találati lista és a válasz</h4><p class="src top">Forrás: Google Keresés Központ: AI-funkciók és a webhelyed; Google Keresés súgó: AI-áttekintések, AI mód</p><div class="hj"><h5>Jegyzet</h5><p>A Google súgója szerint az AI-áttekintések és az AI mód Magyarországon, magyar nyelven is elérhetők. Az AI módot a Google 2025 októberében bővítette újabb nyelvekre és országokra; a magyar sajtó szerint 2025. október 8-án érkezett meg nálunk. Ilyenkor a kereső nem tíz linket ad, hanem megírja a választ, és mellé teszi a forrásokat. Ha valaki azt kérdezi, „milyen vegán mártogatóst vigyek egy bulira”, a válasz vagy megemlíti a márkát, vagy nem. A márkának ezt nem lehet megvenni, és nem is lehet közvetlenül beállítani. A Google hivatalos útmutatója szerint az AI-funkciókban való megjelenéshez nincs külön követelmény vagy különleges optimalizálás: a jó keresőoptimalizálás szabályai érvényesek.</p></div></div>
+<div data-n="b8"><h4>GEO: a generatív keresés optimalizálása</h4><p class="src top">Forrás: Aggarwal és mtsai: GEO: Generative Engine Optimization (KDD 2024); Google Keresés Központ: AI-funkciók és a webhelyed</p><div class="hj"><h5>Jegyzet</h5><p>A GEO kifejezést egy 2023-as, 2024-ben a KDD konferencián publikált kutatás vezette be. A szerzők 10 000 kérdésen tesztelték, mitől idéz egy generatív kereső egy weboldalt. A legjobban az segített, ha a szöveg idézetet, statisztikát és forrásmegjelölést tartalmazott; a szerzők szerint ezekkel a láthatóság akár 40%-kal nőhet. A régi SEO-trükk, a kulcsszóhalmozás viszont rosszabbul teljesített, mint az eredeti szöveg. A Google ugyanakkor azt írja, hogy az AI-funkciókhoz nincs külön optimalizálás. A kettő nem mond ellent egymásnak; az oktató következtetése: aki érthetően, forrással és konkrétan ír, az a keresőnek és a gépnek is jól ír. A 6. szemponthoz (Mások hangja) is kapcsolódik: a gép sokszor nem a márka oldalát idézi, hanem azt, amit mások írnak róla.</p></div></div>
+<div data-n="s1"><h4>A socialban nem vásárolni van</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 19. fejezet; Kingsnorth: Digital Marketing Strategy, 8. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Ez a kulcsgondolat második fele: a socialban a szándékot neked kell megteremtened. Kotler és Keller szerint a közösségi hálókon az emberek másokhoz akarnak kapcsolódni. Chaffey szerint nehéz bevonni őket, amikor éppen az ismerőseikkel vannak, és lehet, hogy nem is akarnak márkával foglalkozni. Kingsnorth szerint ott általában nincsenek vásárlási hangulatban. Magyarországon a DataReportal 2026-os jelentése szerint a Facebook hirdetési elérése 5,55 millió fő, az Instagramé 2,85 millió, a TikToké a 18 év felettiek között 3,40 millió. Ez nem a felhasználók száma, hanem amennyi embert a platform hirdetési eszköze szerint el lehet érni, de jól mutatja, hol van tömeg.</p></div></div>
+<div data-n="s2"><h4>Beszélgetés, nem bemondás</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kotler, Keller: Marketing Management, 19. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey a Cluetrain-kiáltványt idézi: az emberek közti beszélgetés emberinek hangzik. A „hallgasd meg és viselkedj úgy, mint a felhasználók” aranyszabályt is idézi. Kotler és Keller egy gyakorlati tanácsa: a cégek ne olyan nyelven beszéljenek a vásárlóikkal, ami egy sajtóközleménybe illik. Az 5. szempont, a Nyelv, ezt kérdezi: milyen formában, hosszban és hangon szól a márka, és mi van az első másodpercekben vagy az első sorban?</p></div></div>
+<div data-n="s3"><h4>Platformonként más dolga van</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet (Vision Express-interjú); Kotler, Keller: Marketing Management, 19. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey könyvében a Vision Express marketingese elmondja, hogy náluk a Twitter inkább ügyfélszolgálati eszköz, a Facebook pedig szórakoztató felület, ami a promócióra is jó. Azt is mondja, hogy ha mindenhol ugyanazt csinálják, az erőforrás túl vékonyan terül szét. Kotler és Keller szerint a különböző hálózatok különböző hasznot adnak a cégeknek, és a közösségi média soha nem lehet az egyetlen kommunikációs forrás. A 4. szempont, az Üzenet, azt kérdezi: mit mond a márka egy mondatban az adott helyen? A 8. szempont, az Összevetés, azt, hogy ugyanazt mondja-e mindenhol.</p></div></div>
+<div data-n="s4"><h4>A social hirdetés nem a kereső hirdetése</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 8. fejezet; Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Kingsnorth külön kimondja: a közösségi hirdetés ne legyen másolata a többi hirdetésnek, mert más állapotban éri el az embert. A keresőben elég azt mondani, amit keresett. A hírfolyamban nincs kimondott szándék, ezért a hirdetésnek magának kell érdekesnek lennie. Hogy mi ebből fizetett, mi saját és mi megszerzett, és mennyi pénz megy fizetett hirdetésre, az a következő, 5. alkalom kérdése.</p></div></div>
+<div data-n="s5"><h4>Amit mások mondanak rólad</h4><p class="src top">Forrás: Kotler, Kartajaya, Setiawan: Marketing 4.0, 1. fejezet; Kotler, Keller: Marketing Management, 19. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A Marketing 4.0 ezt f-faktornak hívja: a friends, families, Facebook fans, Twitter followers szavak kezdőbetűjéből. A legtöbb vásárló jobban hisz nekik, mint a marketingkommunikációnak. A kommentek, az értékelések és a megosztások ezért a csatorna részei, és kívülről a legjobban láthatók. Itt köszön vissza a GEO is: a mesterséges intelligencia válaszai sokszor ebből, mások szövegéből dolgoznak.</p></div></div>
+<div data-n="v1"><h4>Az első öt másodperc</h4><p class="src top">Forrás: Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet; Google Ads súgó: A videóhirdetések működése; TikTok for Business: Creative best practices</p><div class="hj"><h5>Jegyzet</h5><p>A Marketing 4.0 szerzői a kihagyható világ öt másodperces kihívásának hívják ezt. A Google súgója szerint a kihagyható YouTube-hirdetésnél a néző az első öt másodperc után továbbléphet. A TikTok saját hirdetési útmutatója azt javasolja, hogy a mondanivaló az első három másodpercben jelenjen meg, a figyelemfelkeltő nyitás pedig az első hat másodpercben legyen. Ugyanez az útmutató függőleges, 9:16-os képet, hangot és feliratot javasol, és inkább házi, nem túlcsiszolt stílust. A két videót az alkalom előtt választjuk ki.</p></div></div>
+<div data-n="v2"><h4>A szórakoztatás szabályai</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 19. fejezet; Kotler, Kartajaya, Setiawan: Marketing 5.0, 2. fejezet; TikTok for Business blog</p><div class="hj"><h5>Jegyzet</h5><p>Kotler és Keller a vírusos terjedésről írja, hogy sokak szerint ezt inkább a szórakoztatás szabályai hajtják, mint az eladáséi. A Marketing 5.0 szerint a Z generáció nem szereti azokat a márkákat, amelyek gyártott, túl szép képet mutatnak. A TikTok a hirdetőknek 2021 óta azt mondja: „Don't Make Ads. Make TikToks.” Olyan tartalmat kér, ami illeszkedik a platform stílusához és hangjához. Ez szó szerint a tanulságod egyik fele, a platform saját szájából.</p></div></div>
+<div data-n="v3"><h4>A hírfolyam nem a tiéd</h4><p class="src top">Forrás: Kotler, Kartajaya, Setiawan: Marketing 5.0, 4. fejezet; TikTok Newsroom: How TikTok recommends videos #ForYou; Meta Newsroom: How AI Influences What You See on Facebook and Instagram</p><div class="hj"><h5>Jegyzet</h5><p>A TikTok 2020-ban leírta, mi alapján ajánl videót a „Neked” oldalon: a felhasználó interakciói (mit kedvel, oszt meg, kit követ, mit kommentel), a videó adatai (felirat, hang, hashtag), és az eszköz és a fiók beállításai (nyelv, ország). Azt is írta, hogy sem a követők száma, sem a korábbi sikeres videók nem közvetlen tényezők. A Meta 2023-ban azt írta, hogy mesterséges intelligenciával dönti el, milyen tartalom jelenik meg, és megjósolja, mennyire értékes egy tartalom az adott embernek. Ebből az oktató következtetése: a hírfolyam felfedezési csatorna, ahol az is megtalálhatja a márkát, aki sosem kereste. Ugyanezért nem a márka dönti el, ki látja.</p></div></div>
+<div data-n="v4"><h4>Ugyanaz a márka, más nyelven</h4><p class="src top">Forrás: Abraham, Edelman: Personalized, Industry spotlight: Financial Services</p><div class="hj"><h5>Jegyzet</h5><p>A Fidelity amerikai befektetési cég a fiatalabb közönségnek a TikTokon és az Instagramon szórakoztatóbb tartalmat kezdett posztolni, és a céloldalain is ugyanezt a nyelvet használja. A márka ugyanaz, a cég ugyanaz, a nyelv más. Ez a tanulság előtti utolsó lépés, és visszakötés a 3. alkalomhoz: a nyelvnek a csatornától az oldalig ki kell tartania.</p></div></div>
+<div data-n="o1"><h4>Ugyanaz az üzenet mindenhol?</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ez a mai tanulság. Egy határ, hogy ne értsd félre: Kingsnorth szerint a márka személyisége mindenhol ugyanaz legyen, és nem a márka alkalmazkodik a csatornához. A kettő nem mond ellent egymásnak, mert két szintről beszél. Az oktató következtetése: a hang ugyanaz marad, a mondat, a hossz és a belépő csatornánként más. Nem leszel más ember, csak máshogy beszélsz egy megbeszélésen és egy buliban.</p></div></div>
+<div data-n="m1"><h4>A mai nap módszere: nyolc szempont, három lépés</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A szempontok a mai elméleti diák sorrendjét követik, mindegyik mellett ott a dia címe. Ugyanúgy dolgoztok, mint a 3. alkalomnál: előbb leírjátok, amit láttok, utána megfejtitek, miért így csinálja a márka, és csak a végén ítéltek.</p></div></div>
+<div data-n="m2"><h4>Kívülről is látszik: a hirdetéstárak</h4><p class="src top">Forrás: Google Ads súgó: Ads Transparency; Google blog, 2023. március 29.; TikTok Newsroom, 2023. július 20.; az EU digitális szolgáltatásokról szóló rendelete (DSA), 39. cikk</p><div class="hj"><h5>Jegyzet</h5><p>Az EU digitális szolgáltatásokról szóló rendelete (DSA) a nagyon nagy platformoktól nyilvános hirdetéstárat ír elő, és a hirdetést az utolsó megjelenése után még egy évig meg kell őrizniük. Ezért láthatod Magyarországról a Meta és a TikTok hirdetéseit is, nem csak a politikaiakat. A Google Átláthatósági Központja 2023 óta mutatja az ellenőrzött hirdetők hirdetéseit: mikor futott utoljára, milyen formátumban, melyik régióban. A versenytárs hirdetésére azért ne kattints, mert a hirdető kattintásonként fizet. A Google az ilyen, valódi érdeklődés nélküli kattintásokat érvénytelennek tekinti és kiszűri, de a hirdetéstárban mindent megnézhetsz kattintás nélkül.</p></div></div>
+<div data-n="t1"><h4>Bemutató · a keresőben és a hirdetéstárakban · 1–3. és 7. szempont</h4><p class="src top">Forrás: Google Ads Átláthatósági Központ; Meta Hirdetéstár; mindkettő megnézve 2026. október 27-én</p><div class="hj"><h5>Jegyzet</h5><p>Egy kis márka sokszor nem hirdet, és ez nem hiba, hanem döntés vagy lehetőség hiánya. A kérdés az, hogy ahol szándék van, ott van-e. Ha valaki a „vegán mártogatós” kifejezésre keres, és a Tunki-Tunki nincs ott sem fizetett, sem organikus helyen, akkor az a rés. Érdekes, hogy a Tunki-Tunkiról mások beszélnek a hirdetéseikben: ez a 6. szempont, a mások hangja, fizetett formában.</p></div></div>
+<div data-n="t2"><h4>Bemutató · Instagram, Facebook, TikTok · 2–6. szempont</h4><p class="src top">Forrás: a márkák nyilvános profiljai, megnézve az alkalom előtt</p><div class="hj"><h5>Jegyzet</h5><p>A Tunki-Tunki weboldala a Facebookra és az Instagramra linkel, TikTokra és YouTube-ra nem (2026. október 11-én ellenőrizve), az Instagram-fióknak 3568 követője van (2026. október 27.). A Pöttyös profiljait élőben nézzük meg. Mindkét márkánál ugyanazt figyeld: hol van jelen, mi az első sor vagy az első három másodperc, milyen hosszú a szöveg, és mit írnak a kommentekben. Ez a 2–6. szempont.</p></div></div>
+<div data-n="t3"><h4>Bemutató · összevetés</h4><p class="src top">Forrás: oktató; Google Ads Átláthatósági Központ és Meta Hirdetéstár, megnézve 2026. október 27-én</p><div class="hj"><h5>Jegyzet</h5><p>A mátrix a két márkát négy helyen veti össze. A kis márka nem hirdet, a nagy mindenhol. Ez önmagában nem ítélet: a kérdés az, hogy ott van-e a márka, ahol szándék van, és ugyanazt mondja-e mindenhol. Az egy mondat sablonja a beadandó első mezője is lesz.</p></div></div>
+<div data-n="g1"><h4>A negyedik beadandó · Csatornatérkép üzenetenként</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Nem javítotok és nem terveztek, hanem visszafejtitek, mit csinál a márka a csatornáin, és miért. Ha a márkátok nincs jelen egy csatornán, az nem üres mező: leírjátok, mi jön, ha valaki a márka kategóriájára keres ott, és ki van ott helyettetek. Ezt a csatornatérképet a 7. alkalmon egy másik csapat fogja használni.</p></div></div>
+<div data-n="lev4"><h4>Levelező gyakorlat</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Kettesben dolgoztok a saját márkátokon. Az egyik a keresőt és egy AI-választ nézi, a másik a Metát. Ha marad idő, a videó fület is kitölthetitek. A végén együtt írjátok meg az egy mondatot, és a Beküldés gombbal adjátok le.</p></div></div>
+<div data-n="g2"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ma azt láttad, hogy a csatorna állapot, nem felület. Jövő héten azt nézzük meg, mennyibe kerül ott lenni, és mi az, amit bérlünk, és mi az, amit építünk. Akkor a Facebook és a Google Ads hirdetési fiókjába is belenézünk.</p></div></div>
+</aside>
+
+<div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
+<div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
+<div class="revout" id="revout"><h2>Megjegyzések</h2><p class="small muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár (Esc)</button></p></div>
+
+<script id="lev-js">
+/* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
+(function(){
+  var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
+  var SKIP=["c3", "a1", "b3", "b5", "b6", "s3", "s5", "t2", "g1"], TXT={"2026. november 2.": "2026. november 6.", "Legközelebb, 2026. november 9-én: mennyiért, mit bérlünk és mit építünk?": "Következik: mennyiért, mit bérlünk és mit építünk?"};
+  [].forEach.call(document.querySelectorAll('section.slide'),function(s){
+    var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
+    if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
+  });
+  if(!LEV) return;
+  document.documentElement.classList.add('lev');
+  [].forEach.call(document.querySelectorAll('section.slide *'),function(e){
+    if(e.children.length) return; var t=e.textContent.trim(); if(TXT.hasOwnProperty(t)) e.textContent=TXT[t];
+  });
+  var v=document.getElementById('ver'); if(v) v.textContent=v.textContent+' · levelező';
+})();
+</script>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')),i=0,notes=document.getElementById('notes'),pos=document.getElementById('pos');
+  function show(n){
+    n=Math.max(0,Math.min(slides.length-1,n));
+    slides[i].classList.remove('cur');i=n;slides[i].classList.add('cur');
+    pos.textContent=(i+1)+' / '+slides.length;
+    var sec=slides[i].getAttribute('data-sec')||'ep4'; [].forEach.call(document.querySelectorAll('.strip a[data-sec]'),function(a){a.classList.toggle('on',a.getAttribute('data-sec')===sec)});
+    var key=slides[i].getAttribute('data-notes');
+    [].forEach.call(notes.children,function(d){d.style.display=d.getAttribute('data-n')===key?'block':'none'});
+    location.hash='d'+(i+1);
+  }
+  function step(){
+    var s=null;
+    if(s){s.classList.add('in');return true}return false;
+  }
+  function next(){if(!step())show(i+1)}
+  function prev(){show(i-1)}
+  document.addEventListener('keydown',function(e){
+    if(e.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)){return}
+    if(e.key==='ArrowRight'||e.key==='PageDown'){next();e.preventDefault()}
+    else if(e.key===' '){next();e.preventDefault()}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){prev();e.preventDefault()}
+    else if(e.key==='n'||e.key==='N'){notes.classList.toggle('open')}
+    else if(e.key==='j'||e.key==='J'){document.body.classList.toggle('rev')}
+    else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}
+    else if(e.key==='Escape'){notes.classList.remove('open');var mt=document.getElementById('minta');if(mt)mt.classList.remove('open');document.getElementById('revbox').classList.remove('open');document.getElementById('revout').classList.remove('open')}
+  });
+  document.querySelectorAll('[data-nav]').forEach(function(b){b.addEventListener('click',function(){b.getAttribute('data-nav')==='1'?next():prev()})});
+  (function(){var j=document.getElementById('jump');slides.forEach(function(sl,k){var h=sl.querySelector('h1,h2');var t=(h?h.textContent:(sl.querySelector('.kicker')||{}).textContent||'').replace(/\s+/g,' ').trim();if(t.length>72)t=t.slice(0,70)+'…';var a=document.createElement('a');a.href='#d'+(k+1);a.innerHTML='<i>'+(k+1)+'.</i><span></span>';a.lastChild.textContent=t;a.addEventListener('click',function(e){e.preventDefault();j.classList.remove('open');show(k)});j.appendChild(a)});
+    pos.addEventListener('click',function(e){e.stopPropagation();[].forEach.call(j.children,function(a,k){a.classList.toggle('cur',k===i)});j.classList.toggle('open');var c=j.children[i];if(c)j.scrollTop=c.offsetTop-j.clientHeight/2});
+    document.addEventListener('click',function(e){if(!j.contains(e.target))j.classList.remove('open')});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')j.classList.remove('open')});})();
+  document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(+a.getAttribute('data-go'))})});
+  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
+
+  document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var t=b.getAttribute('data-open');var el=document.getElementById(t);if(t==='notes'){notes.classList.toggle('open')}else{el.classList.add('open')}})});
+  document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();document.getElementById(b.getAttribute('data-close')).classList.remove('open')})});
+
+  /* ===== javító mód: J billentyű; a megjegyzések a böngészőben maradnak, a Lista kimentése adja ki őket ===== */
+  var REVSEL='.slide h1,.slide h2,.slide h3,.slide p,.slide li,.slide td,.slide th,.slide .blocks>div,.slide .ep,.slide .triad>div,.slide .cols3>div,.slide .task,.notes .hj p,.notes h4';
+  var REVQ='h1,h2,h3,h4,p,li,td,th,.blocks>div,.ep,.triad>div,.cols3>div,.task';
+  var REVKEY='om2026-rev-ep4', rev={}, revTarget=null;
+  try{rev=JSON.parse(localStorage.getItem(REVKEY)||'{}')}catch(e){rev={}}
+  function revSave(){try{localStorage.setItem(REVKEY,JSON.stringify(rev))}catch(e){} document.getElementById('revcount').textContent=Object.keys(rev).length; revMark()}
+  function slideNo(el){var sl=el.closest('.slide'); if(sl)return slides.indexOf(sl)+1; return i+1}
+  function revId(el){ var sl=el.closest('.slide'), inNotes=!!el.closest('.notes'); var root=sl||document.getElementById('notes'); var all=[].slice.call(root.querySelectorAll(REVQ)); return (inNotes?'j':'d')+slideNo(el)+'-'+all.indexOf(el)}
+  function revText(el){ var parts=[]; el.childNodes.forEach(function(n){ var t=(n.textContent||'').trim(); if(t)parts.push(t) }); return parts.join(' · ') }
+  function revMark(){ [].forEach.call(document.querySelectorAll('.rev-marked'),function(e){e.classList.remove('rev-marked')}); Object.keys(rev).forEach(function(k){var e=rev[k].el; if(e)e.classList.add('rev-marked')}) }
+  function revOpen(el,x,y){ revTarget=el; var id=revId(el); var box=document.getElementById('revbox'); document.getElementById('revorig').textContent=revText(el); document.getElementById('revtext').value=rev[id]?rev[id].note:''; box.style.left=Math.min(x,window.innerWidth-560)+'px'; box.style.top=Math.min(y,window.innerHeight-260)+'px'; box.classList.add('open'); document.getElementById('revtext').focus() }
+  document.addEventListener('click',function(e){ if(!document.body.classList.contains('rev'))return; if(e.target.closest('#revbox,#revbar,#revout,button,input,select,textarea,a'))return; var el=e.target.closest(REVSEL); if(!el)return; e.preventDefault(); e.stopPropagation(); revOpen(el,e.clientX,e.clientY) },true);
+  document.getElementById('revsave').addEventListener('click',function(){ var t=document.getElementById('revtext').value.trim(); var id=revId(revTarget); if(t){rev[id]={slide:slideNo(revTarget),where:revTarget.closest('.notes')?'jegyzet':'dia',orig:revText(revTarget),note:t,el:revTarget}}else{delete rev[id]} revSave(); document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revdel').addEventListener('click',function(){ delete rev[revId(revTarget)]; revSave(); document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revcancel').addEventListener('click',function(){ document.getElementById('revbox').classList.remove('open') });
+  document.getElementById('revexport').addEventListener('click',function(){ var keys=Object.keys(rev).sort(function(a,b){return rev[a].slide-rev[b].slide}); var out=keys.map(function(k){var r=rev[k]; return r.slide+'. dia'+(r.where==='jegyzet'?' (jegyzet)':'')+'\nEredeti: '+r.orig+'\nJavítás: '+r.note}).join('\n\n'); if(!out)out='Nincs megjegyzés.'; document.getElementById('revouttext').value=out; document.getElementById('revout').classList.add('open'); try{navigator.clipboard.writeText(out)}catch(e){} });
+  document.getElementById('revoutclose').addEventListener('click',function(){document.getElementById('revout').classList.remove('open')});
+  document.getElementById('revclear').addEventListener('click',function(){ if(confirm('Minden megjegyzés törlése?')){rev={};revSave()} });
+  document.getElementById('revoff').addEventListener('click',function(){document.body.classList.remove('rev')});
+  /* a tárolt megjegyzések elemhez kötése betöltéskor */
+  (function(){ var pending=Object.keys(rev); if(!pending.length)return; var map={}; slides.forEach(function(sl,idx){ [].slice.call(sl.querySelectorAll(REVQ)).forEach(function(el,j){map['d'+(idx+1)+'-'+j]=el}) }); var nAll=[].slice.call(document.getElementById('notes').querySelectorAll('h1,h2,h3,h4,p,li,td,th')); pending.forEach(function(k){ if(k[0]==='d'){rev[k].el=map[k]} else { var m=nAll.filter(function(el){return el.textContent.trim()===rev[k].orig})[0]; rev[k].el=m } }); revSave() })();
+  var m=location.hash.match(/^#d(\d+)$/);show(m?+m[1]-1:0);
+})();
+</script>
+<script>
+/* ===== 3. alkalom: interaktív diák ===== */
+(function(){
+  function seg(root,cb){var bs=root.querySelectorAll('.seg button');bs.forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();bs.forEach(function(x){x.classList.toggle('on',x===b)});cb(b.getAttribute('data-v'))})});}
+  document.querySelectorAll('[data-ix="uxui"]').forEach(function(r){var m=r.querySelector('.uxm');seg(r,function(v){m.classList.toggle('ui',v==='ui');r.querySelector('.dec-ux').hidden=v!=='ux';r.querySelector('.dec-ui').hidden=v!=='ui'})});
+  document.querySelectorAll('[data-ix="eye"]').forEach(function(r){seg(r,function(v){r.classList.toggle('on',v==='1')})});
+  document.querySelectorAll('[data-ix="lay"]').forEach(function(r){var w=r.querySelector('.lay-wf');w.classList.add('a');seg(r,function(v){w.classList.remove('a','b');w.classList.add(v)})});
+  /* v0.18: visszajelzés-dia */
+  document.querySelectorAll('[data-ix="fb"]').forEach(function(r){r.querySelectorAll('.fb-go').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var w=b.closest('.fb-wf'),n=w.querySelector('.fb-n'),m=w.querySelector('.fb-msg');n.textContent=(+n.textContent)+1;if(b.getAttribute('data-m')==='good'){b.textContent='✓ A kosárban van';b.classList.add('done');m.innerHTML='Hozzáadtuk a kosárhoz. <u>Tovább a pénztárhoz →</u><br>1 Kosár · 2 Adatok · 3 Fizetés'}else{m.textContent=''}})})});
+  document.querySelectorAll('[data-ix="btn"]').forEach(function(r){var w=r.querySelector('.btn-wf'),c=r.querySelector('.btn-cap');seg(r,function(v){w.classList.toggle('one',v==='1');c.textContent=v==='1'?'Egy kiemelt gomb, a többi szövegként: a szem tudja, hova menjen.':'Négy egyforma gomb: négy döntés. Minél több az egyenrangú választás, annál lassabb a döntés.'})});
+  document.querySelectorAll('[data-ix="txt"]').forEach(function(r){seg(r,function(v){r.querySelector('.txt-a').hidden=v!=='a';r.querySelector('.txt-b').hidden=v!=='b'})});
+  document.querySelectorAll('[data-ix="mm"]').forEach(function(r){var o=r.querySelector('.mm-out');r.querySelectorAll('.mm-opts button').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();r.querySelectorAll('.mm-opts button').forEach(function(x){x.classList.remove('ok','no')});var good=b.getAttribute('data-ok')==='1';b.classList.add(good?'ok':'no');o.textContent=b.getAttribute('data-fb')})})});
+  document.querySelectorAll('[data-ix="flash"]').forEach(function(r){var w=r.querySelector('.flash-wf'),q=r.querySelector('.flash-q');r.querySelector('.btn-big').addEventListener('click',function(e){e.stopPropagation();q.textContent='';w.classList.add('show');setTimeout(function(){w.classList.remove('show');q.textContent='Egy másodpercig láttad. A döntés ennél hússzor gyorsabb. Mit láttál? Tetszett?'},1000)})});
+  document.querySelectorAll('[data-ix="form"]').forEach(function(r){var bad=r.querySelector('.f-bad'),bm=r.querySelector('.f-msg.bad'),mail=r.querySelector('.f-mail'),ok=r.querySelector('.f-ok'),good=r.querySelector('.f-good'),gm=r.querySelector('.f-msg.good');r.querySelectorAll('input,button').forEach(function(x){x.addEventListener('click',function(e){e.stopPropagation()})});bad.addEventListener('click',function(){r.querySelectorAll('.phone input:not(.f-mail)').forEach(function(i){i.value=''});bm.textContent='Hiba történt. Kérjük, töltse ki újra az űrlapot.'});mail.addEventListener('input',function(){var v=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value);ok.textContent=mail.value?(v?'Rendben.':'Hiányzik még valami a címből.'):''});good.addEventListener('click',function(){gm.textContent=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value)?'Elküldtük. Nézd meg a postafiókodat, 1 percen belül ott lesz.':'Írd be az e-mail-címed, és már küldjük is.'})});
+  document.querySelectorAll('[data-ix="gw"]').forEach(function(r){var lv=70,k=0,t=r.querySelector('.tank i'),n=r.querySelector('.tank b'),ol=r.querySelector('.gw-steps');var S=[['Megérkezik egy hirdetésből a termékoldalra',0],['Nem találja a szállítási díjat',-15],['A kosárban kiderül: regisztrálnia kell',-20],['Van „vendégként folytatom” gomb',+10],['Az űrlap hibánál kitörli, amit beírt',-25],['A címet a böngésző magától kitölti',+5],['A végén: „Köszönjük, a csomagot holnap hozzuk”',+10]];function draw(){t.style.height=Math.max(0,lv)+'%';t.style.background=lv<30?'#C0392B':lv<50?'var(--marker)':'var(--cobalt)';n.textContent=Math.max(0,lv)}r.querySelector('.gw-next').addEventListener('click',function(e){e.stopPropagation();if(k>=S.length)return;var s=S[k++];lv+=s[1];var li=document.createElement('li');li.innerHTML='<span></span><span class="d '+(s[1]<0?'m':'p')+'">'+(s[1]>0?'+':'')+(s[1]||'')+'</span>';li.firstChild.textContent=s[0];ol.appendChild(li);draw()});r.querySelector('.gw-reset').addEventListener('click',function(e){e.stopPropagation();lv=70;k=0;ol.innerHTML='';draw()});draw()});
+})();
+
+</script>
+
+<script>
+/* 4. alkalom: találati oldal drótváz, kattintásra mutatja, melyik találat milyen */
+(function(){document.querySelectorAll('[data-ix="serp"] .serp-i').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();b.setAttribute('data-shown',b.getAttribute('data-shown')?'':b.getAttribute('data-t'))})})})();
+</script>
+<script id="fit-js">
+/* ha egy dia nem fér ki, csak azt az egy diát kicsinyíti, legfeljebb 76%-ig */
+(function(){
+  /* a 3. deck betűméretei rem-alapúak, ezért itt a dia tartalmát kicsinyítjük (zoom), nem a betűt */
+  function fit(s){ if(!s.classList.contains('cur')) return; var ch=[].slice.call(s.children); ch.forEach(function(c){c.style.zoom=''}); var f=1;
+    while(s.scrollHeight>s.clientHeight+2 && f>0.77){ f-=0.03; ch.forEach(function(c){c.style.zoom=f.toFixed(2)}); } }
+  var sl=[].slice.call(document.querySelectorAll('section.slide'));
+  var mo=new MutationObserver(function(m){ m.forEach(function(r){ fit(r.target); }); });
+  sl.forEach(function(s){ mo.observe(s,{attributes:true,attributeFilter:['class']}); });
+  function cur(){ var c=document.querySelector('section.slide.cur'); if(c) fit(c); }
+  window.addEventListener('resize',cur); window.addEventListener('load',cur);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(cur);
+  cur();
+})();
+</script>
+
+</body>
+</html>
