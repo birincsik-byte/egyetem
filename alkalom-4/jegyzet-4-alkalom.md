@@ -28,7 +28,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 ### 1. Címlap
 
-**A dián:** 2026. november 2. · A csatornák nyelve · Milyen lehetőségeink vannak elérni a vevőt. Alatta: „A tematikából: social, keresőhirdetés, SEO, TikTok és videós platformok.”
+**A dián:** 2026. november 2. · A csatornák nyelve · Milyen lehetőségeink vannak elérni a vevőt. Alatta az 1. alkalom táblázatának mai sora, kiemelve: 4. Elérés | „Ott legyünk, ahol a vevő.” | „Ott legyünk, ahol a szándék van, és úgy beszéljünk, ahogy ott beszélnek.” | „A platformválasztás megszűnik ízlés lenni, és döntési szemponttá válik.” Legalul a tematikai pont szó szerint: „Platformok és eszközök: social, keresőhirdetés, SEO, automatizált email marketing, TikTok és videós platformok.”
 
 **Forrás:** oktató; a hivatalos tematika
 
