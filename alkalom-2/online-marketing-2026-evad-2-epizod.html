@@ -314,8 +314,11 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 :is(.slide,#_fonts) :is(.cond b,td b,td strong){font-weight:600!important}
 </style>
 <style id="lev-css">
-/* évadsáv: 2026. november 2-től a nappalin sem látszik, mint a levelezőn; a kezdőlap a lábléc ⌂ gombjával érhető el */
-.strip{display:none!important}
+/* évadsáv (2026. november 2.): a dia fölött csak egy vékony csík, ráállva lenyílik; nappalin és levelezőn is */
+.strip{display:flex!important;height:10px!important;overflow:hidden!important;transition:height .2s,box-shadow .2s;box-shadow:none!important;z-index:45}
+.strip:hover,.strip:focus-within{height:64px!important;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)!important}
+.strip a>*{opacity:0;transition:opacity .15s}
+.strip:hover a>*,.strip:focus-within a>*{opacity:1}
 .deck{top:0!important}
 .notes,.revout,.sheet{top:0!important}
 .lev-task ol{margin:.6em 0 0 1.2em}
@@ -809,7 +812,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.40 · 2026. november 2.</span></div>
+<div class="hint">← → lapozás · szóköz: következő lépés · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.41 · 2026. november 2.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -977,5 +980,10 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
   cur();
 })();
 </script>
+<script>/* levelezőn az évadsáv a levelezős dátumokat mutatja */
+(function(){if(!document.documentElement.classList.contains('lev'))return;
+var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'10.\u00a016.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
+[].forEach.call(document.querySelectorAll('.strip a'),function(a){var b=a.querySelector('b'),s=a.querySelector('span');if(!b||!s||!D[b.textContent.trim()])return;
+s.innerHTML=s.innerHTML.replace(/\d\d\.(\s|&nbsp;)+\d\d\.\s*$/,D[b.textContent.trim()]);});})();</script>
 </body>
 </html>

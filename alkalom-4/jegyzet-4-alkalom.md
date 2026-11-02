@@ -20,15 +20,16 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 - A nagy márka a bemutatóban a Pöttyös (Túró Rudi).
 - Csapatmunka-szavazás a 4. alkalomnál nincs.
 - A versenytárs csak a kereső fülön szerepel, egy sorban.
-- Alapértelmezés szerint ment, mert nem jött rá válasz: a Kingsnorth-féle határ csak a jegyzetbe kerül, a 26. dián a tanulság egyedül áll; a 3. dia (visszamutatás) általános marad, csapatmondatok nélkül.
+- 2026. november 2.: az 5. dia (egyéni feladat, „Két vásárlásod”) kikerült, a diák számozása eggyel előrébb lépett.
+- Alapértelmezés szerint ment, mert nem jött rá válasz: a Kingsnorth-féle határ csak a jegyzetbe kerül, a 25. dián a tanulság egyedül áll; a 3. dia (visszamutatás) általános marad, csapatmondatok nélkül.
 
 ---
 
-## Nyitás (5 dia)
+## Nyitás (4 dia)
 
 ### 1. Címlap
 
-**A dián:** 2026. november 2. · A csatornák nyelve · Milyen lehetőségeink vannak elérni a vevőt. Alatta az 1. alkalom táblázatának mai sora, kiemelve: 4. Elérés | „Ott legyünk, ahol a vevő.” | „Ott legyünk, ahol a szándék van, és úgy beszéljünk, ahogy ott beszélnek.” | „A platformválasztás megszűnik ízlés lenni, és döntési szemponttá válik.” Legalul a tematikai pont szó szerint: „Platformok és eszközök: social, keresőhirdetés, SEO, automatizált email marketing, TikTok és videós platformok.”
+**A dián:** 2026. november 2. · A csatornák nyelve · Milyen lehetőségeink vannak elérni a vevőt. Alatta az 1. alkalom táblázatának Elérés sora egy kártyán: Innen: „Ott legyünk, ahol a vevő.” → Ide jussunk el: „Ott legyünk, ahol a szándék van, és úgy beszéljünk, ahogy ott beszélnek.” Alatta, címke nélkül: „A platformválasztás megszűnik ízlés lenni, és döntési szemponttá válik.” Legalul a tematikai pont szó szerint: „Platformok és eszközök: social, keresőhirdetés, SEO, automatizált email marketing, TikTok és videós platformok.”
 
 **Forrás:** oktató; a hivatalos tematika
 
@@ -61,19 +62,11 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A mai nap egyetlen gondolatra épül: nem az számít, melyik felületen vagy, hanem az, hogy az ember milyen állapotban van ott. Aki keres, már tudja, mit akar. Aki görget, nem akar semmit, csak ott van. A kettőhöz nem lehet ugyanúgy beszélni.
 
-### 5. Egyéni feladat · 5 perc · írásban, magadnak
-
-**A dián:** „Mit kerestél rá utoljára a Google-ben, mielőtt vettél valamit? És mi volt az utolsó dolog, amit úgy vettél meg, hogy nem kerested, hanem eléd jött?” Alatta: hol láttad először, és hol vetted meg.
-
-**Forrás:** oktató
-
-**Jegyzet:** Írd le mindkettőt egy-egy sorban. Nem kell beadni. A 7. dián visszatérünk rá: a két válaszod a mai nap két fele. Az egyiknél te kezdeményeztél, a másiknál valaki megszakított abban, amit éppen csináltál.
-
 ---
 
 ## A blokk · A csatorna mint szándékállapot (4 dia)
 
-### 6. „Ott legyünk, ahol a vevő.” · 1. szempont: Jelenlét
+### 5. „Ott legyünk, ahol a vevő.” · 1. szempont: Jelenlét
 
 **A dián:** A kiinduló hit: „Ott legyünk, ahol a vevő.” Alatta a kérdés: elég ott lenni? Mellette: „Ha az eszközzel kezded, az nem stratégia, hanem taktika.”
 
@@ -81,15 +74,15 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A legtöbb cég így kezd: „legyünk fent mindenhol, ahol az emberek vannak”. Kingsnorth könyve szó szerint ezt írja a közösségi média első okaként: ott lenni, ahol a vásárlóid vannak. Ez nem rossz kiindulás, de nem elég. Chaffey arra figyelmeztet, hogy aki az eszközzel kezdi („csináljunk TikTokot”), az taktikát választ, nem stratégiát. A mai kérdés ezért nem az, hol van az ember, hanem az, hogy ott milyen állapotban van. Az 1. szempont, a Jelenlét, egyszerű leltár: hol van ott a márka, és hol nincs.
 
-### 7. Két helyzet, egy ember · 2. szempont: Szándékállapot
+### 6. Két helyzet, egy ember · 2. szempont: Szándékállapot
 
-**A dián:** Bal oldalon: valaki beír egy keresést. Jobb oldalon: ugyanő este görget. „Ugyanaz az ember, két állapot.” Alatta a te 5. diás válaszaid két oszlopban: kerestem / elém jött.
+**A dián:** Bal oldalon: valaki beír egy keresést. Jobb oldalon: ugyanő este görget. „Ugyanaz az ember, két állapot.”
 
 **Forrás:** Kotler, Keller: Marketing Management, 19. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kingsnorth: Digital Marketing Strategy, 8. fejezet
 
 **Jegyzet:** Chaffey szerint aki keres, az konkrét terméket vagy szolgáltatást keres, ezért gyakran erős a vásárlási szándéka. Kotler és Keller ugyanezt mondja: aki keresésben már kifejezte az érdeklődését, az a legjobb potenciális vevő. A közösségi médiában fordított a helyzet: Kotler és Keller szerint ott az ember másokhoz akar kapcsolódni, ezért a figyelem megszerzése és a meggyőzés nehezebb. Kingsnorth egy kutatást idéz, amely szerint a Facebookon az emberek általában nincsenek vásárlási hangulatban. A 2. szempont ezt kérdezi: milyen helyzetben találkozik a márkával az ember? Keres, görget, néz, vagy kérdez?
 
-### 8. Ki kezdeményez? · 3. szempont: Ki kezdeményez
+### 7. Ki kezdeményez? · 3. szempont: Ki kezdeményez
 
 **A dián:** Húzás (pull): a keresőben ő hív téged. Tolás (push): a hírfolyamban te szakítod félbe. „A hírfolyamban a megszakítás egy hüvelykujjnyi mozdulattal elutasítható.”
 
@@ -97,7 +90,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** Chaffey az online kommunikációt a húzó és a toló média keverékeként írja le. Húzó, ha az ember jön érted: keres, rákattint, feliratkozik. Toló, ha te mész hozzá: hirdetés a hírfolyamban, egy videó előtt. A kettő más nyelvet kér. Aki hív, annak válaszolni kell, gyorsan és pontosan. Akit megszakítasz, annak előbb okot kell adnod, hogy megálljon. A Marketing 4.0 szerzői szerint a közösségi médiában a hirdetés nem tudja érdemben megszakítani a tartalomfogyasztást, ezért a hirdetésnek magának is tartalomnak kell lennie.
 
-### 9. A szándék útja
+### 8. A szándék útja
 
 **A dián:** A 2. alkalom See-Think-Do-Care körei, rajtuk a csatornák: a social és a videó jellemzően a See és a Think körben kelt szándékot, a kereső a Think és a Do körben fogadja, a 3. alkalom oldala a Do körben zárja. Alul: „A social sokszor csak az első érintés. A vásárlás egy későbbi keresésből jön.”
 
@@ -109,7 +102,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 ## B blokk · A kereső: SEO, keresőhirdetés és a válasz (7 dia)
 
-### 10. A keresés: a szándék kimondva · 2. szempont
+### 9. A keresés: a szándék kimondva · 2. szempont
 
 **A dián:** Kétféle keresés. Márkanévre: „tunki tunki” (már ismeri). Kategóriára: „vegán mártogatós” (még választ). Alul: Magyarországon a keresések 95%-a a Google-ön megy (StatCounter, 2026. szeptember).
 
@@ -117,7 +110,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** Chaffey a márkanévre keresést navigációs keresésnek hívja: az ember már tudja, hová akar menni, a keresőt csak útnak használja. A kategóriára keresés más: az ember még választ, és itt dől el, hogy a márka egyáltalán szóba kerül-e. Kotler és Keller szerint az általános keresőszavak a márkaépítésre jók, a konkrétabbak a vásárlásra. A gyakorlatban mindkettőt megnézitek: ha a márkanévre a márka nem jön fel elsőként, az baj; ha a kategóriára nincs ott, az rés. A StatCounter adata nem embereket, hanem oldalmegtekintéseket számol, de a nagyságrendet jól mutatja: a magyar keresés gyakorlatilag a Google.
 
-### 11. A találati oldal · 1. és 3. szempont
+### 10. A találati oldal · 1. és 3. szempont
 
 **A dián:** Drótvázas találati oldal: fizetett találatok („Szponzorált” címkével), AI-áttekintés, organikus találatok, térkép. Interakció: kattints rá, melyik fizetett, melyik nem.
 
@@ -125,7 +118,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A találati oldal már rég nem tíz kék link. Fent lehetnek fizetett hirdetések, „Szponzorált” felirattal. Lehet egy mesterséges intelligenciával írt összefoglaló, amely a kérdésre maga válaszol. Lehet térkép, termékek, videók. Az organikus találatok sokszor csak ezek alatt jönnek. Amikor a márkátokat nézitek, mindig jegyezzétek fel, hol jelenik meg: fizetett helyen, organikusan, az összefoglalóban, vagy sehol. A drótváz egyszerűsítés; az élő oldal keresésenként és eszközönként más.
 
-### 12. SEO: lassan indul, sokáig hoz · 1. szempont
+### 11. SEO: lassan indul, sokáig hoz · 1. szempont
 
 **A dián:** Ami jó benne: célzott és hiteles látogató. Ami az ára: lassú, kiszámíthatatlan, és nem épít ismertséget. „A keresőben csak azt találják meg, akit már keresnek.”
 
@@ -133,7 +126,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A keresőoptimalizálás (SEO) azt jelenti, hogy az oldal a fizetett helyek alatt, ingyen jelenik meg a releváns keresésekre. Chaffey szerint az előnye, hogy aki így érkezik, konkrét dolgot keres, tehát minősített látogató. A hátránya, hogy gyenge az ismertség építésében: a keresőben csak az találja meg a márkát, aki már ismeri, vagy aki a problémájára keres. Kingsnorth szerint a SEO lassan indul, de ha beindul, gyorsul. Ezért a keresőoptimalizálás befektetés, nem kampány.
 
-### 13. Keresőhirdetés: nem a legtöbbet fizető nyer · 5. és 7. szempont
+### 12. Keresőhirdetés: nem a legtöbbet fizető nyer · 5. és 7. szempont
 
 **A dián:** Három hirdetés a „fehér sportzokni” keresésre: „Vegyél fehér zoknit még ma.” / „Fehér sportzokni.” / „Olcsó zokni itt.” Interakció: melyikre kattintanál? Utána: a Google szerint a hirdetés minősége három dolgon múlik: várható átkattintás, a hirdetés relevanciája, a céloldal élménye.
 
@@ -141,7 +134,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A keresőhirdetés ugyanarra a kimondott szándékra válaszol, mint az organikus találat, csak fizetett helyen, „Szponzorált” címkével. Ezért itt is az nyer, aki pontosan arra felel, amit az ember beírt. Sokan azt hiszik, aki többet fizet, az kerül előre. Chaffey szerint ez nem igaz: a hirdetés helyét a relevancia is eldönti, a legjobb helyet nem lehet pénzzel megvenni. Kingsnorth példájában az nyer, amelyik szó szerint azt mondja, amit az ember keresett. A Google Ads minőségi mutatója három összetevőből áll: várható átkattintási arány, a hirdetés relevanciája és a céloldal élménye. A Google szerint ez diagnosztikai eszköz, nem közvetlen bemenete az aukciónak, de ugyanazt méri, ami a helyezést is befolyásolja: illik-e a hirdetés a kereséshez és az oldal a hirdetéshez. Hogy mennyibe kerül egy kattintás, és hogyan épül fel egy kampány a fiókban, azt a következő alkalmon nézzük meg.
 
-### 14. Amit a hirdetés ígért · 7. szempont: Következő lépés
+### 13. Amit a hirdetés ígért · 7. szempont: Következő lépés
 
 **A dián:** A hirdetés-landing játék (`alkalom-4/hirdetes-landing-jatek.html`), hat kattintható párral: ugyanarról szól-e, ugyanaz-e az ár, ott van-e, amit keres, mit kér érte, mi áll a gombon. 5 perc.
 
@@ -149,7 +142,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A 7. szempont azt kérdezi: hová visz a hirdetés vagy a poszt, és illik-e az érkezés ahhoz, amit ígért? Ez a 3. alkalom folytatása. Ha a hirdetés „-20% minden tanfolyamra” ígéretet tesz, és a kezdőlapra visz, ahol erről semmi nincs, a látogató elveszett. Chaffey szerint ezért érdemes kulcsszó-csoportonként saját céloldalt készíteni.
 
-### 15. A kereső két arca: a találati lista és a válasz · 1. szempont
+### 14. A kereső két arca: a találati lista és a válasz · 1. szempont
 
 **A dián:** Bal: a találati lista, ahol az ember választ és kattint. Jobb: a válasz (Google AI-áttekintés, AI mód, ChatGPT, Perplexity), ahol a gép választ helyette és összefoglal. A kérdés: megemlíti-e a márkátokat, és honnan tudja, amit mond?
 
@@ -157,7 +150,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A Google súgója szerint az AI-áttekintések és az AI mód Magyarországon, magyar nyelven is elérhetők. Az AI módot a Google 2025 októberében bővítette újabb nyelvekre és országokra; a magyar sajtó szerint 2025. október 8-án érkezett meg nálunk. Ilyenkor a kereső nem tíz linket ad, hanem megírja a választ, és mellé teszi a forrásokat. Ha valaki azt kérdezi, „milyen vegán mártogatóst vigyek egy bulira”, a válasz vagy megemlíti a márkát, vagy nem. A márkának ezt nem lehet megvenni, és nem is lehet közvetlenül beállítani. A Google hivatalos útmutatója szerint az AI-funkciókban való megjelenéshez nincs külön követelmény vagy különleges optimalizálás: a jó keresőoptimalizálás szabályai érvényesek.
 
-### 16. GEO: a generatív keresés optimalizálása · 1. és 6. szempont
+### 15. GEO: a generatív keresés optimalizálása · 1. és 6. szempont
 
 **A dián:** „GEO (Generative Engine Optimization): hogyan kerül egy tartalom a mesterséges intelligencia válaszába.” A kutatás egy mondatban: idézet, adat és forrásmegjelölés növelte a láthatóságot; a kulcsszóhalmozás nem.
 
@@ -169,7 +162,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 ## C blokk · Social (5 dia)
 
-### 17. A socialban nem vásárolni van · 2. szempont
+### 16. A socialban nem vásárolni van · 2. szempont
 
 **A dián:** „Az emberek kapcsolódni akarnak, nem márkával beszélgetni.” Mellette három könyv egy-egy mondata, a magyar fordításban.
 
@@ -177,7 +170,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** Ez a kulcsgondolat második fele: a socialban a szándékot neked kell megteremtened. Kotler és Keller szerint a közösségi hálókon az emberek másokhoz akarnak kapcsolódni. Chaffey szerint nehéz bevonni őket, amikor éppen az ismerőseikkel vannak, és lehet, hogy nem is akarnak márkával foglalkozni. Kingsnorth szerint ott általában nincsenek vásárlási hangulatban. Magyarországon a DataReportal 2026-os jelentése szerint a Facebook hirdetési elérése 5,55 millió fő, az Instagramé 2,85 millió, a TikToké a 18 év felettiek között 3,40 millió. Ez nem a felhasználók száma, hanem amennyi embert a platform hirdetési eszköze szerint el lehet érni, de jól mutatja, hol van tömeg.
 
-### 18. Beszélgetés, nem bemondás · 5. szempont: Nyelv
+### 17. Beszélgetés, nem bemondás · 5. szempont: Nyelv
 
 **A dián:** Két poszt ugyanarról. Az egyik sajtóközlemény-nyelven, a másik úgy, ahogy ott beszélnek. Interakció: melyik illik a hírfolyamba, és miért? Bizonyítékkal, nem ízléssel. A két poszt kitalált szemléltetés.
 
@@ -185,7 +178,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** Chaffey a Cluetrain-kiáltványt idézi: az emberek közti beszélgetés emberinek hangzik. A „hallgasd meg és viselkedj úgy, mint a felhasználók” aranyszabályt is idézi. Kotler és Keller egy gyakorlati tanácsa: a cégek ne olyan nyelven beszéljenek a vásárlóikkal, ami egy sajtóközleménybe illik. Az 5. szempont, a Nyelv, ezt kérdezi: milyen formában, hosszban és hangon szól a márka, és mi van az első másodpercekben vagy az első sorban?
 
-### 19. Platformonként más dolga van · 4. és 8. szempont
+### 18. Platformonként más dolga van · 4. és 8. szempont
 
 **A dián:** Egy gyakorló marketinges tapasztalata: „az egyik platform ügyfélszolgálat, a másik szórakoztató felület”. Kotler és Keller: „más hálózat, más haszon”.
 
@@ -193,7 +186,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** Chaffey könyvében a Vision Express marketingese elmondja, hogy náluk a Twitter inkább ügyfélszolgálati eszköz, a Facebook pedig szórakoztató felület, ami a promócióra is jó. Azt is mondja, hogy ha mindenhol ugyanazt csinálják, az erőforrás túl vékonyan terül szét. Kotler és Keller szerint a különböző hálózatok különböző hasznot adnak a cégeknek, és a közösségi média soha nem lehet az egyetlen kommunikációs forrás. A 4. szempont, az Üzenet, azt kérdezi: mit mond a márka egy mondatban az adott helyen? A 8. szempont, az Összevetés, azt, hogy ugyanazt mondja-e mindenhol.
 
-### 20. A social hirdetés nem a kereső hirdetése · 3. és 5. szempont
+### 19. A social hirdetés nem a kereső hirdetése · 3. és 5. szempont
 
 **A dián:** A keresőhirdetés válaszol. A hírfolyam-hirdetés megszakít, ezért okot kell adnia a megállásra. „A hirdetés itt maga is tartalom.”
 
@@ -201,7 +194,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** Kingsnorth külön kimondja: a közösségi hirdetés ne legyen másolata a többi hirdetésnek, mert más állapotban éri el az embert. A keresőben elég azt mondani, amit keresett. A hírfolyamban nincs kimondott szándék, ezért a hirdetésnek magának kell érdekesnek lennie. Hogy mi ebből fizetett, mi saját és mi megszerzett, és mennyi pénz megy fizetett hirdetésre, az a következő, 5. alkalom kérdése.
 
-### 21. Amit mások mondanak rólad · 6. szempont: Mások hangja
+### 20. Amit mások mondanak rólad · 6. szempont: Mások hangja
 
 **A dián:** „Az emberek jobban hisznek a barátaiknak, a családjuknak és a követőknek, mint a márkának.” Kommentek, értékelések, megosztások, és amit a gép idéz.
 
@@ -213,7 +206,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 ## D blokk · TikTok és videós platformok (4 dia)
 
-### 22. Az első öt másodperc · 5. szempont: Nyelv
+### 21. Az első öt másodperc · 5. szempont: Nyelv
 
 **A dián:** „A kihagyható világ öt másodperce.” A YouTube-on a kihagyható hirdetést öt másodperc után át lehet ugrani. A TikTok azt javasolja, hogy a lényeg az első három másodpercben jelenjen meg. Interakció: két videó eleje, öt másodperc után megállítjuk: kié, és miről szól?
 
@@ -221,7 +214,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A Marketing 4.0 szerzői a kihagyható világ öt másodperces kihívásának hívják ezt. A Google súgója szerint a kihagyható YouTube-hirdetésnél a néző az első öt másodperc után továbbléphet. A TikTok saját hirdetési útmutatója azt javasolja, hogy a mondanivaló az első három másodpercben jelenjen meg, a figyelemfelkeltő nyitás pedig az első hat másodpercben legyen. Ugyanez az útmutató függőleges, 9:16-os képet, hangot és feliratot javasol, és inkább házi, nem túlcsiszolt stílust. A két videót az alkalom előtt választjuk ki.
 
-### 23. A szórakoztatás szabályai · 5. és 6. szempont
+### 22. A szórakoztatás szabályai · 5. és 6. szempont
 
 **A dián:** „Ne hirdetést csinálj, hanem TikTokot.” (a TikTok saját jelmondata). Alatta: a videós platformon a szórakoztatás szabályai érvényesek, nem az eladáséi.
 
@@ -229,7 +222,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** Kotler és Keller a vírusos terjedésről írja, hogy sokak szerint ezt inkább a szórakoztatás szabályai hajtják, mint az eladáséi. A Marketing 5.0 szerint a Z generáció nem szereti azokat a márkákat, amelyek gyártott, túl szép képet mutatnak. A TikTok a hirdetőknek 2021 óta azt mondja: „Don't Make Ads. Make TikToks.” Olyan tartalmat kér, ami illeszkedik a platform stílusához és hangjához. Ez szó szerint a tanulságod egyik fele, a platform saját szájából.
 
-### 24. A hírfolyam nem a tiéd · 1. és 3. szempont
+### 23. A hírfolyam nem a tiéd · 1. és 3. szempont
 
 **A dián:** Keresőben a kulcsszó dönt. Hírfolyamban az algoritmus: ő választja ki, kinek mutatja meg a tartalmat. A TikTok szerint a követők száma nem közvetlen tényező.
 
@@ -237,7 +230,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 **Jegyzet:** A TikTok 2020-ban leírta, mi alapján ajánl videót a „Neked” oldalon: a felhasználó interakciói (mit kedvel, oszt meg, kit követ, mit kommentel), a videó adatai (felirat, hang, hashtag), és az eszköz és a fiók beállításai (nyelv, ország). Azt is írta, hogy sem a követők száma, sem a korábbi sikeres videók nem közvetlen tényezők. A Meta 2023-ban azt írta, hogy mesterséges intelligenciával dönti el, milyen tartalom jelenik meg, és megjósolja, mennyire értékes egy tartalom az adott embernek. Ebből az oktató következtetése: a hírfolyam felfedezési csatorna, ahol az is megtalálhatja a márkát, aki sosem kereste. Ugyanezért nem a márka dönti el, ki látja.
 
-### 25. Ugyanaz a márka, más nyelven · 8. szempont: Összevetés
+### 24. Ugyanaz a márka, más nyelven · 8. szempont: Összevetés
 
 **A dián:** Egy befektetési cég a TikTokon és az Instagramon könnyedebb tartalmat posztol a fiatalabb közönségnek, és a céloldalain is ezen a nyelven folytatja.
 
@@ -249,7 +242,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 ## Összerakás (1 dia)
 
-### 26. Ugyanaz az üzenet mindenhol?
+### 25. Ugyanaz az üzenet mindenhol?
 
 **A dián, szó szerint:** „Ha ugyanaz az üzenet megy minden platformra, az nem hatékonyság, hanem annak a jele, hogy egyik platformot sem érted.”
 
@@ -261,7 +254,7 @@ Két ellenőrzött tény a bemutatóhoz (2026. október 27., élőben megnézve)
 
 ## Módszer (2 dia)
 
-### 27. A mai nap módszere: nyolc szempont, három lépés
+### 26. A mai nap módszere: nyolc szempont, három lépés
 
 **A dián:** táblázat.
 
@@ -282,7 +275,7 @@ Alatta mindhárom lépésnél ugyanaz, mint a 3. alkalomnál: Mit láttok? (hol,
 
 **Jegyzet:** A szempontok a mai elméleti diák sorrendjét követik, mindegyik mellett ott a dia címe. Ugyanúgy dolgoztok, mint a 3. alkalomnál: előbb leírjátok, amit láttok, utána megfejtitek, miért így csinálja a márka, és csak a végén ítéltek.
 
-### 28. Kívülről is látszik: a hirdetéstárak
+### 27. Kívülről is látszik: a hirdetéstárak
 
 **A dián:** Három hely, ahol bárki megnézheti egy márka hirdetéseit: Google Ads Átláthatósági Központ (adstransparency.google.com), Meta Hirdetéstár (facebook.com/ads/library), TikTok Ad Library (library.tiktok.com). Szabályok: inkognitóablakban kerestek; a versenytárs keresőhirdetésére nem kattintotok; nem kommenteltek és nem követtek be a csapat nevében.
 
@@ -296,7 +289,7 @@ Alatta mindhárom lépésnél ugyanaz, mint a 3. alkalomnál: Mit láttok? (hol,
 
 A bemutató két márkán fut: a Tunki-Tunkin (a 3. alkalom bemutatója, kis márka) és egy nagy márkán (javaslat: Pöttyös, Túró Rudi; a döntésed kell). A diák szerkezete a 3. deck bemutató-kártyáit követi: Mit látunk? Miért így? Működik?
 
-### 29. Bemutató · a keresőben és a hirdetéstárakban · 1–3. és 7. szempont
+### 28. Bemutató · a keresőben és a hirdetéstárakban · 1–3. és 7. szempont
 
 **Ellenőrzött tény, 2026. október 27.:** a Google Ads Átláthatósági Központban Magyarországra szűrve a tunkitunki.hu domainre 0 hirdetés van. A pottyos.hu domainre 81 (hirdető: FrieslandCampina Hungária). A Meta Hirdetéstárban a „tunki-tunki” keresés kb. 12 hirdetést ad, egyiket sem a Tunki-Tunki adta fel: egy ügynökség díjairól szóló poszt, egy mentes fesztivál körhintás hirdetése, egy partnerrendezvény. A „Pöttyös” keresésre kb. 120 aktív hirdetés jön, köztük a Túró Rudi oldal szeptember 16-án indult hirdetése.
 
@@ -306,7 +299,7 @@ A bemutató két márkán fut: a Tunki-Tunkin (a 3. alkalom bemutatója, kis má
 
 **Jegyzet:** Egy kis márka sokszor nem hirdet, és ez nem hiba, hanem döntés vagy lehetőség hiánya. A kérdés az, hogy ahol szándék van, ott van-e. Ha valaki a „vegán mártogatós” kifejezésre keres, és a Tunki-Tunki nincs ott sem fizetett, sem organikus helyen, akkor az a rés. Érdekes, hogy a Tunki-Tunkiról mások beszélnek a hirdetéseikben: ez a 6. szempont, a mások hangja, fizetett formában.
 
-### 30. Bemutató · Instagram, Facebook, TikTok · 2–6. szempont
+### 29. Bemutató · Instagram, Facebook, TikTok · 2–6. szempont
 
 **A dián:** élőben kitöltendő az alkalom előtt: az utolsó posztok nyelve és hossza, az első sor vagy az első másodpercek, a kommentek. A Tunki-Tunki weboldala Facebookra és Instagramra linkel, TikTokra és YouTube-ra nem (2026. október 11-én ellenőrizve).
 
@@ -314,7 +307,7 @@ A bemutató két márkán fut: a Tunki-Tunkin (a 3. alkalom bemutatója, kis má
 
 **Jegyzet:** (élőben kitöltve)
 
-### 31. Bemutató · összevetés · 8. szempont
+### 30. Bemutató · összevetés · 8. szempont
 
 **A dián:** a két márka egy mátrixban (kereső, Meta, TikTok, AI-válasz), és egy minta-mondat a sablon szerint.
 
@@ -326,7 +319,7 @@ A bemutató két márkán fut: a Tunki-Tunkin (a 3. alkalom bemutatója, kis má
 
 ## Gyakorlat és zárás (3 dia)
 
-### 32. A negyedik beadandó · Csatornatérkép üzenetenként
+### 31. A negyedik beadandó · Csatornatérkép üzenetenként
 
 **A dián:**
 1. Nyissátok meg a Csatornavizsgálatot, válasszátok ki a csapatot és a márkát.
@@ -343,7 +336,7 @@ Az egy mondat sablonja: „A [márka] a vevővel [hol] találkozik, [milyen szá
 
 **Jegyzet:** Nem javítotok és nem terveztek, hanem visszafejtitek, mit csinál a márka a csatornáin, és miért. Ha a márkátok nincs jelen egy csatornán, az nem üres mező: leírjátok, mi jön, ha valaki a márka kategóriájára keres ott, és ki van ott helyettetek. Ezt a csatornatérképet a 7. alkalmon egy másik csapat fogja használni.
 
-### 33. Zárás
+### 32. Zárás
 
 **A dián:** A tanulság szó szerint. „Legközelebb, 2026. november 9-én: mennyiért, mit bérlünk és mit építünk?”
 
@@ -375,7 +368,7 @@ Az egy mondat sablonja: „A [márka] a vevővel [hol] találkozik, [milyen szá
 
 ## Levelezős rövid változat (2026. november 6., kb. 45 perc elmélet, 45 perc gyakorlat)
 
-A levelezős mód elhagyja: 3 (visszamutatás), 6, 12, 14, 19, 21, 30. A többi marad, mert mind egy-egy szemponthoz ad elméletet. A gyakorlat ugyanaz az eszköz, kettesben: az egyik a keresőt és az AI-választ, a másik a Metát nézi; a videó fül opcionális.
+A levelezős mód elhagyja: 3 (visszamutatás), 5, 11, 13, 18, 20, 29. A többi marad, mert mind egy-egy szemponthoz ad elméletet. A gyakorlat ugyanaz az eszköz, kettesben: az egyik a keresőt és az AI-választ, a másik a Metát nézi; a videó fül opcionális.
 
 ---
 

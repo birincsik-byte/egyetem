@@ -566,12 +566,27 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .serp-i.ai{background:#F3F1FA;border-color:#C9C2E6}
 .serp-i::after{content:attr(data-shown);position:absolute;right:1em;top:50%;transform:translateY(-50%);font-weight:600;color:var(--cobalt);font-size:.85em;max-width:45%;text-align:right}
 .btn.go{background:var(--cobalt);color:#fff;font-weight:600;text-decoration:none}
-table.c1row{margin:1.4em auto .4em;max-width:62em;text-align:left}
-table.c1row td:first-child{white-space:nowrap}
+/* 4. címlap: az Elérés sor és a tematikai pont */
+.c1hero h1{margin-bottom:.15em}
+.c1shift{display:grid;grid-template-columns:minmax(0,.8fr) auto minmax(0,1.6fr);gap:.2em 1.4em;align-items:center;margin-top:1.4rem;padding:1.1rem 1.5rem;background:#fff;border:1px solid var(--line);border-radius:14px;max-width:58rem}
+.slide .c1hero small,.c1hero small{display:block;font-size:max(.62rem,13px)!important;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:.5em;font-family:var(--body)}
+.slide .c1shift .from p{font-size:var(--t-body)!important;color:var(--ink-soft);line-height:1.35}
+.c1shift .arr{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--cobalt);color:#fff;font-size:1.1rem;line-height:1;margin-top:1.1em}
+.slide .c1shift .to p{font-size:var(--t-lead)!important;line-height:1.3;font-weight:500;color:var(--ink)}
+.c1shift .add{grid-column:1/-1;margin-top:1rem;padding:.9rem 0 0 1rem;border-top:1px dashed var(--line);position:relative}
+.c1shift .add::before{content:"";position:absolute;left:0;top:.95rem;bottom:.1rem;width:4px;border-radius:2px;background:var(--marker)}
+.slide .c1shift .add p{font-size:var(--t-body)!important;line-height:1.35}
+.c1tem{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .5rem;margin-top:1.4rem;max-width:58rem}
+.c1tem small{flex-basis:100%;margin-bottom:.1em}
+.slide .c1tem span{font-size:var(--t-sm)!important;border:1px solid var(--line);border-radius:99px;padding:.25em .9em;background:#fff;color:var(--ink)}
+@media (max-width:900px){.c1shift{grid-template-columns:1fr}.c1shift .arr{transform:rotate(90deg);margin:0}}
 </style>
 <style id="lev-css">
-/* évadsáv: 2026. november 2-től a nappalin sem látszik, mint a levelezőn; a kezdőlap a lábléc ⌂ gombjával érhető el */
-.strip{display:none!important}
+/* évadsáv (2026. november 2.): a dia fölött csak egy vékony csík, ráállva lenyílik; nappalin és levelezőn is */
+.strip{display:flex!important;height:10px!important;overflow:hidden!important;transition:height .2s,box-shadow .2s;box-shadow:none!important;z-index:45}
+.strip:hover,.strip:focus-within{height:64px!important;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)!important}
+.strip a>*{opacity:0;transition:opacity .15s}
+.strip:hover a>*,.strip:focus-within a>*{opacity:1}
 .deck{top:0!important}
 .notes,.revout,.sheet{top:0!important}
 .lev-task ol{margin:.6em 0 0 1.2em}
@@ -595,16 +610,17 @@ table.c1row td:first-child{white-space:nowrap}
 <main class="deck">
 
 <!-- NYITÁS -->
-<section class="slide cur center" data-notes="c1">
+<section class="slide cur center c1hero" data-notes="c1">
   <p class="kicker">2026. november 2.</p>
   <h1>A csatornák nyelve</h1>
   <p class="lead">Milyen lehetőségeink vannak elérni a vevőt</p>
-  <table class="c1row">
-    <thead><tr><th>Alkalom</th><th>Mit hoz magával</th><th>Mire vált</th><th>Mit tesz hozzá</th></tr></thead>
-    <tbody><tr class="now"><td>4. Elérés</td><td>Ott legyünk, ahol a vevő.</td><td>Ott legyünk, ahol a szándék van, és úgy beszéljünk, ahogy ott beszélnek.</td><td>A platformválasztás megszűnik ízlés lenni, és döntési szemponttá válik.</td></tr></tbody>
-  </table>
-  <hr class="rule">
-  <p class="small muted">A tematikából · Platformok és eszközök: social, keresőhirdetés, SEO, automatizált email marketing, TikTok és videós platformok</p>
+  <div class="c1shift">
+    <div class="from"><small>Innen</small><p>Ott legyünk, ahol a vevő.</p></div>
+    <div class="arr" aria-hidden="true">→</div>
+    <div class="to"><small>Ide jussunk el</small><p>Ott legyünk, <span class="hl">ahol a szándék van</span>, és úgy beszéljünk, <span class="hl">ahogy ott beszélnek</span>.</p></div>
+    <div class="add"><p>A platformválasztás megszűnik ízlés lenni, és döntési szemponttá válik.</p></div>
+  </div>
+  <div class="c1tem"><small>A tematikából · Platformok és eszközök</small><span>social</span><span>keresőhirdetés</span><span>SEO</span><span>automatizált email marketing</span><span>TikTok és videós platformok</span></div>
 </section>
 
 <section class="slide dense" data-notes="c2" data-sec="keret">
@@ -633,16 +649,6 @@ table.c1row td:first-child{white-space:nowrap}
     <div><h3>Tanulság</h3><p>Ha ugyanaz az üzenet megy minden platformra, az nem hatékonyság, hanem annak a jele, hogy egyik platformot sem érted.</p></div>
   </div>
   <p class="small muted" style="margin-top:1.2em">A nap: másfél óra elmélet, másfél óra csoportmunka. A csoportmunkában a márkátok csatornáit fejtitek vissza nyolc szemponttal.</p>
-</section>
-
-<section class="slide" data-notes="c5">
-  <p class="kicker">Egyéni feladat · 5 perc · írásban, magadnak</p>
-  <h2>Két vásárlásod</h2>
-  <div class="cols">
-    <div class="card"><h3>Kerestem</h3><p>Mit kerestél rá utoljára a Google-ben, mielőtt vettél valamit?</p></div>
-    <div class="card alt"><h3>Elém jött</h3><p>Mi volt az utolsó dolog, amit úgy vettél meg, hogy nem kerested, hanem eléd jött?</p></div>
-  </div>
-  <p class="lead" style="margin-top:1em">Mindkettőnél: hol láttad először, és hol vetted meg?</p>
 </section>
 
 <!-- A BLOKK -->
@@ -974,7 +980,7 @@ table.c1row td:first-child{white-space:nowrap}
 </main>
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.3 · 2026. november 2.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.6 · 2026. november 2.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -983,7 +989,6 @@ table.c1row td:first-child{white-space:nowrap}
 <div data-n="c2"><h4>Az öt lépés, ma a negyedik</h4><p class="src top">Forrás: oktató; Kotler, Keller: Marketing Management, 17. fejezet (a kommunikáció makromodellje)</p><div class="hj"><h5>Jegyzet</h5><p>A félév öt kérdés körül forog. Ma kettőn dolgozunk egyszerre. Hogyan jutunk el hozzá: melyik csatornán találkozik velünk a vevő. És mit mondunk: mert ugyanazt nem lehet ugyanúgy mondani a keresőben, a hírfolyamban és egy rövid videóban. A mai nap végére tudni fogod, miért nem.</p></div></div>
 <div data-n="c3"><h4>Visszamutatás · a 3. beadandó</h4><p class="src top">Forrás: oktató; a hallgatók 3. beadandója</p><div class="hj"><h5>Jegyzet</h5><p>A 3. alkalmon a márkátok oldalát néztétek meg nyolc szemponttal: miről szól, mit akar, vezet-e, épít-e bizalmat. Ez az út vége. Ma visszalépünk egyet: honnan jön az ember, mielőtt az oldalra ér, és milyen állapotban.</p></div></div>
 <div data-n="c4"><h4>A csatornák nyelve · Miről szól · Kulcsgondolat · Tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A mai nap egyetlen gondolatra épül: nem az számít, melyik felületen vagy, hanem az, hogy az ember milyen állapotban van ott. Aki keres, már tudja, mit akar. Aki görget, nem akar semmit, csak ott van. A kettőhöz nem lehet ugyanúgy beszélni.</p></div></div>
-<div data-n="c5"><h4>Egyéni feladat · 5 perc · írásban, magadnak</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Írd le mindkettőt egy-egy sorban. Nem kell beadni. A 7. dián visszatérünk rá: a két válaszod a mai nap két fele. Az egyiknél te kezdeményeztél, a másiknál valaki megszakított abban, amit éppen csináltál.</p></div></div>
 <div data-n="a1"><h4>„Ott legyünk, ahol a vevő.”</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 8. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A legtöbb cég így kezd: „legyünk fent mindenhol, ahol az emberek vannak”. Kingsnorth könyve szó szerint ezt írja a közösségi média első okaként: ott lenni, ahol a vásárlóid vannak. Ez nem rossz kiindulás, de nem elég. Chaffey arra figyelmeztet, hogy aki az eszközzel kezdi („csináljunk TikTokot”), az taktikát választ, nem stratégiát. A mai kérdés ezért nem az, hol van az ember, hanem az, hogy ott milyen állapotban van. Az 1. szempont, a Jelenlét, egyszerű leltár: hol van ott a márka, és hol nincs.</p></div></div>
 <div data-n="a2"><h4>Két helyzet, egy ember</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 19. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kingsnorth: Digital Marketing Strategy, 8. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey szerint aki keres, az konkrét terméket vagy szolgáltatást keres, ezért gyakran erős a vásárlási szándéka. Kotler és Keller ugyanezt mondja: aki keresésben már kifejezte az érdeklődését, az a legjobb potenciális vevő. A közösségi médiában fordított a helyzet: Kotler és Keller szerint ott az ember másokhoz akar kapcsolódni, ezért a figyelem megszerzése és a meggyőzés nehezebb. Kingsnorth egy kutatást idéz, amely szerint a Facebookon az emberek általában nincsenek vásárlási hangulatban. A 2. szempont ezt kérdezi: milyen helyzetben találkozik a márkával az ember? Keres, görget, néz, vagy kérdez?</p></div></div>
 <div data-n="a3"><h4>Ki kezdeményez?</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey az online kommunikációt a húzó és a toló média keverékeként írja le. Húzó, ha az ember jön érted: keres, rákattint, feliratkozik. Toló, ha te mész hozzá: hirdetés a hírfolyamban, egy videó előtt. A kettő más nyelvet kér. Aki hív, annak válaszolni kell, gyorsan és pontosan. Akit megszakítasz, annak előbb okot kell adnod, hogy megálljon. A Marketing 4.0 szerzői szerint a közösségi médiában a hirdetés nem tudja érdemben megszakítani a tartalomfogyasztást, ezért a hirdetésnek magának is tartalomnak kell lennie.</p></div></div>
@@ -1139,5 +1144,10 @@ table.c1row td:first-child{white-space:nowrap}
 })();
 </script>
 
+<script>/* levelezőn az évadsáv a levelezős dátumokat mutatja */
+(function(){if(!document.documentElement.classList.contains('lev'))return;
+var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'10.\u00a016.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
+[].forEach.call(document.querySelectorAll('.strip a'),function(a){var b=a.querySelector('b'),s=a.querySelector('span');if(!b||!s||!D[b.textContent.trim()])return;
+s.innerHTML=s.innerHTML.replace(/\d\d\.(\s|&nbsp;)+\d\d\.\s*$/,D[b.textContent.trim()]);});})();</script>
 </body>
 </html>
