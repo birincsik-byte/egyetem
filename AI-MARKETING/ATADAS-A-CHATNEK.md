@@ -54,9 +54,37 @@ Jelenleg csak az 1. alkalom gombjai élnek. A 2–6. alkalom „Prezentáció”
 - A nyelvváltó JS csak az `a[data-href]` elemeket írja át, a halott gombokhoz nem nyúl.
 - A diasorok fájljai URL-ről továbbra is elérhetők, csak a kezdőlapról nem lehet rájuk kattintani.
 
+### 5. Új főcím
+
+A kezdőlap `<h1>`-e és az 1. diasor „Mit csinálunk” diájának `<h2>`-je:
+
+- magyarul: „Egy ismert márka, egy új kategória” → **„Marketing tender: valós márka egy elképzelt iparágban”**
+- angolul: „A well-known brand, a new category” → **„Marketing pitch: a real brand in an imagined industry”** („pitch”, mert a deck neve is „pitch deck”, a 6. alkalom pedig „Pitch presentation”.)
+
+Az 1. diasorban a cím alatti mondat („Például: mi lenne, ha a Coca-Cola autómárka lenne?”) változatlan.
+
+### 6. Felső témasáv: csak a soron következő alkalom él
+
+A diasorok tetején lévő `<nav class="strip">` sávban ugyanaz a logika, mint a kezdőlap gombjainál: most csak az 1. alkalom és a kezdőlap kattintható, a 2–6. alkalom szürke, és alkalomról alkalomra nyitjuk ki őket. Mind a hat diasorban.
+
+- A letiltott sávelemeken nincs `href` és `data-href`; helyettük `class="off"`, `aria-disabled="true"`, a cél `data-off="ai-marketing-2026-alkalom-N.html"`.
+- Az aktuális diasor saját eleme marad `class="on" aria-current="page"` és élő, az nem navigációs link.
+- Új CSS-sorok közvetlenül a `.strip a.on` szabály után:
+  `.strip a.off{opacity:.45;cursor:default}` és `.strip a.off b{color:var(--ink-soft)}`
+- Az 1. diasor két `<div class="season">` blokkjában (a „Hat csütörtök, 8:00 és 12:00 között” dia magyar és angol változata) a 2–6. alkalomra mutató linkek **szándékosan élők maradtak**, oda nem nyúltunk.
+
+### 7. A sáv nyitott magassága a tartalomhoz igazodik
+
+A sáv korábban fix 64 pixelre nyílt ki, és a leghosszabb feliratoknál (2., 4., 5. alkalom) ez kevés volt: a `overflow:hidden` miatt a szám és a felirat alja levágódott. Most a magasságot a tartalom adja:
+
+- `.strip{…height:auto;max-height:10px;…;transition:max-height .2s,box-shadow .2s}` — csukva továbbra is 10 pixeles csík
+- `.strip:hover,.strip:focus-within{max-height:240px;…}` — nyitva annyi, amennyi a felirat, a 240 pixel csak felső korlát
+
+Így keskenyebb ablakban és nagyobb böngésző-nagyítás mellett sem vág le semmit. Mind a hat diasorban.
+
 ### Verziószámok
 
-`index.html` v1.2 és `ai-marketing-2026-alkalom-1.html` v1.2 · 2026. november 4. (angolul 4 November 2026), a 2–6. diasor v1.1 · 2026. november 4.
+Mind a nyolc fájl: `index.html` és a hat diasor **v1.3 · 2026. november 4.** (angolul 4 November 2026).
 
 ---
 
