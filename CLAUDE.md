@@ -53,3 +53,7 @@ Minden fájl alján (a deckben a bal alsó segédsorban, az appban és az indexb
 ## Új alkalom készítése
 
 Egy új alkalom menetét a `munkadoksik/ALKALOM-INDITO-PROMPT.md` írja le, a tartalom és a nyelv szabályait a `munkadoksik/ALKALOM-SZABALYOK.md`. Ha a tulajdonos új alkalmat kér tőled, előbb ezt a kettőt olvasd el, és az ott leírt sorrendet tartsd: könyvek feldolgozása, jegyzet-kutatás, kidolgozott jegyzet, csak utána a deck és a gyakorlat, minden lépés után a tulajdonos jóváhagyásával, a tulajdonos mondatai változatlanul.
+
+## AI a marketingben (2026. november 4. óta)
+
+Az `AI-MARKETING/` mappa egy másik tárgy, az AI a marketingben gyakorlatának oldala, élesben https://egyetem.bemind.dev/ai-in-marketing/. A `.cpanel.yml` végén saját blokkja van (`AIDEPLOY`): a kezdőlap az `AI-MARKETING/index.html`, a hat diasor ugyanebben a mappában van, az `api.php` a közös. Az `AI-MARKETING/forras/` a diasorok generátora, nem kap `cp` sort. Az `AI-MARKETING/szerverre-kezzel/` két fájlja (`neptun.php`, `key.php`) titok, a `.gitignore` meglévő sorai kizárják, soha ne kerüljön a repóba. Részletek: `AI-MARKETING/README.md`.

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="hu" data-deck="3">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title data-hu="AI a marketingben · 3. alkalom · Arculat (ID), kulcsvizuálok és bannerek" data-en="AI in Marketing · Session 3 · Identity, key visuals and banners">AI a marketingben · 3. alkalom · Arculat (ID), kulcsvizuálok és bannerek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F7F6F1;--ink:#1B1F3A;--ink-soft:#5A5E78;--line:#D9D7CE;--cobalt:#1E4BD8;--marker:#F2C94C;--cream:#FCEFC2;
+--display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+--t-xl:3.6rem;--t-h2:2.2rem;--t-h3:1.3rem;--t-lead:1.25rem;--t-body:1rem;--t-sm:max(.8rem,18px);--sh:0 14px 30px -22px rgba(27,31,58,.45)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:clamp(19px,min(1.55vw,2.55vh),28px);line-height:1.45;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+html[lang=en] .hu,html[lang=hu] .en{display:none!important}
+
+/* évadsáv: vékony csík, ráállva lenyílik (a nappali deck mintájára) */
+.strip{position:fixed;top:0;left:0;right:0;height:10px;overflow:hidden;display:flex;align-items:stretch;border-bottom:1px solid var(--line);background:var(--paper);z-index:45;transition:height .2s,box-shadow .2s}
+.strip:hover,.strip:focus-within{height:64px;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)}
+.strip a{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 14px;text-decoration:none;color:var(--ink-soft);border-right:1px solid var(--line);font-size:clamp(12px,.8vw,15px);line-height:1.2}
+.strip a:last-child{border-right:0}
+.strip a>*{opacity:0;transition:opacity .15s}
+.strip:hover a>*,.strip:focus-within a>*{opacity:1}
+.strip a b{font-family:var(--display);font-weight:500;font-size:1.25em;color:var(--ink)}
+.strip a.on{background:var(--marker);color:var(--ink)}
+.strip a:focus-visible{outline:3px solid var(--cobalt);outline-offset:-3px}
+
+.deck{position:absolute;inset:0}
+.slide{position:absolute;inset:0;padding:8vh 7vw 9vh;display:none;overflow-y:auto;flex-direction:column;justify-content:flex-start;max-width:1720px;margin:0 auto;font-size:var(--t-body)}
+.slide.cur{display:flex}
+/* a cím mindig ugyanott: a diák felülről indulnak, csak a címlap van középen */
+.slide:has(> h1.cover)>:first-child{margin-top:auto}
+.slide:has(> h1.cover)>:last-child{margin-bottom:auto}
+.kicker{font-size:var(--t-sm);color:var(--ink-soft);margin-bottom:.9em}
+.kicker .lt{display:inline-block;background:var(--cobalt);color:#fff;border-radius:99px;padding:.05em .75em;margin-right:.7em;font-weight:600}
+h1{font-family:var(--display);font-weight:500;font-size:var(--t-xl);line-height:1.02;letter-spacing:-.01em;margin-bottom:.3em}
+h2{font-family:var(--display);font-weight:500;font-size:var(--t-h2);line-height:1.12;margin-bottom:.6em;max-width:30ch}
+h3{font-family:var(--display);font-weight:500;font-size:var(--t-h3);line-height:1.2;margin-bottom:.3em}
+p{max-width:62ch}
+p+p{margin-top:.6em}
+.lead{font-size:var(--t-lead);max-width:52ch}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55%);padding:0 .1em}
+.muted{color:var(--ink-soft)}
+.small{font-size:var(--t-sm)}
+.note{color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:76ch;margin-top:1.1em;line-height:1.4}
+.slide a{color:var(--cobalt)}
+.rule{border:0;border-top:1px solid var(--line);margin:1.2em 0;max-width:60em}
+.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--cobalt)}
+.card.alt{border-top-color:var(--marker)}
+.card p{max-width:none}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:2vw;align-items:start;max-width:72em}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;align-items:stretch;max-width:76em}
+
+/* címlap: innen, ide */
+.c1shift{display:grid;grid-template-columns:minmax(0,.85fr) auto minmax(0,1.5fr);gap:.2em 1.4em;align-items:center;margin-top:1.3rem;padding:1.1rem 1.5rem;background:#fff;border:1px solid var(--line);border-radius:14px;max-width:60rem}
+.c1shift small,.c1tem small{display:block;font-size:max(.62rem,13px);letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:.45em}
+.c1shift .from p{color:var(--ink-soft);line-height:1.35}
+.c1shift .arr{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--cobalt);color:#fff;font-size:1.1rem;line-height:1;margin-top:1.1em}
+.c1shift .to p{font-size:var(--t-lead);line-height:1.3;font-weight:500}
+.c1shift .add{grid-column:1/-1;margin-top:.9rem;padding:.8rem 0 0 1rem;border-top:1px dashed var(--line);position:relative}
+.c1shift .add::before{content:"";position:absolute;left:0;top:.85rem;bottom:.1rem;width:4px;border-radius:2px;background:var(--marker)}
+.c1tem{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .5rem;margin-top:1.3rem;max-width:60rem}
+.c1tem small{flex-basis:100%;margin-bottom:.1em}
+.c1tem span.chip{font-size:var(--t-sm);border:1px solid var(--line);border-radius:99px;padding:.2em .9em;background:#fff}
+
+h1.cover{font-size:calc(var(--t-xl) * 1.25);max-width:18ch;margin-bottom:.4em}
+
+/* nagy gondolat */
+.big{font-family:var(--display);font-weight:500;font-size:2.35rem;line-height:1.18;max-width:30ch;margin-bottom:.8em}
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw;max-width:56em;margin-bottom:1.2em}
+.triad div{border-top:4px solid var(--cobalt);padding-top:.5em;font-family:var(--display);font-weight:500;font-size:var(--t-h3);color:var(--cobalt)}
+
+/* folyamat */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:1vw;align-items:stretch;max-width:74em;margin-top:.4em}
+.flow .arr{align-self:center;color:var(--cobalt);font-size:1.6em}
+.flow .card h3{color:var(--cobalt)}
+
+/* karmester */
+.orch{width:min(46rem,100%,calc(46vh * 2.33));margin-top:.4em}
+.orch svg{width:100%;height:auto;display:block}
+.orch text{font-family:var(--body)}
+
+/* számok */
+.stat .num{font-family:var(--display);font-weight:500;font-size:2.4rem;line-height:1;color:var(--cobalt);display:block;margin-bottom:.25em}
+
+/* öt blokk */
+.blocks5{display:grid;grid-template-columns:repeat(5,1fr);gap:1vw;max-width:80em}
+.blk{background:#fff;border-radius:12px;padding:.8em 1em 1em;box-shadow:var(--sh);border-top:4px solid var(--cobalt)}
+.blk .n{font-family:var(--display);font-weight:500;font-size:2.1em;line-height:1;color:var(--cobalt);display:block;margin-bottom:.15em}
+.blk p{font-size:var(--t-sm);color:var(--ink-soft)}
+
+/* hat alkalom */
+.season{display:grid;grid-template-columns:repeat(6,1fr);gap:.9vw;max-width:84em}
+.slide a.ep{display:block;text-decoration:none;color:var(--ink);background:#fff;border-radius:12px;border-top:4px solid var(--line);padding:.7em .9em .9em;box-shadow:var(--sh);font-size:var(--t-sm);line-height:1.3;transition:transform .15s,border-color .15s}
+.slide a.ep:hover{transform:translateY(-3px);border-top-color:var(--cobalt)}
+.ep .n{font-family:var(--display);font-weight:500;font-size:2em;line-height:1;color:var(--cobalt);display:block}
+.ep .d{color:var(--ink-soft);display:block;margin:.35em 0 .3em}
+.ep b{display:block;font-family:var(--display);font-weight:500;font-size:1.12em;line-height:1.18;margin-bottom:.5em}
+.ep .o{color:var(--ink-soft);display:block;border-top:1px solid var(--line);padding-top:.4em}
+.slide a.ep.now{border-top-color:var(--cobalt);background:#FFFDF4;outline:2px solid var(--marker);outline-offset:-2px}
+
+/* táblázat */
+table{border-collapse:collapse;width:100%;max-width:78em;font-size:var(--t-sm)}
+th,td{text-align:left;vertical-align:top;padding:.42em .9em .42em 0;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--ink-soft)}
+td.dt{font-family:var(--display);font-weight:500;white-space:nowrap}
+td b{font-weight:600}
+tr.now td{background:var(--cream)}
+td .who{color:var(--ink-soft)}
+
+/* követelmények és tippek */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw 1.4vw;max-width:80em}
+.grid3 .card h3{font-size:1.15em}
+.grid3 .card p{font-size:var(--t-sm)}
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:1.2vw 1.6vw;max-width:78em}
+.tip{background:#fff;border-radius:12px;padding:.8em 1.15em .9em;box-shadow:var(--sh);border-top:4px solid var(--marker);position:relative}
+.tip h3{padding-right:1.6em}
+.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--marker);font-size:1.3em;line-height:1}
+
+/* feladat: cél, scope, leadandó */
+.goal{display:grid;grid-template-columns:auto 1fr;gap:.75em 1.4em;max-width:62em;background:#fff;border-radius:14px;padding:1.2em 1.6em;box-shadow:var(--sh);border-left:6px solid var(--marker)}
+.goal dt{font-weight:600;color:var(--cobalt);font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.08em;padding-top:.28em}
+.goal dd{font-size:var(--t-lead);line-height:1.35}
+
+/* lépések */
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:0 2.6vw;max-width:76em}
+ol.steps.two{grid-template-columns:1fr 1fr}
+ol.steps li{display:grid;grid-template-columns:1.7em 1fr;gap:.5em;align-items:baseline;padding:.5em 0;border-bottom:1px solid var(--line)}
+ol.steps li::before{counter-increment:s;content:counter(s);font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.35em;line-height:1}
+.opt{display:inline-block;font-size:var(--t-sm);font-weight:600;color:var(--ink);background:var(--cream);border-radius:99px;padding:0 .6em;margin-right:.4em}
+
+/* promptok */
+.prompts{display:grid;grid-template-columns:1fr 1fr;gap:1.6vw;align-items:start;max-width:84em}
+.prompts.one{grid-template-columns:1fr;max-width:60em}
+.prompt{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--sh)}
+.prompt .ph{display:flex;justify-content:space-between;align-items:center;gap:1em;padding:.4em .9em;background:var(--ink);color:#fff;font-size:var(--t-sm)}
+.prompt .copy{border:1px solid rgba(255,255,255,.55);border-radius:4px;padding:.05em .7em;font-size:var(--t-sm);color:#fff;white-space:nowrap}
+.prompt .copy:hover{background:rgba(255,255,255,.12)}
+.prompt pre{white-space:pre-wrap;font-family:var(--body);font-size:var(--t-sm);line-height:1.45;padding:.75em 1em;max-height:50vh;overflow:auto;margin:0}
+.prompt mark{background:var(--cream);color:inherit;border-radius:3px;padding:0 .12em}
+.tools{font-size:var(--t-sm);color:var(--ink-soft);max-width:84em;margin:-.3em 0 1em}
+
+/* márkapárok */
+.pairs{display:grid;grid-template-columns:repeat(5,1fr);gap:.8vw;max-width:84em}
+.pair{background:#fff;border-radius:10px;padding:.5em .8em .55em;box-shadow:var(--sh);border-left:4px solid var(--cobalt);font-size:var(--t-sm);line-height:1.25}
+.pair i{font-style:normal;color:var(--ink-soft)}
+.pair b{display:block;font-family:var(--display);font-weight:500;font-size:1.2em;margin:.1em 0}
+.pair span{color:var(--cobalt)}
+
+/* márkaválasztó: a játék */
+h2.game{font-size:calc(var(--t-h2) * 1.25);margin-bottom:.15em}
+.menu{display:grid;grid-template-columns:repeat(3,1fr);column-gap:3.2vw;max-width:86em;border-top:2px solid var(--ink);margin-top:.5em}
+.menu .mi{display:grid;grid-template-columns:2.1em 1fr;align-items:baseline;text-align:left;padding:.45em .3em .5em;border-bottom:1px solid var(--line);position:relative;transition:background .15s}
+.menu .mi i{font-style:normal;font-size:var(--t-sm);color:var(--ink-soft);grid-row:1/3;align-self:start;padding-top:.4em;font-variant-numeric:tabular-nums}
+.menu .mi .l1,.menu .mi .l2{grid-column:2;white-space:nowrap;line-height:1.12}
+.menu .mi b{font-family:var(--display);font-weight:500;font-size:1.32em;letter-spacing:-.01em}
+.menu .mi .l2 b{color:var(--cobalt)}
+.menu .mi em{font-style:normal;font-size:var(--t-sm);color:var(--ink-soft)}
+.menu .mi small{position:absolute;right:.3em;top:.75em;font-size:max(.62rem,13px);letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--ink);border-radius:99px;padding:.15em .7em;visibility:hidden}
+.menu .mi:hover{background:linear-gradient(90deg,rgba(242,201,76,.38),rgba(242,201,76,0))}
+.menu .mi.taken b{text-decoration:line-through;text-decoration-thickness:2px;color:var(--ink-soft)}
+.menu .mi.taken small{visibility:visible}
+@media (max-width:900px){.menu{grid-template-columns:1fr}}
+
+/* a mai feladat */
+h2.wide{max-width:44ch}
+table.task{max-width:88em;font-size:var(--t-body);margin-top:.2em}
+table.task th{font-size:var(--t-sm);border-bottom:2px solid var(--ink);padding-bottom:.35em}
+table.task td{padding:.6em 1.2em .6em 0;vertical-align:top}
+table.task td.no{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.5em;line-height:1;width:1.6em;padding-top:.45em}
+table.task td b{display:block;font-family:var(--display);font-weight:500;font-size:1.18em;line-height:1.2;margin-bottom:.15em}
+table.task td span{display:block;color:var(--ink-soft);font-size:var(--t-sm);line-height:1.35;max-width:46ch}
+table.task td.out{font-weight:600;width:24%}
+table.task td.dk{width:24%;font-size:var(--t-sm);color:var(--cobalt)}
+.deliv{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:88em;font-size:var(--t-body)}
+.deliv b{color:var(--marker);margin-right:.3em}
+
+/* szabályok */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:.9vw 1.4vw;max-width:80em}
+.rule9{display:grid;grid-template-columns:1.6em 1fr;gap:.4em;padding:.55em 0;border-top:1px solid var(--line);font-size:var(--t-sm)}
+.rule9 .k{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.35em;line-height:1.1}
+.rule9 b{display:block;font-weight:600;color:var(--ink);font-size:1.08em}
+.rule9 p{color:var(--ink-soft)}
+
+/* lapozó, súgósor */
+.hint{position:fixed;left:7vw;bottom:2.6vh;max-width:46vw;font-size:clamp(12px,.82vw,16px);color:var(--ink-soft);z-index:20}
+.pager{position:fixed;right:7vw;bottom:2.2vh;font-size:clamp(13px,.88vw,17px);color:var(--ink-soft);display:flex;gap:.7em;align-items:center;z-index:20}
+.pager button,.pager a.home{padding:.2em .6em;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink-soft);text-decoration:none}
+.pager button:hover,.pager a.home:hover{color:var(--cobalt);border-color:var(--cobalt)}
+.pager button:focus-visible,.pager a:focus-visible{outline:3px solid var(--cobalt)}
+.lang{display:inline-flex}
+.lang button{border-radius:0}
+.lang button:first-child{border-radius:4px 0 0 4px}
+.lang button:last-child{border-radius:0 4px 4px 0;border-left:0}
+.pager .lang button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.jump{display:none;position:absolute;right:0;bottom:calc(100% + .6em);width:min(34em,80vw);max-height:70vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:.4em 0;font-size:1.15em;z-index:50}
+.jump.open{display:block}
+.jump a{display:grid;grid-template-columns:2.2em 1fr;gap:.4em;padding:.35em 1em;color:var(--ink);text-decoration:none;line-height:1.3}
+.jump a:hover{background:rgba(0,0,0,.05)}
+.jump a.cur{font-weight:600;color:var(--cobalt)}
+.jump a i{font-style:normal;color:var(--ink-soft)}
+
+/* javító mód (J) */
+body.rev .slide :is(h1,h2,h3,p,li,td,th,dd,.big){outline:1px dashed rgba(30,75,216,.35);outline-offset:2px;cursor:text}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,dd,.big):hover{background:rgba(242,201,76,.35)}
+body.rev .rev-marked{border-left:4px solid var(--cobalt);padding-left:.5em}
+.revbar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#F7F6F1;padding:.6em 7vw;font-size:clamp(13px,.9vw,17px);display:none;z-index:60;align-items:center;gap:1em}
+body.rev .revbar{display:flex}
+.revbar button{border:1px solid rgba(255,255,255,.4);color:#F7F6F1;padding:.2em .7em;border-radius:4px}
+.revbox{position:fixed;z-index:61;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.8em;width:min(30em,90vw);box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;font-size:clamp(14px,1vw,18px)}
+.revbox.open{display:block}
+.revbox .orig{font-size:.85em;color:var(--ink-soft);max-height:6em;overflow:auto;margin-bottom:.5em;border-left:3px solid var(--marker);padding-left:.6em}
+.revbox textarea{width:100%;min-height:5em;font:inherit;padding:.4em;border:1px solid var(--line);border-radius:4px}
+.revbox .row{display:flex;gap:.5em;margin-top:.5em}
+.revbox .row button{border:1px solid var(--cobalt);color:var(--cobalt);padding:.3em .8em;border-radius:4px}
+.revout{position:fixed;inset:0;background:var(--paper);z-index:62;padding:4vh 7vw;display:none;overflow:auto}
+.revout.open{display:block}
+.revout textarea{width:100%;height:60vh;font:inherit;font-size:.85em;padding:.8em;border:1px solid var(--line);border-radius:6px;margin:1em 0}
+.btn{display:inline-block;padding:.35em .9em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;font-size:var(--t-sm);text-decoration:none}
+
+@media (max-width:900px){
+  html,body{overflow:auto}
+  .slide{padding:5vh 6vw 14vh;justify-content:flex-start}
+  .c1shift,.flow,.cols,.cols3,.triad,.tips,.prompts,.grid3,.rules,.blocks5{grid-template-columns:1fr}
+  .flow .arr{transform:rotate(90deg);justify-self:center}
+  .c1shift .arr{transform:rotate(90deg);margin:0}
+  .season{grid-template-columns:1fr 1fr}
+  .pairs{grid-template-columns:1fr 1fr 1fr}
+  ol.steps.two{grid-template-columns:1fr}
+  .hint{display:none}
+  .pager{right:4vw;left:4vw;justify-content:flex-end;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<nav class="strip" aria-label="Alkalmak"><a href="index.html" data-href="index.html"><b>AI</b><span class="hu">a marketingben · kezdőlap</span><span class="en">in Marketing · home</span></a><a href="ai-marketing-2026-alkalom-1.html" data-href="ai-marketing-2026-alkalom-1.html"><b>1</b><span class="hu">Kiinduló márka és új kategória&nbsp;·&nbsp;11.&nbsp;05.</span><span class="en">Source brand and new category&nbsp;·&nbsp;11.&nbsp;05.</span></a><a href="ai-marketing-2026-alkalom-2.html" data-href="ai-marketing-2026-alkalom-2.html"><b>2</b><span class="hu">Márkaplatform, célcsoport és árazás&nbsp;·&nbsp;11.&nbsp;12.</span><span class="en">Brand platform, target audience and pricing&nbsp;·&nbsp;11.&nbsp;12.</span></a><a href="ai-marketing-2026-alkalom-3.html" data-href="ai-marketing-2026-alkalom-3.html" class="on" aria-current="page"><b>3</b><span class="hu">Arculat (ID), kulcsvizuálok és bannerek&nbsp;·&nbsp;11.&nbsp;19.</span><span class="en">Identity, key visuals and banners&nbsp;·&nbsp;11.&nbsp;19.</span></a><a href="ai-marketing-2026-alkalom-4.html" data-href="ai-marketing-2026-alkalom-4.html"><b>4</b><span class="hu">Kampánybrief, koncepció, szövegek és posztok&nbsp;·&nbsp;11.&nbsp;26.</span><span class="en">Campaign brief, concept, copy and posts&nbsp;·&nbsp;11.&nbsp;26.</span></a><a href="ai-marketing-2026-alkalom-5.html" data-href="ai-marketing-2026-alkalom-5.html"><b>5</b><span class="hu">Weboldal, videóspot és a tenderdeck&nbsp;·&nbsp;12.&nbsp;03.</span><span class="en">Website, video spot and the pitch deck&nbsp;·&nbsp;12.&nbsp;03.</span></a><a href="ai-marketing-2026-alkalom-6.html" data-href="ai-marketing-2026-alkalom-6.html"><b>6</b><span class="hu">Tenderprezentáció&nbsp;·&nbsp;12.&nbsp;10.</span><span class="en">Pitch presentation&nbsp;·&nbsp;12.&nbsp;10.</span></a></nav>
+<main class="deck">
+<section class="slide" data-l="hu">
+<p class="kicker">AI a marketingben · gyakorlat</p><h1 class="cover">Arculat (ID), kulcsvizuálok és bannerek</h1><p class="lead">3. alkalom · 2026. november 19.</p>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>A mai feladat 1/2</p><h2 class="wide">Adj az új márkának saját arcot a kiinduló márka szellemében.</h2><table class="task"><tr><th></th><th>Részfeladat</th><th>Eredménytermék</th><th>Hová kerül a deckben</th></tr><tr><td class="no">1</td><td><b>Vizuális irány</b><span>Mit veszel át a kiinduló márka vizuális kódjaiból, mit nem, és 3 vizuális kulcsszó.</span></td><td class="out">Vizuális irány</td><td class="dk">2. blokk · Stratégia (arculat)</td></tr><tr><td class="no">2</td><td><b>Logó</b><span>3 logóirány SVG-ben, egyet választasz és finomítasz. A kiinduló márka logóját ne másold.</span></td><td class="out">Logó SVG</td><td class="dk">1. blokk (címlap) · 2. blokk (arculat)</td></tr><tr><td class="no">3</td><td><b>Arculati kézikönyv</b><span>Logó és használata, színek HEX-kóddal, betűk, képi stílus, egy mintaposzt. Claude Designban, vagy artifactként és PDF-be mentve.</span></td><td class="out">Kézikönyv PDF</td><td class="dk">2. blokk · Stratégia (arculat)</td></tr><tr><td class="no">4</td><td><b>Kulcsvizuálok</b><span>3 kulcsvizuál, egy közülük a kampány fő képe. Generálás előtt csiszold a promptot.</span></td><td class="out">3 kulcsvizuál</td><td class="dk">4. blokk · Kreatív bemutató</td></tr></table><p class="note">Ami a dián van, javaslat arra az esetre, ha nincs ötleted, hogyan indulj el. A lényeg az eredménytermék.</p>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>A mai feladat 2/2</p><h2 class="wide">Adj az új márkának saját arcot a kiinduló márka szellemében.</h2><table class="task"><tr><th></th><th>Részfeladat</th><th>Eredménytermék</th><th>Hová kerül a deckben</th></tr><tr><td class="no">5</td><td><b>Posztsablonok</b><span>Négyzetes poszt, 9:16-os story és carousel nyitódia az arculattal.</span></td><td class="out">3 posztsablon</td><td class="dk">4. blokk · Kreatív bemutató</td></tr><tr><td class="no">6</td><td><b>Bannerek és plakát</b><span>300×250 és 728×90 pixeles HTML-banner a fő kulcsvizuállal, plusz óriásplakát-mockup. A szlogent az 5. alkalomon cseréled be.</span></td><td class="out">2 banner, plakát-mockup</td><td class="dk">4. blokk · Kreatív bemutató</td></tr><tr><td class="no">7</td><td><b>Csomagolás vagy termék</b><span>Látvány a kategóriád szerint, például az autó, a kozmetikum doboza vagy a kávéspohár.</span></td><td class="out">Csomagolás- vagy terméklátvány</td><td class="dk">4. blokk · Kreatív bemutató</td></tr></table><p class="deliv"><b>Leadandó:</b> Logó SVG, arculati kézikönyv PDF, 3 kulcsvizuál, 3 posztsablon, 2 banner, plakát-mockup, csomagolás- vagy terméklátvány.</p><p class="note">Ami a dián van, javaslat arra az esetre, ha nincs ötleted, hogyan indulj el. A lényeg az eredménytermék.</p>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>Ha nincs ötleted, hogyan indulj el</p><h2>Promptjavaslat: Logóirányok</h2><p class="tools"><b>Eszközök ehhez:</b> Bármi más is jó, amit ismersz: logóhoz Claude (SVG artifact), Figma AI, Recraft, Ideogram, Adobe Illustrator; arculati kézikönyvhöz és posztsablonhoz Claude Design, Figma, Canva, Adobe Express; kulcsvizuálhoz, plakáthoz és csomagoláshoz ChatGPT képgenerálás, Gemini, Midjourney, Adobe Firefly, Leonardo AI, Microsoft Designer; bannerhez Claude artifact, Figma vagy Canva.</p><div class="prompts"><div class="prompt"><div class="ph"><span>Strukturált</span><button type="button" class="copy">Másolás</button></div><pre>Szerepkör: Te egy arculattervező vagy.
+Kontextus: <mark>[márkanév]</mark>, <mark>[kategória]</mark>, a személyisége: <mark>[3 jelző]</mark>, a kiinduló márkából átvett vizuális kódok: <mark>[lista]</mark>.
+Feladat: tervezz 3 különböző logóirányt.
+Scope: a kiinduló márka logóját és betűtípusát ne másold.
+Elvárt kimenet: 3 SVG egy artifactban, mindegyik alatt 1 mondat a gondolatról.
+Paraméterek: legfeljebb 2 szín, kis méretben is olvasható legyen.</pre></div><div class="prompt"><div class="ph"><span>Szabad szöveggel, ahogy egy kollégának mondanád</span><button type="button" class="copy">Másolás</button></div><pre>Arculattervezőként segíts nekem, kérlek. Van egy új <mark>[új kategória]</mark> márkám, <mark>[márkanév]</mark>, ami a <mark>[kiinduló márka]</mark> szellemiségéből indul. A márka személyisége: <mark>[3 jelző]</mark>. A kiinduló márkából ezeket a vizuális kódokat szeretném átvinni: <mark>[például a színvilág, a lendületes formák, az ívelt betűk]</mark>. Amit viszont nem szabad: a logóját és a betűtípusát lemásolni, mert ez egy önálló új márka.
+
+Kérlek, tervezz nekem három, egymástól jól különböző logóirányt SVG-ben, és mindegyik alá írd le egy mondatban, mi a gondolat mögötte. Legfeljebb két színt használj, és figyelj arra, hogy kis méretben, például egy alkalmazásikonként is olvasható maradjon. Ha az egyik irány tetszik, azt majd tovább finomítjuk együtt.</pre></div></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>Ha nincs ötleted, hogyan indulj el</p><h2>Promptjavaslat: Kulcsvizuál</h2><div class="prompts"><div class="prompt"><div class="ph"><span>Strukturált</span><button type="button" class="copy">Másolás</button></div><pre>Készíts egy kampány-kulcsvizuált a(z) <mark>[márkanév]</mark> <mark>[kategória]</mark> márkához.
+Jelenet: <mark>[mi történik a képen]</mark>.
+Stílus: <mark>[fotó vagy illusztráció]</mark>, <mark>[hangulat]</mark>, <mark>[fény]</mark>.
+Képi paraméterek: 4:5 képarány, színek: <mark>[HEX-kódok]</mark>, a jobb felső harmadban maradjon üres hely a szövegnek.
+Ne legyen rajta: valódi márkalogó, felirat, ismert ember.</pre></div><div class="prompt"><div class="ph"><span>Szabad szöveggel, ahogy egy kollégának mondanád</span><button type="button" class="copy">Másolás</button></div><pre>Készíts nekem egy kampányképet a <mark>[márkanév]</mark> nevű új <mark>[új kategória]</mark> márkához. A márka hangulata <mark>[3 jelző]</mark>, a kampány ötlete röviden: <mark>[1-2 mondat]</mark>. A képen ezt szeretném látni: <mark>[a jelenet leírása: ki vagy mi van rajta, mit csinál, hol, napszak, hangulat]</mark>. Stílusban <mark>[fotórealisztikus vagy illusztráció]</mark>, <mark>[meleg vagy hideg]</mark> fényekkel, a márka színeivel: <mark>[HEX-kódok]</mark>. A kép álló, 4:5 arányú, és a jobb felső részén hagyj üres helyet, mert oda kerül majd a szlogen. Ne legyen rajta semmilyen valódi márkalogó, felirat vagy ismert ember.</pre></div></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>Tippek és tanácsok · 1/3</p><h2>Logó</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Előbb a gondolat</h3><p>Írd le egy mondatban, mit mond a logó, és ezt add meg a promptban. Gondolat nélkül díszt kapsz, nem jelet.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Egyszerű SVG</h3><p>Kevés forma, legfeljebb két szín. Nézd meg kicsiben, alkalmazásikon méretben, és fekete-fehérben is.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Konkrét javítás</h3><p>A „legyen szebb” nem utasítás. Ilyet kérj: vastagabb betű, kisebb kör, a szín #1E4BD8.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Ne másold</h3><p>A kiinduló márka logóját és betűtípusát ne vedd át. A vizuális kódokat átviheted, de saját formában.</p></div></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>Tippek és tanácsok · 2/3</p><h2>Képgenerálás</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Előbb a prompt</h3><p>Az ingyenes csomagban kevés kép jut. Írd meg a promptot, kérd meg az AI-t, hogy kérdezzen rá a hiányzó részletekre, és csak utána generálj.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Egy kampány, nem három kép</h3><p>Ugyanaz a fény, a színvilág és a stílus minden képen. Mentsd el a jól működő promptot, és abból készüljön a következő.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>A szöveg utólag kerül rá</h3><p>A feliratot ne a képre generáld. Utólag tedd rá a bannerben vagy a posztsablonban, így cserélhető, és nem lesz benne elírás.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Hagyj helyet</h3><p>Mondd meg a promptban, hová kerül majd a szöveg, például a jobb felső harmadba. Különben a kép tele lesz, és nem fér rá semmi.</p></div></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>Tippek és tanácsok · 3/3</p><h2>Kézikönyv, posztok, bannerek</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Egyszer rögzített színek</h3><p>A HEX-kódokat egyszer döntsd el, és minden promptba ugyanazokat másold be. Különben minden anyag kicsit más színű lesz.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>A kézikönyv szabálykönyv</h3><p>Arról szól, hogyan kell használni a márkát. Legyen benne, mit szabad és mit nem, példákkal.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>A banner kicsi</h3><p>Márkanév, ígéret, egy gomb. A 728×90-es csíkban egy sor szöveg is sok lehet, nézd meg valódi méretben.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Fájlt ments, ne csak linket</h3><p>A végleges logót, a képeket és a PDF-et töltsd le, és tedd a félév mappájába. A leadáshoz és a deckhez is ezek kellenek.</p></div></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">3. alkalom</span>Zárás</p><h2>Leadandó: logó SVG, arculati kézikönyv PDF, 3 kulcsvizuál, 3 posztsablon, 2 banner, plakát-mockup, csomagolás- vagy terméklátvány.</h2><hr class="rule"><p class="lead">Jövő csütörtökön, 2026. november 26-án: Kampánybrief, koncepció, szövegek és posztok.</p><p class="muted">Előtte szerdán, 2026. november 25-én: Nóra: Promptolás és szövegírás · Kelly: Adatelemzés és prediktív marketing</p><p class="note">A leadás helyét és határidejét az oktató adja meg.</p>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker">AI in Marketing · practice</p><h1 class="cover">Identity, key visuals and banners</h1><p class="lead">Session 3 · 19 November 2026</p>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>Today's task 1/2</p><h2 class="wide">Give the new brand its own face in the spirit of the source brand.</h2><table class="task"><tr><th></th><th>Sub-task</th><th>Output</th><th>Where it goes in the deck</th></tr><tr><td class="no">1</td><td><b>Visual direction</b><span>What you take from the source brand's visual codes, what you do not, and 3 visual keywords.</span></td><td class="out">Visual direction</td><td class="dk">Block 2 · Strategy (identity)</td></tr><tr><td class="no">2</td><td><b>Logo</b><span>3 logo directions in SVG; you pick one and refine it. Do not copy the source brand's logo.</span></td><td class="out">Logo SVG</td><td class="dk">Block 1 (title slide) · Block 2 (identity)</td></tr><tr><td class="no">3</td><td><b>Brand guide</b><span>Logo and its use, colours with HEX codes, type, image style, one sample post. In Claude Design, or as an artifact saved as PDF.</span></td><td class="out">Brand guide PDF</td><td class="dk">Block 2 · Strategy (identity)</td></tr><tr><td class="no">4</td><td><b>Key visuals</b><span>3 key visuals, one of them the campaign's main image. Polish the prompt before you generate.</span></td><td class="out">3 key visuals</td><td class="dk">Block 4 · Creative showcase</td></tr></table><p class="note">What is on the slide is a suggestion in case you do not know how to start. What counts is the output.</p>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>Today's task 2/2</p><h2 class="wide">Give the new brand its own face in the spirit of the source brand.</h2><table class="task"><tr><th></th><th>Sub-task</th><th>Output</th><th>Where it goes in the deck</th></tr><tr><td class="no">5</td><td><b>Post templates</b><span>Square post, 9:16 story and carousel opening slide with the identity.</span></td><td class="out">3 post templates</td><td class="dk">Block 4 · Creative showcase</td></tr><tr><td class="no">6</td><td><b>Banners and billboard</b><span>300×250 and 728×90 pixel HTML banners with the main key visual, plus a billboard mock-up. You swap in the slogan in session 5.</span></td><td class="out">2 banners, billboard mock-up</td><td class="dk">Block 4 · Creative showcase</td></tr><tr><td class="no">7</td><td><b>Packaging or product</b><span>A visual according to your category, for example the car, the cosmetics box or the coffee cup.</span></td><td class="out">Packaging or product visual</td><td class="dk">Block 4 · Creative showcase</td></tr></table><p class="deliv"><b>Deliverable:</b> Logo SVG, brand guide PDF, 3 key visuals, 3 post templates, 2 banners, billboard mock-up, packaging or product visual.</p><p class="note">What is on the slide is a suggestion in case you do not know how to start. What counts is the output.</p>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>If you do not know how to start</p><h2>Prompt suggestion: Logo directions</h2><p class="tools"><b>Tools for this:</b> Anything else you know is fine: for the logo Claude (SVG artifact), Figma AI, Recraft, Ideogram, Adobe Illustrator; for the brand guide and post templates Claude Design, Figma, Canva, Adobe Express; for key visuals, billboard and packaging ChatGPT image generation, Gemini, Midjourney, Adobe Firefly, Leonardo AI, Microsoft Designer; for banners Claude artifact, Figma or Canva.</p><div class="prompts"><div class="prompt"><div class="ph"><span>Structured</span><button type="button" class="copy">Copy</button></div><pre>Role: You are an identity designer.
+Context: <mark>[brand name]</mark>, <mark>[category]</mark>, its personality: <mark>[3 adjectives]</mark>, visual codes carried over from the source brand: <mark>[list]</mark>.
+Task: design 3 different logo directions.
+Scope: do not copy the source brand's logo or typeface.
+Expected output: 3 SVGs in one artifact, each with 1 sentence about the idea underneath.
+Parameters: at most 2 colours, must stay legible at small sizes.</pre></div><div class="prompt"><div class="ph"><span>In free text, the way you would say it to a colleague</span><button type="button" class="copy">Copy</button></div><pre>Please help me as an identity designer. I have a new <mark>[new category]</mark> brand, <mark>[brand name]</mark>, which starts from the spirit of <mark>[source brand]</mark>. The brand's personality: <mark>[3 adjectives]</mark>. From the source brand I want to carry over these visual codes: <mark>[for example the colour world, the dynamic shapes, the curved letterforms]</mark>. What is not allowed: copying its logo and typeface, because this is an independent new brand.
+
+Please design three clearly different logo directions for me in SVG, and under each write one sentence about the thinking behind it. Use at most two colours, and make sure it stays legible at small sizes, for example as an app icon. If I like one direction, we will refine it together.</pre></div></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>If you do not know how to start</p><h2>Prompt suggestion: Key visual</h2><div class="prompts"><div class="prompt"><div class="ph"><span>Structured</span><button type="button" class="copy">Copy</button></div><pre>Create a campaign key visual for the <mark>[brand name]</mark> <mark>[category]</mark> brand.
+Scene: <mark>[what happens in the image]</mark>.
+Style: <mark>[photo or illustration]</mark>, <mark>[mood]</mark>, <mark>[light]</mark>.
+Image parameters: 4:5 aspect ratio, colours: <mark>[HEX codes]</mark>, leave empty space in the top right third for the copy.
+Must not include: real brand logos, text, famous people.</pre></div><div class="prompt"><div class="ph"><span>In free text, the way you would say it to a colleague</span><button type="button" class="copy">Copy</button></div><pre>Create a campaign image for me for the new <mark>[new category]</mark> brand called <mark>[brand name]</mark>. The brand's mood is <mark>[3 adjectives]</mark>, the campaign idea in short: <mark>[1-2 sentences]</mark>. This is what I want to see in the image: <mark>[description of the scene: who or what is in it, what they do, where, time of day, mood]</mark>. In style, <mark>[photorealistic or illustration]</mark>, with <mark>[warm or cold]</mark> light, in the brand's colours: <mark>[HEX codes]</mark>. The image is portrait, 4:5, and leave empty space in the top right, because the slogan will go there. No real brand logo, text or famous person in it.</pre></div></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>Tips and advice · 1/3</p><h2>Logo</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>The idea first</h3><p>Write in one sentence what the logo says, and put it in the prompt. Without an idea you get decoration, not a mark.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Simple SVG</h3><p>Few shapes, two colours at most. Look at it small, at app icon size, and in black and white too.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Specific corrections</h3><p>"Make it nicer" is not an instruction. Ask for something like: heavier type, smaller circle, colour #1E4BD8.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Do not copy</h3><p>Do not take over the source brand's logo or typeface. You can carry over visual codes, but in your own form.</p></div></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>Tips and advice · 2/3</p><h2>Image generation</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Prompt first</h3><p>On the free plan you get few images. Write the prompt, ask the AI to ask about the missing details, and only then generate.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>One campaign, not three images</h3><p>Same light, colours and style in every image. Save the prompt that works and build the next one from it.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Text goes on afterwards</h3><p>Do not generate the text into the image. Add it afterwards in the banner or the post template, so it can be changed and has no typos.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Leave space</h3><p>Say in the prompt where the text will go, for example the top right third. Otherwise the image is full and nothing fits.</p></div></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>Tips and advice · 3/3</p><h2>Brand guide, posts, banners</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Colours fixed once</h3><p>Decide the HEX codes once and paste the same ones into every prompt. Otherwise every asset ends up a slightly different colour.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>The guide is a rulebook</h3><p>It is about how the brand is used. Include what is allowed and what is not, with examples.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>A banner is small</h3><p>Brand name, promise, one button. In the 728×90 strip even one line of text can be too much; check it at real size.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Save files, not just links</h3><p>Download the final logo, the images and the PDF and put them in your semester folder. You need them for submission and for the deck.</p></div></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 3</span>Wrap-up</p><h2>Deliverable: logo SVG, brand guide PDF, 3 key visuals, 3 post templates, 2 banners, billboard mock-up, packaging or product visual.</h2><hr class="rule"><p class="lead">Next Thursday, 26 November 2026: Campaign brief, concept, copy and posts.</p><p class="muted">The day before, 25 November 2026: Nóra: Prompting and copywriting · Kelly: Data analysis and predictive marketing</p><p class="note">The instructor will tell you where and when to upload.</p>
+</section>
+</main>
+<div class="hint"><span class="hu">← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · v1.0 · 2026. november 4.</span><span class="en">← → navigate · space: next · F: full screen · L: language · J: review mode · v1.0 · 4 November 2026</span></div>
+<div class="pager"><a class="home" href="index.html" data-href="index.html" title="Kezdőlap">⌂ <span class="hu">Kezdőlap</span><span class="en">Home</span></a><span class="lang" role="group" aria-label="Nyelv / Language"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span><button id="pos" type="button" aria-label="Ugrás diára">1 / 9</button><div class="jump" id="jump"></div><button type="button" data-nav="-1" aria-label="Előző">‹</button><button type="button" data-nav="1" aria-label="Következő">›</button></div>
+<div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, és írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
+<div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
+<div class="revout" id="revout"><h2>Megjegyzések</h2><p class="muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár</button></p></div>
+<script>
+(function(){
+  var KEY='aim2026-lang', D=document, root=D.documentElement, DECK=root.getAttribute('data-deck');
+  function qp(n){var m=location.search.match(new RegExp('[?&]'+n+'=([a-z]+)'));return m?m[1]:null}
+  var lang=qp('lang'); if(lang!=='hu'&&lang!=='en'){lang=null;try{lang=localStorage.getItem(KEY)}catch(e){} if(lang!=='hu'&&lang!=='en')lang='hu'}
+  var all=[].slice.call(D.querySelectorAll('section.slide')), slides=[], i=0, pos=D.getElementById('pos'), jump=D.getElementById('jump');
+  function build(){
+    slides=all.filter(function(s){return s.getAttribute('data-l')===lang});
+    jump.innerHTML='';
+    slides.forEach(function(sl,k){var h=sl.querySelector('h1,h2,.big');var t=(h?h.textContent:(sl.querySelector('.kicker')||{}).textContent||'').replace(/\s+/g,' ').trim();if(t.length>72)t=t.slice(0,70)+'…';var a=D.createElement('a');a.href='#d'+(k+1);a.innerHTML='<i>'+(k+1)+'.</i><span></span>';a.lastChild.textContent=t;a.addEventListener('click',function(ev){ev.preventDefault();jump.classList.remove('open');show(k)});jump.appendChild(a)});
+  }
+  function url(){return location.pathname+'?lang='+lang+'#d'+(i+1)}
+  function show(n){
+    n=Math.max(0,Math.min(slides.length-1,n));
+    all.forEach(function(s){s.classList.remove('cur')});
+    i=n; slides[i].classList.add('cur');
+    pos.textContent=(i+1)+' / '+slides.length;
+    try{history.replaceState(null,'',url())}catch(e){location.hash='d'+(i+1)}
+    fit(slides[i]);
+  }
+  function applyLang(){
+    root.lang=lang;
+    var t=D.querySelector('title'); if(t&&t.getAttribute('data-'+lang))t.textContent=t.getAttribute('data-'+lang);
+    [].forEach.call(D.querySelectorAll('[data-setlang]'),function(b){b.classList.toggle('on',b.getAttribute('data-setlang')===lang)});
+    [].forEach.call(D.querySelectorAll('a[data-href]'),function(a){a.href=a.getAttribute('data-href')+'?lang='+lang+(a.getAttribute('data-hash')||'')});
+  }
+  function setLang(l){if(l===lang)return;lang=l;try{localStorage.setItem(KEY,l)}catch(e){}applyLang();build();show(i)}
+  /* ha egy dia nem fér ki, csak azt az egy diát kicsinyíti, legfeljebb 76%-ig */
+  function fit(s){ if(!s||window.innerWidth<=900)return; var ch=[].slice.call(s.children).filter(function(c){return !c.matches('.kicker,h1,h2,.big')}); ch.forEach(function(c){c.style.zoom=''}); var f=1;
+    while(s.scrollHeight>s.clientHeight+2&&f>0.77){f-=0.03;ch.forEach(function(c){c.style.zoom=f.toFixed(2)})} }
+  function next(){show(i+1)} function prev(){show(i-1)}
+  applyLang(); build();
+  var m=location.hash.match(/^#d(\d+)$/); show(m?+m[1]-1:0);
+  window.addEventListener('resize',function(){fit(slides[i])});
+  window.addEventListener('load',function(){fit(slides[i])});
+  if(D.fonts&&D.fonts.ready)D.fonts.ready.then(function(){fit(slides[i])});
+  window.addEventListener('hashchange',function(){var m=location.hash.match(/^#d(\d+)$/);if(m)show(+m[1]-1)});
+
+  D.addEventListener('keydown',function(ev){
+    if(ev.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName))return;
+    if(ev.key==='ArrowRight'||ev.key==='PageDown'||ev.key===' '){next();ev.preventDefault()}
+    else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){prev();ev.preventDefault()}
+    else if(ev.key==='Home'){show(0)} else if(ev.key==='End'){show(slides.length-1)}
+    else if(ev.key==='l'||ev.key==='L'){setLang(lang==='hu'?'en':'hu')}
+    else if(ev.key==='j'||ev.key==='J'){D.body.classList.toggle('rev')}
+    else if(ev.key==='f'||ev.key==='F'){D.fullscreenElement?D.exitFullscreen():D.documentElement.requestFullscreen&&D.documentElement.requestFullscreen()}
+    else if(ev.key==='Escape'){jump.classList.remove('open');D.getElementById('revbox').classList.remove('open');D.getElementById('revout').classList.remove('open')}
+  });
+  [].forEach.call(D.querySelectorAll('[data-nav]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();b.getAttribute('data-nav')==='1'?next():prev()})});
+  [].forEach.call(D.querySelectorAll('[data-setlang]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();setLang(b.getAttribute('data-setlang'))})});
+  pos.addEventListener('click',function(ev){ev.stopPropagation();[].forEach.call(jump.children,function(a,k){a.classList.toggle('cur',k===i)});jump.classList.toggle('open');var c=jump.children[i];if(c)jump.scrollTop=c.offsetTop-jump.clientHeight/2});
+  D.addEventListener('click',function(ev){if(!jump.contains(ev.target))jump.classList.remove('open')});
+  D.querySelector('.deck').addEventListener('click',function(ev){
+    if(ev.target.closest('a,button,input,textarea,pre,.prompt'))return;
+    if(D.body.classList.contains('rev'))return;
+    var sel=window.getSelection&&String(window.getSelection());if(sel)return;
+    next();
+  });
+
+  /* márkaválasztó: kattintásra foglalt, a böngészőben marad */
+  (function(){var K='aim2026-taken',t={};try{t=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+    function paint(){[].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){var k=b.getAttribute('data-k');b.classList.toggle('taken',!!t[k]);b.setAttribute('aria-pressed',t[k]?'true':'false')})}
+    [].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var k=b.getAttribute('data-k');if(t[k])delete t[k];else t[k]=1;try{localStorage.setItem(K,JSON.stringify(t))}catch(e){}paint()})});
+    paint();})();
+
+  /* promptok másolása */
+  [].forEach.call(D.querySelectorAll('.copy'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();
+    var t=b.closest('.prompt').querySelector('pre').innerText, lab=b.textContent;
+    function done(){b.textContent=lang==='en'?'Copied ✓':'Kimásolva ✓';setTimeout(function(){b.textContent=lab},1600)}
+    function fb(){var ta=D.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';D.body.appendChild(ta);ta.select();try{D.execCommand('copy');done()}catch(e){}D.body.removeChild(ta)}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,fb)}else fb();
+  })});
+
+  /* javító mód: J billentyű; a megjegyzések a böngészőben maradnak, a Lista kimentése adja ki őket */
+  var REVQ='h1,h2,h3,p,li,td,th,dd,.big', REVKEY='aim2026-rev-'+DECK, rev={}, revTarget=null;
+  try{rev=JSON.parse(localStorage.getItem(REVKEY)||'{}')}catch(e){rev={}}
+  function slideOf(el){return el.closest('section.slide')}
+  function revId(el){var sl=slideOf(el);var k=all.indexOf(sl);var list=[].slice.call(sl.querySelectorAll(REVQ));return 's'+k+'-'+list.indexOf(el)}
+  function slideNo(el){var sl=slideOf(el);return slides.indexOf(sl)+1||(all.indexOf(sl)+1)}
+  function revText(el){return el.textContent.replace(/\s+/g,' ').trim()}
+  function revMark(){[].forEach.call(D.querySelectorAll('.rev-marked'),function(x){x.classList.remove('rev-marked')});Object.keys(rev).forEach(function(k){var p=k.match(/^s(\d+)-(\d+)$/);if(!p)return;var sl=all[+p[1]];if(!sl)return;var el=sl.querySelectorAll(REVQ)[+p[2]];if(el)el.classList.add('rev-marked')})}
+  function revSave(){try{localStorage.setItem(REVKEY,JSON.stringify(rev))}catch(e){}D.getElementById('revcount').textContent=Object.keys(rev).length;revMark()}
+  D.addEventListener('click',function(ev){if(!D.body.classList.contains('rev'))return;if(ev.target.closest('#revbox,#revbar,#revout,button,input,textarea,a'))return;var el=ev.target.closest('.slide '+REVQ.split(',').join(',.slide '));if(!el)return;ev.preventDefault();ev.stopPropagation();
+    revTarget=el;var box=D.getElementById('revbox');D.getElementById('revorig').textContent=revText(el);var id=revId(el);D.getElementById('revtext').value=rev[id]?rev[id].note:'';box.style.left=Math.min(ev.clientX,window.innerWidth-520)+'px';box.style.top=Math.min(ev.clientY,window.innerHeight-260)+'px';box.classList.add('open');D.getElementById('revtext').focus()},true);
+  D.getElementById('revsave').addEventListener('click',function(){var t=D.getElementById('revtext').value.trim();var id=revId(revTarget);if(t){rev[id]={slide:slideNo(revTarget),lang:slideOf(revTarget).getAttribute('data-l'),orig:revText(revTarget),note:t}}else{delete rev[id]}revSave();D.getElementById('revbox').classList.remove('open')});
+  D.getElementById('revdel').addEventListener('click',function(){delete rev[revId(revTarget)];revSave();D.getElementById('revbox').classList.remove('open')});
+  D.getElementById('revcancel').addEventListener('click',function(){D.getElementById('revbox').classList.remove('open')});
+  D.getElementById('revexport').addEventListener('click',function(){var ks=Object.keys(rev).sort(function(a,b){return rev[a].slide-rev[b].slide});var out=ks.map(function(k){var r=rev[k];return DECK+'. alkalom, '+r.slide+'. dia ('+r.lang+')\nEredeti: '+r.orig+'\nJavítás: '+r.note}).join('\n\n')||'Nincs megjegyzés.';D.getElementById('revouttext').value=out;D.getElementById('revout').classList.add('open');try{navigator.clipboard.writeText(out)}catch(e){}});
+  D.getElementById('revoutclose').addEventListener('click',function(){D.getElementById('revout').classList.remove('open')});
+  D.getElementById('revclear').addEventListener('click',function(){if(confirm('Minden megjegyzés törlése?')){rev={};revSave()}});
+  D.getElementById('revoff').addEventListener('click',function(){D.body.classList.remove('rev')});
+  revSave();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,759 @@
+# -*- coding: utf-8 -*-
+import html, re, os, math, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from content import *
+
+OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.makedirs(OUT, exist_ok=True)
+FN = lambda n: 'ai-marketing-2026-alkalom-%d.html' % n
+LANGS = ('hu', 'en')
+
+def e(s):
+    return html.escape(s, quote=False)
+
+def pmark(s):
+    s = e(s)
+    return re.sub(r'\[[^\]\n]+\]', lambda m: '<mark>' + m.group(0) + '</mark>', s)
+
+def bi(hu, en, tag='span'):
+    return '<%s class="hu">%s</%s><%s class="en">%s</%s>' % (tag, hu, tag, tag, en, tag)
+
+FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">'
+
+CSS = r"""
+:root{--paper:#F7F6F1;--ink:#1B1F3A;--ink-soft:#5A5E78;--line:#D9D7CE;--cobalt:#1E4BD8;--marker:#F2C94C;--cream:#FCEFC2;
+--display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+--t-xl:3.6rem;--t-h2:2.2rem;--t-h3:1.3rem;--t-lead:1.25rem;--t-body:1rem;--t-sm:max(.8rem,18px);--sh:0 14px 30px -22px rgba(27,31,58,.45)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:clamp(19px,min(1.55vw,2.55vh),28px);line-height:1.45;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+html[lang=en] .hu,html[lang=hu] .en{display:none!important}
+
+/* évadsáv: vékony csík, ráállva lenyílik (a nappali deck mintájára) */
+.strip{position:fixed;top:0;left:0;right:0;height:10px;overflow:hidden;display:flex;align-items:stretch;border-bottom:1px solid var(--line);background:var(--paper);z-index:45;transition:height .2s,box-shadow .2s}
+.strip:hover,.strip:focus-within{height:64px;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)}
+.strip a{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 14px;text-decoration:none;color:var(--ink-soft);border-right:1px solid var(--line);font-size:clamp(12px,.8vw,15px);line-height:1.2}
+.strip a:last-child{border-right:0}
+.strip a>*{opacity:0;transition:opacity .15s}
+.strip:hover a>*,.strip:focus-within a>*{opacity:1}
+.strip a b{font-family:var(--display);font-weight:500;font-size:1.25em;color:var(--ink)}
+.strip a.on{background:var(--marker);color:var(--ink)}
+.strip a:focus-visible{outline:3px solid var(--cobalt);outline-offset:-3px}
+
+.deck{position:absolute;inset:0}
+.slide{position:absolute;inset:0;padding:8vh 7vw 9vh;display:none;overflow-y:auto;flex-direction:column;justify-content:flex-start;max-width:1720px;margin:0 auto;font-size:var(--t-body)}
+.slide.cur{display:flex}
+/* a cím mindig ugyanott: a diák felülről indulnak, csak a címlap van középen */
+.slide:has(> h1.cover)>:first-child{margin-top:auto}
+.slide:has(> h1.cover)>:last-child{margin-bottom:auto}
+.kicker{font-size:var(--t-sm);color:var(--ink-soft);margin-bottom:.9em}
+.kicker .lt{display:inline-block;background:var(--cobalt);color:#fff;border-radius:99px;padding:.05em .75em;margin-right:.7em;font-weight:600}
+h1{font-family:var(--display);font-weight:500;font-size:var(--t-xl);line-height:1.02;letter-spacing:-.01em;margin-bottom:.3em}
+h2{font-family:var(--display);font-weight:500;font-size:var(--t-h2);line-height:1.12;margin-bottom:.6em;max-width:30ch}
+h3{font-family:var(--display);font-weight:500;font-size:var(--t-h3);line-height:1.2;margin-bottom:.3em}
+p{max-width:62ch}
+p+p{margin-top:.6em}
+.lead{font-size:var(--t-lead);max-width:52ch}
+.hl{background:linear-gradient(transparent 55%,var(--marker) 55%);padding:0 .1em}
+.muted{color:var(--ink-soft)}
+.small{font-size:var(--t-sm)}
+.note{color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:76ch;margin-top:1.1em;line-height:1.4}
+.slide a{color:var(--cobalt)}
+.rule{border:0;border-top:1px solid var(--line);margin:1.2em 0;max-width:60em}
+.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--cobalt)}
+.card.alt{border-top-color:var(--marker)}
+.card p{max-width:none}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:2vw;align-items:start;max-width:72em}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6vw;align-items:stretch;max-width:76em}
+
+/* címlap: innen, ide */
+.c1shift{display:grid;grid-template-columns:minmax(0,.85fr) auto minmax(0,1.5fr);gap:.2em 1.4em;align-items:center;margin-top:1.3rem;padding:1.1rem 1.5rem;background:#fff;border:1px solid var(--line);border-radius:14px;max-width:60rem}
+.c1shift small,.c1tem small{display:block;font-size:max(.62rem,13px);letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:.45em}
+.c1shift .from p{color:var(--ink-soft);line-height:1.35}
+.c1shift .arr{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--cobalt);color:#fff;font-size:1.1rem;line-height:1;margin-top:1.1em}
+.c1shift .to p{font-size:var(--t-lead);line-height:1.3;font-weight:500}
+.c1shift .add{grid-column:1/-1;margin-top:.9rem;padding:.8rem 0 0 1rem;border-top:1px dashed var(--line);position:relative}
+.c1shift .add::before{content:"";position:absolute;left:0;top:.85rem;bottom:.1rem;width:4px;border-radius:2px;background:var(--marker)}
+.c1tem{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .5rem;margin-top:1.3rem;max-width:60rem}
+.c1tem small{flex-basis:100%;margin-bottom:.1em}
+.c1tem span.chip{font-size:var(--t-sm);border:1px solid var(--line);border-radius:99px;padding:.2em .9em;background:#fff}
+
+h1.cover{font-size:calc(var(--t-xl) * 1.25);max-width:18ch;margin-bottom:.4em}
+
+/* nagy gondolat */
+.big{font-family:var(--display);font-weight:500;font-size:2.35rem;line-height:1.18;max-width:30ch;margin-bottom:.8em}
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4vw;max-width:56em;margin-bottom:1.2em}
+.triad div{border-top:4px solid var(--cobalt);padding-top:.5em;font-family:var(--display);font-weight:500;font-size:var(--t-h3);color:var(--cobalt)}
+
+/* folyamat */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:1vw;align-items:stretch;max-width:74em;margin-top:.4em}
+.flow .arr{align-self:center;color:var(--cobalt);font-size:1.6em}
+.flow .card h3{color:var(--cobalt)}
+
+/* karmester */
+.orch{width:min(46rem,100%,calc(46vh * 2.33));margin-top:.4em}
+.orch svg{width:100%;height:auto;display:block}
+.orch text{font-family:var(--body)}
+
+/* számok */
+.stat .num{font-family:var(--display);font-weight:500;font-size:2.4rem;line-height:1;color:var(--cobalt);display:block;margin-bottom:.25em}
+
+/* öt blokk */
+.blocks5{display:grid;grid-template-columns:repeat(5,1fr);gap:1vw;max-width:80em}
+.blk{background:#fff;border-radius:12px;padding:.8em 1em 1em;box-shadow:var(--sh);border-top:4px solid var(--cobalt)}
+.blk .n{font-family:var(--display);font-weight:500;font-size:2.1em;line-height:1;color:var(--cobalt);display:block;margin-bottom:.15em}
+.blk p{font-size:var(--t-sm);color:var(--ink-soft)}
+
+/* hat alkalom */
+.season{display:grid;grid-template-columns:repeat(6,1fr);gap:.9vw;max-width:84em}
+.slide a.ep{display:block;text-decoration:none;color:var(--ink);background:#fff;border-radius:12px;border-top:4px solid var(--line);padding:.7em .9em .9em;box-shadow:var(--sh);font-size:var(--t-sm);line-height:1.3;transition:transform .15s,border-color .15s}
+.slide a.ep:hover{transform:translateY(-3px);border-top-color:var(--cobalt)}
+.ep .n{font-family:var(--display);font-weight:500;font-size:2em;line-height:1;color:var(--cobalt);display:block}
+.ep .d{color:var(--ink-soft);display:block;margin:.35em 0 .3em}
+.ep b{display:block;font-family:var(--display);font-weight:500;font-size:1.12em;line-height:1.18;margin-bottom:.5em}
+.ep .o{color:var(--ink-soft);display:block;border-top:1px solid var(--line);padding-top:.4em}
+.slide a.ep.now{border-top-color:var(--cobalt);background:#FFFDF4;outline:2px solid var(--marker);outline-offset:-2px}
+
+/* táblázat */
+table{border-collapse:collapse;width:100%;max-width:78em;font-size:var(--t-sm)}
+th,td{text-align:left;vertical-align:top;padding:.42em .9em .42em 0;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--ink-soft)}
+td.dt{font-family:var(--display);font-weight:500;white-space:nowrap}
+td b{font-weight:600}
+tr.now td{background:var(--cream)}
+td .who{color:var(--ink-soft)}
+
+/* követelmények és tippek */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2vw 1.4vw;max-width:80em}
+.grid3 .card h3{font-size:1.15em}
+.grid3 .card p{font-size:var(--t-sm)}
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:1.2vw 1.6vw;max-width:78em}
+.tip{background:#fff;border-radius:12px;padding:.8em 1.15em .9em;box-shadow:var(--sh);border-top:4px solid var(--marker);position:relative}
+.tip h3{padding-right:1.6em}
+.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--marker);font-size:1.3em;line-height:1}
+
+/* feladat: cél, scope, leadandó */
+.goal{display:grid;grid-template-columns:auto 1fr;gap:.75em 1.4em;max-width:62em;background:#fff;border-radius:14px;padding:1.2em 1.6em;box-shadow:var(--sh);border-left:6px solid var(--marker)}
+.goal dt{font-weight:600;color:var(--cobalt);font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.08em;padding-top:.28em}
+.goal dd{font-size:var(--t-lead);line-height:1.35}
+
+/* lépések */
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:0 2.6vw;max-width:76em}
+ol.steps.two{grid-template-columns:1fr 1fr}
+ol.steps li{display:grid;grid-template-columns:1.7em 1fr;gap:.5em;align-items:baseline;padding:.5em 0;border-bottom:1px solid var(--line)}
+ol.steps li::before{counter-increment:s;content:counter(s);font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.35em;line-height:1}
+.opt{display:inline-block;font-size:var(--t-sm);font-weight:600;color:var(--ink);background:var(--cream);border-radius:99px;padding:0 .6em;margin-right:.4em}
+
+/* promptok */
+.prompts{display:grid;grid-template-columns:1fr 1fr;gap:1.6vw;align-items:start;max-width:84em}
+.prompts.one{grid-template-columns:1fr;max-width:60em}
+.prompt{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--sh)}
+.prompt .ph{display:flex;justify-content:space-between;align-items:center;gap:1em;padding:.4em .9em;background:var(--ink);color:#fff;font-size:var(--t-sm)}
+.prompt .copy{border:1px solid rgba(255,255,255,.55);border-radius:4px;padding:.05em .7em;font-size:var(--t-sm);color:#fff;white-space:nowrap}
+.prompt .copy:hover{background:rgba(255,255,255,.12)}
+.prompt pre{white-space:pre-wrap;font-family:var(--body);font-size:var(--t-sm);line-height:1.45;padding:.75em 1em;max-height:50vh;overflow:auto;margin:0}
+.prompt mark{background:var(--cream);color:inherit;border-radius:3px;padding:0 .12em}
+.tools{font-size:var(--t-sm);color:var(--ink-soft);max-width:84em;margin:-.3em 0 1em}
+
+/* márkapárok */
+.pairs{display:grid;grid-template-columns:repeat(5,1fr);gap:.8vw;max-width:84em}
+.pair{background:#fff;border-radius:10px;padding:.5em .8em .55em;box-shadow:var(--sh);border-left:4px solid var(--cobalt);font-size:var(--t-sm);line-height:1.25}
+.pair i{font-style:normal;color:var(--ink-soft)}
+.pair b{display:block;font-family:var(--display);font-weight:500;font-size:1.2em;margin:.1em 0}
+.pair span{color:var(--cobalt)}
+
+/* márkaválasztó: a játék */
+h2.game{font-size:calc(var(--t-h2) * 1.25);margin-bottom:.15em}
+.menu{display:grid;grid-template-columns:repeat(3,1fr);column-gap:3.2vw;max-width:86em;border-top:2px solid var(--ink);margin-top:.5em}
+.menu .mi{display:grid;grid-template-columns:2.1em 1fr;align-items:baseline;text-align:left;padding:.45em .3em .5em;border-bottom:1px solid var(--line);position:relative;transition:background .15s}
+.menu .mi i{font-style:normal;font-size:var(--t-sm);color:var(--ink-soft);grid-row:1/3;align-self:start;padding-top:.4em;font-variant-numeric:tabular-nums}
+.menu .mi .l1,.menu .mi .l2{grid-column:2;white-space:nowrap;line-height:1.12}
+.menu .mi b{font-family:var(--display);font-weight:500;font-size:1.32em;letter-spacing:-.01em}
+.menu .mi .l2 b{color:var(--cobalt)}
+.menu .mi em{font-style:normal;font-size:var(--t-sm);color:var(--ink-soft)}
+.menu .mi small{position:absolute;right:.3em;top:.75em;font-size:max(.62rem,13px);letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--ink);border-radius:99px;padding:.15em .7em;visibility:hidden}
+.menu .mi:hover{background:linear-gradient(90deg,rgba(242,201,76,.38),rgba(242,201,76,0))}
+.menu .mi.taken b{text-decoration:line-through;text-decoration-thickness:2px;color:var(--ink-soft)}
+.menu .mi.taken small{visibility:visible}
+@media (max-width:900px){.menu{grid-template-columns:1fr}}
+
+/* a mai feladat */
+h2.wide{max-width:44ch}
+table.task{max-width:88em;font-size:var(--t-body);margin-top:.2em}
+table.task th{font-size:var(--t-sm);border-bottom:2px solid var(--ink);padding-bottom:.35em}
+table.task td{padding:.6em 1.2em .6em 0;vertical-align:top}
+table.task td.no{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.5em;line-height:1;width:1.6em;padding-top:.45em}
+table.task td b{display:block;font-family:var(--display);font-weight:500;font-size:1.18em;line-height:1.2;margin-bottom:.15em}
+table.task td span{display:block;color:var(--ink-soft);font-size:var(--t-sm);line-height:1.35;max-width:46ch}
+table.task td.out{font-weight:600;width:24%}
+table.task td.dk{width:24%;font-size:var(--t-sm);color:var(--cobalt)}
+.deliv{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:88em;font-size:var(--t-body)}
+.deliv b{color:var(--marker);margin-right:.3em}
+
+/* szabályok */
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:.9vw 1.4vw;max-width:80em}
+.rule9{display:grid;grid-template-columns:1.6em 1fr;gap:.4em;padding:.55em 0;border-top:1px solid var(--line);font-size:var(--t-sm)}
+.rule9 .k{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.35em;line-height:1.1}
+.rule9 b{display:block;font-weight:600;color:var(--ink);font-size:1.08em}
+.rule9 p{color:var(--ink-soft)}
+
+/* lapozó, súgósor */
+.hint{position:fixed;left:7vw;bottom:2.6vh;max-width:46vw;font-size:clamp(12px,.82vw,16px);color:var(--ink-soft);z-index:20}
+.pager{position:fixed;right:7vw;bottom:2.2vh;font-size:clamp(13px,.88vw,17px);color:var(--ink-soft);display:flex;gap:.7em;align-items:center;z-index:20}
+.pager button,.pager a.home{padding:.2em .6em;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink-soft);text-decoration:none}
+.pager button:hover,.pager a.home:hover{color:var(--cobalt);border-color:var(--cobalt)}
+.pager button:focus-visible,.pager a:focus-visible{outline:3px solid var(--cobalt)}
+.lang{display:inline-flex}
+.lang button{border-radius:0}
+.lang button:first-child{border-radius:4px 0 0 4px}
+.lang button:last-child{border-radius:0 4px 4px 0;border-left:0}
+.pager .lang button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.jump{display:none;position:absolute;right:0;bottom:calc(100% + .6em);width:min(34em,80vw);max-height:70vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:6px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:.4em 0;font-size:1.15em;z-index:50}
+.jump.open{display:block}
+.jump a{display:grid;grid-template-columns:2.2em 1fr;gap:.4em;padding:.35em 1em;color:var(--ink);text-decoration:none;line-height:1.3}
+.jump a:hover{background:rgba(0,0,0,.05)}
+.jump a.cur{font-weight:600;color:var(--cobalt)}
+.jump a i{font-style:normal;color:var(--ink-soft)}
+
+/* javító mód (J) */
+body.rev .slide :is(h1,h2,h3,p,li,td,th,dd,.big){outline:1px dashed rgba(30,75,216,.35);outline-offset:2px;cursor:text}
+body.rev .slide :is(h1,h2,h3,p,li,td,th,dd,.big):hover{background:rgba(242,201,76,.35)}
+body.rev .rev-marked{border-left:4px solid var(--cobalt);padding-left:.5em}
+.revbar{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#F7F6F1;padding:.6em 7vw;font-size:clamp(13px,.9vw,17px);display:none;z-index:60;align-items:center;gap:1em}
+body.rev .revbar{display:flex}
+.revbar button{border:1px solid rgba(255,255,255,.4);color:#F7F6F1;padding:.2em .7em;border-radius:4px}
+.revbox{position:fixed;z-index:61;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.8em;width:min(30em,90vw);box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;font-size:clamp(14px,1vw,18px)}
+.revbox.open{display:block}
+.revbox .orig{font-size:.85em;color:var(--ink-soft);max-height:6em;overflow:auto;margin-bottom:.5em;border-left:3px solid var(--marker);padding-left:.6em}
+.revbox textarea{width:100%;min-height:5em;font:inherit;padding:.4em;border:1px solid var(--line);border-radius:4px}
+.revbox .row{display:flex;gap:.5em;margin-top:.5em}
+.revbox .row button{border:1px solid var(--cobalt);color:var(--cobalt);padding:.3em .8em;border-radius:4px}
+.revout{position:fixed;inset:0;background:var(--paper);z-index:62;padding:4vh 7vw;display:none;overflow:auto}
+.revout.open{display:block}
+.revout textarea{width:100%;height:60vh;font:inherit;font-size:.85em;padding:.8em;border:1px solid var(--line);border-radius:6px;margin:1em 0}
+.btn{display:inline-block;padding:.35em .9em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;font-size:var(--t-sm);text-decoration:none}
+
+@media (max-width:900px){
+  html,body{overflow:auto}
+  .slide{padding:5vh 6vw 14vh;justify-content:flex-start}
+  .c1shift,.flow,.cols,.cols3,.triad,.tips,.prompts,.grid3,.rules,.blocks5{grid-template-columns:1fr}
+  .flow .arr{transform:rotate(90deg);justify-self:center}
+  .c1shift .arr{transform:rotate(90deg);margin:0}
+  .season{grid-template-columns:1fr 1fr}
+  .pairs{grid-template-columns:1fr 1fr 1fr}
+  ol.steps.two{grid-template-columns:1fr}
+  .hint{display:none}
+  .pager{right:4vw;left:4vw;justify-content:flex-end;flex-wrap:wrap}
+}
+"""
+
+JS = r"""
+(function(){
+  var KEY='aim2026-lang', D=document, root=D.documentElement, DECK=root.getAttribute('data-deck');
+  function qp(n){var m=location.search.match(new RegExp('[?&]'+n+'=([a-z]+)'));return m?m[1]:null}
+  var lang=qp('lang'); if(lang!=='hu'&&lang!=='en'){lang=null;try{lang=localStorage.getItem(KEY)}catch(e){} if(lang!=='hu'&&lang!=='en')lang='hu'}
+  var all=[].slice.call(D.querySelectorAll('section.slide')), slides=[], i=0, pos=D.getElementById('pos'), jump=D.getElementById('jump');
+  function build(){
+    slides=all.filter(function(s){return s.getAttribute('data-l')===lang});
+    jump.innerHTML='';
+    slides.forEach(function(sl,k){var h=sl.querySelector('h1,h2,.big');var t=(h?h.textContent:(sl.querySelector('.kicker')||{}).textContent||'').replace(/\s+/g,' ').trim();if(t.length>72)t=t.slice(0,70)+'…';var a=D.createElement('a');a.href='#d'+(k+1);a.innerHTML='<i>'+(k+1)+'.</i><span></span>';a.lastChild.textContent=t;a.addEventListener('click',function(ev){ev.preventDefault();jump.classList.remove('open');show(k)});jump.appendChild(a)});
+  }
+  function url(){return location.pathname+'?lang='+lang+'#d'+(i+1)}
+  function show(n){
+    n=Math.max(0,Math.min(slides.length-1,n));
+    all.forEach(function(s){s.classList.remove('cur')});
+    i=n; slides[i].classList.add('cur');
+    pos.textContent=(i+1)+' / '+slides.length;
+    try{history.replaceState(null,'',url())}catch(e){location.hash='d'+(i+1)}
+    fit(slides[i]);
+  }
+  function applyLang(){
+    root.lang=lang;
+    var t=D.querySelector('title'); if(t&&t.getAttribute('data-'+lang))t.textContent=t.getAttribute('data-'+lang);
+    [].forEach.call(D.querySelectorAll('[data-setlang]'),function(b){b.classList.toggle('on',b.getAttribute('data-setlang')===lang)});
+    [].forEach.call(D.querySelectorAll('a[data-href]'),function(a){a.href=a.getAttribute('data-href')+'?lang='+lang+(a.getAttribute('data-hash')||'')});
+  }
+  function setLang(l){if(l===lang)return;lang=l;try{localStorage.setItem(KEY,l)}catch(e){}applyLang();build();show(i)}
+  /* ha egy dia nem fér ki, csak azt az egy diát kicsinyíti, legfeljebb 76%-ig */
+  function fit(s){ if(!s||window.innerWidth<=900)return; var ch=[].slice.call(s.children).filter(function(c){return !c.matches('.kicker,h1,h2,.big')}); ch.forEach(function(c){c.style.zoom=''}); var f=1;
+    while(s.scrollHeight>s.clientHeight+2&&f>0.77){f-=0.03;ch.forEach(function(c){c.style.zoom=f.toFixed(2)})} }
+  function next(){show(i+1)} function prev(){show(i-1)}
+  applyLang(); build();
+  var m=location.hash.match(/^#d(\d+)$/); show(m?+m[1]-1:0);
+  window.addEventListener('resize',function(){fit(slides[i])});
+  window.addEventListener('load',function(){fit(slides[i])});
+  if(D.fonts&&D.fonts.ready)D.fonts.ready.then(function(){fit(slides[i])});
+  window.addEventListener('hashchange',function(){var m=location.hash.match(/^#d(\d+)$/);if(m)show(+m[1]-1)});
+
+  D.addEventListener('keydown',function(ev){
+    if(ev.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName))return;
+    if(ev.key==='ArrowRight'||ev.key==='PageDown'||ev.key===' '){next();ev.preventDefault()}
+    else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){prev();ev.preventDefault()}
+    else if(ev.key==='Home'){show(0)} else if(ev.key==='End'){show(slides.length-1)}
+    else if(ev.key==='l'||ev.key==='L'){setLang(lang==='hu'?'en':'hu')}
+    else if(ev.key==='j'||ev.key==='J'){D.body.classList.toggle('rev')}
+    else if(ev.key==='f'||ev.key==='F'){D.fullscreenElement?D.exitFullscreen():D.documentElement.requestFullscreen&&D.documentElement.requestFullscreen()}
+    else if(ev.key==='Escape'){jump.classList.remove('open');D.getElementById('revbox').classList.remove('open');D.getElementById('revout').classList.remove('open')}
+  });
+  [].forEach.call(D.querySelectorAll('[data-nav]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();b.getAttribute('data-nav')==='1'?next():prev()})});
+  [].forEach.call(D.querySelectorAll('[data-setlang]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();setLang(b.getAttribute('data-setlang'))})});
+  pos.addEventListener('click',function(ev){ev.stopPropagation();[].forEach.call(jump.children,function(a,k){a.classList.toggle('cur',k===i)});jump.classList.toggle('open');var c=jump.children[i];if(c)jump.scrollTop=c.offsetTop-jump.clientHeight/2});
+  D.addEventListener('click',function(ev){if(!jump.contains(ev.target))jump.classList.remove('open')});
+  D.querySelector('.deck').addEventListener('click',function(ev){
+    if(ev.target.closest('a,button,input,textarea,pre,.prompt'))return;
+    if(D.body.classList.contains('rev'))return;
+    var sel=window.getSelection&&String(window.getSelection());if(sel)return;
+    next();
+  });
+
+  /* márkaválasztó: kattintásra foglalt, a böngészőben marad */
+  (function(){var K='aim2026-taken',t={};try{t=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+    function paint(){[].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){var k=b.getAttribute('data-k');b.classList.toggle('taken',!!t[k]);b.setAttribute('aria-pressed',t[k]?'true':'false')})}
+    [].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var k=b.getAttribute('data-k');if(t[k])delete t[k];else t[k]=1;try{localStorage.setItem(K,JSON.stringify(t))}catch(e){}paint()})});
+    paint();})();
+
+  /* promptok másolása */
+  [].forEach.call(D.querySelectorAll('.copy'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();
+    var t=b.closest('.prompt').querySelector('pre').innerText, lab=b.textContent;
+    function done(){b.textContent=lang==='en'?'Copied ✓':'Kimásolva ✓';setTimeout(function(){b.textContent=lab},1600)}
+    function fb(){var ta=D.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';D.body.appendChild(ta);ta.select();try{D.execCommand('copy');done()}catch(e){}D.body.removeChild(ta)}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,fb)}else fb();
+  })});
+
+  /* javító mód: J billentyű; a megjegyzések a böngészőben maradnak, a Lista kimentése adja ki őket */
+  var REVQ='h1,h2,h3,p,li,td,th,dd,.big', REVKEY='aim2026-rev-'+DECK, rev={}, revTarget=null;
+  try{rev=JSON.parse(localStorage.getItem(REVKEY)||'{}')}catch(e){rev={}}
+  function slideOf(el){return el.closest('section.slide')}
+  function revId(el){var sl=slideOf(el);var k=all.indexOf(sl);var list=[].slice.call(sl.querySelectorAll(REVQ));return 's'+k+'-'+list.indexOf(el)}
+  function slideNo(el){var sl=slideOf(el);return slides.indexOf(sl)+1||(all.indexOf(sl)+1)}
+  function revText(el){return el.textContent.replace(/\s+/g,' ').trim()}
+  function revMark(){[].forEach.call(D.querySelectorAll('.rev-marked'),function(x){x.classList.remove('rev-marked')});Object.keys(rev).forEach(function(k){var p=k.match(/^s(\d+)-(\d+)$/);if(!p)return;var sl=all[+p[1]];if(!sl)return;var el=sl.querySelectorAll(REVQ)[+p[2]];if(el)el.classList.add('rev-marked')})}
+  function revSave(){try{localStorage.setItem(REVKEY,JSON.stringify(rev))}catch(e){}D.getElementById('revcount').textContent=Object.keys(rev).length;revMark()}
+  D.addEventListener('click',function(ev){if(!D.body.classList.contains('rev'))return;if(ev.target.closest('#revbox,#revbar,#revout,button,input,textarea,a'))return;var el=ev.target.closest('.slide '+REVQ.split(',').join(',.slide '));if(!el)return;ev.preventDefault();ev.stopPropagation();
+    revTarget=el;var box=D.getElementById('revbox');D.getElementById('revorig').textContent=revText(el);var id=revId(el);D.getElementById('revtext').value=rev[id]?rev[id].note:'';box.style.left=Math.min(ev.clientX,window.innerWidth-520)+'px';box.style.top=Math.min(ev.clientY,window.innerHeight-260)+'px';box.classList.add('open');D.getElementById('revtext').focus()},true);
+  D.getElementById('revsave').addEventListener('click',function(){var t=D.getElementById('revtext').value.trim();var id=revId(revTarget);if(t){rev[id]={slide:slideNo(revTarget),lang:slideOf(revTarget).getAttribute('data-l'),orig:revText(revTarget),note:t}}else{delete rev[id]}revSave();D.getElementById('revbox').classList.remove('open')});
+  D.getElementById('revdel').addEventListener('click',function(){delete rev[revId(revTarget)];revSave();D.getElementById('revbox').classList.remove('open')});
+  D.getElementById('revcancel').addEventListener('click',function(){D.getElementById('revbox').classList.remove('open')});
+  D.getElementById('revexport').addEventListener('click',function(){var ks=Object.keys(rev).sort(function(a,b){return rev[a].slide-rev[b].slide});var out=ks.map(function(k){var r=rev[k];return DECK+'. alkalom, '+r.slide+'. dia ('+r.lang+')\nEredeti: '+r.orig+'\nJavítás: '+r.note}).join('\n\n')||'Nincs megjegyzés.';D.getElementById('revouttext').value=out;D.getElementById('revout').classList.add('open');try{navigator.clipboard.writeText(out)}catch(e){}});
+  D.getElementById('revoutclose').addEventListener('click',function(){D.getElementById('revout').classList.remove('open')});
+  D.getElementById('revclear').addEventListener('click',function(){if(confirm('Minden megjegyzés törlése?')){rev={};revSave()}});
+  D.getElementById('revoff').addEventListener('click',function(){D.body.classList.remove('rev')});
+  revSave();
+})();
+"""
+
+# ---------- diaelemek ----------
+
+def kicker(hu, en, lt=None):
+    return {'hu': '<p class="kicker">%s%s</p>' % ('<span class="lt">%s</span>' % lt['hu'] if lt else '', hu),
+            'en': '<p class="kicker">%s%s</p>' % ('<span class="lt">%s</span>' % lt['en'] if lt else '', en)}
+
+def j(*parts):
+    """részek összefűzése nyelvenként; egy rész lehet str (közös) vagy dict"""
+    out = {}
+    for l in LANGS:
+        out[l] = ''.join(p[l] if isinstance(p, dict) else p for p in parts)
+    return out
+
+def tag(t, d, cls=None):
+    c = ' class="%s"' % cls if cls else ''
+    return {l: '<%s%s>%s</%s>' % (t, c, d[l], t) for l in LANGS}
+
+def sess_lt(n):
+    return L('%d. alkalom' % n, 'Session %d' % n)
+
+def title_slide(n):
+    s = SESS[n-1]
+    return j(kicker('AI a marketingben · gyakorlat', 'AI in Marketing · practice'),
+             {l: '<h1 class="cover">%s</h1>' % s['t'][l] for l in LANGS},
+             {l: '<p class="lead">%s</p>' % (('%d. alkalom · %s' % (n, s['d']['hu'])) if l == 'hu' else ('Session %d · %s' % (n, s['d']['en']))) for l in LANGS})
+
+def goal_slide(n):
+    s = SESS[n-1]
+    return j(kicker('A feladat', 'The task', sess_lt(n)),
+             tag('h2', L('Cél, scope, leadandó', 'Goal, scope, deliverable')),
+             {l: '<dl class="goal"><dt>%s</dt><dd>%s</dd><dt>Scope</dt><dd>%s</dd><dt>%s</dt><dd>%s</dd></dl>' % (
+                 'Cél' if l == 'hu' else 'Goal', GOAL[n][l], SCOPE[n][l], 'Leadandó' if l == 'hu' else 'Deliverable', DELIV[n][l]) for l in LANGS},
+             tag('p', L('A lépések egy javasolt utat mutatnak, nem kötelező sorrendet. Az eszközlisták csak példák: ha más AI-eszközt ismersz vagy szeretsz, használd azt.',
+                        'The steps show a suggested path, not a mandatory order. The tool lists are only examples: if you know or like another AI tool, use it.'), 'note'))
+
+def task_slides(n):
+    """A mai feladat: részfeladatonként mit csinálsz, mi az eredménytermék, hová kerül a deckben."""
+    out = []
+    groups = SUB[n]
+    start = 0
+    for gi, (sub, rows) in enumerate(groups):
+        body = {}
+        for l in LANGS:
+            hd = ('Részfeladat', 'Eredménytermék', 'Hová kerül a deckben') if l == 'hu' else ('Sub-task', 'Output', 'Where it goes in the deck')
+            trs = ['<tr><th></th><th>%s</th><th>%s</th><th>%s</th></tr>' % hd]
+            for q, (t, d, o, k) in enumerate(rows):
+                trs.append('<tr><td class="no">%d</td><td><b>%s</b><span>%s</span></td><td class="out">%s</td><td class="dk">%s</td></tr>' % (start + q + 1, t[l], d[l], o[l], k[l]))
+            body[l] = '<table class="task">%s</table>' % ''.join(trs)
+        last = gi == len(groups) - 1
+        pg = (' %d/%d' % (gi + 1, len(groups))) if len(groups) > 1 else ''
+        h2 = {l: GOAL[n][l] if sub is None else sub[l] for l in LANGS}
+        foot = {l: '' for l in LANGS}
+        if last:
+            foot = {l: '<p class="deliv"><b>%s</b> %s</p>' % ('Leadandó:' if l == 'hu' else 'Deliverable:', DELIV[n][l]) for l in LANGS}
+        note = tag('p', L('Ami a dián van, javaslat arra az esetre, ha nincs ötleted, hogyan indulj el. A lényeg az eredménytermék.',
+                          'What is on the slide is a suggestion in case you do not know how to start. What counts is the output.'), 'note')
+        out.append(j(kicker('A mai feladat' + pg, "Today's task" + pg, sess_lt(n)), tag('h2', h2, 'wide'), body, foot, note))
+        start += len(rows)
+    return out
+
+def prompt_box(label, text):
+    return '<div class="prompt"><div class="ph"><span>%s</span><button type="button" class="copy">%s</button></div><pre>%s</pre></div>' % (label, '{COPY}', pmark(text))
+
+def copyfix(s, l):
+    return s.replace('{COPY}', 'Másolás' if l == 'hu' else 'Copy')
+
+def prompt_slides(n):
+    out = []
+    for k, (ttl, si, fi) in enumerate(PROMPTS[n]):
+        body = {}
+        for l in LANGS:
+            cb = CB_HU if l == 'hu' else CB_EN
+            a = prompt_box('Strukturált' if l == 'hu' else 'Structured', cb[si])
+            b = prompt_box('Szabad szöveggel, ahogy egy kollégának mondanád' if l == 'hu' else 'In free text, the way you would say it to a colleague', cb[fi])
+            body[l] = copyfix('<div class="prompts">%s%s</div>' % (a, b), l)
+        tools = tag('p', j(L('<b>Eszközök ehhez:</b> ', '<b>Tools for this:</b> '), TOOLS[n]), 'tools') if k == 0 else {'hu': '', 'en': ''}
+        out.append(j(kicker('Ha nincs ötleted, hogyan indulj el', 'If you do not know how to start', sess_lt(n)), tag('h2', j(L('Promptjavaslat: ', 'Prompt suggestion: '), ttl)), tools, body))
+    if n in INLINE:
+        body = {}
+        for l in LANGS:
+            boxes = ''.join(prompt_box(ttl[l], txt[l]) for ttl, txt in INLINE[n])
+            body[l] = copyfix('<div class="prompts%s">%s</div>' % ('' if len(INLINE[n]) > 1 else ' one', boxes), l)
+        h = L('Féléves ütemterv és versenytársak', 'Semester timeline and competitors') if n == 1 else L('Animált spot', 'Animated spot')
+        note = tag('p', L('A szögletes zárójeles részeket a saját projekted adataival töltsd ki.', 'Fill in the parts in square brackets with your own project details.'), 'note') if n == 1 else ''
+        out.append(j(kicker('Ha nincs ötleted, hogyan indulj el', 'If you do not know how to start', sess_lt(n)), tag('h2', j(L('Promptjavaslat: ', 'Prompt suggestion: '), h)), body, note))
+    return out
+
+def tips_slides(n):
+    out = []
+    tot = len(TIPS[n])
+    for k, (ttl, tips) in enumerate(TIPS[n]):
+        cards = {l: '<div class="tips">%s</div>' % ''.join('<div class="tip"><span class="i" aria-hidden="true">%d</span><h3>%s</h3><p>%s</p></div>' % (q+1, a[l], b[l]) for q, (a, b) in enumerate(tips)) for l in LANGS}
+        out.append(j(kicker('Tippek és tanácsok · %d/%d' % (k+1, tot), 'Tips and advice · %d/%d' % (k+1, tot), sess_lt(n)), tag('h2', ttl), cards))
+    return out
+
+RAG = {'2026. november 12.': '2026. november 12-én', '2026. november 19.': '2026. november 19-én', '2026. november 26.': '2026. november 26-án',
+       '2026. december 3.': '2026. december 3-án', '2026. december 10.': '2026. december 10-én', '2026. november 11.': '2026. november 11-én',
+       '2026. november 18.': '2026. november 18-án', '2026. november 25.': '2026. november 25-én', '2026. december 2.': '2026. december 2-án',
+       '2026. december 9.': '2026. december 9-én'}
+
+def close_slide(n):
+    s = SESS[n-1]
+    if n < 6:
+        nx = SESS[n]
+        th_d, th = THEORY[n+1]
+        nxt = {l: ('<p class="lead">%s</p><p class="muted">%s</p>' % (
+            ('Jövő csütörtökön, %s: %s.' % (RAG[nx['d']['hu']], nx['t']['hu'])) if l == 'hu' else ('Next Thursday, %s: %s.' % (nx['d']['en'], nx['t']['en'])),
+            (('Előtte szerdán, %s: ' % RAG[th_d['hu']]) if l == 'hu' else ('The day before, %s: ' % th_d['en'])) + ' · '.join(x[l] for x in th))) for l in LANGS}
+    else:
+        nxt = tag('p', L('2026. december 16-án még két elméleti óra lesz: Nóra: Fogyasztói viselkedés · Jogi szabályozás és etika.',
+                         'On 16 December 2026 there are two more lectures: Nóra: Consumer behaviour · Legal regulation and ethics.'), 'lead')
+    return j(kicker('Zárás', 'Wrap-up', sess_lt(n)),
+             {l: '<h2>%s</h2>' % (('Leadandó: ' if l == 'hu' else 'Deliverable: ') + DELIV[n][l][0].lower() + DELIV[n][l][1:]) for l in LANGS},
+             '<hr class="rule">', nxt,
+             tag('p', L('A leadás helyét és határidejét az oktató adja meg.', 'The instructor will tell you where and when to upload.'), 'note'))
+
+# ---------- az 1. alkalom bevezető diái ----------
+
+def orch_svg(roles, center):
+    W, H = 1000, 430
+    cx, cy = 500, 360
+    rx, ry = 390, 290
+    angs = [165, 135, 105, 75, 45, 15]
+    parts = ['<svg viewBox="0 0 %d %d" role="img" aria-label="%s">' % (W, H, e(', '.join(roles)) + ' · ' + e(center))]
+    pos = []
+    for a, r in zip(angs, roles):
+        x = cx + rx * math.cos(math.radians(a)); y = cy - ry * math.sin(math.radians(a))
+        pos.append((x, y, r))
+    for x, y, r in pos:
+        parts.append('<line x1="%d" y1="%d" x2="%.0f" y2="%.0f" stroke="#C9C7BE" stroke-width="2" stroke-dasharray="4 6"/>' % (cx, cy - 20, x, y))
+    for x, y, r in pos:
+        w = len(r) * 12.5 + 44
+        parts.append('<rect x="%.0f" y="%.0f" width="%.0f" height="50" rx="25" fill="#fff" stroke="#D9D7CE" stroke-width="1.5"/>' % (x - w/2, y - 25, w))
+        parts.append('<text x="%.0f" y="%.0f" text-anchor="middle" font-size="23" fill="#1B1F3A">%s</text>' % (x, y + 8, e(r)))
+    parts.append('<circle cx="%d" cy="%d" r="70" fill="#1E4BD8"/>' % (cx, cy - 10))
+    parts.append('<circle cx="%d" cy="%d" r="82" fill="none" stroke="#F2C94C" stroke-width="5"/>' % (cx, cy - 10))
+    parts.append('<text x="%d" y="%d" text-anchor="middle" font-size="30" font-weight="600" fill="#fff">%s</text>' % (cx, cy, e(center)))
+    parts.append('</svg>')
+    return ''.join(parts)
+
+def intro_slides():
+    S = []
+    # 1. címlap
+    S.append(j(kicker('Pannon Egyetem · Marketing MSc · 2026 ősz', 'University of Pannonia · Marketing MSc · autumn 2026'),
+               {'hu': '<h1 class="cover">AI a marketingben</h1>', 'en': '<h1 class="cover">AI in Marketing</h1>'},
+               tag('p', L('Gyakorlat · 1. alkalom · 2026. november 5.', 'Practice · Session 1 · 5 November 2026'), 'lead'),
+               tag('p', L('Birincsik Albert', 'Albert Birincsik'), 'muted')))
+    # 2. miért
+    S.append(j(kicker('A tárgy', 'The course'), tag('h2', L('Miért vagyunk itt?', 'Why are we here?')),
+               tag('p', L('Hogy megtanuld, hogyan dolgozik egy marketinges AI-jal.', 'To learn how a marketer works with AI.'), 'lead'),
+               {l: '<div class="cols" style="margin-top:1.1em"><div class="card"><h3>%s</h3><p>%s</p></div><div class="card alt"><h3>%s</h3><p>%s</p></div></div>' % (
+                   ('Nem helyetted gondolkodik', 'Gyorsabban és többet tudsz vele kipróbálni.', 'A félév végére', 'egy teljes márkabevezetést viszel végig, az ötlettől a kész kampányanyagokig.') if l == 'hu' else
+                   ('It does not think for you', 'It lets you try more things, faster.', 'By the end of the semester', 'you will have taken a complete brand launch from idea to finished campaign materials.')) for l in LANGS}))
+    # 3. ami a legfontosabb
+    S.append(j(kicker('Ami a legfontosabb', 'What matters most'),
+               tag('p', L('Az AI nagy segítség, de mindent, amit ad, értelmezni kell, felülbírálni és kritikusan szemlélni.', 'AI is a great help, but everything it gives you has to be interpreted, overruled where needed and looked at critically.'), 'big'),
+               {l: '<div class="triad"><div>%s</div><div>%s</div><div>%s</div></div>' % (('Értelmezed', 'Javítod', 'Kritikával nézed') if l == 'hu' else ('Interpret', 'Correct', 'Question')) for l in LANGS},
+               tag('p', L('Nem attól leszel jó szakember, hogy egy az egyben elfogadod, amit kapsz. Nem arra vagyok kíváncsi, milyen gyorsan tudsz dolgozni. Itt a hatékonyság <span class="hl">a minőséget és a mélységet</span> jelenti.',
+                          'You do not become a good professional by accepting what you get as it is. I am not interested in how fast you can work. Here, efficiency means <span class="hl">quality and depth</span>.'), 'lead')))
+    # 4. mit csinálunk
+    S.append(j(kicker('Mit csinálunk', 'What we do'), tag('h2', L('Egy ismert márka, egy új kategória', 'A well-known brand, a new category')),
+               tag('p', L('Például: mi lenne, ha a Coca-Cola autómárka lenne?', 'For example: what if Coca-Cola were a car brand?'), 'lead'),
+               {l: '<div class="flow" style="margin-top:1em"><div class="card"><h3>%s</h3><p>%s</p></div><div class="arr" aria-hidden="true">→</div><div class="card"><h3>%s</h3><p>%s</p></div><div class="arr" aria-hidden="true">→</div><div class="card alt"><h3>%s</h3><p>%s</p></div></div>' % (
+                   ('Átveszed', 'Az ismert márka személyiségét, értékeit és vizuális kódjait.', 'Felépíted', 'Egy önálló új márkát, saját névvel és logóval.', 'Elindítod', 'Megtervezed és elkészíted a bevezető kampányát.') if l == 'hu' else
+                   ('You take', "The known brand's personality, values and visual codes.", 'You build', 'An independent new brand with its own name and logo.', 'You launch', 'You plan and produce its launch campaign.')) for l in LANGS},
+               tag('p', L('Ez nem almárka: a kiinduló márka csak az ihlet. Egyéni munka, mindenki a választott márkával dolgozik.', 'This is not a sub-brand: the source brand is only the inspiration. Individual work, everyone works with the brand they chose.'), 'note')))
+    # 5. szimuláció, karmester
+    S.append(j(kicker('Min fogsz dolgozni', 'What you will work on'), tag('h2', L('Egy ügynökség egy tenderen. A karmester te vagy.', 'An agency on a pitch. You are the conductor.')),
+               tag('p', L('Ez egy szimuláció, ami a valós életet modellezi: így dolgozik egy ügynökség, amikor meg akar nyerni egy ügyfelet. Egy tenderen ezek a szakemberek dolgoznak együtt. Te ezt egymagad csinálod meg, a kompetenciákat az AI segítségével oldod meg.',
+                          'This is a simulation that models real life: this is how an agency works when it wants to win a client. On a pitch, these specialists work together. You do all of it on your own, covering these competencies with the help of AI.')),
+               {l: '<div class="orch">%s</div>' % orch_svg(ROLES[l], 'Te + AI' if l == 'hu' else 'You + AI') for l in LANGS}))
+    # 6. elvárt kimenet
+    S.append(j(kicker('Az elvárt kimenet', 'What is expected'), tag('h2', L('Egy tenderdeck, amit óráról órára építesz fel', 'A pitch deck you build session by session')),
+               {l: '<div class="cols3 stat">%s</div>' % ''.join('<div class="card%s"><span class="num">%s</span><p>%s</p></div>' % x for x in (
+                   (('', '15-20 dia', 'Tenderdeck az új márkáról és a bevezető kampányáról, rögzített szerkezet szerint.'), ('', 'Prototípusok', 'A deck mögött: arculat, weboldal, posztok, videóspot és a többi.'), (' alt', '15-20 perc', '2026. december 10-én bemutatod a decket, és elmeséled, hogyan készült.')) if l == 'hu' else
+                   (('', '15-20 slides', 'A pitch deck of the new brand and its launch campaign, along a fixed structure.'), ('', 'Prototypes', 'Behind the deck: identity, website, posts, video spot and the rest.'), (' alt', '15-20 minutes', 'On 10 December 2026 you present the deck and tell the story of how it was made.')))) for l in LANGS},
+               tag('p', L('Mintha ügynökségként az ügyfélnek vinnéd, és meg akarnád nyerni a tendert. A bemutatón azt is elmondod, mit csináltál, mivel, mire jöttél rá, és hol voltak az AI korlátai.',
+                          'As if you were an agency bringing it to the client to win the pitch. In the presentation you also tell what you did, with what, what you learned, and where the limits of AI were.'), 'note')))
+    # 7. öt blokk
+    S.append(j(kicker('A tenderdeck szerkezete', 'The structure of the pitch deck'), tag('h2', L('Öt blokk', 'Five blocks')),
+               {l: '<div class="blocks5">%s</div>' % ''.join('<div class="blk"><span class="n">%d</span><h3>%s</h3><p>%s</p></div>' % (k+1, a[l], b[l]) for k, (a, b) in enumerate(BLOCKS)) for l in LANGS},
+               tag('p', L('Minden, amit a hat alkalmon készítesz, ebbe a deckbe kerül. A blokkok aránya rajtad múlik. A kreatív anyagok prototípusok: valódi gyártás, éles kampány és védjegybejegyzés nem része a feladatnak.',
+                          'Everything you make in the six sessions goes into this deck. How you balance the blocks is up to you. The creative materials are prototypes: real production, a live campaign and trademark registration are not part of the assignment.'), 'note')))
+    # 8. hat alkalom
+    eps = {}
+    for l in LANGS:
+        cards = []
+        for s in SESS:
+            cards.append('<a class="ep%s" data-href="%s" href="%s"><span class="n">%d</span><span class="d">%s</span><b>%s</b><span class="o">%s</span></a>' % (
+                ' now' if s['n'] == 1 else '', FN(s['n']), FN(s['n']), s['n'], s['d'][l], s['t'][l], s['out'][l]))
+        eps[l] = '<div class="season">%s</div>' % ''.join(cards)
+    S.append(j(kicker('Hogyan', 'How'), tag('h2', L('Hat csütörtök, 8:00 és 12:00 között', 'Six Thursdays, from 8:00 to 12:00')), eps,
+               tag('p', L('Minden alkalom két másfél órás blokk, és mindegyiken a tenderdeck egy-egy részét készíted el. Az ingyenes Claude és ChatGPT elég hozzá. Az alkalmakra kattintva megnyílik a saját diasoruk.',
+                          'Each session is two blocks of an hour and a half, and in each you produce one part of the pitch deck. The free Claude and ChatGPT are enough. Click a session to open its own slides.'), 'note')))
+    # 10. követelmények
+    req = L([('Részvétel', 'Kötelező, a hiányzás nem haladhatja meg a HKR szerinti mértéket.'),
+             ('Leadás', 'Minden alkalom leadandóját határidőre fel kell tölteni, ez az aláírás feltétele. A helyét és a határidejét az oktató adja meg.'),
+             ('Értékelés', 'Folyamatos számonkérés, ötfokozatú jegy, a tantárgy tematikája szerinti ponthatárokkal.'),
+             ('AI-használat', 'Megengedett, sőt ez a feladat lényege. Az ingyenes változat elég, de ha van előfizetésed, használhatod.'),
+             ('Tények', 'Minden tényt forrással igazolj. Az AI által írt, nem ellenőrizhető állítást javítsd vagy töröld.'),
+             ('Védjegyek', 'A kiinduló márka logóját és védjegyeit ne használd. Az új márkának saját neve és logója van.')],
+            [('Attendance', 'Mandatory; absences may not exceed the limit set by the university regulations (HKR).'),
+             ('Submission', "Each session's deliverable must be uploaded by the deadline; this is the condition for the course signature. The instructor will tell you where and when."),
+             ('Assessment', 'Continuous assessment, five-grade scale, with the thresholds set in the course syllabus.'),
+             ('Use of AI', 'Allowed, in fact it is the point of the assignment. The free version is enough, but if you have a subscription you may use it.'),
+             ('Facts', 'Back every fact with a source. Fix or delete any AI-written claim you cannot verify.'),
+             ('Trademarks', "Do not use the source brand's logo and trademarks. The new brand has its own name and logo.")])
+    S.append(j(kicker('Követelmények', 'Requirements'), tag('h2', L('Amit a félév kér', 'What the semester asks of you')),
+               {l: '<div class="grid3">%s</div>' % ''.join('<div class="card%s"><h3>%s</h3><p>%s</p></div>' % (' alt' if k % 2 else '', a, b) for k, (a, b) in enumerate(req[l])) for l in LANGS},
+               tag('p', L('Záróbemutató 2026. december 10-én, hallgatónként 15-20 perc. A deckben legyen egy dia a használt eszközökről.',
+                          'Final presentation on 10 December 2026, 15-20 minutes per student. Include one slide in the deck about the tools you used.'), 'note')))
+    # 11. eszközök
+    tt = {l: '<table style="max-width:60em"><tr><th>%s</th><th>%s</th></tr>%s</table>' % ((('Mire', 'Ajánlott eszköz') if l == 'hu' else ('For what', 'Recommended tool')) +
+          (''.join('<tr><td>%s</td><td><b>%s</b></td></tr>' % (a[l], b[l]) for a, b in TOOLTABLE),)) for l in LANGS}
+    S.append(j(kicker('AI-eszközök', 'AI tools'), tag('h2', L('Bármit használhatsz. A Claude és a ChatGPT az ajánlott.', 'You can use anything. Claude and ChatGPT are recommended.')), tt,
+               tag('p', L('Más eszközök is jók: Gemini, Copilot, Grok, Le Chat, Perplexity, Midjourney, Canva, Figma és a többi. A leadott anyagban írd oda, melyik részhez melyik eszközt használtad. Ma nézd meg, elérhető-e a saját ingyenes Claude-fiókodban a Claude Design és a Claude Slides.',
+                          'Other tools are fine too: Gemini, Copilot, Grok, Le Chat, Perplexity, Midjourney, Canva, Figma and the rest. In the material you hand in, note which tool you used for which part. Today, check whether Claude Design and Claude Slides are available in your own free Claude account.'), 'note')))
+    # 12. promptolás
+    S.append(j(kicker('Promptolás', 'Prompting'), tag('h2', L('A jó prompt olyan, mint egy jó brief', 'A good prompt is like a good brief')),
+               tag('p', L('Aki kapja, kérdés nélkül el tudja végezni a munkát.', 'Whoever receives it can do the job without asking questions.'), 'lead'),
+               {l: '<div class="rules" style="margin-top:.9em">%s</div>' % ''.join('<div class="rule9"><span class="k">%d</span><div><b>%s</b><p>%s</p></div></div>' % (k+1, a[l], b[l]) for k, (a, b) in enumerate(RULES)) for l in LANGS}))
+    # 13. promptsablon
+    S.append(j(kicker('Promptolás', 'Prompting'), tag('h2', L('Promptsablon, amit minden feladathoz kitölthetsz', 'A prompt template you can fill in for every task')),
+               {l: copyfix('<div class="prompts one">%s</div>' % prompt_box('Sablon' if l == 'hu' else 'Template', (CB_HU if l == 'hu' else CB_EN)[16]), l) for l in LANGS},
+               tag('p', L('Tippek: bontsd lépésekre a nagy feladatot, kérj több változatot, adj konkrét visszajelzést, és kérd meg, hogy értékelje a saját válaszát a kritériumaid szerint. Személyes vagy bizalmas adatot ne írj bele.',
+                          'Tips: break the big task into steps, ask for several variants, give specific feedback, and ask it to rate its own answer against your criteria. Do not put personal or confidential data in it.'), 'note')))
+    # 14. márkák: a játék, kattintható választólista
+    EN_ART = {'car': 'a', 'airline': 'an', 'bank': 'a', 'hotel chain': 'a', 'café chain': 'a', 'insurance company': 'an', 'gym chain': 'a',
+              'mobile carrier': 'a', 'restaurant chain': 'a', 'fashion brand': 'a', 'travel agency': 'a', 'cosmetics brand': 'a',
+              'home electronics': '', 'wellness and spa chain': 'a', 'payment': ''}
+    def item(k, brand, cat, l):
+        if l == 'hu':
+            l1 = '<em>%s</em> <b>%s</b>' % ('az' if brand in ('IKEA', 'Apple') else 'a', e(brand))
+            l2 = '<b>%s</b> <em>lenne?</em>' % cat['hu']
+            tg = 'foglalt'
+        else:
+            art = EN_ART[cat['en']]
+            l1 = '<b>%s</b>' % e(brand)
+            l2 = '<em>were%s</em> <b>%s</b><em>?</em>' % ((' ' + art) if art else '', cat['en'])
+            tg = 'taken'
+        return '<button type="button" class="mi" data-k="%s"><i>%02d</i><span class="l1">%s</span><span class="l2">%s</span><small>%s</small></button>' % (e(brand), k+1, l1, l2, tg)
+    S.append(j(kicker('A játék', 'The game', sess_lt(1)), {'hu': '<h2 class="game">Mi lenne, ha…</h2>', 'en': '<h2 class="game">What if…</h2>'},
+               tag('p', L('Válassz egy márkát. Mindenkinek más jut.', 'Choose a brand. Everyone gets a different one.'), 'lead'),
+               {l: '<div class="menu" data-pick>%s</div>' % ''.join(item(k, a_, b_, l) for k, (a_, b_) in enumerate(PAIRS)) for l in LANGS},
+               tag('p', L('A márkát másképp használjuk, mint a valóságban. Nem a márka dob piacra egy új terméket: azt kérdezzük, milyen lenne, ha a személyiségével, az értékeivel és a stílusával egy egészen más kategóriában működne. Az új márkának saját neve és logója lesz.',
+                          'We use the brand differently from how it exists in reality. It is not the brand launching a new product: the question is what it would be like if, with its personality, values and style, it worked in a completely different category. The new brand gets its own name and logo.'), 'note')))
+    return S
+
+# ---------- összeállítás ----------
+
+def strip(n):
+    a = ['<a href="index.html" data-href="index.html"><b>AI</b>%s</a>' % bi('a marketingben · kezdőlap', 'in Marketing · home')]
+    for s in SESS:
+        a.append('<a href="%s" data-href="%s"%s><b>%d</b>%s</a>' % (FN(s['n']), FN(s['n']), ' class="on" aria-current="page"' if s['n'] == n else '', s['n'],
+                                                               bi('%s&nbsp;·&nbsp;%s' % (s['t']['hu'], s['short']), '%s&nbsp;·&nbsp;%s' % (s['t']['en'], s['short']))))
+    return '<nav class="strip" aria-label="Alkalmak">%s</nav>' % ''.join(a)
+
+def deck_slides(n):
+    if n == 1:
+        S = intro_slides()
+    else:
+        S = [title_slide(n)]
+    S += task_slides(n)
+    S += prompt_slides(n)
+    S += tips_slides(n)
+    S.append(close_slide(n))
+    return S
+
+def task_index(n):
+    # a „Cél, scope, leadandó” dia sorszáma (1-től)
+    return 14 if n == 1 else 2
+
+def render_deck(n):
+    s = SESS[n-1]
+    S = deck_slides(n)
+    secs = []
+    for l in LANGS:
+        for k, sl in enumerate(S):
+            cls = 'slide'
+            secs.append('<section class="%s" data-l="%s">\n%s\n</section>' % (cls, l, sl[l]))
+    t_hu = 'AI a marketingben · %d. alkalom · %s' % (n, s['t']['hu'])
+    t_en = 'AI in Marketing · Session %d · %s' % (n, s['t']['en'])
+    hint = bi('← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · ' + VER_HU,
+              '← → navigate · space: next · F: full screen · L: language · J: review mode · ' + VER_EN)
+    doc = '''<!DOCTYPE html>
+<html lang="hu" data-deck="%d">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title data-hu="%s" data-en="%s">%s</title>
+%s
+<style>%s</style>
+</head>
+<body>
+%s
+<main class="deck">
+%s
+</main>
+<div class="hint">%s</div>
+<div class="pager"><a class="home" href="index.html" data-href="index.html" title="Kezdőlap">⌂ %s</a><span class="lang" role="group" aria-label="Nyelv / Language"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span><button id="pos" type="button" aria-label="Ugrás diára">1 / %d</button><div class="jump" id="jump"></div><button type="button" data-nav="-1" aria-label="Előző">‹</button><button type="button" data-nav="1" aria-label="Következő">›</button></div>
+<div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, és írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
+<div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
+<div class="revout" id="revout"><h2>Megjegyzések</h2><p class="muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár</button></p></div>
+<script>%s</script>
+</body>
+</html>
+''' % (n, e(t_hu), e(t_en), e(t_hu), FONTS, CSS, strip(n), '\n'.join(secs), hint, bi('Kezdőlap', 'Home'), len(S), JS)
+    open(os.path.join(OUT, FN(n)), 'w').write(doc)
+    return len(S)
+
+# ---------- kezdőlap ----------
+
+INDEX_CSS = r"""
+:root{--paper:#F7F6F1;--ink:#1B1F3A;--soft:#5A5E78;--line:#D9D7CE;--cobalt:#1E4BD8;--marker:#F2C94C}
+*{box-sizing:border-box;margin:0;padding:0}
+html[lang=en] .hu,html[lang=hu] .en{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;font-size:18px;line-height:1.45;padding:1.5em 16px 3em}
+.wrap{max-width:52em;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1em;flex-wrap:wrap}
+.d{color:var(--soft);font-size:.9em}
+h1{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:500;font-size:2.1em;line-height:1.05;margin:.3em 0 .3em}
+.lead{color:var(--soft);max-width:40em;margin-bottom:1.4em}
+.lang{display:inline-flex}
+.lang button{font:inherit;font-size:.85em;padding:.2em .7em;border:1px solid var(--line);background:none;color:var(--soft);cursor:pointer}
+.lang button:first-child{border-radius:4px 0 0 4px}.lang button:last-child{border-radius:0 4px 4px 0;border-left:0}
+.lang button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.alk{display:grid;grid-template-columns:3em 1fr;gap:.8em;padding:1em 0;border-top:1px solid var(--line);align-items:start}
+.alk:last-of-type{border-bottom:1px solid var(--line)}
+.alk .n{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-size:1.6em;line-height:1;color:var(--cobalt)}
+.alk b{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:500;font-size:1.15em;display:block}
+.alk .q{margin:.2em 0 .5em}
+.links a{display:inline-block;padding:.25em .7em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;text-decoration:none;font-size:.88em;margin:.15em .3em .15em 0}
+.links a.main{background:var(--marker);border-color:var(--marker);color:var(--ink)}
+.foot{margin-top:2em;color:var(--soft);font-size:.85em}
+input,button{font:inherit}
+"""
+
+def render_index():
+    rows = []
+    for s in SESS:
+        n = s['n']
+        th_d, th = THEORY[n]
+        rows.append('<div class="alk"><div class="n">%d</div><div><b>%s</b><span class="d">%s · 8:00-12:00</span><p class="q">%s</p><p class="links"><a class="main" href="%s" data-href="%s">%s</a> <a href="%s#d%d" data-href="%s" data-hash="#d%d">%s</a></p></div></div>' % (
+            n, bi(s['t']['hu'], s['t']['en']), bi(s['d']['hu'], s['d']['en']),
+            bi('Leadandó: ' + DELIV[n]['hu'][0].lower() + DELIV[n]['hu'][1:], 'Deliverable: ' + DELIV[n]['en'][0].lower() + DELIV[n]['en'][1:]),
+            FN(n), FN(n), bi('Prezentáció', 'Slides'), FN(n), task_index(n), FN(n), task_index(n), bi('A feladat', 'The task')))
+    doc = '''<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+%s
+<title>AI a marketingben · 2026 ősz · gyakorlat</title>
+<style>%s</style>
+</head>
+<body>
+<div class="wrap" id="gate">
+  <div class="top"><p class="d">%s</p><span class="lang"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span></div>
+  <h1>%s</h1>
+  <p class="lead">%s</p>
+  <p><input id="g_code" type="password" autocomplete="one-time-code" placeholder="Neptun" style="padding:.5em .8em;border:1px solid var(--line);border-radius:4px;width:14em"> <button id="g_send" type="button" style="padding:.5em 1em;border:1px solid var(--cobalt);color:var(--cobalt);background:none;border-radius:4px;cursor:pointer">%s</button></p>
+  <p class="d" id="g_status"></p>
+</div>
+<div class="wrap" id="site" style="display:none">
+  <div class="top"><p class="d">%s <span id="who"></span></p><span class="lang"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span></div>
+  <h1>%s</h1>
+  <p class="lead">%s</p>
+  %s
+  <p class="foot">%s · <a href="#" id="logout" style="color:var(--soft)">%s</a> · %s</p>
+</div>
+<script>
+(function(){
+  var KEY='aim2026-lang',D=document,root=D.documentElement;
+  var m=location.search.match(/[?&]lang=(hu|en)/),lang=m?m[1]:null;
+  if(!lang){try{lang=localStorage.getItem(KEY)}catch(e){}} if(lang!=='hu'&&lang!=='en')lang='hu';
+  function applyLang(){root.lang=lang;D.title=lang==='en'?'AI in Marketing · autumn 2026 · practice':'AI a marketingben · 2026 ősz · gyakorlat';
+    [].forEach.call(D.querySelectorAll('[data-setlang]'),function(b){b.classList.toggle('on',b.getAttribute('data-setlang')===lang)});
+    [].forEach.call(D.querySelectorAll('a[data-href]'),function(a){a.href=a.getAttribute('data-href')+'?lang='+lang+(a.getAttribute('data-hash')||'')});}
+  [].forEach.call(D.querySelectorAll('[data-setlang]'),function(b){b.addEventListener('click',function(){lang=b.getAttribute('data-setlang');try{localStorage.setItem(KEY,lang)}catch(e){}applyLang()})});
+  applyLang();
+  var gate=D.getElementById('gate'),site=D.getElementById('site');
+  function api(a,body){return fetch('api.php?a='+a,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),credentials:'same-origin'}:{credentials:'same-origin'}).then(function(r){return r.json()})}
+  function show(role,code){gate.style.display='none';site.style.display='';D.getElementById('who').textContent=role==='oktato'?'· oktató':(code?'· '+code:'')}
+  if(location.protocol==='file:'){show('oktato');D.getElementById('who').textContent='· helyi előnézet, belépés nélkül';}
+  else api('me').then(function(d){if(d.role)show(d.role,d.code)}).catch(function(){});
+  function st(hu,en){D.getElementById('g_status').textContent=lang==='en'?en:hu}
+  function go(){var c=D.getElementById('g_code').value.trim();if(!c){st('Írd be a kódot.','Enter your code.');return}
+    api('auth',{code:c}).then(function(d){if(d.ok)show(d.role,c.toUpperCase());else st('Nincs ilyen kód.','Unknown code.')}).catch(function(){st('A szerver nem elérhető.','The server is not reachable.')})}
+  D.getElementById('g_send').addEventListener('click',go);
+  D.getElementById('g_code').addEventListener('keydown',function(e){if(e.key==='Enter')go()});
+  D.getElementById('logout').addEventListener('click',function(e){e.preventDefault();api('logout').then(function(){location.reload()})});
+})();
+</script>
+</body>
+</html>
+''' % (FONTS, INDEX_CSS,
+       bi('Pannon Egyetem · AI a marketingben · 2026 ősz · gyakorlat', 'University of Pannonia · AI in Marketing · autumn 2026 · practice'),
+       bi('Belépés', 'Log in'),
+       bi('Add meg a Neptun-kódodat. A kód csak arra kell, hogy a kurzus hallgatói lássák az anyagot; a félév végén a lista törlődik.', 'Enter your Neptun code. It is only needed so that the students of the course can see the material; the list is deleted at the end of the semester.'),
+       bi('Belépek', 'Log in'),
+       bi('Pannon Egyetem · AI a marketingben · 2026 ősz · gyakorlat', 'University of Pannonia · AI in Marketing · autumn 2026 · practice'),
+       bi('Egy ismert márka, egy új kategória', 'A well-known brand, a new category'),
+       bi('Hat csütörtökön át egy új márkát indítasz el ügynökségként, AI-jal. Minden alkalomhoz itt a diasor: a feladat, a promptjavaslatok és a tippek.', 'Over six Thursdays you launch a new brand as an agency, with AI. Here are the slides for every session: the task, the prompt suggestions and the tips.'),
+       '\n  '.join(rows),
+       bi('Oktató: Birincsik Albert', 'Instructor: Albert Birincsik'), bi('Kilépés', 'Log out'), bi(VER_HU, VER_EN))
+    open(os.path.join(OUT, 'index.html'), 'w').write(doc)
+
+if __name__ == '__main__':
+    for n in range(1, 7):
+        c = render_deck(n)
+        print(FN(n), c, 'dia')
+    render_index()
+    print('index.html')
