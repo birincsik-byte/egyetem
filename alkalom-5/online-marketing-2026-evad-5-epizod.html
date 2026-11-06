@@ -628,8 +628,15 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.7rem}
 .slide .chips span{font-size:var(--t-sm)!important;border:1px solid var(--line);border-radius:99px;padding:.22em .85em;background:#fff}
 .mini{counter-reset:m}
+.slide .c1tem small{display:block;font-weight:600;color:var(--ink-soft);font-size:max(.6rem,13px)!important;text-transform:uppercase;letter-spacing:.1em}
 .tri2 .triad p{font-size:var(--t-body)!important}
 @media (max-width:900px){.cards4{grid-template-columns:1fr 1fr}.cards3,.cards2{grid-template-columns:1fr}.bars div{grid-template-columns:9rem 1fr 3rem}}
+</style>
+<style id="cover-css">
+.slide.cvr h1.cover{font-size:4.4em;max-width:18ch;margin-bottom:.25em}
+.slide.cvr .cq{font-size:1.35em;color:var(--ink-soft);margin:0 0 1.1em;max-width:40ch}
+.slide.cvr .lead{margin-bottom:.35em}
+.slide.cvr .muted{margin-top:0}
 </style>
 </head>
 <body>
@@ -648,11 +655,12 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 <main class="deck">
 
-<section class="slide cur center c1hero" data-notes="c1">
-  <p class="kicker">2026. november 9.</p>
-  <h1>Mennyiért</h1>
-  <p class="lead">Mennyiért, mit bérlünk és mit építünk</p>
-  <div class="c1tem"><small>A tematikából</small><span>POEM-modell (paid/earned/owned)</span><span>organikus vs. fizetett tartalom</span><span>hirdetésformátumok</span></div>
+<section class="slide cur center cvr" data-notes="c1">
+  <p class="kicker">Pannon Egyetem · Online marketing · 2026 ősz</p>
+  <h1 class="cover">Mennyiért</h1>
+  <p class="cq">Mennyiért, mit bérlünk és mit építünk</p>
+  <p class="lead">5. alkalom · 2026. november 9.</p>
+  <p class="muted">Birincsik Albert</p>
 </section>
 
 <section class="slide roomy" data-notes="c4">
@@ -662,6 +670,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
     <div><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.1em">A fizetett média figyelmet bérel, a saját média vagyont épít, a kiérdemelt média bizalmat hoz.</p></div>
     <div><h3>Tanulság</h3><p>A büdzsé felosztása stratégiai állásfoglalás, nem költségvetési sor. Aki csak fizetettben gondolkodik, minden hónapban újra megveszi ugyanazt a közönséget.</p></div>
   </div>
+  <div class="c1tem" style="margin-top:1.4rem"><small>A tematikából</small><span>POEM-modell (paid/earned/owned)</span><span>organikus vs. fizetett tartalom</span><span>hirdetésformátumok</span></div>
 </section>
 
 <section class="slide" data-notes="p1">
@@ -753,17 +762,6 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
   </div>
 </section>
 
-<section class="slide" data-notes="g1">
-  <p class="kicker">Mini-gyakorlat · 12 perc · csapatban</p>
-  <h2>Kikapcsolás-teszt a saját márkátokon</h2>
-  <div class="task lev-task" style="max-width:none"><ol>
-    <li><b>5 perc:</b> a márkátok a Meta hirdetéstárban és a Google Átláthatósági Központban: fut-e hirdetés, mióta, milyen formátumban? Mellé egy sor a saját felületekről és a véleményekről.</li>
-    <li><b>3 perc:</b> 100 pont a három kör között: fizetett, saját, kiérdemelt.</li>
-    <li><b>4 perc:</b> a mondat: „A [márka] figyelmet bérel …, vagyont épít …, bizalmat … kap, és ha holnap leállna a fizetett, … maradna.” Leadás.</li>
-  </ol></div>
-  <p class="lev-go" style="margin-top:1.1em"><a class="btn go" href="app.html?ep=ep5&amp;v=leadas" target="_blank">Leadás megnyitása →</a></p>
-</section>
-
 <section class="slide center" data-notes="g2">
   <p class="kicker">Zárás</p>
   <h2>A büdzsé felosztása stratégiai állásfoglalás, nem költségvetési sor. Aki csak fizetettben gondolkodik, minden hónapban újra megveszi ugyanazt a közönséget.</h2>
@@ -775,7 +773,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.2 levelezős · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.3 levelezős · 2026. november 6.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -790,7 +788,6 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 <div data-n="p6"><h4>Mit veszel meg? Formátumok</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet, 519. o.; Kotler, Keller: Marketing Management, 19. fejezet, 542. o.</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey: a hirdetés ára jellemzően ezer megjelenésre szól (CPM), de a kattintásonkénti (CPC) és a cselekvésenkénti (CPA) elszámolás is elterjedt. Ugyanő: a kattintási arány önmagában nem ítélet a hirdetésről.</p><p>Kotler, Keller: a tágabb keresőszavak a márkaépítésre jók, a szűkebbek a lead megszerzésére és konverziójára.</p><p>A formátumlista a könyvek 2012–2016-os állapotát követi. A mai platformformátumokhoz a platformok súgója kell.</p></div></div>
 <div data-n="p7"><h4>A hirdetéstárak</h4><p class="src top">Forrás: Digital Services Act, (EU) 2022/2065 rendelet, 39. cikk; a három hirdetéstár</p><div class="hj"><h5>Jegyzet</h5><p>A DSA 39. cikke szerint a nagyon nagy online platformoknak hirdetéstárat kell közzétenniük, amely a hirdetés futása alatt és utána egy évig elérhető: a hirdetés tartalma, a hirdető, a fizető, a megjelenés időszaka, a célzás fő paraméterei és az elért címzettek száma. A kötelező listában a költés nem szerepel.</p><p>Inkognitóablakban kerestek, a versenytárs hirdetésére nem kattintotok.</p></div></div>
 <div data-n="p8"><h4>Honnan jön a szám?</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet, 489–490. o.; Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet, 456. o., 8.5 táblázat (Hoffman és Novak, 2000 nyomán)</p><div class="hj"><h5>Jegyzet</h5><p>Kotler, Keller a négy módszerről: a megengedhető módszer teljesen figyelmen kívül hagyja, hogy a promóció befektetés; a százalékos módszer az eladást a kommunikáció okának tekinti, nem eredményének; a versenytárs-paritás mellett nem szól semmi, mert nincs okunk azt hinni, hogy a versenytárs jobban tudja; a cél és feladat módszer kimondatja a feltevéseket a ráfordítás és az eredmény kapcsolatáról.</p><p>A számok Chaffey 8.5 táblázatából valók: szájreklám 0% keret, 25% hozzájárulás; PR 5% és 15%; banner 20% és 20%. Ez illusztráció, nem mai mérés.</p></div></div>
-<div data-n="g1"><h4>Mini-gyakorlat: kikapcsolás-teszt</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Csapatban, a saját márkán, 12 percben. A leadásban öt mező van: ki mit csinált, amit megnéztetek, a mondat, a 100 pont és a kikapcsolás-teszt. Forintot nem írtok, mert az kívülről nem látszik, csak súlyt és indoklást.</p></div></div>
 <div data-n="g2"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A tanulság szó szerint. A következő téma: miből tudjuk meg, hogy működött.</p></div></div>
 </aside>
 
@@ -802,7 +799,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=[], TXT={"2026. november 9.": "2026. november 6."};
+  var SKIP=[], TXT={"2026. november 9.": "2026. november 6.", "5. alkalom · 2026. november 9.": "5. téma · 2026. november 6."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
@@ -849,7 +846,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
     document.addEventListener('click',function(e){if(!j.contains(e.target))j.classList.remove('open')});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')j.classList.remove('open')});})();
   document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(+a.getAttribute('data-go'))})});
-  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
+  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,details,summary,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
 
   document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var t=b.getAttribute('data-open');var el=document.getElementById(t);if(t==='notes'){notes.classList.toggle('open')}else{el.classList.add('open')}})});
   document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();document.getElementById(b.getAttribute('data-close')).classList.remove('open')})});

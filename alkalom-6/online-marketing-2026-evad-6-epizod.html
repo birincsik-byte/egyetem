@@ -628,8 +628,15 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.7rem}
 .slide .chips span{font-size:var(--t-sm)!important;border:1px solid var(--line);border-radius:99px;padding:.22em .85em;background:#fff}
 .mini{counter-reset:m}
+.slide .c1tem small{display:block;font-weight:600;color:var(--ink-soft);font-size:max(.6rem,13px)!important;text-transform:uppercase;letter-spacing:.1em}
 .tri2 .triad p{font-size:var(--t-body)!important}
 @media (max-width:900px){.cards4{grid-template-columns:1fr 1fr}.cards3,.cards2{grid-template-columns:1fr}.bars div{grid-template-columns:9rem 1fr 3rem}}
+</style>
+<style id="cover-css">
+.slide.cvr h1.cover{font-size:4.4em;max-width:18ch;margin-bottom:.25em}
+.slide.cvr .cq{font-size:1.35em;color:var(--ink-soft);margin:0 0 1.1em;max-width:40ch}
+.slide.cvr .lead{margin-bottom:.35em}
+.slide.cvr .muted{margin-top:0}
 </style>
 </head>
 <body>
@@ -648,11 +655,12 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 <main class="deck">
 
-<section class="slide cur center c1hero" data-notes="c1">
-  <p class="kicker">2026. november 23.</p>
-  <h1>Mit mutat a valóság</h1>
-  <p class="lead">Miből tudjuk meg, hogy működött</p>
-  <div class="c1tem"><small>A tematikából</small><span>belépés egy-egy hirdetési fiókba (Google Ads, social), a logika és összefüggések megértése</span><span>webanalitika (GA4 fő mutatószámok) és GDPR / jogi vonatkozások</span></div>
+<section class="slide cur center cvr" data-notes="c1">
+  <p class="kicker">Pannon Egyetem · Online marketing · 2026 ősz</p>
+  <h1 class="cover">Mit mutat a valóság</h1>
+  <p class="cq">Miből tudjuk meg, hogy működött</p>
+  <p class="lead">6. alkalom · 2026. november 23.</p>
+  <p class="muted">Birincsik Albert</p>
 </section>
 
 <section class="slide roomy" data-notes="c4">
@@ -662,6 +670,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
     <div><h3>Kulcsgondolat</h3><p class="quote" style="font-size:1.15em">A szám nem válasz, hanem kérdés.</p></div>
     <div><h3>Tanulság</h3><p>A diagnózis sorrend kérdése, nem tudásé. Végig kell menni a láncon a megjelenéstől a konverzióig, és megkeresni, hol szakad. Ez a készség többet ér, mint bármelyik platform ismerete, mert a platformok cserélődnek, a lánc nem.</p></div>
   </div>
+  <div class="c1tem" style="margin-top:1.4rem"><small>A tematikából</small><span>belépés egy-egy hirdetési fiókba (Google Ads, social), a logika és összefüggések megértése</span><span>webanalitika (GA4 fő mutatószámok) és GDPR / jogi vonatkozások</span></div>
 </section>
 
 <section class="slide" data-notes="k1">
@@ -808,7 +817,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.2 levelezős · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.3 levelezős · 2026. november 6.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -836,7 +845,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=[], TXT={"2026. november 23.": "2026. november 6."};
+  var SKIP=[], TXT={"2026. november 23.": "2026. november 6.", "6. alkalom · 2026. november 23.": "6. téma · 2026. november 6."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
@@ -883,7 +892,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
     document.addEventListener('click',function(e){if(!j.contains(e.target))j.classList.remove('open')});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')j.classList.remove('open')});})();
   document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(+a.getAttribute('data-go'))})});
-  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
+  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,details,summary,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
 
   document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var t=b.getAttribute('data-open');var el=document.getElementById(t);if(t==='notes'){notes.classList.toggle('open')}else{el.classList.add('open')}})});
   document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();document.getElementById(b.getAttribute('data-close')).classList.remove('open')})});

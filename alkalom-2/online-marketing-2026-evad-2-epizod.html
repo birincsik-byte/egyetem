@@ -324,6 +324,12 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .lev-task ol{margin:.6em 0 0 1.2em}
 .lev-task li{margin:.35em 0}
 </style>
+<style id="cover-css">
+.slide.cvr h1.cover{font-size:4.4em;max-width:18ch;margin-bottom:.25em}
+.slide.cvr .cq{font-size:1.35em;color:var(--ink-soft);margin:0 0 1.1em;max-width:40ch}
+.slide.cvr .lead{margin-bottom:.35em}
+.slide.cvr .muted{margin-top:0}
+</style>
 </head>
 <body>
 
@@ -341,11 +347,12 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 <main class="deck">
 
 <!-- e1 -->
-<section class="slide cur" data-notes="e1">
-  <p class="kicker">2026. szeptember 28.</p>
-  <h1>Hogyan érjük el az embert és hogyan dönt?</h1>
-  <p class="lead">Mikor és hol mondjuk?</p>
-  <hr class="rule">
+<section class="slide cur center cvr" data-notes="e1">
+  <p class="kicker">Pannon Egyetem · Online marketing · 2026 ősz</p>
+  <h1 class="cover">Hogyan érjük el az embert és hogyan dönt?</h1>
+  <p class="cq">Mikor és hol mondjuk?</p>
+  <p class="lead">2. alkalom · 2026. szeptember 28.</p>
+  <p class="muted">Birincsik Albert</p>
 </section>
 
 <!-- k2 -->
@@ -886,7 +893,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=["k2", "e2", "e5", "e6a", "e6b", "e17", "e17h", "e19"], TXT={"2026. szeptember 28.": "2026. október 16.", "Múlt héten egy mondatot írtatok.": "Az előbb egy mondatot írtatok.", "3. alkalom · A saját terep · 2026. október 12.": "Következik: A saját terep"};
+  var SKIP=["k2", "e2", "e5", "e6a", "e6b", "e17", "e17h", "e19"], TXT={"2026. szeptember 28.": "2026. október 16.", "Múlt héten egy mondatot írtatok.": "Az előbb egy mondatot írtatok.", "3. alkalom · A saját terep · 2026. október 12.": "Következik: A saját terep", "2. alkalom · 2026. szeptember 28.": "2. téma · 2026. október 16."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);

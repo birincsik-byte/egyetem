@@ -568,6 +568,12 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .lev-task ol{margin:.6em 0 0 1.2em}
 .lev-task li{margin:.35em 0}
 </style>
+<style id="cover-css">
+.slide.cvr h1.cover{font-size:4.4em;max-width:18ch;margin-bottom:.25em}
+.slide.cvr .cq{font-size:1.35em;color:var(--ink-soft);margin:0 0 1.1em;max-width:40ch}
+.slide.cvr .lead{margin-bottom:.35em}
+.slide.cvr .muted{margin-top:0}
+</style>
 </head>
 <body>
 
@@ -586,11 +592,17 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 
 <!-- e1 -->
 <!-- KERET -->
-<section class="slide cur center" data-notes="c1">
-  <p class="kicker">2026. október 12.</p>
-  <h1>A saját terep</h1>
-  <p class="lead">Hol fogadjuk, amikor megérkezik hozzánk</p>
-  <p class="lead"><span class="hl">Mit mondunk, és hogyan mondjuk el, hogy bizalmat kapjunk.</span></p>
+<section class="slide cur center cvr" data-notes="c1">
+  <p class="kicker">Pannon Egyetem · Online marketing · 2026 ősz</p>
+  <h1 class="cover">A saját terep</h1>
+  <p class="cq">Hol fogadjuk, amikor megérkezik hozzánk</p>
+  <p class="lead">3. alkalom · 2026. október 12.</p>
+  <p class="muted">Birincsik Albert</p>
+</section>
+
+<section class="slide center" data-notes="c1b">
+  <p class="kicker">A saját terep</p>
+  <h2><span class="hl">Mit mondunk, és hogyan mondjuk el, hogy bizalmat kapjunk.</span></h2>
   <hr class="rule">
   <p class="small muted">A tematikából: weboldal és UX/UI mint forgalomterelő felület, loyalty- és regisztrációs logika · automatizált e-mail-marketing</p>
 </section>
@@ -1013,9 +1025,9 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 </section>
 
 <section class="slide" data-notes="lev3" data-lev="only">
-  <p class="kicker">Levelező gyakorlat · 35 perc · kettesben</p>
+  <p class="kicker">Levelező gyakorlat · 10 perc · kettesben</p>
   <h2>Oldalvizsgálat a saját oldalatokon</h2>
-  <div class="task lev-task"><ol><li>Csak a márkátok oldalát nézitek, telefonon, nyolc szemponttal: ránézés (1–3.), olvasás (4–5.) és cselekvés (6–8.).</li><li>Aki még nem látta az oldalt, az néz rá először, a másik ír.</li><li>A cselekvést együtt csináljátok: kattintsatok végig egy konverziós pontig.</li><li>Összegzés: az egy mondat, amit nem tudtok biztosan, és a legtudatosabb döntés. Leadás a Beküldés gombbal.</li></ol></div>
+  <div class="task lev-task"><ol><li><b>6 perc:</b> csak az első fül, a Ránézés (1–3. szempont): a márkátok oldala telefonon, kattintás nélkül. Aki még nem látta, az néz rá, a másik ír.</li><li><b>4 perc:</b> az egy mondat az Összegzés fülön, és leadás a Beküldés gombbal. A többi fül most kimarad.</li></ol></div>
   <p class="lev-go" style="margin-top:1.2em"><a class="btn go" href="oldal-vizsgalat.html" target="_blank">Oldalvizsgálat megnyitása →</a> <a class="btn" href="oldal-anatomia.html" target="_blank">Az oldal anatómiája</a></p>
   <p class="small muted" style="margin-top:1em">Bizonyíték: hol, mit láttatok, ha lehet, idézettel.</p>
 </section>
@@ -1056,12 +1068,13 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.38 · 2026. november 2. · vázlat</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.39 · 2026. november 6. · vázlat</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
 <div data-n="c1"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
+<div data-n="c1b"><h4>A mai kérdés és a tematika</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A címlapról átkerült: a mai kérdés kiemelve, alatta a tematikai pont szó szerint.</p></div></div>
 <div data-n="c2"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="c3"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
 <div data-n="c5"><h4>Jegyzet</h4><p class="src top">Forrás: a 7. fázisban kerül ide</p><div class="hj"><p>A diák véglegesítése után ide kerül a bővebb hallgatói jegyzet.</p></div></div>
@@ -1107,7 +1120,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=["c3", "n6", "j13", "g1", "g2"], TXT={"2026. október 12.": "2026. október 16.", "Legközelebb, 2026. november 2-án: milyen lehetőségeink vannak elérni a vevőt?": "Legközelebb, 2026. november 6-án: milyen lehetőségeink vannak elérni a vevőt?"};
+  var SKIP=["c2", "c3", "c6", "n1", "h1", "n6", "j5", "n7", "j12", "h3", "h5", "j1", "j13", "t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "g1", "g2"], TXT={"2026. október 12.": "2026. november 6.", "Legközelebb, 2026. november 2-án: milyen lehetőségeink vannak elérni a vevőt?": "Következik: milyen lehetőségeink vannak elérni a vevőt?", "3. alkalom · 2026. október 12.": "3. téma · 2026. november 6."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
@@ -1154,7 +1167,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
     document.addEventListener('click',function(e){if(!j.contains(e.target))j.classList.remove('open')});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')j.classList.remove('open')});})();
   document.querySelectorAll('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(+a.getAttribute('data-go'))})});
-  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
+  document.querySelector('.deck').addEventListener('click',function(e){if(e.target.closest('a,button,input,textarea,details,summary,.votes,#revbox,#revbar,#revout'))return;if(document.body.classList.contains('rev'))return;if(document.querySelector('.sheet.open')||notes.classList.contains('open'))return;next()});
 
   document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();var t=b.getAttribute('data-open');var el=document.getElementById(t);if(t==='notes'){notes.classList.toggle('open')}else{el.classList.add('open')}})});
   document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();document.getElementById(b.getAttribute('data-close')).classList.remove('open')})});

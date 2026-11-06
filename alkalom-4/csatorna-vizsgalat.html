@@ -358,7 +358,7 @@ textarea{min-height:4.2em;resize:vertical}
   if(LEV){
     document.documentElement.classList.add('lev');
     function tabSet(p,meta){var t=document.querySelector('.tab[data-p="'+p+'"]'); if(t)t.querySelector('.meta').textContent=meta}
-    tabSet('p1','Google és AI-válasz · 15 perc'); tabSet('p2','Facebook, Instagram · 15 perc'); tabSet('p3','ráadás, ha marad idő'); tabSet('p4','együtt · 15 perc');
+    tabSet('p1','Google és AI-válasz · 6 perc, párhuzamosan'); tabSet('p2','Facebook, Instagram · 6 perc, párhuzamosan'); tabSet('p3','ráadás, ha marad idő'); tabSet('p4','együtt · 3 perc');
     var ob=document.querySelector('.notes3 .onebox'); if(ob)ob.innerHTML='<b>Kettesben dolgoztok.</b> Az egyik a keresőt és egy AI-választ nézi, a másik a Facebookot és az Instagramot. A videó fül ráadás, ha marad idő. Az összevetést és az egy mondatot együtt írjátok.';
     var sp=$('split'); if(sp)sp.placeholder='pl. Anna: kereső, Bence: Meta';
     [].forEach.call(document.querySelectorAll('span.muted.small'),function(e){e.textContent='Levelező · A csatornák nyelve · nyolc szempont'});
