@@ -1068,7 +1068,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 
 </main>
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.39 · 2026. november 6. · vázlat</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.40 · 2026. november 6. · vázlat</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 30</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -1120,7 +1120,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=["c2", "c3", "c6", "n1", "h1", "n6", "j5", "n7", "j12", "h3", "h5", "j1", "j13", "t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "g1", "g2"], TXT={"2026. október 12.": "2026. november 6.", "Legközelebb, 2026. november 2-án: milyen lehetőségeink vannak elérni a vevőt?": "Következik: milyen lehetőségeink vannak elérni a vevőt?", "3. alkalom · 2026. október 12.": "3. téma · 2026. november 6."};
+  var SKIP=["c2", "c3", "c6", "n1", "h1", "n6", "j5", "n7", "j12", "h3", "h5", "j1", "j13", "t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "g1", "g2", "m1", "j6", "f1"], TXT={"2026. október 12.": "2026. november 6.", "Legközelebb, 2026. november 2-án: milyen lehetőségeink vannak elérni a vevőt?": "Következik: milyen lehetőségeink vannak elérni a vevőt?", "3. alkalom · 2026. október 12.": "3. téma · 2026. november 6.", "A nap: másfél óra elmélet, másfél óra csoportmunka. A csoportmunkában a márkátok oldalát és egy külső oldalt fejtitek vissza nyolc szemponttal.": "Ma: rövid elmélet a lényegről, utána 10 perc gyakorlat kettesben a márkátok oldalán."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);

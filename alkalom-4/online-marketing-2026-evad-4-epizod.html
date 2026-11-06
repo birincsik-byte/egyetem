@@ -997,7 +997,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 </main>
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.11 · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.12 · 2026. november 6.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -1047,7 +1047,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=["c3", "a1", "b3", "b5", "b6", "s3", "s5", "t2", "g1"], TXT={"2026. november 2.": "2026. november 6.", "Legközelebb, 2026. november 9-én: mennyiért, mit bérlünk és mit építünk?": "Következik: mennyiért, mit bérlünk és mit építünk?", "4. alkalom · 2026. november 2.": "4. téma · 2026. november 6."};
+  var SKIP=["c3", "a1", "b3", "b5", "b6", "s3", "s5", "t2", "g1", "c2", "a4", "b1", "b7", "s1", "v2", "v3", "v4", "m1"], TXT={"2026. november 2.": "2026. november 6.", "Legközelebb, 2026. november 9-én: mennyiért, mit bérlünk és mit építünk?": "Következik: mennyiért, mit bérlünk és mit építünk?", "4. alkalom · 2026. november 2.": "4. téma · 2026. november 6.", "A nap: másfél óra elmélet, másfél óra csoportmunka. A csoportmunkában a márkátok csatornáit fejtitek vissza nyolc szemponttal.": "Ma: rövid elmélet, élő bemutató, utána 10 perc gyakorlat kettesben a márkátok csatornáin."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);

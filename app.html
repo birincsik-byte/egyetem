@@ -257,20 +257,18 @@ summary{cursor:pointer;color:var(--cobalt)}
       ['f3','A mondat','A sablon szerint, egyetlen mondatban. Ez látszik a beadandók között.','A [márka] figyelmet bérel [hol, mire], vagyont épít [hol], bizalmat [honnan] kap, és ha holnap leállna a fizetett, [mi maradna].'],
       ['f7','100 pont a három kör között','Fizetett, saját, kiérdemelt: hány pont jut mindegyikre a látott jelek alapján, és egy mondat, miért.','pl. fizetett 50, saját 30, kiérdemelt 20, mert …'],
       ['f8','Kikapcsolás-teszt','Ha holnap leállna minden hirdetése, mi maradna a márkának? Egy-két mondat.','']]};
-    EPISODES.ep6={name:'6. téma · Mit mutat a valóság (levelező)', title:'6. gyakorlat: három állomás kívülről', limit:'rövid, kb. 15 perc, csapatban, laptopon', novote:true, nosample:true, fields:[
-      ['f1','Ki mit csinált','Ki nézte a hirdetést, ki a kattintást és az érkezést, ki a műszert (sütisáv, DevTools).',''],
-      ['f2','Megjelenés','Fut-e hirdetése a márkának (Meta hirdetéstár, Google Átláthatósági Központ), linkkel, és mit ígér. Ha nincs: a márkanévre keresés első találata.',''],
+    EPISODES.ep6={name:'6. téma · Mit mutat a valóság (levelező)', title:'6. gyakorlat: három állomás kívülről', limit:'rövid, kb. 10 perc, csapatban', novote:true, nosample:true, fields:[
+      ['f2','Megjelenés','Fut-e hirdetése a márkának (Meta hirdetéstár, Google Átláthatósági Központ), és mit ígér. Ha nincs: a márkanévre keresés első találata.',''],
       ['f4','Kattintás és érkezés','Hova visz a link, van-e benne UTM, és egyezik-e az ígéret azzal, amit az oldalon láttok.',''],
-      ['f5','A műszer','Van-e sütisáv elutasító gombbal; a DevTools Network fülén indul-e mérőkérés (collect) a döntés előtt és után.',''],
+      ['f5','A műszer','Van-e sütisáv, és ugyanolyan könnyű-e elutasítani, mint elfogadni.',''],
       ['f3','Egy mondat','Hol szakadhat a lánc, és melyik mutató mutatná meg. Ez látszik a beadandók között.','A [márka] láncában a [megjelenés / kattintás / érkezés / haladás / konverzió] a leggyengébb pont, és ezt a(z) [mutató] mutatná meg.']]};
-    EPISODES.ep7={name:'7. téma · Hogyan dolgozik egy marketinges (levelező)', title:'7. gyakorlat: egylapos brief és visszamondás', limit:'rövid, kb. 15 perc, csapatban', nosample:true, fields:[
-      ['f1','Kinek','A célcsoport helyzetként, nem demográfiaként (az 1. és a 2. téma alapján).',''],
+    EPISODES.ep7={name:'7. téma · Hogyan dolgozik egy marketinges (levelező)', title:'7. gyakorlat: egylapos brief és visszamondás', limit:'rövid, kb. 10 perc, csapatban', nosample:true, fields:[
+      ['f1','Kinek','A célcsoport helyzetként, nem demográfiaként, egy mondat.',''],
       ['f3','Mit','Egy mondat: a ti pozicionálási mondatotok vagy a kampány üzenete. Ez látszik a beadandók és a szavazás között.',''],
-      ['f4','Mikor és hol','Melyik fázisban és melyik csatornán (a 2. és a 4. téma alapján), és mi fizetett, saját vagy kiérdemelt (5. téma).',''],
-      ['f5','Miből tudjuk meg','Egy-két mutató, ami megmutatja, hogy működött (6. téma).',''],
-      ['f6','Kikkel','Ki a megrendelő, ki írja, ki csinálja meg; kinek kell érteni ezt a briefet.',''],
-      ['f7','Amit a szomszéd csapat visszamondott','Egy mondatban, ahogy ők mondták, és hogy ezt akartátok-e.',''],
-      ['f8','A visszajelzés','Amit tőlük kaptatok, az öt mérce közül kettővel (megkülönböztet, releváns, megjegyezhető, kiterjeszthető, van mélysége).','']]};
+      ['f4','Mikor és hol','Melyik fázisban és melyik csatornán, egy sor.',''],
+      ['f5','Miből tudjuk meg','Egy mutató, ami megmutatja, hogy működött.',''],
+      ['f6','Kikkel','Ki a megrendelő, ki írja, ki csinálja meg, egy sor.',''],
+      ['f7','Amit a szomszéd csapat visszamondott','Egy mondatban, ahogy ők mondták.','']]};
   }
   var CLIENTS=['Szamos','Cserpes','Manna','Tisza Cipő','Printa','Levendula','Zing Burger','Balaton Hotel Siófok','Hotel Historia','Katedra Nyelviskola','Billingo','Kolorádó'];
   if(/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search))CLIENTS=CLIENTS.filter(function(c){return c!=='Kolorádó'}); /* levelezőn a fesztivál nem választható */

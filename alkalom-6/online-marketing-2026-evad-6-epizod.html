@@ -795,12 +795,12 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 </section>
 
 <section class="slide" data-notes="g1">
-  <p class="kicker">Mini-gyakorlat · 15 perc · csapatban, laptopon</p>
+  <p class="kicker">Mini-gyakorlat · 10 perc · csapatban</p>
   <h2>Három állomás kívülről</h2>
   <div class="task lev-task" style="max-width:none"><ol>
-    <li><b>Megjelenés, 4 perc:</b> fut-e hirdetése a márkátoknak a Meta hirdetéstárban vagy a Google Átláthatósági Központban, és mit ígér?</li>
+    <li><b>Megjelenés, 3 perc:</b> fut-e hirdetése a márkátoknak a Meta hirdetéstárban vagy a Google Átláthatósági Központban, és mit ígér?</li>
     <li><b>Kattintás és érkezés, 3 perc:</b> hova visz, van-e UTM a linkben, egyezik-e az ígéret az oldallal? Ha nincs hirdetés: a márkanévre keresés első találata.</li>
-    <li><b>A műszer, 6 perc:</b> a sütisávon elutasítás, DevTools, Network fül: indul-e mérőkérés a döntés előtt?</li>
+    <li><b>A műszer, 2 perc:</b> van-e sütisáv, és van-e rajta ugyanolyan könnyen elérhető elutasító gomb? Akinél van laptop, megnézheti a DevToolsban is.</li>
     <li><b>Egy mondat, 2 perc:</b> hol szakadhat a lánc, és melyik mutató mutatná meg.</li>
   </ol></div>
   <p class="lev-go" style="margin-top:1.1em"><a class="btn go" href="app.html?ep=ep6&amp;v=leadas" target="_blank">Leadás megnyitása →</a></p>
@@ -817,7 +817,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.3 levelezős · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.4 levelezős · 2026. november 6.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
@@ -833,7 +833,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 <div data-n="k7"><h4>Honnan jött, és hol esik ki?</h4><p class="src top">Forrás: GA4 súgó (UTM, tölcsér-felfedezés); Chaffey, Ellis-Chadwick: 10. fejezet, 558–559. o., 10.4 ábra</p><div class="hj"><h5>Jegyzet</h5><p>Az UTM-paraméterek (forrás, médium, kampány) mondják meg a GA4-nek, honnan jött a látogató. Ha hiányoznak, a fizetett kattintás is más forrásnak látszhat.</p><p>Chaffey: a lemorzsolódás lépésenként mérhető a landingtől a pénztárig, és szakaszonként más az oka. A négy ok besorolása a dián a beszélgetés kiindulópontja, nem egyetlen helyes válasz.</p></div></div>
 <div data-n="k8"><h4>Négy ember a szám mögött</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 14. fejezet, 261. o.; Chaffey, Ellis-Chadwick: 9. fejezet; Google Ads súgó (minőségi mutató); Google Analytics súgó (attribúciós modellek, 2023)</p><div class="hj"><h5>Jegyzet</h5><p>Kingsnorth: „Data is in itself worthless.” Minden lépésnél ember hibázhat: a termékben, a telepítésben, a beállításban, az értelmezésben. Ezért az első hibakeresési lépés a műszer, nem a kampány (saját következtetés).</p><p>A platform cserélődik: Chaffey 2016-ban a minőségi mutatót a rangsor kulcsaként írja le, a jelenlegi Google Ads súgó szerint diagnosztikai eszköz, és nem bemenete az aukciónak. Kingsnorth öt attribúciós modellt tanít; a GA4-ben 2023 novembere óta az adatvezérelt és az utolsó kattintásos modell maradt.</p></div></div>
 <div data-n="k9"><h4>Ami a sávon múlik</h4><p class="src top">Forrás: ePrivacy irányelv, 5. cikk (3); GDPR, 7. cikk (3); EUB, C-673/17, Planet49 (2019); Google Consent Mode súgó; Chaffey, Ellis-Chadwick: 3. és 10. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Az ePrivacy irányelv 5. cikk (3): a felhasználó végberendezésén tárolt információhoz előzetes hozzájárulás kell, kivéve, ha feltétlenül szükséges a kért szolgáltatáshoz. A GDPR 7. cikk (3): a hozzájárulás visszavonása legyen ugyanolyan egyszerű, mint a megadása. Az EUB a Planet49 ügyben kimondta: az előre bejelölt négyzet nem érvényes hozzájárulás.</p><p>Consent Mode: alap módban hozzájárulás előtt nem indul mérőkérés; haladó módban a Google sütik nélküli jelzéseket kap, és modellez. Hozzájárulási arányra nincs ellenőrzött forrásunk, ezért szám nincs a dián.</p><p>Élőben: Chrome DevTools, Network fül, szűrés a GA4 kéréseire (collect), a sáv elfogadása előtt és után.</p></div></div>
-<div data-n="g1"><h4>Mini-gyakorlat: három állomás kívülről</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Csapatban, laptopon, 15 percben, mert DevTools telefonon nem megy. Valódi adatot nem adtok meg, nem fizettek, űrlapot nem küldtök be. Belső adathoz nem férünk hozzá, ezért kívülről fejtjük vissza a láncot.</p></div></div>
+<div data-n="g1"><h4>Mini-gyakorlat: három állomás kívülről</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Csapatban, 10 percben. A DevTools-rész csak annak kötelező, akinél van laptop, telefonon nem megy. Valódi adatot nem adtok meg, nem fizettek, űrlapot nem küldtök be. Belső adathoz nem férünk hozzá, ezért kívülről fejtjük vissza a láncot.</p></div></div>
 <div data-n="g2"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A tanulság utolsó mondata. A teljes tanulság: a diagnózis sorrend kérdése, nem tudásé. Végig kell menni a láncon a megjelenéstől a konverzióig, és megkeresni, hol szakad.</p></div></div>
 </aside>
 
@@ -845,7 +845,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=[], TXT={"2026. november 23.": "2026. november 6.", "6. alkalom · 2026. november 23.": "6. téma · 2026. november 6."};
+  var SKIP=["k5"], TXT={"2026. november 23.": "2026. november 6.", "6. alkalom · 2026. november 23.": "6. téma · 2026. november 6."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
