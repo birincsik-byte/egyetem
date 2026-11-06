@@ -293,7 +293,7 @@ textarea{min-height:4.2em;resize:vertical}
   /* [kör, azonosító, cím, vezetőkérdések, a deck diái] */
   var LENS=[
     [1,'l1','Miről szól az oldal?',['Mi ez, kinek az oldala, milyen oldalon állok?','Mit kínál, és kinek?','Mitől más, mint a többi?'],'0,05 másodperc · Az oldal anatómiája'],
-    [1,'l2','Mit akar az oldal?',['Mi a fő célja: vásárlás, foglalás, jelentkezés, feliratkozás, hívás?','Melyik a fő gomb, és kiemelkedik-e a többi közül?','Mit kér tőlem először?'],'Egy fő gomb · Az oldal anatómiája'],
+    [1,'l2','Mit akar az oldal?',['Mi a fő célja: vásárlás, foglalás, jelentkezés, feliratkozás, hívás?','Melyik a fő gomb, és kiemelkedik-e a többi közül?','Mit kér tőlem először?'],(/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search))?'Mit emelsz ki?':'Egy fő gomb · Az oldal anatómiája'],
     [1,'l3','Mit mond a márka, milyen a hangvétel?',['Milyennek mutatja magát? Mondjatok rá három szót.','Egy hangon szól-e a szöveg, a kép és a szín?','Illik-e ahhoz, akinek szól?'],'A márka hangja'],
     [2,'l4','Tartalom',['Válaszol-e: ki vagy, mit csinálsz, hol, miben vagy más?','Végig lehet-e futni rajta: címek, rövid bekezdések, kiemelések?','Van-e töltelékszöveg, ami semmit nem mond?'],'A szöveg dolga, hogy válaszoljon · Hogyan néz?'],
     [2,'l5','Layout',['A fontos van elöl és felül, a kevésbé fontos hátrébb?','Ami összetartozik (kép, név, ár, gomb), egy csoportban van?','Ott van-e a menü, a kereső, a kosár, ahol máshol megszokta?'],'A layout dönt a sorrendről · Amit máshol megszokott'],
@@ -398,6 +398,12 @@ textarea{min-height:4.2em;resize:vertical}
     var nb2=document.querySelector('#p2 .nextbar'); if(nb2)nb2.innerHTML='<p><span class="nb-st">2/4 kész</span> Következik: cselekvés, kattintva, a 6–8. szempont.</p><button class="btn next" data-go="p3">Tovább a következő fázisra · 3/4 →</button>';
     var nb3=document.querySelector('#p3 .nextbar'); if(nb3)nb3.innerHTML='<p><span class="nb-st">3/4 kész</span> Következik: összegzés és leadás.</p><button class="btn next" data-go="p4">Tovább a következő fázisra · 4/4 →</button>';
     var sh=document.querySelector('.sum-h p'); if(sh)sh.textContent='Így ítéltétek meg az oldalt a nyolc szemponton át.';
+    /* 2026. november 6.: levelezőn csak a ránézés (1–3.) és az egy mondat */
+    if(ld)ld.innerHTML='A márkátok oldalát nézitek meg kettesben, ma csak az első három szemponttal (ránézés, kattintás nélkül). Minden szempontnál: <b>Mit láttok?</b> <b>Miért így?</b> <b>Működik?</b> A végén az egy mondat, és leadás.';
+    if(nb1)nb1.innerHTML='<p><span class="nb-st">1/2 kész</span> Következik: az egy mondat és a leadás.</p><button class="btn next" data-go="p4">Tovább az összegzéshez →</button>';
+    if(sh)sh.textContent='Így ítéltétek meg az oldalt a kitöltött szempontokon át.';
+    var sbp=document.querySelector('#p4 .sendbar p'); if(sbp)sbp.innerHTML='<span class="nb-st">2/2</span> Az egy mondat kötelező, a többi mező kitölthető, ha marad idő. Utána küldjétek be.';
+    (function(){var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){if(n.nodeValue.indexOf('Egy fő gomb')>=0)n.nodeValue=n.nodeValue.replace('Egy fő gomb','Mit emelsz ki?')}})();
     var db=$('decB'); if(db){var li=db.closest('li'); if(li)li.style.display='none'}
     var ins=$('insights'); if(ins)ins.style.gridTemplateColumns='1fr';
     var sc=$('scores'); if(sc)sc.style.gridTemplateColumns='1fr';
@@ -447,7 +453,7 @@ textarea{min-height:4.2em;resize:vertical}
   api('state').then(function(d){ if(!d.ok)return; SUBS=d.subs||{}; d.teams.forEach(function(t){var o=document.createElement('option');o.value=t.id;o.textContent=t.name;$('team').appendChild(o);TEAMS[t.id]=t}); $('team').value=S.team||''; var bl=[]; d.teams.forEach(function(t){if(t.client&&bl.indexOf(t.client)<0)bl.push(t.client)}); if(bl.length)BRANDLIST=bl.sort(function(a,b){return a.localeCompare(b,'hu')}); brands(BRANDLIST); }).catch(function(){ $('status').textContent='A szerver nem elérhető innen. A lap így is menthető, a beküldéshez az élő oldalon nyisd meg.'; });
   $('send').addEventListener('click',function(){
     if(S.demo){$('status').textContent='Ez a minta. Előbb vegyétek ki, és a saját munkátokat küldjétek be.';return}
-    var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return} if(!S.brand){$('status').textContent='Válaszd ki a márkát.';return} if(!S.ext){$('status').textContent='Válaszd ki a külső oldalt.';return}
+    var tid=$('team').value; if(!tid){$('status').textContent='Válaszd ki a csapatot.';return} if(!S.brand){$('status').textContent='Válaszd ki a márkát.';return} if(!S.ext&&!LEV){$('status').textContent='Válaszd ki a külső oldalt.';return}
     var b=blocks(); if(!b.f3){$('status').textContent='Az egy mondat hiányzik, enélkül nem lehet beküldeni.';return}
     if(SUBS&&SUBS[tid]&&!confirm('Ennek a csapatnak már van beküldött munkája. Ez felülírja. Folytatod?'))return;
     b.team=tid; $('status').textContent='Küldés…';

@@ -429,5 +429,10 @@ summary{cursor:pointer;color:var(--cobalt)}
   refresh(); if(VIEW==='eredmeny'||VIEW==='csapat'||VIEW==='szavazas'||VIEW==='admin'||VIEW==='leadas') setInterval(refresh,8000);
 })();
 </script>
+<script>/* levelező, 2026. november 6.: a mai nap szövegei */
+(function(){if(!/levelezo/i.test(location.pathname)&&!/[?&]lev=1\b/.test(location.search))return;var ep=(location.search.match(/ep=(ep\d)/)||[])[1];
+[].forEach.call(document.querySelectorAll('p'),function(p){var t=p.textContent;
+if(t.indexOf('A következő alkalom kezdetéig módosítható.')>=0)p.textContent=t.replace('A következő alkalom kezdetéig módosítható.','Az óra végéig módosítható.');
+if(ep==='ep7'&&/^Amire nézz: a márka, a célcsoport/.test(t))p.textContent='Amire nézz: érthető-e a brief annak, aki megcsinálja; a vevőről szól-e, nem a márkáról; egy mondatban kimondja-e a lényeget.';});})();</script>
 </body>
 </html>

@@ -628,6 +628,13 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.7rem}
 .slide .chips span{font-size:var(--t-sm)!important;border:1px solid var(--line);border-radius:99px;padding:.22em .85em;background:#fff}
 .mini{counter-reset:m}
+.cards4 ul,.cards3 ul,.cards2 ul{padding-left:1.3em;margin:.2rem 0 0}
+.cards4 code,.cards3 code,.cards2 code{word-break:break-all;white-space:normal;font-size:.85em}
+table.kpi{border-collapse:collapse;width:100%;max-width:64rem;margin-top:.6rem}
+table.kpi th{text-align:left;font-weight:600;color:var(--ink-soft);font-size:var(--t-sm);border-bottom:2px solid var(--line);padding:.35rem .6rem}
+table.kpi td{border-bottom:1px solid var(--line);padding:.4rem .6rem;vertical-align:top;font-size:var(--t-body)}
+table.kpi td:first-child{white-space:nowrap}
+.flow>span{white-space:nowrap}
 .slide .c1tem small{display:block;font-weight:600;color:var(--ink-soft);font-size:max(.6rem,13px)!important;text-transform:uppercase;letter-spacing:.1em}
 .tri2 .triad p{font-size:var(--t-body)!important}
 @media (max-width:900px){.cards4{grid-template-columns:1fr 1fr}.cards3,.cards2{grid-template-columns:1fr}.bars div{grid-template-columns:9rem 1fr 3rem}}
@@ -703,6 +710,64 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
     <div><b>Konverzió</b><p>megtette-e: kulcsesemény, konverziós arány</p></div>
   </div>
   <p class="lead" style="margin-top:1rem">És előtte mindig: mér-e egyáltalán a műszer?</p>
+</section>
+
+<section class="slide" data-notes="m1">
+  <p class="kicker">Alapfogalmak</p>
+  <h2>Mutató, KPI, cél</h2>
+  <div class="flow">
+    <div><b>Cél</b><p>amit az üzlet akar: több jelentkező, több vásárlás, több visszatérő vevő</p></div><span>→</span>
+    <div><b>KPI</b><p>az a 2–3 mutató, ami a célt méri</p></div><span>→</span>
+    <div><b>Támogató mutatók</b><p>amik megmagyarázzák, miért mozdult a KPI</p></div>
+  </div>
+  <div class="cards2">
+    <div><h3>Példa: nyelviskola</h3><p>Cél: több próbaórára jelentkező. KPI: jelentkezések száma, egy jelentkezés költsége. Támogató: kattintási arány, elköteleződési arány az oldalon.</p></div>
+    <div><h3>Ami csak jól mutat</h3><p>Követők, lájkok, megjelenések. Akkor számítanak, ha összefüggnek a céllal. Ha nem, hiúsági mutatók.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-notes="m2">
+  <p class="kicker">Mit mikor mérj</p>
+  <h2>Minden szakasznak más a mérőszáma</h2>
+  <table class="kpi">
+    <tr><th>Szakasz</th><th>Kérdés</th><th>Tipikus mutató</th></tr>
+    <tr><td><b>Elérés</b></td><td>Látták-e, eljöttek-e?</td><td>egyedi látogatók és követők, közönségarány</td></tr>
+    <tr><td><b>Interakció</b></td><td>Foglalkoztak-e velünk?</td><td>visszafordulás vagy elköteleződés, oldalak látogatásonként</td></tr>
+    <tr><td><b>Konverzió</b></td><td>Megtették-e, amit akartunk?</td><td>konverziós arány, eladás, bevétel és árrés</td></tr>
+    <tr><td><b>Megtartás</b></td><td>Visszajönnek-e?</td><td>aktív vevők aránya, ismételt vásárlás</td></tr>
+  </table>
+  <p class="lead" style="margin-top:.9rem">Egy márkaépítő videót nem a konverzión mérünk, egy keresőhirdetést nem az elérésen.</p>
+</section>
+
+<section class="slide dense" data-notes="m3">
+  <p class="kicker">Csatornánként</p>
+  <h2>Mi számít igazán?</h2>
+  <table class="kpi">
+    <tr><th>Csatorna</th><th>Ami igazán számít</th><th>Ami csak jól mutat</th></tr>
+    <tr><td><b>Keresőhirdetés</b></td><td>konverziós arány, egy konverzió költsége</td><td>megjelenések</td></tr>
+    <tr><td><b>Kereső, organikusan</b></td><td>kattintás a fontos keresésekre, hova érkeznek</td><td>helyezés egy-egy szóra</td></tr>
+    <tr><td><b>Social, organikusan</b></td><td>elköteleződés az elérthez képest, mentés, megosztás</td><td>követőszám</td></tr>
+    <tr><td><b>Social hirdetés</b></td><td>gyakoriság, egy eredmény költsége</td><td>lájk a hirdetésen</td></tr>
+    <tr><td><b>Videó</b></td><td>meddig nézik, az első másodpercek megtartása</td><td>megtekintésszám</td></tr>
+    <tr><td><b>E-mail</b></td><td>kattintás, leiratkozás</td><td>megnyitási arány</td></tr>
+    <tr><td><b>Weboldal (GA4)</b></td><td>kulcsesemény, konverziós arány</td><td>oldalmegtekintés</td></tr>
+  </table>
+</section>
+
+<section class="slide" data-notes="m4">
+  <p class="kicker">Hogyan függ össze</p>
+  <h2>Egy lánc, egy számolás</h2>
+  <div class="flow">
+    <div><b>10 000</b><p>megjelenés</p></div><span>× 2% CTR →</span>
+    <div><b>200</b><p>kattintás</p></div><span>× 3% konverzió →</span>
+    <div><b>6</b><p>vásárlás</p></div>
+  </div>
+  <div class="cards3">
+    <div><h3>Költség: 30 000 Ft</h3><p>CPC = 30 000 / 200 = 150 Ft<br>CPA = 30 000 / 6 = 5 000 Ft</p></div>
+    <div><h3>Ha a CTR 4% lesz</h3><details class="rv"><summary>Mi történik?</summary><p>400 kattintás, 12 vásárlás, a CPA 2 500 Ft. Ezt a hirdetés javítja.</p></details></div>
+    <div><h3>Ha a konverzió 6% lesz</h3><details class="rv"><summary>Mi történik?</summary><p>200 kattintás, 12 vásárlás, a CPA ugyanúgy 2 500 Ft. Ezt az oldal javítja, és a kattintásért nem fizetsz többet.</p></details></div>
+  </div>
+  <p class="small muted" style="margin-top:.7rem">Szemléltető számok.</p>
 </section>
 
 <section class="slide" data-notes="k3">
@@ -795,7 +860,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 </section>
 
 <section class="slide" data-notes="g1">
-  <p class="kicker">Mini-gyakorlat · 10 perc · csapatban</p>
+  <p class="kicker">Mini-gyakorlat · 10 perc · kettesben</p>
   <h2>Három állomás kívülről</h2>
   <div class="task lev-task" style="max-width:none"><ol>
     <li><b>Megjelenés, 3 perc:</b> fut-e hirdetése a márkátoknak a Meta hirdetéstárban vagy a Google Átláthatósági Központban, és mit ígér?</li>
@@ -817,23 +882,27 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.4 levelezős · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.6 · 2026. november 6.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
 <div data-n="c1"><h4>Címlap</h4><p class="src top">Forrás: oktató; a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>A 6. téma: miből tudjuk meg, hogy működött. A tematika két pontja szó szerint a dián.</p></div></div>
 <div data-n="c4"><h4>Mit mutat a valóság · Miről szól · Kulcsgondolat · Tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A kulcsgondolat legtisztább könyvbeli párja Kingsnorth „So what?” kérdése: minden számra megkérdezed, és akkor mi következik belőle.</p></div></div>
-<div data-n="k1"><h4>Egy szám, sok kérdés</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet, 494. o., 17.5 ábra</p><div class="hj"><h5>Jegyzet</h5><p>A számok Kotler 17.5 ábrájáról valók. Az A márkáról Kotler: a kommunikációs program jól teremt ismertséget, de a termék nem váltja be a vevők várakozását. A B márkánál fordított a helyzet: aki kipróbálta, elégedett, a kommunikáció gyenge.</p><p>A kérdés a végén: kinek a dolga megjavítani? Az A márkánál a terméké, a B-nél a kommunikációé. Ugyanaz a szám más embert hív.</p></div></div>
-<div data-n="k2"><h4>Négy kérdés, öt állomás</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 10. fejezet, 555. o., 10.2 ábra; Kotler, Keller: 4. fejezet, 115. o.; Walker, Mullins: 13. fejezet, 335–336. o.</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey négy mérési kérdése sorrendben: mit akarunk elérni, mi történik, miért történik, mit tegyünk. Farris Kotlernél a pilótával hasonlít: tudni kell, mikor melyik műszerre figyelj.</p><p>Walker és Mullins: ha nem érjük el a célt, meg kell keresni, hol van az ok: a környezetben, a stratégiában, a tervben vagy a végrehajtásban.</p><p>Az öt állomás az oktató láncából jön (a megjelenéstől a konverzióig). A műszer külön kérdése (mér-e egyáltalán) az én javaslatom.</p></div></div>
+<div data-n="k1"><h4>Egy szám, sok kérdés</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet, 17.5 ábra</p><div class="hj"><h5>Jegyzet</h5><p>A számok Kotler 17.5 ábrájáról valók. Az A márkáról Kotler: a kommunikációs program jól teremt ismertséget, de a termék nem váltja be a vevők várakozását. A B márkánál fordított a helyzet: aki kipróbálta, elégedett, a kommunikáció gyenge.</p><p>A kérdés a végén: kinek a dolga megjavítani? Az A márkánál a terméké, a B-nél a kommunikációé. Ugyanaz a szám más embert hív.</p></div></div>
+<div data-n="k2"><h4>Négy kérdés, öt állomás</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 10. fejezet, 10.2 ábra; Kotler, Keller: 4. fejezet; Walker, Mullins: 13. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey négy mérési kérdése sorrendben: mit akarunk elérni, mi történik, miért történik, mit tegyünk. Kotlernél Farris a pilótához hasonlítja a marketingest: tudni kell, mikor melyik műszerre figyelj.</p><p>Walker és Mullins: ha nem érjük el a célt, meg kell keresni, hol van az ok: a környezetben, a stratégiában, a tervben vagy a végrehajtásban.</p><p>Az öt állomás az oktató láncából jön (a megjelenéstől a konverzióig). A műszer külön kérdése (mér-e egyáltalán) az oktató következtetése.</p></div></div>
+<div data-n="m1"><h4>Mutató, KPI, cél</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 14. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet (1.10 ábra) és 10. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A KPI (kulcs teljesítménymutató) nem bármelyik szám, hanem az a néhány, ami a célt méri. Minden más támogató mutató: segít megérteni, miért mozdult a KPI. Kingsnorth kérdése minden számra: „So what?” Ha egy számra nincs jó válasz, az hiúsági mutató.</p><p>A nyelviskola példája szemléltető, nem valós adat. A szétválasztás (cél, KPI, támogató mutató) az oktató összefoglalása.</p></div></div>
+<div data-n="m2"><h4>Minden szakasznak más a mérőszáma</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet, 1.10 ábra (RACE: Reach, Act, Convert, Engage; Smart Insights, 2010)</p><div class="hj"><h5>Jegyzet</h5><p>A táblázat Chaffey RACE-keretének mutatói: Reach (elérés): egyedi látogatók és követők, közönségarány, bevétel vagy célérték látogatásonként. Act (interakció): visszafordulási arány, oldalak látogatásonként, lead-konverzió. Convert (konverzió): konverziós arány, eladás, bevétel és árrés. Engage (megtartás): aktív vevők aránya, követői elköteleződés, ismételt vásárlás.</p><p>A 2016-os könyvben a visszafordulási arány még egyoldalas látogatást jelent. A GA4-ben jelenleg az elköteleződött munkamenet ellentettje, erről a GA4-diánál lesz szó.</p><p>A RACE négy szakasza összepárosítható a mai öt állomással: elérés a megjelenés és a kattintás, interakció az érkezés és a haladás, konverzió a konverzió, megtartás a visszatérés. Ez a párosítás saját következtetés.</p></div></div>
+<div data-n="m3"><h4>Mi számít igazán?</h4><p class="src top">Forrás: az oktató összefoglalása a platformok súgói alapján (Google Ads, Google Search Console, Meta, YouTube, GA4); az e-mail megnyitásról: Apple Mail Privacy Protection, 2021</p><div class="hj"><h5>Jegyzet</h5><p>A táblázat összefoglaló, nem szabály: mindig a célból következik, mi a KPI. Egy ismertségi kampánynál például a megjelenés és az elérés is számít.</p><p>Az e-mail megnyitási aránya 2021 óta kevésbé megbízható, mert az Apple Mail Privacy Protection funkciója a leveleket előre letöltheti, és ez megnyitásnak számít. Ezért a kattintás a megbízhatóbb jel.</p><p>A helyezés egy-egy szóra keveset mond önmagában: a Search Console-ban azt érdemes nézni, hogy a fontos keresésekre hányan kattintanak, és melyik oldalra érkeznek.</p></div></div>
+<div data-n="m4"><h4>Egy lánc, egy számolás</h4><p class="src top">Forrás: az oktató szemléltető példája</p><div class="hj"><h5>Jegyzet</h5><p>A számok kitaláltak, a képletek nem: kattintás = megjelenés × CTR; konverzió = kattintás × konverziós arány; CPC = költség / kattintás; CPA = költség / konverzió. Ha bevétel is van, ROAS = bevétel / hirdetési költség.</p><p>A két javítás ugyanannyi vásárlást hoz, de máshol kell keresni: a CTR a hirdetésen múlik, a konverziós arány az oldalon. Ez a mai tanulság: végig kell menni a láncon, és megkeresni, hol szakad.</p></div></div>
 <div data-n="k3"><h4>Hogyan épül fel egy fiók</h4><p class="src top">Forrás: Google Ads súgó; a Meta fiókszerkezetéhez elsődleges forrás még kell (az óra előtt a Hirdetéskezelőben élőben ellenőrizendő)</p><div class="hj"><h5>Jegyzet</h5><p>A Google Adsben a fiók alatt kampányok vannak, a kampány alatt hirdetéscsoportok, azokban a hirdetések és a kulcsszavak. A Metán kampány, hirdetéskészlet és hirdetés: a kampány a célt, a hirdetéskészlet a közönséget, a keretet, az elhelyezést és az ütemezést, a hirdetés a kreatívot tartalmazza.</p><p>Hogy a hiba szintje megmondja, hol keresd: saját következtetés. Ha rossz a közönség, a hirdetéskészletben; ha rossz az üzenet, a hirdetésben.</p></div></div>
 <div data-n="k4"><h4>Élőben: a fiók</h4><p class="src top">Forrás: oktató; Kingsnorth: Digital Marketing Strategy, 6. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Az oktató bemutatója. A hallgatók mondják be, melyik oszlop melyik állomáshoz tartozik, utána nyissuk ki a megoldást. A fiók a megjelenéstől a kattintásig és a konverzióig lát, az érkezést és a haladást a weboldal mérése látja.</p></div></div>
-<div data-n="k5"><h4>Kié a hiba?</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet, 8.8 ábra; 9. fejezet, 499. o.; Kingsnorth: 6. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey 8.8 ábrája a láncot lépcsőként mutatja: megjelenés, kattintás, látogatás, lead, eladás, és minden lépés között egy hatékonysági mutató.</p><p>Chaffey: egy hirdetés hozhat kattintást vagy forgalmat úgy, hogy a weboldalon nem éri el a kívánt eredményt, vagy egyszerűen rossz a látogatók profilja. Ez visszautal a 3. témára: az oldalra, ahová érkezik.</p></div></div>
-<div data-n="k6"><h4>Minden esemény</h4><p class="src top">Forrás: GA4 súgó (események, elköteleződött munkamenet; a 3. alkalom webkutatása, 2026. október 5.); Chaffey, Ellis-Chadwick: 10. fejezet, 557. o.</p><div class="hj"><h5>Jegyzet</h5><p>A GA4-ben minden interakció esemény, az oldalmegtekintés is. A munkamenet alapértelmezésben 30 perc tétlenség után ér véget.</p><p>Elköteleződött munkamenet: legalább 10 másodpercig tart, vagy van benne kulcsesemény, vagy legalább két oldal- vagy képernyőmegtekintés. A visszafordulási arány a nem elköteleződött munkamenetek aránya. Chaffey 2016-ban még egyoldalas látogatásként írta le a visszafordulást: ugyanaz a szó, más szám.</p></div></div>
-<div data-n="k7"><h4>Honnan jött, és hol esik ki?</h4><p class="src top">Forrás: GA4 súgó (UTM, tölcsér-felfedezés); Chaffey, Ellis-Chadwick: 10. fejezet, 558–559. o., 10.4 ábra</p><div class="hj"><h5>Jegyzet</h5><p>Az UTM-paraméterek (forrás, médium, kampány) mondják meg a GA4-nek, honnan jött a látogató. Ha hiányoznak, a fizetett kattintás is más forrásnak látszhat.</p><p>Chaffey: a lemorzsolódás lépésenként mérhető a landingtől a pénztárig, és szakaszonként más az oka. A négy ok besorolása a dián a beszélgetés kiindulópontja, nem egyetlen helyes válasz.</p></div></div>
-<div data-n="k8"><h4>Négy ember a szám mögött</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 14. fejezet, 261. o.; Chaffey, Ellis-Chadwick: 9. fejezet; Google Ads súgó (minőségi mutató); Google Analytics súgó (attribúciós modellek, 2023)</p><div class="hj"><h5>Jegyzet</h5><p>Kingsnorth: „Data is in itself worthless.” Minden lépésnél ember hibázhat: a termékben, a telepítésben, a beállításban, az értelmezésben. Ezért az első hibakeresési lépés a műszer, nem a kampány (saját következtetés).</p><p>A platform cserélődik: Chaffey 2016-ban a minőségi mutatót a rangsor kulcsaként írja le, a jelenlegi Google Ads súgó szerint diagnosztikai eszköz, és nem bemenete az aukciónak. Kingsnorth öt attribúciós modellt tanít; a GA4-ben 2023 novembere óta az adatvezérelt és az utolsó kattintásos modell maradt.</p></div></div>
+<div data-n="k5"><h4>Kié a hiba?</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet, 8.8 ábra; 9. fejezet; Kingsnorth: 6. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey 8.8 ábrája a láncot lépcsőként mutatja: megjelenés, kattintás, látogatás, lead, eladás, és minden lépés között egy hatékonysági mutató.</p><p>Chaffey: egy hirdetés hozhat kattintást vagy forgalmat úgy, hogy a weboldalon nem éri el a kívánt eredményt, vagy egyszerűen rossz a látogatók profilja. Ez visszautal a 3. témára: az oldalra, ahová érkezik.</p></div></div>
+<div data-n="k6"><h4>Minden esemény</h4><p class="src top">Forrás: GA4 súgó (események, elköteleződött munkamenet; a 3. alkalom webkutatása, 2026. október 5.); Chaffey, Ellis-Chadwick: 10. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A GA4-ben minden interakció esemény, az oldalmegtekintés is. A munkamenet alapértelmezésben 30 perc tétlenség után ér véget.</p><p>Elköteleződött munkamenet: legalább 10 másodpercig tart, vagy van benne kulcsesemény, vagy legalább két oldal- vagy képernyőmegtekintés. A visszafordulási arány a nem elköteleződött munkamenetek aránya. Chaffey 2016-ban még egyoldalas látogatásként írta le a visszafordulást: ugyanaz a szó, más szám.</p></div></div>
+<div data-n="k7"><h4>Honnan jött, és hol esik ki?</h4><p class="src top">Forrás: GA4 súgó (UTM, tölcsér-felfedezés); Chaffey, Ellis-Chadwick: 10. fejezet, 10.4 ábra</p><div class="hj"><h5>Jegyzet</h5><p>Az UTM-paraméterek (forrás, médium, kampány) mondják meg a GA4-nek, honnan jött a látogató. Ha hiányoznak, a fizetett kattintás is más forrásnak látszhat.</p><p>Chaffey: a lemorzsolódás lépésenként mérhető a landingtől a pénztárig, és szakaszonként más az oka. A négy ok besorolása a dián a beszélgetés kiindulópontja, nem egyetlen helyes válasz.</p></div></div>
+<div data-n="k8"><h4>Négy ember a szám mögött</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 14. fejezet; Chaffey, Ellis-Chadwick: 9. fejezet; Google Ads súgó (minőségi mutató); Google Analytics súgó (attribúciós modellek, 2023)</p><div class="hj"><h5>Jegyzet</h5><p>Kingsnorth: „Data is in itself worthless.” Minden lépésnél ember hibázhat: a termékben, a telepítésben, a beállításban, az értelmezésben. Ezért az első hibakeresési lépés a műszer, nem a kampány (saját következtetés).</p><p>A platform cserélődik: Chaffey 2016-ban a minőségi mutatót a rangsor kulcsaként írja le, a jelenlegi Google Ads súgó szerint diagnosztikai eszköz, és nem bemenete az aukciónak. Kingsnorth öt attribúciós modellt tanít; a GA4-ben 2023 novembere óta az adatvezérelt és az utolsó kattintásos modell maradt.</p></div></div>
 <div data-n="k9"><h4>Ami a sávon múlik</h4><p class="src top">Forrás: ePrivacy irányelv, 5. cikk (3); GDPR, 7. cikk (3); EUB, C-673/17, Planet49 (2019); Google Consent Mode súgó; Chaffey, Ellis-Chadwick: 3. és 10. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Az ePrivacy irányelv 5. cikk (3): a felhasználó végberendezésén tárolt információhoz előzetes hozzájárulás kell, kivéve, ha feltétlenül szükséges a kért szolgáltatáshoz. A GDPR 7. cikk (3): a hozzájárulás visszavonása legyen ugyanolyan egyszerű, mint a megadása. Az EUB a Planet49 ügyben kimondta: az előre bejelölt négyzet nem érvényes hozzájárulás.</p><p>Consent Mode: alap módban hozzájárulás előtt nem indul mérőkérés; haladó módban a Google sütik nélküli jelzéseket kap, és modellez. Hozzájárulási arányra nincs ellenőrzött forrásunk, ezért szám nincs a dián.</p><p>Élőben: Chrome DevTools, Network fül, szűrés a GA4 kéréseire (collect), a sáv elfogadása előtt és után.</p></div></div>
-<div data-n="g1"><h4>Mini-gyakorlat: három állomás kívülről</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Csapatban, 10 percben. A DevTools-rész csak annak kötelező, akinél van laptop, telefonon nem megy. Valódi adatot nem adtok meg, nem fizettek, űrlapot nem küldtök be. Belső adathoz nem férünk hozzá, ezért kívülről fejtjük vissza a láncot.</p></div></div>
+<div data-n="g1"><h4>Mini-gyakorlat: három állomás kívülről</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Kettesben, 10 percben. A DevTools-rész választható: akinél van laptop, megnézheti, telefonon nem megy. Valódi adatot nem adtok meg, nem fizettek, űrlapot nem küldtök be. Belső adathoz nem férünk hozzá, ezért kívülről fejtjük vissza a láncot.</p></div></div>
 <div data-n="g2"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A tanulság utolsó mondata. A teljes tanulság: a diagnózis sorrend kérdése, nem tudásé. Végig kell menni a láncon a megjelenéstől a konverzióig, és megkeresni, hol szakad.</p></div></div>
 </aside>
 
@@ -845,7 +914,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 /* levelezős mód: az om2026levelezo címen vagy ?lev=1 paraméterrel a kihagyott diák kikerülnek, a dátumok cserélődnek */
 (function(){
   var LEV=/levelezo/i.test(location.pathname)||/[?&]lev=1\b/.test(location.search);
-  var SKIP=["k5"], TXT={"2026. november 23.": "2026. november 6.", "6. alkalom · 2026. november 23.": "6. téma · 2026. november 6."};
+  var SKIP=["k3", "k5", "k8"], TXT={"2026. november 23.": "2026. november 6.", "6. alkalom · 2026. november 23.": "6. téma · 2026. november 6."};
   [].forEach.call(document.querySelectorAll('section.slide'),function(s){
     var k=s.getAttribute('data-notes'), only=s.getAttribute('data-lev')==='only';
     if(LEV ? SKIP.indexOf(k)>=0 : only) s.parentNode.removeChild(s);
@@ -900,7 +969,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
   /* ===== javító mód: J billentyű; a megjegyzések a böngészőben maradnak, a Lista kimentése adja ki őket ===== */
   var REVSEL='.slide h1,.slide h2,.slide h3,.slide p,.slide li,.slide td,.slide th,.slide .blocks>div,.slide .ep,.slide .triad>div,.slide .cols3>div,.slide .task,.notes .hj p,.notes h4';
   var REVQ='h1,h2,h3,h4,p,li,td,th,.blocks>div,.ep,.triad>div,.cols3>div,.task';
-  var REVKEY='om2026-rev-ep4', rev={}, revTarget=null;
+  var REVKEY='om2026-rev-ep6', rev={}, revTarget=null;
   try{rev=JSON.parse(localStorage.getItem(REVKEY)||'{}')}catch(e){rev={}}
   function revSave(){try{localStorage.setItem(REVKEY,JSON.stringify(rev))}catch(e){} document.getElementById('revcount').textContent=Object.keys(rev).length; revMark()}
   function slideNo(el){var sl=el.closest('.slide'); if(sl)return slides.indexOf(sl)+1; return i+1}
@@ -962,7 +1031,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 <script>/* levelezőn az évadsáv a levelezős dátumokat mutatja */
 (function(){if(!document.documentElement.classList.contains('lev'))return;
-var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'10.\u00a016.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
+var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'11.\u00a006.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
 [].forEach.call(document.querySelectorAll('.strip a'),function(a){var b=a.querySelector('b'),s=a.querySelector('span');if(!b||!s||!D[b.textContent.trim()])return;
 s.innerHTML=s.innerHTML.replace(/\d\d\.(\s|&nbsp;)+\d\d\.\s*$/,D[b.textContent.trim()]);});})();</script>
 </body>

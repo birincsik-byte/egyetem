@@ -628,6 +628,13 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.7rem}
 .slide .chips span{font-size:var(--t-sm)!important;border:1px solid var(--line);border-radius:99px;padding:.22em .85em;background:#fff}
 .mini{counter-reset:m}
+.cards4 ul,.cards3 ul,.cards2 ul{padding-left:1.3em;margin:.2rem 0 0}
+.cards4 code,.cards3 code,.cards2 code{word-break:break-all;white-space:normal;font-size:.85em}
+table.kpi{border-collapse:collapse;width:100%;max-width:64rem;margin-top:.6rem}
+table.kpi th{text-align:left;font-weight:600;color:var(--ink-soft);font-size:var(--t-sm);border-bottom:2px solid var(--line);padding:.35rem .6rem}
+table.kpi td{border-bottom:1px solid var(--line);padding:.4rem .6rem;vertical-align:top;font-size:var(--t-body)}
+table.kpi td:first-child{white-space:nowrap}
+.flow>span{white-space:nowrap}
 .slide .c1tem small{display:block;font-weight:600;color:var(--ink-soft);font-size:max(.6rem,13px)!important;text-transform:uppercase;letter-spacing:.1em}
 .tri2 .triad p{font-size:var(--t-body)!important}
 @media (max-width:900px){.cards4{grid-template-columns:1fr 1fr}.cards3,.cards2{grid-template-columns:1fr}.bars div{grid-template-columns:9rem 1fr 3rem}}
@@ -772,10 +779,10 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 </section>
 
 <section class="slide" data-notes="g1">
-  <p class="kicker">Mini-gyakorlat · 10 perc · csapatban</p>
+  <p class="kicker">Mini-gyakorlat · 10 perc · kettesben</p>
   <h2>Egylapos brief és visszamondás</h2>
   <div class="task lev-task" style="max-width:none"><ol>
-    <li><b>5 perc:</b> öt mező a mai nap korábbi gyakorlataiból: kinek, mit (egy mondat), mikor és hol, miből tudjuk meg, kikkel.</li>
+    <li><b>5 perc:</b> öt mező a félév korábbi gyakorlataiból: kinek, mit (egy mondat), mikor és hol, miből tudjuk meg, kikkel.</li>
     <li><b>3 perc:</b> csere a szomszéd csapattal. Ők egy mondatban visszamondják, mit kellene belőle csinálni.</li>
     <li><b>2 perc:</b> szóban visszajelzés a célhoz mérve, az öt mérce közül eggyel. Leadás, utána szavazás.</li>
   </ol></div>
@@ -791,12 +798,12 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.4 levelezős · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.5 · 2026. november 6.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
-<div data-n="c1"><h4>Címlap</h4><p class="src top">Forrás: oktató; a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>Az utolsó téma, a félév egyetlen konstrukciós része: a csapatok az eddigi gyakorlataikra építve rövid briefet írnak, és megvédik.</p></div></div>
+<div data-n="c1"><h4>Címlap</h4><p class="src top">Forrás: oktató; a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>Az utolsó téma, a félév egyetlen konstrukciós része: a csapatok az eddigi gyakorlataikra építve rövid briefet írnak, és egy másik csapat visszamondja.</p></div></div>
 <div data-n="c4"><h4>Miről szól · Kulcsgondolat · Tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A tanulság teljes szövege: a jó marketinges nem az, akinek jó ötletei vannak, hanem az, aki el tudja mondani a sajátját úgy, hogy más is meg tudja csinálni, és el tudja fogadni a másikét úgy, hogy jobb legyen tőle. Ehhez három dolgot kell tudni. Kérdezni, mielőtt megoldasz, mert a megrendelő általában a saját megoldását mondja el, nem a problémáját. Visszajelzést adni a munkára, nem az emberre, és mindig a célhoz mérve, nem ízlés alapján. És elengedni az ötletet, ha kiderül, hogy nem szolgálja a célt, mert az ötlethez való ragaszkodás a legdrágább szokás ebben a szakmában.</p><p>A három dolog a mai nap három diája.</p></div></div>
 <div data-n="b1"><h4>A hét kérdés maga a brief</h4><p class="src top">Forrás: oktató (gondolati ív); Kotler, Keller: Marketing Management, 17. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A gondolati ív mondata szó szerint: „Ez a hét kérdés pontosan az, amit egy stratégia vagy egy brief tartalmaz.”</p><p>Kotler nyolc lépése a hatékony kommunikációhoz párosítható a hét kérdéssel: célközönség az 1., célok és mérés a 6., üzenet az 1. és a 4., csatornák a 4., keret az 5., az integrált kommunikáció kezelése a 7. A párosítás saját következtetés.</p></div></div>
 <div data-n="b2"><h4>Ki kicsoda, és hol a szakadék</h4><p class="src top">Forrás: oktató (a négy szerep); Neumeier: The Brand Gap, Introduction; Chaffey, Ellis-Chadwick: 8. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A négy szerep a „Miről szól” szavai: megrendelő, stratéga, kreatív, kivitelező. Hogy ki mit kap az előzőtől és mit ad tovább, az saját bontás.</p><p>Neumeier könyvének címe maga a szakadék: a stratégia és a kreatív, a logika és a varázslat között. Ahol a kettő elszakad, ott a márka elvész.</p></div></div>
@@ -804,10 +811,10 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 <div data-n="b4"><h4>Mi van egy briefben</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 18. fejezet; Walker, Mullins: 7. fejezet; oktató</p><div class="hj"><h5>Jegyzet</h5><p>Kotler, Keller szerint a kreatív brief egy-két oldal, a pozicionálási állítás kibontása: kulcsüzenet, célközönség, kommunikációs cél, a fő márkaelőny és ami alátámasztja, média.</p><p>A pozicionálási mondat az 1. témából: kinek szól, mi helyett választják, mi az értékajánlata. Ezt belső használatra és az ügynökségnek írják, nem a vevőnek.</p></div></div>
 <div data-n="b5"><h4>80 százalék vevő, 20 százalék mi</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet; Neumeier, Discipline 4</p><div class="hj"><h5>Jegyzet</h5><p>Amitől egy brief rossz: hősies márkaközpontúság, szűk kép a vevőről, korábbi szövegekből összeollózva. Amit kérünk: 80 százalék vevő, 20 százalék mi.</p></div></div>
 <div data-n="b6"><h4>Kérdezni, mielőtt megoldasz</h4><p class="src top">Forrás: oktató; Kotler, Keller: Marketing Management, 18. fejezet (Got Milk?); Chaffey, Ellis-Chadwick: 8. fejezet; Neumeier</p><div class="hj"><h5>Jegyzet</h5><p>A Got Milk? kampány előtt a kutatás megmutatta, hogy a vevők már hiszik, hogy a tej egészséges, tehát erről fölösleges lett volna beszélni. Neumeier: mindig kérdezz rá, miért.</p><p>A négy mondat szemléltető, nem valós megrendelőtől való. Kinyitás előtt a terem döntse el, melyik probléma és melyik megoldás.</p></div></div>
-<div data-n="b7"><h4>Visszajelzés a munkára, a célhoz mérve</h4><p class="src top">Forrás: oktató; Neumeier, Discipline 4; Kotler, Keller: Marketing Management, 17. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Neumeier: „It’s not about liking. It’s about understanding.” Kotler, Keller: ha a kommunikáció nem működik, vagy rossz üzenetet mond, vagy a jó üzenetet fejezi ki rosszul.</p><p>Neumeier öt mércéje: megkülönböztet, releváns, megjegyezhető, kiterjeszthető, van mélysége. A mini-gyakorlatban ebből kettővel adtok visszajelzést.</p></div></div>
+<div data-n="b7"><h4>Visszajelzés a munkára, a célhoz mérve</h4><p class="src top">Forrás: oktató; Neumeier, Discipline 4; Kotler, Keller: Marketing Management, 17. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Neumeier: „It’s not about liking. It’s about understanding.” Kotler, Keller: ha a kommunikáció nem működik, vagy rossz üzenetet mond, vagy a jó üzenetet fejezi ki rosszul.</p><p>Neumeier öt mércéje: megkülönböztet, releváns, megjegyezhető, kiterjeszthető, van mélysége. A mini-gyakorlatban ebből eggyel adtok szóban visszajelzést.</p></div></div>
 <div data-n="b8"><h4>Elengedni</h4><p class="src top">Forrás: oktató; Neumeier, Discipline 2 és 5; Hooley, Piercy: 16. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Neumeier: ez csak egy koncepció, és minden döntésnél az a kérdés, segíti vagy árt a márkának. Hooley és Piercy Martint idézi: nem lehet zseniális a stratégia, ha a végrehajtása gyenge.</p></div></div>
 <div data-n="b9"><h4>El tudod mondani harminc másodpercben?</h4><p class="src top">Forrás: oktató; Kingsnorth: Digital Marketing Strategy, 14–15. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A pitch az, amikor a briefre az ügynökség a saját ajánlatával felel. Itt a csapat a saját briefjét védi meg. Kingsnorth kérdése a döntéshozó kérdése is: „So what?”</p></div></div>
-<div data-n="g1"><h4>Mini-gyakorlat: egylapos brief és visszamondás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ez a nap záró gyakorlata, 10 perc, a korábbi mini-gyakorlatokat fűzi össze. A leadásban az öt mező, a szomszéd csapat visszamondása és a visszajelzés kerül be. A végén csapatmunka-szavazás.</p></div></div>
+<div data-n="g1"><h4>Mini-gyakorlat: egylapos brief és visszamondás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ez a nap záró gyakorlata, 10 perc, a félév korábbi gyakorlatait fűzi össze. A leadásban az öt mező és a szomszéd csapat visszamondása kerül be, a visszajelzés szóban megy. A végén csapatmunka-szavazás, ez külön 5 perc.</p></div></div>
 <div data-n="g2"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A tanulság első mondata. A félév hét kérdése ezzel összeállt.</p></div></div>
 </aside>
 
@@ -874,7 +881,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
   /* ===== javító mód: J billentyű; a megjegyzések a böngészőben maradnak, a Lista kimentése adja ki őket ===== */
   var REVSEL='.slide h1,.slide h2,.slide h3,.slide p,.slide li,.slide td,.slide th,.slide .blocks>div,.slide .ep,.slide .triad>div,.slide .cols3>div,.slide .task,.notes .hj p,.notes h4';
   var REVQ='h1,h2,h3,h4,p,li,td,th,.blocks>div,.ep,.triad>div,.cols3>div,.task';
-  var REVKEY='om2026-rev-ep4', rev={}, revTarget=null;
+  var REVKEY='om2026-rev-ep7', rev={}, revTarget=null;
   try{rev=JSON.parse(localStorage.getItem(REVKEY)||'{}')}catch(e){rev={}}
   function revSave(){try{localStorage.setItem(REVKEY,JSON.stringify(rev))}catch(e){} document.getElementById('revcount').textContent=Object.keys(rev).length; revMark()}
   function slideNo(el){var sl=el.closest('.slide'); if(sl)return slides.indexOf(sl)+1; return i+1}
@@ -936,7 +943,7 @@ details.rv summary{cursor:pointer;color:var(--cobalt);font-weight:600;font-size:
 
 <script>/* levelezőn az évadsáv a levelezős dátumokat mutatja */
 (function(){if(!document.documentElement.classList.contains('lev'))return;
-var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'10.\u00a016.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
+var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'11.\u00a006.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
 [].forEach.call(document.querySelectorAll('.strip a'),function(a){var b=a.querySelector('b'),s=a.querySelector('span');if(!b||!s||!D[b.textContent.trim()])return;
 s.innerHTML=s.innerHTML.replace(/\d\d\.(\s|&nbsp;)+\d\d\.\s*$/,D[b.textContent.trim()]);});})();</script>
 </body>

@@ -914,7 +914,7 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 </script>
 <script>/* levelezőn az évadsáv a levelezős dátumokat mutatja */
 (function(){if(!document.documentElement.classList.contains('lev'))return;
-var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'10.\u00a016.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
+var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'11.\u00a006.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
 [].forEach.call(document.querySelectorAll('.strip a'),function(a){var b=a.querySelector('b'),s=a.querySelector('span');if(!b||!s||!D[b.textContent.trim()])return;
 s.innerHTML=s.innerHTML.replace(/\d\d\.(\s|&nbsp;)+\d\d\.\s*$/,D[b.textContent.trim()]);});})();</script>
 </body>

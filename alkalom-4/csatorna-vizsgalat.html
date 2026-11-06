@@ -358,6 +358,7 @@ textarea{min-height:4.2em;resize:vertical}
   if(LEV){
     document.documentElement.classList.add('lev');
     function tabSet(p,meta){var t=document.querySelector('.tab[data-p="'+p+'"]'); if(t)t.querySelector('.meta').textContent=meta}
+    (function(){var ld=document.querySelector('.lead'); if(ld){var n=document.createElement('p'); n.className='onebox'; n.innerHTML='<b>Levelezőn, 10 perc.</b> Mindketten csak az 1–3. szempontot töltitek ki a saját fületeken (Jelenlét, Szándékállapot, Ki kezdeményez), szempontonként egy rövid sorral. A többi mező maradhat üresen. A végén az egy mondat kötelező.'; ld.parentNode.insertBefore(n,ld.nextSibling)}})();
     tabSet('p1','Google és AI-válasz · 6 perc, párhuzamosan'); tabSet('p2','Facebook, Instagram · 6 perc, párhuzamosan'); tabSet('p3','ráadás, ha marad idő'); tabSet('p4','együtt · 3 perc');
     var ob=document.querySelector('.notes3 .onebox'); if(ob)ob.innerHTML='<b>Kettesben dolgoztok.</b> Az egyik a keresőt és egy AI-választ nézi, a másik a Facebookot és az Instagramot. A videó fül ráadás, ha marad idő. Az összevetést és az egy mondatot együtt írjátok.';
     var sp=$('split'); if(sp)sp.placeholder='pl. Anna: kereső, Bence: Meta';
