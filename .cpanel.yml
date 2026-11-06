@@ -29,6 +29,9 @@ deployment:
     - /bin/cp alkalom-3/oldal-vizsgalat.html $LDEPLOY
     - /bin/cp alkalom-4/online-marketing-2026-evad-4-epizod.html $LDEPLOY
     - /bin/cp alkalom-4/csatorna-vizsgalat.html $LDEPLOY
+    - /bin/cp alkalom-5/online-marketing-2026-evad-5-epizod.html $LDEPLOY
+    - /bin/cp alkalom-6/online-marketing-2026-evad-6-epizod.html $LDEPLOY
+    - /bin/cp alkalom-7/online-marketing-2026-evad-7-epizod.html $LDEPLOY
     - export AIDEPLOY=/home2/egyetembemind/public_html/ai-in-marketing/
     - /bin/mkdir -p $AIDEPLOY
     - /bin/cp AI-MARKETING/index.html $AIDEPLOY
