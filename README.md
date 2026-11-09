@@ -1,24 +1,36 @@
-# Online marketing · Pannon Egyetem · 2026 ősz · nappali
+# Egyetem · három tárgy forrása
 
-A félév weboldala és az ügynökségi app. Élesben: https://egyetem.bemind.dev/om2026nappali/
+Ebben a repóban három tárgy weboldala van, tárgyanként egy mappában. A deploy a
+`.cpanel.yml` szerint fut: a szerver a felsorolt fájlokat másolja a célmappákba,
+semmi mást, és soha nem töröl. A webcímek nem függnek a mappák nevétől.
 
-## Mi van itt
+| mappa | tárgy | élesben |
+|---|---|---|
+| `nappali/` | Online marketing, nappali tagozat | https://egyetem.bemind.dev/om2026nappali/ |
+| `levelezo/` | Online marketing, levelező tagozat | https://egyetem.bemind.dev/om2026levelezo/ |
+| `ai-a-marketingben/` | AI a marketingben | https://egyetem.bemind.dev/ai-in-marketing/ |
 
-- `index.html` – gyűjtőoldal, a hét alkalom
-- `app.html` – ügynökségi app: csapat, leadás, szavazás, eredmény, oktató (`?ep=ep1&v=csapat`)
-- `api.php` – az app háttere, JSON-tár a `data/` mappában
-- `munkadoksik/` – a félév munkadoksijai (állapot, szabályok, gondolati ív, forrástérkép); nem mennek ki a webre
-- `alkalom-N/` – alkalmanként minden, ami az alkalomhoz tartozik: a deck (`online-marketing-2026-evad-N-epizod.html`), a beadandó-eszköz és a segédlet (ezek mennek ki a webre, `cp` sorral), valamint a forrásfeldolgozás és a jegyzetek (ezek nem)
-- `UJ-FIOK-INDULAS.md` – belépési pont egy új munkamenethez
-- `.cpanel.yml` – ez mondja meg a cPanelnek, mit másoljon a mappába deploykor
-- `key.php.example` – az oktatói kulcs mintája; a szerveren `key.php` néven, a gitben nincs
+További mappák:
 
-Nincs a gitben, szándékosan: `data/` (a beküldések és szavazatok), `key.php` (a kulcs) és `neptun.php` (a hallgatók Neptun-kódjai, a nyitólap belépéséhez). Deploykor ezekhez nem nyúl.
+- `konyvek/` – tankönyvszöveg a felkészüléshez. Nincs a gitben, nem megy ki a webre.
+- `_archiv/` – régi csomagok és mentések. Nincs a gitben, nem megy ki a webre.
 
-## Új alkalom hozzáadása
+## Amit tudni érdemes
 
-1. Új deck fájl az alkalom mappájába (`alkalom-N/online-marketing-2026-evad-N-epizod.html`).
-2. `app.html` elején az `EPISODES` listában az `ep2` mezőit átírni a beadandóhoz.
-3. `index.html`-ben a 2. alkalom sorát élesíteni (az `off` osztály törlése, linkek).
-4. `.cpanel.yml`-be egy új `cp` sor az új deck fájlra, a mappával együtt (`/bin/cp alkalom-N/... $DEPLOYPATH`). A szerveren a fájl a gyökérbe kerül, a webcím nem változik.
-5. Commit, push; a cron legfeljebb negyed órán belül deployol (a pontos ütemezés a `CLAUDE.md`-ben).
+**A `levelezo/` mappa befagyasztott.** A levelező tárgy webes fájljai (app, api,
+az 1–7. deck és a segédletek) saját másolatban állnak ebben a mappában, laposan.
+Korábban ugyanazokat a fájlokat kapta, mint a nappali; 2026. november 9. óta nem.
+Ha a levelezőn kell változtatni, itt kell, és csak ide hat.
+
+**A hallgatói adatok nincsenek a repóban.** A csapatok, a regisztrációk és a
+leadott munkák a szerveren, a célmappák `data/` almappájában élnek. A deploy
+ezeket nem érinti: csak `mkdir -p` és `cp` szerepel benne, egyetlen `rm`, `mv`
+vagy `--delete` sincs.
+
+**Titkok.** A `key.php` és a `neptun.php` (Neptun-kódok, személyes adat) soha nem
+kerül a repóba, a `.gitignore` kizárja őket. Kézzel kell feltölteni a szerverre.
+A levelezőhöz a `levelezo/szerverre-kezzel/`, az AI tárgyhoz az
+`ai-a-marketingben/szerverre-kezzel/` mappában van a példány.
+
+A munka menetét és a szabályokat a `CLAUDE.md` írja le, a nappali tárgy részletes
+leírását a `nappali/README.md`.

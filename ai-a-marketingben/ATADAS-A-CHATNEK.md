@@ -2,15 +2,35 @@
 
 Ebben a mappában néha közvetlenül a fájlokban írjuk át a szöveget, nem a claude.ai chatben. Ez a doksi gyűjti ezeket a kézi módosításokat, dátumozott szakaszokban, a legfrissebb elöl.
 
-**Ha az `AI-MARKETING/` bármelyik fájljából teljes új változat készül a chatben, előbb ezt a listát kell beépíteni**, különben a következő fájlátadás némán visszaírja a régi szöveget.
+**Ha az `ai-a-marketingben/` bármelyik fájljából teljes új változat készül a chatben, előbb ezt a listát kell beépíteni**, különben a következő fájlátadás némán visszaírja a régi szöveget.
 
 A doksi munkadoksi: nem kap `cp` sort a `.cpanel.yml`-ben, nem megy ki a webre.
 
 ---
 
+## A generátor a hiteles forrás (2026. november 4. óta)
+
+A kezdőlap és a hat diasor a `forras/` mappában lévő generátorból készül: a szövegek a `content.py`-ban, a HTML és a CSS a `build.py`-ban van. **Minden további szövegmódosítás a `forras/`-ban készüljön**, és onnan generálódjanak a fájlok. Ha valaki mégis kézzel javít egy HTML-t, azt vissza kell vezetni a generátorba, különben a következő futtatás eltörli.
+
+2026. november 4-én a generátor szinkronba került a kézzel szerkesztett fájlokkal: a kimenete bájtra megegyezik a kinn lévő hét HTML-lel.
+
+**A `build.py`-t soha ne futtasd a helyén.** A saját mappája szülőjébe ír, vagyis egyenesen az `ai-a-marketingben/` mappába: ott futtatva felülírja mind a hét fájlt. Ellenőrzéshez másold a `forras/` mappát egy ideiglenes helyre, ott futtasd, és md5-tel vesd össze a kimenetet.
+
+### A heti nyitás egyetlen szám
+
+A `content.py` tetején:
+
+```python
+NYITVA = 1   # eddig az alkalomig kattinthatók a linkek a kezdőlapon és a felső sávban
+```
+
+Ebből származik a kezdőlap gombjainak és a felső sáv elemeinek állapota is: ami `<= NYITVA`, az élő link, ami fölötte van, az szürke `off`. A diasor saját eleme a sávban akkor is `on` marad, ha a száma nagyobb a `NYITVA`-nál. A következő alkalom megnyitása tehát: a szám átírása és egy futtatás (ideiglenes másolatban, utána a fájlok másolása a helyükre), nem kézi szerkesztés nyolc fájlban.
+
+---
+
 ## 2026. november 4.
 
-Érintett fájlok: `AI-MARKETING/index.html` (v1.2) és a hat diasor, `AI-MARKETING/ai-marketing-2026-alkalom-1..6.html` (v1.1). Minden szövegnek a magyar és az angol változata is módosult.
+Érintett fájlok: `ai-a-marketingben/index.html` (v1.2) és a hat diasor, `ai-a-marketingben/ai-marketing-2026-alkalom-1..6.html` (v1.1). Minden szövegnek a magyar és az angol változata is módosult.
 
 ### 1. Nincs óráról órára leadás
 
@@ -82,9 +102,18 @@ A sáv korábban fix 64 pixelre nyílt ki, és a leghosszabb feliratoknál (2., 
 
 Így keskenyebb ablakban és nagyobb böngésző-nagyítás mellett sem vág le semmit. Mind a hat diasorban.
 
+### 8. A 8. dia kártyái nem kattinthatók
+
+Az 1. diasor 8. diáján („Hat csütörtök, 8:00 és 12:00 között”) a hat kártya korábban linkelt a diasorokra. Berti kérésére ez megszűnt:
+
+- a kártya `<a class="ep">` helyett `<div class="ep">`, `href` és `data-href` nélkül, a tartalma változatlan
+- CSS: `.slide a.ep` → `.slide .ep`, `.slide a.ep.now` → `.slide .ep.now`, a `:hover` emelkedés törölve (ha nem kattintható, ne is viselkedjen úgy). A `.ep .n`, `.ep .d`, `.ep b`, `.ep .o` érintetlen.
+- A dia alatti mondatból kimaradt az „Az alkalmakra kattintva megnyílik a saját diasoruk.” / „Click a session to open its own slides.” tagmondat, mert kattinthatatlan kártyák mellett valótlan lenne.
+- A `.ep` CSS közös, ezért a 2–6. diasor stíluslapja is ezt kapta. Látható változás nincs bennük (nincs season kártyájuk), ezért a verziójuk nem emelkedett.
+
 ### Verziószámok
 
-Mind a nyolc fájl: `index.html` és a hat diasor **v1.3 · 2026. november 4.** (angolul 4 November 2026).
+`ai-marketing-2026-alkalom-1.html` **v1.4**, `index.html` és a 2–6. diasor **v1.3** · 2026. november 4. (angolul 4 November 2026). A fájlonkénti eltérést a `content.py` `VER_KIVETEL` táblája kezeli.
 
 ---
 

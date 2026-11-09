@@ -3,42 +3,42 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home2/egyetembemind/public_html/om2026nappali/
     - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp index.html $DEPLOYPATH
-    - /bin/cp app.html $DEPLOYPATH
-    - /bin/cp api.php $DEPLOYPATH
-    - /bin/cp alkalom-1/online-marketing-2026-evad-1-epizod.html $DEPLOYPATH
-    - /bin/cp alkalom-2/online-marketing-2026-evad-2-epizod.html $DEPLOYPATH
-    - /bin/cp alkalom-2/journey-terkep.html $DEPLOYPATH
-    - /bin/cp alkalom-2/journey-tippek.html $DEPLOYPATH
-    - /bin/cp alkalom-3/online-marketing-2026-evad-3-epizod.html $DEPLOYPATH
-    - /bin/cp alkalom-3/oldal-anatomia.html $DEPLOYPATH
-    - /bin/cp alkalom-3/oldal-vizsgalat.html $DEPLOYPATH
-    - /bin/cp alkalom-4/online-marketing-2026-evad-4-epizod.html $DEPLOYPATH
-    - /bin/cp alkalom-4/csatorna-vizsgalat.html $DEPLOYPATH
+    - /bin/cp nappali/index.html $DEPLOYPATH
+    - /bin/cp nappali/app.html $DEPLOYPATH
+    - /bin/cp nappali/api.php $DEPLOYPATH
+    - /bin/cp nappali/alkalom-1/online-marketing-2026-evad-1-epizod.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-2/online-marketing-2026-evad-2-epizod.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-2/journey-terkep.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-2/journey-tippek.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-3/online-marketing-2026-evad-3-epizod.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-3/oldal-anatomia.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-3/oldal-vizsgalat.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-4/online-marketing-2026-evad-4-epizod.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-4/csatorna-vizsgalat.html $DEPLOYPATH
     - export LDEPLOY=/home2/egyetembemind/public_html/om2026levelezo/
     - /bin/mkdir -p $LDEPLOY
-    - /bin/cp LEVELEZ*/index.html $LDEPLOY
-    - /bin/cp app.html $LDEPLOY
-    - /bin/cp api.php $LDEPLOY
-    - /bin/cp alkalom-1/online-marketing-2026-evad-1-epizod.html $LDEPLOY
-    - /bin/cp alkalom-2/online-marketing-2026-evad-2-epizod.html $LDEPLOY
-    - /bin/cp alkalom-2/journey-terkep.html $LDEPLOY
-    - /bin/cp alkalom-2/journey-tippek.html $LDEPLOY
-    - /bin/cp alkalom-3/online-marketing-2026-evad-3-epizod.html $LDEPLOY
-    - /bin/cp alkalom-3/oldal-anatomia.html $LDEPLOY
-    - /bin/cp alkalom-3/oldal-vizsgalat.html $LDEPLOY
-    - /bin/cp alkalom-4/online-marketing-2026-evad-4-epizod.html $LDEPLOY
-    - /bin/cp alkalom-4/csatorna-vizsgalat.html $LDEPLOY
-    - /bin/cp alkalom-5/online-marketing-2026-evad-5-epizod.html $LDEPLOY
-    - /bin/cp alkalom-6/online-marketing-2026-evad-6-epizod.html $LDEPLOY
-    - /bin/cp alkalom-7/online-marketing-2026-evad-7-epizod.html $LDEPLOY
+    - /bin/cp levelezo/index.html $LDEPLOY
+    - /bin/cp levelezo/app.html $LDEPLOY
+    - /bin/cp levelezo/api.php $LDEPLOY
+    - /bin/cp levelezo/online-marketing-2026-evad-1-epizod.html $LDEPLOY
+    - /bin/cp levelezo/online-marketing-2026-evad-2-epizod.html $LDEPLOY
+    - /bin/cp levelezo/journey-terkep.html $LDEPLOY
+    - /bin/cp levelezo/journey-tippek.html $LDEPLOY
+    - /bin/cp levelezo/online-marketing-2026-evad-3-epizod.html $LDEPLOY
+    - /bin/cp levelezo/oldal-anatomia.html $LDEPLOY
+    - /bin/cp levelezo/oldal-vizsgalat.html $LDEPLOY
+    - /bin/cp levelezo/online-marketing-2026-evad-4-epizod.html $LDEPLOY
+    - /bin/cp levelezo/csatorna-vizsgalat.html $LDEPLOY
+    - /bin/cp levelezo/online-marketing-2026-evad-5-epizod.html $LDEPLOY
+    - /bin/cp levelezo/online-marketing-2026-evad-6-epizod.html $LDEPLOY
+    - /bin/cp levelezo/online-marketing-2026-evad-7-epizod.html $LDEPLOY
     - export AIDEPLOY=/home2/egyetembemind/public_html/ai-in-marketing/
     - /bin/mkdir -p $AIDEPLOY
-    - /bin/cp AI-MARKETING/index.html $AIDEPLOY
-    - /bin/cp api.php $AIDEPLOY
-    - /bin/cp AI-MARKETING/ai-marketing-2026-alkalom-1.html $AIDEPLOY
-    - /bin/cp AI-MARKETING/ai-marketing-2026-alkalom-2.html $AIDEPLOY
-    - /bin/cp AI-MARKETING/ai-marketing-2026-alkalom-3.html $AIDEPLOY
-    - /bin/cp AI-MARKETING/ai-marketing-2026-alkalom-4.html $AIDEPLOY
-    - /bin/cp AI-MARKETING/ai-marketing-2026-alkalom-5.html $AIDEPLOY
-    - /bin/cp AI-MARKETING/ai-marketing-2026-alkalom-6.html $AIDEPLOY
+    - /bin/cp ai-a-marketingben/index.html $AIDEPLOY
+    - /bin/cp ai-a-marketingben/api.php $AIDEPLOY
+    - /bin/cp ai-a-marketingben/ai-marketing-2026-alkalom-1.html $AIDEPLOY
+    - /bin/cp ai-a-marketingben/ai-marketing-2026-alkalom-2.html $AIDEPLOY
+    - /bin/cp ai-a-marketingben/ai-marketing-2026-alkalom-3.html $AIDEPLOY
+    - /bin/cp ai-a-marketingben/ai-marketing-2026-alkalom-4.html $AIDEPLOY
+    - /bin/cp ai-a-marketingben/ai-marketing-2026-alkalom-5.html $AIDEPLOY
+    - /bin/cp ai-a-marketingben/ai-marketing-2026-alkalom-6.html $AIDEPLOY

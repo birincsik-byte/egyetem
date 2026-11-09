@@ -30,14 +30,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 html[lang=en] .hu,html[lang=hu] .en{display:none!important}
 
 /* évadsáv: vékony csík, ráállva lenyílik (a nappali deck mintájára) */
-.strip{position:fixed;top:0;left:0;right:0;height:10px;overflow:hidden;display:flex;align-items:stretch;border-bottom:1px solid var(--line);background:var(--paper);z-index:45;transition:height .2s,box-shadow .2s}
-.strip:hover,.strip:focus-within{height:64px;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)}
+.strip{position:fixed;top:0;left:0;right:0;height:auto;max-height:10px;overflow:hidden;display:flex;align-items:stretch;border-bottom:1px solid var(--line);background:var(--paper);z-index:45;transition:max-height .2s,box-shadow .2s}
+.strip:hover,.strip:focus-within{max-height:240px;box-shadow:0 10px 24px -14px rgba(27,31,58,.45)}
 .strip a{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 14px;text-decoration:none;color:var(--ink-soft);border-right:1px solid var(--line);font-size:clamp(12px,.8vw,15px);line-height:1.2}
 .strip a:last-child{border-right:0}
 .strip a>*{opacity:0;transition:opacity .15s}
 .strip:hover a>*,.strip:focus-within a>*{opacity:1}
 .strip a b{font-family:var(--display);font-weight:500;font-size:1.25em;color:var(--ink)}
 .strip a.on{background:var(--marker);color:var(--ink)}
+.strip a.off{opacity:.45;cursor:default}
+.strip a.off b{color:var(--ink-soft)}
 .strip a:focus-visible{outline:3px solid var(--cobalt);outline-offset:-3px}
 
 .deck{position:absolute;inset:0}
@@ -106,13 +108,12 @@ h1.cover{font-size:calc(var(--t-xl) * 1.25);max-width:18ch;margin-bottom:.4em}
 
 /* hat alkalom */
 .season{display:grid;grid-template-columns:repeat(6,1fr);gap:.9vw;max-width:84em}
-.slide a.ep{display:block;text-decoration:none;color:var(--ink);background:#fff;border-radius:12px;border-top:4px solid var(--line);padding:.7em .9em .9em;box-shadow:var(--sh);font-size:var(--t-sm);line-height:1.3;transition:transform .15s,border-color .15s}
-.slide a.ep:hover{transform:translateY(-3px);border-top-color:var(--cobalt)}
+.slide .ep{display:block;text-decoration:none;color:var(--ink);background:#fff;border-radius:12px;border-top:4px solid var(--line);padding:.7em .9em .9em;box-shadow:var(--sh);font-size:var(--t-sm);line-height:1.3;transition:transform .15s,border-color .15s}
 .ep .n{font-family:var(--display);font-weight:500;font-size:2em;line-height:1;color:var(--cobalt);display:block}
 .ep .d{color:var(--ink-soft);display:block;margin:.35em 0 .3em}
 .ep b{display:block;font-family:var(--display);font-weight:500;font-size:1.12em;line-height:1.18;margin-bottom:.5em}
 .ep .o{color:var(--ink-soft);display:block;border-top:1px solid var(--line);padding-top:.4em}
-.slide a.ep.now{border-top-color:var(--cobalt);background:#FFFDF4;outline:2px solid var(--marker);outline-offset:-2px}
+.slide .ep.now{border-top-color:var(--cobalt);background:#FFFDF4;outline:2px solid var(--marker);outline-offset:-2px}
 
 /* táblázat */
 table{border-collapse:collapse;width:100%;max-width:78em;font-size:var(--t-sm)}
@@ -395,7 +396,7 @@ def task_slides(n):
         h2 = {l: GOAL[n][l] if sub is None else sub[l] for l in LANGS}
         foot = {l: '' for l in LANGS}
         if last:
-            foot = {l: '<p class="deliv"><b>%s</b> %s</p>' % ('Leadandó:' if l == 'hu' else 'Deliverable:', DELIV[n][l]) for l in LANGS}
+            foot = {l: '<p class="deliv"><b>%s</b> %s</p>' % ('Mára elkészül:' if l == 'hu' else 'Done by today:', DELIV[n][l]) for l in LANGS}
         note = tag('p', L('Ami a dián van, javaslat arra az esetre, ha nincs ötleted, hogyan indulj el. A lényeg az eredménytermék.',
                           'What is on the slide is a suggestion in case you do not know how to start. What counts is the output.'), 'note')
         out.append(j(kicker('A mai feladat' + pg, "Today's task" + pg, sess_lt(n)), tag('h2', h2, 'wide'), body, foot, note))
@@ -454,9 +455,9 @@ def close_slide(n):
         nxt = tag('p', L('2026. december 16-án még két elméleti óra lesz: Nóra: Fogyasztói viselkedés · Jogi szabályozás és etika.',
                          'On 16 December 2026 there are two more lectures: Nóra: Consumer behaviour · Legal regulation and ethics.'), 'lead')
     return j(kicker('Zárás', 'Wrap-up', sess_lt(n)),
-             {l: '<h2>%s</h2>' % (('Leadandó: ' if l == 'hu' else 'Deliverable: ') + DELIV[n][l][0].lower() + DELIV[n][l][1:]) for l in LANGS},
+             {l: '<h2>%s</h2>' % (('Mára elkészül: ' if l == 'hu' else 'Done by today: ') + DELIV[n][l][0].lower() + DELIV[n][l][1:]) for l in LANGS},
              '<hr class="rule">', nxt,
-             tag('p', L('A leadás helyét és határidejét az oktató adja meg.', 'The instructor will tell you where and when to upload.'), 'note'))
+             (tag('p', L('A leadás helyét és határidejét az oktató adja meg.', 'The instructor will tell you where and when to upload.'), 'note') if n == 6 else ''))
 
 # ---------- az 1. alkalom bevezető diái ----------
 
@@ -502,7 +503,7 @@ def intro_slides():
                tag('p', L('Nem attól leszel jó szakember, hogy egy az egyben elfogadod, amit kapsz. Nem arra vagyok kíváncsi, milyen gyorsan tudsz dolgozni. Itt a hatékonyság <span class="hl">a minőséget és a mélységet</span> jelenti.',
                           'You do not become a good professional by accepting what you get as it is. I am not interested in how fast you can work. Here, efficiency means <span class="hl">quality and depth</span>.'), 'lead')))
     # 4. mit csinálunk
-    S.append(j(kicker('Mit csinálunk', 'What we do'), tag('h2', L('Egy ismert márka, egy új kategória', 'A well-known brand, a new category')),
+    S.append(j(kicker('Mit csinálunk', 'What we do'), tag('h2', L('Marketing tender: valós márka egy elképzelt iparágban', 'Marketing pitch: a real brand in an imagined industry')),
                tag('p', L('Például: mi lenne, ha a Coca-Cola autómárka lenne?', 'For example: what if Coca-Cola were a car brand?'), 'lead'),
                {l: '<div class="flow" style="margin-top:1em"><div class="card"><h3>%s</h3><p>%s</p></div><div class="arr" aria-hidden="true">→</div><div class="card"><h3>%s</h3><p>%s</p></div><div class="arr" aria-hidden="true">→</div><div class="card alt"><h3>%s</h3><p>%s</p></div></div>' % (
                    ('Átveszed', 'Az ismert márka személyiségét, értékeit és vizuális kódjait.', 'Felépíted', 'Egy önálló új márkát, saját névvel és logóval.', 'Elindítod', 'Megtervezed és elkészíted a bevezető kampányát.') if l == 'hu' else
@@ -530,21 +531,21 @@ def intro_slides():
     for l in LANGS:
         cards = []
         for s in SESS:
-            cards.append('<a class="ep%s" data-href="%s" href="%s"><span class="n">%d</span><span class="d">%s</span><b>%s</b><span class="o">%s</span></a>' % (
-                ' now' if s['n'] == 1 else '', FN(s['n']), FN(s['n']), s['n'], s['d'][l], s['t'][l], s['out'][l]))
+            cards.append('<div class="ep%s"><span class="n">%d</span><span class="d">%s</span><b>%s</b><span class="o">%s</span></div>' % (
+                ' now' if s['n'] == 1 else '', s['n'], s['d'][l], s['t'][l], s['out'][l]))
         eps[l] = '<div class="season">%s</div>' % ''.join(cards)
     S.append(j(kicker('Hogyan', 'How'), tag('h2', L('Hat csütörtök, 8:00 és 12:00 között', 'Six Thursdays, from 8:00 to 12:00')), eps,
-               tag('p', L('Minden alkalom két másfél órás blokk, és mindegyiken a tenderdeck egy-egy részét készíted el. Az ingyenes Claude és ChatGPT elég hozzá. Az alkalmakra kattintva megnyílik a saját diasoruk.',
-                          'Each session is two blocks of an hour and a half, and in each you produce one part of the pitch deck. The free Claude and ChatGPT are enough. Click a session to open its own slides.'), 'note')))
+               tag('p', L('Minden alkalom két másfél órás blokk, és mindegyiken a tenderdeck egy-egy részét készíted el. Az ingyenes Claude és ChatGPT elég hozzá.',
+                          'Each session is two blocks of an hour and a half, and in each you produce one part of the pitch deck. The free Claude and ChatGPT are enough.'), 'note')))
     # 10. követelmények
     req = L([('Részvétel', 'Kötelező, a hiányzás nem haladhatja meg a HKR szerinti mértéket.'),
-             ('Leadás', 'Minden alkalom leadandóját határidőre fel kell tölteni, ez az aláírás feltétele. A helyét és a határidejét az oktató adja meg.'),
+             ('Munka és bemutató', 'A félév alatt órán dolgozol, részleadás nincs. Az aláírás feltétele a december 10-i tenderprezentáció és a végleges deck.'),
              ('Értékelés', 'Folyamatos számonkérés, ötfokozatú jegy, a tantárgy tematikája szerinti ponthatárokkal.'),
              ('AI-használat', 'Megengedett, sőt ez a feladat lényege. Az ingyenes változat elég, de ha van előfizetésed, használhatod.'),
              ('Tények', 'Minden tényt forrással igazolj. Az AI által írt, nem ellenőrizhető állítást javítsd vagy töröld.'),
              ('Védjegyek', 'A kiinduló márka logóját és védjegyeit ne használd. Az új márkának saját neve és logója van.')],
             [('Attendance', 'Mandatory; absences may not exceed the limit set by the university regulations (HKR).'),
-             ('Submission', "Each session's deliverable must be uploaded by the deadline; this is the condition for the course signature. The instructor will tell you where and when."),
+             ('Work and presentation', 'You work in class through the semester; there are no interim submissions. The condition for the course signature is the pitch presentation on 10 December and the final deck.'),
              ('Assessment', 'Continuous assessment, five-grade scale, with the thresholds set in the course syllabus.'),
              ('Use of AI', 'Allowed, in fact it is the point of the assignment. The free version is enough, but if you have a subscription you may use it.'),
              ('Facts', 'Back every fact with a source. Fix or delete any AI-written claim you cannot verify.'),
@@ -554,11 +555,11 @@ def intro_slides():
                tag('p', L('Záróbemutató 2026. december 10-én, hallgatónként 15-20 perc. A deckben legyen egy dia a használt eszközökről.',
                           'Final presentation on 10 December 2026, 15-20 minutes per student. Include one slide in the deck about the tools you used.'), 'note')))
     # 11. eszközök
-    tt = {l: '<table style="max-width:60em"><tr><th>%s</th><th>%s</th></tr>%s</table>' % ((('Mire', 'Ajánlott eszköz') if l == 'hu' else ('For what', 'Recommended tool')) +
-          (''.join('<tr><td>%s</td><td><b>%s</b></td></tr>' % (a[l], b[l]) for a, b in TOOLTABLE),)) for l in LANGS}
+    tt = {l: '<table style="max-width:72em"><tr><th>%s</th><th>%s</th><th>%s</th></tr>%s</table>' % ((('Mire', 'Ajánlott eszköz', 'Más eszközzel is') if l == 'hu' else ('For what', 'Recommended tool', 'Also works with')) +
+          (''.join('<tr><td>%s</td><td><b>%s</b></td><td>%s</td></tr>' % (a[l], b[l], c[l]) for a, b, c in TOOLTABLE),)) for l in LANGS}
     S.append(j(kicker('AI-eszközök', 'AI tools'), tag('h2', L('Bármit használhatsz. A Claude és a ChatGPT az ajánlott.', 'You can use anything. Claude and ChatGPT are recommended.')), tt,
-               tag('p', L('Más eszközök is jók: Gemini, Copilot, Grok, Le Chat, Perplexity, Midjourney, Canva, Figma és a többi. A leadott anyagban írd oda, melyik részhez melyik eszközt használtad. Ma nézd meg, elérhető-e a saját ingyenes Claude-fiókodban a Claude Design és a Claude Slides.',
-                          'Other tools are fine too: Gemini, Copilot, Grok, Le Chat, Perplexity, Midjourney, Canva, Figma and the rest. In the material you hand in, note which tool you used for which part. Today, check whether Claude Design and Claude Slides are available in your own free Claude account.'), 'note')))
+               tag('p', L('A harmadik oszlop példa, nem teljes lista: szinte minden sor megcsinálható ChatGPT-vel is, és bármilyen más eszközt használhatsz. A kész anyagban írd oda, melyik részhez melyik eszközt használtad. Ma nézd meg, elérhető-e a saját ingyenes Claude-fiókodban a Claude Design és a Claude Slides.',
+                          'The third column is an example, not a full list: almost every row can be done with ChatGPT as well, and you may use any other tool. In the finished material, note which tool you used for which part. Today, check whether Claude Design and Claude Slides are available in your own free Claude account.'), 'note')))
     # 12. promptolás
     S.append(j(kicker('Promptolás', 'Prompting'), tag('h2', L('A jó prompt olyan, mint egy jó brief', 'A good prompt is like a good brief')),
                tag('p', L('Aki kapja, kérdés nélkül el tudja végezni a munkát.', 'Whoever receives it can do the job without asking questions.'), 'lead'),
@@ -595,8 +596,15 @@ def intro_slides():
 def strip(n):
     a = ['<a href="index.html" data-href="index.html"><b>AI</b>%s</a>' % bi('a marketingben · kezdőlap', 'in Marketing · home')]
     for s in SESS:
-        a.append('<a href="%s" data-href="%s"%s><b>%d</b>%s</a>' % (FN(s['n']), FN(s['n']), ' class="on" aria-current="page"' if s['n'] == n else '', s['n'],
-                                                               bi('%s&nbsp;·&nbsp;%s' % (s['t']['hu'], s['short']), '%s&nbsp;·&nbsp;%s' % (s['t']['en'], s['short']))))
+        m = s['n']
+        lbl = bi('%s&nbsp;·&nbsp;%s' % (s['t']['hu'], s['short']), '%s&nbsp;·&nbsp;%s' % (s['t']['en'], s['short']))
+        if m == n:
+            # a saját fül akkor is látszik, ha ez az alkalom még nincs megnyitva
+            a.append('<a href="%s" data-href="%s" class="on" aria-current="page"><b>%d</b>%s</a>' % (FN(m), FN(m), m, lbl))
+        elif m <= NYITVA:
+            a.append('<a href="%s" data-href="%s"><b>%d</b>%s</a>' % (FN(m), FN(m), m, lbl))
+        else:
+            a.append('<a class="off" aria-disabled="true" data-off="%s"><b>%d</b>%s</a>' % (FN(m), m, lbl))
     return '<nav class="strip" aria-label="Alkalmak">%s</nav>' % ''.join(a)
 
 def deck_slides(n):
@@ -624,8 +632,9 @@ def render_deck(n):
             secs.append('<section class="%s" data-l="%s">\n%s\n</section>' % (cls, l, sl[l]))
     t_hu = 'AI a marketingben · %d. alkalom · %s' % (n, s['t']['hu'])
     t_en = 'AI in Marketing · Session %d · %s' % (n, s['t']['en'])
-    hint = bi('← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · ' + VER_HU,
-              '← → navigate · space: next · F: full screen · L: language · J: review mode · ' + VER_EN)
+    v_hu, v_en = VER(n)
+    hint = bi('← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · ' + v_hu,
+              '← → navigate · space: next · F: full screen · L: language · J: review mode · ' + v_en)
     doc = '''<!DOCTYPE html>
 <html lang="hu" data-deck="%d">
 <head>
@@ -676,6 +685,7 @@ h1{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:500;font-s
 .alk .q{margin:.2em 0 .5em}
 .links a{display:inline-block;padding:.25em .7em;border:1px solid var(--cobalt);color:var(--cobalt);border-radius:4px;text-decoration:none;font-size:.88em;margin:.15em .3em .15em 0}
 .links a.main{background:var(--marker);border-color:var(--marker);color:var(--ink)}
+.links a.off,.links a.main.off{background:transparent;border-color:var(--line);color:var(--soft);cursor:default}
 .foot{margin-top:2em;color:var(--soft);font-size:.85em}
 input,button{font:inherit}
 """
@@ -685,10 +695,17 @@ def render_index():
     for s in SESS:
         n = s['n']
         th_d, th = THEORY[n]
-        rows.append('<div class="alk"><div class="n">%d</div><div><b>%s</b><span class="d">%s · 8:00-12:00</span><p class="q">%s</p><p class="links"><a class="main" href="%s" data-href="%s">%s</a> <a href="%s#d%d" data-href="%s" data-hash="#d%d">%s</a></p></div></div>' % (
+        ti = task_index(n)
+        if n <= NYITVA:
+            links = '<a class="main" href="%s" data-href="%s">%s</a> <a href="%s#d%d" data-href="%s" data-hash="#d%d">%s</a>' % (
+                FN(n), FN(n), bi('Prezentáció', 'Slides'), FN(n), ti, FN(n), ti, bi('A feladat', 'The task'))
+        else:
+            links = '<a class="main off" aria-disabled="true" data-off="%s">%s</a> <a class="off" aria-disabled="true" data-off="%s" data-off-hash="#d%d">%s</a>' % (
+                FN(n), bi('Prezentáció', 'Slides'), FN(n), ti, bi('A feladat', 'The task'))
+        rows.append('<div class="alk"><div class="n">%d</div><div><b>%s</b><span class="d">%s · 8:00-12:00</span><p class="q">%s</p><p class="links">%s</p></div></div>' % (
             n, bi(s['t']['hu'], s['t']['en']), bi(s['d']['hu'], s['d']['en']),
-            bi('Leadandó: ' + DELIV[n]['hu'][0].lower() + DELIV[n]['hu'][1:], 'Deliverable: ' + DELIV[n]['en'][0].lower() + DELIV[n]['en'][1:]),
-            FN(n), FN(n), bi('Prezentáció', 'Slides'), FN(n), task_index(n), FN(n), task_index(n), bi('A feladat', 'The task')))
+            bi('Mára elkészül: ' + DELIV[n]['hu'][0].lower() + DELIV[n]['hu'][1:], 'Done by today: ' + DELIV[n]['en'][0].lower() + DELIV[n]['en'][1:]),
+            links))
     doc = '''<!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -710,6 +727,7 @@ def render_index():
 <div class="wrap" id="site" style="display:none">
   <div class="top"><p class="d">%s <span id="who"></span></p><span class="lang"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span></div>
   <h1>%s</h1>
+  <p class="lead">%s</p>
   <p class="lead">%s</p>
   %s
   <p class="foot">%s · <a href="#" id="logout" style="color:var(--soft)">%s</a> · %s</p>
@@ -745,10 +763,11 @@ def render_index():
        bi('Add meg a Neptun-kódodat. A kód csak arra kell, hogy a kurzus hallgatói lássák az anyagot; a félév végén a lista törlődik.', 'Enter your Neptun code. It is only needed so that the students of the course can see the material; the list is deleted at the end of the semester.'),
        bi('Belépek', 'Log in'),
        bi('Pannon Egyetem · AI a marketingben · 2026 ősz · gyakorlat', 'University of Pannonia · AI in Marketing · autumn 2026 · practice'),
-       bi('Egy ismert márka, egy új kategória', 'A well-known brand, a new category'),
+       bi('Marketing tender: valós márka egy elképzelt iparágban', 'Marketing pitch: a real brand in an imagined industry'),
+       bi('Mi lenne, ha a Coca-Cola autómárka lenne.', 'What if Coca-Cola were a car brand?'),
        bi('Hat csütörtökön át egy új márkát indítasz el ügynökségként, AI-jal. Minden alkalomhoz itt a diasor: a feladat, a promptjavaslatok és a tippek.', 'Over six Thursdays you launch a new brand as an agency, with AI. Here are the slides for every session: the task, the prompt suggestions and the tips.'),
        '\n  '.join(rows),
-       bi('Oktató: Birincsik Albert', 'Instructor: Albert Birincsik'), bi('Kilépés', 'Log out'), bi(VER_HU, VER_EN))
+       bi('Oktató: Birincsik Albert', 'Instructor: Albert Birincsik'), bi('Kilépés', 'Log out'), bi(*VER('index')))
     open(os.path.join(OUT, 'index.html'), 'w').write(doc)
 
 if __name__ == '__main__':

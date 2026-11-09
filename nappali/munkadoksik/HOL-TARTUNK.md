@@ -12,7 +12,7 @@ A projektmappa az oktató gépén: `/Users/birincsik/Claude/Projects/Egyetem`. E
 
 A lánc: a chat ír a mappába, Claude Code commitol és pushol, a szerver cronnal húz. Kézi fájlmozgatás sehol nincs. Ha a chat nincs a géphez kötve (például mobilról), akkor marad a letöltéses tartaléklánc, ennek menete a `CLAUDE.md`-ben van.
 
-A mappa rendje (2026. október 5.): a webre kerülő fájlok a gyökérben maradnak, a félév egészére vonatkozó munkadoksik (ez a doksi, `ALKALOM-SZABALYOK.md`, `ALKALOM-INDITO-PROMPT.md`, `gondolati-iv-7-epizod.md`, `forrasfeldolgozas-online-marketing-2026.md`, `findq.py`) a `munkadoksik/` alatt, az alkalmankénti munkadoksik az `alkalom-N/` alatt vannak, mindegyikben egy `README.md`-vel. A forrásjegyzetek és a v9 deck szövege a `konyvek/` alatt. Részletek a gyökérben lévő `UJ-FIOK-INDULAS.md`-ben.
+A mappa rendje (2026. november 9.): a repó három tárgyat tart, tárgyanként egy mappában (`nappali/`, `levelezo/`, `ai-a-marketingben/`), a gyökérben csak a közös fájlok (`.cpanel.yml`, `.gitignore`, `CLAUDE.md`, `README.md`). A nappali tárgy minden fájlja a `nappali/` alatt van: a webre kerülők az `alkalom-N/` mappákban, a félév egészére vonatkozó munkadoksik (ez a doksi, `ALKALOM-SZABALYOK.md`, `ALKALOM-INDITO-PROMPT.md`, `gondolati-iv-7-epizod.md`, `forrasfeldolgozas-online-marketing-2026.md`, `findq.py`) a `nappali/munkadoksik/` alatt, az alkalmankénti munkadoksik a `nappali/alkalom-N/` alatt, mindegyikben egy `README.md`-vel. A forrásjegyzetek és a v9 deck szövege a repó gyökerében lévő `konyvek/` alatt. Részletek a `nappali/UJ-FIOK-INDULAS.md`-ben. (A korábbi rend, 2026. október 5-től: minden a repó gyökerében volt.)
 
 Remote: `git@github.com:birincsik-byte/egyetem.git`, publikus.
 Weboldal: https://egyetem.bemind.dev/om2026nappali/

@@ -5,8 +5,20 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CB_HU = json.load(open(os.path.join(HERE, 'codeblocks_hu.json')))
 CB_EN = json.load(open(os.path.join(HERE, 'codeblocks_en.json')))
 
-VER_HU = 'v1.0 · 2026. november 4.'
-VER_EN = 'v1.0 · 4 November 2026'
+VER_HU = 'v1.3 · 2026. november 4.'
+VER_EN = 'v1.3 · 4 November 2026'
+
+# Eddig az alkalomig kattinthatók a linkek a kezdőlapon és a felső sávban.
+# A többi alkalom szürke és nem nyitható. Hétről hétre ezt a számot emeljük.
+NYITVA = 1
+
+# Ha egy fájl frissebb a többinél, itt kap saját verziót: kulcs 1-6 a diasorokhoz, 'index' a kezdőlaphoz.
+VER_KIVETEL = {1: ('v1.5 · 2026. november 6.', 'v1.5 · 6 November 2026')}
+
+
+def VER(kulcs):
+    '''A fájl verziószáma magyarul és angolul.'''
+    return VER_KIVETEL.get(kulcs, (VER_HU, VER_EN))
 
 def L(hu, en):
     return {'hu': hu, 'en': en}
@@ -76,7 +88,7 @@ STEPS = {
         'Log in to your AI account; if you do not have one, register. It can be ChatGPT, Claude or anything else you know, but Claude or ChatGPT is recommended. Get to know the interface and try what it can do: web search, file upload, creating documents and presentations. I am here to help.'),
       L('Válassz egy márkát a listából. Mindenkinek más jut.', 'Choose a brand from the list. Everyone gets a different one.'),
       L('Rakd össze az AI-jal a saját féléves tervedet: nézd át vele az órarendet, a deck öt blokkját és a hat alkalom leadandóit, és kérd meg, hogy készítsen neked egy ütemtervet, mikor mivel készülsz el. Ez lesz a térképed a félévre.',
-        'Build your own semester plan with the AI: go through the schedule, the five blocks of the deck and the deliverables of the six sessions with it, and ask it to make you a timeline of when you finish what. This will be your map for the semester.'),
+        'Build your own semester plan with the AI: go through the schedule, the five blocks of the deck and the outputs of the six sessions with it, and ask it to make you a timeline of when you finish what. This will be your map for the semester.'),
       L('Kezdj el gondolkodni a márkán: elemezd a kiinduló márkát az AI-jal, bekapcsolt webes kereséssel: értékek, személyiség, hangnem, vizuális kódok (színek, formák, betűk), ikonikus kampányok. Nyisd meg a forrásokat, tanulmányozd.',
         'Start thinking about the brand: analyse the source brand with the AI, with web search switched on: values, personality, tone of voice, visual codes (colours, shapes, type), iconic campaigns. Open the sources and study them.'),
       L('Térképezz fel 5 valódi versenytársat az új kategóriában: ajánlat, árszint, hangnem, fő csatornák. Tedd táblázatba, forráslinkekkel.',
@@ -177,8 +189,8 @@ TIPS = {
      L('Próbáld ki a fájlfeltöltést, a dokumentum- és a prezentációkészítést, és nézd meg, elérhető-e nálad a Claude Design és a Claude Slides. Ha valami hiányzik, szólj még ma.',
        'Try file upload, creating documents and presentations, and check whether Claude Design and Claude Slides are available to you. If something is missing, say so today.')),
     (L('Egy mappa a félévre', 'One folder for the semester'),
-     L('Hozz létre egy mappát a gépeden vagy a felhőben, és ments bele mindent, amit leadsz. A chat nem archívum.',
-       'Create a folder on your computer or in the cloud and save everything you hand in. A chat is not an archive.')),
+     L('Hozz létre egy mappát a gépeden vagy a felhőben, és ments bele mindent, ami elkészül. A chat nem archívum.',
+       'Create a folder on your computer or in the cloud and save everything you produce. A chat is not an archive.')),
   ]),
   (L('Kutatás AI-jal', 'Research with AI'), [
     (L('Nyisd meg a forrásokat', 'Open the sources'),
@@ -293,8 +305,8 @@ TIPS = {
      L('Márkanév, ígéret, egy gomb. A 728×90-es csíkban egy sor szöveg is sok lehet, nézd meg valódi méretben.',
        'Brand name, promise, one button. In the 728×90 strip even one line of text can be too much; check it at real size.')),
     (L('Fájlt ments, ne csak linket', 'Save files, not just links'),
-     L('A végleges logót, a képeket és a PDF-et töltsd le, és tedd a félév mappájába. A leadáshoz és a deckhez is ezek kellenek.',
-       'Download the final logo, the images and the PDF and put them in your semester folder. You need them for submission and for the deck.')),
+     L('A végleges logót, a képeket és a PDF-et töltsd le, és tedd a félév mappájába. A deckhez ezek kellenek.',
+       'Download the final logo, the images and the PDF and put them in your semester folder. You need them for the deck.')),
   ]),
  ],
  4: [
@@ -375,8 +387,8 @@ TIPS = {
      L('A dia címe maga az állítás, ne egyetlen szó. Ha a címekből összeáll a történet, jó a deck.',
        'The slide title is the claim itself, not a single word. If the titles alone tell the story, the deck works.')),
     (L('Válogass', 'Curate'),
-     L('Nem kell minden leadandó a deckbe. Ami nem segít megnyerni a tendert, maradjon a háttéranyagban.',
-       'Not every deliverable needs to be in the deck. What does not help win the pitch stays in the background materials.')),
+     L('Nem kell minden eredménytermék a deckbe. Ami nem segít megnyerni a tendert, maradjon a háttéranyagban.',
+       'Not every output needs to be in the deck. What does not help win the pitch stays in the background materials.')),
     (L('A próba a decket javítja', 'The rehearsal fixes the deck'),
      L('Ha az AI-marketingigazgató kérdésére nincs jó válaszod, valami hiányzik a deckből. Ott javíts.',
        "If you have no good answer to the AI marketing director's question, something is missing from the deck. Fix it there.")),
@@ -465,14 +477,22 @@ RULES = [
 ROLES = L(['Kampánystratéga', 'Médiatervező', 'Szövegíró', 'Art director', 'Grafikus', 'Programozó'],
           ['Campaign strategist', 'Media planner', 'Copywriter', 'Art director', 'Graphic designer', 'Developer'])
 
+# (mire, ajánlott eszköz, más eszközzel is)
 TOOLTABLE = [
-  (L('Kutatás forrásokkal', 'Research with sources'), L('Claude, bekapcsolt webes kereséssel', 'Claude, with web search switched on')),
-  (L('Ötletelés, sok szöveges kör', 'Ideation, many text rounds'), L('ChatGPT', 'ChatGPT')),
-  (L('Képek, plakát, csomagolás', 'Images, billboard, packaging'), L('ChatGPT képgenerálás (az ingyenes csomagban korlátozott)', 'ChatGPT image generation (limited on the free plan)')),
-  (L('Arculati kézikönyv, posztsablonok', 'Brand guide, post templates'), L('Claude Design', 'Claude Design')),
-  (L('Weboldal, bannerek, videóspot, hírlevél', 'Website, banners, video spot, newsletter'), L('Claude artifact', 'Claude artifact')),
-  (L('Márkaasszisztens', 'Brand assistant'), L('Claude-projekt', 'Claude project')),
-  (L('Tenderdeck', 'Pitch deck'), L('Claude Slides', 'Claude Slides')),
+  (L('Kutatás forrásokkal', 'Research with sources'), L('Claude, bekapcsolt webes kereséssel', 'Claude, with web search switched on'),
+   L('ChatGPT vagy Gemini, szintén webes kereséssel; Perplexity', 'ChatGPT or Gemini, also with web search; Perplexity')),
+  (L('Ötletelés, sok szöveges kör', 'Ideation, many text rounds'), L('ChatGPT', 'ChatGPT'),
+   L('Claude, Gemini', 'Claude, Gemini')),
+  (L('Képek, plakát, csomagolás', 'Images, billboard, packaging'), L('ChatGPT képgenerálás (az ingyenes csomagban korlátozott)', 'ChatGPT image generation (limited on the free plan)'),
+   L('Gemini, Midjourney, Canva', 'Gemini, Midjourney, Canva')),
+  (L('Arculati kézikönyv, posztsablonok', 'Brand guide, post templates'), L('Claude Design', 'Claude Design'),
+   L('Canva, Figma', 'Canva, Figma')),
+  (L('Weboldal, bannerek, videóspot, hírlevél', 'Website, banners, video spot, newsletter'), L('Claude artifact', 'Claude artifact'),
+   L('ChatGPT canvas, Gemini; a kész HTML bárhol megnyitható', 'ChatGPT canvas, Gemini; the finished HTML opens anywhere')),
+  (L('Márkaasszisztens', 'Brand assistant'), L('Claude-projekt', 'Claude project'),
+   L('ChatGPT-projekt vagy egyéni GPT, Gemini Gem', 'ChatGPT project or a custom GPT, Gemini Gem')),
+  (L('Tenderdeck', 'Pitch deck'), L('Claude Slides', 'Claude Slides'),
+   L('Canva, Google Slides, PowerPoint', 'Canva, Google Slides, PowerPoint')),
 ]
 
 # A mai feladat részfeladatokra bontva: (részfeladat, leírás, eredménytermék, hová kerül a deckben)
@@ -491,7 +511,7 @@ SUB = {
      L('Működő fiók', 'A working account'), L('A készítés történetéhez', 'For the making-of story')),
    R(L('Márkaválasztás', 'Choosing a brand'), L('Válassz egy márkát a listából. Mindenkinek más jut.', 'Choose a brand from the list. Everyone gets a different one.'),
      L('A márkád és az új kategória', 'Your brand and the new category'), L('Az egész deck kiindulópontja', 'The starting point of the whole deck')),
-   R(L('Féléves terv', 'Semester plan'), L('Az AI-jal nézd át az órarendet, a deck öt blokkját és a leadandókat, és kérj tőle ütemtervet.', 'Go through the schedule, the five blocks of the deck and the deliverables with the AI, and ask it for a timeline.'),
+   R(L('Féléves terv', 'Semester plan'), L('Az AI-jal nézd át az órarendet, a deck öt blokkját és az eredménytermékeket, és kérj tőle ütemtervet.', 'Go through the schedule, the five blocks of the deck and the outputs with the AI, and ask it for a timeline.'),
      L('Féléves ütemterv', 'Semester timeline'), L('Nem kerül a deckbe, ez a térképed', 'Not in the deck; it is your map')),
   ]), (None, [
    R(L('Márkaelemzés', 'Brand analysis'), L('Webes kereséssel: értékek, személyiség, hangnem, vizuális kódok, ikonikus kampányok. Nyisd meg a forrásokat.', 'With web search: values, personality, tone of voice, visual codes, iconic campaigns. Open the sources.'),

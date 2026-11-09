@@ -15,7 +15,7 @@ Hat csütörtöki gyakorlat 2026. november 5. és 2026. december 10. között, 8
 
 - `neptun.php`: a 11 hallgató Neptun-kódja, helye `public_html/ai-in-marketing/neptun.php`. Amíg nincs fent, csak az oktatói kulccsal lehet belépni a kezdőlapon; a diasorok közvetlen linkkel belépés nélkül is megnyílnak.
 - `key.php`: az oktatói kulcs, ugyanaz, mint a nappalin, helye `public_html/ai-in-marketing/key.php`.
-- A feltöltendő két fájl itt van: `AI-MARKETING/szerverre-kezzel/`. A `.gitignore` meglévő `neptun.php` és `key.php` sora miatt nem kerülnek a repóba.
+- A feltöltendő két fájl itt van: `ai-a-marketingben/szerverre-kezzel/`. A `.gitignore` meglévő `neptun.php` és `key.php` sora miatt nem kerülnek a repóba.
 
 ## Forrás
 
