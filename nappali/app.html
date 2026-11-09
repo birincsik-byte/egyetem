@@ -171,7 +171,7 @@ summary{cursor:pointer;color:var(--cobalt)}
     </div>
     <p class="status" id="a_status"></p>
   </section>
-  <p class="small muted" style="margin-top:3em">app v2.21 · 2026. november 6.</p>
+  <p class="small muted" style="margin-top:3em">app v2.22 · 2026. november 9.</p>
 </div>
 
 <script>
@@ -213,7 +213,15 @@ summary{cursor:pointer;color:var(--cobalt)}
       ['f5','Meta: Facebook és Instagram','Az utolsó posztok, a kommentek és a Meta Hirdetéstár; az 1–7. szempont.',''],
       ['f6','Videó: TikTok és YouTube','Az első másodpercek, a kommentek és a TikTok Ad Library; az 1–7. szempont, vagy ha nincs jelen: ki van ott helyette.',''],
       ['f7','Összevetés','8. szempont: ugyanazt mondja-e a márka ugyanúgy mindenhol, és a hét szempont áttekintése csatornánként.',''],
-      ['f8','A legtudatosabb csatornadöntés, és amit nem tudunk biztosan','Mi a márka legtudatosabb döntése a csatornái között; és az öt kérdés közül melyiket nem tudjátok biztosan, és miért.','']]}
+      ['f8','A legtudatosabb csatornadöntés, és amit nem tudunk biztosan','Mi a márka legtudatosabb döntése a csatornái között; és az öt kérdés közül melyiket nem tudjátok biztosan, és miért.','']]},
+    ep5:{name:'5. alkalom · Mennyiért', title:'5. beadandó: mire költ a márkátok, és mi dolgozik neki ingyen', limit:'négy lépés, 90 perc, csapatban', novote:true, nosample:true, fields:[
+      ['f1','Ki mit csinált','Ki nézte a hirdetéstárakat, ki a saját felületeket, ki a véleményeket.','pl. Anna: hirdetéstárak. Bence: weboldal és Instagram. Csilla: vélemények. A mérleget együtt írtuk.'],
+      ['f2','1. Fizetett: fut most hirdetése?','Keressetek rá a márkára a Meta hirdetéstárban és a Google Átláthatósági Központban. Ha fut: hány darab, mióta fut a legrégebbi, milyen formában (videó, kép, keresőhirdetés), és hova visz. Utána egy mondat: mit akar vele elérni (hogy megismerjék, hogy átkattintsanak, vagy hogy vásároljanak), és miből gondoljátok. Ha nem fut, írjátok le, hogy nem fut.','pl. Meta: 4 hirdetés, a legrégebbi 2026. szeptember 12. óta, mind rövid videó, a webshop termékoldalára visz. Google: nincs. Vásárlást akar, mert a gomb „Vásárlás most”.'],
+      ['f4','2. Saját: hol szól a saját hangján?','Weboldal, hírlevél, Facebook, Instagram, TikTok, YouTube: melyik van, és mennyit posztolt az elmúlt két hétben. Utána: ugyanazt hirdeti, amit posztol? Igen vagy nem, és egy példa.','pl. Weboldal webshoppal, hírlevél-feliratkozás a láblécben. Instagram: 6 poszt két hét alatt. TikTok: nincs. Igen, a hirdetésben futó videó posztként is kint volt.'],
+      ['f5','3. Kiérdemelt: mit mondanak róla mások?','A Google-értékelés átlaga és darabszáma, egy vélemény szó szerint, és ha találtok: cikk vagy influenszer, aki beszél róla. Ha influenszer: jelölte, hogy fizetett együttműködés?','pl. Google: 4,6 (120 értékelés). „Gyors szállítás, de drága.” Egy influenszer-poszt, „fizetett partnerség” jelöléssel.'],
+      ['f6','4. Mérleg: 100 pont','Osszátok szét a fizetett, a saját és a kiérdemelt között aszerint, amit láttatok. Egy mondat: miért a legnagyobb a legnagyobb.','pl. Fizetett 50, saját 30, kiérdemelt 20, mert a vásárlások szinte mind hirdetésből indulnak.'],
+      ['f7','4. Mérleg: ha holnap leállna minden hirdetése','Mi maradna a márkának? Egy-két mondat.','pl. Az Instagram-követők és a hírlevél-lista megmaradna, de új vevő alig jönne, mert a keresőben nem találni.'],
+      ['f3','4. Mérleg: a mondat','A sablon szerint, egyetlen mondatban. Ez látszik a beadandók között.','A [márka] figyelmet bérel [hol], vagyont épít [hol], bizalmat kap [kitől], és ha holnap leállna a fizetett, [mi maradna].']]}
   };
   /* ===== levelező (om2026levelezo): ugyanaz a hét téma, témánként rövid órai gyakorlat ===== */
   var LEV=/levelezo/i.test(location.pathname);

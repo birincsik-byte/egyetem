@@ -15,6 +15,7 @@ deployment:
     - /bin/cp nappali/alkalom-3/oldal-vizsgalat.html $DEPLOYPATH
     - /bin/cp nappali/alkalom-4/online-marketing-2026-evad-4-epizod.html $DEPLOYPATH
     - /bin/cp nappali/alkalom-4/csatorna-vizsgalat.html $DEPLOYPATH
+    - /bin/cp nappali/alkalom-5/online-marketing-2026-evad-5-epizod.html $DEPLOYPATH
     - export LDEPLOY=/home2/egyetembemind/public_html/om2026levelezo/
     - /bin/mkdir -p $LDEPLOY
     - /bin/cp levelezo/index.html $LDEPLOY

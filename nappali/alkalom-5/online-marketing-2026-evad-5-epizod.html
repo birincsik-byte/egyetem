@@ -591,6 +591,8 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .c1tem small{flex-basis:100%;margin-bottom:.1em}
 .slide .c1tem span{font-size:var(--t-sm)!important;border:1px solid var(--line);border-radius:99px;padding:.25em .9em;background:#fff;color:var(--ink)}
 @media (max-width:900px){.c1shift{grid-template-columns:1fr}.c1shift .arr{transform:rotate(90deg);margin:0}}
+.wzgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}.wzgrid .card{padding:.5rem .7rem}
+@media (max-width:900px){.wzgrid{grid-template-columns:1fr 1fr}}
 </style>
 <style id="lev-css">
 /* évadsáv (2026. november 2.): a dia fölött csak egy vékony csík, ráállva lenyílik; nappalin és levelezőn is */
@@ -670,6 +672,35 @@ table.kpi td:first-child{white-space:nowrap}
   <p class="muted">Birincsik Albert</p>
 </section>
 
+<section class="slide center c1hero" data-notes="c1b">
+  <p class="kicker">Mennyiért · innen hova</p>
+  <div class="c1shift">
+    <div class="from"><small>Innen</small><p>Mennyibe kerül.</p></div>
+    <div class="arr" aria-hidden="true">→</div>
+    <div class="to"><small>Ide jussunk el</small><p>Mi hogyan éri meg?</p></div>
+    <div class="add"><p>A pénz felosztása maga is állásfoglalás, tehát indokolni kell.</p></div>
+  </div>
+  <div class="c1tem"><small>A tematikából</small><span>POEM-modell (paid/earned/owned)</span><span>organikus vs. fizetett tartalom</span><span>hirdetésformátumok</span></div>
+</section>
+
+<section class="slide dense" data-notes="c2" data-sec="keret">
+  <p class="kicker">Az öt lépés · ma az ötödik alkalom</p>
+  <h2>Ma egy kérdésen dolgozunk tovább</h2>
+  <ol class="chain">
+    <li><div>Ki beszél? (márka)<span>1. és 3. alkalom</span></div></li>
+    <li><div>Kihez beszélünk? (célcsoport)<span>1. és 2. alkalom</span></div></li>
+    <li><div>Mit mondunk? (üzenet)<span>4. alkalom</span></div></li>
+    <li class="now"><div>Hogyan jutunk el hozzá? (mix)<span>ma: melyik utat béreljük, melyiket építjük, melyiket kapjuk</span></div></li>
+    <li><div>Honnan tudjuk, hogy eljutott?<span>6. alkalom</span></div></li>
+  </ol>
+</section>
+
+<section class="slide center" data-notes="c3">
+  <p class="kicker">Visszamutatás · a 4. beadandó</p>
+  <h2>Tudjátok, hol beszél a márkátok. Most azt nézzük meg, mit fizet érte.</h2>
+  <p class="lead">A csatornatérképen leírtátok, hol és milyen nyelven szól a márka. Ma azt nézzük meg, melyik hangért fizet, melyiket építi, és melyiket kapja másoktól.</p>
+</section>
+
 <section class="slide roomy" data-notes="c4">
   <p class="kicker">Mennyiért</p>
   <div class="triad">
@@ -678,6 +709,25 @@ table.kpi td:first-child{white-space:nowrap}
     <div><h3>Tanulság</h3><p>A büdzsé felosztása stratégiai állásfoglalás, nem költségvetési sor. Aki csak fizetettben gondolkodik, minden hónapban újra megveszi ugyanazt a közönséget.</p></div>
   </div>
   <div class="c1tem" style="margin-top:1.4rem"><small>A tematikából</small><span>POEM-modell (paid/earned/owned)</span><span>organikus vs. fizetett tartalom</span><span>hirdetésformátumok</span></div>
+  <p class="small muted" style="margin-top:1.2em">A nap: másfél óra elmélet, másfél óra csoportmunka. A csoportmunkában visszafejtitek, mire költ a márkátok, és mi dolgozik neki ingyen.</p>
+</section>
+
+<section class="slide center" data-notes="e1">
+  <p class="kicker">Egyéni feladat · 3 perc · magadnak</p>
+  <h2>Gondolj az utolsó új márkára, amitől vettél valamit. Honnan tudtál róla először?</h2>
+  <div class="cards3" style="max-width:52rem;margin-left:auto;margin-right:auto">
+    <div><h3>Hirdetésből</h3></div>
+    <div><h3>A márka saját felületéről</h3></div>
+    <div><h3>Valakitől</h3></div>
+  </div>
+  <p class="lead" style="margin-top:1rem">Írd le az egyiket, és egy mondatban, hogyan történt. Utána kézfeltartással összeszámoljuk.</p>
+</section>
+
+<section class="slide" data-notes="poe">
+  <p class="kicker">POE · Paid, Owned, Earned</p>
+  <h2>Fizetett, saját, kiérdemelt média</h2>
+  <div class="fig poefig"><svg class="poesvg" viewBox="0 0 1200 760" role="img" aria-label="Fizetett, saját és kiérdemelt média Venn-ábrája"><circle cx="460" cy="290" r="250" fill="rgba(250,160,100,.32)"/><circle cx="740" cy="290" r="250" fill="rgba(255,220,60,.38)"/><circle cx="600" cy="500" r="250" fill="rgba(180,235,90,.36)"/><text x="245" y="200" font-size="34"><tspan fill="#5A5E78">• </tspan>Blog és zárt tartalom</text><text x="245" y="250" font-size="34"><tspan fill="#5A5E78">• </tspan>Landing oldalak</text><text x="245" y="300" font-size="34"><tspan fill="#5A5E78">• </tspan>Social profilok</text><text x="245" y="350" font-size="34"><tspan fill="#5A5E78">• </tspan>Hírlevelek</text><text x="700" y="200" font-size="34"><tspan fill="#5A5E78">• </tspan>Social hirdetés</text><text x="700" y="250" font-size="34"><tspan fill="#5A5E78">• </tspan>Keresőhirdetés (PPC)</text><text x="700" y="300" font-size="34"><tspan fill="#5A5E78">• </tspan>Influencer-kampány</text><text x="700" y="350" font-size="34"><tspan fill="#5A5E78">• </tspan>Szponzorált tartalom</text><text x="520" y="520" font-size="34"><tspan fill="#5A5E78">• </tspan>Megosztás</text><text x="520" y="570" font-size="34"><tspan fill="#5A5E78">• </tspan>Említés</text><text x="520" y="620" font-size="34"><tspan fill="#5A5E78">• </tspan>Értékelés</text><text x="520" y="670" font-size="34"><tspan fill="#5A5E78">• </tspan>Vendégcikk</text><g font-size="40" font-weight="700" fill="#1B1F3A"><text x="10" y="44">Saját média</text><text x="1190" y="44" text-anchor="end">Fizetett média</text><text x="1190" y="700" text-anchor="end">Kiérdemelt média</text></g><g font-size="30" fill="#5A5E78"><text x="10" y="84">owned</text><text x="1190" y="84" text-anchor="end">paid</text><text x="1190" y="740" text-anchor="end">earned</text></g></svg></div>
+  <p class="figsrc">A Semrush ábrája alapján, magyarra átrajzolva</p>
 </section>
 
 <section class="slide" data-notes="p1">
@@ -709,14 +759,28 @@ table.kpi td:first-child{white-space:nowrap}
   </div>
 </section>
 
+<section class="slide" data-notes="n1">
+  <p class="kicker">Mindhárom kerül valamibe</p>
+  <h2>Ami ingyen van, az sem ingyenes</h2>
+  <div class="cards3">
+    <div><h3>Fizetett</h3><p>Pénzzel fizetsz érte.</p></div>
+    <div><h3>Saját</h3><p>Idővel fizetsz érte: tartalommal, gondozással, emberekkel.</p></div>
+    <div><h3>Kiérdemelt</h3><p>A termékkel és a szolgáltatással fizetsz érte: azzal, hogy van miről jót mondani.</p></div>
+  </div>
+  <div class="qt2">„Earned media isn’t literally free”<small>Kotler, Keller: a kiérdemelt média sem szó szerint ingyenes</small></div>
+</section>
+
 <section class="slide" data-notes="p4">
-  <p class="kicker">Határesetek · 3 perc, közösen</p>
+  <p class="kicker">Határesetek · 5 perc, közösen</p>
   <h2>Hova tennéd?</h2>
   <div class="cards4">
     <div><h3>A márka Facebook-posztja</h3><details class="rv"><summary>Megoldás</summary><p>Saját: a márka írta, a márka felületén, nem fizetett a terjesztésért.</p></details></div>
     <div><h3>Ugyanez a poszt meghirdetve</h3><details class="rv"><summary>Megoldás</summary><p>Fizetett: a tartalom saját, de a figyelmet már bérli.</p></details></div>
     <div><h3>Egy Google-vélemény</h3><details class="rv"><summary>Megoldás</summary><p>Kiérdemelt: nem a márka írta, és nem fizetett érte.</p></details></div>
     <div><h3>Alkotó posztja „#reklám” jelöléssel</h3><details class="rv"><summary>Megoldás</summary><p>Határeset: a hang az alkotóé, de a megjelenést a márka fizette.</p></details></div>
+    <div><h3>Alkotó posztja jelölés nélkül</h3><details class="rv"><summary>Megoldás</summary><p>Ha fizettek érte, fizetett, csak nem látszik. Ha nem, kiérdemelt. Kívülről nem mindig dönthető el.</p></details></div>
+    <div><h3>Cikk egy sajtóközlemény után</h3><details class="rv"><summary>Megoldás</summary><p>Kiérdemelt: az újságíró döntött úgy, hogy megírja. A márka csak az alkalmat adta.</p></details></div>
+    <div><h3>A márka megosztja egy vevő videóját</h3><details class="rv"><summary>Megoldás</summary><p>Határeset: kiérdemelt tartalom a saját felületen.</p></details></div>
   </div>
   <p class="lead" style="margin-top:1.1rem">A felosztás nem a felületen múlik, hanem azon, ki fizet és ki beszél.</p>
 </section>
@@ -729,6 +793,28 @@ table.kpi td:first-child{white-space:nowrap}
   <div class="qt2">A kiérdemelt média „often requires a paid spark”.<small>Walker, Mullins: gyakran fizetett szikra kell hozzá</small></div>
 </section>
 
+<section class="slide" data-notes="n2">
+  <p class="kicker">Organikus és fizetett · a keresőben</p>
+  <h2>A keresőben két hely van</h2>
+  <div class="cards2">
+    <div><h3>Hirdetés</h3><p>Azonnal ott van, és azonnal eltűnik, ha kikapcsolod.</p></div>
+    <div><h3>Organikus találat</h3><p>Lassan épül, de megmarad akkor is, ha holnap nem fizetsz semmit.</p></div>
+  </div>
+  <div class="task" style="margin-top:1rem;max-width:none"><b>2 perc:</b> keressetek rá a márkátok nevére. Mi van legfelül: a márka saját oldala, egy hirdetés, vagy valaki más?</div>
+</section>
+
+<section class="slide" data-notes="n3">
+  <p class="kicker">Időzítés</p>
+  <h2>Folyamatosan vagy hullámokban</h2>
+  <div class="cards4">
+    <div><h3>Folyamatos</h3><p>Egyenletesen, egész évben.</p></div>
+    <div><h3>Egyszerre</h3><p>Az egész keret egy rövid időszakra.</p></div>
+    <div><h3>Szakaszos</h3><p>Hirdetés, szünet, hirdetés.</p></div>
+    <div><h3>Alapzaj hullámokkal</h3><p>Mindig egy kicsi, időnként erősebben.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1.1rem">Minél gyorsabban felejt a vevő, annál folyamatosabban kell jelen lenni.</p>
+</section>
+
 <section class="slide" data-notes="p6">
   <p class="kicker">Hirdetésformátumok</p>
   <h2>Mit veszel meg?</h2>
@@ -739,6 +825,30 @@ table.kpi td:first-child{white-space:nowrap}
   </div>
   <p class="lead" style="margin-top:1rem">A fizetési mód elárulja, mit akar a hirdető.</p>
   <div class="chips"><span>keresési szöveges hirdetés</span><span>termékhirdetés (shopping)</span><span>display és banner</span><span>videó</span><span>natív és szponzorált tartalom</span><span>közösségi hirdetés: hírfolyam, történet, rövid videó</span><span>alkotói együttműködés</span></div>
+</section>
+
+<section class="slide" data-notes="n4">
+  <p class="kicker">Hirdetésformátumok · melyik fázisnak szól</p>
+  <h2>A formátum elárulja a fázist</h2>
+  <p class="lead">Melyik formátummal lépne be a hirdető ebbe a fázisba? Tippeljetek, aztán nyissátok ki.</p>
+  <div class="cards4">
+    <div><h3>See · még nem keres</h3><details class="rv"><summary>Megoldás</summary><p>Videó, display, közösségi hírfolyam.</p></details></div>
+    <div><h3>Think · gondolkodik</h3><details class="rv"><summary>Megoldás</summary><p>Tág keresés, natív tartalom, alkotói együttműködés.</p></details></div>
+    <div><h3>Do · vásárolna</h3><details class="rv"><summary>Megoldás</summary><p>Szűk keresés, termékhirdetés, újracélzás.</p></details></div>
+    <div><h3>Care · már vevő</h3><details class="rv"><summary>Megoldás</summary><p>Újracélzás a vevőknek, és főleg saját média: hírlevél, közösség.</p></details></div>
+  </div>
+  <div class="qt2">„Broader search terms are useful for general brand building; more specific ones […] are useful for generating and converting sales leads.”<small>Kotler, Keller: a tág keresőszó márkát épít, a szűk vevőt hoz</small></div>
+</section>
+
+<section class="slide" data-notes="n5">
+  <p class="kicker">Elérés és gyakoriság</p>
+  <h2>Ugyanabból a pénzből: sok ember egyszer, vagy kevés sokszor</h2>
+  <p class="lead">Keret: 300 000 Ft. Ezer megjelenés ára: 1 500 Ft. Ez 200 000 megjelenés.</p>
+  <div class="cards2" style="max-width:56rem">
+    <div><h3>Hányszor lássa egy ember?</h3><p><input type="range" id="frq" min="1" max="10" value="1" style="width:100%"></p><p><b id="frqv">1</b> alkalommal</p></div>
+    <div><h3>Ennyi embert értek el</h3><p style="font-size:2.2em;font-weight:700;color:var(--cobalt)" id="rch">200 000</p></div>
+  </div>
+  <p class="small muted" style="margin-top:.8rem">Szemléltető, kerek számok, nem piaci árak.</p>
 </section>
 
 <section class="slide" data-notes="p7">
@@ -755,6 +865,16 @@ table.kpi td:first-child{white-space:nowrap}
   </div>
 </section>
 
+<section class="slide" data-notes="f1">
+  <p class="kicker">Élőben · belülről</p>
+  <h2>Egy hirdetési fiók belülről</h2>
+  <div class="cards2">
+    <div><h3>Meta hirdetéskezelő</h3><p>Kampány → hirdetéskészlet → hirdetés</p></div>
+    <div><h3>Google Ads</h3><p>Kampány → hirdetéscsoport → hirdetés</p></div>
+  </div>
+  <p class="lead" style="margin-top:1.1rem">Amit nézünk: mi a kampány célja, mennyi a keret, kit céloz, és miért fizet: megjelenésért, kattintásért vagy cselekvésért.</p>
+</section>
+
 <section class="slide" data-notes="p8">
   <p class="kicker">Keretfelosztás</p>
   <h2>Honnan jön a szám?</h2>
@@ -769,32 +889,94 @@ table.kpi td:first-child{white-space:nowrap}
   </div>
 </section>
 
+<section class="slide" data-notes="n6">
+  <p class="kicker">Keretfelosztás</p>
+  <h2>Három döntés egy keretben</h2>
+  <div class="flow">
+    <div><b>1. Digitális vagy hagyományos?</b><p>Mennyi megy online, mennyi máshova.</p></div><span>→</span>
+    <div><b>2. Melyik digitális csatorna?</b><p>Kereső, social, videó, e-mail.</p></div><span>→</span>
+    <div><b>3. Mennyi jut a saját eszközökre?</b><p>Weboldal, tartalom, kreatív.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1.1rem">Ami a médiafelületre megy, az nem megy a kreatívra. És fordítva.</p>
+</section>
+
+<section class="slide center" data-notes="n7">
+  <p class="kicker">Keretfelosztás</p>
+  <h2>A felosztás megmutatja, mit tart fontosnak a márka</h2>
+  <div class="qt2" style="margin-left:auto;margin-right:auto">„Whatever the priorities of your business, they will be reflected in the core principles behind the allocation of the budget”<small>Kingsnorth: a prioritások a keret felosztásában látszanak</small></div>
+  <p class="lead" style="margin-top:1.1rem">A pénz felosztása maga is állásfoglalás, tehát indokolni kell.</p>
+</section>
+
+<section class="slide dense" data-notes="b1">
+  <p class="kicker">Bemutató · élőben · közösen</p>
+  <h2>Tunki-Tunki: a beadandó négy lépése</h2>
+  <div class="grid3 wzgrid">
+    <div class="card"><p class="small muted">1. Fizetett</p><p><a class="klink" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=HU&amp;q=tunki%20tunki&amp;search_type=keyword_unordered" target="_blank" rel="noopener">Meta hirdetéstár</a></p></div>
+    <div class="card"><p class="small muted">1. Fizetett</p><p><a class="klink" href="https://adstransparency.google.com/?region=HU&amp;domain=tunkitunki.hu" target="_blank" rel="noopener">Google Átláthatósági Központ</a></p></div>
+    <div class="card"><p class="small muted">2. Saját</p><p><a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">Weboldal</a></p></div>
+    <div class="card"><p class="small muted">2. Saját</p><p><a class="klink" href="https://www.instagram.com/vegantunkitunki/" target="_blank" rel="noopener">Instagram</a></p></div>
+    <div class="card"><p class="small muted">2. Saját</p><p><a class="klink" href="https://www.facebook.com/vegantunkitunki" target="_blank" rel="noopener">Facebook</a></p></div>
+    <div class="card"><p class="small muted">3. Kiérdemelt</p><p><a class="klink" href="https://www.google.com/search?q=tunki+tunki+v%C3%A9lem%C3%A9nyek" target="_blank" rel="noopener">Vélemények</a></p></div>
+    <div class="card"><p class="small muted">3. Kiérdemelt</p><p><a class="klink" href="https://www.google.com/search?q=%22tunki+tunki%22&amp;tbm=nws" target="_blank" rel="noopener">Hírek, cikkek</a></p></div>
+    <div class="card"><p class="small muted">3. Kiérdemelt</p><p><a class="klink" href="https://www.tiktok.com/search?q=tunki%20tunki" target="_blank" rel="noopener">TikTok-keresés</a></p></div>
+  </div>
+  <div class="task" style="margin-top:.9em;max-width:none"><b>4. Mérleg:</b> 100 pont a három között, és ha holnap leállna minden hirdetése, mi maradna?</div>
+</section>
+
+<section class="slide" data-notes="g1">
+  <p class="kicker">Az ötödik beadandó · csoportmunka · 90 perc</p>
+  <h2>Mire költ a márkátok, és mi dolgozik neki ingyen</h2>
+  <p class="lead">Forintot nem kell írni, mert azt kívülről senki nem látja. Elég, ha arányt becsültök, és megmondjátok, miből gondoljátok.</p>
+  <div class="task lev-task" style="max-width:none"><ol>
+    <li><b>Fizetett, 25 perc:</b> fut most hirdetése? Ha igen, hány, mióta, milyen formában, és hova visz. Mit akar vele elérni?</li>
+    <li><b>Saját, 20 perc:</b> hol szól a saját hangján, és mennyit posztolt az elmúlt két hétben? Ugyanazt hirdeti, amit posztol?</li>
+    <li><b>Kiérdemelt, 15 perc:</b> mit mondanak róla mások? Értékelés, egy vélemény szó szerint, cikk vagy influenszer.</li>
+    <li><b>Mérleg, 30 perc:</b> 100 pont a három között, mi maradna, ha holnap leállna minden hirdetése, és a mondat.</li>
+  </ol></div>
+  <p class="lev-go" style="margin-top:1.2em"><a class="btn go" href="app.html?ep=ep5&amp;v=leadas" target="_blank">Leadás megnyitása →</a></p>
+</section>
+
 <section class="slide center" data-notes="g2">
   <p class="kicker">Zárás</p>
   <h2>A büdzsé felosztása stratégiai állásfoglalás, nem költségvetési sor. Aki csak fizetettben gondolkodik, minden hónapban újra megveszi ugyanazt a közönséget.</h2>
   <hr class="rule">
-  <p class="lead">Következik: miből tudjuk meg, hogy működött?</p>
+  <p class="lead">Legközelebb, 2026. november 23-án: miből tudjuk meg, hogy működött?</p>
 </section>
 
 </main>
 
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.5 · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.0 · 2026. november 9.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
 <div data-n="c1"><h4>Címlap</h4><p class="src top">Forrás: oktató; a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>Az 5. téma: mennyiért, mit bérlünk és mit építünk. A tematikai pont szó szerint: „POEM-modell (paid/earned/owned), organikus vs. fizetett tartalom, hirdetésformátumok”.</p><p>A „POEM” betűszó egyik könyvben sem szerepel: a könyvek „paid, owned and earned media” néven tárgyalják. A 4. témánál már bevezettük a hármast, most azt nézzük meg, melyik milyen munkát végez, és mennyibe kerül.</p></div></div>
+<div data-n="c1b"><h4>Innen hova</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A fázis-táblázat ötödik sora: innen („Mennyibe kerül.”) ide jussunk el („Mi hogyan éri meg?”). Alatta: „A pénz felosztása maga is állásfoglalás, tehát indokolni kell.” Legalul a tematikai pont szó szerint.</p><p>A mai kérdés tehát nem az, hogy mennyi pénz van, hanem az, hogy a pénz melyik munkát végzi.</p></div></div>
+<div data-n="c2"><h4>Az öt lépés, ma az ötödik alkalom</h4><p class="src top">Forrás: oktató; Kotler, Keller: Marketing Management, 17. fejezet (a kommunikáció makromodellje)</p><div class="hj"><h5>Jegyzet</h5><p>A 4. alkalmon azt néztük, hol találkozik a vevő a márkával, és milyen nyelven kell ott beszélni. Ma ugyanezen a lépésen maradunk, és azt nézzük meg, melyik útért fizet a márka, melyiket építi magának, és melyiket kapja másoktól.</p></div></div>
+<div data-n="c3"><h4>Visszamutatás · a 4. beadandó</h4><p class="src top">Forrás: oktató; a hallgatók 4. beadandója</p><div class="hj"><h5>Jegyzet</h5><p>A csatornatérkép a mai munka alapja. Amit ott csatornánként összegyűjtöttetek, azt ma három kupacba rakjátok: fizetett, saját, kiérdemelt.</p></div></div>
 <div data-n="c4"><h4>Mennyiért · Miről szól · Kulcsgondolat · Tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A kulcsgondolat három igéje a mai nap gerince: bérel, épít, hoz. A tanulság a végén tér vissza.</p></div></div>
+<div data-n="e1"><h4>Egyéni feladat · Honnan tudtál róla?</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ez a mai nap első, saját bizonyítéka. Ha a terem nagyobb része valakitől hallott az új márkáról, az a kiérdemelt média ereje. Ha hirdetésből, az a fizetetté. Itt nincs jó válasz, az összeszámolás a lényeg.</p></div></div>
+<div data-n="poe"><h4>Fizetett, saját, kiérdemelt média</h4><p class="src top">Forrás: Semrush (az ábra és a három tipp); Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet (Paid, owned and earned media; 1.2. ábra)</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey három médiatípust különít el. Fizetett (paid): pénzt adunk a látogatóért, az elérésért vagy a konverzióért, például keresőhirdetésben, display-hirdetésben vagy partnerprogramban. Saját (owned): ami a márkáé, a weboldal, a blog, az e-mail-lista, az app, és a márka jelenléte a közösségi oldalakon. Kiérdemelt (earned): régen a PR-ral szerzett nyilvánosság, ma a szájhagyomány, a megosztás és a beszélgetés a közösségi oldalakon, blogokon, fórumokon. A három átfedi egymást, és Chaffey szerint az átfedéshez össze kell hangolni a kampányokat.</p><p>A Semrush ábrájának három tippje. Saját: először a saját közönséget építsd, és a többi csatornával a saját tartalmi oldalaidra terelj forgalmat. Fizetett: a fizetett csatornákkal a legfontosabb tartalmat told meg, például a leadgyűjtő ajánlatot vagy a landing oldalt. Kiérdemelt: tegyél munkát olyan tartalomba, amit az emberek szívesen megosztanak, mert van mögötte ügy vagy jó történet.</p><p>Ma csak a fogalmakat vezetjük be. Hogy melyikbe mennyi pénz és munka menjen, az az 5. alkalom (Mennyiért) kérdése.</p></div></div>
 <div data-n="p1"><h4>Fizetett: figyelmet bérel</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet; Kingsnorth: Digital Marketing Strategy, Presenting Your Strategy; Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey: a fizetett média vásárolt média, ahol látogatóért, elérésért vagy konverzióért fizetsz, keresésen, display-hálózaton vagy partnerprogramon keresztül.</p><p>Kingsnorth a fizetett keresésről: bármikor be- és kikapcsolhatod. Ez az erőssége és a gyengesége is: amit bérelsz, az a kikapcsolással eltűnik.</p><p>A Marketing 4.0 szerint a fizetett médiát jellemzően új közönség elérésére, ismertségre és a saját felületre terelésre használják. Kingsnorth árnyal: a digitális marketingesek tévesen csak ügyfélszerzésre valónak tartják a fizetett csatornákat.</p></div></div>
 <div data-n="p2"><h4>Saját: vagyont épít</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet; Kingsnorth: Digital Marketing Strategy; Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey: a cég saját jelenléte is médiának tekinthető, mert alternatív befektetés a többi médiához képest; minden szervezetnek többcsatornás kiadóvá kell válnia.</p><p>Kingsnorth: a saját csatornák azok, amelyeket teljesen te irányítasz. A SEO lassan indul, aztán gyorsul.</p><p>Egy ellenhang, amit érdemes kimondani: a Marketing 4.0 szerint a saját média elérése jellemzően a meglévő vevőkre korlátozódik, és bár ingyenes, a felépítése jelentős belső erőforrást kér. A vagyon tehát nem jelent magától új közönséget.</p></div></div>
 <div data-n="p3"><h4>Kiérdemelt: bizalmat hoz</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet; Kingsnorth: Digital Marketing Strategy; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet, 9.2 ábra (Nielsen, 2013)</p><div class="hj"><h5>Jegyzet</h5><p>Kingsnorth: a kiérdemelt csatornákon nem tudsz megjelenést venni, csak kiérdemelheted azzal, hogy értéket adsz.</p><p>Kotler, Keller: ha bízunk az ajánlásban, általában aszerint cselekszünk.</p><p>Az oszlopok Chaffey 9.2 ábrájából valók (Nielsen, 2013). A kérdés az volt, ki melyik információforrást tartja fontosnak, amikor terméket keres vagy vásárol. Ez fontosság, nem szó szerint bizalom, és 2013-as adat.</p></div></div>
-<div data-n="p4"><h4>Hova tennéd? Határesetek</h4><p class="src top">Forrás: Walker, Mullins: Marketing Strategy, 11. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Walker és Mullins maguk is felteszik a kérdést: „Is a Facebook fan page owned or earned?” A határok elmosódnak.</p><p>A kártyák alatt a megoldás kinyitható. A lényeg az utolsó mondat: a felosztás nem a felületen múlik, hanem azon, ki fizet és ki beszél.</p></div></div>
+<div data-n="n1"><h4>Ami ingyen van, az sem ingyenes</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 19. fejezet; Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet; Kingsnorth: Digital Marketing Strategy, Planning</p><div class="hj"><h5>Jegyzet</h5><p>Kotler, Keller: a kiérdemelt média nem szó szerint ingyenes. A cégnek valamennyit be kell fektetnie a termékbe, a szolgáltatásba és a marketingjébe, hogy az emberek figyeljenek rá, írjanak és beszéljenek róla.</p><p>Marketing 4.0: a saját média ingyenes, de a felépítése és a működtetése jelentős belső erőforrást kér.</p><p>Kingsnorth: sok terv azon bukik el, hogy irreálisan becsüli, hány munkaóra áll rendelkezésre a csapatban. A saját média ára tehát az idő, és az idő is pénz.</p></div></div>
+<div data-n="p4"><h4>Hova tennéd? Határesetek</h4><p class="src top">Forrás: Walker, Mullins: Marketing Strategy, 11. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Walker és Mullins maguk is felteszik a kérdést: „Is a Facebook fan page owned or earned?” A határok elmosódnak.</p><p>A kártyák alatt a megoldás kinyitható. A lényeg az utolsó mondat: a felosztás nem a felületen múlik, hanem azon, ki fizet és ki beszél.</p><p>A három új kártya: az alkotó jelölés nélküli posztja azért határeset, mert kívülről nem látszik, fizettek-e érte. A sajtóközlemény utáni cikk kiérdemelt, mert az újságíró dönt. Ha a márka megosztja egy vevő videóját, a tartalom kiérdemelt, a felület saját.</p></div></div>
 <div data-n="p5"><h4>A saját követőidért is fizetsz</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, Content Strategy; Walker, Mullins: Marketing Strategy, 11. fejezet; Kotler, Kartajaya, Setiawan: Marketing 4.0, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A Marketing 4.0: a kiérdemelt média jellemzően nem áll meg magában, kell hozzá saját és fizetett média, hogy ingyenes megjelenést hozzon.</p><p>Kingsnorth: ha komolyan akarod használni a socialt, fizetned kell azért, hogy elérd az embereket, a saját rajongóidat is. Itt kezd kirajzolódni a tanulság második mondata: aki csak fizetettben gondolkodik, minden hónapban újra megveszi ugyanazt a közönséget.</p></div></div>
+<div data-n="n2"><h4>A keresőben két hely van</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, Presenting Your Strategy; Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Ugyanazon a találati oldalon két hely van. Kingsnorth a fizetett keresésről: valós időben be- és kikapcsolhatod. A SEO-ról: lassan indul, de ha lendületet kap, gyorsul.</p><p>Ha a márkátok nevére keresve egy versenytárs hirdetése áll legfelül, az is megfigyelés: valaki más fizet azért a figyelemért, amit a márkátok neve hoz.</p></div></div>
+<div data-n="n3"><h4>Folyamatosan vagy hullámokban</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 18. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Kotler, Keller négy időzítési mintát ír le: folyamatos (continuity), egy időszakra sűrített (concentration), szakaszos, szünetekkel (flighting), és folyamatos alacsony szint időszakos megerősítéssel (pulsing).</p><p>Ugyanők: a felejtési ráta azt mutatja, milyen gyorsan felejti el a vevő a márkát. Minél nagyobb, annál folyamatosabb hirdetés kell.</p><p>Chaffey: kell a folyamatos, „always-on” jelenlét a fizetett, a saját és a kiérdemelt médiában, de a hagyományos kampányhullámokra is szükség van.</p></div></div>
 <div data-n="p6"><h4>Mit veszel meg? Formátumok</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 9. fejezet; Kotler, Keller: Marketing Management, 19. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey: a hirdetés ára jellemzően ezer megjelenésre szól (CPM), de a kattintásonkénti (CPC) és a cselekvésenkénti (CPA) elszámolás is elterjedt. Ugyanő: a kattintási arány önmagában nem ítélet a hirdetésről.</p><p>Kotler, Keller: a tágabb keresőszavak a márkaépítésre jók, a szűkebbek a lead megszerzésére és konverziójára.</p><p>A formátumlista a könyvek 2012–2016-os állapotát követi. A mai platformformátumokhoz a platformok súgója kell.</p></div></div>
+<div data-n="n4"><h4>A formátum elárulja a fázist</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 19. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet; oktató (a 2. alkalom See-Think-Do-Care modellje)</p><div class="hj"><h5>Jegyzet</h5><p>A See-Think-Do-Care modellt a 2. alkalmon már használtátok. Most azt nézzük, melyik hirdetésformátum melyik fázisban dolgozik.</p><p>Kotler, Keller: a tágabb keresőszavak az általános márkaépítésre jók, a szűkebbek a lead megszerzésére és konverziójára.</p><p>A párosítás kiindulópont, nem szabály. A formátumból azt lehet kiolvasni, melyik fázisban akar belépni a hirdető. (az oktató következtetése)</p></div></div>
+<div data-n="n5"><h4>Sok ember egyszer, vagy kevés sokszor</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 18. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Kotler, Keller három fogalma: elérés (hány különböző ember látja legalább egyszer), gyakoriság (átlagosan hányszor látja egy ember), hatás (milyen minőségű a találkozás). „There are important trade-offs here”: ugyanabból a keretből vagy több embert érsz el ritkábban, vagy kevesebbet gyakrabban.</p><p>A csúszka egyszerű osztás: a megjelenések száma osztva a gyakorisággal. A számok kerekek és szemléltetők, nem piaci árak.</p></div></div>
 <div data-n="p7"><h4>A hirdetéstárak</h4><p class="src top">Forrás: Digital Services Act, (EU) 2022/2065 rendelet, 39. cikk; a három hirdetéstár</p><div class="hj"><h5>Jegyzet</h5><p>A DSA 39. cikke szerint a nagyon nagy online platformoknak hirdetéstárat kell közzétenniük, amely a hirdetés futása alatt és utána egy évig elérhető: a hirdetés tartalma, a hirdető, a fizető, a megjelenés időszaka, a célzás fő paraméterei és az elért címzettek száma. A kötelező listában a költés nem szerepel.</p><p>Inkognitóablakban kerestek, a versenytárs hirdetésére nem kattintotok.</p></div></div>
+<div data-n="f1"><h4>Egy hirdetési fiók belülről</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Eddig kívülről néztük a hirdetést, a hirdetéstárakból. Most belülről: hol dől el egy hirdetési fiókban, mennyi pénz megy ki, kire és miért.</p><p>Mindkét rendszer három szintben gondolkodik. Felül a kampány, alatta a hirdetéskészlet (Meta) vagy hirdetéscsoport (Google), legalul maga a hirdetés. A pénzről szóló döntések nagy része a felső két szinten születik.</p></div></div>
 <div data-n="p8"><h4>Honnan jön a szám?</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet, 8.5 táblázat (Hoffman és Novak, 2000 nyomán)</p><div class="hj"><h5>Jegyzet</h5><p>Kotler, Keller a négy módszerről: a megengedhető módszer teljesen figyelmen kívül hagyja, hogy a promóció befektetés; a százalékos módszer az eladást a kommunikáció okának tekinti, nem eredményének; a versenytárs-paritás mellett nem szól semmi, mert nincs okunk azt hinni, hogy a versenytárs jobban tudja; a cél és feladat módszer kimondatja a feltevéseket a ráfordítás és az eredmény kapcsolatáról.</p><p>A számok Chaffey 8.5 táblázatából valók: szájreklám 0% keret, 25% hozzájárulás; PR 5% és 15%; banner 20% és 20%. Ez illusztráció, nem mai mérés.</p></div></div>
+<div data-n="n6"><h4>Három döntés egy keretben</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey: a digitális kampányterv három befektetési döntést kér, és a harmadik a digitális eszközökbe fektetett összeg szintje.</p><p>Ugyanő: ahogy a hagyományos médiában, itt is feszültség van a kreatívra és a megvásárolt médiafelületre költött pénz között.</p></div></div>
+<div data-n="n7"><h4>A felosztás megmutatja, mit tart fontosnak</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, Presenting Your Strategy; oktató</p><div class="hj"><h5>Jegyzet</h5><p>Kingsnorth: bármi a vállalkozás prioritása, az a keret felosztásának elveiben fog látszani.</p><p>Ezért nem lehet forint nélkül sem „semmit” mondani egy márka költéséről. Ha látod, mire figyel, látod a prioritását. Ezt fogjátok ma visszafejteni a saját márkátokon.</p></div></div>
+<div data-n="b1"><h4>Bemutató · Tunki-Tunki</h4><p class="src top">Forrás: oktató; a hirdetéstárak és a márka felületei, élő keresés</p><div class="hj"><h5>Jegyzet</h5><p>Közösen végigmegyünk a beadandó négy lépésén egy ismert márkán, a 3. alkalom bemutatójának Tunki-Tunkiján. Ami a hirdetéstárban látszik, az a mai nap állapota, holnap más lehet.</p><p>Ha nem fut hirdetése, az nem üres eredmény, hanem megfigyelés: akkor a márka a saját és a kiérdemelt médiára támaszkodik.</p></div></div>
+<div data-n="g1"><h4>Az ötödik beadandó</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Nem javítotok és nem terveztek, hanem visszafejtitek, amit kívülről látni. Forint helyett arányt írtok, mert a költés kívülről nem látszik: a hirdetéstárak kötelező adatai között a költés nem szerepel.</p><p>Minden állítás mellé bizonyíték kell: link, dátum, darabszám. Bizonyíték: „a Meta hirdetéstárában 4 aktív hirdetés, a legrégebbi szeptember 12. óta fut”. Nem bizonyíték: „sokat hirdet”, „jók a posztjai”.</p><p>A leadási űrlapon minden kérdés mellett ott a minta, hogyan néz ki egy jó válasz.</p></div></div>
 <div data-n="g2"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A tanulság szó szerint. A következő téma: miből tudjuk meg, hogy működött.</p></div></div>
 </aside>
 
@@ -926,5 +1108,6 @@ table.kpi td:first-child{white-space:nowrap}
 var D={'1':'10.\u00a016.','2':'10.\u00a016.','3':'11.\u00a006.','4':'11.\u00a006.','5':'11.\u00a006.','6':'11.\u00a006.','7':'11.\u00a006.'};
 [].forEach.call(document.querySelectorAll('.strip a'),function(a){var b=a.querySelector('b'),s=a.querySelector('span');if(!b||!s||!D[b.textContent.trim()])return;
 s.innerHTML=s.innerHTML.replace(/\d\d\.(\s|&nbsp;)+\d\d\.\s*$/,D[b.textContent.trim()]);});})();</script>
+<script id="reach-js">(function(){var r=document.getElementById('frq');if(!r)return;function u(){var f=+r.value;document.getElementById('frqv').textContent=f;document.getElementById('rch').textContent=Math.round(200000/f).toLocaleString('hu-HU');}r.addEventListener('input',u);r.addEventListener('keydown',function(e){e.stopPropagation();});u();})();</script>
 </body>
 </html>
