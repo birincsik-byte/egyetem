@@ -591,6 +591,8 @@ html,body{font-size:clamp(19px,min(1.55vw,2.55vh),28px)}
 .c1tem small{flex-basis:100%;margin-bottom:.1em}
 .slide .c1tem span{font-size:var(--t-sm)!important;border:1px solid var(--line);border-radius:99px;padding:.25em .9em;background:#fff;color:var(--ink)}
 @media (max-width:900px){.c1shift{grid-template-columns:1fr}.c1shift .arr{transform:rotate(90deg);margin:0}}
+.wzgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}.wzgrid .card{padding:.5rem .7rem}
+@media (max-width:900px){.wzgrid{grid-template-columns:1fr 1fr}}
 </style>
 <style id="lev-css">
 /* évadsáv (2026. november 2.): a dia fölött csak egy vékony csík, ráállva lenyílik; nappalin és levelezőn is */
@@ -670,6 +672,24 @@ table.kpi td:first-child{white-space:nowrap}
   <p class="muted">Birincsik Albert</p>
 </section>
 
+<section class="slide dense" data-notes="c2" data-sec="keret">
+  <p class="kicker">Az öt lépés · ma a hatodik alkalom</p>
+  <h2>Ma az utolsó lépésen dolgozunk</h2>
+  <ol class="chain">
+    <li><div>Ki beszél? (márka)<span>1. és 3. alkalom</span></div></li>
+    <li><div>Kihez beszélünk? (célcsoport)<span>1. és 2. alkalom</span></div></li>
+    <li><div>Mit mondunk? (üzenet)<span>4. alkalom</span></div></li>
+    <li><div>Hogyan jutunk el hozzá? (mix)<span>4. és 5. alkalom</span></div></li>
+    <li class="now"><div>Honnan tudjuk, hogy eljutott?<span>ma: miből derül ki, hogy működött, és hol szakadt</span></div></li>
+  </ol>
+</section>
+
+<section class="slide center" data-notes="c3">
+  <p class="kicker">Visszamutatás · az 5. beadandó</p>
+  <h2>Tudjátok, mire költ a márkátok. Most azt nézzük meg, miből derül ki, hogy jó helyre ment.</h2>
+  <p class="lead">Az 5. beadandóban szétosztottátok a 100 pontot a fizetett, a saját és a kiérdemelt között. Ma azt nézzük meg, melyik szám mutatná meg, hogy ez a felosztás működik-e.</p>
+</section>
+
 <section class="slide roomy" data-notes="c4">
   <p class="kicker">Mit mutat a valóság</p>
   <div class="triad">
@@ -678,6 +698,13 @@ table.kpi td:first-child{white-space:nowrap}
     <div><h3>Tanulság</h3><p>A diagnózis sorrend kérdése, nem tudásé. Végig kell menni a láncon a megjelenéstől a konverzióig, és megkeresni, hol szakad. Ez a készség többet ér, mint bármelyik platform ismerete, mert a platformok cserélődnek, a lánc nem.</p></div>
   </div>
   <div class="c1tem" style="margin-top:1.4rem"><small>A tematikából</small><span>belépés egy-egy hirdetési fiókba (Google Ads, social), a logika és összefüggések megértése</span><span>webanalitika (GA4 fő mutatószámok) és GDPR / jogi vonatkozások</span></div>
+</section>
+
+<section class="slide center" data-notes="e1">
+  <p class="kicker">Egyéni feladat · 3 perc · magadnak</p>
+  <h2>Gondolj egy hirdetésre, amire rákattintottál, de nem vettél semmit. Hol szakadt meg nálad?</h2>
+  <div class="chips" style="justify-content:center"><span>a hirdetésnél</span><span>az oldalra érkezéskor</span><span>útközben az oldalon</span><span>a fizetésnél</span></div>
+  <p class="lead" style="margin-top:1rem">Írd le egy mondatban. Utána néhányat felolvasunk, és megnézzük, melyik állomásra esik.</p>
 </section>
 
 <section class="slide" data-notes="k1">
@@ -864,54 +891,68 @@ table.kpi td:first-child{white-space:nowrap}
   <div class="task" style="margin-top:1rem;max-width:none"><b>Élőben.</b> Chrome, F12, Network fül, szűrés: <code>collect</code>. Elindul-e mérőkérés, mielőtt a sávon döntöttél?</div>
 </section>
 
-<section class="slide dense" data-notes="sum">
-  <p class="kicker">Összefoglalás</p>
-  <h2>A hét kérdés maga a brief</h2>
-  <ol class="chain">
-    <li><div>Kinek és mit mondunk?<span>1. téma</span></div></li>
-    <li><div>Mikor mondjuk?<span>2. téma</span></div></li>
-    <li><div>Hol fogadjuk, amikor megérkezik hozzánk?<span>3. téma</span></div></li>
-    <li><div>Milyen lehetőségeink vannak elérni a vevőt?<span>4. téma</span></div></li>
-    <li><div>Mennyiért, mit bérlünk és mit építünk?<span>5. téma</span></div></li>
-    <li><div>Miből tudjuk meg, hogy működött?<span>6. téma</span></div></li>
-    <li><div>Kikkel csináljuk?<span>7. téma</span></div></li>
-  </ol>
-  <p class="lead" style="margin-top:.6rem">Ez a hét kérdés pontosan az, amit egy stratégia vagy egy brief tartalmaz.</p>
+<section class="slide dense" data-notes="b1">
+  <p class="kicker">Bemutató · élőben · közösen</p>
+  <h2>Tunki-Tunki: a lánc kívülről</h2>
+  <div class="grid3 wzgrid">
+    <div class="card"><p class="small muted">1. Megjelenés és kattintás</p><p><a class="klink" href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=HU&amp;q=tunki%20tunki&amp;search_type=keyword_unordered" target="_blank" rel="noopener">Meta hirdetéstár</a></p></div>
+    <div class="card"><p class="small muted">1. Megjelenés és kattintás</p><p><a class="klink" href="https://adstransparency.google.com/?region=HU&amp;domain=tunkitunki.hu" target="_blank" rel="noopener">Google Átláthatósági Központ</a></p></div>
+    <div class="card"><p class="small muted">1. Ha nincs hirdetés</p><p><a class="klink" href="https://www.google.com/search?q=tunki+tunki" target="_blank" rel="noopener">Keresés a márkanévre</a></p></div>
+    <div class="card"><p class="small muted">2–3. Érkezés, konverzió, műszer</p><p><a class="klink" href="https://tunkitunki.hu/" target="_blank" rel="noopener">Weboldal</a></p></div>
+  </div>
+  <div class="task" style="margin-top:.9em;max-width:none"><b>Amit közösen megnézünk:</b> mit ígér, és hova visz · van-e a link végén utm_ · azt kapod-e az oldalon, amit ígért · mi a fő cselekvés, és hány lépés odáig · van-e sütisáv, és ugyanolyan könnyű-e elutasítani, mint elfogadni.</div>
+</section>
+
+<section class="slide" data-notes="g1">
+  <p class="kicker">A hatodik beadandó · csoportmunka · 90 perc · laptop kell</p>
+  <h2>Hol szakadhat a márkátok lánca?</h2>
+  <p class="lead">A márka fiókjába és GA4-ébe nem láttok bele. Azt írjátok le, amit kívülről látni, a hirdetéstől a vásárlásig.</p>
+  <div class="task lev-task" style="max-width:none"><ol>
+    <li><b>Megjelenés és kattintás, 20 perc:</b> fut most hirdetése? Mit ígér, hova visz, és van-e a link végén utm_?</li>
+    <li><b>Érkezés és konverzió, 20 perc:</b> azt kapja-e az ember az oldalon, amit a hirdetés ígért? Mi a fő cselekvés, és hány lépés odáig?</li>
+    <li><b>A műszer, 15 perc:</b> van-e sütisáv, és ugyanolyan könnyű-e elutasítani, mint elfogadni?</li>
+    <li><b>Hibakeresés, 35 perc:</b> ha nem jönnek a vásárlások, milyen sorrendben keresnétek a hibát? És a mondat.</li>
+  </ol></div>
+  <p class="lev-go" style="margin-top:1.2em"><a class="btn go" href="app.html?ep=ep6&amp;v=leadas" target="_blank">Leadás megnyitása →</a></p>
 </section>
 
 <section class="slide center" data-notes="g2">
   <p class="kicker">Zárás</p>
   <h2>A platformok cserélődnek, a lánc nem.</h2>
   <hr class="rule">
-  <p class="lead">Következik: a vizsga.</p>
+  <p class="lead">Legközelebb, 2026. december 7-én: kikkel csináljuk?</p>
 </section>
 
 </main>
 
 
 
-<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v0.9 · 2026. november 6.</span></div>
+<div class="hint">← → lapozás · szóköz: következő dia · N: jegyzet · F: teljes képernyő · J: javító mód · <span id="ver">v1.0 · 2026. november 9.</span></div>
 <div class="pager"><a class="home" href="index.html" title="Vissza a kezdőoldalra">⌂ Kezdőlap</a><button data-open="notes">Jegyzet</button><button id="pos" aria-label="Ugrás diára">1 / 35</button><div class="jump" id="jump"></div><button data-nav="-1" aria-label="Előző">‹</button><button data-nav="1" aria-label="Következő">›</button></div>
 
 <!-- Jegyzetek diánként. N billentyű vagy a Jegyzet gomb. -->
 <aside class="notes" id="notes" aria-label="Jegyzet">
-<div data-n="c1"><h4>Címlap</h4><p class="src top">Forrás: oktató; a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>A 6. téma: miből tudjuk meg, hogy működött. A tematika két pontja szó szerint a dián.</p></div></div>
+<div data-n="c1"><h4>Címlap</h4><p class="src top">Forrás: oktató; a hivatalos tematika</p><div class="hj"><h5>Jegyzet</h5><p>A 6. alkalom: miből tudjuk meg, hogy működött. A tematika két pontja szó szerint a dián.</p></div></div>
+<div data-n="c2"><h4>Az öt lépés, ma a hatodik alkalom</h4><p class="src top">Forrás: oktató; Kotler, Keller: Marketing Management, 17. fejezet (a kommunikáció makromodellje)</p><div class="hj"><h5>Jegyzet</h5><p>Ma az ötödik lépésnél vagyunk: honnan tudjuk, hogy eljutott. Ez a visszacsatolás. Nélküle a többi négy lépés csak feltevés marad.</p></div></div>
+<div data-n="c3"><h4>Visszamutatás · az 5. beadandó</h4><p class="src top">Forrás: oktató; a hallgatók 5. beadandója</p><div class="hj"><h5>Jegyzet</h5><p>Az 5. beadandó egy feltevés volt arról, mire költ a márka. A mai kérdés: miből tudná meg a márka, hogy jól költ.</p></div></div>
 <div data-n="c4"><h4>Mit mutat a valóság · Miről szól · Kulcsgondolat · Tanulság</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A kulcsgondolat legtisztább könyvbeli párja Kingsnorth „So what?” kérdése: minden számra megkérdezed, és akkor mi következik belőle.</p></div></div>
+<div data-n="e1"><h4>Egyéni feladat · Hol szakadt meg nálad?</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Ez a mai nap első, saját bizonyítéka. Mindenki tudja, hol szakadt meg nála a lánc. A márka viszont csak akkor tudja, ha méri.</p></div></div>
 <div data-n="k1"><h4>Egy szám, sok kérdés</h4><p class="src top">Forrás: Kotler, Keller: Marketing Management, 17. fejezet, 17.5 ábra</p><div class="hj"><h5>Jegyzet</h5><p>A számok Kotler 17.5 ábrájáról valók. Az A márkáról Kotler: a kommunikációs program jól teremt ismertséget, de a termék nem váltja be a vevők várakozását. A B márkánál fordított a helyzet: aki kipróbálta, elégedett, a kommunikáció gyenge.</p><p>A kérdés a végén: kinek a dolga megjavítani? Az A márkánál a terméké, a B-nél a kommunikációé. Ugyanaz a szám más embert hív.</p></div></div>
 <div data-n="k2"><h4>Négy kérdés, öt állomás</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 10. fejezet, 10.2 ábra; Kotler, Keller: 4. fejezet; Walker, Mullins: 13. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey négy mérési kérdése sorrendben: mit akarunk elérni, mi történik, miért történik, mit tegyünk. Kotlernél Farris a pilótához hasonlítja a marketingest: tudni kell, mikor melyik műszerre figyelj.</p><p>Walker és Mullins: ha nem érjük el a célt, meg kell keresni, hol van az ok: a környezetben, a stratégiában, a tervben vagy a végrehajtásban.</p><p>Az öt állomás az oktató láncából jön (a megjelenéstől a konverzióig). A műszer külön kérdése (mér-e egyáltalán) az oktató következtetése.</p></div></div>
 <div data-n="m1"><h4>Mutató, KPI, cél</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 14. fejezet; Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet (1.10 ábra) és 10. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A KPI (kulcs teljesítménymutató) nem bármelyik szám, hanem az a néhány, ami a célt méri. Minden más támogató mutató: segít megérteni, miért mozdult a KPI. Kingsnorth kérdése minden számra: „So what?” Ha egy számra nincs jó válasz, az hiúsági mutató.</p><p>A nyelviskola példája szemléltető, nem valós adat. A szétválasztás (cél, KPI, támogató mutató) az oktató összefoglalása.</p></div></div>
 <div data-n="m2"><h4>Minden szakasznak más a mérőszáma</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 1. fejezet, 1.10 ábra (RACE: Reach, Act, Convert, Engage; Smart Insights, 2010)</p><div class="hj"><h5>Jegyzet</h5><p>A táblázat Chaffey RACE-keretének mutatói: Reach (elérés): egyedi látogatók és követők, közönségarány, bevétel vagy célérték látogatásonként. Act (interakció): visszafordulási arány, oldalak látogatásonként, lead-konverzió. Convert (konverzió): konverziós arány, eladás, bevétel és árrés. Engage (megtartás): aktív vevők aránya, követői elköteleződés, ismételt vásárlás.</p><p>A 2016-os könyvben a visszafordulási arány még egyoldalas látogatást jelent. A GA4-ben jelenleg az elköteleződött munkamenet ellentettje, erről a GA4-diánál lesz szó.</p><p>A RACE négy szakasza összepárosítható a mai öt állomással: elérés a megjelenés és a kattintás, interakció az érkezés és a haladás, konverzió a konverzió, megtartás a visszatérés. Ez a párosítás saját következtetés.</p></div></div>
 <div data-n="m3"><h4>Mi számít igazán?</h4><p class="src top">Forrás: az oktató összefoglalása a platformok súgói alapján (Google Ads, Google Search Console, Meta, YouTube, GA4); az e-mail megnyitásról: Apple Mail Privacy Protection, 2021</p><div class="hj"><h5>Jegyzet</h5><p>A táblázat összefoglaló, nem szabály: mindig a célból következik, mi a KPI. Egy ismertségi kampánynál például a megjelenés és az elérés is számít.</p><p>Az e-mail megnyitási aránya 2021 óta kevésbé megbízható, mert az Apple Mail Privacy Protection funkciója a leveleket előre letöltheti, és ez megnyitásnak számít. Ezért a kattintás a megbízhatóbb jel.</p><p>A helyezés egy-egy szóra keveset mond önmagában: a Search Console-ban azt érdemes nézni, hogy a fontos keresésekre hányan kattintanak, és melyik oldalra érkeznek.</p></div></div>
 <div data-n="m4"><h4>Egy lánc, egy számolás</h4><p class="src top">Forrás: az oktató szemléltető példája</p><div class="hj"><h5>Jegyzet</h5><p>A számok kitaláltak, a képletek nem: kattintás = megjelenés × CTR; konverzió = kattintás × konverziós arány; CPC = költség / kattintás; CPA = költség / konverzió. Ha bevétel is van, ROAS = bevétel / hirdetési költség.</p><p>A két javítás ugyanannyi vásárlást hoz, de máshol kell keresni: a CTR a hirdetésen múlik, a konverziós arány az oldalon. Ez a mai tanulság: végig kell menni a láncon, és megkeresni, hol szakad.</p></div></div>
-<div data-n="k3"><h4>A Google Ads fiók felépítése</h4><p class="src top">Forrás: Google Ads súgó (fiókszerkezet, kampánytípusok, kulcsszó-egyezési típusok, reszponzív keresési hirdetések); a felületek változnak, az óra előtt érdemes ránézni</p><div class="hj"><h5>Jegyzet</h5><p>Négy szint: a fiók (számlázás, hozzáférések, konverziókövetés), a kampány (cél, kampánytípus, napi keret, ajánlattételi stratégia, hely, nyelv, ütemezés), a hirdetéscsoport (egy szűk téma kulcsszavakkal) és a hirdetés.</p><p>A kulcsszó egyezési típusa dönti el, mennyire tág keresésekre jelenik meg a hirdetés: széles egyezés, kifejezésegyezés, pontos egyezés. A kizáró kulcsszóval mondod meg, mire ne jelenjen meg. A reszponzív keresési hirdetésbe legfeljebb 15 címsort és 4 leírást írhatsz, a Google ezekből rakja össze a megjelenő változatot.</p><p>Az alapbeállítások közül a legfontosabb a konverziókövetés: enélkül a fiók csak a kattintásig lát, és a konverzióra optimalizáló ajánlattétel sem működik.</p><p>Az utolsó mondat (egy hirdetéscsoport, egy téma) az oktató összefoglalása, a 4. téma „Amit a hirdetés ígért” gondolatára épül.</p></div></div>
-<div data-n="k3b"><h4>A Meta-hirdetés felépítése</h4><p class="src top">Forrás: Meta Business súgó (hirdetési fiók, kampánycélok, hirdetéskészlet, elhelyezések, Meta pixel és Conversions API); a felületek változnak, az óra előtt érdemes ránézni</p><div class="hj"><h5>Jegyzet</h5><p>A Metán is három szint van a fiók alatt: kampány, hirdetéskészlet, hirdetés. A kampány a célt adja meg: ismertség, forgalom, interakció, potenciális ügyfelek, alkalmazás népszerűsítése, értékesítés. A hirdetéskészletben döntesz a közönségről, az elhelyezésről, a keretről és az ütemezésről, és arról, mire optimalizáljon a rendszer. A hirdetésben a kreatív van: formátum, szöveg, címsor, gomb, cél-URL.</p><p>A mérés a Meta pixellel és a Conversions API-val működik: a pixel a böngészőből, a Conversions API a szerverről küldi az eseményeket.</p><p>Az utolsó mondat (a Google-ban a keresés, a Metán a közönség dönt) saját következtetés, a 4. téma szándékállapotára épül: a keresőben az ember kimondja, mit akar, a hírfolyamban neked kell megtalálnod.</p></div></div>
+<div data-n="k3"><h4>A Google Ads fiók felépítése</h4><p class="src top">Forrás: Google Ads súgó (fiókszerkezet, kampánytípusok, kulcsszó-egyezési típusok, reszponzív keresési hirdetések); a felületek változnak, az óra előtt érdemes ránézni</p><div class="hj"><h5>Jegyzet</h5><p>Négy szint: a fiók (számlázás, hozzáférések, konverziókövetés), a kampány (cél, kampánytípus, napi keret, ajánlattételi stratégia, hely, nyelv, ütemezés), a hirdetéscsoport (egy szűk téma kulcsszavakkal) és a hirdetés.</p><p>A kulcsszó egyezési típusa dönti el, mennyire tág keresésekre jelenik meg a hirdetés: széles egyezés, kifejezésegyezés, pontos egyezés. A kizáró kulcsszóval mondod meg, mire ne jelenjen meg. A reszponzív keresési hirdetésbe legfeljebb 15 címsort és 4 leírást írhatsz, a Google ezekből rakja össze a megjelenő változatot.</p><p>Az alapbeállítások közül a legfontosabb a konverziókövetés: enélkül a fiók csak a kattintásig lát, és a konverzióra optimalizáló ajánlattétel sem működik.</p><p>Az utolsó mondat (egy hirdetéscsoport, egy téma) az oktató összefoglalása, a 4. alkalom „Amit a hirdetés ígért” gondolatára épül.</p></div></div>
+<div data-n="k3b"><h4>A Meta-hirdetés felépítése</h4><p class="src top">Forrás: Meta Business súgó (hirdetési fiók, kampánycélok, hirdetéskészlet, elhelyezések, Meta pixel és Conversions API); a felületek változnak, az óra előtt érdemes ránézni</p><div class="hj"><h5>Jegyzet</h5><p>A Metán is három szint van a fiók alatt: kampány, hirdetéskészlet, hirdetés. A kampány a célt adja meg: ismertség, forgalom, interakció, potenciális ügyfelek, alkalmazás népszerűsítése, értékesítés. A hirdetéskészletben döntesz a közönségről, az elhelyezésről, a keretről és az ütemezésről, és arról, mire optimalizáljon a rendszer. A hirdetésben a kreatív van: formátum, szöveg, címsor, gomb, cél-URL.</p><p>A mérés a Meta pixellel és a Conversions API-val működik: a pixel a böngészőből, a Conversions API a szerverről küldi az eseményeket.</p><p>Az utolsó mondat (a Google-ban a keresés, a Metán a közönség dönt) saját következtetés, a 4. alkalom szándékállapotára épül: a keresőben az ember kimondja, mit akar, a hírfolyamban neked kell megtalálnod.</p></div></div>
 <div data-n="k4"><h4>Melyik oszlop melyik állomás?</h4><p class="src top">Forrás: oktató; Kingsnorth: Digital Marketing Strategy, 6. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Mindkét fiók riportjában ugyanazok az oszlopok térnek vissza: megjelenés, kattintás, CTR, CPC, konverzió, konverziónkénti költség. A terem mondja be, melyik oszlop melyik állomáshoz tartozik, utána nyissátok ki a megoldást. A fiók a megjelenéstől a kattintásig és a konverzióig lát; az érkezést és a haladást a weboldal mérése látja.</p></div></div>
 <div data-n="k5"><h4>Kié a hiba?</h4><p class="src top">Forrás: Chaffey, Ellis-Chadwick: Digital Marketing, 8. fejezet, 8.8 ábra; 9. fejezet; Kingsnorth: 6. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Chaffey 8.8 ábrája a láncot lépcsőként mutatja: megjelenés, kattintás, látogatás, lead, eladás, és minden lépés között egy hatékonysági mutató.</p><p>Chaffey: egy hirdetés hozhat kattintást vagy forgalmat úgy, hogy a weboldalon nem éri el a kívánt eredményt, vagy egyszerűen rossz a látogatók profilja. Ez visszautal a 3. témára: az oldalra, ahová érkezik.</p></div></div>
 <div data-n="k6"><h4>Minden esemény</h4><p class="src top">Forrás: GA4 súgó (események, elköteleződött munkamenet; a 3. alkalom webkutatása, 2026. október 5.); Chaffey, Ellis-Chadwick: 10. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>A GA4-ben minden interakció esemény, az oldalmegtekintés is. A munkamenet alapértelmezésben 30 perc tétlenség után ér véget.</p><p>Elköteleződött munkamenet: legalább 10 másodpercig tart, vagy van benne kulcsesemény, vagy legalább két oldal- vagy képernyőmegtekintés. A visszafordulási arány a nem elköteleződött munkamenetek aránya. Chaffey 2016-ban még egyoldalas látogatásként írta le a visszafordulást: ugyanaz a szó, más szám.</p></div></div>
 <div data-n="k7"><h4>Honnan jött, és hol esik ki?</h4><p class="src top">Forrás: GA4 súgó (UTM, tölcsér-felfedezés); Chaffey, Ellis-Chadwick: 10. fejezet, 10.4 ábra</p><div class="hj"><h5>Jegyzet</h5><p>Az UTM-paraméterek (forrás, médium, kampány) mondják meg a GA4-nek, honnan jött a látogató. Ha hiányoznak, a fizetett kattintás is más forrásnak látszhat.</p><p>Chaffey: a lemorzsolódás lépésenként mérhető a landingtől a pénztárig, és szakaszonként más az oka. A négy ok besorolása a dián a beszélgetés kiindulópontja, nem egyetlen helyes válasz.</p></div></div>
 <div data-n="k8"><h4>Négy ember a szám mögött</h4><p class="src top">Forrás: Kingsnorth: Digital Marketing Strategy, 14. fejezet; Chaffey, Ellis-Chadwick: 9. fejezet; Google Ads súgó (minőségi mutató); Google Analytics súgó (attribúciós modellek, 2023)</p><div class="hj"><h5>Jegyzet</h5><p>Kingsnorth: „Data is in itself worthless.” Minden lépésnél ember hibázhat: a termékben, a telepítésben, a beállításban, az értelmezésben. Ezért az első hibakeresési lépés a műszer, nem a kampány (saját következtetés).</p><p>A platform cserélődik: Chaffey 2016-ban a minőségi mutatót a rangsor kulcsaként írja le, a jelenlegi Google Ads súgó szerint diagnosztikai eszköz, és nem bemenete az aukciónak. Kingsnorth öt attribúciós modellt tanít; a GA4-ben 2023 novembere óta az adatvezérelt és az utolsó kattintásos modell maradt.</p></div></div>
 <div data-n="k9"><h4>Ami a sávon múlik</h4><p class="src top">Forrás: ePrivacy irányelv, 5. cikk (3); GDPR, 7. cikk (3); EUB, C-673/17, Planet49 (2019); Google Consent Mode súgó; Chaffey, Ellis-Chadwick: 3. és 10. fejezet</p><div class="hj"><h5>Jegyzet</h5><p>Az ePrivacy irányelv 5. cikk (3): a felhasználó végberendezésén tárolt információhoz előzetes hozzájárulás kell, kivéve, ha feltétlenül szükséges a kért szolgáltatáshoz. A GDPR 7. cikk (3): a hozzájárulás visszavonása legyen ugyanolyan egyszerű, mint a megadása. Az EUB a Planet49 ügyben kimondta: az előre bejelölt négyzet nem érvényes hozzájárulás.</p><p>Consent Mode: alap módban hozzájárulás előtt nem indul mérőkérés; haladó módban a Google sütik nélküli jelzéseket kap, és modellez. Hozzájárulási arányra nincs ellenőrzött forrásunk, ezért szám nincs a dián.</p><p>Élőben: Chrome DevTools, Network fül, szűrés a GA4 kéréseire (collect), a sáv elfogadása előtt és után.</p></div></div>
-<div data-n="sum"><h4>A hét kérdés maga a brief</h4><p class="src top">Forrás: oktató (gondolati ív)</p><div class="hj"><h5>Jegyzet</h5><p>A félév egy lapon. A gondolati ív mondata szó szerint: „Ez a hét kérdés pontosan az, amit egy stratégia vagy egy brief tartalmaz.” A félév nem témákat vett sorra, hanem egy döntési láncot épített fel.</p></div></div>
+<div data-n="b1"><h4>Bemutató · Tunki-Tunki kívülről</h4><p class="src top">Forrás: oktató; a hirdetéstárak és a márka weboldala, élő keresés</p><div class="hj"><h5>Jegyzet</h5><p>A 3. alkalmon azt néztük, hogyan fogadja a Tunki-Tunki oldala a látogatót. Most azt, hogy mit lát ebből a márka. A beadandó négy lépésén megyünk végig, ugyanabban a sorrendben, ahogy ti is fogjátok.</p><p>Ami a hirdetéstárban látszik, az a mai nap állapota. Ha nem fut hirdetés, a lánc a keresésnél indul.</p></div></div>
+<div data-n="g1"><h4>A hatodik beadandó</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>Nem javítotok, hanem végigmentek a láncon kívülről, és megkeresitek, hol szakadhat. A tanulság itt válik gyakorlattá: a diagnózis sorrend kérdése.</p><p>Ha a márkának nincs futó hirdetése, a lánc a keresésnél indul: írjátok be a márka nevét, és az első találattól mentek tovább.</p><p>A leadási űrlapon minden kérdés mellett ott a minta, hogyan néz ki egy jó válasz.</p></div></div>
 <div data-n="g2"><h4>Zárás</h4><p class="src top">Forrás: oktató</p><div class="hj"><h5>Jegyzet</h5><p>A tanulság utolsó mondata. A teljes tanulság: a diagnózis sorrend kérdése, nem tudásé. Végig kell menni a láncon a megjelenéstől a konverzióig, és megkeresni, hol szakad.</p></div></div>
 </aside>
 
