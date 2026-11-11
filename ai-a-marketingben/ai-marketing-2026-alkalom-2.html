@@ -48,7 +48,13 @@ p+p{margin-top:.6em}
 .note{color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:76ch;margin-top:1.1em;line-height:1.4}
 .slide a{color:var(--cobalt)}
 .rule{border:0;border-top:1px solid var(--line);margin:1.2em 0;max-width:60em}
-.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--cobalt)}
+.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--marker)}
+/* egy szín: minden kártya teteje sárga (oktatói kérés, 2026. november 11.) */
+/* ahol több kártya áll egymás mellett, sorszámot kapnak a jobb felső sarokban */
+.thg,.grid3,.cols{counter-reset:kc}
+.thg>.card,.grid3>.card,.cols>.card{counter-increment:kc;position:relative}
+.thg>.card::after,.grid3>.card::after,.cols>.card::after{content:counter(kc);position:absolute;right:.85em;top:.6em;font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.3em;line-height:1}
+.thg>.card h3,.grid3>.card h3,.cols>.card h3{padding-right:1.6em}
 .card.alt{border-top-color:var(--marker)}
 .card p{max-width:none}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:2vw;align-items:start;max-width:72em}
@@ -117,7 +123,7 @@ td .who{color:var(--ink-soft)}
 .tips{display:grid;grid-template-columns:1fr 1fr;gap:1.2vw 1.6vw;max-width:78em}
 .tip{background:#fff;border-radius:12px;padding:.8em 1.15em .9em;box-shadow:var(--sh);border-top:4px solid var(--marker);position:relative}
 .tip h3{padding-right:1.6em}
-.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--marker);font-size:1.3em;line-height:1}
+.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.3em;line-height:1}
 
 /* feladat: cél, scope, leadandó */
 .goal{display:grid;grid-template-columns:auto 1fr;gap:.75em 1.4em;max-width:62em;background:#fff;border-radius:14px;padding:1.2em 1.6em;box-shadow:var(--sh);border-left:6px solid var(--marker)}
@@ -176,6 +182,106 @@ table.task td.out{font-weight:600;width:24%}
 table.task td.dk{width:24%;font-size:var(--t-sm);color:var(--cobalt)}
 .deliv{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:88em;font-size:var(--t-body)}
 .deliv b{color:var(--marker);margin-right:.3em}
+
+.kn{display:grid;grid-template-columns:1fr 1fr;gap:1.6vw;max-width:60em;margin-top:.4em}
+.kn .card h3{font-size:1.3em}
+.kn .qs li{font-size:var(--t-body)}
+@media (max-width:900px){.kn{grid-template-columns:1fr}}
+
+.need{margin-top:.9em;background:var(--cream);border-radius:10px;padding:.5em 1em;max-width:none;line-height:1.35}
+.need b{margin-right:.3em}
+.docwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.6vw;align-items:center;max-width:92em;margin-top:.4em}
+.docpage{background:#fff;border-radius:6px;box-shadow:var(--sh);padding:.8em 1.3em 1em;border-top:6px solid var(--marker)}
+.docpage .dt{display:block;font-size:var(--t-sm);color:var(--ink-soft);margin-bottom:.3em}
+.dl{display:grid;grid-template-columns:1fr auto;gap:1em;align-items:baseline;padding:.32em 0;border-bottom:1px dashed var(--line)}
+.dl b{font-weight:600;font-size:var(--t-sm)}
+.dl small{font-size:var(--t-sm);color:var(--cobalt);white-space:nowrap}
+.docside{display:grid;gap:.5em;justify-items:stretch}
+.docside .arr{color:var(--cobalt);font-size:1.6em;justify-self:center}
+.docside .card h3{font-size:1.15em}
+.docside .card p{font-size:var(--t-sm)}
+@media (max-width:900px){.docwrap{grid-template-columns:1fr}}
+
+.tipbtn{display:inline-flex;align-items:center;gap:.35em;cursor:pointer;margin-left:.4em;padding:.12em .5em .12em .15em;border-radius:99px;background:#fff;border:2px solid var(--marker);font-size:var(--t-sm);font-weight:600;color:var(--ink);vertical-align:middle}
+.tipbtn span{background:var(--marker);border-radius:99px;padding:.02em .6em;letter-spacing:.06em}
+.tipbtn:hover{background:var(--marker)}
+.tipbtn .clk{width:1.6em;height:1.6em;display:block;color:var(--ink)}
+dialog.tipdlg{margin:auto;border:0;border-radius:14px;padding:1em 1.4em 1.3em;width:min(62rem,92vw);max-height:86vh;box-shadow:0 30px 80px rgba(0,0,0,.3);background:var(--paper);color:var(--ink);font-size:var(--t-body)}
+dialog.tipdlg::backdrop{background:rgba(27,31,58,.5)}
+.tdh{display:flex;align-items:center;gap:.7em;margin-bottom:.7em}
+.tdh .tl{background:var(--marker);border-radius:99px;padding:.05em .7em;font-weight:600;font-size:var(--t-sm);letter-spacing:.06em}
+.tdh h3{flex:1;font-size:var(--t-h3);margin:0}
+.tdh .x{font-size:1.6em;line-height:1;color:var(--ink-soft);padding:0 .2em}
+.tj{display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding:.5em 0;border-bottom:1px solid var(--line);max-width:none}
+.tj a{color:var(--cobalt);font-weight:600;white-space:nowrap;text-decoration:none}
+.tp{margin:.6em 0 .8em}
+.tp>p{margin-bottom:.5em;max-width:none}
+.tp .prompt pre{max-height:44vh}
+
+.need ul.needl{list-style:none;margin-top:.3em}
+.need ul.needl li{display:flex;justify-content:space-between;align-items:center;gap:.8em;padding:.32em 0;border-top:1px dashed rgba(27,31,58,.18)}
+.need ul.needl li .tipbtn{margin-left:0;flex:none}
+.tdp{margin-bottom:.6em;max-width:none}
+.tdh h3{font-size:var(--t-h3)}
+
+/* 2. alkalom: a mai nap */
+.build{display:flex;flex-wrap:wrap;align-items:stretch;gap:.55em;max-width:92em;margin-top:.6em}
+.build .pc{flex:1 1 0;min-width:6.5em;background:#fff;border-radius:10px;box-shadow:var(--sh);border-top:4px solid var(--marker);padding:.6em .8em;font-family:var(--display);font-weight:500;font-size:1.02em;line-height:1.2;display:flex;align-items:center}
+.build .pc.sum{flex:1.2 1 0;background:var(--cobalt);color:#fff;border-top-color:var(--cobalt);font-size:1.25em;justify-content:center}
+.build .op{align-self:center;color:var(--ink-soft);font-size:1.4em;font-weight:600}
+.slide h3.lbl2{font-family:var(--body)!important;font-weight:600!important;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);margin:1.3em 0 .5em}
+.rhythm{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;max-width:92em}
+.rhythm .n{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.6em;line-height:1;display:block;margin-bottom:.15em}
+.rhythm .card h3{font-size:1.15em}
+.rhythm .card p{font-size:var(--t-sm)}
+@media (max-width:900px){.rhythm{grid-template-columns:1fr}.build .op{display:none}}
+
+/* 2. alkalom: összefoglaló */
+.recap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:2.8vw;align-items:start;max-width:92em}
+.slide .recap h3.lbl{font-family:var(--body)!important;font-weight:600;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);border-bottom:2px solid var(--ink);padding-bottom:.3em;margin-bottom:.2em}
+ul.done{list-style:none}
+ul.done li{padding:.45em 0 .45em 1.5em;border-bottom:1px solid var(--line);position:relative;line-height:1.35}
+ul.done li::before{content:"✓";position:absolute;left:0;color:var(--cobalt);font-weight:600}
+.today{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:none}
+.who{display:grid;grid-template-columns:1fr 1fr;column-gap:2.2vw}
+.who>div{padding:.42em 0 .48em;border-bottom:1px solid var(--line)}
+.who .nm{display:inline-block;background:var(--marker);color:var(--ink);font-weight:600;font-size:var(--t-sm);line-height:1.35;border-radius:4px;padding:.02em .45em;margin-bottom:.22em}
+.nmh{background:var(--marker);color:var(--ink);font-weight:600;border-radius:4px;padding:0 .3em}
+.who .gm{display:block;line-height:1.25}
+.who .gm b{font-family:var(--display);font-weight:500;font-size:1.18em}
+.who .gm b.c{color:var(--cobalt)}
+.who .gm em{font-style:normal;font-size:var(--t-sm);color:var(--ink-soft)}
+@media (max-width:900px){.recap,.who{grid-template-columns:1fr}}
+
+/* 2. alkalom: kis feladatok */
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:2.6vw;max-width:88em}
+.slide .agenda h3{font-family:var(--body)!important;font-weight:600;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);border-bottom:2px solid var(--ink);padding-bottom:.3em;margin-bottom:.1em}
+ol.ag{list-style:none}
+ol.ag li{display:grid;grid-template-columns:1.6em 1fr auto;gap:.6em;align-items:baseline;padding:.4em 0;border-bottom:1px solid var(--line)}
+ol.ag .no{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.25em;line-height:1}
+ol.ag b{display:block;font-weight:600;line-height:1.25}
+ol.ag em{display:block;font-style:normal;color:var(--ink-soft);font-size:var(--t-sm);line-height:1.3}
+ol.ag .mm{font-size:var(--t-sm);color:var(--ink-soft);white-space:nowrap}
+.thg{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:1vw 1.4vw;max-width:88em;margin-top:.9em}
+.tk .prompt pre{font-size:max(.86rem,18px)}
+.thg .card h3{font-size:1.12em}
+.thg .card p{font-size:var(--t-sm)}
+.formula{font-family:var(--display);font-weight:500;font-size:1.32em;line-height:1.4;background:#fff;border-radius:12px;padding:.7em 1.1em;box-shadow:var(--sh);max-width:54em;margin:.1em 0 .9em}
+.formula mark,.tk .what mark,.qs mark{background:var(--cream);color:inherit;border-radius:4px;padding:0 .15em}
+.ex{margin-top:1em;background:var(--cream);border-radius:12px;padding:.6em 1.1em .7em;max-width:80em;border-left:5px solid var(--marker)}
+.ex small,.qsw small{display:block;font-size:max(.62rem,13px);letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:.25em}
+.ex p{max-width:none}
+.tk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.4vw;align-items:start;max-width:90em}
+.tk .what{font-size:var(--t-lead);line-height:1.38;max-width:none}
+.tk .ex{margin-top:.9em}
+.res{margin-top:1em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:none}
+.res b{color:var(--marker);margin-right:.3em}
+.qsw{margin-top:.9em}
+.qs{list-style:none}
+.qs li{padding:.28em 0 .28em 1.2em;border-bottom:1px solid var(--line);font-size:var(--t-sm);position:relative}
+.qs li::before{content:"?";position:absolute;left:0;color:var(--cobalt);font-weight:600}
+.qs.bl li::before{content:"·";font-size:1.4em;line-height:1;top:.18em}
+@media (max-width:900px){.agenda,.tk{grid-template-columns:1fr}}
 
 /* szabályok */
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:.9vw 1.4vw;max-width:80em}
@@ -241,63 +347,473 @@ body.rev .revbar{display:flex}
 <p class="kicker">AI a marketingben · gyakorlat</p><h1 class="cover">Márkaplatform, célcsoport és árazás</h1><p class="lead">2. alkalom · 2026. november 12.</p>
 </section>
 <section class="slide" data-l="hu">
-<p class="kicker"><span class="lt">2. alkalom</span>A mai feladat</p><h2 class="wide">Építsd fel az új márka alapjait.</h2><table class="task"><tr><th></th><th>Részfeladat</th><th>Eredménytermék</th><th>Hová kerül a deckben</th></tr><tr><td class="no">1</td><td><b>Név</b><span>20 névötlet AI-jal, egyet választasz, és webes kereséssel megnézed, használja-e már valaki a kategóriában.</span></td><td class="out">A márka neve, ellenőrizve</td><td class="dk">1. blokk · Bevezetés (címlap)</td></tr><tr><td class="no">2</td><td><b>Márkaplatform</b><span>Pozicionálás, ígéret, 3 érték, személyiség, hangnem.</span></td><td class="out">Márkaplatform</td><td class="dk">1. blokk (megoldás, értékajánlat) · 2. blokk (személyiség, hangnem)</td></tr><tr><td class="no">3</td><td><b>Personák</b><span>Legalább 2 persona AI-jal. Mindkettőt kérdezd ki 5 kérdéssel, és jelöld, mit gondolsz kitaláltnak.</span></td><td class="out">2 persona, interjúval</td><td class="dk">2. blokk · Stratégia (célcsoport)</td></tr><tr><td class="no">4</td><td><b>Árazás · opcionális</b><span>Ha fontos a márkádnál, vázolj árazási irányt, és vesd össze a versenytársakkal. Ha nem, hagyd ki.</span></td><td class="out">Árazási irány</td><td class="dk">2. blokk · Stratégia</td></tr></table><p class="deliv"><b>Mára elkészül:</b> Márkabrief (név, platform, personák).</p><p class="note">Ami a dián van, javaslat arra az esetre, ha nincs ötleted, hogyan indulj el. A lényeg az eredménytermék.</p>
+<p class="kicker"><span class="lt">2. alkalom</span>Összefoglaló</p><h2 class="wide">Hol tartunk?</h2><div class="recap"><div><h3 class="lbl">Múlt héten, 2026. november 5.</h3><ul class="done"><li>Választottál egy márkát és hozzá egy új iparágat. A neve és a logója marad.</li><li>Megismerted a kiinduló márkát: értékek, személyiség, hangnem, vizuális kódok, kampányok.</li><li>Megnézted az 5 legfontosabb versenytársat az új kategóriában.</li><li>Leírtad, mit viszel át a kiinduló márkából, és mit nem.</li></ul><p class="today">Ma erre építünk: a márkád ígéretet, hangot és célcsoportot kap az új iparágban.</p></div><div><h3 class="lbl">Ki mit választott</h3><div class="who"><div><span class="nm">Alam Ratemul</span><span class="gm"><em>az</em> <b>Apple</b> <b class="c">szállodalánc</b> <em>lenne?</em></span></div><div><span class="nm">Awan Malik Danish Naveed</span><span class="gm"><em>a</em> <b>Tesla</b> <b class="c">divatruha-márka</b> <em>lenne?</em></span></div><div><span class="nm">Ercetin Onur</span><span class="gm"><em>a</em> <b>Duolingo</b> <b class="c">utazási iroda</b> <em>lenne?</em></span></div><div><span class="nm">Fahim Md Fayaz Yasin</span><span class="gm"><em>a</em> <b>Nike</b> <b class="c">kávézólánc</b> <em>lenne?</em></span></div><div><span class="nm">Hasan Md Mehedi</span><span class="gm"><em>a</em> <b>Coca-Cola</b> <b class="c">autó</b> <em>lenne?</em></span></div><div><span class="nm">Hossain Md Mamun</span><span class="gm"><em>az</em> <b>IKEA</b> <b class="c">légitársaság</b> <em>lenne?</em></span></div><div><span class="nm">Odikanuom Pascal Izunna</span><span class="gm"><em>a</em> <b>Ferrari</b> <b class="c">payment</b> <em>lenne?</em></span></div><div><span class="nm">Tran Hoai Truc Quynh</span><span class="gm"><em>a</em> <b>Spotify</b> <b class="c">étteremhálózat</b> <em>lenne?</em></span></div></div></div></div><p class="note">Még nem választott márkát: <span class="nmh">Akter Rokeya</span>, <span class="nmh">Kishan Alif Nur</span>, <span class="nmh">Vo Thi Diem Huong</span>. Ma az elején válasszatok a szabad márkák közül: LEGO, Red Bull, Netflix, Patagonia, Harley-Davidson, Disney, McDonald's.</p>
 </section>
 <section class="slide" data-l="hu">
-<p class="kicker"><span class="lt">2. alkalom</span>Ha nincs ötleted, hogyan indulj el</p><h2>Promptjavaslat: Persona-interjú</h2><p class="tools"><b>Eszközök ehhez:</b> Névötletekhez és márkaplatformhoz ChatGPT vagy Claude (sok kör, ide a ChatGPT korlátlan szöveges chatje jól jön), a név ellenőrzésére webes keresés bármelyikben; persona-szerepjátékhoz bármelyik asszisztens, Grok, Gemini, Le Chat is.</p><div class="prompts"><div class="prompt"><div class="ph"><span>Strukturált</span><button type="button" class="copy">Másolás</button></div><pre>Szerepkör: Te vagy <mark>[persona neve, kora, foglalkozása, szokásai]</mark>.
-Kontextus: egy új <mark>[kategória]</mark> márkáról kérdezlek, a leírása: <mark>[márkaplatform]</mark>.
-Feladat: válaszolj a kérdéseimre úgy, ahogy ez a vásárló válaszolna.
-Paraméterek: természetes, beszélt nyelv, válaszonként legfeljebb 4 mondat.
-Kritériumok: ha valamiről nem tudhatsz, mondd, hogy nem tudod.</pre></div><div class="prompt"><div class="ph"><span>Szabad szöveggel, ahogy egy kollégának mondanád</span><button type="button" class="copy">Másolás</button></div><pre>Szeretnék veled egy szerepjátékot játszani, hogy jobban megértsem a célcsoportomat. Van egy új <mark>[új kategória]</mark> márkám, <mark>[márkanév]</mark>, ami a <mark>[kiinduló márka]</mark> szellemiségéből indul. Röviden erről szól: <mark>[márkaplatform 3-4 mondatban]</mark>.
+<p class="kicker"><span class="lt">2. alkalom</span>Mi a feladat?</p><h2 class="wide">Az IKEA marad IKEA. Csak légitársaság lesz.</h2><p class="lead">A valódi márkával dolgozunk, a nevével és a logójával együtt. Azt találjuk ki, milyen lenne egy elképzelt új iparágban.</p><div class="kn"><div class="card"><h3>Marad</h3><ul class="qs bl"><li>A név</li><li>A logó</li><li>A személyiség</li><li>Az értékek</li><li>A vizuális kódok</li></ul></div><div class="card"><h3>Új</h3><ul class="qs bl"><li>Az iparág</li><li>A termék vagy szolgáltatás</li><li>A célcsoport</li><li>Az ár</li><li>A kampány</li></ul></div></div><p class="note">A kérdés minden döntésnél: ha a márkád tényleg ebben az iparágban lenne, ezt csinálná? Órai játék: amit készítesz, ne tedd közzé, és ne állítsd valódinak.</p>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>A mai nap</p><h2 class="wide">Ma kis lépésekben haladunk</h2><p class="lead">A mai témát, a márkaplatformot, a célcsoportot és az árazást kis feladatokra szedjük szét. Mindegyik az előzőre épül, és a végén ezekből áll össze a márkabrief.</p><div class="build"><span class="pc">Kiindulás</span><span class="op" aria-hidden="true">+</span><span class="pc">Pozicionálás</span><span class="op" aria-hidden="true">+</span><span class="pc">Ígéret és értékek</span><span class="op" aria-hidden="true">+</span><span class="pc">Személyiség és hangnem</span><span class="op" aria-hidden="true">+</span><span class="pc">Célcsoport és persona</span><span class="op" aria-hidden="true">+</span><span class="pc">Árazás · opcionális</span><span class="op" aria-hidden="true">=</span><span class="pc sum">Márkabrief</span></div><h3 class="lbl2">Minden témánál ugyanaz a menet</h3><div class="rhythm"><div class="card"><span class="n">1</span><h3>Rövid elmélet</h3><p>Mi ez, és mire jó, egy kitalált példával.</p></div><div class="card"><span class="n">2</span><h3>Kis feladat</h3><p>10-20 perc, másolható prompttal. A prompt megmondja, mit másolj be, és milyen formában kérd vissza.</p></div><div class="card"><span class="n">3</span><h3>Márkadokumentum</h3><p>Az eredményt bemásolod a márkadokumentumodba.</p></div><div class="card"><span class="n">4</span><h3>Továbbviszed</h3><p>A következő prompt ebből indul. A végén ebből lesz a márkabrief.</p></div></div><p class="deliv"><b>Mára elkészül:</b> Márkabrief (platform, personák).</p><p class="note">A promptok csak javaslatok, ha nincs ötleted, hogyan indulj el.</p>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>Elmélet</p><h2 class="wide">Mi az a márkabrief?</h2><p class="lead">Egy oldal, amire minden későbbi munka épül: a logótól a kampányig mindent ebből csinálsz.</p><div class="thg"><div class="card"><h3>Kiindulás</h3><p>Mi lenne, ha…: mi marad a márkából, és mi lesz új?</p></div><div class="card alt"><h3>Pozicionálás</h3><p>Miben vagy más, mint a többiek?</p></div><div class="card"><h3>Ígéret és értékek</h3><p>Mit kap tőled a vevő, és mit képviselsz?</p></div><div class="card alt"><h3>Személyiség és hangnem</h3><p>Ha ember lennél, milyen lennél, és hogyan beszélnél?</p></div><div class="card"><h3>Célcsoport és persona</h3><p>Kinek szólsz, és ki az az egy ember, akire gondolsz?</p></div><div class="card alt"><h3>Árazás · opcionális</h3><p>Mennyibe kerülsz a többiekhez képest?</p></div></div><div class="ex"><small>Kitalált példa · Mi lenne, ha a Rubik-kocka cipőmárka lenne?</small><p>A mai diákon végig ezt a kitalált példát visszük: mi lenne, ha a Rubik-kocka cipőmárka lenne? A példa csak mutatja a formát, a te márkád tartalma a tiéd.</p></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>1/9 kis feladat · kb. 10 perc</p><h2 class="wide">Bemelegítés: a márkád egy mondatban</h2><div class="tk"><div><p class="what">Mondd ki a feladatodat egy mondatban: „Mi lenne, ha a <mark>[márka]</mark> <mark>[új kategória]</mark> lenne?” Írj mellé 5 jelzőt a márkáról, és jelöld, melyik három a legfontosabb az új iparágban. Nyiss egy üres dokumentumot: ez lesz a márkadokumentumod.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>Az 1. alkalom márkaelemzése</span><button type="button" class="tipbtn" data-tip="tip-hu-1-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 1. Mi lenne, ha… és a 3 jelző</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>Az előző órán elemeztem a <mark>[márka]</mark> márkát, itt az elemzésem: <mark>[bemásolva vagy feltöltve]</mark>. Órai játékban azt találjuk ki, milyen lenne, ha a <mark>[márka]</mark> a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Foglald össze 5 jelzőben, milyen ez a márka, ha ember lenne, és mondd meg, melyik 3 jelző a legfontosabb az új iparágban.
 
-Kérlek, mostantól te legyél <mark>[persona neve]</mark>, egy <mark>[kor]</mark> éves <mark>[foglalkozás]</mark>, aki <mark>[2-3 mondat az életéről, szokásairól, arról, mi fontos neki]</mark>. Én egy piackutató vagyok, és kérdezni foglak erről az új márkáról. Válaszolj úgy, ahogy ő válaszolna: a saját szavaival, őszintén, akár kritikusan is, és ne próbálj a kedvemben járni. Ha valamit ő nem tudna, mondd, hogy nem tudod. Rövid, beszélt nyelvű válaszokat kérek, mintha egy interjún ülnénk.
+A válaszod legyen rövid. Csak ezt a blokkot add vissza, hogy be tudjam másolni a márkadokumentumomba:
+MI LENNE, HA: …
+5 JELZŐ: …
+A 3 LEGFONTOSABB AZ ÚJ IPARÁGBAN: … (mindegyik mellé egy rövid indoklás)
+AMI HIÁNYZIK AZ ELEMZÉSEMBŐL: …</pre></div></div></div><dialog class="tipdlg" id="tip-hu-1-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Az 1. alkalom márkaelemzése</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: azt találjuk ki, milyen lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Ehhez először értenem kell, mitől az a <mark>[márka]</mark>, ami. Webes kereséssel elemezd a márkát: értékek, személyiség (ha ember lenne, milyen lenne), hangnem, vizuális kódok (színek, formák, betűk), 3 ikonikus kampány. Csak forrással alátámasztott dolgot írj, és ha valamiben nem vagy biztos, jelezd.
 
-Ha készen állsz, mutatkozz be egy mondatban, és kezdem a kérdéseket.</pre></div></div>
+A válaszod legyen rövid. Csak ezt a blokkot add vissza:
+ÉRTÉKEK: …
+SZEMÉLYISÉG: … (5 jelző)
+HANGNEM: …
+VIZUÁLIS KÓDOK: …
+IKONIKUS KAMPÁNYOK: … (3, forráslinkkel)
+BIZONYTALAN: …</pre></div></dialog>
 </section>
 <section class="slide" data-l="hu">
-<p class="kicker"><span class="lt">2. alkalom</span>Tippek és tanácsok · 1/3</p><h2>A név</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Adj kritériumot</h3><p>Mondd meg, milyen legyen a név: hossz, hangzás, hangulat, és működjön-e magyarul és angolul is. Kritérium nélkül átlagos neveket kapsz.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Kérj többet, tarts meg kevesebbet</h3><p>A 20 névből húzz ki 15-öt, és a maradék ötre kérj új változatokat. A második kör sokszor jobb, mint az első.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Mondd ki hangosan</h3><p>Ami leírva jó, kimondva lehet nehéz vagy félreérthető. Mondd ki, írd le, képzeld el egy plakáton.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Szabad-e még</h3><p>Webes kereséssel nézd meg, használja-e már valaki a kategóriában. Érdemes megnézni a domaint és a közösségi fióknevet is.</p></div></div>
+<p class="kicker"><span class="lt">2. alkalom</span>Elmélet</p><h2 class="wide">Pozicionálás: miben vagy más?</h2><p class="lead">Egy mondat arról, kinek szólsz, mi vagy, és miben különbözöl a versenytársaidtól.</p><div class="formula"><mark>[Kinek]</mark>, akik <mark>[mire vágynak]</mark>, a <mark>[márka]</mark> az a <mark>[kategória]</mark>, amely <mark>[miben más]</mark>, mert <mark>[miért hihető]</mark>.</div><div class="thg"><div class="card"><h3>Próba</h3><p>Ha a mondatba egy versenytárs nevét írod, és ugyanúgy igaz, még nem pozicionálás.</p></div></div><div class="ex"><small>Kitalált példa · Mi lenne, ha a Rubik-kocka cipőmárka lenne?</small><p>Városi fiataloknak, akik nem akarnak ugyanabban járni, mint mindenki, a Rubik az a sneakermárka, amelynek a színeit percek alatt átcsavarhatod, mert minden panelje cserélhető.</p></div>
 </section>
 <section class="slide" data-l="hu">
-<p class="kicker"><span class="lt">2. alkalom</span>Tippek és tanácsok · 2/3</p><h2>A márkaplatform</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Az ígéret egy mondat</h3><p>Olyan mondat, amit a vevő elmondana a barátjának. Ha nem fér egy mondatba, még nincs kész.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Töröld az üres szavakat</h3><p>Az AI szívesen ír olyat, hogy innovatív, fenntartható, prémium. Ha egy érték bármelyik márkára igaz lehetne, cseréld le.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>A hangnemhez kérj példát</h3><p>Kérd ugyanazt az üzenetet három különböző hangon, és válaszd ki, melyik a tiéd. A választott példa a briefbe is menjen bele.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Vezesd vissza a kiinduló márkára</h3><p>Minden érték mellé írd oda, mi jön belőle a kiinduló márkából. Így látszik, hogy az új márka tényleg a kiinduló márkából nő ki.</p></div></div>
+<p class="kicker"><span class="lt">2. alkalom</span>2/9 kis feladat · kb. 15 perc</p><h2 class="wide">Pozicionálás</h2><div class="tk"><div><p class="what">Töltsd ki a képletet a saját márkáddal. Kérj 3 változatot, és a versenytárstáblázatod alapján válaszd ki, melyik különbözik a legjobban.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>Az 1. feladat eredménye: mi lenne, ha… és a 3 jelző</span><button type="button" class="tipbtn" data-tip="tip-hu-2-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>Az 1. alkalom versenytárstáblázata</span><button type="button" class="tipbtn" data-tip="tip-hu-2-1" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 2. Pozicionálás: a választott mondat</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>A márkadokumentumom eddig: <mark>[1. feladat eredménye]</mark>. A versenytárstáblázatom az első óráról: <mark>[bemásolva]</mark>. A márkám: <mark>[márka]</mark> mint <mark>[új kategória]</mark>, órai játékban, a neve és a logója marad. Írj 3 különböző pozicionáló mondatot ezzel a képlettel: „Kinek…, akik…, a márka az a…, amely…, mert…”. Ha valamelyik bármelyik versenytársra igaz lehetne, jelezd.
+
+A válaszod legyen rövid. Csak ezt a blokkot add vissza:
+1. MONDAT: …
+   LEGJOBBAN ETTŐL A VERSENYTÁRSTÓL KÜLÖNBÖZIK: …
+2. MONDAT: …
+   LEGJOBBAN ETTŐL A VERSENYTÁRSTÓL KÜLÖNBÖZIK: …
+3. MONDAT: …
+   LEGJOBBAN ETTŐL A VERSENYTÁRSTÓL KÜLÖNBÖZIK: …</pre></div></div></div><dialog class="tipdlg" id="tip-hu-2-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Az 1. feladat eredménye: mi lenne, ha… és a 3 jelző</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Webes kereséssel nézd meg a márkát, és foglald össze 5 jelzőben, milyen lenne, ha ember lenne. Utána mondd meg, melyik 3 a legfontosabb az új iparágban.
+
+A válaszod legyen rövid. Csak ezt a blokkot add vissza:
+MI LENNE, HA: …
+5 JELZŐ: …
+A 3 LEGFONTOSABB AZ ÚJ IPARÁGBAN: … (mindegyik mellé egy rövid indoklás)</pre></div></dialog><dialog class="tipdlg" id="tip-hu-2-1"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Az 1. alkalom versenytárstáblázata</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban azt találjuk ki, milyen lenne, ha a <mark>[márka]</mark> <mark>[új kategória]</mark> lenne. Webes kereséssel keress 5 valódi <mark>[új kategória]</mark> márkát a <mark>[ország vagy régió]</mark> piacán. Csak létező cégeket írj, és ahol bizonytalan vagy, jelöld.
+
+Csak ezt a táblázatot add vissza:
+MÁRKA | AJÁNLAT | ÁRSZINT | HANGNEM | FŐ CSATORNÁK | FORRÁSLINK</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>Elmélet</p><h2 class="wide">Ígéret és értékek</h2><p class="lead">Az ígéret azt mondja meg, mit kap a vevő. Az értékek azt, mit képvisel a márka, és mi alapján dönt.</p><div class="thg"><div class="card"><h3>Ígéret</h3><p>Egy mondat, amit a vevő a barátjának is elmondana.</p></div><div class="card alt"><h3>Értékek</h3><p>Három elég. Mindegyikhez tartozzon egy mondat arról, mit jelent a gyakorlatban.</p></div><div class="card"><h3>Próba</h3><p>Ha egy érték bármelyik márkára igaz lehetne (innovatív, minőségi, fenntartható), cseréld le.</p></div></div><div class="ex"><small>Kitalált példa · Mi lenne, ha a Rubik-kocka cipőmárka lenne?</small><p>Ígéret: minden nap más cipő. Értékek: játék, alkotás, kitartás.</p></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>3/9 kis feladat · kb. 15 perc</p><h2 class="wide">Ígéret és 3 érték</h2><div class="tk"><div><p class="what">Írd meg az ígéretet egy mondatban, és a 3 értéket, mindegyiket egy mondattal arról, mit jelent a gyakorlatban.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>A 2. feladat eredménye: a pozicionáló mondat</span><button type="button" class="tipbtn" data-tip="tip-hu-3-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 3. Ígéret és 3 érték: amit kiválasztottál</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>A márkám: <mark>[márka]</mark> mint <mark>[új kategória]</mark>, órai játékban. A pozicionálása: <mark>[2. feladat eredménye]</mark>. Javasolj 5 lehetséges ígéretet, mindegyik egy rövid mondat, amit egy vevő a barátjának is elmondana. Utána javasolj 6 értéket: mit jelent a gyakorlatban, és hol látszik ma a valódi <mark>[márka]</mark> márkán. Húzd ki azokat, amelyek bármelyik márkára igazak lehetnének. A végső ígéretet és a 3 értéket én választom ki.
+
+A válaszod legyen rövid. Csak ezt a blokkot add vissza:
+ÍGÉRETEK:
+1. …
+2. …
+3. …
+4. …
+5. …
+ÉRTÉKEK:
+1. … · a gyakorlatban: … · ma a márkán: …
+(és így tovább a 6. értékig)</pre></div></div></div><dialog class="tipdlg" id="tip-hu-3-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: A 2. feladat eredménye: a pozicionáló mondat</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Webes kereséssel nézz meg 3 valódi <mark>[új kategória]</mark> versenytársat, és írj egy pozicionáló mondatot ezzel a képlettel: „Kinek…, akik…, a márka az a…, amely…, mert…”. A mondat ne lehessen igaz egyik versenytársra sem.
+
+Csak ezt a blokkot add vissza:
+VERSENYTÁRSAK: … (3, forráslinkkel)
+POZICIONÁLÁS: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>Elmélet</p><h2 class="wide">Ha a márka ember lenne</h2><p class="lead">A személyiség az, amilyen a márka. A hangnem az, ahogyan beszél.</p><div class="thg"><div class="card"><h3>Személyiség</h3><p>3 jelző, amit egy emberre is mondanál.</p></div><div class="card alt"><h3>Hangnem: négy skála</h3><p>hivatalos ↔ laza · komoly ↔ játékos · visszafogott ↔ harsány · egyszerű ↔ szakmai</p></div><div class="card"><h3>Próba</h3><p>Írd meg ugyanazt az üzenetet három hangon. Amelyikre azt mondod, „ez ő”, az a tiéd.</p></div></div><div class="ex"><small>Kitalált példa · Mi lenne, ha a Rubik-kocka cipőmárka lenne?</small><p>Rubik: okos, játékos, magabiztos. Laza és játékos, rövid mondatokkal. „Hat oldal. Egy cipő. Te döntöd el.”</p></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>4/9 kis feladat · kb. 15 perc</p><h2 class="wide">Személyiség és hangnem</h2><div class="tk"><div><p class="what">Írj 3 jelzőt a márka személyiségére, döntsd el, hol áll a négy skálán, és kérd ugyanazt az üzenetet háromféle hangon. Válaszd ki a tiédet.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>Az 1. feladat 3 jelzője</span><button type="button" class="tipbtn" data-tip="tip-hu-4-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>A 3. feladat eredménye: ígéret és 3 érték</span><button type="button" class="tipbtn" data-tip="tip-hu-4-1" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 4. Személyiség (3 jelző), hangnem és egy példamondat</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>A márkám: <mark>[márka]</mark> mint <mark>[új kategória]</mark>, órai játékban. A 3 legfontosabb jelzője: <mark>[1. feladat eredménye]</mark>. Az ígérete és az értékei: <mark>[3. feladat eredménye]</mark>. Írd meg ugyanazt a rövid üzenetet, például egy új termék bejelentését, háromféle hangon: lazán és játékosan; magabiztosan és egyszerűen; visszafogottan és szakmaian. Mindegyik legfeljebb 2 mondat. Utána mondd meg, melyik illik leginkább a <mark>[márka]</mark> személyiségéhez, de a döntés az enyém.
+
+Csak ezt a blokkot add vissza:
+A) LAZA ÉS JÁTÉKOS: …
+B) MAGABIZTOS ÉS EGYSZERŰ: …
+C) VISSZAFOGOTT ÉS SZAKMAI: …
+JAVASLAT: … (egy mondat, miért)</pre></div></div></div><dialog class="tipdlg" id="tip-hu-4-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Az 1. feladat 3 jelzője</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Webes kereséssel nézd meg a márkát, és foglald össze 5 jelzőben, milyen lenne, ha ember lenne. Utána mondd meg, melyik 3 a legfontosabb az új iparágban.
+
+A válaszod legyen rövid. Csak ezt a blokkot add vissza:
+MI LENNE, HA: …
+5 JELZŐ: …
+A 3 LEGFONTOSABB AZ ÚJ IPARÁGBAN: … (mindegyik mellé egy rövid indoklás)</pre></div></dialog><dialog class="tipdlg" id="tip-hu-4-1"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: A 3. feladat eredménye: ígéret és 3 érték</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Javasolj egy ígéretet (egy rövid mondat, amit egy vevő a barátjának is elmondana) és 3 értéket, amelyek a valódi <mark>[márka]</mark> márkán is látszanak. Ne írj olyat, ami bármelyik márkára igaz lehetne.
+
+Csak ezt a blokkot add vissza:
+ÍGÉRET: …
+ÉRTÉK 1: … · a gyakorlatban: …
+ÉRTÉK 2: … · a gyakorlatban: …
+ÉRTÉK 3: … · a gyakorlatban: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>Elmélet</p><h2 class="wide">Célcsoport és persona</h2><p class="lead">A célcsoport egy csoport leírása. A persona egy kitalált, de hihető ember ebből a csoportból. Mellette könnyebb dönteni: tetszene ez neki?</p><div class="thg"><div class="card"><h3>Célcsoport</h3><p>Kik ők, és mi közös bennük?</p></div><div class="card alt"><h3>Persona-kártya</h3><p>Név, kor, foglalkozás, lakóhely, egy átlagos nap, mit akar elérni, mitől tart, hogyan vásárol.</p></div><div class="card"><h3>Interjú</h3><p>Az AI eljátssza a personát. Gyors, de hajlamos mindent szeretni, ezért kérd, hogy legyen kritikus, és jelöld a kitalált válaszokat.</p></div></div><div class="ex"><small>Kitalált példa · Mi lenne, ha a Rubik-kocka cipőmárka lenne?</small><p>Célcsoport: 18-30 éves városi fiatalok, akik a ruhájukkal is kifejezik magukat. Persona: Dóri, 24 éves grafikushallgató Budapesten. Sokat gyalogol, szereti egyedivé alakítani a tárgyait, és tart attól, hogy egy feltűnő cipő fél év múlva ciki lesz.</p></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>5/9 kis feladat · kb. 15 perc</p><h2 class="wide">Célcsoport és az első persona</h2><div class="tk"><div><p class="what">Írd le a célcsoportot egy mondatban, és készíts belőle egy personát a kártya mezőivel.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>A 2. feladat eredménye: a pozicionáló mondat</span><button type="button" class="tipbtn" data-tip="tip-hu-5-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 5. Célcsoport és az 1. persona</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>A márkám: <mark>[márka]</mark> mint <mark>[új kategória]</mark>, órai játékban. A pozicionálása: <mark>[2. feladat eredménye]</mark>. Írd le egy mondatban a legfontosabb célcsoportját, aztán készíts belőle egy hihető personát. Ne legyen tökéletes vásárló, legyenek kétségei is.
+
+Csak ezt a blokkot add vissza:
+CÉLCSOPORT: … (egy mondat)
+NÉV: …
+KOR: …
+FOGLALKOZÁS: …
+LAKÓHELY: …
+EGY ÁTLAGOS NAPJA: … (2 mondat)
+MIT SZERETNE ELÉRNI: …
+MITŐL TART: …
+HOGYAN ÉS HOL VÁSÁROL: …</pre></div></div></div><dialog class="tipdlg" id="tip-hu-5-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: A 2. feladat eredménye: a pozicionáló mondat</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Webes kereséssel nézz meg 3 valódi <mark>[új kategória]</mark> versenytársat, és írj egy pozicionáló mondatot ezzel a képlettel: „Kinek…, akik…, a márka az a…, amely…, mert…”. A mondat ne lehessen igaz egyik versenytársra sem.
+
+Csak ezt a blokkot add vissza:
+VERSENYTÁRSAK: … (3, forráslinkkel)
+POZICIONÁLÁS: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>6/9 kis feladat · kb. 20 perc</p><h2 class="wide">Interjú a personával</h2><div class="tk"><div><p class="what">Kérdezd ki a personát 5 kérdéssel, szerepjátékban. Jelöld meg a válaszokat, amelyek szerinted kitaláltak, vagy túl szépen illenek a márkádhoz.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>Az 5. feladat personája</span><button type="button" class="tipbtn" data-tip="tip-hu-6-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>A 2-4. feladat eredménye röviden</span><button type="button" class="tipbtn" data-tip="tip-hu-6-1" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><div class="qsw"><small>Jó kérdések</small><ul class="qs"><li>Mikor vettél utoljára <mark>[termék]</mark>, és miért azt?</li><li>Mi zavar abban, amit most használsz?</li><li>Mi tartana vissza attól, hogy kipróbáld?</li><li>Mennyit adnál érte, és miért?</li><li>Kinek mesélnéd el, és mit mondanál?</li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 6. Az interjú: 5 kérdés és válasz, jelölve</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>Szeretnék veled egy szerepjátékot játszani, hogy jobban megértsem a célcsoportomat. Egy órai játékban azt találom ki, milyen lenne, ha a <mark>[márka]</mark> a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Röviden erről szól: <mark>[2-4. feladat eredménye röviden]</mark>.
+
+Kérlek, mostantól te legyél ez a persona: <mark>[5. feladat personája]</mark>. Én egy piackutató vagyok, és kérdezni foglak. Válaszolj úgy, ahogy ő válaszolna: a saját szavaival, őszintén, akár kritikusan is, és ne próbálj a kedvemben járni. Ha valamit ő nem tudna, mondd, hogy nem tudod. Rövid, beszélt nyelvű válaszokat kérek.
+
+Ha azt írom, hogy VÉGE, lépj ki a szerepből, és csak ezt a blokkot add vissza:
+KÉRDÉS 1: … · VÁLASZ: … (egy mondatban)
+(és így tovább mind az 5 kérdésre)
+AMI MEGLEPŐ VOLT: …
+
+Ha készen állsz, mutatkozz be egy mondatban, és kezdem a kérdéseket.</pre></div></div></div><dialog class="tipdlg" id="tip-hu-6-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Az 5. feladat personája</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Írd le egy mondatban a legfontosabb célcsoportját, és készíts belőle egy hihető personát, kétségekkel együtt.
+
+Csak ezt a blokkot add vissza:
+CÉLCSOPORT: …
+NÉV: …
+KOR: …
+FOGLALKOZÁS: …
+LAKÓHELY: …
+EGY ÁTLAGOS NAPJA: … (2 mondat)
+MIT SZERETNE ELÉRNI: …
+MITŐL TART: …
+HOGYAN ÉS HOL VÁSÁROL: …</pre></div></dialog><dialog class="tipdlg" id="tip-hu-6-1"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: A 2-4. feladat eredménye röviden</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Foglald össze 3-4 mondatban, mi lenne ez a márka: kinek szól, miben más, mit ígér, és milyen hangon beszél.
+
+Csak ezt a blokkot add vissza:
+MÁRKAPLATFORM RÖVIDEN: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>7/9 kis feladat · kb. 20 perc</p><h2 class="wide">A második persona</h2><div class="tk"><div><p class="what">Készíts egy második personát, aki más, mint az első: más élethelyzet, más kétség. Utána kérdezd ki 3-5 kérdéssel, a 6. feladat promptjával.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>Az 5. feladat personája</span><button type="button" class="tipbtn" data-tip="tip-hu-7-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>Interjúprompt a második personához</span><button type="button" class="tipbtn" data-tip="tip-hu-7-1" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 7. A 2. persona és a rövid interjúja</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>Az első personám: <mark>[5. feladat personája]</mark>. Készíts egy második personát ugyanabból vagy egy másodlagos célcsoportból, aki tényleg más: más élethelyzetben van, más okból vásárolna, és más miatt hezitálna.
+
+Csak ezt a blokkot add vissza, ugyanazokkal a sorokkal, mint az első personánál:
+NÉV: …
+KOR: …
+FOGLALKOZÁS: …
+LAKÓHELY: …
+EGY ÁTLAGOS NAPJA: … (2 mondat)
+MIT SZERETNE ELÉRNI: …
+MITŐL TART: …
+HOGYAN ÉS HOL VÁSÁROL: …
+MIBEN MÁS, MINT AZ ELSŐ: …
+HOGYAN SZÓLJUNK HOZZÁ MÁSKÉPP: … (egy mondat)</pre></div></div></div><dialog class="tipdlg" id="tip-hu-7-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Az 5. feladat personája</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Írd le egy mondatban a legfontosabb célcsoportját, és készíts belőle egy hihető personát, kétségekkel együtt.
+
+Csak ezt a blokkot add vissza:
+CÉLCSOPORT: …
+NÉV: …
+KOR: …
+FOGLALKOZÁS: …
+LAKÓHELY: …
+EGY ÁTLAGOS NAPJA: … (2 mondat)
+MIT SZERETNE ELÉRNI: …
+MITŐL TART: …
+HOGYAN ÉS HOL VÁSÁROL: …</pre></div></dialog><dialog class="tipdlg" id="tip-hu-7-1"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Interjúprompt a második personához</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Szeretnék veled egy szerepjátékot játszani, hogy jobban megértsem a célcsoportomat. Egy órai játékban azt találom ki, milyen lenne, ha a <mark>[márka]</mark> a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Röviden erről szól: <mark>[2-4. feladat eredménye röviden]</mark>.
+
+Kérlek, mostantól te legyél ez a persona: <mark>[a második persona]</mark>. Én egy piackutató vagyok, és kérdezni foglak. Válaszolj úgy, ahogy ő válaszolna: a saját szavaival, őszintén, akár kritikusan is, és ne próbálj a kedvemben járni. Ha valamit ő nem tudna, mondd, hogy nem tudod. Rövid, beszélt nyelvű válaszokat kérek.
+
+Ha azt írom, hogy VÉGE, lépj ki a szerepből, és csak ezt a blokkot add vissza:
+KÉRDÉS 1: … · VÁLASZ: … (egy mondatban)
+(és így tovább mind az 5 kérdésre)
+AMI MEGLEPŐ VOLT: …
+
+Ha készen állsz, mutatkozz be egy mondatban, és kezdem a kérdéseket.</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>Elmélet</p><h2 class="wide">Árazás · opcionális</h2><p class="lead">Csak akkor foglalkozz vele, ha a márkádnál az ár a pozicionálás része.</p><div class="thg"><div class="card"><h3>Prémium</h3><p>Drágább, mint a többség. Ezt meg kell tudni indokolni.</p></div><div class="card alt"><h3>Közép</h3><p>A megszokott árszint. Más miatt választanak.</p></div><div class="card"><h3>Belépő</h3><p>Olcsóbb a többségnél. Az ár maga az érv.</p></div><div class="card alt"><h3>Mihez méred?</h3><p>A versenytársak áraihoz, ahhoz, amennyit a vevő szerint ér, vagy a költséghez és az árréshez.</p></div></div><div class="ex"><small>Kitalált példa · Mi lenne, ha a Rubik-kocka cipőmárka lenne?</small><p>Rubik: prémium közép, mert a cserélhető panel többet ad egy sima sneakernél.</p></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>8/9 kis feladat · kb. 15 perc</p><h2 class="wide">Árazás · opcionális</h2><div class="tk"><div><p class="what">Gyűjts valódi árakat 3-5 versenytárstól, és döntsd el, hol áll a márkád: prémium, közép vagy belépő. Indokold egy mondatban.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>A 2. feladat eredménye: a pozicionáló mondat</span><button type="button" class="tipbtn" data-tip="tip-hu-8-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>Az 1. alkalom versenytárstáblázata</span><button type="button" class="tipbtn" data-tip="tip-hu-8-1" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Eredmény, a márkadokumentumodba:</b> 8. Árszint · opcionális</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>A márkám: <mark>[márka]</mark> mint <mark>[új kategória]</mark>, órai játékban. A pozicionálása: <mark>[2. feladat eredménye]</mark>. Webes kereséssel gyűjts valódi árakat 5 <mark>[új kategória]</mark> márkától a <mark>[ország vagy régió]</mark> piacon. Csak olyan árat írj, amit megtaláltál, a becslést jelöld. Utána javasolj árszintet: prémium, közép vagy belépő.
+
+Csak ezt a blokkot add vissza:
+ÁRAK: márka · termék · ár · forráslink (soronként egy)
+JAVASOLT ÁRSZINT: …
+INDOKLÁS: … (2 mondat)</pre></div></div></div><dialog class="tipdlg" id="tip-hu-8-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: A 2. feladat eredménye: a pozicionáló mondat</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Webes kereséssel nézz meg 3 valódi <mark>[új kategória]</mark> versenytársat, és írj egy pozicionáló mondatot ezzel a képlettel: „Kinek…, akik…, a márka az a…, amely…, mert…”. A mondat ne lehessen igaz egyik versenytársra sem.
+
+Csak ezt a blokkot add vissza:
+VERSENYTÁRSAK: … (3, forráslinkkel)
+POZICIONÁLÁS: …</pre></div></dialog><dialog class="tipdlg" id="tip-hu-8-1"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: Az 1. alkalom versenytárstáblázata</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban azt találjuk ki, milyen lenne, ha a <mark>[márka]</mark> <mark>[új kategória]</mark> lenne. Webes kereséssel keress 5 valódi <mark>[új kategória]</mark> márkát a <mark>[ország vagy régió]</mark> piacán. Csak létező cégeket írj, és ahol bizonytalan vagy, jelöld.
+
+Csak ezt a táblázatot add vissza:
+MÁRKA | AJÁNLAT | ÁRSZINT | HANGNEM | FŐ CSATORNÁK | FORRÁSLINK</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>9/9 kis feladat · kb. 15 perc</p><h2 class="wide">A márkabrief összerakása</h2><div class="tk"><div><p class="what">Rakd össze egy oldalba mindazt, ami ma elkészült. Az AI csak rendezzen, ne írjon hozzá újat.</p><div class="need"><b>Ehhez kell:</b><ul class="needl"><li><span>A márkadokumentumod: az 1-8. feladat eredménye</span><button type="button" class="tipbtn" data-tip="tip-hu-9-0" aria-label="Kattints ide, ha nincs meg" title="Kattints ide, ha nincs meg"><span>TIPP</span>Ha nincs meg<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><div class="qsw"><small>A márkabrief részei</small><ul class="qs bl"><li>A „Mi lenne, ha…” mondat</li><li>Célcsoport</li><li>2 persona röviden</li><li>Pozicionálás</li><li>Ígéret</li><li>3 érték</li><li>Személyiség és hangnem, példamondattal</li><li>Árszint, ha van</li></ul></div><p class="res"><b>Eredmény:</b> A mai eredménytermék: a márkabrief. Ezzel jössz a 3. alkalomra.</p></div><div><div class="prompt"><div class="ph"><span>Promptjavaslat, ha nincs ötleted</span><button type="button" class="copy">Másolás</button></div><pre>Itt a márkadokumentumom: <mark>[az 1-8. feladat eredménye bemásolva]</mark>. Rakd össze belőle egy egyoldalas márkabriefet. Ne írj hozzá új tartalmat, csak rendezd és egységesítsd.
+
+Pontosan ezekkel a címekkel add vissza:
+MI LENNE, HA: …
+CÉLCSOPORT: …
+PERSONÁK: … (kettő, 2-2 mondatban)
+POZICIONÁLÁS: …
+ÍGÉRET: …
+ÉRTÉKEK: …
+SZEMÉLYISÉG ÉS HANGNEM: … (példamondattal)
+ÁRSZINT: … (ha van)
+HIÁNYZIK VAGY ELLENTMOND: …</pre></div></div></div><dialog class="tipdlg" id="tip-hu-9-0"><div class="tdh"><span class="tl">TIPP</span><h3>Ha nincs meg: A márkadokumentumod: az 1-8. feladat eredménye</h3><button type="button" class="x" data-close aria-label="Bezár">×</button></div><p class="tdp">Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Másolás</button></div><pre>Egy órai játékban a <mark>[márka]</mark> márkával dolgozom: mi lenne, ha a nevével és a logójával együtt <mark>[új kategória]</mark> lenne. Ami eddig megvan: <mark>[amit eddig elkészítettél, ha van]</mark>. Készíts ebből egy egyoldalas márkabrief-vázlatot. Ahol nincs anyagom, ott tegyél javaslatot, és jelöld a JAVASLAT szóval, hogy lássam, mit kell még átnéznem.
+
+Pontosan ezekkel a címekkel add vissza:
+MI LENNE, HA: …
+CÉLCSOPORT: …
+PERSONÁK: …
+POZICIONÁLÁS: …
+ÍGÉRET: …
+ÉRTÉKEK: …
+SZEMÉLYISÉG ÉS HANGNEM: …
+ÁRSZINT: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>Tippek és tanácsok · 1/3</p><h2>Mi marad, mi új</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Ami marad</h3><p>A név, a logó, a személyiség és az értékek. Ezekhez nem nyúlsz, ezekből dolgozol.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Ami új</h3><p>A termék vagy szolgáltatás, a célcsoport, az ár és a kampány. Itt van minden döntés.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Mit tenne a márka?</h3><p>Minden döntésnél kérdezd meg: ha az IKEA tényleg légitársaság lenne, ezt csinálná?</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Nem a logón múlik</h3><p>A név és a logó adott. Az számít, hogy a márka viselkedése átjön-e az új iparágban.</p></div></div>
+</section>
+<section class="slide" data-l="hu">
+<p class="kicker"><span class="lt">2. alkalom</span>Tippek és tanácsok · 2/3</p><h2>A márkaplatform</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Az ígéret egy mondat</h3><p>Olyan mondat, amit a vevő elmondana a barátjának. Ha nem fér egy mondatba, még nincs kész.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Töröld az üres szavakat</h3><p>Az AI szívesen ír olyat, hogy innovatív, fenntartható, prémium. Ha egy érték bármelyik márkára igaz lehetne, cseréld le.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>A hangnemhez kérj példát</h3><p>Kérd ugyanazt az üzenetet három különböző hangon, és válaszd ki, melyik a tiéd. A választott példa a briefbe is menjen bele.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Vezesd vissza a márkára</h3><p>Minden érték mellé írd oda, hol látszik ma a valódi márkán. Így hihető, hogy az új iparágban is ugyanaz a márka.</p></div></div>
 </section>
 <section class="slide" data-l="hu">
 <p class="kicker"><span class="lt">2. alkalom</span>Tippek és tanácsok · 3/3</p><h2>Persona és árazás</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Adj életet a personának</h3><p>Munka, napirend, pénz, kétségek, szokások. Minél konkrétabb a leírás, annál kevésbé általános a válasza.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Ne a kedvedben járjon</h3><p>Az AI-persona hajlamos mindent jónak találni. Kérd meg, hogy legyen kritikus, és kérdezz rá arra is, mi tartaná vissza a vásárlástól.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Jelöld a kitalált választ</h3><p>Gyanús, ami túl szépen illik a márkádhoz, vagy amit egy valódi ember nem tudhatna. Ezeket jelöld meg a briefben.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Az árazás opcionális</h3><p>Ha fontos a márkádnál, valódi versenytársárakból indulj, és az ár legyen összhangban a pozicionálással. Ha nem fontos, hagyd ki.</p></div></div>
 </section>
 <section class="slide" data-l="hu">
-<p class="kicker"><span class="lt">2. alkalom</span>Zárás</p><h2>Mára elkészül: márkabrief (név, platform, personák).</h2><hr class="rule"><p class="lead">Jövő csütörtökön, 2026. november 19-én: Arculat (ID), kulcsvizuálok és bannerek.</p><p class="muted">Előtte szerdán, 2026. november 18-án: Kelly: Képszerkesztés AI-jal · Kelly: Hang- és videószerkesztés AI-jal</p>
+<p class="kicker"><span class="lt">2. alkalom</span>Zárás</p><h2>Mára elkészül: márkabrief (platform, personák).</h2><hr class="rule"><p class="lead">Jövő csütörtökön, 2026. november 19-én: Arculat (ID), kulcsvizuálok és bannerek.</p><p class="muted">Előtte szerdán, 2026. november 18-án: Kelly: Képszerkesztés AI-jal · Kelly: Hang- és videószerkesztés AI-jal</p>
 </section>
 <section class="slide" data-l="en">
 <p class="kicker">AI in Marketing · practice</p><h1 class="cover">Brand platform, target audience and pricing</h1><p class="lead">Session 2 · 12 November 2026</p>
 </section>
 <section class="slide" data-l="en">
-<p class="kicker"><span class="lt">Session 2</span>Today's task</p><h2 class="wide">Build the foundations of the new brand.</h2><table class="task"><tr><th></th><th>Sub-task</th><th>Output</th><th>Where it goes in the deck</th></tr><tr><td class="no">1</td><td><b>Name</b><span>20 name ideas with AI; you choose one and check with web search whether anyone in the category already uses it.</span></td><td class="out">The brand name, checked</td><td class="dk">Block 1 · Introduction (title slide)</td></tr><tr><td class="no">2</td><td><b>Brand platform</b><span>Positioning, promise, 3 values, personality, tone of voice.</span></td><td class="out">Brand platform</td><td class="dk">Block 1 (solution, value proposition) · Block 2 (personality, tone)</td></tr><tr><td class="no">3</td><td><b>Personas</b><span>At least 2 personas with AI. Interview each with 5 questions and mark what you think is made up.</span></td><td class="out">2 personas, with interviews</td><td class="dk">Block 2 · Strategy (target audience)</td></tr><tr><td class="no">4</td><td><b>Pricing · optional</b><span>If it matters for your brand, sketch a pricing direction and compare it with the competitors. If not, skip it.</span></td><td class="out">Pricing direction</td><td class="dk">Block 2 · Strategy</td></tr></table><p class="deliv"><b>Done by today:</b> Brand brief (name, platform, personas).</p><p class="note">What is on the slide is a suggestion in case you do not know how to start. What counts is the output.</p>
+<p class="kicker"><span class="lt">Session 2</span>Recap</p><h2 class="wide">Where are we?</h2><div class="recap"><div><h3 class="lbl">Last week, 5 November 2026</h3><ul class="done"><li>You chose a brand and a new industry for it. Its name and logo stay.</li><li>You got to know the source brand: values, personality, tone of voice, visual codes, campaigns.</li><li>You looked at the 5 most important competitors in the new category.</li><li>You wrote down what you carry over from the source brand and what you do not.</li></ul><p class="today">Today we build on this: your brand gets a promise, a voice and an audience in its new industry.</p></div><div><h3 class="lbl">Who chose what</h3><div class="who"><div><span class="nm">Alam Ratemul</span><span class="gm"><b>Apple</b> <em>were a</em> <b class="c">hotel chain</b><em>?</em></span></div><div><span class="nm">Awan Malik Danish Naveed</span><span class="gm"><b>Tesla</b> <em>were a</em> <b class="c">fashion brand</b><em>?</em></span></div><div><span class="nm">Ercetin Onur</span><span class="gm"><b>Duolingo</b> <em>were a</em> <b class="c">travel agency</b><em>?</em></span></div><div><span class="nm">Fahim Md Fayaz Yasin</span><span class="gm"><b>Nike</b> <em>were a</em> <b class="c">café chain</b><em>?</em></span></div><div><span class="nm">Hasan Md Mehedi</span><span class="gm"><b>Coca-Cola</b> <em>were a</em> <b class="c">car</b><em>?</em></span></div><div><span class="nm">Hossain Md Mamun</span><span class="gm"><b>IKEA</b> <em>were an</em> <b class="c">airline</b><em>?</em></span></div><div><span class="nm">Odikanuom Pascal Izunna</span><span class="gm"><b>Ferrari</b> <em>were</em> <b class="c">payment</b><em>?</em></span></div><div><span class="nm">Tran Hoai Truc Quynh</span><span class="gm"><b>Spotify</b> <em>were a</em> <b class="c">restaurant chain</b><em>?</em></span></div></div></div></div><p class="note">No brand chosen yet: <span class="nmh">Akter Rokeya</span>, <span class="nmh">Kishan Alif Nur</span>, <span class="nmh">Vo Thi Diem Huong</span>. Choose at the start of today from the free brands: LEGO, Red Bull, Netflix, Patagonia, Harley-Davidson, Disney, McDonald's.</p>
 </section>
 <section class="slide" data-l="en">
-<p class="kicker"><span class="lt">Session 2</span>If you do not know how to start</p><h2>Prompt suggestion: Persona interview</h2><p class="tools"><b>Tools for this:</b> For name ideas and the brand platform ChatGPT or Claude (many rounds; ChatGPT's unlimited text chat comes in handy here), for checking the name web search in either; for persona role-play any assistant, Grok, Gemini or Le Chat too.</p><div class="prompts"><div class="prompt"><div class="ph"><span>Structured</span><button type="button" class="copy">Copy</button></div><pre>Role: You are <mark>[persona's name, age, occupation, habits]</mark>.
-Context: I am asking you about a new <mark>[category]</mark> brand, described as: <mark>[brand platform]</mark>.
-Task: answer my questions the way this customer would.
-Parameters: natural, spoken language, at most 4 sentences per answer.
-Criteria: if there is something you could not know, say you do not know.</pre></div><div class="prompt"><div class="ph"><span>In free text, the way you would say it to a colleague</span><button type="button" class="copy">Copy</button></div><pre>I would like to play a role-play with you to understand my target audience better. I have a new <mark>[new category]</mark> brand, <mark>[brand name]</mark>, which starts from the spirit of <mark>[source brand]</mark>. In short, it is about this: <mark>[brand platform in 3-4 sentences]</mark>.
+<p class="kicker"><span class="lt">Session 2</span>What is the task?</p><h2 class="wide">IKEA stays IKEA. It just becomes an airline.</h2><p class="lead">We work with the real brand, name and logo included. We work out what it would be like in an imagined new industry.</p><div class="kn"><div class="card"><h3>Stays</h3><ul class="qs bl"><li>The name</li><li>The logo</li><li>The personality</li><li>The values</li><li>The visual codes</li></ul></div><div class="card"><h3>New</h3><ul class="qs bl"><li>The industry</li><li>The product or service</li><li>The target audience</li><li>The price</li><li>The campaign</li></ul></div></div><p class="note">The question for every decision: if your brand really were in this industry, would it do this? A classroom game: do not publish what you make or present it as real.</p>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Today's plan</p><h2 class="wide">Today we go in small steps</h2><p class="lead">We break today's topic, the brand platform, the target audience and pricing, into small tasks. Each builds on the one before, and at the end they add up to the brand brief.</p><div class="build"><span class="pc">Starting point</span><span class="op" aria-hidden="true">+</span><span class="pc">Positioning</span><span class="op" aria-hidden="true">+</span><span class="pc">Promise and values</span><span class="op" aria-hidden="true">+</span><span class="pc">Personality and tone</span><span class="op" aria-hidden="true">+</span><span class="pc">Audience and persona</span><span class="op" aria-hidden="true">+</span><span class="pc">Pricing · optional</span><span class="op" aria-hidden="true">=</span><span class="pc sum">Brand brief</span></div><h3 class="lbl2">Same rhythm for every topic</h3><div class="rhythm"><div class="card"><span class="n">1</span><h3>Short theory</h3><p>What it is and what it is for, with a made-up example.</p></div><div class="card"><span class="n">2</span><h3>Small task</h3><p>10-20 minutes, with a prompt you can copy. The prompt says what to paste in and in what form to ask for the result.</p></div><div class="card"><span class="n">3</span><h3>Brand document</h3><p>You paste the output into your brand document.</p></div><div class="card"><span class="n">4</span><h3>Carry it on</h3><p>The next prompt starts from it. At the end it becomes the brand brief.</p></div></div><p class="deliv"><b>Done by today:</b> Brand brief (platform, personas).</p><p class="note">The prompts are only suggestions in case you do not know how to start.</p>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Theory</p><h2 class="wide">What is a brand brief?</h2><p class="lead">One page that all later work builds on: from the logo to the campaign, you make everything from it.</p><div class="thg"><div class="card"><h3>Starting point</h3><p>What if…: what stays of the brand, and what is new?</p></div><div class="card alt"><h3>Positioning</h3><p>How are you different from the rest?</p></div><div class="card"><h3>Promise and values</h3><p>What does the customer get from you, and what do you stand for?</p></div><div class="card alt"><h3>Personality and tone</h3><p>If you were a person, what would you be like, and how would you talk?</p></div><div class="card"><h3>Audience and persona</h3><p>Who do you speak to, and who is the one person you have in mind?</p></div><div class="card alt"><h3>Pricing · optional</h3><p>What do you cost compared with the rest?</p></div></div><div class="ex"><small>Made-up example · What if the Rubik's Cube were a shoe brand?</small><p>Throughout today's slides we follow one made-up example: what if the Rubik's Cube were a shoe brand? The example only shows the form; the content of your brand is yours.</p></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 1/9 · approx. 10 min</p><h2 class="wide">Warm-up: your brand in one sentence</h2><div class="tk"><div><p class="what">Say your task in one sentence: "What if <mark>[brand]</mark> were a <mark>[new category]</mark>?" Add 5 adjectives describing the brand, and mark the three that matter most in the new industry. Open an empty document: this will be your brand document.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>Your brand analysis from session 1</span><button type="button" class="tipbtn" data-tip="tip-en-1-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Output, into your brand document:</b> 1. What if… and the 3 adjectives</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>Last class I analysed the <mark>[brand]</mark> brand; here is my analysis: <mark>[pasted or uploaded]</mark>. In a classroom game we work out what it would be like if <mark>[brand]</mark>, name and logo included, were a <mark>[new category]</mark>. Sum up in 5 adjectives what this brand would be like as a person, and tell me which 3 adjectives matter most in the new industry.
 
-From now on, please be <mark>[persona name]</mark>, a <mark>[age]</mark>-year-old <mark>[occupation]</mark> who <mark>[2-3 sentences about their life, habits and what matters to them]</mark>. I am a market researcher and I will ask you about this new brand. Answer the way they would: in their own words, honestly, even critically, and do not try to please me. If it is something they would not know, say you do not know. Short, spoken-language answers please, as if we were sitting in an interview.
+Keep it short. Return only this block, so I can paste it into my brand document:
+WHAT IF: …
+5 ADJECTIVES: …
+THE 3 THAT MATTER MOST IN THE NEW INDUSTRY: … (each with a short reason)
+WHAT IS MISSING FROM MY ANALYSIS: …</pre></div></div></div><dialog class="tipdlg" id="tip-en-1-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: Your brand analysis from session 1</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: we work out what it would be like if, name and logo included, it were a <mark>[new category]</mark>. First I need to understand what makes <mark>[brand]</mark> what it is. Use web search to analyse the brand: values, personality (what it would be like as a person), tone of voice, visual codes (colours, shapes, type), 3 iconic campaigns. Only write what you can back with a source, and flag anything you are not sure about.
 
-If you are ready, introduce yourself in one sentence and I will start the questions.</pre></div></div>
+Keep it short. Return only this block:
+VALUES: …
+PERSONALITY: … (5 adjectives)
+TONE OF VOICE: …
+VISUAL CODES: …
+ICONIC CAMPAIGNS: … (3, with source links)
+UNSURE: …</pre></div></dialog>
 </section>
 <section class="slide" data-l="en">
-<p class="kicker"><span class="lt">Session 2</span>Tips and advice · 1/3</p><h2>The name</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Give criteria</h3><p>Say what the name should be like: length, sound, mood, and whether it should work in Hungarian and in English. Without criteria you get average names.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Ask for more, keep fewer</h3><p>Cross out 15 of the 20 names and ask for new variants of the remaining five. The second round is often better than the first.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Say it out loud</h3><p>What looks good written down can be hard to say or easy to mishear. Say it, write it, picture it on a billboard.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Is it still free</h3><p>Use web search to see whether anyone in the category already uses it. It is worth checking the domain and the social handle too.</p></div></div>
+<p class="kicker"><span class="lt">Session 2</span>Theory</p><h2 class="wide">Positioning: how are you different?</h2><p class="lead">One sentence on who you speak to, what you are, and how you differ from your competitors.</p><div class="formula">For <mark>[whom]</mark>, who <mark>[want what]</mark>, <mark>[brand]</mark> is the <mark>[category]</mark> that <mark>[how it is different]</mark>, because <mark>[why it is believable]</mark>.</div><div class="thg"><div class="card"><h3>Test</h3><p>If you put a competitor's name into the sentence and it is still true, it is not positioning yet.</p></div></div><div class="ex"><small>Made-up example · What if the Rubik's Cube were a shoe brand?</small><p>For young city people who do not want to wear what everyone wears, Rubik is the sneaker brand whose colours you can twist around in minutes, because every panel is replaceable.</p></div>
 </section>
 <section class="slide" data-l="en">
-<p class="kicker"><span class="lt">Session 2</span>Tips and advice · 2/3</p><h2>The brand platform</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>The promise is one sentence</h3><p>A sentence a customer would tell a friend. If it does not fit into one sentence, it is not finished.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Delete the empty words</h3><p>AI likes words like innovative, sustainable, premium. If a value could be true of any brand, replace it.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Ask for examples of the voice</h3><p>Ask for the same message in three different voices and choose which one is yours. Put the chosen example in the brief too.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Trace it back to the source brand</h3><p>Next to every value, note what in it comes from the source brand. That shows the new brand really grows out of the source brand.</p></div></div>
+<p class="kicker"><span class="lt">Session 2</span>Small task 2/9 · approx. 15 min</p><h2 class="wide">Positioning</h2><div class="tk"><div><p class="what">Fill in the formula with your own brand. Ask for 3 variants, and use your competitor table to choose the one that stands out most.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>The output of task 1: what if… and the 3 adjectives</span><button type="button" class="tipbtn" data-tip="tip-en-2-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>Your competitor table from session 1</span><button type="button" class="tipbtn" data-tip="tip-en-2-1" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Output, into your brand document:</b> 2. Positioning: the sentence you chose</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>My brand document so far: <mark>[output of task 1]</mark>. My competitor table from the first class: <mark>[pasted]</mark>. My brand: <mark>[brand]</mark> as a <mark>[new category]</mark>, in a classroom game; its name and logo stay. Write 3 different positioning sentences with this formula: "For…, who…, the brand is the… that…, because…". Flag any that could be true of any competitor.
+
+Keep it short. Return only this block:
+1. SENTENCE: …
+   DIFFERS MOST FROM THIS COMPETITOR: …
+2. SENTENCE: …
+   DIFFERS MOST FROM THIS COMPETITOR: …
+3. SENTENCE: …
+   DIFFERS MOST FROM THIS COMPETITOR: …</pre></div></div></div><dialog class="tipdlg" id="tip-en-2-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The output of task 1: what if… and the 3 adjectives</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Use web search to look at the brand and sum up in 5 adjectives what it would be like as a person. Then tell me which 3 matter most in the new industry.
+
+Keep it short. Return only this block:
+WHAT IF: …
+5 ADJECTIVES: …
+THE 3 THAT MATTER MOST IN THE NEW INDUSTRY: … (each with a short reason)</pre></div></dialog><dialog class="tipdlg" id="tip-en-2-1"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: Your competitor table from session 1</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game we work out what it would be like if <mark>[brand]</mark> were a <mark>[new category]</mark>. Use web search to find 5 real <mark>[new category]</mark> brands on the <mark>[country or region]</mark> market. Only list existing companies, and mark where you are unsure.
+
+Return only this table:
+BRAND | OFFER | PRICE LEVEL | TONE OF VOICE | MAIN CHANNELS | SOURCE LINK</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Theory</p><h2 class="wide">Promise and values</h2><p class="lead">The promise says what the customer gets. The values say what the brand stands for and how it decides.</p><div class="thg"><div class="card"><h3>Promise</h3><p>One sentence a customer would tell a friend.</p></div><div class="card alt"><h3>Values</h3><p>Three is enough. Each needs one sentence on what it means in practice.</p></div><div class="card"><h3>Test</h3><p>If a value could be true of any brand (innovative, quality, sustainable), replace it.</p></div></div><div class="ex"><small>Made-up example · What if the Rubik's Cube were a shoe brand?</small><p>Promise: a different shoe every day. Values: play, creation, persistence.</p></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 3/9 · approx. 15 min</p><h2 class="wide">Promise and 3 values</h2><div class="tk"><div><p class="what">Write the promise in one sentence and the 3 values, each with one sentence on what it means in practice.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>The output of task 2: the positioning sentence</span><button type="button" class="tipbtn" data-tip="tip-en-3-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Output, into your brand document:</b> 3. Promise and 3 values: the ones you chose</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>My brand: <mark>[brand]</mark> as a <mark>[new category]</mark>, in a classroom game. Its positioning: <mark>[output of task 2]</mark>. Suggest 5 possible promises, each a short sentence a customer would tell a friend. Then suggest 6 values: what each means in practice and where it shows in the real <mark>[brand]</mark> today. Cross out any that could be true of any brand. I will choose the final promise and the 3 values.
+
+Keep it short. Return only this block:
+PROMISES:
+1. …
+2. …
+3. …
+4. …
+5. …
+VALUES:
+1. … · in practice: … · in the brand today: …
+(and so on up to value 6)</pre></div></div></div><dialog class="tipdlg" id="tip-en-3-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The output of task 2: the positioning sentence</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Use web search to look at 3 real <mark>[new category]</mark> competitors, and write one positioning sentence with this formula: "For…, who…, the brand is the… that…, because…". The sentence must not be true of any of the competitors.
+
+Return only this block:
+COMPETITORS: … (3, with source links)
+POSITIONING: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Theory</p><h2 class="wide">If the brand were a person</h2><p class="lead">Personality is what the brand is like. Tone of voice is how it talks.</p><div class="thg"><div class="card"><h3>Personality</h3><p>3 adjectives you would also use for a person.</p></div><div class="card alt"><h3>Tone: four scales</h3><p>formal ↔ relaxed · serious ↔ playful · restrained ↔ loud · simple ↔ expert</p></div><div class="card"><h3>Test</h3><p>Write the same message in three voices. The one you recognise as "that is them" is yours.</p></div></div><div class="ex"><small>Made-up example · What if the Rubik's Cube were a shoe brand?</small><p>Rubik: clever, playful, confident. Relaxed and playful, in short sentences. "Six sides. One shoe. Your call."</p></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 4/9 · approx. 15 min</p><h2 class="wide">Personality and tone of voice</h2><div class="tk"><div><p class="what">Write 3 adjectives for the brand's personality, decide where it sits on the four scales, and ask for the same message in three voices. Choose yours.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>The 3 adjectives from task 1</span><button type="button" class="tipbtn" data-tip="tip-en-4-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>The output of task 3: promise and 3 values</span><button type="button" class="tipbtn" data-tip="tip-en-4-1" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Output, into your brand document:</b> 4. Personality (3 adjectives), tone and one example sentence</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>My brand: <mark>[brand]</mark> as a <mark>[new category]</mark>, in a classroom game. Its 3 key adjectives: <mark>[output of task 1]</mark>. Its promise and values: <mark>[output of task 3]</mark>. Write the same short message, for example a new product announcement, in three voices: relaxed and playful; confident and simple; restrained and expert. At most 2 sentences each. Then tell me which fits <mark>[brand]</mark>'s personality best, but the decision is mine.
+
+Return only this block:
+A) RELAXED AND PLAYFUL: …
+B) CONFIDENT AND SIMPLE: …
+C) RESTRAINED AND EXPERT: …
+SUGGESTION: … (one sentence on why)</pre></div></div></div><dialog class="tipdlg" id="tip-en-4-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The 3 adjectives from task 1</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Use web search to look at the brand and sum up in 5 adjectives what it would be like as a person. Then tell me which 3 matter most in the new industry.
+
+Keep it short. Return only this block:
+WHAT IF: …
+5 ADJECTIVES: …
+THE 3 THAT MATTER MOST IN THE NEW INDUSTRY: … (each with a short reason)</pre></div></dialog><dialog class="tipdlg" id="tip-en-4-1"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The output of task 3: promise and 3 values</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Suggest one promise (a short sentence a customer would tell a friend) and 3 values that also show in the real <mark>[brand]</mark>. Do not write anything that could be true of any brand.
+
+Return only this block:
+PROMISE: …
+VALUE 1: … · in practice: …
+VALUE 2: … · in practice: …
+VALUE 3: … · in practice: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Theory</p><h2 class="wide">Target audience and persona</h2><p class="lead">The target audience describes a group. A persona is a made-up but believable person from that group. It makes decisions easier: would they like this?</p><div class="thg"><div class="card"><h3>Target audience</h3><p>Who are they, and what do they have in common?</p></div><div class="card alt"><h3>Persona card</h3><p>Name, age, occupation, where they live, an ordinary day, what they want, what they worry about, how they buy.</p></div><div class="card"><h3>Interview</h3><p>The AI plays the persona. It is quick, but tends to like everything, so ask it to be critical and mark the made-up answers.</p></div></div><div class="ex"><small>Made-up example · What if the Rubik's Cube were a shoe brand?</small><p>Target audience: young city people aged 18-30 who express themselves through what they wear. Persona: Dóri, 24, a graphic design student in Budapest. She walks a lot, likes to make her things her own, and worries that a striking shoe will look embarrassing in six months.</p></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 5/9 · approx. 15 min</p><h2 class="wide">Target audience and the first persona</h2><div class="tk"><div><p class="what">Describe the target audience in one sentence, and create a persona from it with the card fields.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>The output of task 2: the positioning sentence</span><button type="button" class="tipbtn" data-tip="tip-en-5-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Output, into your brand document:</b> 5. Target audience and the first persona</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>My brand: <mark>[brand]</mark> as a <mark>[new category]</mark>, in a classroom game. Its positioning: <mark>[output of task 2]</mark>. Describe its most important target audience in one sentence, then create a believable persona from it. They should not be a perfect customer; give them doubts too.
+
+Return only this block:
+TARGET AUDIENCE: … (one sentence)
+NAME: …
+AGE: …
+OCCUPATION: …
+WHERE THEY LIVE: …
+AN ORDINARY DAY: … (2 sentences)
+WHAT THEY WANT: …
+WHAT THEY WORRY ABOUT: …
+HOW AND WHERE THEY BUY: …</pre></div></div></div><dialog class="tipdlg" id="tip-en-5-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The output of task 2: the positioning sentence</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Use web search to look at 3 real <mark>[new category]</mark> competitors, and write one positioning sentence with this formula: "For…, who…, the brand is the… that…, because…". The sentence must not be true of any of the competitors.
+
+Return only this block:
+COMPETITORS: … (3, with source links)
+POSITIONING: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 6/9 · approx. 20 min</p><h2 class="wide">Interview the persona</h2><div class="tk"><div><p class="what">Interview the persona with 5 questions, in a role-play. Mark the answers you think are made up or fit your brand too neatly.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>The persona from task 5</span><button type="button" class="tipbtn" data-tip="tip-en-6-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>The outputs of tasks 2-4 in brief</span><button type="button" class="tipbtn" data-tip="tip-en-6-1" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><div class="qsw"><small>Good questions</small><ul class="qs"><li>When did you last buy <mark>[product]</mark>, and why that one?</li><li>What bothers you about what you use now?</li><li>What would hold you back from trying it?</li><li>How much would you pay for it, and why?</li><li>Who would you tell about it, and what would you say?</li></ul></div><p class="res"><b>Output, into your brand document:</b> 6. The interview: 5 questions and answers, marked</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>I would like to play a role-play with you to understand my target audience better. In a classroom game I am working out what it would be like if <mark>[brand]</mark>, name and logo included, were a <mark>[new category]</mark>. In short: <mark>[outputs of tasks 2-4 in brief]</mark>.
+
+From now on, please be this persona: <mark>[persona from task 5]</mark>. I am a market researcher and I will ask you questions. Answer the way they would: in their own words, honestly, even critically, and do not try to please me. If they would not know something, say you do not know. Short, spoken answers please.
+
+When I write END, step out of the role and return only this block:
+QUESTION 1: … · ANSWER: … (in one sentence)
+(and so on for all 5 questions)
+WHAT WAS SURPRISING: …
+
+When you are ready, introduce yourself in one sentence and I will start asking.</pre></div></div></div><dialog class="tipdlg" id="tip-en-6-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The persona from task 5</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Describe its most important target audience in one sentence, and create a believable persona from it, doubts included.
+
+Return only this block:
+TARGET AUDIENCE: …
+NAME: …
+AGE: …
+OCCUPATION: …
+WHERE THEY LIVE: …
+AN ORDINARY DAY: … (2 sentences)
+WHAT THEY WANT: …
+WHAT THEY WORRY ABOUT: …
+HOW AND WHERE THEY BUY: …</pre></div></dialog><dialog class="tipdlg" id="tip-en-6-1"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The outputs of tasks 2-4 in brief</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Sum up in 3-4 sentences what this brand would be: who it speaks to, how it is different, what it promises and in what voice it talks.
+
+Return only this block:
+BRAND PLATFORM IN BRIEF: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 7/9 · approx. 20 min</p><h2 class="wide">The second persona</h2><div class="tk"><div><p class="what">Create a second persona who is different from the first: a different life situation, a different doubt. Then interview them with 3-5 questions, using the prompt from task 6.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>The persona from task 5</span><button type="button" class="tipbtn" data-tip="tip-en-7-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>Interview prompt for the second persona</span><button type="button" class="tipbtn" data-tip="tip-en-7-1" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Output, into your brand document:</b> 7. The second persona and its short interview</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>My first persona: <mark>[persona from task 5]</mark>. Create a second persona from the same or a secondary target audience who is genuinely different: in a different life situation, buying for a different reason, hesitating for a different reason.
+
+Return only this block, with the same lines as the first persona:
+NAME: …
+AGE: …
+OCCUPATION: …
+WHERE THEY LIVE: …
+AN ORDINARY DAY: … (2 sentences)
+WHAT THEY WANT: …
+WHAT THEY WORRY ABOUT: …
+HOW AND WHERE THEY BUY: …
+HOW THEY DIFFER FROM THE FIRST: …
+HOW TO TALK TO THEM DIFFERENTLY: … (one sentence)</pre></div></div></div><dialog class="tipdlg" id="tip-en-7-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The persona from task 5</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Describe its most important target audience in one sentence, and create a believable persona from it, doubts included.
+
+Return only this block:
+TARGET AUDIENCE: …
+NAME: …
+AGE: …
+OCCUPATION: …
+WHERE THEY LIVE: …
+AN ORDINARY DAY: … (2 sentences)
+WHAT THEY WANT: …
+WHAT THEY WORRY ABOUT: …
+HOW AND WHERE THEY BUY: …</pre></div></dialog><dialog class="tipdlg" id="tip-en-7-1"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: Interview prompt for the second persona</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>I would like to play a role-play with you to understand my target audience better. In a classroom game I am working out what it would be like if <mark>[brand]</mark>, name and logo included, were a <mark>[new category]</mark>. In short: <mark>[outputs of tasks 2-4 in brief]</mark>.
+
+From now on, please be this persona: <mark>[the second persona]</mark>. I am a market researcher and I will ask you questions. Answer the way they would: in their own words, honestly, even critically, and do not try to please me. If they would not know something, say you do not know. Short, spoken answers please.
+
+When I write END, step out of the role and return only this block:
+QUESTION 1: … · ANSWER: … (in one sentence)
+(and so on for all 5 questions)
+WHAT WAS SURPRISING: …
+
+When you are ready, introduce yourself in one sentence and I will start asking.</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Theory</p><h2 class="wide">Pricing · optional</h2><p class="lead">Only work on it if price is part of your positioning.</p><div class="thg"><div class="card"><h3>Premium</h3><p>More expensive than most. You need to be able to justify it.</p></div><div class="card alt"><h3>Mid-range</h3><p>The usual price level. People choose it for other reasons.</p></div><div class="card"><h3>Entry level</h3><p>Cheaper than most. The price is the argument.</p></div><div class="card alt"><h3>What do you measure against?</h3><p>Competitor prices, what it is worth to the customer, or cost plus margin.</p></div></div><div class="ex"><small>Made-up example · What if the Rubik's Cube were a shoe brand?</small><p>Rubik: upper mid-range, because the replaceable panels give more than a plain sneaker.</p></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 8/9 · approx. 15 min</p><h2 class="wide">Pricing · optional</h2><div class="tk"><div><p class="what">Collect real prices from 3-5 competitors and decide where your brand sits: premium, mid-range or entry level. Justify it in one sentence.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>The output of task 2: the positioning sentence</span><button type="button" class="tipbtn" data-tip="tip-en-8-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li><li><span>Your competitor table from session 1</span><button type="button" class="tipbtn" data-tip="tip-en-8-1" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><p class="res"><b>Output, into your brand document:</b> 8. Price level · optional</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>My brand: <mark>[brand]</mark> as a <mark>[new category]</mark>, in a classroom game. Its positioning: <mark>[output of task 2]</mark>. Use web search to collect real prices from 5 <mark>[new category]</mark> brands on the <mark>[country or region]</mark> market. Only list prices you actually found; mark estimates. Then suggest a price level: premium, mid-range or entry level.
+
+Return only this block:
+PRICES: brand · product · price · source link (one per line)
+SUGGESTED PRICE LEVEL: …
+REASON: … (2 sentences)</pre></div></div></div><dialog class="tipdlg" id="tip-en-8-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: The output of task 2: the positioning sentence</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. Use web search to look at 3 real <mark>[new category]</mark> competitors, and write one positioning sentence with this formula: "For…, who…, the brand is the… that…, because…". The sentence must not be true of any of the competitors.
+
+Return only this block:
+COMPETITORS: … (3, with source links)
+POSITIONING: …</pre></div></dialog><dialog class="tipdlg" id="tip-en-8-1"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: Your competitor table from session 1</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game we work out what it would be like if <mark>[brand]</mark> were a <mark>[new category]</mark>. Use web search to find 5 real <mark>[new category]</mark> brands on the <mark>[country or region]</mark> market. Only list existing companies, and mark where you are unsure.
+
+Return only this table:
+BRAND | OFFER | PRICE LEVEL | TONE OF VOICE | MAIN CHANNELS | SOURCE LINK</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Small task 9/9 · approx. 15 min</p><h2 class="wide">Putting the brand brief together</h2><div class="tk"><div><p class="what">Put everything you made today on one page. The AI should only organise it, not add anything new.</p><div class="need"><b>You need:</b><ul class="needl"><li><span>Your brand document: the outputs of tasks 1-8</span><button type="button" class="tipbtn" data-tip="tip-en-9-0" aria-label="Click here if missing" title="Click here if missing"><span>TIP</span>If missing<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></li></ul></div><div class="qsw"><small>Parts of the brand brief</small><ul class="qs bl"><li>The "What if…" sentence</li><li>Target audience</li><li>2 personas in brief</li><li>Positioning</li><li>Promise</li><li>3 values</li><li>Personality and tone, with an example sentence</li><li>Price level, if any</li></ul></div><p class="res"><b>Output:</b> Today's output: the brand brief. You bring it to session 3.</p></div><div><div class="prompt"><div class="ph"><span>Prompt suggestion, if you are stuck</span><button type="button" class="copy">Copy</button></div><pre>Here is my brand document: <mark>[outputs of tasks 1-8 pasted]</mark>. Turn it into a one-page brand brief. Do not add new content, only organise and align it.
+
+Return it with exactly these headings:
+WHAT IF: …
+TARGET AUDIENCE: …
+PERSONAS: … (two, 2 sentences each)
+POSITIONING: …
+PROMISE: …
+VALUES: …
+PERSONALITY AND TONE: … (with an example sentence)
+PRICE LEVEL: … (if any)
+MISSING OR CONTRADICTORY: …</pre></div></div></div><dialog class="tipdlg" id="tip-en-9-0"><div class="tdh"><span class="tl">TIP</span><h3>If you do not have it: Your brand document: the outputs of tasks 1-8</h3><button type="button" class="x" data-close aria-label="Close">×</button></div><p class="tdp">Make it now with this prompt, and paste it into your brand document.</p><div class="prompt"><div class="ph"><span>Prompt</span><button type="button" class="copy">Copy</button></div><pre>In a classroom game I am working with the <mark>[brand]</mark> brand: what if, name and logo included, it were a <mark>[new category]</mark>. What I have so far: <mark>[whatever you have made, if anything]</mark>. Turn it into a one-page draft brand brief. Where I have no material, make a suggestion and mark it with the word SUGGESTION, so I can see what I still need to check.
+
+Return it with exactly these headings:
+WHAT IF: …
+TARGET AUDIENCE: …
+PERSONAS: …
+POSITIONING: …
+PROMISE: …
+VALUES: …
+PERSONALITY AND TONE: …
+PRICE LEVEL: …</pre></div></dialog>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Tips and advice · 1/3</p><h2>What stays, what is new</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>What stays</h3><p>The name, the logo, the personality and the values. You do not touch these; you work from them.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>What is new</h3><p>The product or service, the audience, the price and the campaign. Every decision is here.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>What would the brand do?</h3><p>For every decision, ask: if IKEA really were an airline, would it do this?</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>It does not depend on the logo</h3><p>The name and logo are given. What matters is whether the brand's behaviour comes through in the new industry.</p></div></div>
+</section>
+<section class="slide" data-l="en">
+<p class="kicker"><span class="lt">Session 2</span>Tips and advice · 2/3</p><h2>The brand platform</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>The promise is one sentence</h3><p>A sentence a customer would tell a friend. If it does not fit into one sentence, it is not finished.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>Delete the empty words</h3><p>AI likes words like innovative, sustainable, premium. If a value could be true of any brand, replace it.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Ask for examples of the voice</h3><p>Ask for the same message in three different voices and choose which one is yours. Put the chosen example in the brief too.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Trace it back to the brand</h3><p>Next to every value, note where it shows in the real brand today. That makes it believable that it is the same brand in the new industry.</p></div></div>
 </section>
 <section class="slide" data-l="en">
 <p class="kicker"><span class="lt">Session 2</span>Tips and advice · 3/3</p><h2>Personas and pricing</h2><div class="tips"><div class="tip"><span class="i" aria-hidden="true">1</span><h3>Give the persona a life</h3><p>Job, daily routine, money, doubts, habits. The more specific the description, the less generic its answers.</p></div><div class="tip"><span class="i" aria-hidden="true">2</span><h3>It should not try to please you</h3><p>An AI persona tends to like everything. Ask it to be critical, and ask what would hold it back from buying.</p></div><div class="tip"><span class="i" aria-hidden="true">3</span><h3>Mark the made-up answers</h3><p>Be suspicious of anything that fits your brand too neatly, or that a real person could not know. Mark these in the brief.</p></div><div class="tip"><span class="i" aria-hidden="true">4</span><h3>Pricing is optional</h3><p>If it matters for your brand, start from real competitor prices and keep the price consistent with the positioning. If it does not matter, skip it.</p></div></div>
 </section>
 <section class="slide" data-l="en">
-<p class="kicker"><span class="lt">Session 2</span>Wrap-up</p><h2>Done by today: brand brief (name, platform, personas).</h2><hr class="rule"><p class="lead">Next Thursday, 19 November 2026: Identity, key visuals and banners.</p><p class="muted">The day before, 18 November 2026: Kelly: Image editing with AI · Kelly: Audio and video editing with AI</p>
+<p class="kicker"><span class="lt">Session 2</span>Wrap-up</p><h2>Done by today: brand brief (platform, personas).</h2><hr class="rule"><p class="lead">Next Thursday, 19 November 2026: Identity, key visuals and banners.</p><p class="muted">The day before, 18 November 2026: Kelly: Image editing with AI · Kelly: Audio and video editing with AI</p>
 </section>
 </main>
-<div class="hint"><span class="hu">← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · v1.3 · 2026. november 4.</span><span class="en">← → navigate · space: next · F: full screen · L: language · J: review mode · v1.3 · 4 November 2026</span></div>
-<div class="pager"><a class="home" href="index.html" data-href="index.html" title="Kezdőlap">⌂ <span class="hu">Kezdőlap</span><span class="en">Home</span></a><span class="lang" role="group" aria-label="Nyelv / Language"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span><button id="pos" type="button" aria-label="Ugrás diára">1 / 7</button><div class="jump" id="jump"></div><button type="button" data-nav="-1" aria-label="Előző">‹</button><button type="button" data-nav="1" aria-label="Következő">›</button></div>
+<div class="hint"><span class="hu">← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · v2.6 · 2026. november 11.</span><span class="en">← → navigate · space: next · F: full screen · L: language · J: review mode · v2.6 · 11 November 2026</span></div>
+<div class="pager"><a class="home" href="index.html" data-href="index.html" title="Kezdőlap">⌂ <span class="hu">Kezdőlap</span><span class="en">Home</span></a><span class="lang" role="group" aria-label="Nyelv / Language"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span><button id="pos" type="button" aria-label="Ugrás diára">1 / 23</button><div class="jump" id="jump"></div><button type="button" data-nav="-1" aria-label="Előző">‹</button><button type="button" data-nav="1" aria-label="Következő">›</button></div>
 <div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, és írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
 <div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
 <div class="revout" id="revout"><h2>Megjegyzések</h2><p class="muted">Ez a szöveg a vágólapra is került. Másold be a chatbe, és a diaszámok alapján átvezetem.</p><textarea id="revouttext" readonly></textarea><p><button class="btn" type="button" id="revoutclose">Bezár</button></p></div>
@@ -341,6 +857,7 @@ If you are ready, introduce yourself in one sentence and I will start the questi
 
   D.addEventListener('keydown',function(ev){
     if(ev.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName))return;
+    if(D.querySelector('dialog[open]'))return;
     if(ev.key==='ArrowRight'||ev.key==='PageDown'||ev.key===' '){next();ev.preventDefault()}
     else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){prev();ev.preventDefault()}
     else if(ev.key==='Home'){show(0)} else if(ev.key==='End'){show(slides.length-1)}
@@ -354,7 +871,7 @@ If you are ready, introduce yourself in one sentence and I will start the questi
   pos.addEventListener('click',function(ev){ev.stopPropagation();[].forEach.call(jump.children,function(a,k){a.classList.toggle('cur',k===i)});jump.classList.toggle('open');var c=jump.children[i];if(c)jump.scrollTop=c.offsetTop-jump.clientHeight/2});
   D.addEventListener('click',function(ev){if(!jump.contains(ev.target))jump.classList.remove('open')});
   D.querySelector('.deck').addEventListener('click',function(ev){
-    if(ev.target.closest('a,button,input,textarea,pre,.prompt'))return;
+    if(ev.target.closest('a,button,input,textarea,pre,.prompt,dialog'))return;
     if(D.body.classList.contains('rev'))return;
     var sel=window.getSelection&&String(window.getSelection());if(sel)return;
     next();
@@ -365,6 +882,12 @@ If you are ready, introduce yourself in one sentence and I will start the questi
     function paint(){[].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){var k=b.getAttribute('data-k');b.classList.toggle('taken',!!t[k]);b.setAttribute('aria-pressed',t[k]?'true':'false')})}
     [].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var k=b.getAttribute('data-k');if(t[k])delete t[k];else t[k]=1;try{localStorage.setItem(K,JSON.stringify(t))}catch(e){}paint()})});
     paint();})();
+
+  /* TIPP: felugró ablak, ha nincs meg az előzmény */
+  [].forEach.call(D.querySelectorAll('[data-tip]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var d=D.getElementById(b.getAttribute('data-tip'));if(d&&d.showModal)d.showModal()})});
+  [].forEach.call(D.querySelectorAll('dialog.tipdlg'),function(d){d.addEventListener('click',function(ev){if(ev.target===d)d.close()})});
+  [].forEach.call(D.querySelectorAll('dialog [data-close]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();b.closest('dialog').close()})});
+  [].forEach.call(D.querySelectorAll('[data-jump]'),function(a){a.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();var d=a.closest('dialog');if(d)d.close();show(+a.getAttribute('data-jump')-1)})});
 
   /* promptok másolása */
   [].forEach.call(D.querySelectorAll('.copy'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();

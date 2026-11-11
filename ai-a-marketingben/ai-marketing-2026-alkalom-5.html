@@ -48,7 +48,13 @@ p+p{margin-top:.6em}
 .note{color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:76ch;margin-top:1.1em;line-height:1.4}
 .slide a{color:var(--cobalt)}
 .rule{border:0;border-top:1px solid var(--line);margin:1.2em 0;max-width:60em}
-.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--cobalt)}
+.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--marker)}
+/* egy szín: minden kártya teteje sárga (oktatói kérés, 2026. november 11.) */
+/* ahol több kártya áll egymás mellett, sorszámot kapnak a jobb felső sarokban */
+.thg,.grid3,.cols{counter-reset:kc}
+.thg>.card,.grid3>.card,.cols>.card{counter-increment:kc;position:relative}
+.thg>.card::after,.grid3>.card::after,.cols>.card::after{content:counter(kc);position:absolute;right:.85em;top:.6em;font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.3em;line-height:1}
+.thg>.card h3,.grid3>.card h3,.cols>.card h3{padding-right:1.6em}
 .card.alt{border-top-color:var(--marker)}
 .card p{max-width:none}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:2vw;align-items:start;max-width:72em}
@@ -117,7 +123,7 @@ td .who{color:var(--ink-soft)}
 .tips{display:grid;grid-template-columns:1fr 1fr;gap:1.2vw 1.6vw;max-width:78em}
 .tip{background:#fff;border-radius:12px;padding:.8em 1.15em .9em;box-shadow:var(--sh);border-top:4px solid var(--marker);position:relative}
 .tip h3{padding-right:1.6em}
-.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--marker);font-size:1.3em;line-height:1}
+.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.3em;line-height:1}
 
 /* feladat: cél, scope, leadandó */
 .goal{display:grid;grid-template-columns:auto 1fr;gap:.75em 1.4em;max-width:62em;background:#fff;border-radius:14px;padding:1.2em 1.6em;box-shadow:var(--sh);border-left:6px solid var(--marker)}
@@ -177,6 +183,106 @@ table.task td.dk{width:24%;font-size:var(--t-sm);color:var(--cobalt)}
 .deliv{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:88em;font-size:var(--t-body)}
 .deliv b{color:var(--marker);margin-right:.3em}
 
+.kn{display:grid;grid-template-columns:1fr 1fr;gap:1.6vw;max-width:60em;margin-top:.4em}
+.kn .card h3{font-size:1.3em}
+.kn .qs li{font-size:var(--t-body)}
+@media (max-width:900px){.kn{grid-template-columns:1fr}}
+
+.need{margin-top:.9em;background:var(--cream);border-radius:10px;padding:.5em 1em;max-width:none;line-height:1.35}
+.need b{margin-right:.3em}
+.docwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.6vw;align-items:center;max-width:92em;margin-top:.4em}
+.docpage{background:#fff;border-radius:6px;box-shadow:var(--sh);padding:.8em 1.3em 1em;border-top:6px solid var(--marker)}
+.docpage .dt{display:block;font-size:var(--t-sm);color:var(--ink-soft);margin-bottom:.3em}
+.dl{display:grid;grid-template-columns:1fr auto;gap:1em;align-items:baseline;padding:.32em 0;border-bottom:1px dashed var(--line)}
+.dl b{font-weight:600;font-size:var(--t-sm)}
+.dl small{font-size:var(--t-sm);color:var(--cobalt);white-space:nowrap}
+.docside{display:grid;gap:.5em;justify-items:stretch}
+.docside .arr{color:var(--cobalt);font-size:1.6em;justify-self:center}
+.docside .card h3{font-size:1.15em}
+.docside .card p{font-size:var(--t-sm)}
+@media (max-width:900px){.docwrap{grid-template-columns:1fr}}
+
+.tipbtn{display:inline-flex;align-items:center;gap:.35em;cursor:pointer;margin-left:.4em;padding:.12em .5em .12em .15em;border-radius:99px;background:#fff;border:2px solid var(--marker);font-size:var(--t-sm);font-weight:600;color:var(--ink);vertical-align:middle}
+.tipbtn span{background:var(--marker);border-radius:99px;padding:.02em .6em;letter-spacing:.06em}
+.tipbtn:hover{background:var(--marker)}
+.tipbtn .clk{width:1.6em;height:1.6em;display:block;color:var(--ink)}
+dialog.tipdlg{margin:auto;border:0;border-radius:14px;padding:1em 1.4em 1.3em;width:min(62rem,92vw);max-height:86vh;box-shadow:0 30px 80px rgba(0,0,0,.3);background:var(--paper);color:var(--ink);font-size:var(--t-body)}
+dialog.tipdlg::backdrop{background:rgba(27,31,58,.5)}
+.tdh{display:flex;align-items:center;gap:.7em;margin-bottom:.7em}
+.tdh .tl{background:var(--marker);border-radius:99px;padding:.05em .7em;font-weight:600;font-size:var(--t-sm);letter-spacing:.06em}
+.tdh h3{flex:1;font-size:var(--t-h3);margin:0}
+.tdh .x{font-size:1.6em;line-height:1;color:var(--ink-soft);padding:0 .2em}
+.tj{display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding:.5em 0;border-bottom:1px solid var(--line);max-width:none}
+.tj a{color:var(--cobalt);font-weight:600;white-space:nowrap;text-decoration:none}
+.tp{margin:.6em 0 .8em}
+.tp>p{margin-bottom:.5em;max-width:none}
+.tp .prompt pre{max-height:44vh}
+
+.need ul.needl{list-style:none;margin-top:.3em}
+.need ul.needl li{display:flex;justify-content:space-between;align-items:center;gap:.8em;padding:.32em 0;border-top:1px dashed rgba(27,31,58,.18)}
+.need ul.needl li .tipbtn{margin-left:0;flex:none}
+.tdp{margin-bottom:.6em;max-width:none}
+.tdh h3{font-size:var(--t-h3)}
+
+/* 2. alkalom: a mai nap */
+.build{display:flex;flex-wrap:wrap;align-items:stretch;gap:.55em;max-width:92em;margin-top:.6em}
+.build .pc{flex:1 1 0;min-width:6.5em;background:#fff;border-radius:10px;box-shadow:var(--sh);border-top:4px solid var(--marker);padding:.6em .8em;font-family:var(--display);font-weight:500;font-size:1.02em;line-height:1.2;display:flex;align-items:center}
+.build .pc.sum{flex:1.2 1 0;background:var(--cobalt);color:#fff;border-top-color:var(--cobalt);font-size:1.25em;justify-content:center}
+.build .op{align-self:center;color:var(--ink-soft);font-size:1.4em;font-weight:600}
+.slide h3.lbl2{font-family:var(--body)!important;font-weight:600!important;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);margin:1.3em 0 .5em}
+.rhythm{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;max-width:92em}
+.rhythm .n{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.6em;line-height:1;display:block;margin-bottom:.15em}
+.rhythm .card h3{font-size:1.15em}
+.rhythm .card p{font-size:var(--t-sm)}
+@media (max-width:900px){.rhythm{grid-template-columns:1fr}.build .op{display:none}}
+
+/* 2. alkalom: összefoglaló */
+.recap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:2.8vw;align-items:start;max-width:92em}
+.slide .recap h3.lbl{font-family:var(--body)!important;font-weight:600;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);border-bottom:2px solid var(--ink);padding-bottom:.3em;margin-bottom:.2em}
+ul.done{list-style:none}
+ul.done li{padding:.45em 0 .45em 1.5em;border-bottom:1px solid var(--line);position:relative;line-height:1.35}
+ul.done li::before{content:"✓";position:absolute;left:0;color:var(--cobalt);font-weight:600}
+.today{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:none}
+.who{display:grid;grid-template-columns:1fr 1fr;column-gap:2.2vw}
+.who>div{padding:.42em 0 .48em;border-bottom:1px solid var(--line)}
+.who .nm{display:inline-block;background:var(--marker);color:var(--ink);font-weight:600;font-size:var(--t-sm);line-height:1.35;border-radius:4px;padding:.02em .45em;margin-bottom:.22em}
+.nmh{background:var(--marker);color:var(--ink);font-weight:600;border-radius:4px;padding:0 .3em}
+.who .gm{display:block;line-height:1.25}
+.who .gm b{font-family:var(--display);font-weight:500;font-size:1.18em}
+.who .gm b.c{color:var(--cobalt)}
+.who .gm em{font-style:normal;font-size:var(--t-sm);color:var(--ink-soft)}
+@media (max-width:900px){.recap,.who{grid-template-columns:1fr}}
+
+/* 2. alkalom: kis feladatok */
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:2.6vw;max-width:88em}
+.slide .agenda h3{font-family:var(--body)!important;font-weight:600;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);border-bottom:2px solid var(--ink);padding-bottom:.3em;margin-bottom:.1em}
+ol.ag{list-style:none}
+ol.ag li{display:grid;grid-template-columns:1.6em 1fr auto;gap:.6em;align-items:baseline;padding:.4em 0;border-bottom:1px solid var(--line)}
+ol.ag .no{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.25em;line-height:1}
+ol.ag b{display:block;font-weight:600;line-height:1.25}
+ol.ag em{display:block;font-style:normal;color:var(--ink-soft);font-size:var(--t-sm);line-height:1.3}
+ol.ag .mm{font-size:var(--t-sm);color:var(--ink-soft);white-space:nowrap}
+.thg{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:1vw 1.4vw;max-width:88em;margin-top:.9em}
+.tk .prompt pre{font-size:max(.86rem,18px)}
+.thg .card h3{font-size:1.12em}
+.thg .card p{font-size:var(--t-sm)}
+.formula{font-family:var(--display);font-weight:500;font-size:1.32em;line-height:1.4;background:#fff;border-radius:12px;padding:.7em 1.1em;box-shadow:var(--sh);max-width:54em;margin:.1em 0 .9em}
+.formula mark,.tk .what mark,.qs mark{background:var(--cream);color:inherit;border-radius:4px;padding:0 .15em}
+.ex{margin-top:1em;background:var(--cream);border-radius:12px;padding:.6em 1.1em .7em;max-width:80em;border-left:5px solid var(--marker)}
+.ex small,.qsw small{display:block;font-size:max(.62rem,13px);letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:.25em}
+.ex p{max-width:none}
+.tk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.4vw;align-items:start;max-width:90em}
+.tk .what{font-size:var(--t-lead);line-height:1.38;max-width:none}
+.tk .ex{margin-top:.9em}
+.res{margin-top:1em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:none}
+.res b{color:var(--marker);margin-right:.3em}
+.qsw{margin-top:.9em}
+.qs{list-style:none}
+.qs li{padding:.28em 0 .28em 1.2em;border-bottom:1px solid var(--line);font-size:var(--t-sm);position:relative}
+.qs li::before{content:"?";position:absolute;left:0;color:var(--cobalt);font-weight:600}
+.qs.bl li::before{content:"·";font-size:1.4em;line-height:1;top:.18em}
+@media (max-width:900px){.agenda,.tk{grid-template-columns:1fr}}
+
 /* szabályok */
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:.9vw 1.4vw;max-width:80em}
 .rule9{display:grid;grid-template-columns:1.6em 1fr;gap:.4em;padding:.55em 0;border-top:1px solid var(--line);font-size:var(--t-sm)}
@@ -235,7 +341,7 @@ body.rev .revbar{display:flex}
 </style>
 </head>
 <body>
-<nav class="strip" aria-label="Alkalmak"><a href="index.html" data-href="index.html"><b>AI</b><span class="hu">a marketingben · kezdőlap</span><span class="en">in Marketing · home</span></a><a href="ai-marketing-2026-alkalom-1.html" data-href="ai-marketing-2026-alkalom-1.html"><b>1</b><span class="hu">Kiinduló márka és új kategória&nbsp;·&nbsp;11.&nbsp;05.</span><span class="en">Source brand and new category&nbsp;·&nbsp;11.&nbsp;05.</span></a><a class="off" aria-disabled="true" data-off="ai-marketing-2026-alkalom-2.html"><b>2</b><span class="hu">Márkaplatform, célcsoport és árazás&nbsp;·&nbsp;11.&nbsp;12.</span><span class="en">Brand platform, target audience and pricing&nbsp;·&nbsp;11.&nbsp;12.</span></a><a class="off" aria-disabled="true" data-off="ai-marketing-2026-alkalom-3.html"><b>3</b><span class="hu">Arculat (ID), kulcsvizuálok és bannerek&nbsp;·&nbsp;11.&nbsp;19.</span><span class="en">Identity, key visuals and banners&nbsp;·&nbsp;11.&nbsp;19.</span></a><a class="off" aria-disabled="true" data-off="ai-marketing-2026-alkalom-4.html"><b>4</b><span class="hu">Kampánybrief, koncepció, szövegek és posztok&nbsp;·&nbsp;11.&nbsp;26.</span><span class="en">Campaign brief, concept, copy and posts&nbsp;·&nbsp;11.&nbsp;26.</span></a><a href="ai-marketing-2026-alkalom-5.html" data-href="ai-marketing-2026-alkalom-5.html" class="on" aria-current="page"><b>5</b><span class="hu">Weboldal, videóspot és a tenderdeck&nbsp;·&nbsp;12.&nbsp;03.</span><span class="en">Website, video spot and the pitch deck&nbsp;·&nbsp;12.&nbsp;03.</span></a><a class="off" aria-disabled="true" data-off="ai-marketing-2026-alkalom-6.html"><b>6</b><span class="hu">Tenderprezentáció&nbsp;·&nbsp;12.&nbsp;10.</span><span class="en">Pitch presentation&nbsp;·&nbsp;12.&nbsp;10.</span></a></nav>
+<nav class="strip" aria-label="Alkalmak"><a href="index.html" data-href="index.html"><b>AI</b><span class="hu">a marketingben · kezdőlap</span><span class="en">in Marketing · home</span></a><a href="ai-marketing-2026-alkalom-1.html" data-href="ai-marketing-2026-alkalom-1.html"><b>1</b><span class="hu">Kiinduló márka és új kategória&nbsp;·&nbsp;11.&nbsp;05.</span><span class="en">Source brand and new category&nbsp;·&nbsp;11.&nbsp;05.</span></a><a href="ai-marketing-2026-alkalom-2.html" data-href="ai-marketing-2026-alkalom-2.html"><b>2</b><span class="hu">Márkaplatform, célcsoport és árazás&nbsp;·&nbsp;11.&nbsp;12.</span><span class="en">Brand platform, target audience and pricing&nbsp;·&nbsp;11.&nbsp;12.</span></a><a class="off" aria-disabled="true" data-off="ai-marketing-2026-alkalom-3.html"><b>3</b><span class="hu">Arculat (ID), kulcsvizuálok és bannerek&nbsp;·&nbsp;11.&nbsp;19.</span><span class="en">Identity, key visuals and banners&nbsp;·&nbsp;11.&nbsp;19.</span></a><a class="off" aria-disabled="true" data-off="ai-marketing-2026-alkalom-4.html"><b>4</b><span class="hu">Kampánybrief, koncepció, szövegek és posztok&nbsp;·&nbsp;11.&nbsp;26.</span><span class="en">Campaign brief, concept, copy and posts&nbsp;·&nbsp;11.&nbsp;26.</span></a><a href="ai-marketing-2026-alkalom-5.html" data-href="ai-marketing-2026-alkalom-5.html" class="on" aria-current="page"><b>5</b><span class="hu">Weboldal, videóspot és a tenderdeck&nbsp;·&nbsp;12.&nbsp;03.</span><span class="en">Website, video spot and the pitch deck&nbsp;·&nbsp;12.&nbsp;03.</span></a><a class="off" aria-disabled="true" data-off="ai-marketing-2026-alkalom-6.html"><b>6</b><span class="hu">Tenderprezentáció&nbsp;·&nbsp;12.&nbsp;10.</span><span class="en">Pitch presentation&nbsp;·&nbsp;12.&nbsp;10.</span></a></nav>
 <main class="deck">
 <section class="slide" data-l="hu">
 <p class="kicker">AI a marketingben · gyakorlat</p><h1 class="cover">Weboldal, videóspot és a tenderdeck</h1><p class="lead">5. alkalom · 2026. december 3.</p>
@@ -308,7 +414,7 @@ I want it in a single HTML file that also looks good on mobile. No form submissi
 <p class="kicker"><span class="lt">Session 5</span>Wrap-up</p><h2>Done by today: keyword list, website link, spot link, pitch deck outline.</h2><hr class="rule"><p class="lead">Next Thursday, 10 December 2026: Pitch presentation.</p><p class="muted">The day before, 9 December 2026: Nóra: Presentation creation</p>
 </section>
 </main>
-<div class="hint"><span class="hu">← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · v1.3 · 2026. november 4.</span><span class="en">← → navigate · space: next · F: full screen · L: language · J: review mode · v1.3 · 4 November 2026</span></div>
+<div class="hint"><span class="hu">← → lapozás · szóköz: következő · F: teljes képernyő · L: nyelv · J: javító mód · v1.4 · 2026. november 11.</span><span class="en">← → navigate · space: next · F: full screen · L: language · J: review mode · v1.4 · 11 November 2026</span></div>
 <div class="pager"><a class="home" href="index.html" data-href="index.html" title="Kezdőlap">⌂ <span class="hu">Kezdőlap</span><span class="en">Home</span></a><span class="lang" role="group" aria-label="Nyelv / Language"><button type="button" data-setlang="hu">HU</button><button type="button" data-setlang="en">EN</button></span><button id="pos" type="button" aria-label="Ugrás diára">1 / 9</button><div class="jump" id="jump"></div><button type="button" data-nav="-1" aria-label="Előző">‹</button><button type="button" data-nav="1" aria-label="Következő">›</button></div>
 <div class="revbar" id="revbar"><b>Javító mód</b><span>Kattints bármelyik szövegre, és írd oda, mi legyen helyette vagy mi a bajod vele. <span id="revcount">0</span> megjegyzés.</span><button type="button" id="revexport">Lista kimentése</button><button type="button" id="revclear">Összes törlése</button><button type="button" id="revoff">Kilép (J)</button></div>
 <div class="revbox" id="revbox"><div class="orig" id="revorig"></div><textarea id="revtext" placeholder="Mi legyen helyette, vagy mi a bajod vele?"></textarea><div class="row"><button type="button" id="revsave">Ment</button><button type="button" id="revdel">Töröl</button><button type="button" id="revcancel">Mégse</button></div></div>
@@ -353,6 +459,7 @@ I want it in a single HTML file that also looks good on mobile. No form submissi
 
   D.addEventListener('keydown',function(ev){
     if(ev.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName))return;
+    if(D.querySelector('dialog[open]'))return;
     if(ev.key==='ArrowRight'||ev.key==='PageDown'||ev.key===' '){next();ev.preventDefault()}
     else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){prev();ev.preventDefault()}
     else if(ev.key==='Home'){show(0)} else if(ev.key==='End'){show(slides.length-1)}
@@ -366,7 +473,7 @@ I want it in a single HTML file that also looks good on mobile. No form submissi
   pos.addEventListener('click',function(ev){ev.stopPropagation();[].forEach.call(jump.children,function(a,k){a.classList.toggle('cur',k===i)});jump.classList.toggle('open');var c=jump.children[i];if(c)jump.scrollTop=c.offsetTop-jump.clientHeight/2});
   D.addEventListener('click',function(ev){if(!jump.contains(ev.target))jump.classList.remove('open')});
   D.querySelector('.deck').addEventListener('click',function(ev){
-    if(ev.target.closest('a,button,input,textarea,pre,.prompt'))return;
+    if(ev.target.closest('a,button,input,textarea,pre,.prompt,dialog'))return;
     if(D.body.classList.contains('rev'))return;
     var sel=window.getSelection&&String(window.getSelection());if(sel)return;
     next();
@@ -377,6 +484,12 @@ I want it in a single HTML file that also looks good on mobile. No form submissi
     function paint(){[].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){var k=b.getAttribute('data-k');b.classList.toggle('taken',!!t[k]);b.setAttribute('aria-pressed',t[k]?'true':'false')})}
     [].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var k=b.getAttribute('data-k');if(t[k])delete t[k];else t[k]=1;try{localStorage.setItem(K,JSON.stringify(t))}catch(e){}paint()})});
     paint();})();
+
+  /* TIPP: felugró ablak, ha nincs meg az előzmény */
+  [].forEach.call(D.querySelectorAll('[data-tip]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var d=D.getElementById(b.getAttribute('data-tip'));if(d&&d.showModal)d.showModal()})});
+  [].forEach.call(D.querySelectorAll('dialog.tipdlg'),function(d){d.addEventListener('click',function(ev){if(ev.target===d)d.close()})});
+  [].forEach.call(D.querySelectorAll('dialog [data-close]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();b.closest('dialog').close()})});
+  [].forEach.call(D.querySelectorAll('[data-jump]'),function(a){a.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();var d=a.closest('dialog');if(d)d.close();show(+a.getAttribute('data-jump')-1)})});
 
   /* promptok másolása */
   [].forEach.call(D.querySelectorAll('.copy'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();

@@ -5,15 +5,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CB_HU = json.load(open(os.path.join(HERE, 'codeblocks_hu.json')))
 CB_EN = json.load(open(os.path.join(HERE, 'codeblocks_en.json')))
 
-VER_HU = 'v1.3 · 2026. november 4.'
-VER_EN = 'v1.3 · 4 November 2026'
+VER_HU = 'v1.4 · 2026. november 11.'
+VER_EN = 'v1.4 · 11 November 2026'
 
 # Eddig az alkalomig kattinthatók a linkek a kezdőlapon és a felső sávban.
 # A többi alkalom szürke és nem nyitható. Hétről hétre ezt a számot emeljük.
-NYITVA = 1
+NYITVA = 2
 
 # Ha egy fájl frissebb a többinél, itt kap saját verziót: kulcs 1-6 a diasorokhoz, 'index' a kezdőlaphoz.
-VER_KIVETEL = {1: ('v1.5 · 2026. november 6.', 'v1.5 · 6 November 2026')}
+VER_KIVETEL = {1: ('v1.7 · 2026. november 11.', 'v1.7 · 11 November 2026'), 2: ('v2.2 · 2026. november 11.', 'v2.2 · 11 November 2026'), 'index': ('v1.5 · 2026. november 11.', 'v1.5 · 11 November 2026')}
 
 
 def VER(kulcs):
@@ -29,7 +29,7 @@ SESS = [
        out=L('Ütemterv, márkaelemzés, versenytársak', 'Timeline, brand analysis, competitors')),
   dict(n=2, short='11.&nbsp;12.', d=L('2026. november 12.', '12 November 2026'),
        t=L('Márkaplatform, célcsoport és árazás', 'Brand platform, target audience and pricing'),
-       out=L('Márkabrief: név, platform, personák', 'Brand brief: name, platform, personas')),
+       out=L('Márkabrief: platform, personák', 'Brand brief: platform, personas')),
   dict(n=3, short='11.&nbsp;19.', d=L('2026. november 19.', '19 November 2026'),
        t=L('Arculat (ID), kulcsvizuálok és bannerek', 'Identity, key visuals and banners'),
        out=L('Logó, kézikönyv, kulcsvizuálok, bannerek', 'Logo, brand guide, key visuals, banners')),
@@ -57,7 +57,7 @@ THEORY = {
 # Cél, scope, leadandó, a feladatleírás szerint
 GOAL = {
   1: L('Válassz márkát, és értsd meg, mitől működik a kiinduló márka.', 'Choose a brand and understand what makes the source brand work.'),
-  2: L('Építsd fel az új márka alapjait.', 'Build the foundations of the new brand.'),
+  2: L('Építsd fel a márka alapjait az új iparágban.', 'Build the foundations of the brand in its new industry.'),
   3: L('Adj az új márkának saját arcot a kiinduló márka szellemében.', 'Give the new brand its own face in the spirit of the source brand.'),
   4: L('Tervezd meg a bevezető kampányt, írd meg minden elem szövegét, és készítsd el a posztokat és a hírlevelet.', 'Plan the launch campaign, write the copy for every element, and produce the posts and the newsletter.'),
   5: L('Készítsd el a kampány utolsó elemeit, és rakd össze a tenderdecket.', 'Produce the last campaign elements and assemble the pitch deck.'),
@@ -73,7 +73,7 @@ SCOPE = {
 }
 DELIV = {
   1: L('Féléves ütemterv, márkaelemzés és versenytárstáblázat forrásokkal.', 'Semester timeline, brand analysis and competitor table with sources.'),
-  2: L('Márkabrief (név, platform, personák).', 'Brand brief (name, platform, personas).'),
+  2: L('Márkabrief (platform, personák).', 'Brand brief (platform, personas).'),
   3: L('Logó SVG, arculati kézikönyv PDF, 3 kulcsvizuál, 3 posztsablon, 2 banner, plakát-mockup, csomagolás- vagy terméklátvány.', 'Logo SVG, brand guide PDF, 3 key visuals, 3 post templates, 2 banners, billboard mock-up, packaging or product visual.'),
   4: L('Kampánybrief, kreatív koncepció, szövegcsomag, bevezetési és médiaterv, 5 poszt, HTML hírlevél.', 'Campaign brief, creative concept, copy deck, launch and media plan, 5 posts, HTML newsletter.'),
   5: L('Kulcsszólista, weboldal link, spot link, a tenderdeck vázlata.', 'Keyword list, website link, spot link, pitch deck outline.'),
@@ -211,8 +211,8 @@ TIPS = {
      L('Jegyezd fel, melyik eszközt és promptot használtad, mi lett jó, és hol tévedett az AI. A 6. alkalmon ebből meséled el, hogyan készült a deck.',
        'Note which tool and prompt you used, what worked and where the AI was wrong. In session 6 you tell the story of the deck from this.')),
     (L('A bekezdés a tiéd', 'The paragraph is yours'),
-     L('Hogy mit viszel át a kiinduló márkából és mit nem, előbb írd meg magad, és csak utána kérj rá kritikát az AI-tól. Erre épül a név, az arculat és a kampány.',
-       'Write what you carry over from the source brand and what you do not yourself first, and only then ask the AI to critique it. The name, the identity and the campaign build on it.')),
+     L('Hogy mit viszel át a kiinduló márkából és mit nem, előbb írd meg magad, és csak utána kérj rá kritikát az AI-tól. Erre épül a márkaplatform, az arculat és a kampány.',
+       'Write what you carry over from the source brand and what you do not yourself first, and only then ask the AI to critique it. The brand platform, the identity and the campaign build on it.')),
     (L('Reális ütemterv', 'A realistic timeline'),
      L('Az ütemtervhez add meg az AI-nak, mennyi időd van órán kívül, és kérd, hogy jelölje a szűk keresztmetszetet. Nézd meg külön az 5. alkalmat, ott sok minden összejön.',
        'For the timeline, tell the AI how much time you have outside class, and ask it to flag bottlenecks. Look at session 5 separately; a lot comes together there.')),
@@ -222,19 +222,19 @@ TIPS = {
   ]),
  ],
  2: [
-  (L('A név', 'The name'), [
-    (L('Adj kritériumot', 'Give criteria'),
-     L('Mondd meg, milyen legyen a név: hossz, hangzás, hangulat, és működjön-e magyarul és angolul is. Kritérium nélkül átlagos neveket kapsz.',
-       'Say what the name should be like: length, sound, mood, and whether it should work in Hungarian and in English. Without criteria you get average names.')),
-    (L('Kérj többet, tarts meg kevesebbet', 'Ask for more, keep fewer'),
-     L('A 20 névből húzz ki 15-öt, és a maradék ötre kérj új változatokat. A második kör sokszor jobb, mint az első.',
-       'Cross out 15 of the 20 names and ask for new variants of the remaining five. The second round is often better than the first.')),
-    (L('Mondd ki hangosan', 'Say it out loud'),
-     L('Ami leírva jó, kimondva lehet nehéz vagy félreérthető. Mondd ki, írd le, képzeld el egy plakáton.',
-       'What looks good written down can be hard to say or easy to mishear. Say it, write it, picture it on a billboard.')),
-    (L('Szabad-e még', 'Is it still free'),
-     L('Webes kereséssel nézd meg, használja-e már valaki a kategóriában. Érdemes megnézni a domaint és a közösségi fióknevet is.',
-       'Use web search to see whether anyone in the category already uses it. It is worth checking the domain and the social handle too.')),
+  (L('Mi marad, mi új', 'What stays, what is new'), [
+    (L('Ami marad', 'What stays'),
+     L('A név, a logó, a személyiség és az értékek. Ezekhez nem nyúlsz, ezekből dolgozol.',
+       'The name, the logo, the personality and the values. You do not touch these; you work from them.')),
+    (L('Ami új', 'What is new'),
+     L('A termék vagy szolgáltatás, a célcsoport, az ár és a kampány. Itt van minden döntés.',
+       'The product or service, the audience, the price and the campaign. Every decision is here.')),
+    (L('Mit tenne a márka?', 'What would the brand do?'),
+     L('Minden döntésnél kérdezd meg: ha az IKEA tényleg légitársaság lenne, ezt csinálná?',
+       'For every decision, ask: if IKEA really were an airline, would it do this?')),
+    (L('Nem a logón múlik', 'It does not depend on the logo'),
+     L('A név és a logó adott. Az számít, hogy a márka viselkedése átjön-e az új iparágban.',
+       "The name and logo are given. What matters is whether the brand's behaviour comes through in the new industry.")),
   ]),
   (L('A márkaplatform', 'The brand platform'), [
     (L('Az ígéret egy mondat', 'The promise is one sentence'),
@@ -246,9 +246,9 @@ TIPS = {
     (L('A hangnemhez kérj példát', 'Ask for examples of the voice'),
      L('Kérd ugyanazt az üzenetet három különböző hangon, és válaszd ki, melyik a tiéd. A választott példa a briefbe is menjen bele.',
        'Ask for the same message in three different voices and choose which one is yours. Put the chosen example in the brief too.')),
-    (L('Vezesd vissza a kiinduló márkára', 'Trace it back to the source brand'),
-     L('Minden érték mellé írd oda, mi jön belőle a kiinduló márkából. Így látszik, hogy az új márka tényleg a kiinduló márkából nő ki.',
-       'Next to every value, note what in it comes from the source brand. That shows the new brand really grows out of the source brand.')),
+    (L('Vezesd vissza a márkára', 'Trace it back to the brand'),
+     L('Minden érték mellé írd oda, hol látszik ma a valódi márkán. Így hihető, hogy az új iparágban is ugyanaz a márka.',
+       'Next to every value, note where it shows in the real brand today. That makes it believable that it is the same brand in the new industry.')),
   ]),
   (L('Persona és árazás', 'Personas and pricing'), [
     (L('Adj életet a personának', 'Give the persona a life'),
@@ -599,3 +599,326 @@ SUB = {
 # a 4. alkalom kilenc részfeladata három diára
 _r4 = SUB[4][0][1] + SUB[4][1][1]
 SUB[4] = [(None, _r4[0:3]), (None, _r4[3:6]), (None, _r4[6:9])]
+
+
+# ======================================================================
+# 2. alkalom, 2026. november 11-i átdolgozás: kis feladatok, mindegyik előtt rövid elmélet és kitalált példa.
+# Oktatói kérés: az 1. alkalmon nem nagyon értettek, ezért apróbb lépések kellenek, több promptjavaslattal.
+# A diák sorrendje: S2_SLIDES. Elem típusa: ('agenda',) | ('th', kulcs) | ('task', szám)
+# ======================================================================
+
+EXAMPLE = L('Mi lenne, ha a Rubik-kocka cipőmárka lenne?', "What if the Rubik's Cube were a shoe brand?")
+
+S2_TASKS = {1: {'t': {'hu': 'Bemelegítés: a márkád egy mondatban', 'en': 'Warm-up: your brand in one sentence'},
+     'm': 10,
+     'what': {'hu': 'Mondd ki a feladatodat egy mondatban: „Mi lenne, ha a [márka] [új kategória] lenne?” Írj mellé 5 jelzőt a márkáról az 1. alkalom elemzéséből, és jelöld, melyik három a '
+                    'legfontosabb az új iparágban.',
+              'en': 'Say your task in one sentence: "What if [brand] were a [new category]?" Add 5 adjectives describing the brand from your session 1 analysis, and mark the three that matter most '
+                    'in the new industry.'},
+     'out': {'hu': '1 mondat és 5 jelző, ebből 3 jelölve', 'en': '1 sentence and 5 adjectives, 3 of them marked'},
+     'ex': {'hu': 'Mi lenne, ha a Rubik-kocka cipőmárka lenne? Okos, játékos, színes, makacs, ikonikus. A cipőnél a legfontosabb: játékos, színes, okos.',
+            'en': "What if the Rubik's Cube were a shoe brand? Clever, playful, colourful, stubborn, iconic. For shoes the most important: playful, colourful, clever."},
+     'p': {'hu': 'Az előző órán elemeztem a [márka] márkát, itt az elemzésem: [bemásolva vagy feltöltve]. Órai játékban azt találjuk ki, milyen lenne, ha a [márka] a nevével és a logójával együtt '
+                 '[új kategória] lenne. Foglald össze 5 jelzőben, milyen ez a márka, ha ember lenne. Utána mondd meg, melyik 3 jelző a legfontosabb az új iparágban, és miért, egy-egy mondatban. Ha '
+                 'az elemzésem hiányos, mondd meg, mi hiányzik belőle.',
+           'en': 'Last class I analysed the [brand] brand; here is my analysis: [pasted or uploaded]. In a classroom game we work out what it would be like if [brand], name and logo included, were a '
+                 '[new category]. Sum up in 5 adjectives what this brand would be like as a person. Then tell me which 3 adjectives matter most in the new industry, and why, in one sentence each. If '
+                 'my analysis is incomplete, tell me what is missing.'}},
+ 2: {'t': {'hu': 'Pozicionálás', 'en': 'Positioning'},
+     'm': 15,
+     'what': {'hu': 'Töltsd ki a képletet a saját márkáddal. Kérj 3 változatot, és a versenytárstáblázatod alapján válaszd ki, melyik különbözik a legjobban.',
+              'en': 'Fill in the formula with your own brand. Ask for 3 variants, and use your competitor table to choose the one that stands out most.'},
+     'out': {'hu': '1 pozicionáló mondat', 'en': '1 positioning sentence'},
+     'p': {'hu': 'Itt a versenytárstáblázatom az első óráról: [bemásolva]. A márkám: [márka] mint [új kategória]. Órai játék: a valódi márka egy elképzelt iparágban, a neve és a logója marad. Írj 3 '
+                 'különböző pozicionáló mondatot ezzel a képlettel: [kinek], akik [mire vágynak], a [márka] az a [kategória], amely [miben más], mert [miért hihető]. Mindegyik mellé írd oda, melyik '
+                 'versenytárstól különbözteti meg a legjobban, és ha valamelyik bármelyik versenytársra igaz lehetne, jelezd.',
+           'en': 'Here is my competitor table from the first class: [pasted]. My brand: [brand] as a [new category]. A classroom game: the real brand in an imagined industry; its name and logo stay. '
+                 'Write 3 different positioning sentences with this formula: for [whom], who [want what], [brand] is the [category] that [how it is different], because [why it is believable]. Next '
+                 'to each, note which competitor it sets the brand apart from most, and flag any that could be true of any competitor.'}},
+ 3: {'t': {'hu': 'Ígéret és 3 érték', 'en': 'Promise and 3 values'},
+     'm': 15,
+     'what': {'hu': 'Írd meg az ígéretet egy mondatban, és a 3 értéket, mindegyiket egy mondattal arról, mit jelent a gyakorlatban.',
+              'en': 'Write the promise in one sentence and the 3 values, each with one sentence on what it means in practice.'},
+     'out': {'hu': '1 ígéret és 3 érték', 'en': '1 promise and 3 values'},
+     'p': {'hu': 'A márkám: [márka] mint [új kategória], a pozicionálása: [mondat]. Javasolj 5 lehetséges ígéretet, mindegyik legyen egy rövid mondat, amit egy vevő a barátjának is elmondana. Utána '
+                 'javasolj 6 értéket, és mindegyikhez írd oda, mit jelent a gyakorlatban, és hogyan illik a [márka] márkához. Húzd ki azokat, amelyek bármelyik márkára igazak lehetnének. A végső '
+                 'hármat én választom ki.',
+           'en': 'My brand: [brand] as a [new category], its positioning: [sentence]. Suggest 5 possible promises, each a short sentence a customer would tell a friend. Then suggest 6 values, and '
+                 'for each note what it means in practice and how it fits [brand]. Cross out any that could be true of any brand. I will choose the final three.'}},
+ 4: {'t': {'hu': 'Személyiség és hangnem', 'en': 'Personality and tone of voice'},
+     'm': 15,
+     'what': {'hu': 'Írj 3 jelzőt a márka személyiségére, döntsd el, hol áll a négy skálán, és kérd ugyanazt az üzenetet háromféle hangon. Válaszd ki a tiédet.',
+              'en': "Write 3 adjectives for the brand's personality, decide where it sits on the four scales, and ask for the same message in three voices. Choose yours."},
+     'out': {'hu': '3 jelző, a hangnem és 1 példamondat', 'en': '3 adjectives, the tone and 1 example sentence'},
+     'p': {'hu': 'A márkám: [márka] mint [új kategória], az ígérete: [ígéret], az értékei: [3 érték]. Írd meg ugyanazt a rövid üzenetet, például egy új termék bejelentését, háromféle hangon: egyszer '
+                 'lazán és játékosan, egyszer magabiztosan és egyszerűen, egyszer visszafogottan és szakmaian. Mindegyik legfeljebb 2 mondat. Utána mondd meg, melyik illik leginkább a [márka] '
+                 'személyiségéhez, de a döntés az enyém.',
+           'en': 'My brand: [brand] as a [new category], its promise: [promise], its values: [3 values]. Write the same short message, for example a new product announcement, in three voices: once '
+                 "relaxed and playful, once confident and simple, once restrained and expert. At most 2 sentences each. Then tell me which fits [brand]'s personality best, but the decision is "
+                 'mine.'}},
+ 5: {'t': {'hu': 'Célcsoport és az első persona', 'en': 'Target audience and the first persona'},
+     'm': 15,
+     'what': {'hu': 'Írd le a célcsoportot egy mondatban, és készíts belőle egy personát a kártya mezőivel.',
+              'en': 'Describe the target audience in one sentence, and create a persona from it with the card fields.'},
+     'out': {'hu': '1 célcsoport-mondat és 1 persona-kártya', 'en': '1 target audience sentence and 1 persona card'},
+     'p': {'hu': 'A márkám: [márka] mint [új kategória], a pozicionálása: [mondat]. Írd le egy mondatban a legfontosabb célcsoportját, aztán készíts belőle egy hihető personát: név, kor, '
+                 'foglalkozás, lakóhely, egy átlagos napja, mit szeretne elérni, mitől tart, hogyan és hol vásárol [új kategória] terméket vagy szolgáltatást. Ne legyen tökéletes vásárló, legyenek '
+                 'kétségei is.',
+           'en': 'My brand: [brand] as a [new category], its positioning: [sentence]. Describe its most important target audience in one sentence, then create a believable persona from it: name, '
+                 'age, occupation, where they live, an ordinary day, what they want to achieve, what they worry about, how and where they buy [new category] products or services. They should not be '
+                 'a perfect customer; give them doubts too.'}},
+ 6: {'t': {'hu': 'Interjú a personával', 'en': 'Interview the persona'},
+     'm': 20,
+     'what': {'hu': 'Kérdezd ki a personát 5 kérdéssel, szerepjátékban. Jelöld meg a válaszokat, amelyek szerinted kitaláltak, vagy túl szépen illenek a márkádhoz.',
+              'en': 'Interview the persona with 5 questions, in a role-play. Mark the answers you think are made up or fit your brand too neatly.'},
+     'out': {'hu': '5 kérdés és válasz, jelölve', 'en': '5 questions and answers, marked'},
+     'qs': {'hu': ['Mikor vettél utoljára [termék], és miért azt?',
+                   'Mi zavar abban, amit most használsz?',
+                   'Mi tartana vissza attól, hogy kipróbáld?',
+                   'Mennyit adnál érte, és miért?',
+                   'Kinek mesélnéd el, és mit mondanál?'],
+            'en': ['When did you last buy [product], and why that one?',
+                   'What bothers you about what you use now?',
+                   'What would hold you back from trying it?',
+                   'How much would you pay for it, and why?',
+                   'Who would you tell about it, and what would you say?']},
+     'p': {'hu': 'Szeretnék veled egy szerepjátékot játszani, hogy jobban megértsem a célcsoportomat. Egy órai játékban azt találom ki, milyen lenne, ha a [márka] a nevével és a logójával együtt [új '
+                 'kategória] lenne. Röviden erről szól: [márkaplatform 3-4 mondatban].\n'
+                 '\n'
+                 'Kérlek, mostantól te legyél [persona neve], egy [kor] éves [foglalkozás], aki [2-3 mondat az életéről, szokásairól, arról, mi fontos neki]. Én egy piackutató vagyok, és kérdezni '
+                 'foglak erről. Válaszolj úgy, ahogy ő válaszolna: a saját szavaival, őszintén, akár kritikusan is, és ne próbálj a kedvemben járni. Ha valamit ő nem tudna, mondd, hogy nem tudod. '
+                 'Rövid, beszélt nyelvű válaszokat kérek, mintha egy interjún ülnénk.\n'
+                 '\n'
+                 'Ha készen állsz, mutatkozz be egy mondatban, és kezdem a kérdéseket.',
+           'en': 'I would like to play a role-play with you to understand my target audience better. In a classroom game I am working out what it would be like if [brand], name and logo included, '
+                 'were a [new category]. In short: [brand platform in 3-4 sentences].\n'
+                 '\n'
+                 'From now on, please be [persona name], a [age]-year-old [occupation] who [2-3 sentences about their life, habits and what matters to them]. I am a market researcher and I will ask '
+                 'you about this. Answer the way they would: in their own words, honestly, even critically, and do not try to please me. If they would not know something, say you do not know. Short, '
+                 'spoken answers please, as if we were in an interview.\n'
+                 '\n'
+                 'When you are ready, introduce yourself in one sentence and I will start asking.'}},
+ 7: {'t': {'hu': 'A második persona', 'en': 'The second persona'},
+     'm': 20,
+     'what': {'hu': 'Készíts egy második personát, aki más, mint az első: más élethelyzet, más kétség. Kérdezd ki 3-5 kérdéssel.',
+              'en': 'Create a second persona who is different from the first: a different life situation, a different doubt. Interview them with 3-5 questions.'},
+     'out': {'hu': '2. persona-kártya és interjú', 'en': 'Second persona card and interview'},
+     'p': {'hu': 'Az első personám: [persona 1 röviden]. Készíts egy második personát ugyanabból vagy egy másodlagos célcsoportból, aki tényleg más: más élethelyzetben van, más okból vásárolna, és '
+                 'más miatt hezitálna. Ugyanazokkal a mezőkkel kérem, mint az elsőt. Utána mondd meg egy mondatban, miben kell majd másképp szólni hozzá, mint az elsőhöz.',
+           'en': 'My first persona: [persona 1 in brief]. Create a second persona from the same or a secondary target audience who is genuinely different: in a different life situation, buying for a '
+                 'different reason, hesitating for a different reason. Use the same fields as for the first. Then tell me in one sentence how we will need to talk to them differently from the '
+                 'first.'}},
+ 8: {'t': {'hu': 'Árazás · opcionális', 'en': 'Pricing · optional'},
+     'm': 15,
+     'what': {'hu': 'Gyűjts valódi árakat 3-5 versenytárstól, és döntsd el, hol áll a márkád: prémium, közép vagy belépő. Indokold egy mondatban.',
+              'en': 'Collect real prices from 3-5 competitors and decide where your brand sits: premium, mid-range or entry level. Justify it in one sentence.'},
+     'out': {'hu': 'Árszint és egymondatos indoklás', 'en': 'Price level and a one-sentence reason'},
+     'p': {'hu': 'Webes kereséssel gyűjts valódi árakat 5 [új kategória] márkától a [ország vagy régió] piacon, forráslinkkel, táblázatban. Csak olyan árat írj, amit megtaláltál, a becslést jelöld. '
+                 'Utána a pozicionálásom alapján ([mondat]) javasolj árszintet a [márka] márkának (prémium, közép vagy belépő), és indokold két mondatban.',
+           'en': 'Use web search to collect real prices from 5 [new category] brands on the [country or region] market, with source links, in a table. Only list prices you actually found; mark '
+                 'estimates. Then, based on my positioning ([sentence]), suggest a price level for [brand] (premium, mid-range or entry level) and justify it in two sentences.'}},
+ 9: {'t': {'hu': 'A márkabrief összerakása', 'en': 'Putting the brand brief together'},
+     'm': 15,
+     'what': {'hu': 'Rakd össze egy oldalba mindazt, ami ma elkészült. Az AI csak rendezzen, ne írjon hozzá újat.',
+              'en': 'Put everything you made today on one page. The AI should only organise it, not add anything new.'},
+     'out': {'hu': 'Márkabrief egy oldalon: ez készül el mára', 'en': 'A one-page brand brief: this is what is done by today'},
+     'brief': {'hu': ['A „Mi lenne, ha…” mondat', 'Célcsoport', '2 persona röviden', 'Pozicionálás', 'Ígéret', '3 érték', 'Személyiség és hangnem, példamondattal', 'Árszint, ha van'],
+               'en': ['The "What if…" sentence',
+                      'Target audience',
+                      '2 personas in brief',
+                      'Positioning',
+                      'Promise',
+                      '3 values',
+                      'Personality and tone, with an example sentence',
+                      'Price level, if any']},
+     'p': {'hu': 'Itt van minden, ami ma elkészült a márkámhoz: [bemásolva]. Rakd össze egy egyoldalas márkabriefbe ezekkel a fejezetekkel: a „Mi lenne, ha…” mondat, célcsoport, két persona röviden, '
+                 'pozicionálás, ígéret, három érték, személyiség és hangnem egy példamondattal, árszint, ha van. Ne írj hozzá új tartalmat, csak rendezd és egységesítsd. Ha valami hiányzik, vagy két '
+                 'rész ellentmond egymásnak, jelezd a végén.',
+           'en': 'Here is everything I made for my brand today: [pasted]. Put it into a one-page brand brief with these sections: the "What if…" sentence, target audience, two personas in brief, '
+                 'positioning, promise, three values, personality and tone with an example sentence, price level if any. Do not add new content, only organise and align it. If something is missing '
+                 'or two parts contradict each other, flag it at the end.'}}}
+
+# Rövid elmélet: (cím, bevezető mondat, [(címke, szöveg)], kitalált példa, opcionális képlet)
+S2_THEORY = {
+ 'brief': dict(t=L('Mi az a márkabrief?', 'What is a brand brief?'),
+    lead=L('Egy oldal, amire minden későbbi munka épül: a logótól a kampányig mindent ebből csinálsz.', 'One page that all later work builds on: from the logo to the campaign, you make everything from it.'),
+    items=[(L('Kiindulás', 'Starting point'), L('Mi lenne, ha…: mi marad a márkából, és mi lesz új?', 'What if…: what stays of the brand, and what is new?')),
+           (L('Pozicionálás', 'Positioning'), L('Miben vagy más, mint a többiek?', 'How are you different from the rest?')),
+           (L('Ígéret és értékek', 'Promise and values'), L('Mit kap tőled a vevő, és mit képviselsz?', 'What does the customer get from you, and what do you stand for?')),
+           (L('Személyiség és hangnem', 'Personality and tone'), L('Ha ember lennél, milyen lennél, és hogyan beszélnél?', 'If you were a person, what would you be like, and how would you talk?')),
+           (L('Célcsoport és persona', 'Audience and persona'), L('Kinek szólsz, és ki az az egy ember, akire gondolsz?', 'Who do you speak to, and who is the one person you have in mind?')),
+           (L('Árazás · opcionális', 'Pricing · optional'), L('Mennyibe kerülsz a többiekhez képest?', 'What do you cost compared with the rest?'))],
+    ex=L('A mai diákon végig ezt a kitalált példát visszük: mi lenne, ha a Rubik-kocka cipőmárka lenne? A példa csak mutatja a formát, a te márkád tartalma a tiéd.',
+         "Throughout today's slides we follow one made-up example: what if the Rubik's Cube were a shoe brand? The example only shows the form; the content of your brand is yours.")),
+ 'pos': dict(t=L('Pozicionálás: miben vagy más?', 'Positioning: how are you different?'),
+    lead=L('Egy mondat arról, kinek szólsz, mi vagy, és miben különbözöl a versenytársaidtól.', 'One sentence on who you speak to, what you are, and how you differ from your competitors.'),
+    formula=L('[Kinek], akik [mire vágynak], a [márka] az a [kategória], amely [miben más], mert [miért hihető].', 'For [whom], who [want what], [brand] is the [category] that [how it is different], because [why it is believable].'),
+    items=[(L('Próba', 'Test'), L('Ha a mondatba egy versenytárs nevét írod, és ugyanúgy igaz, még nem pozicionálás.', "If you put a competitor's name into the sentence and it is still true, it is not positioning yet."))],
+    ex=L('Városi fiataloknak, akik nem akarnak ugyanabban járni, mint mindenki, a Rubik az a sneakermárka, amelynek a színeit percek alatt átcsavarhatod, mert minden panelje cserélhető.',
+         "For young city people who do not want to wear what everyone wears, Rubik is the sneaker brand whose colours you can twist around in minutes, because every panel is replaceable.")),
+ 'promise': dict(t=L('Ígéret és értékek', 'Promise and values'),
+    lead=L('Az ígéret azt mondja meg, mit kap a vevő. Az értékek azt, mit képvisel a márka, és mi alapján dönt.', 'The promise says what the customer gets. The values say what the brand stands for and how it decides.'),
+    items=[(L('Ígéret', 'Promise'), L('Egy mondat, amit a vevő a barátjának is elmondana.', 'One sentence a customer would tell a friend.')),
+           (L('Értékek', 'Values'), L('Három elég. Mindegyikhez tartozzon egy mondat arról, mit jelent a gyakorlatban.', 'Three is enough. Each needs one sentence on what it means in practice.')),
+           (L('Próba', 'Test'), L('Ha egy érték bármelyik márkára igaz lehetne (innovatív, minőségi, fenntartható), cseréld le.', 'If a value could be true of any brand (innovative, quality, sustainable), replace it.'))],
+    ex=L('Ígéret: minden nap más cipő. Értékek: játék, alkotás, kitartás.', 'Promise: a different shoe every day. Values: play, creation, persistence.')),
+ 'voice': dict(t=L('Ha a márka ember lenne', 'If the brand were a person'),
+    lead=L('A személyiség az, amilyen a márka. A hangnem az, ahogyan beszél.', 'Personality is what the brand is like. Tone of voice is how it talks.'),
+    items=[(L('Személyiség', 'Personality'), L('3 jelző, amit egy emberre is mondanál.', '3 adjectives you would also use for a person.')),
+           (L('Hangnem: négy skála', 'Tone: four scales'), L('hivatalos ↔ laza · komoly ↔ játékos · visszafogott ↔ harsány · egyszerű ↔ szakmai', 'formal ↔ relaxed · serious ↔ playful · restrained ↔ loud · simple ↔ expert')),
+           (L('Próba', 'Test'), L('Írd meg ugyanazt az üzenetet három hangon. Amelyikre azt mondod, „ez ő”, az a tiéd.', 'Write the same message in three voices. The one you recognise as "that is them" is yours.'))],
+    ex=L('Rubik: okos, játékos, magabiztos. Laza és játékos, rövid mondatokkal. „Hat oldal. Egy cipő. Te döntöd el.”', 'Rubik: clever, playful, confident. Relaxed and playful, in short sentences. "Six sides. One shoe. Your call."')),
+ 'persona': dict(t=L('Célcsoport és persona', 'Target audience and persona'),
+    lead=L('A célcsoport egy csoport leírása. A persona egy kitalált, de hihető ember ebből a csoportból. Mellette könnyebb dönteni: tetszene ez neki?', 'The target audience describes a group. A persona is a made-up but believable person from that group. It makes decisions easier: would they like this?'),
+    items=[(L('Célcsoport', 'Target audience'), L('Kik ők, és mi közös bennük?', 'Who are they, and what do they have in common?')),
+           (L('Persona-kártya', 'Persona card'), L('Név, kor, foglalkozás, lakóhely, egy átlagos nap, mit akar elérni, mitől tart, hogyan vásárol.', 'Name, age, occupation, where they live, an ordinary day, what they want, what they worry about, how they buy.')),
+           (L('Interjú', 'Interview'), L('Az AI eljátssza a personát. Gyors, de hajlamos mindent szeretni, ezért kérd, hogy legyen kritikus, és jelöld a kitalált válaszokat.', 'The AI plays the persona. It is quick, but tends to like everything, so ask it to be critical and mark the made-up answers.'))],
+    ex=L('Célcsoport: 18-30 éves városi fiatalok, akik a ruhájukkal is kifejezik magukat. Persona: Dóri, 24 éves grafikushallgató Budapesten. Sokat gyalogol, szereti egyedivé alakítani a tárgyait, és tart attól, hogy egy feltűnő cipő fél év múlva ciki lesz.',
+         'Target audience: young city people aged 18-30 who express themselves through what they wear. Persona: Dóri, 24, a graphic design student in Budapest. She walks a lot, likes to make her things her own, and worries that a striking shoe will look embarrassing in six months.')),
+ 'price': dict(t=L('Árazás · opcionális', 'Pricing · optional'),
+    lead=L('Csak akkor foglalkozz vele, ha a márkádnál az ár a pozicionálás része.', 'Only work on it if price is part of your positioning.'),
+    items=[(L('Prémium', 'Premium'), L('Drágább, mint a többség. Ezt meg kell tudni indokolni.', 'More expensive than most. You need to be able to justify it.')),
+           (L('Közép', 'Mid-range'), L('A megszokott árszint. Más miatt választanak.', 'The usual price level. People choose it for other reasons.')),
+           (L('Belépő', 'Entry level'), L('Olcsóbb a többségnél. Az ár maga az érv.', 'Cheaper than most. The price is the argument.')),
+           (L('Mihez méred?', 'What do you measure against?'), L('A versenytársak áraihoz, ahhoz, amennyit a vevő szerint ér, vagy a költséghez és az árréshez.', 'Competitor prices, what it is worth to the customer, or cost plus margin.'))],
+    ex=L('Rubik: prémium közép, mert a cserélhető panel többet ad egy sima sneakernél.', 'Rubik: upper mid-range, because the replaceable panels give more than a plain sneaker.')),
+}
+
+S2_SLIDES = [('agenda',), ('th', 'brief'), ('task', 1),
+             ('th', 'pos'), ('task', 2),
+             ('th', 'promise'), ('task', 3),
+             ('th', 'voice'), ('task', 4),
+             ('th', 'persona'), ('task', 5), ('task', 6), ('task', 7),
+             ('th', 'price'), ('task', 8),
+             ('task', 9)]
+S2_BLOCKS = [(L('Első blokk', 'First block'), [1, 2, 3, 4]), (L('Második blokk', 'Second block'), [5, 6, 7, 8, 9])]
+
+# A 2. alkalom összefoglaló diája: ki melyik márkát választotta 2026. november 5-én (oktatói lista).
+# Oktatói döntés 2026. november 11.: teljes névvel kerülnek a fájlba. Neptun-kód nem kerül ide.
+ROSTER = [('Alam Ratemul', 'Apple'), ('Awan Malik Danish Naveed', 'Tesla'), ('Ercetin Onur', 'Duolingo'),
+          ('Fahim Md Fayaz Yasin', 'Nike'), ('Hasan Md Mehedi', 'Coca-Cola'), ('Hossain Md Mamun', 'IKEA'),
+          ('Odikanuom Pascal Izunna', 'Ferrari'), ('Tran Hoai Truc Quynh', 'Spotify')]
+NOBRAND = ['Akter Rokeya', 'Kishan Alif Nur', 'Vo Thi Diem Huong']
+
+# ======================================================================
+# 2026. november 11., este: minden prompt megmondja, mit kell bemásolni (Ehhez kell) és milyen formában
+# kérje vissza az eredményt (fmt), hogy az a márkadokumentumba kerüljön, és onnan menjen tovább a következő promptba.
+# ======================================================================
+_FMT = {
+ 1: dict(need=L('Az 1. alkalom márkaelemzése.', 'Your brand analysis from session 1.'),
+         doc=L('1. Mi lenne, ha… és a 3 jelző', '1. What if… and the 3 adjectives'),
+         p=L('Az előző órán elemeztem a [márka] márkát, itt az elemzésem: [bemásolva vagy feltöltve]. Órai játékban azt találjuk ki, milyen lenne, ha a [márka] a nevével és a logójával együtt [új kategória] lenne. Foglald össze 5 jelzőben, milyen ez a márka, ha ember lenne, és mondd meg, melyik 3 jelző a legfontosabb az új iparágban.\n\nA válaszod legyen rövid. Csak ezt a blokkot add vissza, hogy be tudjam másolni a márkadokumentumomba:\nMI LENNE, HA: …\n5 JELZŐ: …\nA 3 LEGFONTOSABB AZ ÚJ IPARÁGBAN: … (mindegyik mellé egy rövid indoklás)\nAMI HIÁNYZIK AZ ELEMZÉSEMBŐL: …',
+             'Last class I analysed the [brand] brand; here is my analysis: [pasted or uploaded]. In a classroom game we work out what it would be like if [brand], name and logo included, were a [new category]. Sum up in 5 adjectives what this brand would be like as a person, and tell me which 3 adjectives matter most in the new industry.\n\nKeep it short. Return only this block, so I can paste it into my brand document:\nWHAT IF: …\n5 ADJECTIVES: …\nTHE 3 THAT MATTER MOST IN THE NEW INDUSTRY: … (each with a short reason)\nWHAT IS MISSING FROM MY ANALYSIS: …')),
+ 2: dict(need=L('Az 1. feladat eredménye és az 1. alkalom versenytárstáblázata.', 'The output of task 1 and your competitor table from session 1.'),
+         doc=L('2. Pozicionálás: a választott mondat', '2. Positioning: the sentence you chose'),
+         p=L('A márkadokumentumom eddig: [1. feladat eredménye]. A versenytárstáblázatom az első óráról: [bemásolva]. A márkám: [márka] mint [új kategória], órai játékban, a neve és a logója marad. Írj 3 különböző pozicionáló mondatot ezzel a képlettel: „Kinek…, akik…, a márka az a…, amely…, mert…”. Ha valamelyik bármelyik versenytársra igaz lehetne, jelezd.\n\nA válaszod legyen rövid. Csak ezt a blokkot add vissza:\n1. MONDAT: …\n   LEGJOBBAN ETTŐL A VERSENYTÁRSTÓL KÜLÖNBÖZIK: …\n2. MONDAT: …\n   LEGJOBBAN ETTŐL A VERSENYTÁRSTÓL KÜLÖNBÖZIK: …\n3. MONDAT: …\n   LEGJOBBAN ETTŐL A VERSENYTÁRSTÓL KÜLÖNBÖZIK: …',
+             'My brand document so far: [output of task 1]. My competitor table from the first class: [pasted]. My brand: [brand] as a [new category], in a classroom game; its name and logo stay. Write 3 different positioning sentences with this formula: "For…, who…, the brand is the… that…, because…". Flag any that could be true of any competitor.\n\nKeep it short. Return only this block:\n1. SENTENCE: …\n   DIFFERS MOST FROM THIS COMPETITOR: …\n2. SENTENCE: …\n   DIFFERS MOST FROM THIS COMPETITOR: …\n3. SENTENCE: …\n   DIFFERS MOST FROM THIS COMPETITOR: …')),
+ 3: dict(need=L('A 2. feladat eredménye: a pozicionáló mondatod.', 'The output of task 2: your positioning sentence.'),
+         doc=L('3. Ígéret és 3 érték: amit kiválasztottál', '3. Promise and 3 values: the ones you chose'),
+         p=L('A márkám: [márka] mint [új kategória], órai játékban. A pozicionálása: [2. feladat eredménye]. Javasolj 5 lehetséges ígéretet, mindegyik egy rövid mondat, amit egy vevő a barátjának is elmondana. Utána javasolj 6 értéket: mit jelent a gyakorlatban, és hol látszik ma a valódi [márka] márkán. Húzd ki azokat, amelyek bármelyik márkára igazak lehetnének. A végső ígéretet és a 3 értéket én választom ki.\n\nA válaszod legyen rövid. Csak ezt a blokkot add vissza:\nÍGÉRETEK:\n1. …\n2. …\n3. …\n4. …\n5. …\nÉRTÉKEK:\n1. … · a gyakorlatban: … · ma a márkán: …\n(és így tovább a 6. értékig)',
+             'My brand: [brand] as a [new category], in a classroom game. Its positioning: [output of task 2]. Suggest 5 possible promises, each a short sentence a customer would tell a friend. Then suggest 6 values: what each means in practice and where it shows in the real [brand] today. Cross out any that could be true of any brand. I will choose the final promise and the 3 values.\n\nKeep it short. Return only this block:\nPROMISES:\n1. …\n2. …\n3. …\n4. …\n5. …\nVALUES:\n1. … · in practice: … · in the brand today: …\n(and so on up to value 6)')),
+ 4: dict(need=L('Az 1. feladat 3 jelzője és a 3. feladat eredménye: ígéret és 3 érték.', 'The 3 adjectives from task 1 and the output of task 3: promise and 3 values.'),
+         doc=L('4. Személyiség (3 jelző), hangnem és egy példamondat', '4. Personality (3 adjectives), tone and one example sentence'),
+         p=L('A márkám: [márka] mint [új kategória], órai játékban. A 3 legfontosabb jelzője: [1. feladat eredménye]. Az ígérete és az értékei: [3. feladat eredménye]. Írd meg ugyanazt a rövid üzenetet, például egy új termék bejelentését, háromféle hangon: lazán és játékosan; magabiztosan és egyszerűen; visszafogottan és szakmaian. Mindegyik legfeljebb 2 mondat. Utána mondd meg, melyik illik leginkább a [márka] személyiségéhez, de a döntés az enyém.\n\nCsak ezt a blokkot add vissza:\nA) LAZA ÉS JÁTÉKOS: …\nB) MAGABIZTOS ÉS EGYSZERŰ: …\nC) VISSZAFOGOTT ÉS SZAKMAI: …\nJAVASLAT: … (egy mondat, miért)',
+             'My brand: [brand] as a [new category], in a classroom game. Its 3 key adjectives: [output of task 1]. Its promise and values: [output of task 3]. Write the same short message, for example a new product announcement, in three voices: relaxed and playful; confident and simple; restrained and expert. At most 2 sentences each. Then tell me which fits [brand]\'s personality best, but the decision is mine.\n\nReturn only this block:\nA) RELAXED AND PLAYFUL: …\nB) CONFIDENT AND SIMPLE: …\nC) RESTRAINED AND EXPERT: …\nSUGGESTION: … (one sentence on why)')),
+ 5: dict(need=L('A 2. feladat eredménye: a pozicionáló mondatod.', 'The output of task 2: your positioning sentence.'),
+         doc=L('5. Célcsoport és az 1. persona', '5. Target audience and the first persona'),
+         p=L('A márkám: [márka] mint [új kategória], órai játékban. A pozicionálása: [2. feladat eredménye]. Írd le egy mondatban a legfontosabb célcsoportját, aztán készíts belőle egy hihető personát. Ne legyen tökéletes vásárló, legyenek kétségei is.\n\nCsak ezt a blokkot add vissza:\nCÉLCSOPORT: … (egy mondat)\nNÉV: …\nKOR: …\nFOGLALKOZÁS: …\nLAKÓHELY: …\nEGY ÁTLAGOS NAPJA: … (2 mondat)\nMIT SZERETNE ELÉRNI: …\nMITŐL TART: …\nHOGYAN ÉS HOL VÁSÁROL: …',
+             'My brand: [brand] as a [new category], in a classroom game. Its positioning: [output of task 2]. Describe its most important target audience in one sentence, then create a believable persona from it. They should not be a perfect customer; give them doubts too.\n\nReturn only this block:\nTARGET AUDIENCE: … (one sentence)\nNAME: …\nAGE: …\nOCCUPATION: …\nWHERE THEY LIVE: …\nAN ORDINARY DAY: … (2 sentences)\nWHAT THEY WANT: …\nWHAT THEY WORRY ABOUT: …\nHOW AND WHERE THEY BUY: …')),
+ 6: dict(need=L('Az 5. feladat personája, és a 2-4. feladat eredménye röviden.', 'The persona from task 5, and the outputs of tasks 2-4 in brief.'),
+         doc=L('6. Az interjú: 5 kérdés és válasz, jelölve', '6. The interview: 5 questions and answers, marked'),
+         p=L('Szeretnék veled egy szerepjátékot játszani, hogy jobban megértsem a célcsoportomat. Egy órai játékban azt találom ki, milyen lenne, ha a [márka] a nevével és a logójával együtt [új kategória] lenne. Röviden erről szól: [2-4. feladat eredménye röviden].\n\nKérlek, mostantól te legyél ez a persona: [5. feladat personája]. Én egy piackutató vagyok, és kérdezni foglak. Válaszolj úgy, ahogy ő válaszolna: a saját szavaival, őszintén, akár kritikusan is, és ne próbálj a kedvemben járni. Ha valamit ő nem tudna, mondd, hogy nem tudod. Rövid, beszélt nyelvű válaszokat kérek.\n\nHa azt írom, hogy VÉGE, lépj ki a szerepből, és csak ezt a blokkot add vissza:\nKÉRDÉS 1: … · VÁLASZ: … (egy mondatban)\n(és így tovább mind az 5 kérdésre)\nAMI MEGLEPŐ VOLT: …\n\nHa készen állsz, mutatkozz be egy mondatban, és kezdem a kérdéseket.',
+             'I would like to play a role-play with you to understand my target audience better. In a classroom game I am working out what it would be like if [brand], name and logo included, were a [new category]. In short: [outputs of tasks 2-4 in brief].\n\nFrom now on, please be this persona: [persona from task 5]. I am a market researcher and I will ask you questions. Answer the way they would: in their own words, honestly, even critically, and do not try to please me. If they would not know something, say you do not know. Short, spoken answers please.\n\nWhen I write END, step out of the role and return only this block:\nQUESTION 1: … · ANSWER: … (in one sentence)\n(and so on for all 5 questions)\nWHAT WAS SURPRISING: …\n\nWhen you are ready, introduce yourself in one sentence and I will start asking.')),
+ 7: dict(need=L('Az 5. feladat personája. Az interjúhoz a 6. feladat promptja.', 'The persona from task 5. For the interview, the prompt from task 6.'),
+         doc=L('7. A 2. persona és a rövid interjúja', '7. The second persona and its short interview'),
+         p=L('Az első personám: [5. feladat personája]. Készíts egy második personát ugyanabból vagy egy másodlagos célcsoportból, aki tényleg más: más élethelyzetben van, más okból vásárolna, és más miatt hezitálna.\n\nCsak ezt a blokkot add vissza, ugyanazokkal a sorokkal, mint az első personánál:\nNÉV: …\nKOR: …\nFOGLALKOZÁS: …\nLAKÓHELY: …\nEGY ÁTLAGOS NAPJA: … (2 mondat)\nMIT SZERETNE ELÉRNI: …\nMITŐL TART: …\nHOGYAN ÉS HOL VÁSÁROL: …\nMIBEN MÁS, MINT AZ ELSŐ: …\nHOGYAN SZÓLJUNK HOZZÁ MÁSKÉPP: … (egy mondat)',
+             'My first persona: [persona from task 5]. Create a second persona from the same or a secondary target audience who is genuinely different: in a different life situation, buying for a different reason, hesitating for a different reason.\n\nReturn only this block, with the same lines as the first persona:\nNAME: …\nAGE: …\nOCCUPATION: …\nWHERE THEY LIVE: …\nAN ORDINARY DAY: … (2 sentences)\nWHAT THEY WANT: …\nWHAT THEY WORRY ABOUT: …\nHOW AND WHERE THEY BUY: …\nHOW THEY DIFFER FROM THE FIRST: …\nHOW TO TALK TO THEM DIFFERENTLY: … (one sentence)')),
+ 8: dict(need=L('A 2. feladat eredménye és az 1. alkalom versenytárstáblázata.', 'The output of task 2 and your competitor table from session 1.'),
+         doc=L('8. Árszint · opcionális', '8. Price level · optional'),
+         p=L('A márkám: [márka] mint [új kategória], órai játékban. A pozicionálása: [2. feladat eredménye]. Webes kereséssel gyűjts valódi árakat 5 [új kategória] márkától a [ország vagy régió] piacon. Csak olyan árat írj, amit megtaláltál, a becslést jelöld. Utána javasolj árszintet: prémium, közép vagy belépő.\n\nCsak ezt a blokkot add vissza:\nÁRAK: márka · termék · ár · forráslink (soronként egy)\nJAVASOLT ÁRSZINT: …\nINDOKLÁS: … (2 mondat)',
+             'My brand: [brand] as a [new category], in a classroom game. Its positioning: [output of task 2]. Use web search to collect real prices from 5 [new category] brands on the [country or region] market. Only list prices you actually found; mark estimates. Then suggest a price level: premium, mid-range or entry level.\n\nReturn only this block:\nPRICES: brand · product · price · source link (one per line)\nSUGGESTED PRICE LEVEL: …\nREASON: … (2 sentences)')),
+ 9: dict(need=L('Az egész márkadokumentumod: az 1-8. feladat eredménye.', 'Your whole brand document: the outputs of tasks 1-8.'),
+         doc=L('A mai eredménytermék: a márkabrief. Ezzel jössz a 3. alkalomra.', "Today's output: the brand brief. You bring it to session 3."),
+         p=L('Itt a márkadokumentumom: [az 1-8. feladat eredménye bemásolva]. Rakd össze belőle egy egyoldalas márkabriefet. Ne írj hozzá új tartalmat, csak rendezd és egységesítsd.\n\nPontosan ezekkel a címekkel add vissza:\nMI LENNE, HA: …\nCÉLCSOPORT: …\nPERSONÁK: … (kettő, 2-2 mondatban)\nPOZICIONÁLÁS: …\nÍGÉRET: …\nÉRTÉKEK: …\nSZEMÉLYISÉG ÉS HANGNEM: … (példamondattal)\nÁRSZINT: … (ha van)\nHIÁNYZIK VAGY ELLENTMOND: …',
+             'Here is my brand document: [outputs of tasks 1-8 pasted]. Turn it into a one-page brand brief. Do not add new content, only organise and align it.\n\nReturn it with exactly these headings:\nWHAT IF: …\nTARGET AUDIENCE: …\nPERSONAS: … (two, 2 sentences each)\nPOSITIONING: …\nPROMISE: …\nVALUES: …\nPERSONALITY AND TONE: … (with an example sentence)\nPRICE LEVEL: … (if any)\nMISSING OR CONTRADICTORY: …')),
+}
+for _k, _v in _FMT.items():
+    S2_TASKS[_k]['need'] = _v['need']
+    S2_TASKS[_k]['doc'] = _v['doc']
+    S2_TASKS[_k]['p'] = _v['p']
+    S2_TASKS[_k].pop('pcb', None)
+S2_TASKS[1]['what'] = L('Mondd ki a feladatodat egy mondatban: „Mi lenne, ha a [márka] [új kategória] lenne?” Írj mellé 5 jelzőt a márkáról, és jelöld, melyik három a legfontosabb az új iparágban. Nyiss egy üres dokumentumot: ez lesz a márkadokumentumod.',
+                        'Say your task in one sentence: "What if [brand] were a [new category]?" Add 5 adjectives describing the brand, and mark the three that matter most in the new industry. Open an empty document: this will be your brand document.')
+S2_TASKS[7]['what'] = L('Készíts egy második personát, aki más, mint az első: más élethelyzet, más kétség. Utána kérdezd ki 3-5 kérdéssel, a 6. feladat promptjával.',
+                        'Create a second persona who is different from the first: a different life situation, a different doubt. Then interview them with 3-5 questions, using the prompt from task 6.')
+
+# a márkadokumentum vázlata a 2. alkalomhoz
+S2_DOC = [1, 2, 3, 4, 5, 6, 7, 8]
+S2_SLIDES = [S2_SLIDES[0], ('doc',)] + S2_SLIDES[1:]
+# melyik eredmény melyik későbbi feladathoz kell (a 9. feladat mindet használja)
+S2_USED_BY = {1: [2, 4], 2: [3, 5, 6, 8], 3: [4, 6], 4: [6], 5: [6, 7], 6: [], 7: [], 8: []}
+
+# 2026. november 11., este: az 5. dia (márkadokumentum) kikerült; helyette minden feladatnál TIPP gomb,
+# ami felugró ablakban adja meg, mit tegyen, ha nincs meg a szükséges előzmény.
+S2_SLIDES = [x for x in S2_SLIDES if x[0] != 'doc']
+TIP_PROMPTS = {
+ 'analysis': L('Egy órai játékban a [márka] márkával dolgozom: azt találjuk ki, milyen lenne, ha a nevével és a logójával együtt [új kategória] lenne. Ehhez először értenem kell, mitől az a [márka], ami. Webes kereséssel elemezd a márkát: értékek, személyiség (ha ember lenne, milyen lenne), hangnem, vizuális kódok (színek, formák, betűk), 3 ikonikus kampány. Csak forrással alátámasztott dolgot írj, és ha valamiben nem vagy biztos, jelezd.\n\nA válaszod legyen rövid. Csak ezt a blokkot add vissza:\nÉRTÉKEK: …\nSZEMÉLYISÉG: … (5 jelző)\nHANGNEM: …\nVIZUÁLIS KÓDOK: …\nIKONIKUS KAMPÁNYOK: … (3, forráslinkkel)\nBIZONYTALAN: …',
+               'In a classroom game I am working with the [brand] brand: we work out what it would be like if, name and logo included, it were a [new category]. First I need to understand what makes [brand] what it is. Use web search to analyse the brand: values, personality (what it would be like as a person), tone of voice, visual codes (colours, shapes, type), 3 iconic campaigns. Only write what you can back with a source, and flag anything you are not sure about.\n\nKeep it short. Return only this block:\nVALUES: …\nPERSONALITY: … (5 adjectives)\nTONE OF VOICE: …\nVISUAL CODES: …\nICONIC CAMPAIGNS: … (3, with source links)\nUNSURE: …'),
+ 'competitors': L('Egy órai játékban azt találjuk ki, milyen lenne, ha a [márka] [új kategória] lenne. Webes kereséssel keress 5 valódi [új kategória] márkát a [ország vagy régió] piacán. Csak létező cégeket írj, és ahol bizonytalan vagy, jelöld.\n\nCsak ezt a táblázatot add vissza:\nMÁRKA | AJÁNLAT | ÁRSZINT | HANGNEM | FŐ CSATORNÁK | FORRÁSLINK',
+                  'In a classroom game we work out what it would be like if [brand] were a [new category]. Use web search to find 5 real [new category] brands on the [country or region] market. Only list existing companies, and mark where you are unsure.\n\nReturn only this table:\nBRAND | OFFER | PRICE LEVEL | TONE OF VOICE | MAIN CHANNELS | SOURCE LINK'),
+}
+S2_TIPS = {
+ 1: [('p', L('Az 1. alkalom márkaelemzése', 'Your brand analysis from session 1'), 'analysis')],
+ 2: [('j', L('Az 1. feladat eredménye', 'The output of task 1'), 1), ('p', L('Az 1. alkalom versenytárstáblázata', 'Your competitor table from session 1'), 'competitors')],
+ 3: [('j', L('A 2. feladat eredménye: a pozicionáló mondat', 'The output of task 2: the positioning sentence'), 2)],
+ 4: [('j', L('Az 1. feladat 3 jelzője', 'The 3 adjectives from task 1'), 1), ('j', L('A 3. feladat eredménye: ígéret és 3 érték', 'The output of task 3: promise and 3 values'), 3)],
+ 5: [('j', L('A 2. feladat eredménye: a pozicionáló mondat', 'The output of task 2: the positioning sentence'), 2)],
+ 6: [('j', L('Az 5. feladat personája', 'The persona from task 5'), 5), ('j', L('A 2-4. feladat eredménye', 'The outputs of tasks 2-4'), 2)],
+ 7: [('j', L('Az 5. feladat personája', 'The persona from task 5'), 5), ('j', L('Az interjúhoz a 6. feladat promptja', 'For the interview, the prompt from task 6'), 6)],
+ 8: [('j', L('A 2. feladat eredménye: a pozicionáló mondat', 'The output of task 2: the positioning sentence'), 2), ('p', L('Az 1. alkalom versenytárstáblázata', 'Your competitor table from session 1'), 'competitors')],
+ 9: [('j', L('%d. feladat eredménye' % k, 'The output of task %d' % k), k) for k in range(1, 9)],
+}
+VER_KIVETEL[2] = ('v2.3 · 2026. november 11.', 'v2.3 · 11 November 2026')
+# 2026. november 11.: a feladatdiáról a kitalált példa kikerült (oktatói kérés: fölösleges, a prompt formátuma megmutatja az eredményt)
+S2_TASKS[1].pop('ex', None)
+VER_KIVETEL[2] = ('v2.4 · 2026. november 11.', 'v2.4 · 11 November 2026')
+
+# 2026. november 11.: ha több előzmény kell, mindegyiknek saját TIPP gombja és ablaka van, visszautalás nélkül.
+# Minden ablakban önálló prompt, ami a hiányzó előzményt most rögtön elkészíti.
+_G = L('Egy órai játékban a [márka] márkával dolgozom: mi lenne, ha a nevével és a logójával együtt [új kategória] lenne. ',
+       'In a classroom game I am working with the [brand] brand: what if, name and logo included, it were a [new category]. ')
+TIP_PROMPTS.update({
+ 'adj3': L(_G['hu'] + 'Webes kereséssel nézd meg a márkát, és foglald össze 5 jelzőben, milyen lenne, ha ember lenne. Utána mondd meg, melyik 3 a legfontosabb az új iparágban.\n\nA válaszod legyen rövid. Csak ezt a blokkot add vissza:\nMI LENNE, HA: …\n5 JELZŐ: …\nA 3 LEGFONTOSABB AZ ÚJ IPARÁGBAN: … (mindegyik mellé egy rövid indoklás)',
+           _G['en'] + 'Use web search to look at the brand and sum up in 5 adjectives what it would be like as a person. Then tell me which 3 matter most in the new industry.\n\nKeep it short. Return only this block:\nWHAT IF: …\n5 ADJECTIVES: …\nTHE 3 THAT MATTER MOST IN THE NEW INDUSTRY: … (each with a short reason)'),
+ 'positioning': L(_G['hu'] + 'Webes kereséssel nézz meg 3 valódi [új kategória] versenytársat, és írj egy pozicionáló mondatot ezzel a képlettel: „Kinek…, akik…, a márka az a…, amely…, mert…”. A mondat ne lehessen igaz egyik versenytársra sem.\n\nCsak ezt a blokkot add vissza:\nVERSENYTÁRSAK: … (3, forráslinkkel)\nPOZICIONÁLÁS: …',
+                  _G['en'] + 'Use web search to look at 3 real [new category] competitors, and write one positioning sentence with this formula: "For…, who…, the brand is the… that…, because…". The sentence must not be true of any of the competitors.\n\nReturn only this block:\nCOMPETITORS: … (3, with source links)\nPOSITIONING: …'),
+ 'promise': L(_G['hu'] + 'Javasolj egy ígéretet (egy rövid mondat, amit egy vevő a barátjának is elmondana) és 3 értéket, amelyek a valódi [márka] márkán is látszanak. Ne írj olyat, ami bármelyik márkára igaz lehetne.\n\nCsak ezt a blokkot add vissza:\nÍGÉRET: …\nÉRTÉK 1: … · a gyakorlatban: …\nÉRTÉK 2: … · a gyakorlatban: …\nÉRTÉK 3: … · a gyakorlatban: …',
+              _G['en'] + 'Suggest one promise (a short sentence a customer would tell a friend) and 3 values that also show in the real [brand]. Do not write anything that could be true of any brand.\n\nReturn only this block:\nPROMISE: …\nVALUE 1: … · in practice: …\nVALUE 2: … · in practice: …\nVALUE 3: … · in practice: …'),
+ 'persona': L(_G['hu'] + 'Írd le egy mondatban a legfontosabb célcsoportját, és készíts belőle egy hihető personát, kétségekkel együtt.\n\nCsak ezt a blokkot add vissza:\nCÉLCSOPORT: …\nNÉV: …\nKOR: …\nFOGLALKOZÁS: …\nLAKÓHELY: …\nEGY ÁTLAGOS NAPJA: … (2 mondat)\nMIT SZERETNE ELÉRNI: …\nMITŐL TART: …\nHOGYAN ÉS HOL VÁSÁROL: …',
+              _G['en'] + 'Describe its most important target audience in one sentence, and create a believable persona from it, doubts included.\n\nReturn only this block:\nTARGET AUDIENCE: …\nNAME: …\nAGE: …\nOCCUPATION: …\nWHERE THEY LIVE: …\nAN ORDINARY DAY: … (2 sentences)\nWHAT THEY WANT: …\nWHAT THEY WORRY ABOUT: …\nHOW AND WHERE THEY BUY: …'),
+ 'platform': L(_G['hu'] + 'Foglald össze 3-4 mondatban, mi lenne ez a márka: kinek szól, miben más, mit ígér, és milyen hangon beszél.\n\nCsak ezt a blokkot add vissza:\nMÁRKAPLATFORM RÖVIDEN: …',
+               _G['en'] + 'Sum up in 3-4 sentences what this brand would be: who it speaks to, how it is different, what it promises and in what voice it talks.\n\nReturn only this block:\nBRAND PLATFORM IN BRIEF: …'),
+ 'interview2': L(_FMT[6]['p']['hu'].replace('[5. feladat personája]', '[a második persona]'),
+                 _FMT[6]['p']['en'].replace('[persona from task 5]', '[the second persona]')),
+ 'draftbrief': L(_G['hu'] + 'Ami eddig megvan: [amit eddig elkészítettél, ha van]. Készíts ebből egy egyoldalas márkabrief-vázlatot. Ahol nincs anyagom, ott tegyél javaslatot, és jelöld a JAVASLAT szóval, hogy lássam, mit kell még átnéznem.\n\nPontosan ezekkel a címekkel add vissza:\nMI LENNE, HA: …\nCÉLCSOPORT: …\nPERSONÁK: …\nPOZICIONÁLÁS: …\nÍGÉRET: …\nÉRTÉKEK: …\nSZEMÉLYISÉG ÉS HANGNEM: …\nÁRSZINT: …',
+                 _G['en'] + 'What I have so far: [whatever you have made, if anything]. Turn it into a one-page draft brand brief. Where I have no material, make a suggestion and mark it with the word SUGGESTION, so I can see what I still need to check.\n\nReturn it with exactly these headings:\nWHAT IF: …\nTARGET AUDIENCE: …\nPERSONAS: …\nPOSITIONING: …\nPROMISE: …\nVALUES: …\nPERSONALITY AND TONE: …\nPRICE LEVEL: …'),
+})
+S2_NEED = {
+ 1: [(L('Az 1. alkalom márkaelemzése', 'Your brand analysis from session 1'), 'analysis')],
+ 2: [(L('Az 1. feladat eredménye: mi lenne, ha… és a 3 jelző', 'The output of task 1: what if… and the 3 adjectives'), 'adj3'),
+     (L('Az 1. alkalom versenytárstáblázata', 'Your competitor table from session 1'), 'competitors')],
+ 3: [(L('A 2. feladat eredménye: a pozicionáló mondat', 'The output of task 2: the positioning sentence'), 'positioning')],
+ 4: [(L('Az 1. feladat 3 jelzője', 'The 3 adjectives from task 1'), 'adj3'),
+     (L('A 3. feladat eredménye: ígéret és 3 érték', 'The output of task 3: promise and 3 values'), 'promise')],
+ 5: [(L('A 2. feladat eredménye: a pozicionáló mondat', 'The output of task 2: the positioning sentence'), 'positioning')],
+ 6: [(L('Az 5. feladat personája', 'The persona from task 5'), 'persona'),
+     (L('A 2-4. feladat eredménye röviden', 'The outputs of tasks 2-4 in brief'), 'platform')],
+ 7: [(L('Az 5. feladat personája', 'The persona from task 5'), 'persona'),
+     (L('Interjúprompt a második personához', 'Interview prompt for the second persona'), 'interview2')],
+ 8: [(L('A 2. feladat eredménye: a pozicionáló mondat', 'The output of task 2: the positioning sentence'), 'positioning'),
+     (L('Az 1. alkalom versenytárstáblázata', 'Your competitor table from session 1'), 'competitors')],
+ 9: [(L('A márkadokumentumod: az 1-8. feladat eredménye', 'Your brand document: the outputs of tasks 1-8'), 'draftbrief')],
+}
+VER_KIVETEL[2] = ('v2.5 · 2026. november 11.', 'v2.5 · 11 November 2026')
+
+VER_KIVETEL[2] = ('v2.6 · 2026. november 11.', 'v2.6 · 11 November 2026')

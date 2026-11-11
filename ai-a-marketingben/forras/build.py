@@ -62,7 +62,13 @@ p+p{margin-top:.6em}
 .note{color:var(--ink-soft);border-left:3px solid var(--marker);padding:.1em 0 .1em .8em;max-width:76ch;margin-top:1.1em;line-height:1.4}
 .slide a{color:var(--cobalt)}
 .rule{border:0;border-top:1px solid var(--line);margin:1.2em 0;max-width:60em}
-.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--cobalt)}
+.card{background:#fff;border-radius:12px;padding:.85em 1.2em;box-shadow:var(--sh);border-top:4px solid var(--marker)}
+/* egy szín: minden kártya teteje sárga (oktatói kérés, 2026. november 11.) */
+/* ahol több kártya áll egymás mellett, sorszámot kapnak a jobb felső sarokban */
+.thg,.grid3,.cols{counter-reset:kc}
+.thg>.card,.grid3>.card,.cols>.card{counter-increment:kc;position:relative}
+.thg>.card::after,.grid3>.card::after,.cols>.card::after{content:counter(kc);position:absolute;right:.85em;top:.6em;font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.3em;line-height:1}
+.thg>.card h3,.grid3>.card h3,.cols>.card h3{padding-right:1.6em}
 .card.alt{border-top-color:var(--marker)}
 .card p{max-width:none}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:2vw;align-items:start;max-width:72em}
@@ -131,7 +137,7 @@ td .who{color:var(--ink-soft)}
 .tips{display:grid;grid-template-columns:1fr 1fr;gap:1.2vw 1.6vw;max-width:78em}
 .tip{background:#fff;border-radius:12px;padding:.8em 1.15em .9em;box-shadow:var(--sh);border-top:4px solid var(--marker);position:relative}
 .tip h3{padding-right:1.6em}
-.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--marker);font-size:1.3em;line-height:1}
+.tip .i{position:absolute;right:.9em;top:.7em;font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.3em;line-height:1}
 
 /* feladat: cél, scope, leadandó */
 .goal{display:grid;grid-template-columns:auto 1fr;gap:.75em 1.4em;max-width:62em;background:#fff;border-radius:14px;padding:1.2em 1.6em;box-shadow:var(--sh);border-left:6px solid var(--marker)}
@@ -190,6 +196,106 @@ table.task td.out{font-weight:600;width:24%}
 table.task td.dk{width:24%;font-size:var(--t-sm);color:var(--cobalt)}
 .deliv{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:88em;font-size:var(--t-body)}
 .deliv b{color:var(--marker);margin-right:.3em}
+
+.kn{display:grid;grid-template-columns:1fr 1fr;gap:1.6vw;max-width:60em;margin-top:.4em}
+.kn .card h3{font-size:1.3em}
+.kn .qs li{font-size:var(--t-body)}
+@media (max-width:900px){.kn{grid-template-columns:1fr}}
+
+.need{margin-top:.9em;background:var(--cream);border-radius:10px;padding:.5em 1em;max-width:none;line-height:1.35}
+.need b{margin-right:.3em}
+.docwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.6vw;align-items:center;max-width:92em;margin-top:.4em}
+.docpage{background:#fff;border-radius:6px;box-shadow:var(--sh);padding:.8em 1.3em 1em;border-top:6px solid var(--marker)}
+.docpage .dt{display:block;font-size:var(--t-sm);color:var(--ink-soft);margin-bottom:.3em}
+.dl{display:grid;grid-template-columns:1fr auto;gap:1em;align-items:baseline;padding:.32em 0;border-bottom:1px dashed var(--line)}
+.dl b{font-weight:600;font-size:var(--t-sm)}
+.dl small{font-size:var(--t-sm);color:var(--cobalt);white-space:nowrap}
+.docside{display:grid;gap:.5em;justify-items:stretch}
+.docside .arr{color:var(--cobalt);font-size:1.6em;justify-self:center}
+.docside .card h3{font-size:1.15em}
+.docside .card p{font-size:var(--t-sm)}
+@media (max-width:900px){.docwrap{grid-template-columns:1fr}}
+
+.tipbtn{display:inline-flex;align-items:center;gap:.35em;cursor:pointer;margin-left:.4em;padding:.12em .5em .12em .15em;border-radius:99px;background:#fff;border:2px solid var(--marker);font-size:var(--t-sm);font-weight:600;color:var(--ink);vertical-align:middle}
+.tipbtn span{background:var(--marker);border-radius:99px;padding:.02em .6em;letter-spacing:.06em}
+.tipbtn:hover{background:var(--marker)}
+.tipbtn .clk{width:1.6em;height:1.6em;display:block;color:var(--ink)}
+dialog.tipdlg{margin:auto;border:0;border-radius:14px;padding:1em 1.4em 1.3em;width:min(62rem,92vw);max-height:86vh;box-shadow:0 30px 80px rgba(0,0,0,.3);background:var(--paper);color:var(--ink);font-size:var(--t-body)}
+dialog.tipdlg::backdrop{background:rgba(27,31,58,.5)}
+.tdh{display:flex;align-items:center;gap:.7em;margin-bottom:.7em}
+.tdh .tl{background:var(--marker);border-radius:99px;padding:.05em .7em;font-weight:600;font-size:var(--t-sm);letter-spacing:.06em}
+.tdh h3{flex:1;font-size:var(--t-h3);margin:0}
+.tdh .x{font-size:1.6em;line-height:1;color:var(--ink-soft);padding:0 .2em}
+.tj{display:flex;justify-content:space-between;align-items:baseline;gap:1em;padding:.5em 0;border-bottom:1px solid var(--line);max-width:none}
+.tj a{color:var(--cobalt);font-weight:600;white-space:nowrap;text-decoration:none}
+.tp{margin:.6em 0 .8em}
+.tp>p{margin-bottom:.5em;max-width:none}
+.tp .prompt pre{max-height:44vh}
+
+.need ul.needl{list-style:none;margin-top:.3em}
+.need ul.needl li{display:flex;justify-content:space-between;align-items:center;gap:.8em;padding:.32em 0;border-top:1px dashed rgba(27,31,58,.18)}
+.need ul.needl li .tipbtn{margin-left:0;flex:none}
+.tdp{margin-bottom:.6em;max-width:none}
+.tdh h3{font-size:var(--t-h3)}
+
+/* 2. alkalom: a mai nap */
+.build{display:flex;flex-wrap:wrap;align-items:stretch;gap:.55em;max-width:92em;margin-top:.6em}
+.build .pc{flex:1 1 0;min-width:6.5em;background:#fff;border-radius:10px;box-shadow:var(--sh);border-top:4px solid var(--marker);padding:.6em .8em;font-family:var(--display);font-weight:500;font-size:1.02em;line-height:1.2;display:flex;align-items:center}
+.build .pc.sum{flex:1.2 1 0;background:var(--cobalt);color:#fff;border-top-color:var(--cobalt);font-size:1.25em;justify-content:center}
+.build .op{align-self:center;color:var(--ink-soft);font-size:1.4em;font-weight:600}
+.slide h3.lbl2{font-family:var(--body)!important;font-weight:600!important;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);margin:1.3em 0 .5em}
+.rhythm{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2vw;max-width:92em}
+.rhythm .n{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.6em;line-height:1;display:block;margin-bottom:.15em}
+.rhythm .card h3{font-size:1.15em}
+.rhythm .card p{font-size:var(--t-sm)}
+@media (max-width:900px){.rhythm{grid-template-columns:1fr}.build .op{display:none}}
+
+/* 2. alkalom: összefoglaló */
+.recap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:2.8vw;align-items:start;max-width:92em}
+.slide .recap h3.lbl{font-family:var(--body)!important;font-weight:600;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);border-bottom:2px solid var(--ink);padding-bottom:.3em;margin-bottom:.2em}
+ul.done{list-style:none}
+ul.done li{padding:.45em 0 .45em 1.5em;border-bottom:1px solid var(--line);position:relative;line-height:1.35}
+ul.done li::before{content:"✓";position:absolute;left:0;color:var(--cobalt);font-weight:600}
+.today{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:none}
+.who{display:grid;grid-template-columns:1fr 1fr;column-gap:2.2vw}
+.who>div{padding:.42em 0 .48em;border-bottom:1px solid var(--line)}
+.who .nm{display:inline-block;background:var(--marker);color:var(--ink);font-weight:600;font-size:var(--t-sm);line-height:1.35;border-radius:4px;padding:.02em .45em;margin-bottom:.22em}
+.nmh{background:var(--marker);color:var(--ink);font-weight:600;border-radius:4px;padding:0 .3em}
+.who .gm{display:block;line-height:1.25}
+.who .gm b{font-family:var(--display);font-weight:500;font-size:1.18em}
+.who .gm b.c{color:var(--cobalt)}
+.who .gm em{font-style:normal;font-size:var(--t-sm);color:var(--ink-soft)}
+@media (max-width:900px){.recap,.who{grid-template-columns:1fr}}
+
+/* 2. alkalom: kis feladatok */
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:2.6vw;max-width:88em}
+.slide .agenda h3{font-family:var(--body)!important;font-weight:600;font-size:var(--t-sm);text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);border-bottom:2px solid var(--ink);padding-bottom:.3em;margin-bottom:.1em}
+ol.ag{list-style:none}
+ol.ag li{display:grid;grid-template-columns:1.6em 1fr auto;gap:.6em;align-items:baseline;padding:.4em 0;border-bottom:1px solid var(--line)}
+ol.ag .no{font-family:var(--display);font-weight:500;color:var(--cobalt);font-size:1.25em;line-height:1}
+ol.ag b{display:block;font-weight:600;line-height:1.25}
+ol.ag em{display:block;font-style:normal;color:var(--ink-soft);font-size:var(--t-sm);line-height:1.3}
+ol.ag .mm{font-size:var(--t-sm);color:var(--ink-soft);white-space:nowrap}
+.thg{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:1vw 1.4vw;max-width:88em;margin-top:.9em}
+.tk .prompt pre{font-size:max(.86rem,18px)}
+.thg .card h3{font-size:1.12em}
+.thg .card p{font-size:var(--t-sm)}
+.formula{font-family:var(--display);font-weight:500;font-size:1.32em;line-height:1.4;background:#fff;border-radius:12px;padding:.7em 1.1em;box-shadow:var(--sh);max-width:54em;margin:.1em 0 .9em}
+.formula mark,.tk .what mark,.qs mark{background:var(--cream);color:inherit;border-radius:4px;padding:0 .15em}
+.ex{margin-top:1em;background:var(--cream);border-radius:12px;padding:.6em 1.1em .7em;max-width:80em;border-left:5px solid var(--marker)}
+.ex small,.qsw small{display:block;font-size:max(.62rem,13px);letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);margin-bottom:.25em}
+.ex p{max-width:none}
+.tk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.4vw;align-items:start;max-width:90em}
+.tk .what{font-size:var(--t-lead);line-height:1.38;max-width:none}
+.tk .ex{margin-top:.9em}
+.res{margin-top:1em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:none}
+.res b{color:var(--marker);margin-right:.3em}
+.qsw{margin-top:.9em}
+.qs{list-style:none}
+.qs li{padding:.28em 0 .28em 1.2em;border-bottom:1px solid var(--line);font-size:var(--t-sm);position:relative}
+.qs li::before{content:"?";position:absolute;left:0;color:var(--cobalt);font-weight:600}
+.qs.bl li::before{content:"·";font-size:1.4em;line-height:1;top:.18em}
+@media (max-width:900px){.agenda,.tk{grid-template-columns:1fr}}
 
 /* szabályok */
 .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:.9vw 1.4vw;max-width:80em}
@@ -288,6 +394,7 @@ JS = r"""
 
   D.addEventListener('keydown',function(ev){
     if(ev.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(ev.target.tagName))return;
+    if(D.querySelector('dialog[open]'))return;
     if(ev.key==='ArrowRight'||ev.key==='PageDown'||ev.key===' '){next();ev.preventDefault()}
     else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){prev();ev.preventDefault()}
     else if(ev.key==='Home'){show(0)} else if(ev.key==='End'){show(slides.length-1)}
@@ -301,7 +408,7 @@ JS = r"""
   pos.addEventListener('click',function(ev){ev.stopPropagation();[].forEach.call(jump.children,function(a,k){a.classList.toggle('cur',k===i)});jump.classList.toggle('open');var c=jump.children[i];if(c)jump.scrollTop=c.offsetTop-jump.clientHeight/2});
   D.addEventListener('click',function(ev){if(!jump.contains(ev.target))jump.classList.remove('open')});
   D.querySelector('.deck').addEventListener('click',function(ev){
-    if(ev.target.closest('a,button,input,textarea,pre,.prompt'))return;
+    if(ev.target.closest('a,button,input,textarea,pre,.prompt,dialog'))return;
     if(D.body.classList.contains('rev'))return;
     var sel=window.getSelection&&String(window.getSelection());if(sel)return;
     next();
@@ -312,6 +419,12 @@ JS = r"""
     function paint(){[].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){var k=b.getAttribute('data-k');b.classList.toggle('taken',!!t[k]);b.setAttribute('aria-pressed',t[k]?'true':'false')})}
     [].forEach.call(D.querySelectorAll('[data-pick] .mi'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var k=b.getAttribute('data-k');if(t[k])delete t[k];else t[k]=1;try{localStorage.setItem(K,JSON.stringify(t))}catch(e){}paint()})});
     paint();})();
+
+  /* TIPP: felugró ablak, ha nincs meg az előzmény */
+  [].forEach.call(D.querySelectorAll('[data-tip]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();var d=D.getElementById(b.getAttribute('data-tip'));if(d&&d.showModal)d.showModal()})});
+  [].forEach.call(D.querySelectorAll('dialog.tipdlg'),function(d){d.addEventListener('click',function(ev){if(ev.target===d)d.close()})});
+  [].forEach.call(D.querySelectorAll('dialog [data-close]'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();b.closest('dialog').close()})});
+  [].forEach.call(D.querySelectorAll('[data-jump]'),function(a){a.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();var d=a.closest('dialog');if(d)d.close();show(+a.getAttribute('data-jump')-1)})});
 
   /* promptok másolása */
   [].forEach.call(D.querySelectorAll('.copy'),function(b){b.addEventListener('click',function(ev){ev.stopPropagation();
@@ -506,9 +619,9 @@ def intro_slides():
     S.append(j(kicker('Mit csinálunk', 'What we do'), tag('h2', L('Marketing tender: valós márka egy elképzelt iparágban', 'Marketing pitch: a real brand in an imagined industry')),
                tag('p', L('Például: mi lenne, ha a Coca-Cola autómárka lenne?', 'For example: what if Coca-Cola were a car brand?'), 'lead'),
                {l: '<div class="flow" style="margin-top:1em"><div class="card"><h3>%s</h3><p>%s</p></div><div class="arr" aria-hidden="true">→</div><div class="card"><h3>%s</h3><p>%s</p></div><div class="arr" aria-hidden="true">→</div><div class="card alt"><h3>%s</h3><p>%s</p></div></div>' % (
-                   ('Átveszed', 'Az ismert márka személyiségét, értékeit és vizuális kódjait.', 'Felépíted', 'Egy önálló új márkát, saját névvel és logóval.', 'Elindítod', 'Megtervezed és elkészíted a bevezető kampányát.') if l == 'hu' else
-                   ('You take', "The known brand's personality, values and visual codes.", 'You build', 'An independent new brand with its own name and logo.', 'You launch', 'You plan and produce its launch campaign.')) for l in LANGS},
-               tag('p', L('Ez nem almárka: a kiinduló márka csak az ihlet. Egyéni munka, mindenki a választott márkával dolgozik.', 'This is not a sub-brand: the source brand is only the inspiration. Individual work, everyone works with the brand they chose.'), 'note')))
+                   ('Megtartod', 'A márka nevét, logóját, személyiségét, értékeit és vizuális kódjait.', 'Áthelyezed', 'Egy elképzelt új iparágba. Kitalálod, mit kínálna ott, kinek és hogyan.', 'Elindítod', 'Megtervezed és elkészíted a bevezető kampányát.') if l == 'hu' else
+                   ('You keep', "The brand's name, logo, personality, values and visual codes.", 'You move it', 'Into an imagined new industry. You work out what it would offer there, to whom and how.', 'You launch', 'You plan and produce its launch campaign.')) for l in LANGS},
+               tag('p', L('Órai játék: a valódi márka nevével és logójával dolgozunk, de csak itt, az órán. A kész anyagokat ne tedd közzé, mert a márka nem a tiéd. Egyéni munka, mindenki a választott márkával dolgozik.', "A classroom game: we work with the real brand's name and logo, but only here, in class. Do not publish the finished materials, because the brand is not yours. Individual work, everyone works with the brand they chose."), 'note')))
     # 5. szimuláció, karmester
     S.append(j(kicker('Min fogsz dolgozni', 'What you will work on'), tag('h2', L('Egy ügynökség egy tenderen. A karmester te vagy.', 'An agency on a pitch. You are the conductor.')),
                tag('p', L('Ez egy szimuláció, ami a valós életet modellezi: így dolgozik egy ügynökség, amikor meg akar nyerni egy ügyfelet. Egy tenderen ezek a szakemberek dolgoznak együtt. Te ezt egymagad csinálod meg, a kompetenciákat az AI segítségével oldod meg.',
@@ -543,13 +656,13 @@ def intro_slides():
              ('Értékelés', 'Folyamatos számonkérés, ötfokozatú jegy, a tantárgy tematikája szerinti ponthatárokkal.'),
              ('AI-használat', 'Megengedett, sőt ez a feladat lényege. Az ingyenes változat elég, de ha van előfizetésed, használhatod.'),
              ('Tények', 'Minden tényt forrással igazolj. Az AI által írt, nem ellenőrizhető állítást javítsd vagy töröld.'),
-             ('Védjegyek', 'A kiinduló márka logóját és védjegyeit ne használd. Az új márkának saját neve és logója van.')],
+             ('Órai játék', 'A márka nevét és logóját csak az órán használjuk. Amit készítesz, ne tedd közzé, és ne állítsd valódinak.')],
             [('Attendance', 'Mandatory; absences may not exceed the limit set by the university regulations (HKR).'),
              ('Work and presentation', 'You work in class through the semester; there are no interim submissions. The condition for the course signature is the pitch presentation on 10 December and the final deck.'),
              ('Assessment', 'Continuous assessment, five-grade scale, with the thresholds set in the course syllabus.'),
              ('Use of AI', 'Allowed, in fact it is the point of the assignment. The free version is enough, but if you have a subscription you may use it.'),
              ('Facts', 'Back every fact with a source. Fix or delete any AI-written claim you cannot verify.'),
-             ('Trademarks', "Do not use the source brand's logo and trademarks. The new brand has its own name and logo.")])
+             ('A classroom game', "We use the brand's name and logo only in class. Do not publish what you make or present it as real.")])
     S.append(j(kicker('Követelmények', 'Requirements'), tag('h2', L('Amit a félév kér', 'What the semester asks of you')),
                {l: '<div class="grid3">%s</div>' % ''.join('<div class="card%s"><h3>%s</h3><p>%s</p></div>' % (' alt' if k % 2 else '', a, b) for k, (a, b) in enumerate(req[l])) for l in LANGS},
                tag('p', L('Záróbemutató 2026. december 10-én, hallgatónként 15-20 perc. A deckben legyen egy dia a használt eszközökről.',
@@ -587,8 +700,8 @@ def intro_slides():
     S.append(j(kicker('A játék', 'The game', sess_lt(1)), {'hu': '<h2 class="game">Mi lenne, ha…</h2>', 'en': '<h2 class="game">What if…</h2>'},
                tag('p', L('Válassz egy márkát. Mindenkinek más jut.', 'Choose a brand. Everyone gets a different one.'), 'lead'),
                {l: '<div class="menu" data-pick>%s</div>' % ''.join(item(k, a_, b_, l) for k, (a_, b_) in enumerate(PAIRS)) for l in LANGS},
-               tag('p', L('A márkát másképp használjuk, mint a valóságban. Nem a márka dob piacra egy új terméket: azt kérdezzük, milyen lenne, ha a személyiségével, az értékeivel és a stílusával egy egészen más kategóriában működne. Az új márkának saját neve és logója lesz.',
-                          'We use the brand differently from how it exists in reality. It is not the brand launching a new product: the question is what it would be like if, with its personality, values and style, it worked in a completely different category. The new brand gets its own name and logo.'), 'note')))
+               tag('p', L('A márkát másképp használjuk, mint a valóságban: a neve és a logója marad, csak az iparág új. Azt kérdezzük, milyen lenne, ha a személyiségével, az értékeivel és a stílusával egy egészen más iparágban működne. Ez órai játék, a valóságban nem létezik.',
+                          'We use the brand differently from reality: its name and logo stay, only the industry is new. The question is what it would be like if, with its personality, values and style, it worked in a completely different industry. It is a classroom game; it does not exist in reality.'), 'note')))
     return S
 
 # ---------- összeállítás ----------
@@ -607,7 +720,177 @@ def strip(n):
             a.append('<a class="off" aria-disabled="true" data-off="%s"><b>%d</b>%s</a>' % (FN(m), m, lbl))
     return '<nav class="strip" aria-label="Alkalmak">%s</nav>' % ''.join(a)
 
+# ---------- a 2. alkalom: kis feladatok elmélettel ----------
+
+def s2_agenda():
+    """A mai nap: nem feladatlista, hanem az, hogy a témát kis feladatokra szedjük, és ezekből áll össze a márkabrief."""
+    parts = S2_THEORY['brief']['items']
+    body = {}
+    for l in LANGS:
+        tiles = []
+        for q, (a, _) in enumerate(parts):
+            if q:
+                tiles.append('<span class="op" aria-hidden="true">+</span>')
+            tiles.append('<span class="pc">%s</span>' % a[l])
+        tiles.append('<span class="op" aria-hidden="true">=</span>')
+        tiles.append('<span class="pc sum">%s</span>' % ('Márkabrief' if l == 'hu' else 'Brand brief'))
+        rh = L([('Rövid elmélet', 'Mi ez, és mire jó, egy kitalált példával.'), ('Kis feladat', '10-20 perc, másolható prompttal. A prompt megmondja, mit másolj be, és milyen formában kérd vissza.'), ('Márkadokumentum', 'Az eredményt bemásolod a márkadokumentumodba.'), ('Továbbviszed', 'A következő prompt ebből indul. A végén ebből lesz a márkabrief.')],
+               [('Short theory', 'What it is and what it is for, with a made-up example.'), ('Small task', '10-20 minutes, with a prompt you can copy. The prompt says what to paste in and in what form to ask for the result.'), ('Brand document', 'You paste the output into your brand document.'), ('Carry it on', 'The next prompt starts from it. At the end it becomes the brand brief.')])[l]
+        rhythm = '<div class="rhythm">%s</div>' % ''.join('<div class="card%s"><span class="n">%d</span><h3>%s</h3><p>%s</p></div>' % ('', q + 1, t, d) for q, (t, d) in enumerate(rh))
+        body[l] = '<div class="build">%s</div><h3 class="lbl2">%s</h3>%s' % (''.join(tiles), 'Minden témánál ugyanaz a menet' if l == 'hu' else 'Same rhythm for every topic', rhythm)
+    foot = {l: '<p class="deliv"><b>%s</b> %s</p>' % ('Mára elkészül:' if l == 'hu' else 'Done by today:', DELIV[2][l]) for l in LANGS}
+    return j(kicker('A mai nap', "Today's plan", sess_lt(2)),
+             tag('h2', L('Ma kis lépésekben haladunk', 'Today we go in small steps'), 'wide'),
+             tag('p', L('A mai témát, a márkaplatformot, a célcsoportot és az árazást kis feladatokra szedjük szét. Mindegyik az előzőre épül, és a végén ezekből áll össze a márkabrief.',
+                        'We break today\'s topic, the brand platform, the target audience and pricing, into small tasks. Each builds on the one before, and at the end they add up to the brand brief.'), 'lead'),
+             body, foot,
+             tag('p', L('A promptok csak javaslatok, ha nincs ötleted, hogyan indulj el.', 'The prompts are only suggestions in case you do not know how to start.'), 'note'))
+
+def s2_theory(key):
+    t = S2_THEORY[key]
+    body = {}
+    for l in LANGS:
+        h = ''
+        if t.get('formula'):
+            h += '<div class="formula">%s</div>' % pmark(t['formula'][l])
+        h += '<div class="thg">%s</div>' % ''.join('<div class="card%s"><h3>%s</h3><p>%s</p></div>' % (' alt' if q % 2 else '', a[l], b[l]) for q, (a, b) in enumerate(t['items']))
+        h += '<div class="ex"><small>%s</small><p>%s</p></div>' % (('Kitalált példa · ' + EXAMPLE['hu']) if l == 'hu' else ('Made-up example · ' + EXAMPLE['en']), t['ex'][l])
+        body[l] = h
+    return j(kicker('Elmélet', 'Theory', sess_lt(2)), tag('h2', t['t'], 'wide'), tag('p', t['lead'], 'lead'), body)
+
+S2_TASK_SLIDE = {it[1]: 4 + q for q, it in enumerate(S2_SLIDES) if it[0] == 'task'}
+
+def s2_task(k):
+    t = S2_TASKS[k]
+    body = {}
+    for l in LANGS:
+        left = '<p class="what">%s</p>' % pmark(t['what'][l])
+        if k in S2_NEED:
+            ICON = '<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+            lis = ''.join('<li><span>%s</span><button type="button" class="tipbtn" data-tip="tip-%s-%d-%d" aria-label="%s" title="%s"><span>%s</span>%s%s</button></li>' % (
+                lab[l], l, k, i, ('Kattints ide, ha nincs meg' if l == 'hu' else 'Click here if missing'), ('Kattints ide, ha nincs meg' if l == 'hu' else 'Click here if missing'),
+                'TIPP' if l == 'hu' else 'TIP', ('Ha nincs meg' if l == 'hu' else 'If missing'), ICON) for i, (lab, _) in enumerate(S2_NEED[k]))
+            left += '<div class="need"><b>%s</b><ul class="needl">%s</ul></div>' % ('Ehhez kell:' if l == 'hu' else 'You need:', lis)
+        if t.get('qs'):
+            left += '<div class="qsw"><small>%s</small><ul class="qs">%s</ul></div>' % ('Jó kérdések' if l == 'hu' else 'Good questions', ''.join('<li>%s</li>' % pmark(q) for q in t['qs'][l]))
+        if t.get('brief'):
+            left += '<div class="qsw"><small>%s</small><ul class="qs bl">%s</ul></div>' % ('A márkabrief részei' if l == 'hu' else 'Parts of the brand brief', ''.join('<li>%s</li>' % e(q) for q in t['brief'][l]))
+        if t.get('ex'):
+            left += '<div class="ex"><small>%s</small><p>%s</p></div>' % ('Kitalált példa' if l == 'hu' else 'Made-up example', t['ex'][l])
+        if t.get('doc'):
+            lab = ('Eredmény, a márkadokumentumodba:' if l == 'hu' else 'Output, into your brand document:') if k < len(S2_TASKS) else ('Eredmény:' if l == 'hu' else 'Output:')
+            left += '<p class="res"><b>%s</b> %s</p>' % (lab, t['doc'][l])
+        else:
+            left += '<p class="res"><b>%s</b> %s</p>' % ('Eredmény:' if l == 'hu' else 'Output:', t['out'][l])
+        ptxt = (CB_HU if l == 'hu' else CB_EN)[t['pcb']] if 'pcb' in t else t['p'][l]
+        right = prompt_box('Promptjavaslat, ha nincs ötleted' if l == 'hu' else 'Prompt suggestion, if you are stuck', ptxt)
+        dlg = ''
+        for i, (lab, key) in enumerate(S2_NEED.get(k, [])):
+            dlg += '<dialog class="tipdlg" id="tip-%s-%d-%d"><div class="tdh"><span class="tl">%s</span><h3>%s %s</h3><button type="button" class="x" data-close aria-label="%s">×</button></div><p class="tdp">%s</p>%s</dialog>' % (
+                l, k, i, 'TIPP' if l == 'hu' else 'TIP', 'Ha nincs meg:' if l == 'hu' else 'If you do not have it:', lab[l], 'Bezár' if l == 'hu' else 'Close',
+                'Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.' if l == 'hu' else 'Make it now with this prompt, and paste it into your brand document.',
+                prompt_box('Prompt', TIP_PROMPTS[key][l]))
+        body[l] = copyfix('<div class="tk"><div>%s</div><div>%s</div></div>%s' % (left, right, dlg), l)
+    kk = {l: ('%d/%d kis feladat · kb. %d perc' % (k, len(S2_TASKS), t['m'])) if l == 'hu' else ('Small task %d/%d · approx. %d min' % (k, len(S2_TASKS), t['m'])) for l in LANGS}
+    return j(kicker(kk['hu'], kk['en'], sess_lt(2)), tag('h2', t['t'], 'wide'), body)
+
+def s2_recap():
+    cats = dict(PAIRS)
+    taken = set(b for _, b in ROSTER)
+    free = [b for b, _ in PAIRS if b not in taken]
+    EN_ART = {'car': 'a', 'airline': 'an', 'hotel chain': 'a', 'café chain': 'a', 'fashion brand': 'a', 'travel agency': 'a',
+              'restaurant chain': 'a', 'payment': '', 'bank': 'a', 'insurance company': 'an', 'gym chain': 'a', 'mobile carrier': 'a',
+              'cosmetics brand': 'a', 'home electronics': '', 'wellness and spa chain': 'a'}
+    body = {}
+    for l in LANGS:
+        done = L(['Választottál egy márkát és hozzá egy új iparágat. A neve és a logója marad.',
+                  'Megismerted a kiinduló márkát: értékek, személyiség, hangnem, vizuális kódok, kampányok.',
+                  'Megnézted az 5 legfontosabb versenytársat az új kategóriában.',
+                  'Leírtad, mit viszel át a kiinduló márkából, és mit nem.'],
+                 ['You chose a brand and a new industry for it. Its name and logo stay.',
+                  'You got to know the source brand: values, personality, tone of voice, visual codes, campaigns.',
+                  'You looked at the 5 most important competitors in the new category.',
+                  'You wrote down what you carry over from the source brand and what you do not.'])[l]
+        left = '<div><h3 class="lbl">%s</h3><ul class="done">%s</ul><p class="today">%s</p></div>' % (
+            'Múlt héten, 2026. november 5.' if l == 'hu' else 'Last week, 5 November 2026',
+            ''.join('<li>%s</li>' % x for x in done),
+            'Ma erre építünk: a márkád ígéretet, hangot és célcsoportot kap az új iparágban.' if l == 'hu' else 'Today we build on this: your brand gets a promise, a voice and an audience in its new industry.')
+        rows = []
+        for name, brand in ROSTER:
+            c = cats[brand]
+            if l == 'hu':
+                g = '<em>%s</em> <b>%s</b> <b class="c">%s</b> <em>lenne?</em>' % ('az' if brand in ('IKEA', 'Apple') else 'a', e(brand), c['hu'])
+            else:
+                art = EN_ART[c['en']]
+                g = '<b>%s</b> <em>were%s</em> <b class="c">%s</b><em>?</em>' % (e(brand), (' ' + art) if art else '', c['en'])
+            rows.append('<div><span class="nm">%s</span><span class="gm">%s</span></div>' % (e(name), g))
+        right = '<div><h3 class="lbl">%s</h3><div class="who">%s</div></div>' % ('Ki mit választott' if l == 'hu' else 'Who chose what', ''.join(rows))
+        body[l] = '<div class="recap">%s%s</div>' % (left, right)
+    note = {'hu': '<p class="note">Még nem választott márkát: %s. Ma az elején válasszatok a szabad márkák közül: %s.</p>' % (', '.join('<span class="nmh">%s</span>' % e(x) for x in NOBRAND), ', '.join(e(x) for x in free)),
+            'en': '<p class="note">No brand chosen yet: %s. Choose at the start of today from the free brands: %s.</p>' % (', '.join('<span class="nmh">%s</span>' % e(x) for x in NOBRAND), ', '.join(e(x) for x in free))}
+    return j(kicker('Összefoglaló', 'Recap', sess_lt(2)), tag('h2', L('Hol tartunk?', 'Where are we?'), 'wide'), body, note)
+
+def s2_task_def():
+    """Mi a feladat: a márka neve és logója marad, csak az iparág új (oktatói döntés, 2026. november 11.)."""
+    keep = L(['A név', 'A logó', 'A személyiség', 'Az értékek', 'A vizuális kódok'], ['The name', 'The logo', 'The personality', 'The values', 'The visual codes'])
+    new = L(['Az iparág', 'A termék vagy szolgáltatás', 'A célcsoport', 'Az ár', 'A kampány'], ['The industry', 'The product or service', 'The target audience', 'The price', 'The campaign'])
+    body = {}
+    for l in LANGS:
+        body[l] = '<div class="kn"><div class="card"><h3>%s</h3><ul class="qs bl">%s</ul></div><div class="card"><h3>%s</h3><ul class="qs bl">%s</ul></div></div>' % (
+            'Marad' if l == 'hu' else 'Stays', ''.join('<li>%s</li>' % x for x in keep[l]),
+            'Új' if l == 'hu' else 'New', ''.join('<li>%s</li>' % x for x in new[l]))
+    return j(kicker('Mi a feladat?', 'What is the task?', sess_lt(2)),
+             tag('h2', L('Az IKEA marad IKEA. Csak légitársaság lesz.', 'IKEA stays IKEA. It just becomes an airline.'), 'wide'),
+             tag('p', L('A valódi márkával dolgozunk, a nevével és a logójával együtt. Azt találjuk ki, milyen lenne egy elképzelt új iparágban.', "We work with the real brand, name and logo included. We work out what it would be like in an imagined new industry."), 'lead'),
+             body,
+             tag('p', L('A kérdés minden döntésnél: ha a márkád tényleg ebben az iparágban lenne, ezt csinálná? Órai játék: amit készítesz, ne tedd közzé, és ne állítsd valódinak.',
+                        'The question for every decision: if your brand really were in this industry, would it do this? A classroom game: do not publish what you make or present it as real.'), 'note'))
+
+def s2_doc():
+    """A márkadokumentum: minden kis feladat eredménye ide kerül, és innen megy tovább a következő promptba."""
+    body = {}
+    for l in LANGS:
+        rows = []
+        for k in S2_DOC:
+            t = S2_TASKS[k]
+            nxt = S2_USED_BY.get(k, [])
+            if nxt:
+                ns = ', '.join('%d.' % x for x in nxt)
+                to = ('→ kell hozzá: %s feladat' % ns) if l == 'hu' else ('→ needed for: task %s' % ', '.join(str(x) for x in nxt))
+            else:
+                to = '→ a márkabriefbe' if l == 'hu' else '→ into the brand brief'
+            rows.append('<div class="dl"><b>%s</b><small>%s</small></div>' % (t['doc'][l], to))
+        page = '<div class="docpage"><small class="dt">%s</small>%s</div>' % ('Márkadokumentum · [márka] mint [új kategória]' if l == 'hu' else 'Brand document · [brand] as a [new category]', ''.join(rows))
+        side = ('<div class="docside"><div class="arr" aria-hidden="true">→</div><div class="card"><h3>%s</h3><p>%s</p></div><div class="arr" aria-hidden="true">→</div><div class="card"><h3>%s</h3><p>%s</p></div></div>' % (
+            ('9. feladat: márkabrief', 'Az egész dokumentumból egy oldal, rögzített címekkel.', '3. alkalom', 'A márkabrieffel jössz: erre épül az arculat.') if l == 'hu' else
+            ('Task 9: brand brief', 'One page from the whole document, with fixed headings.', 'Session 3', 'You bring the brand brief: the identity builds on it.')))
+        body[l] = '<div class="docwrap">%s%s</div>' % (page, side)
+    return j(kicker('A márkadokumentum', 'The brand document', sess_lt(2)),
+             tag('h2', L('Minden eredmény egy dokumentumba kerül', 'Every output goes into one document'), 'wide'),
+             tag('p', L('Nyiss egy üres dokumentumot (Google Docs, Word vagy bármi). Minden kis feladat eredményét másold bele. A következő promptba innen másolod be, amire szükség van.',
+                        'Open an empty document (Google Docs, Word or anything). Paste the output of every small task into it. You copy what the next prompt needs from here.'), 'lead'),
+             body,
+             tag('p', L('Minden prompt megmondja, mit másolj be („Ehhez kell”), és pontosan milyen formában kérd vissza az eredményt. Így az AI nem ír össze-vissza, és mindig tovább tudod vinni.',
+                        'Every prompt says what to paste in ("You need") and exactly in what form to ask for the result. That way the AI does not ramble, and you can always carry it on.'), 'note'))
+
+def session2_slides():
+    out = [s2_recap(), s2_task_def()]
+    for it in S2_SLIDES:
+        if it[0] == 'agenda':
+            out.append(s2_agenda())
+        elif it[0] == 'doc':
+            out.append(s2_doc())
+        elif it[0] == 'th':
+            out.append(s2_theory(it[1]))
+        else:
+            out.append(s2_task(it[1]))
+    return out
+
 def deck_slides(n):
+    if n == 2:
+        S = [title_slide(2)] + session2_slides() + tips_slides(2)
+        S.append(close_slide(2))
+        return S
     if n == 1:
         S = intro_slides()
     else:
@@ -620,7 +903,7 @@ def deck_slides(n):
 
 def task_index(n):
     # a „Cél, scope, leadandó” dia sorszáma (1-től)
-    return 14 if n == 1 else 2
+    return 14 if n == 1 else (4 if n == 2 else 2)
 
 def render_deck(n):
     s = SESS[n-1]

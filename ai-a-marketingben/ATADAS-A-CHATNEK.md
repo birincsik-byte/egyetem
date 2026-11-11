@@ -28,6 +28,39 @@ Ebből származik a kezdőlap gombjainak és a felső sáv elemeinek állapota i
 
 ---
 
+## 2026. november 11., este: promptok rögzített kimeneti formátummal
+
+Oktatói kérés: minden prompt mondja meg, milyen formában kérje vissza az eredményt, hogy a hallgató tovább tudja vinni, és legyen világos, melyik korábbi eredménnyel megy tovább. A 2. diasor (v2.2, 24 dia):
+
+- Az 5. dia („Minden eredmény egy dokumentumba kerül”) oktatói kérésre kikerült (v2.3, 23 dia); a generátorban az `s2_doc()` megvan, de az `S2_SLIDES` nem használja. Helyette minden kis feladatnál „Ehhez kell” lista: minden szükséges előzmény külön sor, saját sárga TIPP gombbal („Ha nincs meg”), ami saját felugró ablakot nyit (`<dialog>`) egy önálló, helyben használható prompttal, ami a hiányzó előzményt most rögtön elkészíti. Visszautalás nincs (oktatói kérés: elvesznének). Adatok: `S2_NEED`, `TIP_PROMPTS` a `content.py` végén. A régi `S2_TIPS` már nincs használatban. 2. diasor v2.5.
+- A „Ma kis lépésekben haladunk” dia menete négy lépés: rövid elmélet, kis feladat, márkadokumentum, továbbviszed.
+- Minden kis feladat diáján „Ehhez kell:” sor (mit másoljon be) és „Eredmény, a márkadokumentumodba:” sor. Minden prompt a végén rögzített, nagybetűs mezőkből álló blokkot kér vissza („Csak ezt a blokkot add vissza: …”), és a bemásolandó részt szögletes zárójellel jelöli ([2. feladat eredménye]). Az adatok a `content.py` végén: `_FMT`.
+
+---
+
+## 2026. november 11., este: a márka neve és logója marad
+
+Oktatói döntés: a hallgatók a valódi márka nevével és logójával dolgoznak, csak az iparág új („Az IKEA marad IKEA, csak légitársaság lesz”). Ez órai játék, a kész anyagokat nem teszik közzé. A korábbi „saját név és logó, nem almárka” szabály ezzel megszűnt. Generátorban átvezetve:
+
+- 1. diasor (v1.7): a „Mit csinálunk” dia kártyái (Megtartod · Áthelyezed · Elindítod) és alatta az órai játék szabálya; a Követelmények „Védjegyek” kártyája helyett „Órai játék”; a „Mi lenne, ha…” márkaválasztó alatti mondat; egy tipp („Erre épül a márkaplatform, az arculat és a kampány”).
+- 2. diasor (v2.1, 23 dia): új 3. dia „Mi a feladat?” (Marad: név, logó, személyiség, értékek, vizuális kódok · Új: iparág, termék vagy szolgáltatás, célcsoport, ár, kampány); a névadás elmélete és a két névadó feladat kikerült, 9 kis feladat maradt; a promptok „[márka] mint [új kategória]” alakúak; a kitalált példa neve Twist helyett Rubik; az első tippdia „Mi marad, mi új”; „Mára elkészül: márkabrief (platform, personák)”. A kezdőlap „A feladat” gombja a 4. diára mutat. Kezdőlap v1.5.
+- Még nincs átvezetve: a 3. alkalom logófeladata („3 logóirány… a kiinduló márka logóját ne másold”), a 3-6. alkalom többi szövege és a hallgatói feladatleírás (Claude-dokumentum). Ezeket a következő alkalmak előtt kell igazítani.
+
+---
+
+## 2026. november 11.
+
+A változás a generátorban készült (`forras/content.py`, `forras/build.py`), nem kézzel; a hét HTML ebből lett újragenerálva.
+
+- `NYITVA = 2`: a kezdőlapon és a felső sávban a 2. alkalom is kattintható.
+- A 2. alkalom diasora (v2.0, 24 dia) kis feladatokra bontva, mert az 1. alkalmon a hallgatók nem nagyon értették a feladatot (oktatói visszajelzés). Szerkezet: címlap, „A mai nap” (11 kis feladat két blokkban, percekkel, a „Mára elkészül” sorral), utána témánként egy elméleti dia kitalált példával (Rubik-kocka mint cipőmárka, „Twist”), és minden kis feladatnál egy dia: mit csinálsz, eredmény, másolható promptjavaslat. Végén a 3 tippdia és a zárás. A sorrend a feladatleírás sorrendjét követi: név, márkaplatform, personák, opcionális árazás, plusz egy bemelegítés az elején és a márkabrief összerakása a végén.
+- Az adatok a `content.py` végén: `S2_TASKS`, `S2_THEORY`, `S2_SLIDES`, `S2_BLOCKS`, `EXAMPLE`. A 2. alkalomnál a régi feladattáblázat és a régi promptdia nem jelenik meg (a `deck_slides` a 2. alkalomnál a `session2_slides()`-t használja).
+- Verziók: 1. diasor v1.6, 2. diasor v2.0, a kezdőlap és a 3-6. diasor v1.4, mind 2026. november 11.
+- A 2. diasor 2. diája új összefoglaló: mi volt a múlt heti feladat, és ki melyik márkát választotta 2026. november 5-én (`ROSTER`, `NOBRAND` a `content.py` végén). Oktatói döntés: a nevek teljes névvel kerülnek a fájlba és a repóba; Neptun-kód nem kerül bele. A diasor most 25 dia, a kezdőlap „A feladat” gombja a 3. diára („A mai nap”) mutat.
+- A 3. dia („A mai nap”) oktatói kérésre nem sorolja fel a kis feladatokat: azt mondja el, hogy a mai témát kis feladatokra szedjük, és ezekből áll össze a márkabrief (név + pozicionálás + ígéret és értékek + személyiség és hangnem + célcsoport és persona + árazás = márkabrief), alatta a menet: rövid elmélet, kis feladat, eredmény.
+
+---
+
 ## 2026. november 4.
 
 Érintett fájlok: `ai-a-marketingben/index.html` (v1.2) és a hat diasor, `ai-a-marketingben/ai-marketing-2026-alkalom-1..6.html` (v1.1). Minden szövegnek a magyar és az angol változata is módosult.
