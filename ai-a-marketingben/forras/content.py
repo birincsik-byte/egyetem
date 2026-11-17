@@ -922,3 +922,298 @@ S2_NEED = {
 VER_KIVETEL[2] = ('v2.5 · 2026. november 11.', 'v2.5 · 11 November 2026')
 
 VER_KIVETEL[2] = ('v2.6 · 2026. november 11.', 'v2.6 · 11 November 2026')
+
+# ======================================================================
+# Közös leírás a kis feladatos alkalmakhoz (a build.py sx_* függvényei ezt használják).
+# ======================================================================
+TIP_NOTE = {}
+SPEC = {2: dict(tasks=S2_TASKS, theory=S2_THEORY, need=S2_NEED, ex=EXAMPLE)}
+
+# ======================================================================
+# 3. alkalom, 2026. november 17-i átdolgozás a 2. alkalom mintájára: kis feladatok, rövid elmélet példával,
+# rögzített kimeneti formátumú promptok, „Ehhez kell” lista TIPP gombokkal.
+# Oktatói döntések 2026. november 17.: logófeladat nincs (a logó megvan); a példa a LEGO Bank
+# (az oktató LEGO_Bank anyaga alapján); minden eredménytermék kötelező; az összefoglalón nincs névsor.
+# ======================================================================
+
+NYITVA = 3
+VER_HU = 'v1.5 · 2026. november 17.'
+VER_EN = 'v1.5 · 17 November 2026'
+VER_KIVETEL[1] = ('v1.8 · 2026. november 17.', 'v1.8 · 17 November 2026')
+VER_KIVETEL[2] = ('v2.7 · 2026. november 17.', 'v2.7 · 17 November 2026')
+VER_KIVETEL[3] = ('v3.0 · 2026. november 17.', 'v3.0 · 17 November 2026')
+VER_KIVETEL['index'] = ('v1.6 · 2026. november 17.', 'v1.6 · 17 November 2026')
+
+SESS[2]['out'] = L('Kézikönyv, kulcsvizuálok, posztok, bannerek', 'Brand guide, key visuals, posts, banners')
+GOAL[3] = L('Add meg a márka arcát az új iparágban: színek, betűk, képi világ, és a kampány első vizuáljai.',
+            "Give the brand its face in the new industry: colours, type, imagery, and the campaign's first visuals.")
+SCOPE[3] = L('Az alkalom végére a márkádnak arca van az új iparágban: színek, betűk, képi világ, és néhány kész vizuál, amit a kampányban használni fogsz. A logó megvan, újat nem tervezel.',
+             'By the end of the session your brand has a face in the new industry: colours, type, imagery, and a few finished visuals you will use in the campaign. The logo is already there; you do not design a new one.')
+DELIV[3] = L('Arculati kézikönyv PDF, 3 kulcsvizuál, 3 posztsablon, 2 banner, plakát-mockup, csomagolás- vagy terméklátvány.',
+             'Brand guide PDF, 3 key visuals, 3 post templates, 2 banners, billboard mock-up, packaging or product visual.')
+FROMTO[3] = (FROMTO[3][0],
+             L('A márkádnak arca van az új iparágban: színek, betűk, képi világ, és néhány kész vizuál a kampányhoz.', 'Your brand has a face in the new industry: colours, type, imagery, and a few finished visuals for the campaign.'),
+             L('A logó megvan, újat nem tervezel.', 'The logo is already there; you do not design a new one.'))
+
+TIPS[3][0] = (L('A logó és az új iparág', 'The logo and the new industry'), [
+    (L('Hivatalos fájl', 'The official file'),
+     L('A logót a márka hivatalos oldaláról vagy sajtóanyagából töltsd le. Ne generáltasd újra, mert az AI elrajzolja.',
+       "Download the logo from the brand's official site or press materials. Do not have it regenerated, because the AI will draw it wrong.")),
+    (L('Utólag kerül rá', 'It goes on afterwards'),
+     L('A logót ne a képgenerálóval tetesd a képre, hanem utólag, a sablonban vagy a bannerben.',
+       'Do not have the image generator put the logo on the image; add it afterwards, in the template or the banner.')),
+    (L('Új környezet', 'A new setting'),
+     L('A logó ugyanaz, de új helyeken jelenik meg: repülőn, bankkártyán, menükártyán. Ezt mutasd meg.',
+       'The logo is the same, but it appears in new places: on a plane, a bank card, a menu. Show that.')),
+    (L('Órai játék', 'A classroom game'),
+     L('A kész anyagokat ne tedd közzé, és ne állítsd valódinak. A márka nem a tiéd, és ez a termék a valóságban nem létezik.',
+       'Do not publish the finished materials or present them as real. The brand is not yours, and this product does not exist in reality.')),
+])
+TIPS[3][2][1][3] = (L('Fájlt ments, ne csak linket', 'Save files, not just links'),
+                    L('A képeket, a sablonokat és a PDF-et töltsd le, és tedd a félév mappájába. A deckhez ezek kellenek.',
+                      'Download the images, the templates and the PDF and put them in your semester folder. You need them for the deck.'))
+
+EXAMPLE3 = L('Mi lenne, ha a LEGO bank lenne?', 'What if LEGO were a bank?')
+
+# Rövid elmélet. A példák az oktató LEGO_Bank anyagából (brand book, stratégia) vannak; ahol a dia ezen túlmegy, az kitalált illusztráció.
+S3_THEORY = {
+ 'id': dict(t=L('Mi az arculat?', 'What is a visual identity?'),
+    lead=L('Minden, amiről ránézésre felismered a márkát. A logó megvan, ma a többit döntöd el az új iparágra.',
+           'Everything that makes the brand recognisable at a glance. The logo is already there; today you decide the rest for the new industry.'),
+    items=[(L('Logó', 'Logo'), L('Megvan, újat nem tervezel. Azt döntöd el, hol és hogyan jelenik meg.', 'You have it; you do not design a new one. You decide where and how it appears.')),
+           (L('Színek', 'Colours'), L('Szerepük van: fő szín, kiemelő szín, háttér.', 'They have roles: main colour, accent colour, background.')),
+           (L('Betűk', 'Type'), L('Egy a címekhez, egy a szöveghez.', 'One for headings, one for text.')),
+           (L('Képi világ', 'Imagery'), L('Milyen a fény, kik szerepelnek, mi a hangulat.', 'What the light is like, who appears, what the mood is.')),
+           (L('Formák és jelek', 'Shapes and signs'), L('A márka visszatérő elemei, amiket logó nélkül is felismersz.', 'The recurring elements of the brand that you recognise even without the logo.')),
+           (L('Érintkezési pontok', 'Touchpoints'), L('Ahol a vevő találkozik a márkával: termék, hely, app, hirdetés.', 'Where the customer meets the brand: product, place, app, advertising.'))],
+    ex=L('A mai diákon végig ezt a példát visszük: mi lenne, ha a LEGO bank lenne? A logó a piros négyzet, benne a LEGO, alatta a BANK szó. A példa csak mutatja a formát, a te márkád tartalma a tiéd.',
+         "Throughout today's slides we follow one example: what if LEGO were a bank? The logo is the red square with LEGO and the word BANK underneath. The example only shows the form; the content of your brand is yours.")),
+ 'color': dict(t=L('Színek és betűk', 'Colours and type'),
+    lead=L('A színeknek és a betűknek szerepük van. Egyszer döntöd el őket, és onnantól minden anyagon ugyanazok.',
+           'Colours and type have roles. You decide them once, and from then on they are the same on every asset.'),
+    items=[(L('Fő szín', 'Main colour'), L('Erről ismerik fel a márkát. A legtöbb felületen ez dominál.', 'This is what the brand is recognised by. It dominates most surfaces.')),
+           (L('Kiemelő szín', 'Accent colour'), L('Gombok és fontos jelzések. Kevés, de feltűnő.', 'Buttons and important signals. Used sparingly, but it stands out.')),
+           (L('Semleges színek', 'Neutral colours'), L('Háttér és szöveg, hogy minden olvasható maradjon.', 'Background and text, so everything stays readable.')),
+           (L('HEX-kód', 'HEX code'), L('A szín pontos kódja, például #1E4BD8. Ezt másolod be minden promptba.', "The colour's exact code, for example #1E4BD8. You paste it into every prompt.")),
+           (L('Két betűtípus', 'Two typefaces'), L('Egy karakteres a címekhez, egy jól olvasható a szöveghez és a számokhoz. Ingyenes forrás: Google Fonts.', 'A distinctive one for headings and a readable one for text and numbers. A free source: Google Fonts.'))],
+    ex=L('LEGO Bank: a piros a fő szín, a bizalom jelzéseihez és a felület szerkezetéhez. A sárga a gombokhoz és az ATM-ekhez, a fehér és a fekete a rendhez és az olvashatósághoz. A címekhez buborékos betű, a számokhoz és a banki kifejezésekhez egyszerű geometrikus betű, hogy minden egyértelmű legyen.',
+         'LEGO Bank: red is the main colour, for trust signals and the structure of the interface. Yellow is for buttons and the ATMs, white and black for order and readability. Bubble-style type for headings, a simple geometric typeface for numbers and banking terms, so everything is clear.')),
+ 'image': dict(t=L('Képi világ: egy világ, sok kép', 'Imagery: one world, many images'),
+    lead=L('Ha egyszer leírod, milyenek a márka képei, minden kép ugyanabból a világból jön. Ezt a leírást minden képprompt elejére bemásolod: ez az alapprompt.',
+           "Once you describe what the brand's images are like, every image comes from the same world. You paste this description at the start of every image prompt: this is the base prompt."),
+    items=[(L('Fény és szín', 'Light and colour'), L('Világos vagy sötét, meleg vagy hideg, a márka színeivel.', "Bright or dark, warm or cool, in the brand's colours.")),
+           (L('Kik és mit csinálnak', 'Who and what they do'), L('Kik vannak a képen, és mi történik velük.', 'Who is in the picture, and what is happening to them.')),
+           (L('Kompozíció', 'Composition'), L('Közeli vagy tág, és hol marad hely a szövegnek.', 'Close-up or wide, and where the space for text is.')),
+           (L('Alapprompt', 'Base prompt'), L('Ugyanaz a stílusleírás minden képprompt elején. Ettől lesz egységes a kampány.', 'The same style description at the start of every image prompt. This is what makes the campaign consistent.'))],
+    ex=L('LEGO Bank: világos, egyenletes fény, erős kontraszt. Közeli képek kezekről, ahogy a digitális és a valódi felülettel játszanak, és családok, emberek, akik nyugodtak és urai a pénzüknek, a fiókban vagy az appban.',
+         'LEGO Bank: bright, even lighting, high contrast. Close-ups of hands interacting with the digital and physical interface, and families and individuals who feel relaxed and in control of their money, in the branch or in the app.')),
+ 'kv': dict(t=L('Kulcsvizuál: a kampány fő képe', "Key visual: the campaign's main image"),
+    lead=L('Ebből a képből lesz a poszt, a banner és a plakát. Egy gondolatot mutat az ígéretből, nem mindent.',
+           'This image becomes the post, the banner and the billboard. It shows one idea from the promise, not everything.'),
+    items=[(L('Egy gondolat', 'One idea'), L('Ha két mondatban kell elmagyarázni, túl sok van rajta.', 'If it takes two sentences to explain, there is too much in it.')),
+           (L('Hely a szövegnek', 'Space for text'), L('Mondd meg a promptban, hová kerül a felirat, és azt a részt hagyja üresen.', 'Say in the prompt where the text will go, and have that area left empty.')),
+           (L('Szöveg és logó utólag', 'Text and logo afterwards'), L('A képgenerálótól ne kérd. Utólag kerül rá a sablonban, így pontos lesz.', 'Do not ask the image generator for them. They go on afterwards in the template, so they come out right.')),
+           (L('Három változat, egy fő', 'Three versions, one main'), L('Hármat készítesz, és egyet választasz a kampány fő képének.', "You make three and choose one as the campaign's main image."))],
+    ex=L('LEGO Bank: közeli kép egy kézről, ahogy egy sárga kockát pattint egy alaplapra, amin a számla szolgáltatásai épülnek. A jobb felső harmad üres, oda kerül a felirat.',
+         "LEGO Bank: a close-up of a hand snapping a yellow brick onto a baseplate on which the account's services are built. The top right third is empty; that is where the text goes.")),
+ 'formats': dict(t=L('Poszt, banner, plakát', 'Post, banner, billboard'),
+    lead=L('Ugyanaz a kulcsvizuál és ugyanaz az arculat, csak más méretben és más helyzetben. Mindegyiknek megvan a maga szabálya.',
+           'The same key visual and the same identity, just in a different size and situation. Each has its own rule.'),
+    items=[(L('Négyzetes poszt', 'Square post'), L('1080×1080 pixel, a hírfolyamba. Egy kép, egy rövid cím.', '1080×1080 pixels, for the feed. One image, one short headline.')),
+           (L('Story', 'Story'), L('1080×1920 pixel, 9:16. Felül és alul hagyj szabad sávot, mert ott vannak az app gombjai.', '1080×1920 pixels, 9:16. Leave a free strip at the top and bottom, because the app buttons are there.')),
+           (L('Carousel nyitódia', 'Carousel opening slide'), L('Az első kép, ami miatt tovább lapoznak. 1080×1350 pixel (4:5) vagy négyzet.', 'The first image, the one that makes people swipe on. 1080×1350 pixels (4:5) or square.')),
+           (L('Banner', 'Banner'), L('300×250 és 728×90 pixel. Márkanév, ígéret, egy gomb, más nem fér el.', '300×250 and 728×90 pixels. Brand name, promise, one button; nothing else fits.')),
+           (L('Óriásplakát', 'Billboard'), L('Elhaladva, pár másodperc alatt kell megérteni. Nagy kép, néhány szó.', 'It has to be understood in a few seconds, in passing. A big image, a few words.'))],
+    ex=L('LEGO Bank banner: a fő kulcsvizuál, a logó, egy sor szöveg: „Építsd fel a tökéletes bankodat. Kockáról kockára.”, és egy sárga gomb: Nyiss számlát.',
+         'LEGO Bank banner: the main key visual, the logo, one line of text: "Build your perfect bank. Brick by brick.", and a yellow button: Open an account.')),
+ 'touch': dict(t=L('Hol találkozik a vevő a márkával?', 'Where does the customer meet the brand?'),
+    lead=L('Az új iparágban a márka új helyeken jelenik meg. Ott is felismerhetőnek kell lennie, ahol eddig soha nem volt.',
+           'In the new industry the brand appears in new places. It has to be recognisable even where it has never been before.'),
+    items=[(L('Termék vagy csomagolás', 'Product or packaging'), L('Amit a vevő kézbe vesz.', 'What the customer holds in their hands.')),
+           (L('Hely', 'Place'), L('Bolt, fiók, utastér, étterem.', 'Shop, branch, cabin, restaurant.')),
+           (L('Ember', 'People'), L('Egyenruha, kiszolgálás.', 'Uniform, service.')),
+           (L('Digitális felület', 'Digital surface'), L('App, weboldal, értesítés.', 'App, website, notification.'))],
+    ex=L('LEGO Bank: a pénztárpult óriási 2×4-es kocka, az ATM-ek sárga, minifigurafej formájú gépek, a széfajtó egy hatalmas Technic-fogaskerék, az appban pedig szolgáltatás-kockákat pattintasz a saját alaplapodra.',
+         'LEGO Bank: the teller desk is a giant 2×4 brick, the ATMs are yellow machines shaped like Minifigure heads, the vault door is a huge Technic gear, and in the app you snap service bricks onto your own baseplate.')),
+ 'guide': dict(t=L('Arculati kézikönyv: a márka szabálykönyve', "Brand guide: the brand's rulebook"),
+    lead=L('Azért készül, hogy bárki, aki a márkával dolgozik, ugyanúgy használja. Arról szól, mit szabad és mit nem.',
+           'It exists so that anyone who works with the brand uses it the same way. It is about what is allowed and what is not.'),
+    items=[(L('Logó', 'Logo'), L('Védőtér, legkisebb méret, és mit nem szabad vele csinálni.', 'Clear space, minimum size, and what must not be done with it.')),
+           (L('Színek és betűk', 'Colours and type'), L('HEX-kóddal, szereppel, mintával.', 'With HEX codes, roles and samples.')),
+           (L('Képi stílus', 'Image style'), L('A szabályok és 3 példakép.', 'The rules and 3 example images.')),
+           (L('Hangnem', 'Tone of voice'), L('A márkabriefből, egy példamondattal.', 'From the brand brief, with an example sentence.')),
+           (L('Szabad és tilos', "Do and don't"), L('Példákkal, mert a szabályt a példán értik meg.', 'With examples, because people understand a rule through an example.')),
+           (L('Alkalmazások', 'Applications'), L('A mai vizuálok: poszt, banner, plakát, csomagolás.', "Today's visuals: post, banner, billboard, packaging."))],
+    ex=L('A LEGO Bank kézikönyve öt fejezet: logó, színek, betűk, hangnem, képi világ. Hangnempélda: a „Konfiguráld a prémium folyószámlahitel-beállításaidat” helyett „Pattintsd fel a folyószámlahitel-védelmet a nyugodt napokért”.',
+         'The LEGO Bank guide has five chapters: logo, colours, type, tone of voice, imagery. Tone example: instead of "Configure your premium overdraft settings", "Snap on Overdraft Protection for extra peace of mind".')),
+}
+
+S3_SLIDES = [('agenda',), ('how',), ('th', 'id'), ('task', 1),
+             ('th', 'color'), ('task', 2),
+             ('th', 'image'), ('task', 3),
+             ('th', 'kv'), ('task', 4),
+             ('th', 'formats'), ('task', 5), ('task', 6), ('task', 7),
+             ('th', 'touch'), ('task', 8),
+             ('th', 'guide'), ('task', 9)]
+S3_TILES = [L('Vizuális irány', 'Visual direction'), L('Színek és betűk', 'Colours and type'), L('Képi világ', 'Imagery'),
+            L('Kulcsvizuálok', 'Key visuals'), L('Posztok és bannerek', 'Posts and banners'), L('Plakát és csomagolás', 'Billboard and packaging')]
+
+# Oktatói kérés, 2026. november 17. este: minden prompt három részből áll: SZEREP (egy mondat, LLM-persona, kiemelve),
+# BRIEF (az addig felépült brief, inputként), FELADAT. Minden kis feladat új chatben indul. Feladatonként piros TIPP:
+# kérdezzék meg nyugodtan a modellt, mi a feladat szerkezete (ettől a háttértudásuk is nő).
+def _p(role, brief, task):
+    return L('SZEREP: %s\nBRIEF: %s\nFELADAT: %s' % (role['hu'], brief['hu'], task['hu']),
+             'ROLE: %s\nBRIEF: %s\nTASK: %s' % (role['en'], brief['en'], task['en']))
+
+_B_SOFAR = L('[az eddig felépült briefed]', '[your brief so far]')
+
+def _t(t, m, what, doc, p, ask, files=False, **kw):
+    d = dict(t=t, m=m, what=what, doc=doc, p=p, out=doc, ask=ask)
+    if files:
+        d['files'] = True
+    d.update(kw)
+    return d
+
+S3_TASKS = {
+ 1: _t(L('Vizuális irány', 'Visual direction'), 15,
+       L('Nyiss új chatet. Döntsd el, mit viszel át a márka vizuális kódjaiból az új iparágba, és mit nem, és írj mellé 3 vizuális kulcsszót. A briefed a múlt heti márkabrief: ma ennek az aljára gyűjtöd az eredményeket.',
+         "Open a new chat. Decide which of the brand's visual codes you carry over into the new industry and which you do not, and add 3 visual keywords. Your brief is last week's brand brief: today you collect the outputs at the bottom of it."),
+       L('1. Vizuális irány: amit átviszel, amit nem, és 3 kulcsszó', '1. Visual direction: what you carry over, what you do not, and 3 keywords'),
+       _p(L('Te most art director vagy egy márkaépítő ügynökségnél.', 'You are now an art director at a branding agency.'),
+          L('[a briefed: a márkabrief, alatta a márka vizuális kódjai az 1. alkalom elemzéséből]', "[your brief: the brand brief, with the brand's visual codes from your session 1 analysis underneath]"),
+          L('Órai játékban azt találjuk ki, milyen lenne, ha a [márka] a nevével és a logójával együtt [új kategória] lenne. A brief alapján javasolj vizuális irányt az új iparágra: a márka vizuális kódjai közül (színek, formák, betűk, képi stílus) mit viszünk át, és mit nem, mert az új iparágban nem működne. Adj 3 vizuális kulcsszót, ami a márka személyiségéből jön.\n\nA válaszod legyen rövid. Csak ezt a blokkot add vissza, hogy be tudjam másolni a briefembe:\nÁTVISZEM: … (3-5 elem, mindegyik mellé, miért)\nNEM VISZEM ÁT: … (1-3 elem, mindegyik mellé, miért)\n3 VIZUÁLIS KULCSSZÓ: …',
+            "In a classroom game we work out what it would be like if [brand], name and logo included, were a [new category]. Based on the brief, suggest a visual direction for the new industry: which of the brand's visual codes (colours, shapes, type, image style) we carry over, and which we do not because they would not work in the new industry. Give 3 visual keywords that come from the brand's personality.\n\nKeep it short. Return only this block, so I can paste it into my brief:\nCARRY OVER: … (3-5 items, each with a reason)\nLEAVE BEHIND: … (1-3 items, each with a reason)\n3 VISUAL KEYWORDS: …")),
+       L('Milyen részekből áll egy márka vizuális iránya, és mire figyel ilyenkor egy art director?', "What parts make up a brand's visual direction, and what does an art director pay attention to?")),
+ 2: _t(L('Színek és betűk', 'Colours and type'), 15,
+       L('Új chatben rögzítsd a színeket HEX-kóddal és szereppel, és válassz két ingyenes betűtípust: egyet a címekhez, egyet a szöveghez. Innentől ezek a briefedben vannak, így minden promptba bekerülnek.',
+         'In a new chat, fix the colours with HEX codes and roles, and choose two free typefaces: one for headings, one for text. From now on they are in your brief, so they go into every prompt.'),
+       L('2. Színek HEX-kóddal és szereppel, 2 betűtípus', '2. Colours with HEX codes and roles, 2 typefaces'),
+       _p(L('Te most arculattervező grafikus vagy.', 'You are now a brand identity designer.'),
+          L('[az eddig felépült briefed, benne az 1. feladat eredménye]', '[your brief so far, including the output of task 1]'),
+          L('A [márka] órai játékban [új kategória] lett, a neve és a logója marad. A briefben lévő vizuális irány alapján, webes kereséssel nézd meg a [márka] színeit, és javasolj színpalettát az új iparágra: fő szín, kiemelő szín (gombok, fontos jelzések) és 2 semleges szín (háttér, szöveg). Ahol a márka hivatalos színét megtaláltad, add meg a forrást, ahol becsülsz, jelöld. Javasolj két ingyenes betűtípust a Google Fontsból: egyet a címekhez, egyet a szöveghez és a számokhoz.\n\nCsak ezt a blokkot add vissza:\nFŐ SZÍN: #… · mire: …\nKIEMELŐ SZÍN: #… · mire: …\nSEMLEGES 1: #… · mire: …\nSEMLEGES 2: #… · mire: …\nCÍMBETŰ: … · miért: …\nSZÖVEGBETŰ: … · miért: …\nFORRÁS VAGY BECSLÉS: …',
+            "In a classroom game, [brand] has become a [new category]; its name and logo stay. Based on the visual direction in the brief, use web search to look at [brand]'s colours, and suggest a colour palette for the new industry: main colour, accent colour (buttons, important signals) and 2 neutral colours (background, text). Where you found the brand's official colour, give the source; where you estimate, mark it. Suggest two free typefaces from Google Fonts: one for headings, one for text and numbers.\n\nReturn only this block:\nMAIN COLOUR: #… · for: …\nACCENT COLOUR: #… · for: …\nNEUTRAL 1: #… · for: …\nNEUTRAL 2: #… · for: …\nHEADING TYPEFACE: … · why: …\nTEXT TYPEFACE: … · why: …\nSOURCE OR ESTIMATE: …")),
+       L('Hogyan épül fel egy márka színpalettája és betűrendszere? Mi a fő szín, a kiemelő szín és a semleges színek dolga?', "How are a brand's colour palette and type system built? What do the main, accent and neutral colours do?")),
+ 3: _t(L('Képi világ és alapprompt', 'Imagery and base prompt'), 15,
+       L('Új chatben írd le, milyenek a márka képei: fény, szín, kik és mit csinálnak rajtuk, hol marad hely a szövegnek. Ebből készül az alapprompt, amit minden képprompt elejére bemásolsz.',
+         "In a new chat, describe what the brand's images are like: light, colour, who is in them and what they are doing, where the space for text is. This becomes the base prompt you paste at the start of every image prompt."),
+       L('3. Képi stílus és az alapprompt', '3. Image style and the base prompt'),
+       _p(L('Te most art director vagy, aki kampányfotózásokat irányít.', 'You are now an art director who runs campaign photo shoots.'),
+          L('[az eddig felépült briefed, benne az 1-2. feladat eredménye]', '[your brief so far, including the outputs of tasks 1-2]'),
+          L('A [márka] órai játékban [új kategória] lett. A briefben lévő vizuális irány, színek és célcsoport alapján írd le a márka képi stílusát: fény és szín, kompozíció, kik szerepelnek a képeken és mit csinálnak, mi nem szerepelhet. Utána írj belőle egy legfeljebb 60 szavas alappromptot képgeneráláshoz, amit minden későbbi képprompt elejére be tudok másolni. Ne kérj szöveget vagy logót a képre.\n\nCsak ezt a blokkot add vissza:\nFÉNY ÉS SZÍN: …\nKOMPOZÍCIÓ: …\nKIK ÉS MIT CSINÁLNAK: …\nAMI NEM SZEREPELHET: …\nALAPPROMPT: …',
+            "In a classroom game, [brand] has become a [new category]. Based on the visual direction, colours and target audience in the brief, describe the brand's image style: light and colour, composition, who appears in the images and what they are doing, what must not appear. Then turn it into a base prompt for image generation of at most 60 words that I can paste at the start of every later image prompt. Do not ask for text or a logo in the image.\n\nReturn only this block:\nLIGHT AND COLOUR: …\nCOMPOSITION: …\nWHO AND WHAT THEY DO: …\nMUST NOT APPEAR: …\nBASE PROMPT: …")),
+       L('Mit tartalmaz egy jó képi stílusleírás vagy fotós brief, és mire való a moodboard?', 'What goes into a good image style description or photo brief, and what is a moodboard for?')),
+ 4: _t(L('Három kulcsvizuál', 'Three key visuals'), 25,
+       L('Nyiss új chatet egy képgenerálóban (például ChatGPT vagy Gemini), és készíts 3 kulcsvizuált az alappromptból. Jelöld meg, melyik a kampány fő képe. Előbb a promptot csiszold, csak utána generálj.',
+         "Open a new chat in an image generator (for example ChatGPT or Gemini) and make 3 key visuals from the base prompt. Mark which one is the campaign's main image. Polish the prompt first; generate only after that."),
+       L('3 kép a mappádba, ebből 1 a fő kulcsvizuál. A 3 ötlet és a képpromptok a briefedbe.', '3 images into your folder, 1 of them the main key visual. The 3 ideas and the image prompts into your brief.'),
+       _p(L('Te most art director vagy egy reklámügynökségnél, és kampány-kulcsvizuálokat tervezel.', 'You are now an art director at an advertising agency, designing campaign key visuals.'),
+          L('[az eddig felépült briefed, benne az alapprompt]', '[your brief so far, including the base prompt]'),
+          L('A [márka] órai játékban [új kategória] lett. A briefben lévő ígéret és alapprompt alapján írj 3 különböző kulcsvizuál-ötletet a bevezető kampányhoz. Mindegyik egy gondolatot mutasson az ígéretből, szöveg és logó nélkül, és hagyjon helyet a feliratnak. Minden képprompt az alappromptommal kezdődjön. Még ne generálj: ha valami hiányzik, előbb kérdezz. Amikor kiválasztottam egyet, csak azt generáld le, utána a következőt.\n\nElőször csak ezt a blokkot add vissza:\n1. ÖTLET: … · KÉPPROMPT: …\n2. ÖTLET: … · KÉPPROMPT: …\n3. ÖTLET: … · KÉPPROMPT: …\nHOL MARAD HELY A SZÖVEGNEK: …',
+            'In a classroom game, [brand] has become a [new category]. Based on the promise and the base prompt in the brief, write 3 different key visual ideas for the launch campaign. Each should show one idea from the promise, without text or logo, and leave space for the headline. Every image prompt should start with my base prompt. Do not generate yet: if anything is missing, ask first. When I have chosen one, generate only that one, then the next.\n\nFirst return only this block:\nIDEA 1: … · IMAGE PROMPT: …\nIDEA 2: … · IMAGE PROMPT: …\nIDEA 3: … · IMAGE PROMPT: …\nWHERE THE SPACE FOR TEXT IS: …')),
+       L('Mitől jó egy kampány kulcsvizuálja, és milyen részekből áll?', 'What makes a good campaign key visual, and what parts does it have?'),
+       files=True),
+ 5: _t(L('Három posztsablon', 'Three post templates'), 20,
+       L('Új chatben készíts 3 posztsablont az arculattal: négyzetes poszt, 9:16-os story és carousel nyitódia. Claude Designban, Canvában, vagy Claude-ban artifactként.',
+         'In a new chat, make 3 post templates with the identity: square post, 9:16 story and carousel opening slide. In Claude Design, in Canva, or in Claude as an artifact.'),
+       L('3 posztsablon: link vagy képernyőkép a mappádba', '3 post templates: a link or a screenshot into your folder'),
+       _p(L('Te most közösségimédia-designer vagy.', 'You are now a social media designer.'), _B_SOFAR,
+          L('Csatoltam a logót és a fő kulcsvizuált. Készíts 3 közösségimédia-posztsablont a [márka] márkának, ami órai játékban [új kategória] lett. Egy oldalon, egymás mellett kérem: négyzetes poszt (1080×1080), 9:16-os story (1080×1920) és carousel nyitódia (1080×1350). A színeket és a betűket a briefből vedd, a betűket a Google Fontsból töltsd be. Mindegyiken legyen hely a címnek, egy rövid szövegnek és a logónak. A szöveg helyén egyelőre a brief ígérete álljon. Ne találj ki új színt vagy betűt. Ha a csatolt képet nem tudod beépíteni, tegyél a helyére jól látható képhelyet, és írd meg, hogyan cseréljem be.\n\nA sablonok után röviden add vissza:\nSABLONOK: … (mi hol van rajtuk)\nAMIT MÉG CSERÉLNI KELL: …',
+            'I have attached the logo and the main key visual. Make 3 social media post templates for [brand], which in a classroom game has become a [new category]. On one page, side by side: square post (1080×1080), 9:16 story (1080×1920) and carousel opening slide (1080×1350). Take the colours and type from the brief, and load the typefaces from Google Fonts. Each should have room for a headline, a short text and the logo. For now, put the promise from the brief in place of the text. Do not invent new colours or typefaces. If you cannot build in the attached image, put a clearly visible image placeholder in its place and tell me how to swap it in.\n\nAfter the templates, briefly return:\nTEMPLATES: … (what is where on them)\nSTILL TO BE SWAPPED: …')),
+       L('Milyen elemekből áll egy jó közösségimédia-posztsablon, és mit rögzít egy sablon?', 'What elements make up a good social media post template, and what does a template fix?'),
+       files=True),
+ 6: _t(L('Két banner', 'Two banners'), 15,
+       L('Új chatben készíts egy 300×250-es és egy 728×90-es HTML-bannert a fő kulcsvizuállal, Claude-ban artifactként. A szlogen még nincs meg: most a márkanév és az ígéret kerül rá, a szlogent az 5. alkalmon cseréled be.',
+         'In a new chat, make a 300×250 and a 728×90 HTML banner with the main key visual, in Claude as an artifact. There is no slogan yet: for now the brand name and the promise go on it; you swap in the slogan in session 5.'),
+       L('2 banner: link vagy képernyőkép a mappádba', '2 banners: a link or a screenshot into your folder'),
+       _p(L('Te most digitális designer vagy, aki display bannereket készít.', 'You are now a digital designer who makes display banners.'), _B_SOFAR,
+          L('Csatoltam a logót és a fő kulcsvizuált. Készíts két HTML-bannert a [márka] márkának, ami órai játékban [új kategória] lett: 300×250 és 728×90 pixel, egy oldalon, artifactként. A színeket és a betűket a briefből vedd. Szöveg: a márkanév, a brief ígérete, és egy gomb: [a gomb szövege, például Fedezd fel]. A 728×90-esen legfeljebb egy sor szöveg legyen. Ha a csatolt képet nem tudod beépíteni, tegyél a helyére jól látható képhelyet, és írd meg, hogyan cseréljem be.\n\nA bannerek után röviden add vissza:\nBANNEREK: … (mi van rajtuk)\nA SZLOGEN HELYE: … (hová kerül majd)',
+            'I have attached the logo and the main key visual. Make two HTML banners for [brand], which in a classroom game has become a [new category]: 300×250 and 728×90 pixels, on one page, as an artifact. Take the colours and type from the brief. Text: the brand name, the promise from the brief, and a button: [button text, for example Discover]. The 728×90 should have at most one line of text. If you cannot build in the attached image, put a clearly visible image placeholder in its place and tell me how to swap it in.\n\nAfter the banners, briefly return:\nBANNERS: … (what is on them)\nWHERE THE SLOGAN GOES: … (where it will go later)')),
+       L('Milyen részei vannak egy display bannernek, és mire kell figyelni a kis méreteknél?', 'What parts does a display banner have, and what matters at small sizes?'),
+       files=True),
+ 7: _t(L('Óriásplakát-mockup', 'Billboard mock-up'), 15,
+       L('Új chatben, egy képgenerálóval készíts óriásplakát-mockupot: a fő kulcsvizuál egy valódi utcai helyzetben, a márkanévvel és pár szóval. A feliratot betűről betűre ellenőrizd.',
+         'In a new chat, with an image generator, make a billboard mock-up: the main key visual in a real street setting, with the brand name and a few words. Check the lettering letter by letter.'),
+       L('Plakát-mockup a mappádba, a képprompt a briefedbe', 'Billboard mock-up into your folder, the image prompt into your brief'),
+       _p(L('Te most art director vagy, aki óriásplakát-kampányokat tervez.', 'You are now an art director who designs billboard campaigns.'), _B_SOFAR,
+          L('Csatoltam a kampány fő kulcsvizuálját. A [márka] órai játékban [új kategória] lett. Készíts belőle óriásplakát-mockupot: a kép egy utcai óriásplakáton, valósághű városi környezetben, [helyszín és napszak, például esti buszmegálló Budapesten]. A plakáton a képen kívül csak a márkanév és a brief ígérete legyen, legfeljebb 6 szóban. A stílust a brief alappromptjából vedd. Generálás előtt írd le egy mondatban, mit fogsz készíteni, és ha valami hiányzik, kérdezz.\n\nA kép után csak ezt add vissza:\nHELYSZÍN: …\nSZÖVEG A PLAKÁTON: …\nKÉPPROMPT: …',
+            "I have attached the campaign's main key visual. In a classroom game, [brand] has become a [new category]. Turn it into a billboard mock-up: the image on a street billboard, in a realistic city setting, [place and time of day, for example a bus stop in Budapest in the evening]. Apart from the image, the billboard should only carry the brand name and the promise from the brief, in at most 6 words. Take the style from the base prompt in the brief. Before generating, describe in one sentence what you will make, and if anything is missing, ask.\n\nAfter the image, return only this:\nPLACE: …\nTEXT ON THE BILLBOARD: …\nIMAGE PROMPT: …")),
+       L('Mitől működik egy óriásplakát, és milyen részekből áll?', 'What makes a billboard work, and what parts does it have?'),
+       files=True),
+ 8: _t(L('Csomagolás vagy termék', 'Packaging or product'), 15,
+       L('Új chatben gyűjtsd össze, hol találkozik a vevő a márkával az új iparágban. Válassz egyet, és készíts róla látványt egy képgenerálóval: csomagolás, termék vagy hely.',
+         'In a new chat, collect where the customer meets the brand in the new industry. Choose one and make a visual of it with an image generator: packaging, product or place.'),
+       L('Csomagolás- vagy terméklátvány a mappádba. Az 5 érintkezési pont és a képprompt a briefedbe.', 'Packaging or product visual into your folder. The 5 touchpoints and the image prompt into your brief.'),
+       _p(L('Te most márkaélmény-tervező vagy, aki a márka érintkezési pontjait, csomagolását és termékeit tervezi.', "You are now a brand experience designer who designs the brand's touchpoints, packaging and products."), _B_SOFAR,
+          L('A [márka] órai játékban [új kategória] lett, a neve és a logója marad. A brief alapján sorolj fel 5 helyet vagy tárgyat, ahol a vevő találkozik a márkával az új iparágban (termék, csomagolás, hely, egyenruha, digitális felület), és mindegyikhez írd le egy mondatban, hogyan látszana rajta a márka. Mondd meg, melyik mutatná meg a legjobban, de a választás az enyém. Ha választottam, írd meg hozzá a képpromptot a brief alappromptjával kezdve, és generáld le.\n\nElőször csak ezt a blokkot add vissza:\nÉRINTKEZÉSI PONTOK:\n1. …\n2. …\n3. …\n4. …\n5. …\nJAVASLAT: … (egy mondat, miért)',
+            'In a classroom game, [brand] has become a [new category]; its name and logo stay. Based on the brief, list 5 places or objects where the customer meets the brand in the new industry (product, packaging, place, uniform, digital surface), and for each write one sentence on how the brand would show on it. Tell me which would show the brand best, but the choice is mine. Once I have chosen, write the image prompt for it, starting with the base prompt from the brief, and generate it.\n\nFirst return only this block:\nTOUCHPOINTS:\n1. …\n2. …\n3. …\n4. …\n5. …\nSUGGESTION: … (one sentence on why)')),
+       L('Mi az az érintkezési pont (touchpoint), és mit tartalmaz egy csomagolásterv?', 'What is a touchpoint, and what goes into a packaging design?'),
+       files=True),
+ 9: _t(L('Az arculati kézikönyv összerakása', 'Putting the brand guide together'), 20,
+       L('Új chatben rakd össze a briefből az arculati kézikönyvet Claude Designban, vagy Claude-ban artifactként, és mentsd PDF-be (artifactnál a böngésző nyomtatás funkciójával). Az AI csak rendezzen, ne találjon ki új színt, betűt vagy szabályt.',
+         "In a new chat, put the brand guide together from your brief in Claude Design, or in Claude as an artifact, and save it as a PDF (for an artifact, with the browser's print function). The AI should only organise it, not invent new colours, typefaces or rules."),
+       L('Arculati kézikönyv PDF: ez készül el mára. Ezzel, a briefeddel, a képekkel és a sablonokkal jössz a 4. alkalomra.', 'Brand guide PDF: this is what is done by today. You bring it, your brief, the images and the templates to session 4.'),
+       _p(L('Te most senior brand designer vagy, aki arculati kézikönyvet ír.', 'You are now a senior brand designer writing a brand guide.'),
+          L('[az eddig felépült briefed: a márkabrief és a mai 1-8. feladat eredménye]', "[your brief so far: the brand brief and the outputs of today's tasks 1-8]"),
+          L('Csatoltam a logót és a mai képeket. A briefből készíts arculati kézikönyvet a [márka] márkának, ami órai játékban [új kategória] lett. Csak rendezd, amit a brief tartalmaz: ne találj ki új színt, betűt vagy szabályt, és ha egy képet nem tudsz beépíteni, hagyj neki jól látható helyet.\n\nEzek a fejezetek legyenek benne, mindegyik külön oldalon:\nBORÍTÓ: a márkanév és a „Mi lenne, ha…” mondat\nLOGÓ ÉS HASZNÁLATA: védőtér, legkisebb méret, 3 tilos példa\nSZÍNEK: HEX-kóddal és szereppel\nBETŰK: cím és szöveg, mintával\nKÉPI STÍLUS: a szabályok, 3 példaképpel\nHANGNEM: a briefből, egy példamondattal\nSZABAD ÉS TILOS: 3-3 példa\nALKALMAZÁSOK: kulcsvizuál, poszt, banner, plakát, csomagolás\nHIÁNYZIK VAGY ELLENTMOND: … (a végén, külön)',
+            'I have attached the logo and today\'s images. From the brief, make a brand guide for [brand], which in a classroom game has become a [new category]. Only organise what the brief contains: do not invent new colours, typefaces or rules, and if you cannot build in an image, leave clearly visible space for it.\n\nIt should have these chapters, each on its own page:\nCOVER: the brand name and the "What if…" sentence\nLOGO AND ITS USE: clear space, minimum size, 3 examples of misuse\nCOLOURS: with HEX codes and roles\nTYPE: headings and text, with samples\nIMAGE STYLE: the rules, with 3 example images\nTONE OF VOICE: from the brief, with an example sentence\nDO AND DON\'T: 3 examples each\nAPPLICATIONS: key visual, post, banner, billboard, packaging\nMISSING OR CONTRADICTORY: … (at the end, separately)')),
+       L('Mit tartalmaz egy arculati kézikönyv, és milyen sorrendben szokták felépíteni?', 'What does a brand guide contain, and in what order is it usually built?'),
+       files=True),
+}
+
+_B_IFANY = L('[az eddig felépült briefed, ha van]', '[your brief so far, if you have one]')
+TIP_PROMPTS.update({
+ 'draftbrief3': _p(L('Te most márkastratéga vagy.', 'You are now a brand strategist.'), L('[amit eddig elkészítettél, ha van]', '[whatever you have made so far, if anything]'),
+     L(_G['hu'] + 'Ebből készíts egyoldalas márkabrief-vázlatot. Ahol nincs anyagom, ott tegyél javaslatot, és jelöld a JAVASLAT szóval, hogy lássam, mit kell még átnéznem.\n\nPontosan ezekkel a címekkel add vissza:\nMI LENNE, HA: …\nCÉLCSOPORT: …\nPERSONÁK: …\nPOZICIONÁLÁS: …\nÍGÉRET: …\nÉRTÉKEK: …\nSZEMÉLYISÉG ÉS HANGNEM: …\nÁRSZINT: …',
+       _G['en'] + "Turn it into a one-page draft brand brief. Where I have no material, make a suggestion and mark it with the word SUGGESTION, so I can see what I still need to check.\n\nReturn it with exactly these headings:\nWHAT IF: …\nTARGET AUDIENCE: …\nPERSONAS: …\nPOSITIONING: …\nPROMISE: …\nVALUES: …\nPERSONALITY AND TONE: …\nPRICE LEVEL: …")),
+ 'promise3': _p(L('Te most márkastratéga vagy.', 'You are now a brand strategist.'), _B_IFANY,
+     L(_G['hu'] + 'Javasolj egy ígéretet (egy rövid mondat, amit egy vevő a barátjának is elmondana) és 3 értéket, amelyek a valódi [márka] márkán is látszanak. Ne írj olyat, ami bármelyik márkára igaz lehetne.\n\nCsak ezt a blokkot add vissza:\nÍGÉRET: …\nÉRTÉK 1: … · a gyakorlatban: …\nÉRTÉK 2: … · a gyakorlatban: …\nÉRTÉK 3: … · a gyakorlatban: …',
+       _G['en'] + 'Suggest a promise (one short sentence a customer would also tell a friend) and 3 values that can also be seen in the real [brand]. Do not write anything that could be true of any brand.\n\nReturn only this block:\nPROMISE: …\nVALUE 1: … · in practice: …\nVALUE 2: … · in practice: …\nVALUE 3: … · in practice: …')),
+ 'visualcodes': _p(L('Te most márkakutató vagy, aki vizuális kódokat elemez.', 'You are now a brand researcher who analyses visual codes.'), _B_IFANY,
+     L(_G['hu'] + 'Webes kereséssel nézd meg a [márka] vizuális kódjait: színek (hivatalos HEX-kóddal, ha találsz rá forrást), formák és visszatérő jelek, betűtípusok, képi stílus, a logó jellemzői. Csak forrással alátámasztott dolgot írj, és ha valamiben nem vagy biztos, jelezd.\n\nA válaszod legyen rövid. Csak ezt a blokkot add vissza:\nSZÍNEK: …\nFORMÁK ÉS JELEK: …\nBETŰK: …\nKÉPI STÍLUS: …\nLOGÓ: …\nFORRÁSOK: …\nBIZONYTALAN: …',
+       _G['en'] + "Use web search to look at [brand]'s visual codes: colours (with official HEX codes if you find a source), shapes and recurring signs, typefaces, image style, the features of the logo. Only write what you can back with a source, and flag anything you are not sure about.\n\nKeep it short. Return only this block:\nCOLOURS: …\nSHAPES AND SIGNS: …\nTYPE: …\nIMAGE STYLE: …\nLOGO: …\nSOURCES: …\nUNSURE: …")),
+ 'visdir': _p(L('Te most art director vagy egy márkaépítő ügynökségnél.', 'You are now an art director at a branding agency.'), _B_IFANY,
+     L(_G['hu'] + 'Webes kereséssel nézd meg a [márka] vizuális kódjait (színek, formák, betűk, képi stílus), és a brief alapján javasolj vizuális irányt az új iparágra: mit viszünk át, és mit nem, mert az új iparágban nem működne. Adj 3 vizuális kulcsszót.\n\nCsak ezt a blokkot add vissza:\nÁTVISZEM: … (3-5 elem, mindegyik mellé, miért)\nNEM VISZEM ÁT: … (1-3 elem, mindegyik mellé, miért)\n3 VIZUÁLIS KULCSSZÓ: …',
+       _G['en'] + "Use web search to look at [brand]'s visual codes (colours, shapes, type, image style), and based on the brief suggest a visual direction for the new industry: what we carry over, and what we do not because it would not work in the new industry. Give 3 visual keywords.\n\nReturn only this block:\nCARRY OVER: … (3-5 items, each with a reason)\nLEAVE BEHIND: … (1-3 items, each with a reason)\n3 VISUAL KEYWORDS: …")),
+ 'colors': _p(L('Te most arculattervező grafikus vagy.', 'You are now a brand identity designer.'), _B_IFANY,
+     L(_G['hu'] + 'Webes kereséssel nézd meg a [márka] színeit, és javasolj színpalettát az új iparágra: fő szín, kiemelő szín és 2 semleges szín, HEX-kóddal. Javasolj két ingyenes betűtípust a Google Fontsból: egyet a címekhez, egyet a szöveghez és a számokhoz. Ahol becsülsz, jelöld.\n\nCsak ezt a blokkot add vissza:\nFŐ SZÍN: #… · mire: …\nKIEMELŐ SZÍN: #… · mire: …\nSEMLEGES 1: #… · mire: …\nSEMLEGES 2: #… · mire: …\nCÍMBETŰ: …\nSZÖVEGBETŰ: …\nFORRÁS VAGY BECSLÉS: …',
+       _G['en'] + "Use web search to look at [brand]'s colours, and suggest a colour palette for the new industry: main colour, accent colour and 2 neutral colours, with HEX codes. Suggest two free typefaces from Google Fonts: one for headings, one for text and numbers. Mark where you estimate.\n\nReturn only this block:\nMAIN COLOUR: #… · for: …\nACCENT COLOUR: #… · for: …\nNEUTRAL 1: #… · for: …\nNEUTRAL 2: #… · for: …\nHEADING TYPEFACE: …\nTEXT TYPEFACE: …\nSOURCE OR ESTIMATE: …")),
+ 'styleprompt': _p(L('Te most art director vagy, aki kampányfotózásokat irányít.', 'You are now an art director who runs campaign photo shoots.'), _B_IFANY,
+     L(_G['hu'] + 'A brief alapján írd le a márka képi stílusát az új iparágban: fény és szín, kompozíció, kik szerepelnek a képeken és mit csinálnak, mi nem szerepelhet. Ha a briefben nincsenek színek, javasolj. Utána írj belőle egy legfeljebb 60 szavas alappromptot képgeneráláshoz, amit minden képprompt elejére be tudok másolni. Ne kérj szöveget vagy logót a képre.\n\nCsak ezt a blokkot add vissza:\nFÉNY ÉS SZÍN: …\nKOMPOZÍCIÓ: …\nKIK ÉS MIT CSINÁLNAK: …\nAMI NEM SZEREPELHET: …\nALAPPROMPT: …',
+       _G['en'] + "Based on the brief, describe the brand's image style in the new industry: light and colour, composition, who appears in the images and what they are doing, what must not appear. If the brief has no colours, suggest some. Then turn it into a base prompt for image generation of at most 60 words that I can paste at the start of every image prompt. Do not ask for text or a logo in the image.\n\nReturn only this block:\nLIGHT AND COLOUR: …\nCOMPOSITION: …\nWHO AND WHAT THEY DO: …\nMUST NOT APPEAR: …\nBASE PROMPT: …")),
+ 'kvquick': _p(L('Te most art director vagy egy reklámügynökségnél.', 'You are now an art director at an advertising agency.'), _B_IFANY,
+     L(_G['hu'] + 'A briefben lévő ígéret és alapprompt alapján (ha nincsenek benne, javasolj) írj egy kulcsvizuál-ötletet a bevezető kampányhoz: egy gondolatot mutasson az ígéretből, szöveg és logó nélkül, és hagyjon helyet a feliratnak. Írd meg hozzá a képpromptot, és generáld le a képet. Ha nem tudsz képet generálni, csak a blokkot add vissza, és a képpromptot beviszem egy képgenerálóba.\n\nA kép mellé csak ezt add vissza:\nÖTLET: …\nKÉPPROMPT: …\nHOL MARAD HELY A SZÖVEGNEK: …',
+       _G['en'] + 'Based on the promise and the base prompt in the brief (if they are missing, suggest them), write one key visual idea for the launch campaign: it should show one idea from the promise, without text or logo, and leave space for the headline. Write the image prompt for it and generate the image. If you cannot generate images, return only the block, and I will take the image prompt to an image generator.\n\nWith the image, return only this:\nIDEA: …\nIMAGE PROMPT: …\nWHERE THE SPACE FOR TEXT IS: …')),
+ 'logo': L('SZEREP: Te most egy ügynökség asszisztense vagy, aki márkaanyagokat gyűjt.\nFELADAT: Egy órai játékban a [márka] márkával dolgozom, és szükségem van a hivatalos logójára. Webes kereséssel keresd meg, honnan tölthető le jó minőségben: a márka hivatalos oldala vagy sajtóanyaga, vagy a Wikimedia Commons. Csak létező linket adj meg, és ha nem találsz, mondd meg.\n\nCsak ezt a blokkot add vissza:\nLINK: …\nFORMÁTUM: … (SVG vagy PNG)\nSZÍNVÁLTOZATOK: … (színes, fehér, fekete, ha van)',
+           "ROLE: You are now an agency assistant who collects brand materials.\nTASK: In a classroom game I am working with the [brand] brand, and I need its official logo. Use web search to find where it can be downloaded in good quality: the brand's official site or press materials, or Wikimedia Commons. Only give links that exist, and if you cannot find one, say so.\n\nReturn only this block:\nLINK: …\nFORMAT: … (SVG or PNG)\nCOLOUR VERSIONS: … (colour, white, black, if any)"),
+ 'draftguide': _p(L('Te most senior brand designer vagy.', 'You are now a senior brand designer.'), L('[az eddig felépült briefed, amennyi megvan]', '[your brief so far, as much as you have]'),
+     L(_G['hu'] + 'Csatoltam a logót és a képeket, ha vannak. A briefből készíts arculati kézikönyv-vázlatot. Ahol nincs anyagom, ott tegyél javaslatot, és jelöld a JAVASLAT szóval, hogy lássam, mit kell még átnéznem.\n\nPontosan ezekkel a fejezetekkel add vissza:\nLOGÓ ÉS HASZNÁLATA: …\nSZÍNEK: … (HEX-kóddal és szereppel)\nBETŰK: …\nKÉPI STÍLUS: …\nHANGNEM: …\nSZABAD ÉS TILOS: …\nALKALMAZÁSOK: …',
+       _G['en'] + "I have attached the logo and the images, if any. From the brief, make a draft brand guide. Where I have no material, make a suggestion and mark it with the word SUGGESTION, so I can see what I still need to check.\n\nReturn it with exactly these chapters:\nLOGO AND ITS USE: …\nCOLOURS: … (with HEX codes and roles)\nTYPE: …\nIMAGE STYLE: …\nTONE OF VOICE: …\nDO AND DON'T: …\nAPPLICATIONS: …")),
+})
+TIP_NOTE.update({
+ 'kvquick': L('Készítsd el most új chatben, egy képgenerálóban (például ChatGPT), és mentsd a képet a mappádba.', 'Make it now in a new chat in an image generator (for example ChatGPT), and save the image into your folder.'),
+ 'logo': L('Keresd meg most ezzel a prompttal, töltsd le a logót, és mentsd a mappádba.', 'Find it now with this prompt, download the logo, and save it into your folder.'),
+})
+
+_N_BRIEF = (L('A briefed: a múlt heti márkabrief', 'Your brief: last week\'s brand brief'), 'draftbrief3')
+_N_PROMISE = (L('A briefben: az ígéret', 'In your brief: the promise'), 'promise3')
+_N_VISDIR = (L('A briefben: az 1. feladat vizuális iránya', 'In your brief: the visual direction from task 1'), 'visdir')
+_N_COLORS = (L('A briefben: a 2. feladat színei és betűi', 'In your brief: the colours and type from task 2'), 'colors')
+_N_STYLE = (L('A briefben: a 3. feladat alappromptja', 'In your brief: the base prompt from task 3'), 'styleprompt')
+_N_KV = (L('A 4. feladat fő kulcsvizuálja, képfájlként', 'The main key visual from task 4, as an image file'), 'kvquick')
+_N_LOGO = (L('A logód fájlja', 'Your logo file'), 'logo')
+S3_NEED = {
+ 1: [_N_BRIEF, (L('A márka vizuális kódjai az 1. alkalom elemzéséből', "The brand's visual codes from your session 1 analysis"), 'visualcodes')],
+ 2: [_N_VISDIR],
+ 3: [_N_VISDIR, _N_COLORS, (L('A briefben: a célcsoport és a két persona', 'In your brief: the target audience and the two personas'), 'draftbrief3')],
+ 4: [_N_STYLE, _N_PROMISE],
+ 5: [_N_COLORS, _N_KV, _N_LOGO, _N_PROMISE],
+ 6: [_N_COLORS, _N_KV, _N_LOGO, _N_PROMISE],
+ 7: [_N_KV, _N_STYLE, _N_PROMISE],
+ 8: [(L('A briefben: a 2. feladat színei', 'In your brief: the colours from task 2'), 'colors'), _N_STYLE],
+ 9: [(L('A briefed: a márkabrief és az 1-8. feladat eredménye', 'Your brief: the brand brief and the outputs of tasks 1-8'), 'draftguide'),
+     (L('A logód és a mai képek', "Your logo and today's images"), 'logo'),
+     (L('A briefben: a hangnem', 'In your brief: the tone of voice'), 'draftbrief3')],
+}
+SPEC[3] = dict(tasks=S3_TASKS, theory=S3_THEORY, need=S3_NEED, ex=EXAMPLE3,
+               reslab=L('Eredmény, a briefedbe:', 'Output, into your brief:'),
+               tipnote=L('Készítsd el most új chatben ezzel a prompttal, és másold be a briefedbe.', 'Make it now in a new chat with this prompt, and paste it into your brief.'))

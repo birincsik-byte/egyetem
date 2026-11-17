@@ -28,6 +28,25 @@ Ebből származik a kezdőlap gombjainak és a felső sáv elemeinek állapota i
 
 ---
 
+## 2026. november 17.: a 3. alkalom a 2. alkalom mintájára
+
+A változás a generátorban készült (`forras/content.py`, `forras/build.py`), nem kézzel; a hét HTML ebből lett újragenerálva.
+
+- `NYITVA = 3`: a kezdőlapon és a felső sávban a 3. alkalom is kattintható. A kezdőlap „A feladat” gombja a 3. diára („Ma kis lépésekben haladunk”) mutat.
+- A 3. diasor (v3.0, 24 dia) a 2. alkalom mintájára: címlap; „Hol tartunk?” (mi készült múlt héten, mit hozz, milyen eszközökkel dolgozol; névsor nélkül); „Ma kis lépésekben haladunk”; „Minden kis feladat új chatben indul” (szerep, brief, prompt, vissza a briefbe, és a piros TIPP magyarázata); 7 elméleti dia a LEGO Bank példájával (az oktató `LEGO_Bank` anyagából); 9 kis feladat „Ehhez kell” listával, TIPP gombokkal és rögzített kimeneti formátumú promptokkal; 3 tippdia; zárás.
+- Oktatói döntések 2026. november 17.: logófeladat nincs, mert a logó megvan; minden eredménytermék kötelező; a példa a LEGO Bank; az összefoglalón nincs névsor.
+- A 9 kis feladat: vizuális irány; színek és betűk; képi világ és alapprompt; három kulcsvizuál; három posztsablon; két banner; óriásplakát-mockup; csomagolás vagy termék; az arculati kézikönyv összerakása.
+- Mára elkészül (`DELIV[3]`): arculati kézikönyv PDF, 3 kulcsvizuál, 3 posztsablon, 2 banner, plakát-mockup, csomagolás- vagy terméklátvány. A „Logó SVG” kikerült; a `SESS` 3. alkalmának `out` sora is változott (1. diasor évadkártyája, kezdőlap).
+- Oktatói kérés, 2026. november 17. este: minden prompt három részből áll: `SZEREP:` (egy mondat, LLM-persona, kobaltkék kiemeléssel), `BRIEF:` (az addig felépült brief, inputként), `FELADAT:`. Minden kis feladat új chatben indul, a legfrissebb brieffel. A 3. alkalomban a „márkadokumentum” helyett „brief” a neve annak, amibe az eredmények gyűlnek („Eredmény, a briefedbe”). A TIPP-ablakok promptjai is így épülnek (a 2. alkalommal közös kulcsok helyett saját `draftbrief3`, `promise3`). A kiemelést a `build.py` `pfmt()` függvénye csinálja, csak a `SZEREP:`/`ROLE:` kezdetű promptoknál.
+- Oktatói kérés, 2026. november 17. este: minden feladatdián piros TIPP (`.ask`) egy kérdéssel, amit a hallgató nyugodtan megkérdezhet a modelltől a feladat szerkezetéről (például „Mit tartalmaz egy arculati kézikönyv…?”), hogy a háttértudása is nőjön. Adat: a `S3_TASKS` `ask` mezője.
+- A 3. alkalom első tippdiája „A logó és az új iparág” lett a régi „Logó” tippek helyett.
+- Generátor: az `s2_*` függvények általánosítva (`sx_agenda`, `sx_theory`, `sx_task`, és a `SPEC` tábla a `content.py` végén); a 2. diasor kimenete ettől nem változott (md5-tel ellenőrizve). Új: `s3_recap`, `s3_agenda`, `s3_how`, `session3_slides`, `pfmt`; adatok: `S3_THEORY`, `S3_TASKS`, `S3_NEED`, `S3_SLIDES`, `S3_TILES`, `EXAMPLE3`, új `TIP_PROMPTS` kulcsok és `TIP_NOTE`. A 3. diasorban a feladatdiák promptdoboza magasabb (`html[data-deck="3"] .tk .prompt pre{max-height:64vh}`), hogy ne kelljen görgetni.
+- A régi `STEPS[3]`, `SUB[3]`, `PROMPTS[3]` és `TOOLS[3]` nincs használatban.
+- Verziók: 1. diasor v1.8, 2. diasor v2.7 (csak a felső sáv és a közös CSS változott), 3. diasor v3.0, a 4-6. diasor v1.5, kezdőlap v1.6, mind 2026. november 17.
+- Még nincs átvezetve: a hallgatói feladatleírás (Claude-dokumentum) logófeladata.
+
+---
+
 ## 2026. november 11., este: promptok rögzített kimeneti formátummal
 
 Oktatói kérés: minden prompt mondja meg, milyen formában kérje vissza az eredményt, hogy a hallgató tovább tudja vinni, és legyen világos, melyik korábbi eredménnyel megy tovább. A 2. diasor (v2.2, 24 dia):

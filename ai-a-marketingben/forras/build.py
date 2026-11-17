@@ -257,6 +257,21 @@ ul.done{list-style:none}
 ul.done li{padding:.45em 0 .45em 1.5em;border-bottom:1px solid var(--line);position:relative;line-height:1.35}
 ul.done li::before{content:"✓";position:absolute;left:0;color:var(--cobalt);font-weight:600}
 .today{margin-top:.9em;background:var(--ink);color:#fff;border-radius:10px;padding:.55em 1em;max-width:none}
+ul.bring{list-style:none}
+ul.bring li{padding:.4em 0 .4em 1.5em;border-bottom:1px solid var(--line);position:relative;line-height:1.35}
+ul.bring li::before{content:"→";position:absolute;left:0;color:var(--cobalt);font-weight:600}
+ul.bring li b{display:block;font-weight:600}
+.slide .recap h3.lbl.sp{margin-top:1.1em}
+html[data-deck="3"] .tk .prompt pre{max-height:64vh}
+.prompt pre b.pl{font-weight:700;color:var(--cobalt)}
+.prompt pre .role{background:var(--cobalt);color:#fff;font-weight:600;border-radius:4px;padding:.05em .35em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.ask{margin-top:.9em;display:flex;gap:.8em;align-items:flex-start;background:#FDECEA;border:2px solid #D2352B;border-radius:10px;padding:.55em 1em;line-height:1.35}
+.ask .al{flex:none;background:#D2352B;color:#fff;border-radius:99px;padding:.05em .6em;font-weight:700;letter-spacing:.06em;font-size:var(--t-sm);margin-top:.1em}
+.ask p{margin:.15em 0 0}
+ol.how{list-style:none;counter-reset:hw;display:grid;gap:.7em}
+ol.how li{counter-increment:hw;position:relative;padding:.6em 1em .6em 3em;background:#fff;border-radius:10px;box-shadow:var(--sh);border-top:3px solid var(--marker);line-height:1.35}
+ol.how li::before{content:counter(hw);position:absolute;left:.85em;top:.4em;font-family:var(--display);font-size:1.5em;color:var(--cobalt)}
+ol.how li b{display:block;font-weight:600}
 .who{display:grid;grid-template-columns:1fr 1fr;column-gap:2.2vw}
 .who>div{padding:.42em 0 .48em;border-bottom:1px solid var(--line)}
 .who .nm{display:inline-block;background:var(--marker);color:var(--ink);font-weight:600;font-size:var(--t-sm);line-height:1.35;border-radius:4px;padding:.02em .45em;margin-bottom:.22em}
@@ -516,8 +531,22 @@ def task_slides(n):
         start += len(rows)
     return out
 
+def pfmt(text):
+    h = pmark(text)
+    if not text.startswith(('SZEREP:', 'ROLE:')):
+        return h
+    lines = h.split('\n')
+    for q in range(min(3, len(lines))):
+        m = re.match(r'(SZEREP|ROLE|BRIEF|FELADAT|TASK):(.*)$', lines[q])
+        if m:
+            if m.group(1) in ('SZEREP', 'ROLE'):
+                lines[q] = '<b class="pl">%s:</b> <span class="role">%s</span>' % (m.group(1), m.group(2).strip())
+            else:
+                lines[q] = '<b class="pl">%s:</b>%s' % (m.group(1), m.group(2))
+    return '\n'.join(lines)
+
 def prompt_box(label, text):
-    return '<div class="prompt"><div class="ph"><span>%s</span><button type="button" class="copy">%s</button></div><pre>%s</pre></div>' % (label, '{COPY}', pmark(text))
+    return '<div class="prompt"><div class="ph"><span>%s</span><button type="button" class="copy">%s</button></div><pre>%s</pre></div>' % (label, '{COPY}', pfmt(text))
 
 def copyfix(s, l):
     return s.replace('{COPY}', 'Másolás' if l == 'hu' else 'Copy')
@@ -722,77 +751,96 @@ def strip(n):
 
 # ---------- a 2. alkalom: kis feladatok elmélettel ----------
 
-def s2_agenda():
-    """A mai nap: nem feladatlista, hanem az, hogy a témát kis feladatokra szedjük, és ezekből áll össze a márkabrief."""
-    parts = S2_THEORY['brief']['items']
+def sx_agenda(n, tiles, sumlab, lead, rhythm):
+    """A mai nap: a témát kis feladatokra szedjük, és ezekből áll össze az alkalom eredményterméke."""
     body = {}
     for l in LANGS:
-        tiles = []
-        for q, (a, _) in enumerate(parts):
+        ts = []
+        for q, a in enumerate(tiles):
             if q:
-                tiles.append('<span class="op" aria-hidden="true">+</span>')
-            tiles.append('<span class="pc">%s</span>' % a[l])
-        tiles.append('<span class="op" aria-hidden="true">=</span>')
-        tiles.append('<span class="pc sum">%s</span>' % ('Márkabrief' if l == 'hu' else 'Brand brief'))
-        rh = L([('Rövid elmélet', 'Mi ez, és mire jó, egy kitalált példával.'), ('Kis feladat', '10-20 perc, másolható prompttal. A prompt megmondja, mit másolj be, és milyen formában kérd vissza.'), ('Márkadokumentum', 'Az eredményt bemásolod a márkadokumentumodba.'), ('Továbbviszed', 'A következő prompt ebből indul. A végén ebből lesz a márkabrief.')],
-               [('Short theory', 'What it is and what it is for, with a made-up example.'), ('Small task', '10-20 minutes, with a prompt you can copy. The prompt says what to paste in and in what form to ask for the result.'), ('Brand document', 'You paste the output into your brand document.'), ('Carry it on', 'The next prompt starts from it. At the end it becomes the brand brief.')])[l]
-        rhythm = '<div class="rhythm">%s</div>' % ''.join('<div class="card%s"><span class="n">%d</span><h3>%s</h3><p>%s</p></div>' % ('', q + 1, t, d) for q, (t, d) in enumerate(rh))
-        body[l] = '<div class="build">%s</div><h3 class="lbl2">%s</h3>%s' % (''.join(tiles), 'Minden témánál ugyanaz a menet' if l == 'hu' else 'Same rhythm for every topic', rhythm)
-    foot = {l: '<p class="deliv"><b>%s</b> %s</p>' % ('Mára elkészül:' if l == 'hu' else 'Done by today:', DELIV[2][l]) for l in LANGS}
-    return j(kicker('A mai nap', "Today's plan", sess_lt(2)),
+                ts.append('<span class="op" aria-hidden="true">+</span>')
+            ts.append('<span class="pc">%s</span>' % a[l])
+        ts.append('<span class="op" aria-hidden="true">=</span>')
+        ts.append('<span class="pc sum">%s</span>' % sumlab[l])
+        rh = rhythm[l]
+        rhy = '<div class="rhythm">%s</div>' % ''.join('<div class="card%s"><span class="n">%d</span><h3>%s</h3><p>%s</p></div>' % ('', q + 1, t, d) for q, (t, d) in enumerate(rh))
+        body[l] = '<div class="build">%s</div><h3 class="lbl2">%s</h3>%s' % (''.join(ts), 'Minden témánál ugyanaz a menet' if l == 'hu' else 'Same rhythm for every topic', rhy)
+    foot = {l: '<p class="deliv"><b>%s</b> %s</p>' % ('Mára elkészül:' if l == 'hu' else 'Done by today:', DELIV[n][l]) for l in LANGS}
+    return j(kicker('A mai nap', "Today's plan", sess_lt(n)),
              tag('h2', L('Ma kis lépésekben haladunk', 'Today we go in small steps'), 'wide'),
-             tag('p', L('A mai témát, a márkaplatformot, a célcsoportot és az árazást kis feladatokra szedjük szét. Mindegyik az előzőre épül, és a végén ezekből áll össze a márkabrief.',
-                        'We break today\'s topic, the brand platform, the target audience and pricing, into small tasks. Each builds on the one before, and at the end they add up to the brand brief.'), 'lead'),
+             tag('p', lead, 'lead'),
              body, foot,
              tag('p', L('A promptok csak javaslatok, ha nincs ötleted, hogyan indulj el.', 'The prompts are only suggestions in case you do not know how to start.'), 'note'))
 
-def s2_theory(key):
-    t = S2_THEORY[key]
+def s2_agenda():
+    return sx_agenda(2, [a for a, _ in S2_THEORY['brief']['items']], L('Márkabrief', 'Brand brief'),
+                     L('A mai témát, a márkaplatformot, a célcsoportot és az árazást kis feladatokra szedjük szét. Mindegyik az előzőre épül, és a végén ezekből áll össze a márkabrief.',
+                       'We break today\'s topic, the brand platform, the target audience and pricing, into small tasks. Each builds on the one before, and at the end they add up to the brand brief.'),
+                     L([('Rövid elmélet', 'Mi ez, és mire jó, egy kitalált példával.'), ('Kis feladat', '10-20 perc, másolható prompttal. A prompt megmondja, mit másolj be, és milyen formában kérd vissza.'), ('Márkadokumentum', 'Az eredményt bemásolod a márkadokumentumodba.'), ('Továbbviszed', 'A következő prompt ebből indul. A végén ebből lesz a márkabrief.')],
+                       [('Short theory', 'What it is and what it is for, with a made-up example.'), ('Small task', '10-20 minutes, with a prompt you can copy. The prompt says what to paste in and in what form to ask for the result.'), ('Brand document', 'You paste the output into your brand document.'), ('Carry it on', 'The next prompt starts from it. At the end it becomes the brand brief.')]))
+
+def sx_theory(n, key):
+    t = SPEC[n]['theory'][key]
+    ex = SPEC[n]['ex']
     body = {}
     for l in LANGS:
         h = ''
         if t.get('formula'):
             h += '<div class="formula">%s</div>' % pmark(t['formula'][l])
         h += '<div class="thg">%s</div>' % ''.join('<div class="card%s"><h3>%s</h3><p>%s</p></div>' % (' alt' if q % 2 else '', a[l], b[l]) for q, (a, b) in enumerate(t['items']))
-        h += '<div class="ex"><small>%s</small><p>%s</p></div>' % (('Kitalált példa · ' + EXAMPLE['hu']) if l == 'hu' else ('Made-up example · ' + EXAMPLE['en']), t['ex'][l])
+        h += '<div class="ex"><small>%s</small><p>%s</p></div>' % (('Kitalált példa · ' + ex['hu']) if l == 'hu' else ('Made-up example · ' + ex['en']), t['ex'][l])
         body[l] = h
-    return j(kicker('Elmélet', 'Theory', sess_lt(2)), tag('h2', t['t'], 'wide'), tag('p', t['lead'], 'lead'), body)
+    return j(kicker('Elmélet', 'Theory', sess_lt(n)), tag('h2', t['t'], 'wide'), tag('p', t['lead'], 'lead'), body)
+
+def s2_theory(key):
+    return sx_theory(2, key)
 
 S2_TASK_SLIDE = {it[1]: 4 + q for q, it in enumerate(S2_SLIDES) if it[0] == 'task'}
 
-def s2_task(k):
-    t = S2_TASKS[k]
+ICON = '<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+
+def sx_task(n, k):
+    TS = SPEC[n]['tasks']
+    NEED = SPEC[n]['need']
+    t = TS[k]
     body = {}
     for l in LANGS:
         left = '<p class="what">%s</p>' % pmark(t['what'][l])
-        if k in S2_NEED:
-            ICON = '<svg class="clk" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v12.2l3.1-3 2.4 5.2 2.2-1-2.4-5.1h4.4z" fill="currentColor" stroke="currentColor" stroke-width=".8" stroke-linejoin="round"/><path d="M10 2.4v3M3.6 8.5h3M5.2 3.7l2.1 2.1M14.8 3.7l-2.1 2.1M5.2 13.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+        if k in NEED:
             lis = ''.join('<li><span>%s</span><button type="button" class="tipbtn" data-tip="tip-%s-%d-%d" aria-label="%s" title="%s"><span>%s</span>%s%s</button></li>' % (
                 lab[l], l, k, i, ('Kattints ide, ha nincs meg' if l == 'hu' else 'Click here if missing'), ('Kattints ide, ha nincs meg' if l == 'hu' else 'Click here if missing'),
-                'TIPP' if l == 'hu' else 'TIP', ('Ha nincs meg' if l == 'hu' else 'If missing'), ICON) for i, (lab, _) in enumerate(S2_NEED[k]))
+                'TIPP' if l == 'hu' else 'TIP', ('Ha nincs meg' if l == 'hu' else 'If missing'), ICON) for i, (lab, _) in enumerate(NEED[k]))
             left += '<div class="need"><b>%s</b><ul class="needl">%s</ul></div>' % ('Ehhez kell:' if l == 'hu' else 'You need:', lis)
         if t.get('qs'):
             left += '<div class="qsw"><small>%s</small><ul class="qs">%s</ul></div>' % ('Jó kérdések' if l == 'hu' else 'Good questions', ''.join('<li>%s</li>' % pmark(q) for q in t['qs'][l]))
         if t.get('brief'):
-            left += '<div class="qsw"><small>%s</small><ul class="qs bl">%s</ul></div>' % ('A márkabrief részei' if l == 'hu' else 'Parts of the brand brief', ''.join('<li>%s</li>' % e(q) for q in t['brief'][l]))
+            left += '<div class="qsw"><small>%s</small><ul class="qs bl">%s</ul></div>' % (t['brieflab'][l] if t.get('brieflab') else ('A márkabrief részei' if l == 'hu' else 'Parts of the brand brief'), ''.join('<li>%s</li>' % e(q) for q in t['brief'][l]))
         if t.get('ex'):
             left += '<div class="ex"><small>%s</small><p>%s</p></div>' % ('Kitalált példa' if l == 'hu' else 'Made-up example', t['ex'][l])
         if t.get('doc'):
-            lab = ('Eredmény, a márkadokumentumodba:' if l == 'hu' else 'Output, into your brand document:') if k < len(S2_TASKS) else ('Eredmény:' if l == 'hu' else 'Output:')
+            if k < len(TS) and not t.get('files'):
+                lab = SPEC[n]['reslab'][l] if SPEC[n].get('reslab') else ('Eredmény, a márkadokumentumodba:' if l == 'hu' else 'Output, into your brand document:')
+            else:
+                lab = 'Eredmény:' if l == 'hu' else 'Output:'
             left += '<p class="res"><b>%s</b> %s</p>' % (lab, t['doc'][l])
         else:
             left += '<p class="res"><b>%s</b> %s</p>' % ('Eredmény:' if l == 'hu' else 'Output:', t['out'][l])
         ptxt = (CB_HU if l == 'hu' else CB_EN)[t['pcb']] if 'pcb' in t else t['p'][l]
         right = prompt_box('Promptjavaslat, ha nincs ötleted' if l == 'hu' else 'Prompt suggestion, if you are stuck', ptxt)
+        if t.get('ask'):
+            right += '<div class="ask"><span class="al">%s</span><div><b>%s</b><p>„%s”</p></div></div>' % ('TIPP' if l == 'hu' else 'TIP', 'Kérdezd meg nyugodtan, mielőtt nekiállsz:' if l == 'hu' else 'Feel free to ask first:', e(t['ask'][l]))
         dlg = ''
-        for i, (lab, key) in enumerate(S2_NEED.get(k, [])):
+        for i, (lab, key) in enumerate(NEED.get(k, [])):
+            note = TIP_NOTE[key][l] if key in TIP_NOTE else (SPEC[n]['tipnote'][l] if SPEC[n].get('tipnote') else ('Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.' if l == 'hu' else 'Make it now with this prompt, and paste it into your brand document.'))
             dlg += '<dialog class="tipdlg" id="tip-%s-%d-%d"><div class="tdh"><span class="tl">%s</span><h3>%s %s</h3><button type="button" class="x" data-close aria-label="%s">×</button></div><p class="tdp">%s</p>%s</dialog>' % (
                 l, k, i, 'TIPP' if l == 'hu' else 'TIP', 'Ha nincs meg:' if l == 'hu' else 'If you do not have it:', lab[l], 'Bezár' if l == 'hu' else 'Close',
-                'Készítsd el most ezzel a prompttal, és másold be a márkadokumentumodba.' if l == 'hu' else 'Make it now with this prompt, and paste it into your brand document.',
-                prompt_box('Prompt', TIP_PROMPTS[key][l]))
+                note, prompt_box('Prompt', TIP_PROMPTS[key][l]))
         body[l] = copyfix('<div class="tk"><div>%s</div><div>%s</div></div>%s' % (left, right, dlg), l)
-    kk = {l: ('%d/%d kis feladat · kb. %d perc' % (k, len(S2_TASKS), t['m'])) if l == 'hu' else ('Small task %d/%d · approx. %d min' % (k, len(S2_TASKS), t['m'])) for l in LANGS}
-    return j(kicker(kk['hu'], kk['en'], sess_lt(2)), tag('h2', t['t'], 'wide'), body)
+    kk = {l: ('%d/%d kis feladat · kb. %d perc' % (k, len(TS), t['m'])) if l == 'hu' else ('Small task %d/%d · approx. %d min' % (k, len(TS), t['m'])) for l in LANGS}
+    return j(kicker(kk['hu'], kk['en'], sess_lt(n)), tag('h2', t['t'], 'wide'), body)
+
+def s2_task(k):
+    return sx_task(2, k)
 
 def s2_recap():
     cats = dict(PAIRS)
@@ -886,7 +934,91 @@ def session2_slides():
             out.append(s2_task(it[1]))
     return out
 
+# ---------- a 3. alkalom: a 2. alkalom mintájára (2026. november 17.) ----------
+
+def s3_recap():
+    body = {}
+    for l in LANGS:
+        done = L(['Megírtad a pozicionálást, az ígéretet és a 3 értéket.',
+                  'Eldöntötted a márka személyiségét és hangnemét.',
+                  'Leírtad a célcsoportot, és kikérdeztél két personát.',
+                  'Mindezt egy oldalba raktad: ez a márkabrief.'],
+                 ['You wrote the positioning, the promise and the 3 values.',
+                  "You decided the brand's personality and tone of voice.",
+                  'You described the target audience and interviewed two personas.',
+                  'You put it all on one page: the brand brief.'])[l]
+        left = '<div><h3 class="lbl">%s</h3><ul class="done">%s</ul><p class="today">%s</p></div>' % (
+            'Múlt héten, 2026. november 12.' if l == 'hu' else 'Last week, 12 November 2026',
+            ''.join('<li>%s</li>' % x for x in done),
+            'Ma erre a briefre építünk: a márkád arcot kap az új iparágban, és elkészülnek a kampány első vizuáljai.' if l == 'hu' else "Today we build on this brief: your brand gets a face in its new industry, and the campaign's first visuals get made.")
+        bring = L([('A briefed', 'A múlt heti márkabrief. Ma ennek az aljára gyűjtöd az eredményeket. Ha nincs meg, az első feladatnál a TIPP gomb segít.'),
+                   ('A márka logója', 'Megvan, újat nem tervezel. Töltsd le jó minőségben a márka hivatalos oldaláról.'),
+                   ('Egy mappa a félévre', 'Ide mentsd a mai képeket, linkeket és a PDF-et.')],
+                  [('Your brief', 'Last week\'s brand brief. Today you collect the outputs at the bottom of it. If you do not have it, the TIP button at the first task helps.'),
+                   ("The brand's logo", "You have it; you do not design a new one. Download it in good quality from the brand's official site."),
+                   ('A folder for the semester', "Save today's images, links and the PDF here.")])[l]
+        tools = L([('Képekhez', 'Képgeneráló, például ChatGPT vagy Gemini. Az ingyenes csomagban a képgenerálás korlátozott, ezért előbb a promptot csiszold.'),
+                   ('Sablonokhoz, bannerhez, kézikönyvhöz', 'Claude Design, Claude artifact vagy Canva.'),
+                   ('Szöveghez', 'Claude vagy ChatGPT. Minden kis feladat új chatben indul, a legfrissebb briefeddel.')],
+                  [('For images', 'An image generator, for example ChatGPT or Gemini. Image generation is limited on the free plan, so polish the prompt first.'),
+                   ('For templates, banners and the guide', 'Claude Design, Claude artifact or Canva.'),
+                   ('For text', 'Claude or ChatGPT. Every small task starts in a new chat, with your latest brief.')])[l]
+        li = lambda xs: ''.join('<li><b>%s</b>%s</li>' % (a, b) for a, b in xs)
+        right = '<div><h3 class="lbl">%s</h3><ul class="bring">%s</ul><h3 class="lbl sp">%s</h3><ul class="bring">%s</ul></div>' % (
+            'Ma ezzel jössz' if l == 'hu' else 'Bring this today', li(bring),
+            'Ma ezekkel dolgozol' if l == 'hu' else 'Your tools today', li(tools))
+        body[l] = '<div class="recap">%s%s</div>' % (left, right)
+    return j(kicker('Összefoglaló', 'Recap', sess_lt(3)), tag('h2', L('Hol tartunk?', 'Where are we?'), 'wide'), body,
+             tag('p', L('Órai játék: a márka neve és logója marad, csak az iparág új. A kész anyagokat ne tedd közzé.', 'A classroom game: the brand keeps its name and logo, only the industry is new. Do not publish the finished materials.'), 'note'))
+
+def s3_agenda():
+    return sx_agenda(3, S3_TILES, L('Arculati kézikönyv', 'Brand guide'),
+                     L('A mai témát, az arculatot és a kampány első vizuáljait kis feladatokra szedjük szét. Mindegyik az előzőre épül, és a végén ezekből áll össze az arculati kézikönyv.',
+                       "We break today's topic, the visual identity and the campaign's first visuals, into small tasks. Each builds on the one before, and at the end they add up to the brand guide."),
+                     L([('Rövid elmélet', 'Mi ez, és mire jó, a LEGO Bank példáján.'), ('Új chat', 'Minden kis feladat új chatben indul: szerep, brief, prompt. 15-25 perc.'), ('Eredmény a briefbe', 'A szöveges eredmény a briefed aljára, a képek és a linkek a mappádba.'), ('Továbbviszed', 'A következő új chat már a frissebb brieffel indul. A végén ebből lesz az arculati kézikönyv.')],
+                       [('Short theory', 'What it is and what it is for, with the LEGO Bank example.'), ('New chat', 'Every small task starts in a new chat: role, brief, prompt. 15-25 minutes.'), ('Output into the brief', 'Text outputs go to the bottom of your brief, images and links into your folder.'), ('Carry it on', 'The next new chat starts with the updated brief. At the end it becomes the brand guide.')]))
+
+def s3_how():
+    body = {}
+    for l in LANGS:
+        steps = L([('Szerep', 'Egy mondat arról, kinek a fejével gondolkodjon a modell. Például: Te most art director vagy. Minden feladatnál más.'),
+                   ('Brief', 'Minden, ami eddig felépült: a múlt heti márkabrief és a mai eredmények. Mindig a legfrissebbet másold be.'),
+                   ('Prompt', 'A feladat a diáról. A végén megmondja, milyen formában kérd vissza az eredményt.'),
+                   ('Vissza a briefbe', 'A kapott blokkot bemásolod a briefed aljára. A következő új chat már ezzel indul.')],
+                  [('Role', 'One sentence on whose head the model should think with. For example: You are now an art director. It is different for every task.'),
+                   ('Brief', 'Everything built so far: last week\'s brand brief and today\'s outputs. Always paste the latest one.'),
+                   ('Prompt', 'The task from the slide. At the end it says in what form to ask for the result.'),
+                   ('Back into the brief', 'You paste the block you get to the bottom of your brief. The next new chat starts with it.')])[l]
+        left = '<ol class="how">%s</ol>' % ''.join('<li><b>%s</b>%s</li>' % (a, b) for a, b in steps)
+        sk = L('SZEREP: Te most art director vagy egy márkaépítő ügynökségnél.\nBRIEF: [az eddig felépült briefed]\nFELADAT: [a feladat promptja a diáról]',
+               'ROLE: You are now an art director at a branding agency.\nBRIEF: [your brief so far]\nTASK: [the task prompt from the slide]')[l]
+        right = prompt_box('Így néz ki minden prompt' if l == 'hu' else 'Every prompt looks like this', sk)
+        right += '<div class="ask"><span class="al">%s</span><div><b>%s</b><p>%s</p></div></div>' % (
+            'TIPP' if l == 'hu' else 'TIP',
+            'Kérdezd meg nyugodtan, miből áll, amit készítesz.' if l == 'hu' else 'Feel free to ask what the thing you are making consists of.',
+            'Minden feladatnál találsz egy piros TIPP-et egy kérdéssel, például: „Mit tartalmaz egy arculati kézikönyv?” Kérdezd meg, mielőtt nekiállsz: így a háttértudásod is nő.' if l == 'hu' else 'Every task has a red TIP with a question, for example: "What does a brand guide contain?" Ask it before you start: it builds your background knowledge too.')
+        body[l] = copyfix('<div class="tk"><div>%s</div><div>%s</div></div>' % (left, right), l)
+    return j(kicker('Így dolgozunk', 'How we work', sess_lt(3)),
+             tag('h2', L('Minden kis feladat új chatben indul', 'Every small task starts in a new chat'), 'wide'),
+             tag('p', L('Egy chat, egy feladat. A modell így csak azt látja, ami a mostani feladathoz kell, és nem zavarják a korábbi próbálkozások.', 'One chat, one task. That way the model only sees what this task needs, and earlier attempts do not get in the way.'), 'lead'),
+             body)
+
+def session3_slides():
+    out = [s3_recap()]
+    for it in S3_SLIDES:
+        if it[0] == 'agenda':
+            out.append(s3_agenda())
+        elif it[0] == 'how':
+            out.append(s3_how())
+        elif it[0] == 'th':
+            out.append(sx_theory(3, it[1]))
+        else:
+            out.append(sx_task(3, it[1]))
+    return out
+
 def deck_slides(n):
+    if n == 3:
+        return [title_slide(3)] + session3_slides() + tips_slides(3) + [close_slide(3)]
     if n == 2:
         S = [title_slide(2)] + session2_slides() + tips_slides(2)
         S.append(close_slide(2))
@@ -903,7 +1035,7 @@ def deck_slides(n):
 
 def task_index(n):
     # a „Cél, scope, leadandó” dia sorszáma (1-től)
-    return 14 if n == 1 else (4 if n == 2 else 2)
+    return 14 if n == 1 else (4 if n == 2 else (3 if n == 3 else 2))
 
 def render_deck(n):
     s = SESS[n-1]
